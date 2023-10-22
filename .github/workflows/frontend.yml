@@ -37,7 +37,7 @@ jobs:
         cache-dependency-path: 'Frontend/pnpm-lock.yaml'
 
     - run: |
-        pnpm config set store-dir $(RUNNER_TOOL_CACHE)/.pnpm
+        pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
