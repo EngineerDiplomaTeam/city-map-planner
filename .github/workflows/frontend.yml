@@ -59,13 +59,12 @@ jobs:
         files: |
           Frontend/coverage/**/TESTS*.xml
 
-    - name: Produce the coverage report
-      uses: 'insightsengineering/coverage-action@v2'
+    - uses: 'coverage-robot/action@v1'
       with:
-        path: 'Frontend/coverage/cobertura-coverage.xml'
-        fail: false
-        publish: true
-        diff: true
+        token: ${{ secrets.COVERAGE_TOKEN }}
+        files: |
+          'Frontend/coverage/cobertura-coverage.xml'
+        tag: 'Frontend'
 
     - run: 'pnpm build'
       working-directory: 'Frontend'
