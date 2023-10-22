@@ -63,10 +63,10 @@ jobs:
         files: |
           Frontend/coverage/**/TESTS*.xml
 
-    - name: 'Publish Coverage Report'
-      uses: 'romeovs/lcov-reporter-action@v0.2.16'
-      with:
-        lcov-file: 'Frontend/coverage/lcov.info'
+    # - name: 'Publish Coverage Report'
+    #   uses: 'romeovs/lcov-reporter-action@v0.2.16'
+    #   with:
+    #     lcov-file: 'Frontend/coverage/lcov.info'
 
     - name: 'Build Application'
       run: 'pnpm build'
