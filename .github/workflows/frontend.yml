@@ -41,7 +41,9 @@ jobs:
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
-    - run: pnpm ng test --watch=false --code-coverage --reporters=junit,coverage
+    - run: |
+        echo AAAAAAAAA: $CHROME_BIN
+        pnpm ng test --watch=false --code-coverage --reporters=junit,coverage
       working-directory: 'Frontend'
 
     - run: pnpm build
