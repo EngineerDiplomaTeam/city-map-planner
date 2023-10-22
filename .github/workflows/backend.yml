@@ -58,7 +58,7 @@ jobs:
 
     - name: 'Deploy Application'
       run: |
-        dotnet publish WebApi
+        dotnet publish -c production WebApi
         ./deploy.sh
       working-directory: 'Backend'
       # Do not run deployment from PR
