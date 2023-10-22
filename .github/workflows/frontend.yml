@@ -36,7 +36,9 @@ jobs:
         cache: 'pnpm'
         cache-dependency-path: 'Frontend/pnpm-lock.yaml'
 
-    - run: pnpm i --frozen-lockfile
+    - run: |
+        pnpm config set store-dir $(RUNNER_TOOL_CACHE)/.pnpm
+        pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
     - run: pnpm ng test --watch=false --code-coverage --reporters=junit,coverage
