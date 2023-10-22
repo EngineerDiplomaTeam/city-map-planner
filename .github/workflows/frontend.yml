@@ -73,7 +73,7 @@ jobs:
       working-directory: 'Frontend'
 
     - name: 'Deploy Application'
-      run: 'bash Frontend/deploy.sh'
+      run: './deploy.sh'
       working-directory: 'Frontend'
       # Do not run deployment from PR
       if: github.event_name != 'pull_request'
