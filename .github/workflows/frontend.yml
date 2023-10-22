@@ -40,6 +40,8 @@ jobs:
         pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
+      env:
+        CHROME_BIN: '/usr/bin/chromium-browser'
 
     - run: |
         echo AAAAAAAAA: $CHROME_BIN
