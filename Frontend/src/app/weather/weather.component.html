@@ -1,0 +1,8 @@
+<h1>Weather</h1>
+<ol>
+  <li *ngFor="let forecast of weather$ | async">
+    <b>{{ forecast.date }}</b>
+    <i>{{ forecast.temperatureC }}&deg;C ({{ forecast.temperatureF }} &deg;F)</i>
+    <p>{{ forecast.summary }}</p>
+  </li>
+</ol>
