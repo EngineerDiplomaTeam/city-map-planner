@@ -59,12 +59,11 @@ jobs:
         files: |
           Frontend/coverage/**/TESTS*.xml
 
-    - uses: 'coverage-robot/action@v1'
+    - name: 'Display coverage'
+      uses: 'ewjoachim/coverage-comment-action@v1'
       with:
-        token: ${{ secrets.COVERAGE_TOKEN }}
-        files: |
-          'Frontend/coverage/cobertura-coverage.xml'
-        tag: 'Frontend'
+        COVERAGE_FILE: 'Frontend/coverage/cobertura-coverage.xml'
+        GITHUB_TOKEN: ${{ github.token }}
 
     - run: 'pnpm build'
       working-directory: 'Frontend'
