@@ -29,9 +29,11 @@ jobs:
   build:
     runs-on: 'self-hosted'
     steps:
-    - uses: 'actions/checkout@v3'
+    - name: 'Checkout repository'
+      uses: 'actions/checkout@v3'
 
-    - uses: 'pnpm/action-setup@v2'
+    - name: 'Setup pnpm'
+      uses: 'pnpm/action-setup@v2'
       with:
         version: 8
 
@@ -42,12 +44,14 @@ jobs:
         cache: 'pnpm'
         cache-dependency-path: 'Frontend/pnpm-lock.yaml'
 
-    - run: |
+    - name: 'Restore packages'
+      run: |
         pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
-    - run: 'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'
+    - name: 'Run unit tests'
+      run: 'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'
       working-directory: 'Frontend'
       env:
         CHROME_BIN: '/usr/bin/chromium-browser'
@@ -59,15 +63,16 @@ jobs:
         files: |
           Frontend/coverage/**/TESTS*.xml
 
-    - name: 'Display coverage'
-      uses: 'ewjoachim/coverage-comment-action@v1'
+    - name: 'Publish Coverage Report'
+      uses: 'romeovs/lcov-reporter-action@v0.2.16'
       with:
-        COVERAGE_FILE: 'Frontend/coverage/cobertura-coverage.xml'
-        GITHUB_TOKEN: ${{ github.token }}
+        lcov-file: 'Frontend/coverage/lcov.info'
 
-    - run: 'pnpm build'
+    - name: 'Build Application'
+      run: 'pnpm build'
       working-directory: 'Frontend'
 
-    - run: 'bash Frontend/deploy.sh'
+    - name: 'Deploy Application'
+      run: 'bash Frontend/deploy.sh'
       # Do not run deployment from PR
       if: github.event_name != 'pull_request'
