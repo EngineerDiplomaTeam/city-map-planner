@@ -7,6 +7,7 @@ echo "Copying publish files to /opt/city-planner-backend/publish/"
 cp WebApi/bin/production/net7.0/publish/* /opt/city-planner-backend/publish/
 
 echo "Preparing SystemD service file"
+rm -f /etc/systemd/system/city-planner-backend.service
 cat <<EOT >> /etc/systemd/system/city-planner-backend.service
 [Unit]
 Description=City planner backend
