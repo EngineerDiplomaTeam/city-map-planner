@@ -40,7 +40,13 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'kjhtml', 'junit'],
-    browsers: ['ChromeHeadless'],
+    browsers: ['chromeHeadlessRoot'],
+    customLaunchers: {
+      chromeHeadlessRoot: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'], // Running as root requires no-sandbox mode
+      }
+    },
     restartOnFileChange: true
   });
 };
