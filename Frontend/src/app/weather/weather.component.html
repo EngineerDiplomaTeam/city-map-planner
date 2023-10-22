@@ -1,8 +1,19 @@
-<h1>Weather</h1>
-<ol>
-  <li *ngFor="let forecast of weather$ | async">
-    <b>{{ forecast.date }}</b>
-    <i>{{ forecast.temperatureC }}&deg;C ({{ forecast.temperatureF }} &deg;F)</i>
-    <p>{{ forecast.summary }}</p>
-  </li>
-</ol>
+<mat-card class="mat-body-1">
+  <mat-card-header>
+    <mat-card-title>Forecast</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item lines="2" role="listitem" *ngFor="let forecast of weather$ | async">
+        <span matListItemTitle><b>{{ forecast.date }}</b></span>
+        <span>{{ forecast.temperatureC }}&deg;C ({{ forecast.temperatureF }} &deg;F) <i>{{ forecast.summary }}</i></span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="reload$.next()">Reload</button>
+  </mat-card-actions>
+</mat-card>
+
