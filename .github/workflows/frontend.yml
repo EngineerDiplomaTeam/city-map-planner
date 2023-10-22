@@ -3,6 +3,12 @@
 
 name: 'Frontend'
 
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -23,9 +29,11 @@ jobs:
   build:
     runs-on: 'self-hosted'
     steps:
-    - uses: 'actions/checkout@v3'
+    - name: 'Checkout repository'
+      uses: 'actions/checkout@v3'
 
-    - uses: 'pnpm/action-setup@v2'
+    - name: 'Setup pnpm'
+      uses: 'pnpm/action-setup@v2'
       with:
         version: 8
 
@@ -36,16 +44,36 @@ jobs:
         cache: 'pnpm'
         cache-dependency-path: 'Frontend/pnpm-lock.yaml'
 
-    - run: |
+    - name: 'Restore packages'
+      run: |
         pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
-    - run: 'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'
+    - name: 'Run unit tests'
+      run: 'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'
       working-directory: 'Frontend'
       env:
         CHROME_BIN: '/usr/bin/chromium-browser'
 
-    - run: 'pnpm build'
+    - name: 'Publish Test Results'
+      uses: 'EnricoMi/publish-unit-test-result-action@v2'
+      if: always()
+      with:
+        files: |
+          Frontend/coverage/**/TESTS*.xml
+
+    - name: 'Publish Coverage Report'
+      uses: 'romeovs/lcov-reporter-action@v0.2.16'
+      with:
+        lcov-file: 'Frontend/coverage/lcov.info'
+
+    - name: 'Build Application'
+      run: 'pnpm build'
       working-directory: 'Frontend'
 
+    - name: 'Deploy Application'
+      run: 'bash Frontend/deploy.sh'
+      working-directory: 'Frontend'
+      # Do not run deployment from PR
+      if: github.event_name != 'pull_request'
