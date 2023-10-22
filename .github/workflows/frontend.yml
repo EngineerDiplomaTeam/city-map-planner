@@ -41,7 +41,9 @@ jobs:
 
     - run: pnpm ng test --watch=false --code-coverage --reporters=junit,coverage
       working-directory: 'Frontend'
-      
+      env:
+        CHROME_BIN: '/usr/bin/chromium-browser'
+
     - run: pnpm build
       working-directory: 'Frontend'
 
