@@ -4,7 +4,7 @@
 name: Backend
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       reason:
         description: 'Provide reason behind manual action run'
