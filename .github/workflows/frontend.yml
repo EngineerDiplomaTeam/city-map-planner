@@ -50,6 +50,10 @@ jobs:
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
 
+    - name: 'Lint files'
+      run: 'pnpm ng lint'
+      working-directory: 'Frontend'
+
     - name: 'Run unit tests'
       run: 'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'
       working-directory: 'Frontend'
