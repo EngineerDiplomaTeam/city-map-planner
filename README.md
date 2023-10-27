@@ -3,14 +3,15 @@
 App created by: Mateusz Budzisz, Wiktor Rostkowski, Sebastian Kreft, Damian Kreft.
 
 ## Requirements
-1. `.NET 7 SDK` [MacOS](https://learn.microsoft.com/pl-pl/dotnet/core/install/macos), [Linux](https://learn.microsoft.com/pl-pl/dotnet/core/install/linux), [Windows](https://learn.microsoft.com/pl-pl/dotnet/core/install/windows?tabs=net70).
-2. `Node 18.10+` [MacOS and Linux](https://github.com/nvm-sh/nvm), [Windows](https://github.com/coreybutler/nvm-windows).
-3. `Pnpm 8+` once you got node installed just run:
+1. `Rider`, `Webstorm` & `Datagrip` 
+2. `.NET 7 SDK` [MacOS](https://learn.microsoft.com/pl-pl/dotnet/core/install/macos), [Linux](https://learn.microsoft.com/pl-pl/dotnet/core/install/linux), [Windows](https://learn.microsoft.com/pl-pl/dotnet/core/install/windows?tabs=net70).
+3. `Node 18.10+` [MacOS and Linux](https://github.com/nvm-sh/nvm), [Windows](https://github.com/coreybutler/nvm-windows).
+4. `Pnpm 8+` once you got node installed just run:
    - `corepack enable`
    - `corepack prepare pnpm@latest-8 --activate`
 
 ## Local setup
-**Assuming you run latest Rider + Webstorm (though Visual Studio + VS code should work fine too)**
+**Assuming you run latest Rider, Datagrip + Webstorm (though Visual Studio + VS code should work fine too)**
 
 1. `git clone git@github.com:EngineerDiplomaTeam/city-map-planner.git` \
    [GitHub docs regarding ssh setup](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), as GitHub does not support password authentication anymore.
@@ -26,6 +27,23 @@ App created by: Mateusz Budzisz, Wiktor Rostkowski, Sebastian Kreft, Damian Kref
 10. Open browser at https://localhost:4200/.
 11. Accept untrusted SSL certificate.
 12. Done. Every change you made in Frontend will be recompiled automatically, evey change you do to Backend needs manual restart (although both Rider and Visual Studio supports hot code swaps).
+
+## Access database
+1. Click *Open* from main DataGrip menu.
+2. Select whole `/Database` directory. E.g.: `/home/mate/city-map-planner/Database`.
+3. On the left side pannel, right click on `city_planner@city-planner.budziszm.pl`
+4. Select *Properties*.
+5. Fill User & Password fields (optionally save password forever).
+6. Click *Ok*.
+7. Wait for introspection to finish.
+8. Go to *Properties* again.
+9. Go to *Schemas* tab.
+10. Expand *city_planner*
+11. Select *data* and *user_data*
+12. Click *Ok*.
+13. Wait for introspection to finish.
+
+On production use `city_planner_user` which allows only local connections and does not require password.
 
 ## Contributing
 The default branch is `main`, it is protected from direct pushes.
