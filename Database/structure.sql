@@ -1,3 +1,7 @@
+-- Schemas
+create schema if not exists data;
+create schema if not exists user_data;
+
 -- Privileges
 grant all on schema data to group city_planner_user; -- OSM, Mass transit, etc (data fetched by service)
 grant all privileges on all tables in schema data to group city_planner_user;
