@@ -1,0 +1,48 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: 'Documentation'
+
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Provide reason behind manual action run'
+        required: true
+        type: 'string'
+  push:
+    paths:
+    - 'Documentation/**'
+    branches: [ "main" ]
+  pull_request:
+    paths:
+    - 'Documentation/**'
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: 'self-hosted'
+    steps:
+    - name: 'Checkout repository'
+      uses: 'actions/checkout@v3'
+
+    - name: 'Build'
+      # Run build twice https://texfaq.org/FAQ-rerun
+      run: |
+        pdflatex thesis.tex
+        pdflatex thesis.tex
+      working-directory: 'Documentation'
+
+    - name: 'Deploy Documentation'
+      run: |
+        rm -Rf /opt/city-planner-documentation/*
+        cp thesis.pdf /opt/city-planner-documentation/
+      working-directory: 'Documentation'
+      # Do not run deployment from PR
+      if: github.event_name != 'pull_request'
