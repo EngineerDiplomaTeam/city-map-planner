@@ -33,7 +33,10 @@ jobs:
       uses: 'actions/checkout@v3'
 
     - name: 'Build'
-      run: 'pdflatex thesis.tex'
+      # Run build twice https://texfaq.org/FAQ-rerun
+      run: |
+        pdflatex thesis.tex
+        pdflatex thesis.tex
       working-directory: 'Documentation'
 
     - name: 'Deploy Documentation'
