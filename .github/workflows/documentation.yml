@@ -39,6 +39,11 @@ jobs:
         pdflatex thesis.tex
       working-directory: 'Documentation'
 
+    - uses: actions/upload-artifact@v3
+      with:
+        name: 'thesis.pdf'
+        path: 'Documentation/thesis.pdf'
+
     - name: 'Deploy Documentation'
       run: |
         rm -Rf /opt/city-planner-documentation/*
