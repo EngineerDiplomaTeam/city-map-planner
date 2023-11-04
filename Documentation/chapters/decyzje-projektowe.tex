@@ -74,14 +74,17 @@ Oprogramowanie to powstało w 1997 roku i przez wiele lat było konsekwentnie ul
 W 2016 roku VS zostało wydane na komputery Mac, jednakże, po 7 latach, w 2023 roku Microsoft ogłosił zakończenie wsparcia dla wersji MacOS.
 Jeśli chodzi o systemy Linux, to VS nigdy nie zostało wydane na ten system.
 
+
 Zespół projektowy bardzo nie chciał uzależnić pracy nad projektem od systemu Windows, Microsoft poleca użycie programu Visual Studio Code, który jest wspierany na wszystkich systemach operacyjnych, których używamy.
 Niestety VSC jest edytorem przeznaczenia ogólnego, co za tym idzie, znaczna większość specjalistycznych dla danej technologii narzędzi jest obsługiwana przy pomocy rozszerzeń.
 Rozszerzenia mogą tworzyć wszyscy, jest ich całkiem sporo niestety wszystkie rozszerzenia skupiające się na technologii .NET/C\# są we wczesnej fazie rozwoju i nie wspierają tak podstawowych rzeczy, jak debugowanie kodu.
 Nawet gdy dane rozszerzenie wspiera jakąś zaawansowaną funkcjonalność, to przeważnie konfiguracja takiego rozszerzenia bardzo różni się pomiędzy systemami operacyjnymi co, de facto niweczy sens wieloplatformowości.
 
+
 W 2016 roku został ogłoszony JetBrains Rider niejako odpowiedź na VS na MacOS od Microsoftu.
 Rider bardzo dynamicznie się rozwijał, nadganiając, a nawet prześcigając VS pod względem funkcjonalności, do momentu, w wyniku czego duża część środowiska programistycznego zaczęła go używać jako głównego narzędzia do pracy.
 Programy firmy JetBrains są znane ze świetnej integracji wieloplatformowej oraz dbania o szczegóły, co zapewnia dobre doświadczenie deweloperskie.
+
 
 Dzięki PJATK nasz zespół mógł przetestować, każdy z tych programów w ramach licencji edukacyjnej.
 Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains'ów, z zachowaniem możliwości uruchomienia projektu w Visual Studio, aby koledzy z dużym doświadczeniem komercyjnym opartym o VS nie musieli zmieniać swoich przyzwyczajeń.
@@ -90,9 +93,12 @@ Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains'�
 Angular z natury bycia technologią tworzenia stron internetowych nie posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
 Zespół tworzący ten framework stworzył własny program wspomagania deweloperów na podstawie protokółu LSP, co sprowadza się do tego, że każde środowisko programistyczne wspierające ten protokół zapewni ten sam poziom wsparcia dla Angular'a.
 
+
 Warto tu wyróżnić Visual Studio Code, ponieważ jest to środowisko zalecane przez twórców Angulara, a nowe projekty tworzone w tej technologii zawierają niezbędną konfigurację potrzebną do pełnego wsparcia dla Angulara.
 
+
 JetBrains też ma w swojej ofercie program do tworzenia w technologiach internetowych o nazwie WebStorm, który posiada automatyczną konfigurację dla Angulara, jak i wielu innych technologii, więc nie potrzebuje bezpośredniego wsparcia od autorów technologi.
+
 
 Mając na uwadzę fakt, że Visual Studio Code domyślnie ma skróty klawiszowe nieprzypominające innych popularnych środowisk programistycznych, których trzeba by było się nauczyć, oraz fakt, że już wybrany Rider jest niemalże identyczny w obsłudze do WebStorm'a, postawiliśmy na WebStorm'a, znowu z możliwością uruchomienia projektu w dowolnym innym środowisku, gdy ktoś będzie tego z jakiegoś powodu potrzebował.
 
@@ -100,20 +106,26 @@ Mając na uwadzę fakt, że Visual Studio Code domyślnie ma skróty klawiszowe 
 W przypadku baz danych przeważnie jest tak, że twórcy bazy danych, równocześnie do samej bazy danych rozwijają narzędzie pozwalające na administrację tą bazą.
 W przypadku PostgreSql narzędzie to nazywa się pgAdmin, umożliwia kompleksową konfigurację bazy danych i administrowanie nią.
 
+
 Należy jednak wspomnieć tu o integracji Ridera z bazą danych we współpracy z programem DataGrip.
 Gdy mamy licencję na DataGrip'a, to wewnątrz Rider'a możemy podłączyć się do bazy danych i otrzymywać dodatkowe wsparcie w kontekście bazy danych.
 Wsparcie nie ogranicza się tylko do dodatkowego kolorowania składni w zależności od dialektu wybranej bazy danych, a deweloper jest wspierany przez podpowiadanie nazw kolumn, tabeli oraz poprawność zapytań do bazy jest  weryfikowana w czasie rzeczywistym, a w przypadku wątpliwości Rider pozwala na szczegółową analizę kwerendy w DataGrip'e.
+
 
 Mając na uwadze powyższe zespół projektowy zaleca użycie DataGrip'a jako narzędzia do projektowania rozwiązań dookoła bazy danych z uwagi na kompleksową integrację z Riderem.
 
 \subsubsection{Dalekosiężność wyborów}
 W przypadku, w którym zespół zdecydowałby się na dalsze utrzymywanie bądź rozwój projektu, należy brać pod uwagę koszta oprogramowania.
 
+
 Visual Studio jest najdroższym z wymienionych rozwiązań, do tego wspiera tylko wąski fragment stosu technologicznego.
+
 
 Oprogramowanie JetBrains, na które postawiliśmy, jest dostępne jako poszczególne programy w formie abonamentu, jednakże najkorzystniej jest je kupować w pakietach łączonych.
 
+
 Warto też wspomnieć o programie wsparcia open source firmy JetBrains, która to oferuje darmowe licencje do wszystkich swoich komercyjnych rozwiązań dla projektów o otwartym kodzie źródłowym, przy czym nasz projekt spełnia tę definicję.
+
 
 Ponadto dzięki zachowaniu kompatybilności z alternatywnymi środowiskami deweloperskimi, jesteśmy w stanie małym nakładem pracy zmienić oprogramowanie nawet na darmowe.
 
