@@ -1,0 +1,195 @@
+%! Author = mateuszbudzisz
+%! Date = 04/11/2023
+
+\section{Narzędzia i technologie}
+\label{sec:narzedzia-i-technologie}
+
+\subsection{Języki programowania i biblioteki}
+\label{subsec:jezyki-programowania-i-biblioteki}
+
+\subsubsection{Oprogramowanie po stronie użytkownika}
+Jednym z celi projektu jest stworzenie aplikacji progresywnej dostępnej na większości urządzeń codziennego użytku tj.: komputery i smartfony.
+
+Według statystyk prowadzonych przez Google za znaczną część konsumenckiego ruchu internetowego odpowiadają te systemy operacyjne: Android, iOS, MacOS, Windows, Linux.
+
+To aż 5 bardzo różniących się od siebie środowisk docelowych, każde z nich posiada swój dedykowany sposób wytwarzania i utrzymywania oprogramowania.
+
+Nasz zespół składający się z czterech pracujących na etacie studentów nie byłby w stanie stworzyć a co dopiero utrzymywać rozwiązania na tylu różnych platformach na raz.
+
+Istnieją rozwiązania niwelujące ten problem w znacznym stopniu, zespół projektowy przeanalizował część z nich pod kątem naszego doświadczenia.
+
+\paragraph{Flutter}
+Jest otwartoźródłowy zestaw narzędzi dla programistów przeznaczony do tworzenia natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych, stworzony przez firmę Google.
+
+Aplikacja stworzona w tej technologii pozwala na napisanie kodu źródłowego w jednej wersji i uruchomienie go na szerokiej gamie zróżnicowanych urządzeń docelowych.
+
+Problemem tej technologii jest dość niszowy język programownaia, z którym nikt z nas nie miał doczynienia oraz relatywnie słaba wydajność dostarczonego oprogramowania.
+
+\paragraph{Electron}
+Jest to otwartoźródłowy projekt, który umożliwia stworzenie oprogramowania w formie strony internetowej oraz osadzenia jej w minimalistycznej wersji przeglądarki wysyłanej wraz z aplikacją.
+
+Dużym plusem tej technologii jest to, że na uczelni mieliśmy zajęcia z Reacta, który jest jedną z opcji pisania aplikacji w Electron'ie.
+
+Minusem tego rozwiązania jest bardzo duży rozmiar docelowej aplikacji z uwagi na potrzebę doczepienia przeglądarki internetowej poza samą aplikacją.
+
+\paragraph{Progresywna Aplikacja Internetowa}
+Z języka angielskiego Progressive Web App to aplikacja internetowa uruchamiana tak jak zwykła strona internetowa, ale umożliwiająca stworzenie wrażenia działania jak natywna aplikacja mobilna lub aplikacja desktopowa.
+
+Technologia bardzo podobna do Electron'a, z tym że zamiast wysyłać spreparowaną przeglądarkę, polegamy na przeglądarce uprzednio zainstalowanej u użytkownika.
+
+Plusem jest bardzo mały rozmiar docelowej aplikacji oraz relatywnie dobra wydajność, ponieważ przeglądarki internetowe są specjalnie optymalizowane pod wiele platform docelowych.
+
+Minusem tego rozwiązania jest poleganie na przeglądarce użytkownika docelowego, która może nie wspierać wszystkich funkcjonalności.
+
+\paragraph{Wybór}
+Każda z wymienionych opcji ma swoje poważne wady.
+
+Nasz zespół podejmując dedycję, kierował się następującymi priorytetami: znajomość technologii wewnątrz zespołu, wydajność rozwiązania.
+
+Biorąc pod uwagę te 2 czynniki postawiliśmy na PWA.
+
+Pragnąc wykorzystać komercyjne doświadczenie zespołu, zamiast używać poznanego na uczelni React'a, zaimplementujemy aplikację we framework'u Angular.
+
+\subsubsection{Oprogramowanie niewidoczne dla użytkownika}
+Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania na podstawie danych czasu rzeczywistego.
+
+Ciągłe aktualizacje danych po stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie po stornie dostawców danych.
+
+Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać za aktualność danych oraz wyznaczanie trasy.
+
+Z uwagi na PWA, język, w którym stworzymy ten serwis, musi mieć bardzo dobre wsparcie dla protokołu HTTP.
+
+Na uczelni poznaliśmy 2 technologie tworzenia takich serwisów.
+
+\paragraph{Java}
+Java to język paradygmatu obiektowego, bardzo popularny w systemach bankowych.
+
+W trakcie zajęć na uczelni poznaliśmy sposób tworzenia serwisów HTTP w technologii Spring.
+
+Części naszego zespołu nie podobają się konwencje narzucone przez tą technologie, jak i sposób komunikacji z bazą danych.
+
+Należy zaznaczyć, że nikt z naszego zespołu nie posada komercyjnego doświadczenia z tą technologią.
+
+\paragraph{.NET}
+C\# to jeden z języków z rodziny .NET, który mielimy szanse poznać na uczelni.
+
+Łączy on w sobie paradygmaty obiektowe i funkcyjne, dzięki czemu jest bardziej elastyczny, jeśli chodzi o styl programowania.
+
+Trzy z czterech osób w naszym zespole ma doświadczenie komercyjne w tej technologi.
+
+\paragraph{Wybór}
+Z uwagi na doświadczenie zespołu postawiliśmy na C\#.
+
+\subsubsection{Baza danych}
+Na uczelni dogłębnie poznaliśmy bazę danych PostgreSql, zespół ma komercyjne doświadczenie z tą bazą, więc nie braliśmy innych rozwiązań pod uwagę.
+
+\subsection{Narzędzia programistyczne}
+\label{subsec:narzedzia-programistyczne}
+
+Nasz zespół składa się z osób, które mają znaczne doświadczenie w oprogramowaniu, którego używa na co dzień w pracy.
+
+Wybrany przez nas stos technologiczny składa się z .NET C\#, Angular oraz PostgreSql.
+
+Wszystkie te technologie, pomimo iż są utrzymywane przez ogromne korporacje, są otwarto-źródłowe, co w praktyce pozwala na tworzenie narzędzi deweloperskich przez niezależnych twórców, dzięki czemu nie bylibyśmy uwiązani do konkretnego rozwiązania.
+
+Wybór oprogramowania do tworzenia kodu został podyktowany wybraną technologią a w drugiej kolejności z uwagi na zróżnicowany sprzęt komputerowy, którym dysponujemy  dostępnością oprogramowania na wielu platformach (tj.: Windows, MacOS, Linux).
+
+\subsubsection{.NET/C\#}
+.NET to framework stworzony i rozwijany przez Microsoft wspólnie ze społecznością otwartego oprogramowania.
+
+Pierwszym oprogramowaniem, które przychodzi nam do głowy, gdy słyszymy .NET, jest Microsoft Visual Studio.
+
+Oprogramowanie to powstało w 1997 roku i przez wiele lat było konsekwentnie ulepszane.
+
+W 2016 roku VS zostało wydane na komputery Mac, jednakże, po 7 latach, w 2023 roku Microsoft ogłosił zakończenie wsparcia dla wersji MacOS.
+
+Jeśli chodzi o systemy Linux, to VS nigdy nie zostało wydane na ten system.
+
+Zespół projektowy bardzo nie chciał uzależnić pracy nad projektem od systemu Windows, Microsoft poleca użycie programu Visual Studio Code, który jest wspierany na wszystkich systemach operacyjnych, których używamy.
+
+Niestety VSC jest edytorem przeznaczenia ogólnego, co za tym idzie, znaczna większość specjalistycznych dla danej technologii narzędzi jest obsługiwana przy pomocy rozszerzeń.
+
+Rozszerzenia mogą tworzyć wszyscy, jest ich całkiem sporo niestety wszystkie rozszerzenia skupiające się na technologii .NET/C\# są we wczesnej fazie rozwoju i nie wspierają tak podstawowych rzeczy, jak debugowanie kodu.
+
+Nawet gdy dane rozszerzenie wspiera jakąś zaawansowaną funkcjonalność, to przeważnie konfiguracja takiego rozszerzenia bardzo różni się pomiędzy systemami operacyjnymi co, de facto niweczy sens wieloplatformowości.
+
+W 2016 roku został ogłoszony JetBrains Rider niejako odpowiedź na VS na MacOS od Microsoftu.
+
+Rider bardzo dynamicznie się rozwijał, nadganiając, a nawet prześcigając VS pod względem funkcjonalności, do momentu, w wyniku czego duża część środowiska programistycznego zaczęła go używać jako głównego narzędzia do pracy.
+
+Programy firmy JetBrains są znane ze świetnej integracji wieloplatformowej oraz dbania o szczegóły, co zapewnia dobre doświadczenie deweloperskie.
+
+Dzięki PJATK nasz zespół mógł przetestować, każdy z tych programów w ramach licencji edukacyjnej.
+
+Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains'ów, z zachowaniem możliwości uruchomienia projektu w Visual Studio, aby koledzy z dużym doświadczeniem komercyjnym opartym o VS nie musieli zmieniać swoich przyzwyczajeń.
+
+\subsubsection{Angular\#}
+Angular z natury bycia technologią tworzenia stron internetowych nie posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
+
+Zespół tworzący ten framework stworzył własny program wspomagania deweloperów na podstawie protokółu LSP, co sprowadza się do tego, że każde środowisko programistyczne wspierające ten protokół zapewni ten sam poziom wsparcia dla Angular'a.
+
+Warto tu wyróżnić Visual Studio Code, ponieważ jest to środowisko zalecane przez twórców Angulara, a nowe projekty tworzone w tej technologii zawierają niezbędną konfigurację potrzebną do pełnego wsparcia dla Angulara.
+
+JetBrains też ma w swojej ofercie program do tworzenia w technologiach internetowych o nazwie WebStorm, który posiada automatyczną konfigurację dla Angulara, jak i wielu innych technologii, więc nie potrzebuje bezpośredniego wsparcia od autorów technologi.
+
+Mając na uwadzę fakt, że Visual Studio Code domyślnie ma skróty klawiszowe nieprzypominające innych popularnych środowisk programistycznych, których trzeba by było się nauczyć, oraz fakt, że już wybrany Rider jest niemalże identyczny w obsłudze do WebStorm'a, postawiliśmy na WebStorm'a, znowu z możliwością uruchomienia projektu w dowolnym innym środowisku, gdy ktoś będzie tego z jakiegoś powodu potrzebował.
+
+\subsubsection{PostgreSql}
+W przypadku baz danych przeważnie jest tak, że twórcy bazy danych, równocześnie do samej bazy danych rozwijają narzędzie pozwalające na administrację tą bazą.
+
+W przypadku PostgreSql narzędzie to nazywa się pgAdmin, umożliwia kompleksową konfigurację bazy danych i administrowanie nią.
+
+Należy jednak wspomnieć tu o integracji Ridera z bazą danych we współpracy z programem DataGrip.
+
+Gdy mamy licencję na DataGrip'a, to wewnątrz Rider'a możemy podłączyć się do bazy danych i otrzymywać dodatkowe wsparcie w kontekście bazy danych.
+
+Wsparcie nie ogranicza się tylko do dodatkowego kolorowania składni w zależności od dialektu wybranej bazy danych, a deweloper jest wspierany przez podpowiadanie nazw kolumn, tabeli oraz poprawność zapytań do bazy jest  weryfikowana w czasie rzeczywistym, a w przypadku wątpliwości Rider pozwala na szczegółową analizę kwerendy w DataGrip'e.
+
+Mając na uwadze powyższe zespół projektowy zaleca użycie DataGrip'a jako narzędzia do projektowania rozwiązań dookoła bazy danych z uwagi na kompleksową integrację z Riderem.
+
+\subsubsection{Dalekosiężność wyborów}
+W przypadku, w którym zespół zdecydowałby się na dalsze utrzymywanie bądź rozwój projektu, należy brać pod uwagę koszta oprogramowania.
+
+Visual Studio jest najdroższym z wymienionych rozwiązań, do tego wspiera tylko wąski fragment stosu technologicznego.
+
+Oprogramowanie JetBrains, na które postawiliśmy, jest dostępne jako poszczególne programy w formie abonamentu, jednakże najkorzystniej jest je kupować w pakietach łączonych.
+
+Warto też wspomnieć o programie wsparcia open source firmy JetBrains, która to oferuje darmowe licencje do wszystkich swoich komercyjnych rozwiązań dla projektów o otwartym kodzie źródłowym, przy czym nasz projekt spełnia tę definicję.
+
+Ponadto dzięki zachowaniu kompatybilności z alternatywnymi środowiskami deweloperskimi, jesteśmy w stanie małym nakładem pracy zmienić oprogramowanie nawet na darmowe.
+
+\subsection{Dostawcy mocy obliczeniowej}
+\label{subsec:dostawcy-mocy-obliczeniowej}
+Wytworzone oprogramowanie potrzebuje serwerów na których będzie wdrożone.
+W trakcie zajęć na uczelni poznaliśmy 3 głównych dostawców takich usług.
+
+\subsubsection{Amazon Web Services}
+- drogie
+- skomplikowane
+- bardzo stabilne
+\subsubsection{Google Cloud Platform}
+- stabilne
+- średnia cena
+- uproszczone
+\subsubsection{Microsoft Azure}
+- bardzo nie stabine
+- skomplikowane
+- bardzo drogie
+
+\subsubsection{Własny serwer}
+Wszystkie rozwiązania oparte o chmurę łączy termin vendor locking.
+
+Gdybyśmy zdecydowali się skorzystać z usług danego dostawcy, nasz kod musiałby odpowiadać wymogom danego dostawcy, co za tym idzie, bardzo uzaleznilibyśmy się od danego konkretnego dostawcy.
+
+Rozwiązaniem tego problemu może być własny serwer.
+\subsubsection{Oracle Cloud}
+Oracle Cloud to usługa pozwalająca na tworzenie instancji  serwerów o z ściśle określonych parametrach fizycznych.
+
+Usługa daje pełny dostęp do takiego serwera i pozwala zrobić na nim wszystko, co się chce.
+
+Oracle daje bardzo hojny darmowy limit dla tej usługi wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
+
+Z uwagi na doświadczenie zespołu postanowiliśmy na własnoręczne zarządzanie infrastrukturą.
+
+\subsection{Przechowywanie kodu oraz potok ciągłego wdrożenia}
+\label{subsec:przechowywanie-kodu-oraz-potok-ciagego-wdrozenia}
