@@ -120,31 +120,89 @@ Ponadto dzięki zachowaniu kompatybilności z alternatywnymi środowiskami dewel
 \subsection{Dostawcy mocy obliczeniowej}
 \label{subsec:dostawcy-mocy-obliczeniowej}
 Wytworzone oprogramowanie potrzebuje serwerów na których będzie wdrożone.
-W trakcie zajęć na uczelni poznaliśmy 3 głównych dostawców takich usług.
+Zespół projektowy zna 2 podejścia do tego problemu.
 
-\subsubsection{Amazon Web Services}
-- drogie
-- skomplikowane
-- bardzo stabilne
-\subsubsection{Google Cloud Platform}
-- stabilne
-- średnia cena
-- uproszczone
-\subsubsection{Microsoft Azure}
-- bardzo nie stabine
-- skomplikowane
-- bardzo drogie
+\subsubsection{Oprogramowanie w chmurze}
+Dostawcy oprogramowania w chmurze umożliwają bardzo elastyczny system rozliczania się z za moc obliczeniową.
 
-\subsubsection{Własny serwer}
-Wszystkie rozwiązania oparte o chmurę łączy termin vendor locking.
-Gdybyśmy zdecydowali się skorzystać z usług danego dostawcy, nasz kod musiałby odpowiadać wymogom danego dostawcy, co za tym idzie, bardzo uzaleznilibyśmy się od danego konkretnego dostawcy.
+Gdy aplikacja nie wymaga ciągłej pracy oraz w sposób deterministyczny można ustalić warnuki czasowe dla aplikacji, możemy jej użyć w stylu on-demand.
+Sposób ten charakteryzuje bardzo korzystny sposób rozliczania, gdzie płacimy za faktycznie wykorzystany czas pracy maszyn oraz potencjalnie nieskończone możliwośći horizontal-scallingu.
 
-Rozwiązaniem tego problemu może być własny serwer.
-\subsubsection{Oracle Cloud}
-Oracle Cloud to usługa pozwalająca na tworzenie instancji  serwerów o z ściśle określonych parametrach fizycznych.
-Usługa daje pełny dostęp do takiego serwera i pozwala zrobić na nim wszystko, co się chce.
-Oracle daje bardzo hojny darmowy limit dla tej usługi wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
-Z uwagi na doświadczenie zespołu postanowiliśmy na własnoręczne zarządzanie infrastrukturą.
+Wybór takiego rozwiązania mocno wpłynąłby na architekturę naszego rozwiązania.
+Niejako wymusiłby na nas, podział projektu na niezależne od siebie moduły i z uwagii na bardzo skomplikowany refactoring przy 4 osobowym zepsole de facto ucementował by strukturę projektu.
+
+Nasz projekt teoretycznie można podzielić na niezależne od siebie części o różnym zapotrzebowaniu na moc obliczeniową.
+Pierwszym modułem musi być baza danych w której będziemy trzymać graf możliwych połączeń między atrakcjami oraz informacje o samych atrakcjach, ten moduł musiałby być cały czas dostępny z uwagi na duży koszt wyprodukowania danych, przeważający koszt utrzymania bazy w sposób ciągły.
+Drugim modułem mógłby być job aktualizaujący dane z OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się na przykład raz dziennie.
+Trzecim modułem byłby serwis implementujący algorytm dobierania trasy pomiędzy podanymi POI, taki serwis uruchamiałby się na zapytanie użytkownika i kończył swoją pracę wraz z podaniem optymalnie dobranej trasy.
+Ostanim modułem byłaby aplikacja Frontendowa implementująca UI, włączana z osobna dla każdego użytkownika, gdy ten podejmie próbę wejścia na adres naszego rozwiązania.
+
+Takie podejście w praktyce zmniejsza koszt utrzymaniowy do kosztu utrzymywania bazy danych, ponieważ gdy zapotrzebowanie na pozostałe moduły drastycznie by zmalało, to nie będą one chodzić i czekać na ruch użytkowników.
+Niestety uruchamianie programów na żądanie wiąże się ze znaczącym opóźnieniem wobec żądań użytkownika docelowego.
+Gdy użytkownik postanowi skorzystać z naszej aplikacji dostawca chmury obliczeniowej musi uruchomić conajmniej dwie maszyny, dla modułu 3 i 4, co czasami potrafi zająć kilka sekund.
+Gdy dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu na obłużenie żądania.
+W przypadku modułu 3, musimy nawiązać połączenie z bazą danych, odczytać dane, zastosować na nich skomplikowany obliczeniowo algorytm i wysłać odpowiedź, obawiamy się, że w skrajnych przypadkach może to zająć za dużo czasu aby odpowiedź trafiła do użytkownika przed zamknięciem połączenia.
+W przypadku modułu 4, możemy odroczyć oczekiwanie na odpowiedź modułu 3 i poinformować użytkownika o wydłużonym czasie oczekiwania, niemniejjednak aby cokolwiek użytkownikowi pokazać i tak jesteśmy zmuszeni do wykonania kodu odpowiedzialnego za stworzenie UI, według doświadczeń zespołu czas potrzebny na wyrenderowanie hello world pozostawia niewiele czasu do przekroczenia średniego time span nowego użytkownika (TODO: source).
+
+Istnieją techniki pozwalające na optymalizację tych rozwiązań aby wyeliminować przytoczone problemy.
+Jednak operają się one o jeszcze większą frgamentację aplikacji na którą nie możemy sobie pozwolić z uwagi na lineranie rosnący czas potrzebny na konfigurację infrstruktury potrzebnej do skomunikowana wszystkich modułów w hermetyczny sposób.
+Infrastrukturę chmury internetowej w każdym ze znanych nam dostawców to jest: AWS, GCP, Azure możemy wyklikać w przeglądarce internetowej.
+Jednak usługi te znacząco się od siebie różnią.
+Możemy tę manualną pracę zautomatyzować przy pomocy podejścia infrastructure as a code, na przykład przy użyciu terraform.
+Po mimo, iż dostawcy oferują podobne rozwiązania to różnią się one w sposobie koniguracji, na przykład 1 usługa w GCP to 3 usługi w AWS.
+Terraform daje możliwość skorzystania z dodatkowej warstwy abstrakcji pozwalającej na opisanie architektury dla AWS jak i zarówno GCP, jednakże, nie jest to pełne wsparcie i niektóre usługi po prostu nie pokrywają się pomiędzy dostawcami.
+Ponad to Terraform nie wspiera takiej funkcjonalności dla Azure.
+
+\subsubsection{Oprogramowanie on premise}
+Oprogramowanie on premise możemy podzielić na bare metal i virtual.
+
+Bare metal to takie, gdzie mamy fizyczny dostęp do maszyny i płacimy za konkretne podzespoły, mamy pełną kontrolę nad maszyną.
+Virtual to oprogramowanie w kórym tak jak w przypadku bare-metal musimy sami zarządzać maszyną.
+Różni się jednak tym, że płacimy za parametry podzespołów, nie za konkretne podzespoły.
+Nie mamy też fizycznego dostępu do maszyny, ponieważ parametry jakich potrzebujemy mogą być mniej wymagające niż fizyczna maszyna jest w stanie zapewnić, przez to właściciele takich maszyn stosują wirtualizację.
+
+Bare metal ma taką zaletę, że jesteśmy pewni, że nikt po za nami na takiej maszynie nie będzie pracował.
+Minusem jest mała elastyczność podzezpołów (musimy wiedzieć co będzie działać z czym) oraz wysoki koszt początkowy.
+W przypadku wirtualizacji na początku rozwoju aplikacji możemy poprosić o niewielkie parametry a w raz z rozwojem przeskalować parametry do naszych potrzeb.
+
+Po mimo faktu, iż w przypadku on-premise musimy sami zarządzać infrastrukturą, to jest to niezależne od dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację do innego dostawcy.
+Biorąć pod uwagę ten fakt, oraz brak możliwośći napisania oprogramowania w sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się na on premise w wariancie virtual.
+
+\subsubsection{Przegląd rynku}
+\paragraph{Microsoft Azure Cloud}
+Chmura obliczeniowa Microsoftu została nam udostępniona w ramach zajęć z konteneryzacji.
+Microsoft udostępnia studentom jednorazowo 200\$ do wkykorzzystania na okres roku.
+W ramach okresu edukacyjnego mamy do dyspozycji najsłabsze i najmniej stabilne maszyny dostępne w ofercie.
+W trakcie zajęć natkneliśmy się na wiele problemów ze stabilnością i wydajnością tej chmury.
+Jednorazowy roczny okres próbny w połączeniu z ograniczeniem budrzetowym całkowicie deklasuje tą chmurę z powodu braku możliwości utrzymania rozwiązania w rozumiieniu długoterminowym
+
+\paragraph{Amazon Web Services}
+Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć na szkoleniu organizowanym przez Merapar.
+W trakcie zajęć chmura nie sprawiła namniejszych problemów, co pokrywa się z licznymi opiniami rynkowymi.
+Niestety po mimo wielu darmowych progów zużycia, Amazon nie oferuje darmowego progu w przypadku usługi EC2 (on-prem virtual).
+
+\paragraph{Google Cloud Platform}
+GCP zostało nam zaprezentowane w ramach projektu PJATK cloudelina.
+Usługi w ramach GCP wydają się znacznie prostsze w konfiguracji oraz bardzo dobrze integrują się z Angularem.
+Niestety podobnie jak w przypadku Amazon'u, GCP nie oferuje darmowego progu dla maszyn wirtualnych.
+
+\paragraph{Oracle Cloud Platform}
+Oracle cloud jako jedyne nie posiada usług typowych dla architektury chmurowych.
+Oracle daje bardzo hojny darmowy limit dla maszyn wirtualnych opartych o architekturę arm wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
+Taki próg pozwoli nie tylko na wytworzenie oprogramowania, przeprowadzenie testów ale nawet i obsługę średniej wielkości ruchu użytkoników.
 
 \subsection{Przechowywanie kodu oraz potok ciągłego wdrożenia}
 \label{subsec:przechowywanie-kodu-oraz-potok-ciagego-wdrozenia}
+
+W trakcie zajęć na uczelni jak i pracy indywidualnej członków zespołu projektowego poznaliśmy 2 systemy kontroli wersji.
+Są to GIT oraz Mercurial.
+
+GIT pod każdym względem jest lepszy od Mercurial, sam Mercurial jest uznany za projekt bez rozwoju.
+Zespół projektowy postanowił oprzeć swoją pracę w oparciu o GIT, natomiast nie chcemy samodzielnie zarządzać serwerem repozytorium.
+
+\subsubsection{Usługi internetowe ułatwiające pracę wielu współbierzną w repozytorium GIT}
+\paragraph{GitLab}
+\paragraph{BitBucket}
+\paragraph{Microsoft Azure Repositories}
+\paragraph{Github}
+
