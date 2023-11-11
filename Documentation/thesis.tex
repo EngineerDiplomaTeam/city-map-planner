@@ -1,13 +1,14 @@
-\documentclass[oneside]{scrbook}
+\documentclass{report}
 
 \usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage[english,polish]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{extensions/tikz-uml}
+\usepackage{tikz-uml}
 \usepackage[acronym]{glossaries}
 
-\include{chapters/słownik-pojęć}
+\makeglossaries
+\input{chapters/słownik-pojęć}
 
 \title{Planer miejski, praca dyplomowa}
 \author{Mateusz Budzisz, Wiktor Rostkowski, Damian Kreft, Sebastian Kreft}
@@ -22,8 +23,6 @@
 
 	\include{chapters/wstęp}
 
-	\mainmatter
-
 	\include{chapters/decyzje-projektowe}
 	\include{chapters/przykładowy-uml}
 
@@ -33,7 +32,5 @@
 	\printglossary[type=\acronymtype]
 	\printglossary
 	% Koniec słownika i akronimów
-
-	\backmatter
 
 \end{document}
