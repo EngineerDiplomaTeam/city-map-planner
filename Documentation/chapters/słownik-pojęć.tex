@@ -1,30 +1,93 @@
-%! Author = mateuszbudzisz
+%! Author = Mateusz Budzisz
 %! Date = 08/11/2023
-\usepackage{glossaries}
-
-\section{Słownik pojęć}
-\label{sec:slownik-pojec}
-
-\newglossaryentry{PWA}name={pwa}, description={Progressive Web App}
-\newglossaryentry{AWS}name={aws}, description={Amazon Web Services}
-\newglossaryentry{GCP}name={gcp}, description={Google Cloud Platform}
-\newglossaryentry{Azure}name={azure}, description={Microsoft Azure Cloud}
-\newglossaryentry{On-demand}name={on-demand}, description={Rodzaj opgrogramowania charakteryzojącego się dynamicznym czasem pracy, uruchamiane na rządanie, gdy poda wynik program kończy pracę zamiast oczekiwać następnego zapytania}
-\newglossaryentry{Refactoring}name={refactoring}, description={Znaczna zmiana konstrukcji programu mająca na celu usprawnienie oprogramowania bądź dostosowanie go do nowych wymogów}
-\newglossaryentry{UI}name={ui}, description={Interfejs użytkownika}
-\newglossaryentry{Frontend}name={frontend}, description={Oprogramowanie składające się z UI z którym docelowy użytkownik będzę wchodził w interakcję}
-\newglossaryentry{Backend}name={backend}, description={Oprogramowanie pozbawione UI z którym docelowy użytkownik będzę wchodził w interakcję, potrzebne do prawidłowej pracy Frontendu}
-\newglossaryentry{Job}name={job}, description={Oprogramowanie, które ma z góry określony cel, po jego uruchomieniu natychmiast zaczyna je wykonywać, nie wchodzi w interakcje z użytkownikiem docelowym, po zakończeniu kończy swoje życie}
-\newglossaryentry{OSM}name={osm}, description={Open Street Map}
-\newglossaryentry{POI}name={poi}, description={Point of interest}
-\newglossaryentry{Renderowanie}name={rendering}, description={Stworzenie UI z postaci kodu do postaci konsumowalnej przez użytkownika docelowego}
-\newglossaryentry{Hello world}name={hello-world}, description={Minimalny reprezentatywny program w danej technologii}
-\newglossaryentry{HHermetyzacja}name={hermetyzacja}, description={Hermetyzacja opgorgramowania określa dobrą praktykę programistyczną polegającą na izolacji komponentów w aplikacji tak aby o sobie nie wiedziały gdy nie muszą o sobie wiedzieć}
-\newglossaryentry{Infrastructure as a code}name={infra-as-code}, description={Sposób opisania architektury systemu po przez napisanie programu tworzącego docelową architekturę przy pomocy abstrakcji dostarczonych przez dostawcę mocy obliczeniowej}
-\newglossaryentry{On-premise}name={on-prem}, description={Oprogramowanie hostowane na samodzielnie zarządzanej infrastrukturze}
-\newglossaryentry{Wirtualizacja}name={virt}, description={Podział serwera na maszyny o mniejszej mocy obliczeniowej aby umożliwić podział podsespołów pomiedzy klientów tak aby nic o sobie na wzajem nie wiedzieli}
-\newglossaryentry{Architektura ARM}name={ARM}, description={Architektura silnej ręki lol}
 
 \makeglossaries
 
+\newacronym{pwa}{PWA}{Progressive Web App}
+\newacronym{aws}{AWS}{Amazon Web Services}
+\newacronym{gcp}{GCP}{Google Cloud Platform}
+\newacronym{azure}{Azure}{Google Cloud Platform}
+\newacronym{osm}{OSM}{Open Street Map}
+\newacronym{lsp}{LSP}{Language Service Protocol}
+\newacronym{osw}{OSW}{Open Weather Map}
+\newacronym{poi}{POI}{Point of interest}
+\newacronym{http}{HTTP}{Hyper Text Transfer Protocol}
 
+\newglossaryentry{On-demand}
+{
+    name={on-demand},
+    description={Rodzaj opgrogramowania charakteryzojącego się dynamicznym czasem pracy, uruchamiane na rządanie, gdy poda wynik program kończy pracę zamiast oczekiwać następnego zapytania}
+}
+
+\newglossaryentry{Refactoring}
+{
+    name={refactoring},
+    description={Znaczna zmiana konstrukcji programu mająca na celu usprawnienie oprogramowania bądź dostosowanie go do nowych wymogów}
+}
+
+\newglossaryentry{UI}
+{
+    name={ui},
+    description={Interfejs użytkownika}
+}
+
+\newglossaryentry{Frontend}
+{
+    name={frontend},
+    description={Oprogramowanie składające się z UI z którym docelowy użytkownik będzę wchodził w interakcję}
+}
+
+\newglossaryentry{Backend}
+{
+    name={backend},
+    description={Oprogramowanie pozbawione UI z którym docelowy użytkownik będzę wchodził w interakcję, potrzebne do prawidłowej pracy Frontendu}
+}
+
+\newglossaryentry{Job}
+{
+    name={job},
+    description={Oprogramowanie, które ma z góry określony cel, po jego uruchomieniu natychmiast zaczyna je wykonywać, nie wchodzi w interakcje z użytkownikiem docelowym, po zakończeniu kończy swoje życie}
+}
+
+
+\newglossaryentry{Wyrenderowanie}
+{
+    name={rendering},
+    description={Stworzenie UI z postaci kodu do postaci konsumowalnej przez użytkownika docelowego}
+}
+
+\newglossaryentry{Hello world}
+{
+    name={hello-world},
+    description={Minimalny reprezentatywny program w danej technologii}
+}
+
+\newglossaryentry{Hermertyczny}
+{
+    name={hermetyczny},
+    description={Hermetyzacja opgorgramowania określa dobrą praktykę programistyczną polegającą na izolacji komponentów w aplikacji tak aby o sobie nie wiedziały gdy nie muszą o sobie wiedzieć}
+}
+
+\newglossaryentry{Infrastructure as a code}
+{
+    name={infra-as-code},
+    description={Sposób opisania architektury systemu po przez napisanie programu tworzącego docelową architekturę przy pomocy abstrakcji dostarczonych przez dostawcę mocy obliczeniowej}
+}
+
+\newglossaryentry{On-premise}
+{
+    name={on-prem},
+    description={Oprogramowanie hostowane na samodzielnie zarządzanej infrastrukturze}
+}
+
+\newglossaryentry{Wirtualizacja}
+{
+    name={virt},
+    description={Podział serwera na maszyny o mniejszej mocy obliczeniowej aby umożliwić podział podsespołów pomiedzy klientów tak aby nic o sobie na wzajem nie wiedzieli}
+}
+
+\newglossaryentry{Architektura ARM}
+{
+    name={arm},
+    description={Architektura silnej ręki lol}
+}

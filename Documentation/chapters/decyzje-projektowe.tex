@@ -1,5 +1,8 @@
-%! Author = mateuszbudzisz
+%! Author = Mateusz Budzisz
 %! Date = 04/11/2023
+
+\chapter{Decyzje projektowe}
+\label{ch:decyzje-projektowe}
 
 \section{Narzędzia i technologie}
 \label{sec:narzedzia-i-technologie}
@@ -33,19 +36,19 @@ Minusem tego rozwiązania jest poleganie na przeglądarce użytkownika doceloweg
 \paragraph{Wybór}
 Każda z wymienionych opcji ma swoje poważne wady.
 Nasz zespół podejmując dedycję, kierował się następującymi priorytetami: znajomość technologii wewnątrz zespołu, wydajność rozwiązania.
-Biorąc pod uwagę te 2 czynniki, postawiliśmy na PWA\@.
+Biorąc pod uwagę te 2 czynniki, postawiliśmy na \acrshort{pwa}\@.
 Pragnąc wykorzystać komercyjne doświadczenie zespołu, zamiast używać poznanego na uczelni React-a, zaimplementujemy aplikację we framework-u Angular.
 
 \subsubsection{Oprogramowanie niewidoczne dla użytkownika}
 Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania na podstawie danych czasu rzeczywistego.
 Ciągłe aktualizacje danych po stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie po stronie dostawców danych.
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać za aktualność danych oraz wyznaczanie trasy.
-Z uwagi na PWA, język, w którym stworzymy ten serwis, musi mieć bardzo dobre wsparcie dla protokołu HTTP\@.
+Z uwagi na \acrshort{pwa}, język, w którym stworzymy ten serwis, musi mieć bardzo dobre wsparcie dla protokołu HTTP\@.
 Na uczelni poznaliśmy 2 technologie tworzenia takich serwisów.
 
 \paragraph{Java}
 Java to język paradygmatu obiektowego, bardzo popularny w systemach bankowych.
-W trakcie zajęć na uczelni poznaliśmy sposób tworzenia serwisów HTTP w technologii Spring.
+W trakcie zajęć na uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http} w technologii Spring.
 Części naszego zespołu nie podobają się konwencje narzucone przez tę technologię, jak i sposób komunikacji z bazą danych.
 Należy zaznaczyć, że nikt z naszego zespołu nie posada komercyjnego doświadczenia z tą technologią.
 
@@ -88,7 +91,7 @@ Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains-�
 
 \subsubsection{Angular}
 Angular z natury bycia technologią tworzenia stron internetowych nie posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
-Zespół tworzący ten framework stworzył własny program wspomagania deweloperów na podstawie protokółu LSP, co sprowadza się do tego, że każde środowisko programistyczne wspierające ten protokół zapewni ten sam poziom wsparcia dla Angular'a.
+Zespół tworzący ten framework stworzył własny program wspomagania deweloperów na podstawie protokółu \acrshort{lsp}, co sprowadza się do tego, że każde środowisko programistyczne wspierające ten protokół zapewni ten sam poziom wsparcia dla Angular'a.
 
 Warto tu wyróżnić Visual Studio Code, ponieważ jest to środowisko zalecane przez twórców Angular-a, a nowe projekty tworzone w tej technologii zawierają niezbędną konfigurację potrzebną do pełnego wsparcia dla Angulara.
 
@@ -125,32 +128,32 @@ Zespół projektowy zna 2 podejścia do tego problemu.
 \subsubsection{Oprogramowanie w chmurze}
 Dostawcy oprogramowania w chmurze umożliwiają bardzo elastyczny system rozliczania się za moc obliczeniową.
 
-Gdy aplikacja nie wymaga ciągłej pracy oraz w sposób deterministyczny można ustalić warunki czasowe dla aplikacji, możemy jej użyć w stylu on-demand.
+Gdy aplikacja nie wymaga ciągłej pracy oraz w sposób deterministyczny można ustalić warunki czasowe dla aplikacji, możemy jej użyć w stylu \gls{on-demand}.
 Sposób ten charakteryzuje bardzo korzystny sposób rozliczania, gdzie płacimy za faktycznie wykorzystany czas pracy maszyn oraz potencjalnie nieskończone możliwości horizontal-scallingu.
 
 Wybór takiego rozwiązania mocno wpłynąłby na architekturę naszego rozwiązania.
-Niejako wymusiłby na nas, podział projektu na niezależne od siebie moduły i z uwagi na bardzo skomplikowany refactoring przy 4-osobowym zespole de facto scementowałby strukturę projektu.
+Niejako wymusiłby na nas, podział projektu na niezależne od siebie moduły i z uwagi na bardzo skomplikowany \gls{refactoring} przy 4-osobowym zespole de facto scementowałby strukturę projektu.
 
 Nasz projekt teoretycznie można podzielić na niezależne od siebie części o różnym zapotrzebowaniu na moc obliczeniową.
 Pierwszym modułem musi być baza danych, w której będziemy trzymać graf możliwych połączeń między atrakcjami oraz informacje o samych atrakcjach, ten moduł musiałby być cały czas dostępny z uwagi na duży koszt wyprodukowania danych, przeważający koszt utrzymania bazy w sposób ciągły.
-Drugim modułem mógłby być job aktualizujący dane z OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się na przykład raz dziennie.
+Drugim modułem mógłby być \gls{job} aktualizujący dane z OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się na przykład raz dziennie.
 Trzecim modułem byłby serwis implementujący algorytm, dobierania trasy pomiędzy podanymi POI, taki serwis uruchamiałby się na zapytanie użytkownika i kończył swoją pracę wraz z podaniem optymalnie dobranej trasy.
-Ostatnim modułem byłaby aplikacja Frontend-owa implementująca UI, włączana z osobna dla każdego użytkownika, gdy ten podejmie próbę wejścia na adres naszego rozwiązania.
+Ostatnim modułem byłaby aplikacja \gls{Frontend}-owa implementująca UI, włączana z osobna dla każdego użytkownika, gdy ten podejmie próbę wejścia na adres naszego rozwiązania.
 
 Takie podejście w praktyce zmniejsza koszt utrzymania do kosztu utrzymywania bazy danych, ponieważ gdy zapotrzebowanie na pozostałe moduły drastycznie by zmalało, to nie będą one chodzić i czekać na ruch użytkowników.
 Niestety uruchamianie programów na żądanie wiąże się ze znaczącym opóźnieniem wobec żądań użytkownika docelowego.
 Gdy użytkownik postanowi skorzystać z naszej aplikacji, dostawca chmury obliczeniowej musi uruchomić co najmniej dwie maszyny, dla modułu 3 i 4, co czasami potrafi zająć kilka sekund.
 Gdy dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu na obsłużenie żądania.
 W przypadku modułu 3 musimy nawiązać połączenie z bazą danych, odczytać dane, zastosować na nich skomplikowany obliczeniowo algorytm i wysłać odpowiedź, obawiamy się, że w skrajnych przypadkach może to zająć za dużo czasu aby odpowiedź trafiła do użytkownika przed zamknięciem połączenia.
-W przypadku modułu 4 możemy odroczyć oczekiwanie na odpowiedź modułu 3 i poinformować użytkownika o wydłużonym czasie oczekiwania, niemniej jednak, aby cokolwiek użytkownikowi pokazać i tak jesteśmy zmuszeni do wykonania kodu odpowiedzialnego za stworzenie UI, według doświadczeń zespołu czas potrzebny na wyrenderowanie hello world pozostawia niewiele czasu do przekroczenia średniego time span nowego użytkownika (TODO: source).
+W przypadku modułu 4 możemy odroczyć oczekiwanie na odpowiedź modułu 3 i poinformować użytkownika o wydłużonym czasie oczekiwania, niemniej jednak, aby cokolwiek użytkownikowi pokazać i tak jesteśmy zmuszeni do wykonania kodu odpowiedzialnego za stworzenie \gls{ui}, według doświadczeń zespołu czas potrzebny na \gls{rendering} \gls{hello-world} pozostawia niewiele czasu do przekroczenia średniego time span nowego użytkownika (TODO: source).
 
 Istnieją techniki pozwalające na optymalizację tych rozwiązań, aby wyeliminować przytoczone problemy.
-Jednak opierają się one o jeszcze większą fragmentację aplikacji, na którą nie możemy sobie pozwolić z uwagi na liniowo rosnący czas potrzebny na konfigurację infrastruktury potrzebnej do skomunikowana wszystkich modułów w hermetyczny sposób.
-Infrastrukturę chmury internetowej w każdym ze znanych nam dostawców to jest: AWS, GCP, Azure możemy wyklikać w przeglądarce internetowej.
+Jednak opierają się one o jeszcze większą fragmentację aplikacji, na którą nie możemy sobie pozwolić z uwagi na liniowo rosnący czas potrzebny na konfigurację infrastruktury potrzebnej do skomunikowana wszystkich modułów w \gls{hermetyczny} sposób.
+Infrastrukturę chmury internetowej w każdym ze znanych nam dostawców to jest: \acrshort{aws}, \acrshort{gcp}, \acrshort{azure} możemy wyklikać w przeglądarce internetowej.
 Jednak usługi te znacząco się od siebie różnią.
-Możemy tę manualną pracę zautomatyzować przy pomocy podejścia infrastructure as a code, na przykład przy użyciu terraform.
-Pomimo iż dostawcy oferują podobne rozwiązania, to różnią się one w sposobie konfiguracji, na przykład 1 usługa w GCP to 3 usługi w AWS\@.
-Terraform daje możliwość skorzystania z dodatkowej warstwy abstrakcji pozwalającej na opisanie architektury dla AWS, jak i zarówno GCP, jednakże nie jest to pełne wsparcie i niektóre usługi po prostu nie pokrywają się pomiędzy dostawcami.
+Możemy tę manualną pracę zautomatyzować przy pomocy podejścia \gls{infra-as-code}, na przykład przy użyciu terraform.
+Pomimo iż dostawcy oferują podobne rozwiązania, to różnią się one w sposobie konfiguracji, na przykład 1 usługa w \acrshort{gcp} to 3 usługi w \acrshort{aws}\@.
+Terraform daje możliwość skorzystania z dodatkowej warstwy abstrakcji pozwalającej na opisanie architektury dla \acrshort{aws}, jak i zarówno \acrshort{gcp}, jednakże nie jest to pełne wsparcie i niektóre usługi po prostu nie pokrywają się pomiędzy dostawcami.
 Ponadto Terraform nie wspiera takiej funkcjonalności dla Azure.
 
 \subsubsection{Oprogramowanie on premise}
@@ -159,13 +162,13 @@ Oprogramowanie on premise możemy podzielić na bare metal i virtual.
 Bare metal to takie, gdzie mamy fizyczny dostęp do maszyny i płacimy za konkretne podzespoły, mamy pełną kontrolę nad maszyną.
 Virtual to oprogramowanie, w którym tak jak w przypadku bare-metal musimy sami zarządzać maszyną.
 Różni się jednak tym, że płacimy za parametry podzespołów, nie za konkretne podzespoły.
-Nie mamy też fizycznego dostępu do maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż fizyczna maszyna jest w stanie zapewnić, przez to właściciele takich maszyn stosują wirtualizację.
+Nie mamy też fizycznego dostępu do maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż fizyczna maszyna jest w stanie zapewnić, przez to właściciele takich maszyn stosują \glslink{virt}{wirtualizację}.
 
 Bare metal ma taką zaletę, że jesteśmy pewni, że nikt poza nami na takiej maszynie nie będzie pracował.
 Minusem jest mała elastyczność podzespołów (musimy wiedzieć, co będzie działać, z czym) oraz wysoki koszt początkowy.
 W przypadku wirtualizacji na początku rozwoju aplikacji możemy poprosić o niewielkie parametry a wraz z rozwojem przeskalować parametry do naszych potrzeb.
 
-Pomimo faktu, iż w przypadku on-premise musimy sami zarządzać infrastrukturą, to jest to niezależne od dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację do innego dostawcy.
+Pomimo faktu, iż w przypadku \gls{on-prem} musimy sami zarządzać infrastrukturą, to jest to niezależne od dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację do innego dostawcy.
 Biorąć pod uwagę ten fakt oraz brak możliwości napisania oprogramowania w sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się na on premise w wariancie virtual.
 
 \subsubsection{Przegląd rynku}
@@ -179,7 +182,7 @@ Jednorazowy roczny okres próbny w połączeniu z ograniczeniem budżetowym cał
 \paragraph{Amazon Web Services}
 Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć na szkoleniu organizowanym przez Merapar.
 W trakcie zajęć chmura nie sprawiła najmniejszych problemów, co pokrywa się z licznymi opiniami rynkowymi.
-Niestety pomimo wielu darmowych progów zużycia, Amazon nie oferuje darmowego progu w przypadku usługi EC2 (on-prem virtual).
+Niestety pomimo wielu darmowych progów zużycia, Amazon nie oferuje darmowego progu w przypadku usługi EC2 (\gls{on-prem} virtual).
 
 \paragraph{Google Cloud Platform}
 GCP zostało nam zaprezentowane w ramach projektu PJATK cloudelina.
@@ -188,7 +191,7 @@ Niestety podobnie jak w przypadku Amazon-u, GCP nie oferuje darmowego progu dla 
 
 \paragraph{Oracle Cloud Platform}
 Oracle cloud jako jedyne nie posiada usług typowych dla architektury chmurowych.
-Oracle daje bardzo hojny darmowy limit dla maszyn wirtualnych opartych o architekturę arm wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
+Oracle daje bardzo hojny darmowy limit dla maszyn wirtualnych opartych o \glslink{arm}{architekturę arm} wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
 Taki próg pozwoli nie tylko na wytworzenie oprogramowania, przeprowadzenie testów, ale nawet i obsługę średniej wielkości ruchu użytkowników.
 
 \subsection{Przechowywanie kodu oraz potok ciągłego wdrożenia}
