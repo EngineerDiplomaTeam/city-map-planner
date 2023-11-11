@@ -9,7 +9,7 @@
 
 \subsubsection{Oprogramowanie po stronie użytkownika}
 Jednym z celi projektu jest stworzenie aplikacji progresywnej dostępnej na większości urządzeń codziennego użytku tj.: komputery i smartfony.
-Według statystyk prowadzonych przez Google za znaczną część konsumenckiego ruchu internetowego odpowiadają te systemy operacyjne: Android, iOS, MacOS, Windows, Linux.
+Według statystyk prowadzonych przez Google za znaczną część konsumenckiego ruchu internetowego odpowiadają te systemy operacyjne: Android, ios, MacOS, Windows, Linux.
 To aż 5 bardzo różniących się od siebie środowisk docelowych, każde z nich posiada swój dedykowany sposób wytwarzania i utrzymywania oprogramowania.
 Nasz zespół składający się z czterech pracujących na etacie studentów nie byłby w stanie stworzyć a co dopiero utrzymywać rozwiązania na tylu różnych platformach na raz.
 Istnieją rozwiązania niwelujące ten problem w znacznym stopniu, zespół projektowy przeanalizował część z nich pod kątem naszego doświadczenia.
@@ -17,36 +17,36 @@ Istnieją rozwiązania niwelujące ten problem w znacznym stopniu, zespół proj
 \paragraph{Flutter}
 Jest otwartoźródłowy zestaw narzędzi dla programistów przeznaczony do tworzenia natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych, stworzony przez firmę Google.
 Aplikacja stworzona w tej technologii pozwala na napisanie kodu źródłowego w jednej wersji i uruchomienie go na szerokiej gamie zróżnicowanych urządzeń docelowych.
-Problemem tej technologii jest dość niszowy język programownaia, z którym nikt z nas nie miał doczynienia oraz relatywnie słaba wydajność dostarczonego oprogramowania.
+Problemem tej technologii jest dość niszowy język programowania, z którym nikt z nas nie miał do czynienia oraz relatywnie słaba wydajność dostarczonego oprogramowania.
 
 \paragraph{Electron}
 Jest to otwartoźródłowy projekt, który umożliwia stworzenie oprogramowania w formie strony internetowej oraz osadzenia jej w minimalistycznej wersji przeglądarki wysyłanej wraz z aplikacją.
-Dużym plusem tej technologii jest to, że na uczelni mieliśmy zajęcia z Reacta, który jest jedną z opcji pisania aplikacji w Electron'ie.
+Dużym plusem tej technologii jest to, że na uczelni mieliśmy zajęcia z React-a, który jest jedną z opcji pisania aplikacji w Electron-ie.
 Minusem tego rozwiązania jest bardzo duży rozmiar docelowej aplikacji z uwagi na potrzebę doczepienia przeglądarki internetowej poza samą aplikacją.
 
 \paragraph{Progresywna Aplikacja Internetowa}
 Z języka angielskiego Progressive Web App to aplikacja internetowa uruchamiana tak jak zwykła strona internetowa, ale umożliwiająca stworzenie wrażenia działania jak natywna aplikacja mobilna lub aplikacja desktopowa.
-Technologia bardzo podobna do Electron'a, z tym że zamiast wysyłać spreparowaną przeglądarkę, polegamy na przeglądarce uprzednio zainstalowanej u użytkownika.
+Technologia bardzo podobna do Electron-a, z tym że zamiast wysyłać spreparowaną przeglądarkę, polegamy na przeglądarce uprzednio zainstalowanej u użytkownika.
 Plusem jest bardzo mały rozmiar docelowej aplikacji oraz relatywnie dobra wydajność, ponieważ przeglądarki internetowe są specjalnie optymalizowane pod wiele platform docelowych.
 Minusem tego rozwiązania jest poleganie na przeglądarce użytkownika docelowego, która może nie wspierać wszystkich funkcjonalności.
 
 \paragraph{Wybór}
 Każda z wymienionych opcji ma swoje poważne wady.
 Nasz zespół podejmując dedycję, kierował się następującymi priorytetami: znajomość technologii wewnątrz zespołu, wydajność rozwiązania.
-Biorąc pod uwagę te 2 czynniki postawiliśmy na PWA.
-Pragnąc wykorzystać komercyjne doświadczenie zespołu, zamiast używać poznanego na uczelni React'a, zaimplementujemy aplikację we framework'u Angular.
+Biorąc pod uwagę te 2 czynniki, postawiliśmy na PWA\@.
+Pragnąc wykorzystać komercyjne doświadczenie zespołu, zamiast używać poznanego na uczelni React-a, zaimplementujemy aplikację we framework-u Angular.
 
 \subsubsection{Oprogramowanie niewidoczne dla użytkownika}
 Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania na podstawie danych czasu rzeczywistego.
 Ciągłe aktualizacje danych po stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie po stronie dostawców danych.
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać za aktualność danych oraz wyznaczanie trasy.
-Z uwagi na PWA, język, w którym stworzymy ten serwis, musi mieć bardzo dobre wsparcie dla protokołu HTTP.
+Z uwagi na PWA, język, w którym stworzymy ten serwis, musi mieć bardzo dobre wsparcie dla protokołu HTTP\@.
 Na uczelni poznaliśmy 2 technologie tworzenia takich serwisów.
 
 \paragraph{Java}
 Java to język paradygmatu obiektowego, bardzo popularny w systemach bankowych.
 W trakcie zajęć na uczelni poznaliśmy sposób tworzenia serwisów HTTP w technologii Spring.
-Części naszego zespołu nie podobają się konwencje narzucone przez tą technologie, jak i sposób komunikacji z bazą danych.
+Części naszego zespołu nie podobają się konwencje narzucone przez tę technologię, jak i sposób komunikacji z bazą danych.
 Należy zaznaczyć, że nikt z naszego zespołu nie posada komercyjnego doświadczenia z tą technologią.
 
 \paragraph{.NET}
@@ -84,15 +84,15 @@ Rider bardzo dynamicznie się rozwijał, nadganiając, a nawet prześcigając VS
 Programy firmy JetBrains są znane ze świetnej integracji wieloplatformowej oraz dbania o szczegóły, co zapewnia dobre doświadczenie deweloperskie.
 
 Dzięki PJATK nasz zespół mógł przetestować, każdy z tych programów w ramach licencji edukacyjnej.
-Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains'ów, z zachowaniem możliwości uruchomienia projektu w Visual Studio, aby koledzy z dużym doświadczeniem komercyjnym opartym o VS nie musieli zmieniać swoich przyzwyczajeń.
+Nasze testy doprowadziły nas do decyzji, aby postawić na Ridera od JetBrains-ów, z zachowaniem możliwości uruchomienia projektu w Visual Studio, aby koledzy z dużym doświadczeniem komercyjnym opartym o VS nie musieli zmieniać swoich przyzwyczajeń.
 
 \subsubsection{Angular}
 Angular z natury bycia technologią tworzenia stron internetowych nie posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
 Zespół tworzący ten framework stworzył własny program wspomagania deweloperów na podstawie protokółu LSP, co sprowadza się do tego, że każde środowisko programistyczne wspierające ten protokół zapewni ten sam poziom wsparcia dla Angular'a.
 
-Warto tu wyróżnić Visual Studio Code, ponieważ jest to środowisko zalecane przez twórców Angulara, a nowe projekty tworzone w tej technologii zawierają niezbędną konfigurację potrzebną do pełnego wsparcia dla Angulara.
+Warto tu wyróżnić Visual Studio Code, ponieważ jest to środowisko zalecane przez twórców Angular-a, a nowe projekty tworzone w tej technologii zawierają niezbędną konfigurację potrzebną do pełnego wsparcia dla Angulara.
 
-JetBrains też ma w swojej ofercie program do tworzenia w technologiach internetowych o nazwie WebStorm, który posiada automatyczną konfigurację dla Angulara, jak i wielu innych technologii, więc nie potrzebuje bezpośredniego wsparcia od autorów technologi.
+JetBrains też ma w swojej ofercie program do tworzenia w technologiach internetowych o nazwie WebStorm, który posiada automatyczną konfigurację dla Angular-a, jak i wielu innych technologii, więc nie potrzebuje bezpośredniego wsparcia od autorów technologi.
 
 Mając na uwadzę fakt, że Visual Studio Code domyślnie ma skróty klawiszowe nieprzypominające innych popularnych środowisk programistycznych, których trzeba by było się nauczyć, oraz fakt, że już wybrany Rider jest niemalże identyczny w obsłudze do WebStorm'a, postawiliśmy na WebStorm'a, znowu z możliwością uruchomienia projektu w dowolnym innym środowisku, gdy ktoś będzie tego z jakiegoś powodu potrzebował.
 
@@ -101,10 +101,10 @@ W przypadku baz danych przeważnie jest tak, że twórcy bazy danych, równocze�
 W przypadku PostgreSql narzędzie to nazywa się pgAdmin, umożliwia kompleksową konfigurację bazy danych i administrowanie nią.
 
 Należy jednak wspomnieć tu o integracji Ridera z bazą danych we współpracy z programem DataGrip.
-Gdy mamy licencję na DataGrip'a, to wewnątrz Rider'a możemy podłączyć się do bazy danych i otrzymywać dodatkowe wsparcie w kontekście bazy danych.
+Gdy mamy licencję na DataGrip-a, to wewnątrz Rider-a możemy podłączyć się do bazy danych i otrzymywać dodatkowe wsparcie w kontekście bazy danych.
 Wsparcie nie ogranicza się tylko do dodatkowego kolorowania składni w zależności od dialektu wybranej bazy danych, a deweloper jest wspierany przez podpowiadanie nazw kolumn, tabeli oraz poprawność zapytań do bazy jest  weryfikowana w czasie rzeczywistym, a w przypadku wątpliwości Rider pozwala na szczegółową analizę kwerendy w DataGrip'e.
 
-Mając na uwadze powyższe zespół projektowy zaleca użycie DataGrip'a jako narzędzia do projektowania rozwiązań dookoła bazy danych z uwagi na kompleksową integrację z Riderem.
+Mając na uwadze powyższe, zespół projektowy zaleca użycie DataGrip-a jako narzędzia do projektowania rozwiązań dookoła bazy danych z uwagi na kompleksową integrację z Riderem.
 
 \subsubsection{Dalekosiężność wyborów}
 W przypadku, w którym zespół zdecydowałby się na dalsze utrzymywanie bądź rozwój projektu, należy brać pod uwagę koszta oprogramowania.
@@ -119,88 +119,88 @@ Ponadto dzięki zachowaniu kompatybilności z alternatywnymi środowiskami dewel
 
 \subsection{Dostawcy mocy obliczeniowej}
 \label{subsec:dostawcy-mocy-obliczeniowej}
-Wytworzone oprogramowanie potrzebuje serwerów na których będzie wdrożone.
+Wytworzone oprogramowanie potrzebuje serwerów, na których będzie wdrożone.
 Zespół projektowy zna 2 podejścia do tego problemu.
 
 \subsubsection{Oprogramowanie w chmurze}
-Dostawcy oprogramowania w chmurze umożliwają bardzo elastyczny system rozliczania się z za moc obliczeniową.
+Dostawcy oprogramowania w chmurze umożliwiają bardzo elastyczny system rozliczania się za moc obliczeniową.
 
-Gdy aplikacja nie wymaga ciągłej pracy oraz w sposób deterministyczny można ustalić warnuki czasowe dla aplikacji, możemy jej użyć w stylu on-demand.
-Sposób ten charakteryzuje bardzo korzystny sposób rozliczania, gdzie płacimy za faktycznie wykorzystany czas pracy maszyn oraz potencjalnie nieskończone możliwośći horizontal-scallingu.
+Gdy aplikacja nie wymaga ciągłej pracy oraz w sposób deterministyczny można ustalić warunki czasowe dla aplikacji, możemy jej użyć w stylu on-demand.
+Sposób ten charakteryzuje bardzo korzystny sposób rozliczania, gdzie płacimy za faktycznie wykorzystany czas pracy maszyn oraz potencjalnie nieskończone możliwości horizontal-scallingu.
 
 Wybór takiego rozwiązania mocno wpłynąłby na architekturę naszego rozwiązania.
-Niejako wymusiłby na nas, podział projektu na niezależne od siebie moduły i z uwagii na bardzo skomplikowany refactoring przy 4 osobowym zepsole de facto ucementował by strukturę projektu.
+Niejako wymusiłby na nas, podział projektu na niezależne od siebie moduły i z uwagi na bardzo skomplikowany refactoring przy 4-osobowym zespole de facto scementowałby strukturę projektu.
 
 Nasz projekt teoretycznie można podzielić na niezależne od siebie części o różnym zapotrzebowaniu na moc obliczeniową.
-Pierwszym modułem musi być baza danych w której będziemy trzymać graf możliwych połączeń między atrakcjami oraz informacje o samych atrakcjach, ten moduł musiałby być cały czas dostępny z uwagi na duży koszt wyprodukowania danych, przeważający koszt utrzymania bazy w sposób ciągły.
-Drugim modułem mógłby być job aktualizaujący dane z OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się na przykład raz dziennie.
-Trzecim modułem byłby serwis implementujący algorytm dobierania trasy pomiędzy podanymi POI, taki serwis uruchamiałby się na zapytanie użytkownika i kończył swoją pracę wraz z podaniem optymalnie dobranej trasy.
-Ostanim modułem byłaby aplikacja Frontendowa implementująca UI, włączana z osobna dla każdego użytkownika, gdy ten podejmie próbę wejścia na adres naszego rozwiązania.
+Pierwszym modułem musi być baza danych, w której będziemy trzymać graf możliwych połączeń między atrakcjami oraz informacje o samych atrakcjach, ten moduł musiałby być cały czas dostępny z uwagi na duży koszt wyprodukowania danych, przeważający koszt utrzymania bazy w sposób ciągły.
+Drugim modułem mógłby być job aktualizujący dane z OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się na przykład raz dziennie.
+Trzecim modułem byłby serwis implementujący algorytm, dobierania trasy pomiędzy podanymi POI, taki serwis uruchamiałby się na zapytanie użytkownika i kończył swoją pracę wraz z podaniem optymalnie dobranej trasy.
+Ostatnim modułem byłaby aplikacja Frontend-owa implementująca UI, włączana z osobna dla każdego użytkownika, gdy ten podejmie próbę wejścia na adres naszego rozwiązania.
 
-Takie podejście w praktyce zmniejsza koszt utrzymaniowy do kosztu utrzymywania bazy danych, ponieważ gdy zapotrzebowanie na pozostałe moduły drastycznie by zmalało, to nie będą one chodzić i czekać na ruch użytkowników.
+Takie podejście w praktyce zmniejsza koszt utrzymania do kosztu utrzymywania bazy danych, ponieważ gdy zapotrzebowanie na pozostałe moduły drastycznie by zmalało, to nie będą one chodzić i czekać na ruch użytkowników.
 Niestety uruchamianie programów na żądanie wiąże się ze znaczącym opóźnieniem wobec żądań użytkownika docelowego.
-Gdy użytkownik postanowi skorzystać z naszej aplikacji dostawca chmury obliczeniowej musi uruchomić conajmniej dwie maszyny, dla modułu 3 i 4, co czasami potrafi zająć kilka sekund.
-Gdy dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu na obłużenie żądania.
-W przypadku modułu 3, musimy nawiązać połączenie z bazą danych, odczytać dane, zastosować na nich skomplikowany obliczeniowo algorytm i wysłać odpowiedź, obawiamy się, że w skrajnych przypadkach może to zająć za dużo czasu aby odpowiedź trafiła do użytkownika przed zamknięciem połączenia.
-W przypadku modułu 4, możemy odroczyć oczekiwanie na odpowiedź modułu 3 i poinformować użytkownika o wydłużonym czasie oczekiwania, niemniejjednak aby cokolwiek użytkownikowi pokazać i tak jesteśmy zmuszeni do wykonania kodu odpowiedzialnego za stworzenie UI, według doświadczeń zespołu czas potrzebny na wyrenderowanie hello world pozostawia niewiele czasu do przekroczenia średniego time span nowego użytkownika (TODO: source).
+Gdy użytkownik postanowi skorzystać z naszej aplikacji, dostawca chmury obliczeniowej musi uruchomić co najmniej dwie maszyny, dla modułu 3 i 4, co czasami potrafi zająć kilka sekund.
+Gdy dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu na obsłużenie żądania.
+W przypadku modułu 3 musimy nawiązać połączenie z bazą danych, odczytać dane, zastosować na nich skomplikowany obliczeniowo algorytm i wysłać odpowiedź, obawiamy się, że w skrajnych przypadkach może to zająć za dużo czasu aby odpowiedź trafiła do użytkownika przed zamknięciem połączenia.
+W przypadku modułu 4 możemy odroczyć oczekiwanie na odpowiedź modułu 3 i poinformować użytkownika o wydłużonym czasie oczekiwania, niemniej jednak, aby cokolwiek użytkownikowi pokazać i tak jesteśmy zmuszeni do wykonania kodu odpowiedzialnego za stworzenie UI, według doświadczeń zespołu czas potrzebny na wyrenderowanie hello world pozostawia niewiele czasu do przekroczenia średniego time span nowego użytkownika (TODO: source).
 
-Istnieją techniki pozwalające na optymalizację tych rozwiązań aby wyeliminować przytoczone problemy.
-Jednak operają się one o jeszcze większą frgamentację aplikacji na którą nie możemy sobie pozwolić z uwagi na lineranie rosnący czas potrzebny na konfigurację infrstruktury potrzebnej do skomunikowana wszystkich modułów w hermetyczny sposób.
+Istnieją techniki pozwalające na optymalizację tych rozwiązań, aby wyeliminować przytoczone problemy.
+Jednak opierają się one o jeszcze większą fragmentację aplikacji, na którą nie możemy sobie pozwolić z uwagi na liniowo rosnący czas potrzebny na konfigurację infrastruktury potrzebnej do skomunikowana wszystkich modułów w hermetyczny sposób.
 Infrastrukturę chmury internetowej w każdym ze znanych nam dostawców to jest: AWS, GCP, Azure możemy wyklikać w przeglądarce internetowej.
 Jednak usługi te znacząco się od siebie różnią.
 Możemy tę manualną pracę zautomatyzować przy pomocy podejścia infrastructure as a code, na przykład przy użyciu terraform.
-Po mimo, iż dostawcy oferują podobne rozwiązania to różnią się one w sposobie koniguracji, na przykład 1 usługa w GCP to 3 usługi w AWS.
-Terraform daje możliwość skorzystania z dodatkowej warstwy abstrakcji pozwalającej na opisanie architektury dla AWS jak i zarówno GCP, jednakże, nie jest to pełne wsparcie i niektóre usługi po prostu nie pokrywają się pomiędzy dostawcami.
-Ponad to Terraform nie wspiera takiej funkcjonalności dla Azure.
+Pomimo iż dostawcy oferują podobne rozwiązania, to różnią się one w sposobie konfiguracji, na przykład 1 usługa w GCP to 3 usługi w AWS\@.
+Terraform daje możliwość skorzystania z dodatkowej warstwy abstrakcji pozwalającej na opisanie architektury dla AWS, jak i zarówno GCP, jednakże nie jest to pełne wsparcie i niektóre usługi po prostu nie pokrywają się pomiędzy dostawcami.
+Ponadto Terraform nie wspiera takiej funkcjonalności dla Azure.
 
 \subsubsection{Oprogramowanie on premise}
 Oprogramowanie on premise możemy podzielić na bare metal i virtual.
 
 Bare metal to takie, gdzie mamy fizyczny dostęp do maszyny i płacimy za konkretne podzespoły, mamy pełną kontrolę nad maszyną.
-Virtual to oprogramowanie w kórym tak jak w przypadku bare-metal musimy sami zarządzać maszyną.
+Virtual to oprogramowanie, w którym tak jak w przypadku bare-metal musimy sami zarządzać maszyną.
 Różni się jednak tym, że płacimy za parametry podzespołów, nie za konkretne podzespoły.
-Nie mamy też fizycznego dostępu do maszyny, ponieważ parametry jakich potrzebujemy mogą być mniej wymagające niż fizyczna maszyna jest w stanie zapewnić, przez to właściciele takich maszyn stosują wirtualizację.
+Nie mamy też fizycznego dostępu do maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż fizyczna maszyna jest w stanie zapewnić, przez to właściciele takich maszyn stosują wirtualizację.
 
-Bare metal ma taką zaletę, że jesteśmy pewni, że nikt po za nami na takiej maszynie nie będzie pracował.
-Minusem jest mała elastyczność podzezpołów (musimy wiedzieć co będzie działać z czym) oraz wysoki koszt początkowy.
-W przypadku wirtualizacji na początku rozwoju aplikacji możemy poprosić o niewielkie parametry a w raz z rozwojem przeskalować parametry do naszych potrzeb.
+Bare metal ma taką zaletę, że jesteśmy pewni, że nikt poza nami na takiej maszynie nie będzie pracował.
+Minusem jest mała elastyczność podzespołów (musimy wiedzieć, co będzie działać, z czym) oraz wysoki koszt początkowy.
+W przypadku wirtualizacji na początku rozwoju aplikacji możemy poprosić o niewielkie parametry a wraz z rozwojem przeskalować parametry do naszych potrzeb.
 
-Po mimo faktu, iż w przypadku on-premise musimy sami zarządzać infrastrukturą, to jest to niezależne od dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację do innego dostawcy.
-Biorąć pod uwagę ten fakt, oraz brak możliwośći napisania oprogramowania w sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się na on premise w wariancie virtual.
+Pomimo faktu, iż w przypadku on-premise musimy sami zarządzać infrastrukturą, to jest to niezależne od dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację do innego dostawcy.
+Biorąć pod uwagę ten fakt oraz brak możliwości napisania oprogramowania w sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się na on premise w wariancie virtual.
 
 \subsubsection{Przegląd rynku}
 \paragraph{Microsoft Azure Cloud}
 Chmura obliczeniowa Microsoftu została nam udostępniona w ramach zajęć z konteneryzacji.
-Microsoft udostępnia studentom jednorazowo 200\$ do wkykorzzystania na okres roku.
+Microsoft udostępnia studentom jednorazowo 200\$ do wykorzystania na okres roku.
 W ramach okresu edukacyjnego mamy do dyspozycji najsłabsze i najmniej stabilne maszyny dostępne w ofercie.
-W trakcie zajęć natkneliśmy się na wiele problemów ze stabilnością i wydajnością tej chmury.
-Jednorazowy roczny okres próbny w połączeniu z ograniczeniem budrzetowym całkowicie deklasuje tą chmurę z powodu braku możliwości utrzymania rozwiązania w rozumiieniu długoterminowym
+W trakcie zajęć natknęliśmy się na wiele problemów ze stabilnością i wydajnością tej chmury.
+Jednorazowy roczny okres próbny w połączeniu z ograniczeniem budżetowym całkowicie deklasuje tą chmurę z powodu braku możliwości utrzymania rozwiązania w rozumieniu długoterminowym
 
 \paragraph{Amazon Web Services}
 Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć na szkoleniu organizowanym przez Merapar.
-W trakcie zajęć chmura nie sprawiła namniejszych problemów, co pokrywa się z licznymi opiniami rynkowymi.
-Niestety po mimo wielu darmowych progów zużycia, Amazon nie oferuje darmowego progu w przypadku usługi EC2 (on-prem virtual).
+W trakcie zajęć chmura nie sprawiła najmniejszych problemów, co pokrywa się z licznymi opiniami rynkowymi.
+Niestety pomimo wielu darmowych progów zużycia, Amazon nie oferuje darmowego progu w przypadku usługi EC2 (on-prem virtual).
 
 \paragraph{Google Cloud Platform}
 GCP zostało nam zaprezentowane w ramach projektu PJATK cloudelina.
-Usługi w ramach GCP wydają się znacznie prostsze w konfiguracji oraz bardzo dobrze integrują się z Angularem.
-Niestety podobnie jak w przypadku Amazon'u, GCP nie oferuje darmowego progu dla maszyn wirtualnych.
+Usługi w ramach GCP wydają się znacznie prostsze w konfiguracji oraz bardzo dobrze integrują się z Angular-em.
+Niestety podobnie jak w przypadku Amazon-u, GCP nie oferuje darmowego progu dla maszyn wirtualnych.
 
 \paragraph{Oracle Cloud Platform}
 Oracle cloud jako jedyne nie posiada usług typowych dla architektury chmurowych.
 Oracle daje bardzo hojny darmowy limit dla maszyn wirtualnych opartych o architekturę arm wynoszący 6 CPU, 24 GB RAM, 200 HDD i 100 Mbs ethernet.
-Taki próg pozwoli nie tylko na wytworzenie oprogramowania, przeprowadzenie testów ale nawet i obsługę średniej wielkości ruchu użytkoników.
+Taki próg pozwoli nie tylko na wytworzenie oprogramowania, przeprowadzenie testów, ale nawet i obsługę średniej wielkości ruchu użytkowników.
 
 \subsection{Przechowywanie kodu oraz potok ciągłego wdrożenia}
 \label{subsec:przechowywanie-kodu-oraz-potok-ciagego-wdrozenia}
 
-W trakcie zajęć na uczelni jak i pracy indywidualnej członków zespołu projektowego poznaliśmy 2 systemy kontroli wersji.
+W trakcie zajęć na uczelni, jak i pracy indywidualnej członków zespołu projektowego poznaliśmy 2 systemy kontroli wersji.
 Są to GIT oraz Mercurial.
 
 GIT pod każdym względem jest lepszy od Mercurial, sam Mercurial jest uznany za projekt bez rozwoju.
-Zespół projektowy postanowił oprzeć swoją pracę w oparciu o GIT, natomiast nie chcemy samodzielnie zarządzać serwerem repozytorium.
+Zespół projektowy postanowił oprzeć swoją pracę na podstawie GIT, natomiast nie chcemy samodzielnie zarządzać serwerem repozytorium.
 
-\subsubsection{Usługi internetowe ułatwiające pracę wielu współbierzną w repozytorium GIT}
+\subsubsection{Usługi internetowe ułatwiające pracę wielu współbieżną w repozytorium GIT}
 \paragraph{GitLab}
 \paragraph{BitBucket}
 \paragraph{Microsoft Azure Repositories}
