@@ -5,7 +5,7 @@
 \usepackage[english,polish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{tikz-uml}
-\usepackage[acronym]{glossaries}
+\usepackage[acronym, toc]{glossaries}
 
 \makeglossaries
 \input{chapters/słownik-pojęć}
@@ -27,8 +27,6 @@
 	\include{chapters/przykładowy-uml}
 
 	% Początek słownika i akronimów
-	\chapter{Słownik pojęć}
-	\label{ch:slownik-pojec}
 	\printglossary[type=\acronymtype]
 	\printglossary
 	% Koniec słownika i akronimów
