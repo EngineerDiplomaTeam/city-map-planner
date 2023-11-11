@@ -1,2 +1,4 @@
 thesis.*
 !thesis.tex
+*.aux
+/out/

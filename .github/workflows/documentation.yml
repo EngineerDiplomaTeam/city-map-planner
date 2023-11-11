@@ -33,8 +33,11 @@ jobs:
       uses: 'actions/checkout@v3'
 
     - name: 'Build'
+      # Glossaries https://tex.stackexchange.com/a/46732
       # Run build twice https://texfaq.org/FAQ-rerun
       run: |
+        pdflatex thesis.tex
+        makeglossaries thesis
         pdflatex thesis.tex
         pdflatex thesis.tex
       working-directory: 'Documentation'
