@@ -8,7 +8,8 @@ Once merged, documentation is available at https://city-planner.budziszm.pl/thes
 # Local compilation
 1. `pdflatex thesis.tex`
 2. `makeglossaries thesis`
-3. `pdflatex thesis.tex`
+3. `biber thesis`
 4. `pdflatex thesis.tex`
+5. `pdflatex thesis.tex`
 
 Open `thesis.pdf`

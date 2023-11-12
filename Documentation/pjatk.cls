@@ -6,7 +6,7 @@
 % Ian Canals-Wąsik (title page draft)
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sprz}
+\ProvidesClass{pjatk}
 \LoadClass{report}
 
 \RequirePackage[a4paper]{geometry}
