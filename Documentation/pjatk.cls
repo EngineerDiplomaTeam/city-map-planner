@@ -232,7 +232,7 @@
 }
 \newcommand{\makeprojectcard}{%
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{sprz/pjatk} \\
+        \includegraphics[width=0.8\textwidth]{attachments/pjatk} \\
         {
             \Huge
             \textbf{Karta projektu}
