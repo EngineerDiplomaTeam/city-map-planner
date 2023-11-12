@@ -300,35 +300,3 @@
     \par Oświadczamy ponadto, że niniejsza wersja pracy dyplomowej jest identyczna z załączoną wersją elektroniczną.
     \newpage
 }
-
-\lstset{
-    belowcaptionskip=1\baselineskip,
-    breaklines=true,
-    xleftmargin=\parindent,
-    showstringspaces=true,         % podkreślanie spacji wewnątrz łańcuchów
-    numbers=left,                   % gdzie umieszczać numery linii
-    numberstyle=\footnotesize,      % wielkość czcionki dla numerów linii
-    captionpos=b,
-    showstringspaces=false,
-    basicstyle=\footnotesize\ttfamily,
-    keywordstyle=\bfseries\color{green!40!black},
-    commentstyle=\itshape\color{purple!40!black},
-    identifierstyle=\color{blue},
-    stringstyle=\color{orange},
-    literate=
-        {á}{{á}}1 {é}{{é}}1 {í}{{í}}1 {ó}{{ó}}1 {ú}{{ú}}1
-        {Á}{{Á}}1 {É}{{É}}1 {Í}{{Í}}1 {Ó}{{Ó}}1 {Ú}{{Ú}}1
-        {à}{{à}}1 {è}{{è}}1 {ì}{{ì}}1 {ò}{{ò}}1 {ù}{{ù}}1
-        {À}{{À}}1 {È}{{È}}1 {Ì}{{Ì}}1 {Ò}{{Ò}}1 {Ù}{{Ù}}1
-        {ä}{{ä}}1 {ë}{{ë}}1 {ï}{{ï}}1 {ö}{{ö}}1 {ü}{{ü}}1
-        {Ä}{{Ä}}1 {Ë}{{Ë}}1 {Ï}{{Ï}}1 {Ö}{{Ö}}1 {Ü}{{Ü}}1
-        {â}{{â}}1 {ê}{{ê}}1 {î}{{î}}1 {ô}{{ô}}1 {û}{{û}}1
-        {Â}{{Â}}1 {Ê}{{Ê}}1 {Î}{{Î}}1 {Ô}{{Ô}}1 {Û}{{Û}}1
-        {ã}{{ã}}1 {ẽ}{{ẽ}}1 {ĩ}{{ĩ}}1 {õ}{{õ}}1 {ũ}{{ũ}}1
-        {Ã}{{Ã}}1 {Ẽ}{{Ẽ}}1 {Ĩ}{{Ĩ}}1 {Õ}{{Õ}}1 {Ũ}{{Ũ}}1
-        {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-        {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-        {ç}{{ç}}1 {Ç}{{Ç}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-        {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-        {»}{{\guillemotright}}1 {ñ}{{ñ}}1 {Ñ}{{Ñ}}1 {¿}{{?`}}1 {¡}{{!`}}1
-}
