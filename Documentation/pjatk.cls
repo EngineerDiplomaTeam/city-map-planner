@@ -16,7 +16,6 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{polski} % Włączenie obsługi polskich liter
 \RequirePackage{tabularx}
-\RequirePackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
 \RequirePackage{url}
 \RequirePackage{graphicx}
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
@@ -24,7 +23,6 @@
 \RequirePackage{graphicx}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{eurosym}
-
 
 \newcommand{\@nabstract}{\@latex@error{No \noexpand\@nabstract given}\@ehc}
 \newcommand{\nabstract}[1]{\renewcommand{\@nabstract}{#1}}
@@ -196,7 +194,7 @@
 \renewcommand{\maketitle}{%
     \begin{titlepage}
         \begin{center}
-            \includegraphics[width=0.8\textwidth]{sprz/pjatk}
+            \includegraphics[width=0.8\textwidth]{../attachments/pjatk}
             \vspace{1cm}
             \large
             \begin{tabularx}{\textwidth}{X r}
