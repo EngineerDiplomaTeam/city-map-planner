@@ -194,7 +194,7 @@
 \renewcommand{\maketitle}{%
     \begin{titlepage}
         \begin{center}
-            \includegraphics[width=0.8\textwidth]{../attachments/pjatk}
+            \includegraphics[width=0.8\textwidth]{attachments/pjatk}
             \vspace{1cm}
             \large
             \begin{tabularx}{\textwidth}{X r}
