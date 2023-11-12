@@ -1,34 +1,61 @@
-\documentclass{report}
+\documentclass{pjatk}
 
 \usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage[english,polish]{babel}
-\usepackage[T1]{fontenc}
 \usepackage{tikz-uml}
 \usepackage[acronym, toc]{glossaries}
+
+\addbibresource{attachments/bibliography.bip}
 
 \makeglossaries
 \input{chapters/słownik-pojęć}
 
-\title{Planer miejski, praca dyplomowa}
-\author{Mateusz Budzisz, Wiktor Rostkowski, Damian Kreft, Sebastian Kreft}
+\studfield{Informatyka}
+\studtype{Zaoczne}
+\title{Planer Mapy Miejskiej}
+\engtitle{City Map Planner}
+\acronym{City Planner}
+\titledate{2023-10-14}
+\supervisor{prof. dr hab. Marek A. Bednarczyk}
+\author{Mateusz Budzisz}{s24048}{Aplikacje Internetowe}{Zaoczny}
+\author{Wiktor Rostkowski}{s23141}{Aplikacje Internetowe}{Zaoczny}
+\author{Sebastian Kreft}{s23133}{Aplikacje Internetowe}{Zaoczny}
+\author{Damian Kreft}{s23447}{Aplikacje Internetowe}{Zaoczny}
+\consultant{--- brak ---} % Koniecznie trzeba podać brak, albo wpisać konsultantów tak jak przy autorach
+\projectgoals{Stworzenie interaktywnej mapy miejskiej do planowania zwiedzania atrakcji turstycznych z wkykorzystaniem dynamicznych danych}
+\productsandservices{Aplikacja progresywana}
+\mainfunctionalities{Planowanie trasy}
+\successmeasure{Wdrożenie rozwiązania jako oficjalnego rozwiązania miejskiego}
+\projlimitations{Brak budżetu}
+\date{\today}
+\nabstract{
+	Praca zakłada utworzenie interaktywnej mapy z punktami zainteresowań na podstawie listy atrakcji turystycznych wyróżnionych przez urząd miejski,
+	umożliwiającej kompleksowe zaplanowanie optymalnej trasy zwiedzania z uwzględnieniem środków komunikacji miejskiej,
+	godzin otwarcia atrakcji turystycznych oraz warunków pogodowych.
+}
+
+\graphicspath {{attachments/}}
 
 \begin{document}
 
-	% FIXME: PJATK ma jakiś specjalny dokument określający jak ma wyglądać pierwsza strona pracy
+	% PJATK Template begin
 	\maketitle
-	\tableofcontents
+	\makeprojectcard
+	\makedeclaration
+	% PJATK Template End
 
+	\tableofcontents
 	\clearpage
 
 	\include{chapters/wstęp}
-
 	\include{chapters/decyzje-projektowe}
-	\include{chapters/przykładowy-uml}
+	\include{chapters/przykłady-latex}
 
-	% Początek słownika i akronimów
+	% Początek słownika, akronimów i bibliografii
+	\printbibliography[heading=bibintoc]
 	\printglossary[type=\acronymtype]
 	\printglossary
-	% Koniec słownika i akronimów
+	% Koniec słownika, akronimów i bibliografii
 
 \end{document}
