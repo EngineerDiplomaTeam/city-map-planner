@@ -5,6 +5,8 @@
 \usepackage[english,polish]{babel}
 \usepackage{tikz-uml}
 \usepackage[acronym, toc]{glossaries}
+\usepackage{biblatex}
+\usepackage{listings}
 
 \makeglossaries
 \input{chapters/słownik-pojęć}
@@ -28,12 +30,6 @@
 \projlimitations{Brak budżetu}
 \date{\today}
 \nabstract{
-	Planując zwiedzanie miasta, którego nie znamy, musimy wykonać wiele manualnych czynności,
-	takich jak wybór punktów zainteresowania, sprawdzenie godzin otwarcia,
-	sposobu dojazdu i finalnie ułożenie planu zwiedzania w optymalny sposób.
-
-	Co więcej, gdy zajdzie nagła potrzeba zmiany ułożonego planu, musimy te czynności powtórzyć.
-
 	Praca zakłada utworzenie interaktywnej mapy z punktami zainteresowań na podstawie listy atrakcji turystycznych wyróżnionych przez urząd miejski,
 	umożliwiającej kompleksowe zaplanowanie optymalnej trasy zwiedzania z uwzględnieniem środków komunikacji miejskiej,
 	godzin otwarcia atrakcji turystycznych oraz warunków pogodowych.
@@ -43,20 +39,23 @@
 
 \begin{document}
 
-	% FIXME: PJATK ma jakiś specjalny dokument określający jak ma wyglądać pierwsza strona pracy
+	% PJATK Template begin
 	\maketitle
-	\tableofcontents
+	\makeprojectcard
+	\makedeclaration
+	% PJATK Template End
 
+	\tableofcontents
 	\clearpage
 
 	\include{chapters/wstęp}
-
 	\include{chapters/decyzje-projektowe}
-	\include{chapters/przykładowy-uml}
+	\include{chapters/przykłady-latex}
 
-	% Początek słownika i akronimów
+	% Początek słownika, akronimów i bibliografii
+	\printbibliography[title={Bibliografia}]
 	\printglossary[type=\acronymtype]
 	\printglossary
-	% Koniec słownika i akronimów
+	% Koniec słownika, akronimów i bibliografii
 
 \end{document}
