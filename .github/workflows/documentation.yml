@@ -37,6 +37,7 @@ jobs:
       # Run build twice https://texfaq.org/FAQ-rerun
       run: |
         pdflatex thesis.tex
+        biber thesis
         makeglossaries thesis
         pdflatex thesis.tex
         pdflatex thesis.tex
