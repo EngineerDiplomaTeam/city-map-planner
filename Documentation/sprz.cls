@@ -1,27 +1,28 @@
 %
 % This is the class for PJATK thesis
 %
-% Mateusz Budzisz 2023
+% Mateusz Budzisz
 % Tadeusz Puźniakowski 2023
 % Ian Canals-Wąsik (title page draft)
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pjatk}
+\ProvidesClass{sprz}
 \LoadClass{report}
 
 \RequirePackage[a4paper]{geometry}
+\RequirePackage{listings} %Aby dało się umieszczać kody źródłowe programów
 \RequirePackage[table]{xcolor}
 \RequirePackage{algorithmic} %Aby dało się umieszczać algorytmy
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{polski} % Włączenie obsługi polskich liter
 \RequirePackage{tabularx}
+\RequirePackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
 \RequirePackage{url}
 \RequirePackage{graphicx}
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
 \RequirePackage{multirow}
 \RequirePackage{graphicx}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{eurosym}
+
 
 \newcommand{\@nabstract}{\@latex@error{No \noexpand\@nabstract given}\@ehc}
 \newcommand{\nabstract}[1]{\renewcommand{\@nabstract}{#1}}
@@ -85,7 +86,7 @@
 
 \newcommand{\putimage}[4]{%
     \begin{figure}[h]
-        \label{fig:3}
+        \label{#3}
         \centering
         \includegraphics[width={#4}]{#2}
         \caption{#1}
@@ -94,8 +95,8 @@
 
 
 
-\define@key{pjatk}{label}{\def\tablabel{\#1}}
-\define@key{pjatk}{caption}{\def\tabcaption{\#1}}
+\define@key{pjatk}{label}{\def\tablabel{#1}}
+\define@key{pjatk}{caption}{\def\tabcaption{#1}}
 
 % Define the new environment 'stakeholder' and custom commands for stakeholders' information
 \newenvironment{stakeholder}[1][]{%
@@ -173,7 +174,7 @@
             \hline
         \end{tabular}
         \caption{#3}
-        \label{tab:7}
+        \label{#7}
     \end{table}
 }
 
@@ -299,4 +300,36 @@
     \par Oświadczamy również, że praca w przedstawionym przez nas zakresie nie była wcześniej przedmiotem procedur związanych z uzyskaniem tytułu ukończenia studiów wyższych.
     \par Oświadczamy ponadto, że niniejsza wersja pracy dyplomowej jest identyczna z załączoną wersją elektroniczną.
     \newpage
+}
+
+\lstset{
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    xleftmargin=\parindent,
+    showstringspaces=true,         % podkreślanie spacji wewnątrz łańcuchów
+    numbers=left,                   % gdzie umieszczać numery linii
+    numberstyle=\footnotesize,      % wielkość czcionki dla numerów linii
+    captionpos=b,
+    showstringspaces=false,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
+    literate=
+        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+        {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+        {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+        {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+        {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+        {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+        {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+        {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+        {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+        {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+        {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+        {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+        {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+        {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+        {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1
 }
