@@ -246,11 +246,11 @@
     \begin{center}
         \begin{tabular}{|c|c||c|}
             \hline
-            \multicolumn{2}{|p{0.6\linewidth}|}{
+            \multicolumn{2}{|p{0.65\linewidth}|}{
                 \textbf{Temat projektu:}
 
                 \@title
-            }                  & \@mysmartparbox{0.4\linewidth}{\textbf{Akronim:}
+            }                  & \@mysmartparbox{0.35\linewidth}{\textbf{Akronim:}
 
             \@acronym
 
@@ -259,9 +259,9 @@
             \@titledate
             }                                                                                                     \\
             \hline
-            \multicolumn{2}{|p{0.8\linewidth}|}{\textbf{Promotor:}
+            \multicolumn{2}{|p{0.65\linewidth}|}{\textbf{Promotor:}
 
-            \@supervisor}      & \@mysmartparbox{0.2\linewidth}{\textbf{Konsultanci:}
+            \@supervisor}      & \@mysmartparbox{0.35\linewidth}{\textbf{Konsultanci:}
                 \begin{enumerate}
                     \@consultants
                 \end{enumerate}}                                                                           \\
