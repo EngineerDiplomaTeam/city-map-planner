@@ -232,6 +232,8 @@
 \newcommand{\@mysmartparbox}[2]{%
     \parbox{#1}{\vspace{0.1cm}#2\vspace{0.1cm}}%
 }
+
+
 \newcommand{\makeprojectcard}{%
     \begin{center}
         \includegraphics[width=0.8\textwidth]{attachments/pjatk} \\
@@ -244,11 +246,11 @@
     \begin{center}
         \begin{tabular}{|c|c||c|}
             \hline
-            \multicolumn{2}{|p{0.8\linewidth}|}{
+            \multicolumn{2}{|p{0.6\linewidth}|}{
                 \textbf{Temat projektu:}
 
                 \@title
-            }                  & \@mysmartparbox{0.2\linewidth}{\textbf{Akronim:}
+            }                  & \@mysmartparbox{0.4\linewidth}{\textbf{Akronim:}
 
             \@acronym
 
@@ -283,7 +285,7 @@
     \end{center}
 
     \begin{center}
-        \begin{tabular}{|p{0.3\linewidth}|p{0.17\linewidth}|p{0.27\linewidth}|p{0.2\linewidth}|}
+        \begin{tabular}{|p{0.25\linewidth}|p{0.23\linewidth}|p{0.27\linewidth}|p{0.2\linewidth}|}
             \hline
             \textbf{Wykonawcy} & \textbf{Numer albumu} & \textbf{Specjalizacja} & \textbf{Tryb studiów} \\
             \hline
