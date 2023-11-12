@@ -22,6 +22,7 @@
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
 \RequirePackage{multirow}
 \RequirePackage{graphicx}
+\RequirePackage{csquotes}
 
 
 \newcommand{\@nabstract}{\@latex@error{No \noexpand\@nabstract given}\@ehc}
