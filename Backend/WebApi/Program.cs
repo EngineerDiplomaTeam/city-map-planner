@@ -16,7 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Do not add here HTTPS redirection, we use NGINX for SSL
 
 app.UseAuthorization();
 

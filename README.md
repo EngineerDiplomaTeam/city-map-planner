@@ -4,8 +4,8 @@ App created by: Mateusz Budzisz, Wiktor Rostkowski, Sebastian Kreft, Damian Kref
 
 ## Requirements
 1. `Rider`, `Webstorm` & `Datagrip` 
-2. `.NET 7 SDK` [MacOS](https://learn.microsoft.com/pl-pl/dotnet/core/install/macos), [Linux](https://learn.microsoft.com/pl-pl/dotnet/core/install/linux), [Windows](https://learn.microsoft.com/pl-pl/dotnet/core/install/windows?tabs=net70).
-3. `Node 18.10+` [MacOS and Linux](https://github.com/nvm-sh/nvm), [Windows](https://github.com/coreybutler/nvm-windows).
+2. `.NET 8 SDK` [MacOS](https://learn.microsoft.com/pl-pl/dotnet/core/install/macos), [Linux](https://learn.microsoft.com/pl-pl/dotnet/core/install/linux), [Windows](https://learn.microsoft.com/pl-pl/dotnet/core/install/windows?tabs=net70).
+3. `Node 20+` [MacOS and Linux](https://github.com/nvm-sh/nvm), [Windows](https://github.com/coreybutler/nvm-windows).
 4. `Pnpm 8+` once you got node installed just run:
    - `corepack enable`
    - `corepack prepare pnpm@latest-8 --activate`
