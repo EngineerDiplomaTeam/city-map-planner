@@ -4,7 +4,7 @@ echo "Removing all files from /opt/city-planner-backend/publish"
 rm -Rf /opt/city-planner-backend/publish/*
 
 echo "Copying publish files to /opt/city-planner-backend/publish/"
-cp WebApi/bin/production/net8.0/publish/* /opt/city-planner-backend/publish/
+cp WebApi/bin/production/net8.0/publish/linux-arm64/* /opt/city-planner-backend/publish/
 
 echo "Preparing SystemD service file"
 rm -f /etc/systemd/system/city-planner-backend.service
