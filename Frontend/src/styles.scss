@@ -34,31 +34,45 @@ $light-theme: mat.define-light-theme((
   ),
 ));
 
-// Apply the dark theme by default
-@include mat.core-theme($dark-theme);
-@include mat.toolbar-theme($dark-theme);
-@include mat.icon-theme($dark-theme);
-@include mat.button-theme($dark-theme);
-@include mat.list-theme($dark-theme);
-@include mat.card-theme($dark-theme);
+// Apply the light theme by default
+@include mat.core-theme($light-theme);
+@include mat.toolbar-theme($light-theme);
+@include mat.icon-theme($light-theme);
+@include mat.button-theme($light-theme);
+@include mat.list-theme($light-theme);
+@include mat.card-theme($light-theme);
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-// Apply the light theme only when the user prefers light themes.
-@media (prefers-color-scheme: light) {
+// Apply the dark theme only when the user prefers dark themes.
+@media (prefers-color-scheme: dark) {
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.
-  @include mat.core-color($light-theme);
-  @include mat.toolbar-color($light-theme);
-  @include mat.icon-color($light-theme);
-  @include mat.button-color($light-theme);
-  @include mat.list-color($light-theme);
-  @include mat.card-color($light-theme);
+  @include mat.core-color($dark-theme);
+  @include mat.toolbar-color($dark-theme);
+  @include mat.icon-color($dark-theme);
+  @include mat.button-color($dark-theme);
+  @include mat.list-color($dark-theme);
+  @include mat.card-color($dark-theme);
 
   html {
-    color-scheme: light;
+    color-scheme: dark;
+
+    .leaflet-bar a {
+      background-color: #212121;
+      color: #fff;
+    }
+
+    .leaflet-container .leaflet-control-attribution {
+      background: rgba(33, 33, 33, 0.8);
+      color: #fff;
+    }
+
+    .leaflet-container {
+      background-color: #303030;
+    }
   }
 }
 
