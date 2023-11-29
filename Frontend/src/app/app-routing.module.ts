@@ -4,6 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    loadComponent: () =>
+      import('./poi-selector/poi-selector.component').then(
+        (m) => m.PoiSelectorComponent,
+      ),
+  },
+  {
+    path: 'weather',
     loadChildren: () =>
       import('./weather/weather.module').then((m) => m.WeatherModule),
   },
