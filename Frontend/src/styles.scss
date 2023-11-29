@@ -46,7 +46,7 @@ html {
   color-scheme: light;
 }
 
-// Apply the light theme only when the user prefers light themes.
+// Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.
