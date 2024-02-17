@@ -57,5 +57,6 @@
     "prettier": "3.1.0",
     "puppeteer": "^21.5.2",
     "typescript": "~5.2.2"
-  }
+  },
+  "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991"
 }
