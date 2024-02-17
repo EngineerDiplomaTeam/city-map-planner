@@ -7,7 +7,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{14F04E96-462E-4018-9627-B1836EFC2967}"
 	ProjectSection(SolutionItems) = preProject
 		deploy.sh = deploy.sh
+		..\README.md = ..\README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{E02C8468-89CA-4606-8659-1660BA013ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +26,9 @@ Global
 		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02C8468-89CA-4606-8659-1660BA013ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02C8468-89CA-4606-8659-1660BA013ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

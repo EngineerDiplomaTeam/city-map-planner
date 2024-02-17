@@ -56,3 +56,11 @@ The default branch is `main`, it is protected from direct pushes.
 4. Wait for approve.
 5. Once merged, GitHub actions will deploy application to https://city-planner.budziszm.pl/ within few minutes.
    You may track deployment via logs [here](https://github.com/EngineerDiplomaTeam/city-map-planner/actions).
+
+## EF always inside `Backend` directory
+1. Initial setup: `dotnet ef migrations add InitialCreate --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+2. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+3. Update: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+
+
+
