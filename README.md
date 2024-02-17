@@ -62,5 +62,15 @@ The default branch is `main`, it is protected from direct pushes.
 2. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
 3. Update: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
 
+## Sources used
+
+1. https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
+2. https://stackoverflow.com/a/71842300
+3. https://www.learnentityframeworkcore.com/configuration/fluent-api/model-configuration#schema
+4. https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0
+5. TODO: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/social/other-logins?view=aspnetcore-8.0
+6. 
+
+
 
 
