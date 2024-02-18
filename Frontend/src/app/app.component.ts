@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { authActions } from './auth/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +8,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  protected readonly authActions = authActions;
+  protected readonly store = inject(Store);
+
+  constructor() {
+    this.store.dispatch(authActions.openDialog());
+  }
+}

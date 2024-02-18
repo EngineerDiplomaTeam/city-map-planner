@@ -1,6 +1,10 @@
 <mat-toolbar>
   <mat-toolbar-row class="top-bar">
     <a class="app-title" routerLink="/"><mat-icon color="primary">map</mat-icon>City map planner</a>
+
+    <button mat-icon-button (click)="store.dispatch(authActions.openDialog())">
+      <mat-icon>account_circle</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
