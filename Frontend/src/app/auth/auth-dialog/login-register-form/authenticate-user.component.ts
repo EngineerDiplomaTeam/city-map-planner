@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   inject,
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
@@ -20,7 +19,6 @@ import {
 } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { ComponentStore } from '@ngrx/component-store';
 import {
   AbstractControl,
   FormBuilder,
@@ -32,7 +30,6 @@ import {
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { ErrorToMessagePipe } from './error-to-message.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { AuthService } from '../../auth.service';
 import { AuthenticateStore } from './authenticate.store';
 import { MatProgressBar } from '@angular/material/progress-bar';
 
@@ -52,7 +49,7 @@ const atLeastOneNonAlphanumeric: ValidatorFn = (
   /[^A-Za-z0-9]/.test(control.value) ? {} : { atLeastOneNonAlphanumeric: true };
 
 @Component({
-  selector: 'app-authenticate',
+  selector: 'app-authenticate-user',
   standalone: true,
   imports: [
     MatButton,
@@ -74,11 +71,11 @@ const atLeastOneNonAlphanumeric: ValidatorFn = (
     MatProgressBar,
   ],
   providers: [AuthenticateStore],
-  templateUrl: './authenticate.component.html',
-  styleUrl: './authenticate.component.scss',
+  templateUrl: './authenticate-user.component.html',
+  styleUrl: './authenticate-user.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthenticateComponent {
+export class AuthenticateUserComponent {
   protected readonly authStore = inject(AuthenticateStore);
   protected readonly formBuilder = inject(FormBuilder);
   private readonly passwordValidators = [

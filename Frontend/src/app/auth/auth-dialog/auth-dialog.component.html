@@ -10,6 +10,6 @@
   @if (userAccount$ | async; as userAccount) {
     <span>Hello {{ userAccount.email }}</span>
   } @else {
-    <app-authenticate/>
+    <app-authenticate-user/>
   }
 </mat-dialog-content>

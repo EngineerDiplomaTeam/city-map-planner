@@ -12,7 +12,7 @@ import { MatInput } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { selectUserAccount } from '../auth.selectors';
 import { AsyncPipe } from '@angular/common';
-import { AuthenticateComponent } from './login-register-form/authenticate.component';
+import { AuthenticateUserComponent } from './login-register-form/authenticate-user.component';
 
 @Component({
   selector: 'app-auth-dialog',
@@ -29,7 +29,7 @@ import { AuthenticateComponent } from './login-register-form/authenticate.compon
     MatLabel,
     MatHint,
     AsyncPipe,
-    AuthenticateComponent,
+    AuthenticateUserComponent,
     MatIconButton,
   ],
   templateUrl: './auth-dialog.component.html',

@@ -203,8 +203,6 @@ export class AuthenticateStore extends ComponentStore<AuthenticateState> {
     );
 
     if (error) {
-      console.log('error forgot');
-
       return this.patchState(() => ({
         snackBarRef: this.unexpectedError(error),
         loading: false,
