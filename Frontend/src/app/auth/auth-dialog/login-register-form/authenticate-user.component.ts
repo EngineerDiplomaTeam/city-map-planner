@@ -87,14 +87,14 @@ export class AuthenticateUserComponent {
   ];
   protected readonly credentialsForm = this.formBuilder.group({
     email: [
-      'electroluxv2@gmail.com',
+      '',
       {
         validators: [Validators.required, Validators.email],
         updateOn: 'change',
       },
     ],
     password: [
-      'Mb@20529',
+      '',
       {
         validators: this.passwordValidators,
         updateOn: 'change',
@@ -111,7 +111,7 @@ export class AuthenticateUserComponent {
       },
     ],
     password: [
-      'Mb@20529',
+      '',
       {
         validators: this.passwordValidators,
         updateOn: 'change',
