@@ -4,24 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
-public class WeatherForecastController : ControllerBase
+[Route("[controller]")]
+public class WeatherForecastController(ILogger<WeatherForecastController> logger) : ControllerBase
 {
     private static readonly string[] Summaries = {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Amazing"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
-
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet(Name = "GetWeatherForecast"), Authorize]
     public IEnumerable<WeatherForecast> Get()
     {
-        _logger.LogInformation("Sample {type} log", "structured");
+        logger.LogInformation("Sample {Type} log", "structured");
         
         return Enumerable
             .Range(1, 5)
@@ -33,7 +26,4 @@ public class WeatherForecastController : ControllerBase
             })
             .ToArray();
     }
-
-    [HttpGet(Name = "Test"), Authorize]
-    public string Test() => "Hello";
 }

@@ -15,7 +15,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AUTH_FEATURE_KEY, authReducer } from './auth/auth.reducer';
 import { AuthEffects } from './auth/auth.effects';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
+import { tokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -34,7 +39,9 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument(),
   ],
-  providers: [provideHttpClient(withFetch())],
+  providers: [
+    provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

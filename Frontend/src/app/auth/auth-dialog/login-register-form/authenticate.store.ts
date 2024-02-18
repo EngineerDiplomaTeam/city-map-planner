@@ -77,10 +77,14 @@ export class AuthenticateStore extends ComponentStore<AuthenticateState> {
     if (result.type === 'successLogin') {
       return this.store.dispatch(
         authActions.authenticatedSuccessfully({
-          accessToken: result.accessToken,
-          expiresIn: result.expiresIn,
-          refreshToken: result.refreshToken,
-          email,
+          ...result,
+          user: {
+            email,
+            refreshToken: result.refreshToken,
+            accessToken: result.accessToken,
+            tokenTimestamp: result.tokenTimestamp,
+            expiresIn: result.expiresIn,
+          },
         }),
       );
     }

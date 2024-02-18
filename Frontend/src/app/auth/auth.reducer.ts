@@ -1,17 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import { authActions } from './auth.actions';
-import { AuthService } from './auth.service';
 
 export const AUTH_FEATURE_KEY = 'auth';
+export type UserAuthData = {
+  email: string;
+  accessToken: string;
+  expiresIn: number;
+  refreshToken: string;
+  tokenTimestamp: number;
+};
 
 export interface AuthState {
   dialogId?: string;
-  user?: {
-    email: string;
-    accessToken: string;
-    expiresIn: number;
-    refreshToken: string;
-  };
+  user?: UserAuthData;
 }
 
 const initialState: AuthState = {};
@@ -34,7 +35,21 @@ export const authReducer = createReducer(
   ),
   on(
     authActions.authenticatedSuccessfully,
-    (state, user): AuthState => ({
+    (state, { user }): AuthState => ({
+      ...state,
+      user,
+    }),
+  ),
+  on(
+    authActions.loadedUserFromLocalStorage,
+    (state, { user }): AuthState => ({
+      ...state,
+      user,
+    }),
+  ),
+  on(
+    authActions.refreshedUserAuthData,
+    (state, { user }): AuthState => ({
       ...state,
       user,
     }),

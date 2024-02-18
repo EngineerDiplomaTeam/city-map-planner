@@ -1,15 +1,23 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
+import {
+  catchError,
+  firstValueFrom,
+  map,
+  Observable,
+  of,
+  switchMap,
+  throwError,
+} from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectUserAccount } from './auth.selectors';
+import { UserAuthData } from './auth.reducer';
+import { authActions } from './auth.actions';
 
 export type AuthResult =
-  | {
+  | ({
       type: 'successLogin';
-      accessToken: string;
-      tokenType: string;
-      expiresIn: number;
-      refreshToken: string;
-    }
+    } & Omit<UserAuthData, 'email'>)
   | {
       type: 'badLogin';
     }
@@ -32,6 +40,34 @@ export type AuthResult =
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
+  private readonly store = inject(Store);
+  private readonly userAuthData = this.store.selectSignal(selectUserAccount);
+  private get currentSeconds(): number {
+    return Math.round(Date.now() / 1000);
+  }
+
+  public async getAccessToken(): Promise<string> {
+    const currentAuthData = this.userAuthData();
+    if (!currentAuthData) return '';
+
+    if (currentAuthData.tokenTimestamp - currentAuthData.expiresIn < 10) {
+      const fresh = await this.refresh(currentAuthData.refreshToken);
+      this.store.dispatch(
+        authActions.refreshedUserAuthData({
+          user: {
+            email: currentAuthData.email,
+            accessToken: fresh.accessToken,
+            expiresIn: fresh.expiresIn,
+            refreshToken: fresh.refreshToken,
+            tokenTimestamp: this.currentSeconds,
+          },
+        }),
+      );
+      return fresh.accessToken;
+    }
+
+    return currentAuthData.accessToken;
+  }
 
   public loginOrRegister(
     email: string,
@@ -55,6 +91,7 @@ export class AuthService {
               endpoint === '/Api/Login'
                 ? (Object.assign({}, x, {
                     type: 'successLogin',
+                    tokenTimestamp: this.currentSeconds,
                   }) as AuthResult)
                 : { type: 'successRegister' },
           ),
@@ -117,5 +154,15 @@ export class AuthService {
       resetCode,
       newPassword,
     });
+  }
+
+  private async refresh(
+    refreshToken: string,
+  ): Promise<Omit<UserAuthData, 'email'>> {
+    return await firstValueFrom(
+      this.http.post<Omit<UserAuthData, 'email'>>('/Api/Refresh', {
+        refreshToken,
+      }),
+    );
   }
 }
