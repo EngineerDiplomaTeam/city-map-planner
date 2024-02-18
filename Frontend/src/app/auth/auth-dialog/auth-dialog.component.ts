@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { selectUserAccount } from '../auth.selectors';
 import { AsyncPipe } from '@angular/common';
 import { AuthenticateUserComponent } from './login-register-form/authenticate-user.component';
+import { ManageUserAccountComponent } from './manage-user-account/manage-user-account.component';
 
 @Component({
   selector: 'app-auth-dialog',
@@ -31,6 +32,8 @@ import { AuthenticateUserComponent } from './login-register-form/authenticate-us
     AsyncPipe,
     AuthenticateUserComponent,
     MatIconButton,
+    AuthenticateUserComponent,
+    ManageUserAccountComponent,
   ],
   templateUrl: './auth-dialog.component.html',
   styleUrl: './auth-dialog.component.scss',

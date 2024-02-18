@@ -6,9 +6,8 @@
 </section>
 
 <mat-dialog-content>
-
-  @if (userAccount$ | async; as userAccount) {
-    <span>Hello {{ userAccount.email }}</span>
+  @if (userAccount$ | async) {
+    <app-manage-user-account/>
   } @else {
     <app-authenticate-user/>
   }
