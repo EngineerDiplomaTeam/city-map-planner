@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Extensions;
+using WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+    options.SignIn.RequireConfirmedEmail = true;
+});
+
+builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
+builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +48,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
-app.AddLogoutEndpoint();
+app.AddAditionalIdentityEndpoints();
 
 app.Run();

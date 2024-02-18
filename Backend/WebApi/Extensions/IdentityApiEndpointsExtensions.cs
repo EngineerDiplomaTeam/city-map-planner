@@ -5,7 +5,7 @@ namespace WebApi.Extensions;
 
 public static class IdentityApiEndpointsExtensions
 {
-    public static void AddLogoutEndpoint(this WebApplication app)
+    public static void AddAditionalIdentityEndpoints(this WebApplication app)
     {
         // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0#log-out
         app
@@ -17,5 +17,16 @@ public static class IdentityApiEndpointsExtensions
             })
             .WithOpenApi()
             .RequireAuthorization();
+
+        app
+            .MapGet("/exists", async (UserManager<IdentityUser> userManager, [FromQuery] string email) =>
+            {
+                var user = await userManager.FindByEmailAsync(email);
+
+                return user is null
+                    ? Results.NotFound()
+                    : Results.Ok();
+            })
+            .WithOpenApi();
     }
 }

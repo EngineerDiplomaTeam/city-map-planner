@@ -8,7 +8,9 @@
     "ecmaVersion": "latest",
     "project": "tsconfig.json"
   },
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "settings": {
     "import/resolver": {
       "typescript": true,
@@ -48,7 +50,10 @@
             "style": "kebab-case"
           }
         ],
-        "quotes": ["error", "single"]
+        "quotes": [
+          "error",
+          "single"
+        ]
       }
     },
     {
@@ -60,6 +65,14 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/strict-requiring-type-checking"
+      ]
     }
   ]
 }

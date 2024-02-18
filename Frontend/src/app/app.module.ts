@@ -10,6 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AUTH_FEATURE_KEY, authReducer } from './auth/auth.reducer';
+import { AuthEffects } from './auth/auth.effects';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -22,8 +28,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatListModule,
     MatButtonModule,
+    StoreModule.forRoot({
+      [AUTH_FEATURE_KEY]: authReducer,
+    }),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument(),
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

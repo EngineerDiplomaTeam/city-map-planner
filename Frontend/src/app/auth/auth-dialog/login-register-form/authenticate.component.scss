@@ -1,0 +1,27 @@
+form {
+  padding-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 100%;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.center-items {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+}
+
+.progress-bar {
+  height: 4px;
+}
