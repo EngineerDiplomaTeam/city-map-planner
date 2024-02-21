@@ -49,8 +49,13 @@ jobs:
       run: 'dotnet test --logger trx --no-build --verbosity normal'
       working-directory: 'Backend'
 
+    - name: 'Setup Python' # For publish test results
+      uses: 'deadsnakes/action@v3.1.0'
+      with:
+        python-version: 3.8
+
     - name: 'Publish Test Results'
-      uses: 'EnricoMi/publish-unit-test-result-action@v2'
+      uses: 'EnricoMi/publish-unit-test-result-action/composite@v2'
       if: always()
       with:
         files: |
