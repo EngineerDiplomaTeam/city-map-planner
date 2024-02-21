@@ -3,13 +3,13 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { ngMocks, MockInstance } from 'ng-mocks';
+import { MockInstance, ngMocks } from 'ng-mocks';
+import { CommonModule } from '@angular/common'; // eslint-disable-line import/order
+import { ApplicationModule, NgModule } from '@angular/core'; // eslint-disable-line import/order
+import { BrowserModule } from '@angular/platform-browser';
+import { provideNoopAnimations } from '@angular/platform-browser/animations'; // eslint-disable-line import/order
 
 ngMocks.autoSpy('jasmine');
-
-import { CommonModule } from '@angular/common'; // eslint-disable-line import/order
-import { ApplicationModule } from '@angular/core'; // eslint-disable-line import/order
-import { BrowserModule } from '@angular/platform-browser'; // eslint-disable-line import/order
 
 ngMocks.globalKeep(ApplicationModule, true);
 ngMocks.globalKeep(CommonModule, true);
@@ -22,9 +22,14 @@ jasmine.getEnv().addReporter({
   suiteStarted: MockInstance.remember,
 });
 
+@NgModule({
+  providers: [provideNoopAnimations()],
+})
+class GlobalTestingSetupModule {}
+
 // Initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
+  [BrowserDynamicTestingModule, GlobalTestingSetupModule],
   platformBrowserDynamicTesting(),
   {
     errorOnUnknownElements: true,
