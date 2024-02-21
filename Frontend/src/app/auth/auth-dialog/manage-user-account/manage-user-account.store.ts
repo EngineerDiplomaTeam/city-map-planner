@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../auth.actions';
+
 export interface ManageUserAccountState {
   loading: boolean;
   view:

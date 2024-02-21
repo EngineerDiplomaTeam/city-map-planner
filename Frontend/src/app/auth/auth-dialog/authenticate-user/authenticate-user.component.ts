@@ -19,14 +19,7 @@ import {
 } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import {
-  AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { ErrorToMessagePipe } from '../error-to-message.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';

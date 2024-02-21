@@ -3,13 +3,12 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { ngMocks, MockInstance } from 'ng-mocks';
-
-ngMocks.autoSpy('jasmine');
-
+import { MockInstance, ngMocks } from 'ng-mocks';
 import { CommonModule } from '@angular/common'; // eslint-disable-line import/order
 import { ApplicationModule } from '@angular/core'; // eslint-disable-line import/order
 import { BrowserModule } from '@angular/platform-browser'; // eslint-disable-line import/order
+
+ngMocks.autoSpy('jasmine');
 
 ngMocks.globalKeep(ApplicationModule, true);
 ngMocks.globalKeep(CommonModule, true);

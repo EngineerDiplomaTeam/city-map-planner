@@ -8,8 +8,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import {
   latLng,
   latLngBounds,
-  MapOptions,
   Map as LeafletMap,
+  MapOptions,
   polyline,
 } from 'leaflet';
 import { useColorSchemeBasedTileLayer } from './color-scheme-based-tile-layer';
