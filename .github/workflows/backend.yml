@@ -50,7 +50,7 @@ jobs:
       working-directory: 'Backend'
 
     - name: 'Setup Python' # For publish test results
-      uses: 'actions/setup-python@v5'
+      uses: 'deadsnakes/action@v3'
       with:
         python-version: 3.8
 
