@@ -18,6 +18,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=ubuntu
+WorkingDirectory=/opt/city-planner-backend/publish
 ExecStart=/opt/city-planner-backend/publish/WebApi
 
 [Install]
