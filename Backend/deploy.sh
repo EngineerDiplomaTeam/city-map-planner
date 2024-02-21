@@ -18,7 +18,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=ubuntu
-EnvironmentFile/opt/city-planner-backend/environment.conf
+EnvironmentFile=/opt/city-planner-backend/environment.conf
 WorkingDirectory=/opt/city-planner-backend/publish
 ExecStart=/opt/city-planner-backend/publish/WebApi
 
