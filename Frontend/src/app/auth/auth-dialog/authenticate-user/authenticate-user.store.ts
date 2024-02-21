@@ -14,7 +14,7 @@ export interface AuthenticateState {
 }
 
 @Injectable()
-export class AuthenticateStore extends ComponentStore<AuthenticateState> {
+export class AuthenticateUserStore extends ComponentStore<AuthenticateState> {
   protected readonly authService = inject(AuthService);
   private readonly snackBar = inject(MatSnackBar);
   public readonly store = inject(Store);
@@ -97,8 +97,13 @@ export class AuthenticateStore extends ComponentStore<AuthenticateState> {
     }
 
     if (result.type === 'badRegister') {
-      const errors = Object.values(result.errors).join(' ');
-      const ref = this.openErrorSnackBar(`Failed to register: ${errors}`);
+      const errors = Object.values(result.errors ?? {}).join(' ');
+      const message =
+        errors === ''
+          ? 'Internal server error'
+          : `Failed to register: ${errors}`;
+
+      const ref = this.openErrorSnackBar(message);
 
       return this.patchState(() => ({
         loading: false,

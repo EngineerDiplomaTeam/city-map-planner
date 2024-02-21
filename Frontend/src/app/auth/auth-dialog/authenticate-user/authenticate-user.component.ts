@@ -28,25 +28,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { ErrorToMessagePipe } from './error-to-message.pipe';
+import { ErrorToMessagePipe } from '../error-to-message.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { AuthenticateStore } from './authenticate.store';
+import { AuthenticateUserStore } from './authenticate-user.store';
 import { MatProgressBar } from '@angular/material/progress-bar';
-
-const atLeastOneDigit: ValidatorFn = (
-  control: AbstractControl,
-): ValidationErrors =>
-  /\d/.test(control.value) ? {} : { atLeastOneDigit: true };
-
-const atLeastOneUppercase: ValidatorFn = (
-  control: AbstractControl,
-): ValidationErrors =>
-  /[A-Z]/.test(control.value) ? {} : { atLeastOneUppercase: true };
-
-const atLeastOneNonAlphanumeric: ValidatorFn = (
-  control: AbstractControl,
-): ValidationErrors =>
-  /[^A-Za-z0-9]/.test(control.value) ? {} : { atLeastOneNonAlphanumeric: true };
+import { passwordValidators } from '../password-validators';
 
 @Component({
   selector: 'app-authenticate-user',
@@ -70,21 +56,14 @@ const atLeastOneNonAlphanumeric: ValidatorFn = (
     AsyncPipe,
     MatProgressBar,
   ],
-  providers: [AuthenticateStore],
+  providers: [AuthenticateUserStore],
   templateUrl: './authenticate-user.component.html',
   styleUrl: './authenticate-user.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthenticateUserComponent {
-  protected readonly authStore = inject(AuthenticateStore);
+  protected readonly authStore = inject(AuthenticateUserStore);
   protected readonly formBuilder = inject(FormBuilder);
-  private readonly passwordValidators = [
-    Validators.required,
-    Validators.min(6),
-    atLeastOneDigit,
-    atLeastOneUppercase,
-    atLeastOneNonAlphanumeric,
-  ];
   protected readonly credentialsForm = this.formBuilder.group({
     email: [
       '',
@@ -96,7 +75,7 @@ export class AuthenticateUserComponent {
     password: [
       '',
       {
-        validators: this.passwordValidators,
+        validators: passwordValidators,
         updateOn: 'change',
       },
     ],
@@ -113,7 +92,7 @@ export class AuthenticateUserComponent {
     password: [
       '',
       {
-        validators: this.passwordValidators,
+        validators: passwordValidators,
         updateOn: 'change',
       },
     ],

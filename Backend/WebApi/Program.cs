@@ -48,6 +48,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
-app.AddAditionalIdentityEndpoints();
+app.AddAdditionalIdentityEndpoints();
 
 app.Run();

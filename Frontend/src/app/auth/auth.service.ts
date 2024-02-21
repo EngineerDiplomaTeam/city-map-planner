@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   catchError,
+  EMPTY,
   firstValueFrom,
   map,
   Observable,
@@ -34,6 +35,13 @@ export type AuthResult =
   | {
       type: 'confirmEmail';
     };
+
+export interface User2faData {
+  sharedKey: string;
+  recoveryCodesLeft: number;
+  isTwoFactorEnabled: boolean;
+  isMachineRemembered: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -164,5 +172,21 @@ export class AuthService {
         refreshToken,
       }),
     );
+  }
+
+  public async logout(): Promise<never> {
+    return await firstValueFrom(
+      this.http.post<never>('/Api/Logout', {}).pipe(catchError(() => EMPTY)),
+    );
+  }
+
+  public async get2faData(): Promise<User2faData> {
+    return await firstValueFrom(
+      this.http.post<User2faData>('/Api/Manage/2fa', {}),
+    );
+  }
+
+  public async deleteMe(): Promise<void> {
+    await firstValueFrom(this.http.post('/Api/DeleteMe', {}));
   }
 }

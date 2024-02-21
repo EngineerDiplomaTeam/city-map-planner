@@ -13,7 +13,7 @@ export class AppComponent {
   protected readonly store = inject(Store);
 
   constructor() {
-    // this.store.dispatch(authActions.openDialog());
+    this.store.dispatch(authActions.openDialog());
     this.store.dispatch(authActions.loadUserFromLocalStorage());
   }
 }

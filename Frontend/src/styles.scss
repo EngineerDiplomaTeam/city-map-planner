@@ -46,6 +46,7 @@ $light-theme: mat.define-light-theme((
 @include mat.form-field-theme($light-theme);
 @include mat.progress-bar-theme($light-theme);
 @include mat.snack-bar-theme($light-theme);
+@include mat.list-theme($light-theme);
 
 html {
   color-scheme: light;
@@ -66,6 +67,7 @@ html {
   @include mat.form-field-color($dark-theme);
   @include mat.progress-bar-color($dark-theme);
   @include mat.snack-bar-color($dark-theme);
+  @include mat.list-color($dark-theme);
 
   html {
     color-scheme: dark;

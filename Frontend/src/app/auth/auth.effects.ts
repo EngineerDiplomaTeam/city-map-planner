@@ -1,17 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, exhaustMap, map, switchMap, switchMapTo, tap } from 'rxjs';
+import { EMPTY, exhaustMap, map, switchMap } from 'rxjs';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { authActions } from './auth.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { selectUserAccount } from './auth.selectors';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthEffects {
   private readonly store = inject(Store);
   private readonly actions$ = inject(Actions);
   private readonly dialog = inject(MatDialog);
+  private readonly authService = inject(AuthService);
 
   public readonly openAuthDialog$ = createEffect(() => {
     return this.actions$.pipe(
@@ -69,4 +71,24 @@ export class AuthEffects {
       map((user) => authActions.loadedUserFromLocalStorage({ user })),
     );
   });
+
+  public readonly deleteMe$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(authActions.deleteMe),
+      switchMap(() => this.authService.deleteMe()),
+      map(() => authActions.logout()),
+    );
+  });
+
+  public readonly removeUserFromLocalStorage$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(authActions.logout),
+        map(() => {
+          localStorage.removeItem('user');
+        }),
+      );
+    },
+    { dispatch: false },
+  );
 }

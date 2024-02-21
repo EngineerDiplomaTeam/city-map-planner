@@ -1,4 +1,82 @@
-<p>manage-user-account works!</p>
+<h2 class="mat-h2">Manage your account</h2>
 
-<button class="logout-button" color="warn" mat-stroked-button>Logout</button>
-<button class="delete-button" color="warn" mat-stroked-button>Delete account</button>
+@switch (manageStore.view()) {
+  @case ("main") {
+    <h3>Available actions</h3>
+    <mat-nav-list>
+      <mat-list-item (click)="manageStore.onLogout()">
+        <span matListItemTitle>Logout</span>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-list-item>
+
+      <mat-list-item (click)="manageStore.onChangeEmailOrPassword()">
+        <span matListItemTitle>Change email or password</span>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>manage_accounts</mat-icon>
+        </button>
+      </mat-list-item>
+
+      <mat-list-item (click)="manageStore.onManage2fa()">
+        <span matListItemTitle>Manage 2fa authentication</span>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>security_key</mat-icon>
+        </button>
+      </mat-list-item>
+
+      <mat-list-item (click)="manageStore.onDeleteMe()">
+        <span matListItemTitle>Delete my data</span>
+        <button mat-icon-button matListItemMeta>
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  }
+
+  @case ("logout") {
+    <h3>Logging you out, this will take a moment</h3>
+  }
+
+  @case ("change-email-or-password") {
+    <h3>Change email or password</h3>
+
+    <form [formGroup]="credentialsForm" (ngSubmit)="manageStore.onChangeCredentialsFormSubmit(credentialsForm.controls.email.value!, credentialsForm.controls.password.value!)">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        @if (credentialsForm.controls.email.touched && credentialsForm.controls.email.invalid) {
+          <mat-error>{{ credentialsForm.controls.email.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint>We will send activation link to this address</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        @if (credentialsForm.controls.password.invalid) {
+          <mat-error>{{ credentialsForm.controls.password.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint>Leave empty if you do not wish to change it</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="primary" [disabled]="!credentialsForm.valid || manageStore.loading()">Save</button>
+    </form>
+  }
+
+  @case ("manage-2fa") {
+    <h3>Manage two factor authentication</h3>
+  }
+
+  @case ("delete-me") {
+    <h3>Deleting your data, this may take a while</h3>
+  }
+}
+
+<section class="progress-bar">
+  @if (manageStore.loading()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+</section>

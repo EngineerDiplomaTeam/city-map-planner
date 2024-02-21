@@ -12,7 +12,7 @@ import { MatInput } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { selectUserAccount } from '../auth.selectors';
 import { AsyncPipe } from '@angular/common';
-import { AuthenticateUserComponent } from './login-register-form/authenticate-user.component';
+import { AuthenticateUserComponent } from './authenticate-user/authenticate-user.component';
 import { ManageUserAccountComponent } from './manage-user-account/manage-user-account.component';
 
 @Component({

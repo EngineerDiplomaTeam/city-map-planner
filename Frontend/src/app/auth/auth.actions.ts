@@ -12,5 +12,7 @@ export const authActions = createActionGroup({
     'Load user from localStorage': emptyProps(),
     'Loaded user from localStorage': props<{ user: UserAuthData }>(),
     'Refreshed user auth data': props<{ user: UserAuthData }>(),
+    Logout: emptyProps(),
+    'Delete me': emptyProps(),
   },
 });
