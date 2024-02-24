@@ -63,9 +63,11 @@ The default branch is `main`, it is protected from direct pushes.
    You may track deployment via logs [here](https://github.com/EngineerDiplomaTeam/city-map-planner/actions).
 
 ## EF always inside `Backend` directory
-1. Initial setup: `dotnet ef migrations add InitialCreate --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+1. Initial setup user data: `dotnet ef migrations add InitialCreateUserData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
+1. Initial setup data: `dotnet ef migrations add InitialCreateUserData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
 2. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
-3. Update: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+3. Update user data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
+3. Update data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
 
 ## Sources used
 

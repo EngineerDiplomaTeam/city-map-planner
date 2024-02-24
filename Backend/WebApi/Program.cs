@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using WebApi;
 using WebApi.Data;
+using WebApi.Data.repositories;
 using WebApi.Services;
 using WebApi.Extensions;
 
@@ -16,12 +17,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCoreRegistry();
 
-builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("CityPlanner"))
+builder.Services.AddDbContext<UserDataDbContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("CityPlannerUserData"))
 );
 
+builder.Services.AddDbContext<DataDbContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("CityPlannerData"))
+);
+
+builder.Services.AddTransient<IDataRepository, DataRepository>();
+
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<UserDataDbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -45,7 +52,6 @@ if (app.Environment.IsDevelopment())
 }
 
 // Do not add here HTTPS redirection, we use NGINX for SSL
-
 app.UseAuthorization();
 
 app.MapControllers();

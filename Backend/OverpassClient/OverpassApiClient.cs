@@ -53,9 +53,9 @@ public class OverpassApiClient(HttpClient httpClient, ILogger<OverpassApiClient>
             
             var nodes = element
                 .Elements("nd")
-                .Select(x => (lat: x.Attribute("lat")?.Value, lon: x.Attribute("lon")?.Value))
-                .Where(x => x.lat is not null && x.lon is not null)
-                .Select(x => new OsmLatLon(double.Parse(x.lat!), double.Parse(x.lon!)));
+                .Select(x => (id: x.Attribute("ref")?.Value , lat: x.Attribute("lat")?.Value, lon: x.Attribute("lon")?.Value))
+                .Where(x => x.id is not null && x.lat is not null && x.lon is not null)
+                .Select(x => new OsmNode(ulong.Parse(x.id!), double.Parse(x.lat!), double.Parse(x.lon!)));
 
             var tags = element
                 .Elements("tag")
@@ -70,7 +70,5 @@ public class OverpassApiClient(HttpClient httpClient, ILogger<OverpassApiClient>
                 Nodes: nodes
             );
         }
-        
-        yield break;
     }
 }

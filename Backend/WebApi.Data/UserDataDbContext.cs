@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Data;
 
-public class ApplicationDbContext(DbContextOptions options) : IdentityDbContext<IdentityUser>(options)
+public class UserDataDbContext(DbContextOptions<UserDataDbContext> options) : IdentityDbContext<IdentityUser>(options)
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
