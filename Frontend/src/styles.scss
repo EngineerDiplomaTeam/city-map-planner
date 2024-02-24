@@ -13,7 +13,7 @@
 // hue. Available color palettes: https://material.io/design/color/
 $primary: mat.define-palette(mat.$lime-palette);
 $accent: mat.define-palette(mat.$green-palette);
-$warn: mat.define-palette(mat.$pink-palette, 500);
+$warn: mat.define-palette(mat.$orange-palette, 500);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -41,6 +41,12 @@ $light-theme: mat.define-light-theme((
 @include mat.button-theme($light-theme);
 @include mat.list-theme($light-theme);
 @include mat.card-theme($light-theme);
+@include mat.dialog-theme($light-theme);
+@include mat.input-theme($light-theme);
+@include mat.form-field-theme($light-theme);
+@include mat.progress-bar-theme($light-theme);
+@include mat.snack-bar-theme($light-theme);
+@include mat.list-theme($light-theme);
 
 html {
   color-scheme: light;
@@ -56,6 +62,12 @@ html {
   @include mat.button-color($dark-theme);
   @include mat.list-color($dark-theme);
   @include mat.card-color($dark-theme);
+  @include mat.dialog-color($dark-theme);
+  @include mat.input-color($dark-theme);
+  @include mat.form-field-color($dark-theme);
+  @include mat.progress-bar-color($dark-theme);
+  @include mat.snack-bar-color($dark-theme);
+  @include mat.list-color($dark-theme);
 
   html {
     color-scheme: dark;
@@ -92,4 +104,20 @@ app-root {
   flex-direction: column;
   height: 100%;
   min-height: 100svh;
+}
+
+a {
+  color: mat.get-color-from-palette($primary, 500);
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.error-snackbar {
+  .mdc-snackbar__surface{
+    --mdc-snackbar-container-color: #{mat.get-color-from-palette($warn, 900)};
+    --mdc-snackbar-supporting-text-color: #{mat.get-color-from-palette($warn, A900)};
+  }
 }

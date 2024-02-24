@@ -1,0 +1,76 @@
+@switch (authStore.view$ | async) {
+  @case ("auth-form") {
+    <h3>Please sign in or register new account</h3>
+
+    <form [formGroup]="credentialsForm" (ngSubmit)="authStore.onAuthFormSubmit(credentialsForm.controls.email.value!, credentialsForm.controls.password.value!)">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        @if (credentialsForm.controls.email.touched && credentialsForm.controls.email.invalid) {
+          <mat-error>{{ credentialsForm.controls.email.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint>We will send activation link to this address</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        @if (credentialsForm.controls.password.invalid) {
+          <mat-error>{{ credentialsForm.controls.password.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint>Make sure to save it somewhere</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="primary" [disabled]="!credentialsForm.valid || authStore.loading()">Authenticate</button>
+      <span>Forgot your password? Click <a href="javascript:" (click)="authStore.sendForgotPasswordEmail(credentialsForm.controls.email.value!)">here</a> to send password reset email.</span>
+    </form>
+  }
+
+  @case ("confirm-email") {
+    <h3>Please activate your account</h3>
+
+    <section class="center-items">
+     <p>
+       <span>We have sent an activation email to <i>{{ credentialsForm.controls.email.value }}</i></span><br>
+       <span><a href="javascript:" (click)="authStore.sendActivationEmail(credentialsForm.controls.email.value!)">Click here</a>, to resend activation email.</span>
+       <span> {{ emailSentText() }} </span>
+     </p>
+    </section>
+  }
+
+  @case ("reset-password") {
+    <h3>Password reset</h3>
+
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="authStore.onForgotPasswordFormSubmit(credentialsForm.controls.email.value!, forgotPasswordForm.controls.resetCode.value!, forgotPasswordForm.controls.password.value!)">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Reset code</mat-label>
+        <input matInput type="text" formControlName="resetCode">
+        @if (forgotPasswordForm.controls.resetCode.touched && forgotPasswordForm.controls.resetCode.invalid) {
+          <mat-error>{{ forgotPasswordForm.controls.resetCode.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>code</mat-icon>
+        <mat-hint>We have sent this code to your email</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>New password</mat-label>
+        <input matInput type="password" formControlName="password">
+        @if (forgotPasswordForm.controls.password.invalid) {
+          <mat-error>{{ forgotPasswordForm.controls.password.errors! | errorToMessage }}</mat-error>
+        }
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint>Make sure to save it somewhere</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="primary" [disabled]="!forgotPasswordForm.valid || authStore.loading()">Reset password</button>
+    </form>
+  }
+}
+
+<section class="progress-bar">
+  @if (authStore.loading()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+</section>

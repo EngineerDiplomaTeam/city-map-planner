@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { MockComponent, MockDirective } from 'ng-mocks';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('AppComponent', () => {
   beforeEach(() =>
@@ -15,6 +16,7 @@ describe('AppComponent', () => {
         MockComponent(MatIcon),
         MockDirective(MatToolbarRow),
       ],
+      providers: [provideMockStore()],
     }),
   );
 

@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+form {
+  padding-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 100%;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  margin-top: auto;
+  height: 4px;
+}

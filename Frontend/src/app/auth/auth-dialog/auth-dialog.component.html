@@ -1,0 +1,14 @@
+<section mat-dialog-title class="dialog-title">
+  <span>Account management</span>
+  <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</section>
+
+<mat-dialog-content>
+  @if (userAccount$ | async) {
+    <app-manage-user-account/>
+  } @else {
+    <app-authenticate-user/>
+  }
+</mat-dialog-content>
