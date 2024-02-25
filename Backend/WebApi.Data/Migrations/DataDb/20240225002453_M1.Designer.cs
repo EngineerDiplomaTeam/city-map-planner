@@ -11,8 +11,8 @@ using WebApi.Data;
 namespace WebApi.Data.Migrations.DataDb
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20240224220010_InitialCreateUserData")]
-    partial class InitialCreateUserData
+    [Migration("20240225002453_M1")]
+    partial class M1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,25 @@ namespace WebApi.Data.Migrations.DataDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("WebApi.Data.Model.OsmEdge", b =>
+                {
+                    b.Property<decimal>("FromNodeId")
+                        .HasColumnType("numeric(20,0)")
+                        .HasColumnName("from_node_id");
+
+                    b.Property<decimal>("ToNodeId")
+                        .HasColumnType("numeric(20,0)")
+                        .HasColumnName("to_node_id");
+
+                    b.HasKey("FromNodeId", "ToNodeId")
+                        .HasName("pk_edges");
+
+                    b.HasIndex("ToNodeId")
+                        .HasDatabaseName("ix_edges_to_node_id");
+
+                    b.ToTable("edges", "data");
+                });
 
             modelBuilder.Entity("WebApi.Data.Model.OsmNode", b =>
                 {
@@ -44,6 +63,27 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasName("pk_nodes");
 
                     b.ToTable("nodes", "data");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Model.OsmEdge", b =>
+                {
+                    b.HasOne("WebApi.Data.Model.OsmNode", "From")
+                        .WithMany()
+                        .HasForeignKey("FromNodeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_edges_nodes_from_node_id");
+
+                    b.HasOne("WebApi.Data.Model.OsmNode", "To")
+                        .WithMany()
+                        .HasForeignKey("ToNodeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_edges_nodes_to_node_id");
+
+                    b.Navigation("From");
+
+                    b.Navigation("To");
                 });
 #pragma warning restore 612, 618
         }

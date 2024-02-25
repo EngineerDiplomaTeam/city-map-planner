@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="EFCore.BulkExtensions.PostgreSql" Version="8.0.2" />
       <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
+      <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     </ItemGroup>

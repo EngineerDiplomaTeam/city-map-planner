@@ -18,11 +18,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCoreRegistry();
 
 builder.Services.AddDbContext<UserDataDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("CityPlannerUserData"))
+    options => options.UseNpgsql(
+        builder.Configuration.GetConnectionString("CityPlannerUserData"),
+        x => x.MigrationsHistoryTable("ef_migrations_history", "user_data")
+    )
 );
 
 builder.Services.AddDbContext<DataDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("CityPlannerData"))
+    options => options.UseNpgsql(
+        builder.Configuration.GetConnectionString("CityPlannerData"),
+        x => x.MigrationsHistoryTable("ef_migrations_history", "data")
+    )
 );
 
 builder.Services.AddTransient<IDataRepository, DataRepository>();
@@ -41,6 +47,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHostedService<OsmUpdater>();
+builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
 
 var app = builder.Build();
 

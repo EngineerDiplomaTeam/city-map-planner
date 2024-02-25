@@ -12,7 +12,7 @@ using WebApi.Data;
 namespace WebApi.Data.Migrations
 {
     [DbContext(typeof(UserDataDbContext))]
-    [Migration("20240224215931_InitialCreateUserData")]
+    [Migration("20240225002033_InitialCreateUserData")]
     partial class InitialCreateUserData
     {
         /// <inheritdoc />
