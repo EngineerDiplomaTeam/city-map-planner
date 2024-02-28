@@ -74,7 +74,7 @@ export class ManageUserAccountStore extends ComponentStore<ManageUserAccountStat
     }));
   }
 
-  public async onEnable2FA(): Promise<void> {
+  public async onEnable2Fa(): Promise<void> {
     this.patchState(() => ({
       loading: true,
     }));
