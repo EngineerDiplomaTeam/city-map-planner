@@ -43,6 +43,14 @@ export interface User2faData {
   isMachineRemembered: boolean;
 }
 
+export interface Enable2faResponse {
+  sharedKey: string;
+  recoveryCodesLeft: number;
+  recoveryCodes: string[];
+  isTwoFactorEnabled: boolean;
+  isMachineRemembered: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -183,6 +191,27 @@ export class AuthService {
   public async get2faData(): Promise<User2faData> {
     return await firstValueFrom(
       this.http.post<User2faData>('/Api/Manage/2fa', {}),
+    );
+  }
+
+  public async enable2fa(code: string): Promise<Enable2faResponse> {
+    return await firstValueFrom(
+      this.http.post<Enable2faResponse>('/Api/Manage/2fa', {
+        enable: true,
+        twoFactorCode: code.toString(),
+      }),
+    );
+  }
+
+  async getQrCode(code: string): Promise<string> {
+    return await firstValueFrom(
+      this.http
+        .get<{ qrCode: string }>('/Api/Generate', {
+          params: {
+            code,
+          },
+        })
+        .pipe(map((r) => r.qrCode)),
     );
   }
 

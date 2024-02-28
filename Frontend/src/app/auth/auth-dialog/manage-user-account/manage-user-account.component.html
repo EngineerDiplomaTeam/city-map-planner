@@ -68,6 +68,43 @@
 
   @case ("manage-2fa") {
     <h3>Manage two factor authentication</h3>
+    @if (manageStore.user2faData()?.isTwoFactorEnabled) {
+      <p>Two factor authentication enabled!</p>
+    } @else {
+      <p>Two factor authentication disabled!</p>
+      <button mat-raised-button color="primary" (click)="manageStore.onEnable2FA()" [hidden]="manageStore.qrCode()" [disabled]="manageStore.loading()">Enable 2FA</button>
+
+      @if (manageStore.qrCode()) {
+        <figure>
+          <img class="qr-code" [src]="'data:image/jpg;base64,' + manageStore.qrCode()" alt="2FA QR Code" />
+          <figcaption>Scan the code above or type this code: {{manageStore.user2faData()?.sharedKey}}</figcaption>
+        </figure>
+
+        <form [formGroup]="enable2faForm">
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>Code</mat-label>
+            <input matInput type="number" formControlName="code">
+            @if (enable2faForm.controls.code.touched && enable2faForm.controls.code.invalid) {
+              <mat-error>{{ enable2faForm.controls.code.errors! | errorToMessage }}</mat-error>
+            }
+            <mat-icon matSuffix>pin</mat-icon>
+            <mat-hint>One time password generated from your 2FA app</mat-hint>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" color="primary" (click)="manageStore.onSubmitOTP(enable2faForm.controls.code.value!)" [disabled]="!enable2faForm.valid || manageStore.loading()">Enable 2FA</button>
+        </form>
+      }
+
+      @if (manageStore.recoveryCodes().length > 0) {
+        <p>Congratulations! You have successfully set up two factor authentication!</p>
+        <p>In case you are unable to access OTP here are some recovery codes which you can use instead of OTP</p>
+        @for (code of manageStore.recoveryCodes(); track code) {
+          <p>{{code}}</p>
+        } @empty {
+          <p>No recovery codes for you!</p>
+        }
+      }
+    }
   }
 
   @case ("delete-me") {

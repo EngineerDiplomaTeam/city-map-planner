@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatList, MatListItem, MatNavList } from '@angular/material/list';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { ManageUserAccountStore } from './manage-user-account.store';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressBar } from '@angular/material/progress-bar';
@@ -45,6 +45,7 @@ import { selectUserAccount } from '../../auth.selectors';
     MatLabel,
     MatSuffix,
     ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   providers: [ManageUserAccountStore],
   templateUrl: './manage-user-account.component.html',
@@ -71,5 +72,9 @@ export class ManageUserAccountComponent {
         updateOn: 'change',
       },
     ],
+  });
+
+  protected readonly enable2faForm = this.formBuilder.group({
+    code: ['', { validators: Validators.required, updateOn: 'change' }],
   });
 }
