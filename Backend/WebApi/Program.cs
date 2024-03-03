@@ -34,7 +34,10 @@ builder.Services.AddDbContext<DataDbContext>(
 builder.Services.AddTransient<IDataRepository, DataRepository>();
 
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<UserDataDbContext>();
+builder.Services
+    .AddIdentityApiEndpoints<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<UserDataDbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
