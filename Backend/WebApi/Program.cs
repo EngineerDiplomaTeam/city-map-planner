@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using NSwag;
-using WebApi;
+using OverpassClient;
 using WebApi.Data;
 using WebApi.Data.repositories;
 using WebApi.Services;
@@ -16,7 +16,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCoreRegistry();
 
 builder.Services.AddDbContext<UserDataDbContext>(
     options => options.UseNpgsql(
@@ -48,6 +47,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
 builder.Services.AddHostedService<OsmUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
 builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
