@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WebApi.Data.Model;
 using Z.BulkOperations;
 
@@ -14,10 +15,10 @@ public interface IDataRepository
     public Task InsertIgnoreOsmNodesHugeAsync(IEnumerable<OsmNode> osmNodes, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesAsync(IEnumerable<OsmEdge> osmEdges, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesHugeAsync(IEnumerable<OsmEdge> osmEdges, CancellationToken cancellationToken = default);
-    public Task TruncateOsmData(CancellationToken cancellationToken = default);
+    public Task ReplaceOsmDataAsync(IEnumerable<OsmWay> osmWays, IEnumerable<OsmTag> osmTags, IEnumerable<OsmNode> osmNodes, IEnumerable<OsmEdge> osmEdges, CancellationToken cancellationToken = default);
 }
 
-public class DataRepository(DataDbContext dbContext) : IDataRepository
+public class DataRepository(DataDbContext dbContext, ILogger<DataRepository> logger) : IDataRepository
 {
     private static readonly Action<BulkOperation> BulkActionIgnore = config =>
     {
@@ -71,11 +72,36 @@ public class DataRepository(DataDbContext dbContext) : IDataRepository
         await dbContext.BulkInsertOptimizedAsync(osmEdges, BulkActionIgnore, cancellationToken: cancellationToken);
     }
 
-    public async Task TruncateOsmData(CancellationToken cancellationToken = default)
+    public async Task ReplaceOsmDataAsync(IEnumerable<OsmWay> osmWays, IEnumerable<OsmTag> osmTags, IEnumerable<OsmNode> osmNodes, IEnumerable<OsmEdge> osmEdges, CancellationToken cancellationToken = default)
     {
-        await dbContext.Ways.ExecuteDeleteAsync(cancellationToken: cancellationToken);
-        await dbContext.Edges.ExecuteDeleteAsync(cancellationToken: cancellationToken);
-        await dbContext.Nodes.ExecuteDeleteAsync(cancellationToken: cancellationToken);
-        await dbContext.Tags.ExecuteDeleteAsync(cancellationToken: cancellationToken);
+        var transaction = await dbContext.Database.BeginTransactionAsync(cancellationToken);
+        try
+        {
+            logger.LogInformation("Truncating edges");
+            await dbContext.Edges.ExecuteDeleteAsync(cancellationToken: cancellationToken);
+            logger.LogInformation("Truncating nodes");
+            await dbContext.Nodes.ExecuteDeleteAsync(cancellationToken: cancellationToken);
+            logger.LogInformation("Truncating ways");
+            await dbContext.Ways.ExecuteDeleteAsync(cancellationToken: cancellationToken);
+            logger.LogInformation("Truncating tags");
+            await dbContext.Tags.ExecuteDeleteAsync(cancellationToken: cancellationToken);
+            
+            logger.LogInformation("Inserting tags");
+            await InsertIgnoreOsmTagsHugeAsync(osmTags, cancellationToken);
+            logger.LogInformation("Inserting ways");
+            await InsertIgnoreOsmWaysHugeAsync(osmWays, cancellationToken);
+            logger.LogInformation("Inserting nodes");
+            await InsertIgnoreOsmNodesHugeAsync(osmNodes, cancellationToken);
+            logger.LogInformation("Inserting edges");
+            await InsertIgnoreOsmEdgesHugeAsync(osmEdges, cancellationToken);
+            
+            logger.LogInformation("Commiting changes");
+            await transaction.CommitAsync(cancellationToken);
+        }
+        catch
+        {
+            logger.LogWarning("Failed to replace OSM data");
+            await transaction.RollbackAsync(cancellationToken);
+        }
     }
 }
