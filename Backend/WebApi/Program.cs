@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using NSwag;
 using WebApi;
 using WebApi.Data;
 using WebApi.Data.repositories;
@@ -49,14 +50,32 @@ builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("Se
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHostedService<OsmUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
+builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
+{
+    Title = "City map planner backend API"
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // Add OpenAPI 3.0 document serving middleware
+    // Available at: http://localhost:<port>/swagger/v1/swagger.json
+    app.UseOpenApi();
+
+    // Add web UIs to interact with the document
+    // Available at: http://localhost:<port>/swagger
+    app.UseSwaggerUi(c => c.CustomStylesheetPath = "/swagger-ui/dark.css");
+
+    app.UseStaticFiles();
+
+    // Add ReDoc UI to interact with the document
+    // Available at: http://localhost:<port>/redoc
+    app.UseReDoc(options =>
+    {
+        options.Path = "/redoc";
+    });
 }
 
 // Do not add here HTTPS redirection, we use NGINX for SSL

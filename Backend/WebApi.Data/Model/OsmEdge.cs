@@ -1,7 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace WebApi.Data.Model;
 
-public sealed record OsmEdge(ulong FromNodeId, ulong ToNodeId)
+[PrimaryKey(nameof(FromId), nameof(ToId))]
+public class OsmEdge
 {
-    public OsmNode From { get; init; } = null!;
-    public OsmNode To { get; init; } = null!;
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public ulong FromId { get; set; }
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public ulong ToId { get; set; }
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public ulong WayId { get; set; }
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public OsmNode From { get; set; } = null!;
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public OsmNode To { get; set; } = null!;
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public OsmWay Way { get; set; } = null!;
 };

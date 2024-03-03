@@ -3,14 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Data.Model;
 
-public class OsmNode {
+public class OsmWay
+{
     [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
     public ulong Id { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public double Lat { get; set; }
-    
-    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public double Lon { get; set; }
-};
+    public List<OsmTag> Tags { get; set; } = null!;
+}

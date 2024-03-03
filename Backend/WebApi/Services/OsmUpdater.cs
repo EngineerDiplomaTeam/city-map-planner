@@ -11,9 +11,7 @@ public class OsmUpdater(ILogger<OsmUpdater> logger, IServiceProvider serviceProv
     {
         while (!cancellationToken.IsCancellationRequested)
         {
-            var query = Queries.FirstOrDefault();
-            
-            if (query is null)
+            if (!Queries.TryDequeue(out var query))
             {
                 logger.LogInformation("Waiting for query");
                 await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);

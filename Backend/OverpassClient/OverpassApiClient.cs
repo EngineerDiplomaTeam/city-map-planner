@@ -9,12 +9,12 @@ namespace OverpassClient;
 
 public interface IOverpassClient
 {
-    public IAsyncEnumerable<OsmElement> StreamElements(string query, CancellationToken cancellationToken = default);
+    public IAsyncEnumerable<OverpassWay> StreamElements(string query, CancellationToken cancellationToken = default);
 }
 
 public class OverpassApiClient(HttpClient httpClient, ILogger<OverpassApiClient> logger) : IOverpassClient
 {
-    public async IAsyncEnumerable<OsmElement> StreamElements(string query, [EnumeratorCancellation] CancellationToken cancellationToken)
+    public async IAsyncEnumerable<OverpassWay> StreamElements(string query, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         const string uri = "https://overpass-api.de/api/interpreter";
         var request = new HttpRequestMessage(HttpMethod.Post, uri)
@@ -55,19 +55,18 @@ public class OverpassApiClient(HttpClient httpClient, ILogger<OverpassApiClient>
                 .Elements("nd")
                 .Select(x => (id: x.Attribute("ref")?.Value , lat: x.Attribute("lat")?.Value, lon: x.Attribute("lon")?.Value))
                 .Where(x => x.id is not null && x.lat is not null && x.lon is not null)
-                .Select(x => new OsmNode(ulong.Parse(x.id!), double.Parse(x.lat!), double.Parse(x.lon!)));
+                .Select(x => new OverpassNode(ulong.Parse(x.id!), double.Parse(x.lat!), double.Parse(x.lon!)));
 
             var tags = element
                 .Elements("tag")
                 .Select(x => (k: x.Attribute("k")?.Value, v: x.Attribute("v")?.Value))
                 .Where(x => x.k is not null && x.v is not null)
-                .ToImmutableDictionary(x => x.k!, x => x.v);
+                .Select(x => (x.k!, x.v!));
 
-            yield return new OsmElement(
+            yield return new OverpassWay(
                 Id: id,
-                Type: tags.GetValueOrDefault("type") ?? "way",
-                Name: tags.GetValueOrDefault("name"),
-                Nodes: nodes
+                Nodes: nodes,
+                Tags: tags
             );
         }
     }
