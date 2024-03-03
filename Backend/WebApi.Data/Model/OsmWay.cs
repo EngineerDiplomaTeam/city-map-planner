@@ -10,5 +10,8 @@ public class OsmWay
     public long Id { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public List<OsmTag> Tags { get; set; } = null!;
+    public ICollection<OsmTag> Tags { get; set; } = [];
+
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public ICollection<OsmEdge> Edges { get; set; } = [];
 }

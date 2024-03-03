@@ -21,6 +21,14 @@ public class DataDbContext(DbContextOptions<DataDbContext> options) : DbContext(
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<OsmEdge>()
+            .HasOne(e => e.From)
+            .WithMany(n => n.Edges);
+
+        builder.Entity<OsmEdge>()
+            .HasOne(e => e.To)
+            .WithMany();
+        
         builder.HasDefaultSchema("data");
     }
 }
