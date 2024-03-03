@@ -24,8 +24,8 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("OsmTagOsmWay", b =>
                 {
-                    b.Property<decimal>("WaysId")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("WaysId")
+                        .HasColumnType("bigint")
                         .HasColumnName("ways_id");
 
                     b.Property<string>("TagsName")
@@ -47,16 +47,16 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("WebApi.Data.Model.OsmEdge", b =>
                 {
-                    b.Property<decimal>("FromId")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("FromId")
+                        .HasColumnType("bigint")
                         .HasColumnName("from_id");
 
-                    b.Property<decimal>("ToId")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("ToId")
+                        .HasColumnType("bigint")
                         .HasColumnName("to_id");
 
-                    b.Property<decimal>("WayId")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("WayId")
+                        .HasColumnType("bigint")
                         .HasColumnName("way_id");
 
                     b.HasKey("FromId", "ToId")
@@ -73,8 +73,8 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("WebApi.Data.Model.OsmNode", b =>
                 {
-                    b.Property<decimal>("Id")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint")
                         .HasColumnName("id");
 
                     b.Property<double>("Lat")
@@ -109,8 +109,8 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("WebApi.Data.Model.OsmWay", b =>
                 {
-                    b.Property<decimal>("Id")
-                        .HasColumnType("numeric(20,0)")
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint")
                         .HasColumnName("id");
 
                     b.HasKey("Id")

@@ -18,7 +18,7 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 columns: table => new
                 {
-                    id = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false),
                     lat = table.Column<double>(type: "double precision", nullable: false),
                     lon = table.Column<double>(type: "double precision", nullable: false)
                 },
@@ -45,7 +45,7 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 columns: table => new
                 {
-                    id = table.Column<decimal>(type: "numeric(20,0)", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,9 +57,9 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 columns: table => new
                 {
-                    from_id = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
-                    to_id = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
-                    way_id = table.Column<decimal>(type: "numeric(20,0)", nullable: false)
+                    from_id = table.Column<long>(type: "bigint", nullable: false),
+                    to_id = table.Column<long>(type: "bigint", nullable: false),
+                    way_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,7 +92,7 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 columns: table => new
                 {
-                    ways_id = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    ways_id = table.Column<long>(type: "bigint", nullable: false),
                     tags_name = table.Column<string>(type: "text", nullable: false),
                     tags_value = table.Column<string>(type: "text", nullable: false)
                 },

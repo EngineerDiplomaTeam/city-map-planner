@@ -6,13 +6,13 @@ namespace WebApi.Data.Model;
 public class OsmEdge
 {
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public ulong FromId { get; set; }
+    public long FromId { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public ulong ToId { get; set; }
+    public long ToId { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public ulong WayId { get; set; }
+    public long WayId { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
     public OsmNode From { get; set; } = null!;

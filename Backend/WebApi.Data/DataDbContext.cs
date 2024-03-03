@@ -14,8 +14,7 @@ public class DataDbContext(DbContextOptions<DataDbContext> options) : DbContext(
     {
         optionsBuilder.UseSnakeCaseNamingConvention();
         optionsBuilder.EnableDetailedErrors();
-        optionsBuilder.EnableDetailedErrors(true);
-        optionsBuilder.EnableSensitiveDataLogging(true);
+        optionsBuilder.EnableSensitiveDataLogging();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -23,14 +22,5 @@ public class DataDbContext(DbContextOptions<DataDbContext> options) : DbContext(
         base.OnModelCreating(builder);
 
         builder.HasDefaultSchema("data");
-
-        // builder.Entity<OsmEdge>().HasKey(x => new{ x.FromNodeId, x.ToNodeId });
-        // builder.Entity<OsmEdge>().HasOne(x => x.From).WithMany().HasForeignKey(x => x.FromNodeId);
-        // builder.Entity<OsmEdge>().HasOne(x => x.To).WithMany().HasForeignKey(x => x.ToNodeId);
-        // builder.Entity<OsmEdge>().HasOne(x => x.Way).WithMany().HasForeignKey(x => x.WayId);
-
-        // builder.Entity<OsmTag>().HasKey(x => new { x.Name, x.Value });
-
-        // builder.Entity<OsmWay>().HasMany(x => x.Tags).WithMany();
     }
 }

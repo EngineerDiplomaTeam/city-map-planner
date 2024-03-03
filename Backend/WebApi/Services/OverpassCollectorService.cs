@@ -27,6 +27,9 @@ public class OverpassCollectorService(
         var nodes = osmWays.SelectMany(way => way.Nodes.Select(node => new OsmNode{ Id = node.Id, Lat = node.Lat, Lon = node.Lon }));
         var edges = osmWays.SelectMany(way => way.Nodes.Pairwise((from, to) => new OsmEdge{ FromId = from.Id, ToId =  to.Id, WayId = way.Id }));
         
+        logger.LogInformation("Truncating tags, ways, nodes and edges");
+        await dataRepository.TruncateOsmData(cancellationToken);
+        
         logger.LogInformation("Inserting OSM tags");
         await dataRepository.InsertIgnoreOsmTagsHugeAsync(tags, cancellationToken);
         

@@ -49,13 +49,13 @@ public class OverpassApiClient(HttpClient httpClient, ILogger<OverpassApiClient>
         {
             if (reader is not {NodeType: XmlNodeType.Element, Name: "way"} || await XNode.ReadFromAsync(reader, cancellationToken) is not XElement element) continue;
 
-            var id = ulong.Parse(element.Attribute("id")?.Value ?? "0");
+            var id = long.Parse(element.Attribute("id")?.Value ?? "0");
             
             var nodes = element
                 .Elements("nd")
                 .Select(x => (id: x.Attribute("ref")?.Value , lat: x.Attribute("lat")?.Value, lon: x.Attribute("lon")?.Value))
                 .Where(x => x.id is not null && x.lat is not null && x.lon is not null)
-                .Select(x => new OverpassNode(ulong.Parse(x.id!), double.Parse(x.lat!), double.Parse(x.lon!)));
+                .Select(x => new OverpassNode(long.Parse(x.id!), double.Parse(x.lat!), double.Parse(x.lon!)));
 
             var tags = element
                 .Elements("tag")

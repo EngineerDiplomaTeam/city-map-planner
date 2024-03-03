@@ -6,7 +6,7 @@ namespace WebApi.Data.Model;
 public class OsmNode {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
-    public ulong Id { get; set; }
+    public long Id { get; set; }
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
     public double Lat { get; set; }
