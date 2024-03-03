@@ -30,7 +30,7 @@ public class OsmUpdater(ILogger<OsmUpdater> logger, IServiceProvider serviceProv
 
             if (!Queries.TryDequeue(out var query))
             {
-                logger.LogInformation("Waiting for query");
+                logger.LogDebug("Waiting for query");
                 await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
                 continue;
             }
