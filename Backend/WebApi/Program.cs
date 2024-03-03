@@ -64,11 +64,12 @@ if (app.Environment.IsDevelopment())
     // Available at: http://localhost:<port>/swagger/v1/swagger.json
     app.UseOpenApi();
 
+    using var client = new HttpClient();
+    var darkStyles = await client.GetStringAsync("https://raw.githubusercontent.com/Amoenus/SwaggerDark/master/SwaggerDark.css");
+
     // Add web UIs to interact with the document
     // Available at: http://localhost:<port>/swagger
-    app.UseSwaggerUi(c => c.CustomStylesheetPath = "/swagger-ui/dark.css");
-
-    app.UseStaticFiles();
+    app.UseSwaggerUi(c => c.CustomInlineStyles = darkStyles);
 
     // Add ReDoc UI to interact with the document
     // Available at: http://localhost:<port>/redoc
