@@ -26,7 +26,7 @@
     "@ngrx/effects": "^17.1.0",
     "@ngrx/store": "^17.1.0",
     "@ngrx/store-devtools": "^17.1.0",
-    "leaflet": "^1.9.4",
+    "ol": "^9.0.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.4"
@@ -42,7 +42,6 @@
     "@angular/compiler-cli": "^17.2.1",
     "@ngrx/eslint-plugin": "^17.1.0",
     "@types/jasmine": "~4.6.4",
-    "@types/leaflet": "^1.9.8",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "eslint": "^8.56.0",
