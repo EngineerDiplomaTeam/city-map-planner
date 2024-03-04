@@ -13,4 +13,7 @@ public class OsmNode {
     
     // ReSharper disable once PropertyCanBeMadeInitOnly.Global
     public double Lon { get; set; }
+    
+    // ReSharper disable once PropertyCanBeMadeInitOnly.Global
+    public ICollection<OsmEdge> Edges { get; set; } = [];
 };

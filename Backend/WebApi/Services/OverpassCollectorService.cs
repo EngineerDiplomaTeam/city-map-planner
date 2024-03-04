@@ -1,7 +1,7 @@
 using MoreLinq.Extensions;
 using OverpassClient;
 using WebApi.Data.Model;
-using WebApi.Data.repositories;
+using WebApi.Data.Repositories;
 
 namespace WebApi.Services;
 

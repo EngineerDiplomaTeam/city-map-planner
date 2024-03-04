@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using NSwag;
 using OverpassClient;
+using WebApi.Controllers.PathFinding;
 using WebApi.Data;
-using WebApi.Data.repositories;
+using WebApi.Data.Repositories;
 using WebApi.Services;
 using WebApi.Extensions;
 
@@ -31,7 +32,10 @@ builder.Services.AddDbContext<DataDbContext>(
     )
 );
 
+builder.Services.AddTransient<IPathFindingService, PathFindingService>();
+
 builder.Services.AddTransient<IDataRepository, DataRepository>();
+builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 
 builder.Services.AddAuthorization();
 builder.Services

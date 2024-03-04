@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using WebApi.Data.Model;
 using Z.BulkOperations;
 
-namespace WebApi.Data.repositories;
+namespace WebApi.Data.Repositories;
 
 public interface IDataRepository
 {
