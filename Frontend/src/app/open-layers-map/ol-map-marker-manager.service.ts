@@ -9,9 +9,10 @@ import { OL_MAP } from './ol-token';
 import OlVectorSource from 'ol/source/Vector';
 import { Feature as OlFeature } from 'ol';
 import OlVectorLayer from 'ol/layer/Vector';
-import { Point } from 'ol/geom';
+import { Point as OlPoint } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { Subject } from 'rxjs';
+import { clamp } from 'ol/math';
 
 export interface OlMapMarker {
   id: number;
@@ -68,7 +69,7 @@ export class OlMapMarkerManager {
     const context = canvas.getContext('2d')!;
 
     context.drawImage(bitmap, 0, 0, 512, 512);
-    context.arc(512 / 2, 512 / 2, 512 / 2, 0, 2 * Math.PI);
+    context.arc(512 / 2, 512 / 2, 512 / 2 - 5 / 2, 0, 2 * Math.PI);
     context.strokeStyle = '#cddc39';
     context.lineWidth = 5;
     context.stroke();
@@ -77,23 +78,31 @@ export class OlMapMarkerManager {
   }
 
   private createMarkerImage(icon: ImageBitmap): OlIcon {
+    const scaled = this.olMapSmallerDimension / this.olMapResolution;
+    const min = this.olMapSmallerDimension / 20;
+    const max = this.olMapSmallerDimension / 3;
+
     return new OlIcon({
       img: icon,
-      width: this.olMapSmallerDimension / this.olMapResolution,
+      width: clamp(scaled, min, max),
     });
   }
 
   private createMarkerText(label: string): OlText {
+    const scaled = this.olMapSmallerDimension / this.olMapResolution / 400;
+    const min = 0.1;
+    const max = 3;
+
     return new OlText({
       text: label,
       fill: new OlFill({
         color: [255, 255, 255, 1],
       }),
       backgroundFill: new OlFill({
-        color: [168, 50, 153, 0.6],
+        color: [0, 0, 0, 0.6],
       }),
-      padding: [2, 2, 2, 2],
-      scale: 1 / this.olMapResolution,
+      padding: [2, 2, 2, 2].map((x) => x / this.olMapResolution),
+      scale: clamp(scaled, min, max),
     });
   }
 
@@ -105,7 +114,7 @@ export class OlMapMarkerManager {
     label,
   }: OlMapMarker): Promise<OlFeature> {
     const markerFeature = new OlFeature({
-      geometry: new Point(fromLonLat([lon, lat])),
+      geometry: new OlPoint(fromLonLat([lon, lat])),
     });
 
     markerFeature.set(OlMapMarkerManager.featureKeyId, id);

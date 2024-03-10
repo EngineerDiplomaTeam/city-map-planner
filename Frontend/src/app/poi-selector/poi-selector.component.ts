@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { JsonPipe } from '@angular/common';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import {
   BottomSheetData,
@@ -13,7 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   selector: 'app-poi-selector',
   hostDirectives: [OlMapDirective],
   standalone: true,
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './poi-selector.component.html',
   styleUrl: './poi-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
