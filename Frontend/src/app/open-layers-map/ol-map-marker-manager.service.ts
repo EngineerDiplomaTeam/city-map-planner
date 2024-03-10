@@ -1,9 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  Circle,
   Fill as OlFill,
   Icon as OlIcon,
-  Stroke,
   Style as OlStyle,
   Text as OlText,
 } from 'ol/style';
@@ -11,7 +9,7 @@ import { OL_MAP } from './ol-token';
 import OlVectorSource from 'ol/source/Vector';
 import { Feature as OlFeature } from 'ol';
 import OlVectorLayer from 'ol/layer/Vector';
-import { Circle as OlCircle, Point as OlPoint } from 'ol/geom';
+import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { Subject } from 'rxjs';
 
@@ -62,76 +60,73 @@ export class OlMapMarkerManager {
     return Math.min(height, width);
   }
 
-  private get markerImageWidth(): number {
-    return this.olMapSmallerDimension / this.olMapResolution;
+  private async createIconImg(iconSrc: string): Promise<ImageBitmap> {
+    const response = await fetch(iconSrc);
+    const blob = await response.blob();
+    const bitmap = await createImageBitmap(blob);
+    const canvas = new OffscreenCanvas(512, 512);
+    const context = canvas.getContext('2d')!;
+
+    context.drawImage(bitmap, 0, 0, 512, 512);
+    context.arc(512 / 2, 512 / 2, 512 / 2, 0, 2 * Math.PI);
+    context.strokeStyle = '#cddc39';
+    context.lineWidth = 5;
+    context.stroke();
+
+    return canvas.transferToImageBitmap();
   }
 
-  private createMarkerImage(iconSrc: string): OlIcon {
+  private createMarkerImage(icon: ImageBitmap): OlIcon {
     return new OlIcon({
-      src: iconSrc,
-      width: this.markerImageWidth,
+      img: icon,
+      width: this.olMapSmallerDimension / this.olMapResolution,
     });
   }
 
   private createMarkerText(label: string): OlText {
     return new OlText({
       text: label,
-      font: '72px',
       fill: new OlFill({
         color: [255, 255, 255, 1],
       }),
       backgroundFill: new OlFill({
-        color: [0, 0, 0, 0.6],
+        color: [168, 50, 153, 0.6],
       }),
       padding: [2, 2, 2, 2],
       scale: 1 / this.olMapResolution,
     });
   }
 
-  private createMarkerFeatures({
+  private async createMarkerFeature({
     lat,
     lon,
     id,
     iconSrc,
     label,
-  }: OlMapMarker): OlFeature[] {
-    const imageFeature = new OlFeature({
-      geometry: new OlPoint(fromLonLat([lon, lat])),
+  }: OlMapMarker): Promise<OlFeature> {
+    const markerFeature = new OlFeature({
+      geometry: new Point(fromLonLat([lon, lat])),
     });
 
-    imageFeature.setStyle(
+    markerFeature.set(OlMapMarkerManager.featureKeyId, id);
+
+    const iconImg = await this.createIconImg(iconSrc);
+
+    markerFeature.setStyle(
       () =>
         new OlStyle({
-          image: this.createMarkerImage(iconSrc),
+          image: this.createMarkerImage(iconImg),
           text: this.createMarkerText(label),
         }),
     );
 
-    const borderFeature = new OlFeature({
-      geometry: new OlPoint(fromLonLat([lon, lat])),
-    });
-
-    borderFeature.setStyle(
-      () =>
-        new OlStyle({
-          image: new Circle({
-            radius: this.markerImageWidth / 2,
-            stroke: new Stroke({
-              color: '#cddc39',
-              width: 10 / this.olMapResolution,
-            }),
-          }),
-        }),
-    );
-
-    imageFeature.set(OlMapMarkerManager.featureKeyId, id);
-    borderFeature.set(OlMapMarkerManager.featureKeyId, id);
-
-    return [imageFeature];
+    return markerFeature;
   }
 
-  public addMarkers(markers: OlMapMarker[]): void {
-    const features = markers.map((x) => this.createMarkerFeatures(x)).flat();
+  public async addMarkers(markers: OlMapMarker[]): Promise<void> {
+    const features = await Array.fromAsync(
+      markers.map((x) => this.createMarkerFeature(x)),
+    );
 
     this.vectorSource.addFeatures(features);
   }
