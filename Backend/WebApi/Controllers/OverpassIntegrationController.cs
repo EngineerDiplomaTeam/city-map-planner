@@ -7,7 +7,7 @@ namespace WebApi.Controllers;
 
 [Controller, Authorize(Roles = "Administrator")]
 [Route("[controller]/[action]")]
-public class OverpassIntegration : ControllerBase
+public class OverpassIntegrationController : ControllerBase
 {
     [HttpPost]
     public async Task<ActionResult> EnqueueQuery(CancellationToken cancellationToken)

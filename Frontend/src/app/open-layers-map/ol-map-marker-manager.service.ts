@@ -11,8 +11,9 @@ import { Feature as OlFeature } from 'ol';
 import OlVectorLayer from 'ol/layer/Vector';
 import { Point as OlPoint } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
-import { Subject } from 'rxjs';
 import { clamp } from 'ol/math';
+import { poiActions } from '../poi/poi.actions';
+import { Store } from '@ngrx/store';
 
 export interface OlMapMarker {
   id: number;
@@ -25,6 +26,7 @@ export interface OlMapMarker {
 @Injectable()
 export class OlMapMarkerManager {
   private static readonly featureKeyId = 'marker-id';
+  protected readonly store = inject(Store);
   protected readonly olMap = inject(OL_MAP);
   protected readonly vectorSource = new OlVectorSource();
   protected readonly vectorLayer = new OlVectorLayer({
@@ -32,8 +34,6 @@ export class OlMapMarkerManager {
     updateWhileAnimating: true,
     updateWhileInteracting: true,
   });
-
-  public readonly markerClick$ = new Subject<number>();
 
   constructor() {
     this.olMap.addLayer(this.vectorLayer);
@@ -45,7 +45,7 @@ export class OlMapMarkerManager {
       const markerId: number = feature.get(OlMapMarkerManager.featureKeyId);
       if (markerId === undefined) return;
 
-      this.markerClick$.next(markerId);
+      this.store.dispatch(poiActions.mapMarkerClicked({ markerId }));
     });
   }
 
@@ -132,11 +132,12 @@ export class OlMapMarkerManager {
     return markerFeature;
   }
 
-  public async addMarkers(markers: OlMapMarker[]): Promise<void> {
+  public async setMarkers(markers: OlMapMarker[]): Promise<void> {
     const features = await Array.fromAsync(
       markers.map((x) => this.createMarkerFeature(x)),
     );
 
+    this.vectorSource.clear();
     this.vectorSource.addFeatures(features);
   }
 }

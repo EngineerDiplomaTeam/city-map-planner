@@ -2,4 +2,4 @@ using WebApi.Data.Model;
 
 namespace WebApi.DTO;
 
-public record PathEdge(OsmWay Way, bool Preview);
+public record PathDto(OsmWay Way, bool Preview);

@@ -1,6 +1,6 @@
 import { Directive, effect, ElementRef, inject } from '@angular/core';
 import { OL_MAP, OL_TILE_LAYER } from './ol-token';
-import { useColorScheme } from '../poi-selector/color-scheme-signal';
+import { useColorScheme } from './color-scheme-signal';
 import OlTileLayer from 'ol/layer/Tile';
 import OlTileSource from 'ol/source/Tile';
 import OlMap from 'ol/Map';

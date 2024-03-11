@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./poi-selector/poi-selector.component').then(
+      import('./poi/poi-selector/poi-selector.component').then(
         (m) => m.PoiSelectorComponent,
       ),
   },

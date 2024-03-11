@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using NSwag;
 using OverpassClient;
-using WebApi.Controllers.PathFinding;
 using WebApi.Data;
 using WebApi.Data.Repositories;
 using WebApi.Services;

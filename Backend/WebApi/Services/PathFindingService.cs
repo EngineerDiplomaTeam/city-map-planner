@@ -1,5 +1,4 @@
 using System.Runtime.CompilerServices;
-using WebApi.Controllers.PathFinding;
 using WebApi.Data.Model;
 using WebApi.Data.Repositories;
 using WebApi.DTO;
@@ -8,7 +7,7 @@ namespace WebApi.Services;
 
 public interface IPathFindingService
 {
-    IAsyncEnumerable<PathEdge> GetPathAsync(long startNodeId, long destinationNodeId,
+    IAsyncEnumerable<PathDto> GetPathAsync(long startNodeId, long destinationNodeId,
         CancellationToken cancellationToken = default);
 }
 
@@ -16,7 +15,7 @@ public class PathFindingService(
     IPathFindingRepository pathFindingRepository,
     ILogger<PathFindingService> logger) : IPathFindingService
 {
-    public async IAsyncEnumerable<PathEdge> GetPathAsync(
+    public async IAsyncEnumerable<PathDto> GetPathAsync(
         long startNodeId, 
         long destinationNodeId, 
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
