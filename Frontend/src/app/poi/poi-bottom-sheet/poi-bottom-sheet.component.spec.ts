@@ -8,10 +8,9 @@ describe('PoiBottomSheetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoiBottomSheetComponent]
-    })
-    .compileComponents();
-    
+      imports: [PoiBottomSheetComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PoiBottomSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
