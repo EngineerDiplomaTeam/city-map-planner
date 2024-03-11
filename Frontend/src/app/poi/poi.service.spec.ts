@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PoiService } from './poi.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PoiService', () => {
   let service: PoiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
     service = TestBed.inject(PoiService);
   });
 
