@@ -4,9 +4,10 @@ import { OlMapMarker } from '../open-layers-map/ol-map-marker-manager.service';
 
 const selectPoiState = createFeatureSelector<PoiState>(POI_FEATURE_KEY);
 
-export const selectPoiIdOpenedInBottomSheet = createSelector(
+export const selectPoiOpenedInBottomSheet = createSelector(
   selectPoiState,
-  (state) => state.poiInBottomSheetId,
+  (state) =>
+    state.pointsOfInterest.find((x) => x.id === state.poiInBottomSheetId),
 );
 
 export const selectPoiMarkers = createSelector(selectPoiState, (state) =>

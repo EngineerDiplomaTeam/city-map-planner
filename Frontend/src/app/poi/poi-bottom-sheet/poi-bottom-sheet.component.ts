@@ -4,10 +4,9 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import {
-  MAT_BOTTOM_SHEET_DATA,
-  MatBottomSheetRef,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Store } from '@ngrx/store';
+import { selectPoiOpenedInBottomSheet } from '../poi.selectors';
 
 export type BottomSheetData = {
   id: number;
@@ -22,13 +21,17 @@ export type BottomSheetData = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiBottomSheetComponent implements OnInit {
+  private readonly store = inject(Store);
+
+  protected readonly selectedPoi = this.store.selectSignal(
+    selectPoiOpenedInBottomSheet,
+  );
+
   protected readonly bottomRefSheet = inject(
     MatBottomSheetRef<PoiBottomSheetComponent, BottomSheetData>,
   );
 
-  protected readonly data: BottomSheetData = inject(MAT_BOTTOM_SHEET_DATA);
-
   ngOnInit(): void {
-    console.log(this.data);
+    console.log(this.selectedPoi());
   }
 }
