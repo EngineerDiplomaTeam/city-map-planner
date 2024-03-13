@@ -6,28 +6,37 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>true</InvariantGlobalization>
         <LangVersion>12</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="8.0.0" />
+        <PackageReference Include="Bogus" Version="35.5.0" />
         <PackageReference Include="DotNetBungieAPI.AspNet.Security.OAuth.Providers" Version="1.0.2" />
+        <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+        <PackageReference Include="morelinq" Version="4.1.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.0.3" />
+        <PackageReference Include="NSwag.Examples" Version="1.0.12" />
         <PackageReference Include="SendGrid" Version="9.29.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="System.Linq.Async" Version="6.0.1" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Domain\" />
-    </ItemGroup>
+    
 
     <ItemGroup>
       <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OverpassClient\OverpassClient.csproj" />
     </ItemGroup>
 
 </Project>

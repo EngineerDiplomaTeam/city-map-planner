@@ -47,10 +47,7 @@ $light-theme: mat.define-light-theme((
 @include mat.progress-bar-theme($light-theme);
 @include mat.snack-bar-theme($light-theme);
 @include mat.list-theme($light-theme);
-
-html {
-  color-scheme: light;
-}
+@include mat.bottom-sheet-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
@@ -68,30 +65,14 @@ html {
   @include mat.progress-bar-color($dark-theme);
   @include mat.snack-bar-color($dark-theme);
   @include mat.list-color($dark-theme);
-
-  html {
-    color-scheme: dark;
-
-    .leaflet-bar a {
-      background-color: #212121;
-      color: #fff;
-    }
-
-    .leaflet-container .leaflet-control-attribution {
-      background: rgba(33, 33, 33, 0.8);
-      color: #fff;
-    }
-
-    .leaflet-container {
-      background-color: #303030;
-    }
-  }
+  @include mat.bottom-sheet-color($dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
   height: 100%;
+  color-scheme: light dark;
 }
 
 body {
