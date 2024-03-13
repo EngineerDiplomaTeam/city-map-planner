@@ -32,7 +32,7 @@ public class PathFindingService(
             throw new NodeNotFoundException(destinationNodeId);
         }
     
-        logger.LogInformation("Looking for path from {@startNode} to {@destinationNode}", 
+        logger.LogInformation("Looking for path from {StartNode} to {DestinationNode}", 
             startNode.Id, destinationNode.Id);
 
         Dictionary<OsmNode, double> fScore = [];
