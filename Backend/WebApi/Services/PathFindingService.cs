@@ -13,7 +13,8 @@ public interface IPathFindingService
 
 public class PathFindingService(
     IPathFindingRepository pathFindingRepository,
-    ILogger<PathFindingService> logger) : IPathFindingService
+    ILogger<PathFindingService> logger
+) : IPathFindingService
 {
     public async IAsyncEnumerable<PathDto> GetPathAsync(
         long startNodeId, 
