@@ -13,7 +13,7 @@ public class OsmUpdater(ILogger<OsmUpdater> logger, IServiceProvider serviceProv
         [out:xml][timeout:25];
         area["boundary"="administrative"]["name"="Gdańsk"] -> .a;
         (
-          way(area.a);
+          way[highway](area.a);
         );
         out geom;
         """;

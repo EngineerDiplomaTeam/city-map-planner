@@ -22,6 +22,7 @@ import {
 import { tokenInterceptor } from './auth/token.interceptor';
 import { POI_FEATURE_KEY, poiReducer } from './poi/poi.reducer';
 import { PoiEffects } from './poi/poi.effects';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],

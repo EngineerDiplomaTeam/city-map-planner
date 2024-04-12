@@ -13,6 +13,7 @@ import { fromLonLat } from 'ol/proj';
 import { boundingExtent } from 'ol/extent';
 import { StadiaMaps } from 'ol/source';
 import { OlMapMarkerManager } from './ol-map-marker-manager.service';
+import { OlMapLineManager } from './ol-map-lines-manager.service';
 
 @Directive({
   selector: '[appOlMap]',
@@ -30,6 +31,7 @@ import { OlMapMarkerManager } from './ol-map-marker-manager.service';
       deps: [OlMapDirective],
     },
     OlMapMarkerManager,
+    OlMapLineManager,
   ],
 })
 export class OlMapDirective {
