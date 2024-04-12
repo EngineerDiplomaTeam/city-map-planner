@@ -2,8 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  Input,
   input,
+  OnInit,
 } from '@angular/core';
 import { OlMapDirective } from '../open-layers-map/ol-map.directive';
 import { JSONParser } from '@streamparser/json-whatwg';
@@ -11,7 +11,6 @@ import {
   OlLine,
   OlMapLineManager,
 } from '../open-layers-map/ol-map-lines-manager.service';
-import { ActivatedRoute } from '@angular/router';
 import { OL_MAP } from '../open-layers-map/ol-token';
 
 @Component({
@@ -23,18 +22,19 @@ import { OL_MAP } from '../open-layers-map/ol-token';
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [OlMapDirective],
 })
-export class PathPreviewComponent {
+export class PathPreviewComponent implements OnInit {
+  public from = input<string>();
+  public to = input<string>();
   private readonly olMap = inject(OL_MAP);
-  private readonly a = inject(ActivatedRoute);
   private readonly olMapLinesManager = inject(OlMapLineManager);
 
-  constructor() {
+  public ngOnInit(): void {
     void this.sample();
   }
 
   private async sample(): Promise<void> {
     const response = await fetch(
-      `/Api/PathFinding/test?from=${this.a.snapshot.params['from']}&to=${this.a.snapshot.params['to']}`,
+      `/Api/PathFinding/test?from=${this.from()}&to=${this.to()}`,
     );
 
     if (response.status !== 200 || !response.body) {

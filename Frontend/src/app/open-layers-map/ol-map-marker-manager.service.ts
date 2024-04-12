@@ -38,7 +38,7 @@ export class OlMapMarkerManager {
   constructor() {
     this.olMap.addLayer(this.vectorLayer);
 
-    this.olMap.on('singleclick', (evt) => {
+    this.olMap.on('click', (evt) => {
       const [feature] = this.olMap.getFeaturesAtPixel(evt.pixel);
       if (!feature) return;
 

@@ -64,7 +64,7 @@ The default branch is `main`, it is protected from direct pushes.
 
 ## EF always inside `Backend` directory
 1. Initial setup user data: `dotnet ef migrations add InitialCreateUserData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
-2. Initial setup data: `dotnet ef migrations add InitialCreateUserData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
+2. Initial setup data: `dotnet ef migrations add InitialCreateData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
 3. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
 4. Update user data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
 5. Update data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`

@@ -32,9 +32,10 @@ builder.Services.AddDbContext<DataDbContext>(
 );
 
 builder.Services.AddTransient<IPathFindingService, PathFindingService>();
-
 builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
+builder.Services.AddTransient<IPoiRepository, PoiRepository>();
+builder.Services.AddTransient<IPoisService, PoisService>();
 
 builder.Services.AddAuthorization();
 builder.Services

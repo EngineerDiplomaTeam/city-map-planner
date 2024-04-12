@@ -79,7 +79,6 @@ public class PathFindingController(ILogger<PathFindingController> logger) : Cont
             queue.TryDequeue(out var elem, out var prio);
             var (node, path) = elem!;
             
-            
             var neighbours = await dataDbContext.Nodes.Where(x => x.Id == node.Id).SelectMany(x => x.Edges).Select(x => x.To).ToListAsync();
             var notVisitedNeighbours = neighbours.Where(x => !visited.Contains(x.Id));
             
