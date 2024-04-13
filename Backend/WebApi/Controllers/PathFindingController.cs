@@ -67,10 +67,22 @@ public class PathFindingController(ILogger<PathFindingController> logger) : Cont
         // var n2 = await dataDbContext.Edges.Where(x => x.FromId == n1.Id).Select(x => x.To).ToListAsync();
         //
         // yield return n2.Select(x => Map(n1, x));
-        var start = await dataDbContext.Nodes.FindAsync(from);
+        var fromNode = await dataDbContext.PointOfInterests
+            .Where(x => x.Id == from)
+            .Select(x => x.Entrances.First())
+            .Select(x => x.OsmNode)
+            .FirstAsync();
         
-        var visited = new HashSet<long>([from]);
-        var queue = new PriorityQueue<PathFindingStep, double>([(new PathFindingStep(start!, [start]), 0)]);
+        var toNode = await dataDbContext.PointOfInterests
+            .Where(x => x.Id == to)
+            .Select(x => x.Entrances.First())
+            .Select(x => x.OsmNode)
+            .FirstAsync();
+        
+        // var start = await dataDbContext.Nodes.FindAsync(from);
+        
+        var visited = new HashSet<long>([fromNode.Id]);
+        var queue = new PriorityQueue<PathFindingStep, double>([(new PathFindingStep(fromNode!, [fromNode]), 0)]);
         var c = 0;
         
         while (queue.Count > 0 && c < 1_000)
@@ -92,7 +104,7 @@ public class PathFindingController(ILogger<PathFindingController> logger) : Cont
         
                 yield return concatenated.Pairwise(Map);
                 
-                if (path.Any(x => x.Id == to))
+                if (path.Any(x => x.Id == toNode.Id))
                 {
                     logger.LogCritical("Found it!");
                     yield break;

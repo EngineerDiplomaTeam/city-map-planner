@@ -133,7 +133,7 @@ export class OlMapMarkerManager {
   }
 
   public async setMarkers(markers: OlMapMarker[]): Promise<void> {
-    const features = await Array.fromAsync(
+    const features = await Promise.all(
       markers.map((x) => this.createMarkerFeature(x)),
     );
 

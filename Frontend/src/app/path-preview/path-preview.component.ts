@@ -74,7 +74,8 @@ export class PathPreviewComponent implements OnInit {
       // this.olMapLinesManager.addLine(l);
     }
 
-    console.log(last);
+    this.olMapLinesManager.setLines([]);
+
     last.forEach((x: any) => this.olMapLinesManager.addLine(x, 'red'));
   }
 }

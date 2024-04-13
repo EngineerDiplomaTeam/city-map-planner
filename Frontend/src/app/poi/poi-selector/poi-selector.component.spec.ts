@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PoiSelectorComponent } from './poi-selector.component';
 import { provideMockStore } from '@ngrx/store/testing';
-import { selectPoiMarkers } from '../poi.selectors';
+import { selectAllPois } from '../poi.selectors';
 
 describe('PoiSelectorComponent', () => {
   let component: PoiSelectorComponent;
@@ -15,7 +15,7 @@ describe('PoiSelectorComponent', () => {
         provideMockStore({
           selectors: [
             {
-              selector: selectPoiMarkers,
+              selector: selectAllPois,
               value: [],
             },
           ],

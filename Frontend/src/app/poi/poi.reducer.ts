@@ -1,5 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { poiActions } from './poi.actions';
+import { authActions } from '../auth/auth.actions';
+import { AuthState } from '../auth/auth.reducer';
 
 export type PointOfInterest = {
   id: number;
@@ -19,10 +21,12 @@ export type PointOfInterest = {
 export const POI_FEATURE_KEY = 'poi';
 export interface PoiState {
   poiInBottomSheetId?: number;
+  baskedDialogId?: string;
   pointsOfInterest: PointOfInterest[];
+  poisInBasket: PointOfInterest['id'][];
 }
 
-const initialState: PoiState = { pointsOfInterest: [] };
+const initialState: PoiState = { pointsOfInterest: [], poisInBasket: [] };
 
 export const poiReducer = createReducer(
   initialState,
@@ -38,6 +42,34 @@ export const poiReducer = createReducer(
     (state, { poiId }): PoiState => ({
       ...state,
       poiInBottomSheetId: poiId,
+    }),
+  ),
+  on(
+    poiActions.addToBasket,
+    (state, { poiId }): PoiState => ({
+      ...state,
+      poisInBasket: state.poisInBasket.concat(poiId),
+    }),
+  ),
+  on(
+    poiActions.removeFromBasket,
+    (state, { poiId }): PoiState => ({
+      ...state,
+      poisInBasket: state.poisInBasket.filter((id) => id !== poiId),
+    }),
+  ),
+  on(
+    poiActions.baskedDialogOpened,
+    (state, { id }): PoiState => ({
+      ...state,
+      baskedDialogId: id,
+    }),
+  ),
+  on(
+    poiActions.baskedDialogClosed,
+    (state): PoiState => ({
+      ...state,
+      baskedDialogId: undefined,
     }),
   ),
 );

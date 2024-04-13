@@ -23,6 +23,7 @@ import { tokenInterceptor } from './auth/token.interceptor';
 import { POI_FEATURE_KEY, poiReducer } from './poi/poi.reducer';
 import { PoiEffects } from './poi/poi.effects';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -35,6 +36,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
     MatCardModule,
     MatListModule,
     MatButtonModule,
+    MatBadgeModule,
     StoreModule.forRoot({
       [AUTH_FEATURE_KEY]: authReducer,
       [POI_FEATURE_KEY]: poiReducer,
