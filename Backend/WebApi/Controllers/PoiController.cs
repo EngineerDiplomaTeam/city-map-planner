@@ -11,7 +11,7 @@ public class PoiController(IPoisService poisService) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PoiDto>>> List()
     {
-        var pois = await poisService.GetAllPois();
+        var pois = await poisService.GetAllPoisAsync();
 
         return Ok(pois);
     }

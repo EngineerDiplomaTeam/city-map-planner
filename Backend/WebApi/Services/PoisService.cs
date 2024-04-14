@@ -5,17 +5,17 @@ namespace WebApi.Services;
 
 public interface IPoisService
 {
-    public Task<IList<PoiDto>> GetAllPois();
+    public Task<IList<PoiDto>> GetAllPoisAsync();
 }
 
 public class PoisService(IPoiRepository poiRepository) : IPoisService
 {
-    public async Task<IList<PoiDto>> GetAllPois()
+    public async Task<IList<PoiDto>> GetAllPoisAsync()
     {
         const string iconSrc = "/assets/temp/icon.avif";
         const string bannerSrc = "/assets/temp/banner.avif";
 
-        return await poiRepository.SelectAllPois(x => new PoiDto(
+        return await poiRepository.SelectAllPoisAsync(x => new PoiDto(
             x.Id,
             new PoiMapDto(
                 x.Name,

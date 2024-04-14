@@ -22,7 +22,7 @@ public class PathFindingService(
         long destinationNodeId, 
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        var startNode = await pathFindingRepository.GetNodeById(startNodeId, Mapper, cancellationToken);
+        var startNode = await pathFindingRepository.GetNodeByIdAsync(startNodeId, Mapper, cancellationToken);
         
         var visited = new HashSet<long>([startNodeId]);
         var queue = new PriorityQueue<PathFindingIteration, double>([
@@ -41,7 +41,7 @@ public class PathFindingService(
 
             var currentNode = pathFindingRoute[^1];
 
-            var neighbours = await pathFindingRepository.GetNodeNeighbours(currentNode.OsmNodeId, Mapper, cancellationToken);
+            var neighbours = await pathFindingRepository.GetNodeNeighboursAsync(currentNode.OsmNodeId, Mapper, cancellationToken);
             var notVisitedNeighbours = neighbours.Where(x => !visited.Contains(x.OsmNodeId));
             
             foreach (var neighbour in notVisitedNeighbours)
@@ -60,8 +60,8 @@ public class PathFindingService(
 
     public async IAsyncEnumerable<PathFindingIteration> FindPathBetweenPoisAsync(long startPoiId, long destinationPoiId, CancellationToken cancellationToken = default)
     {
-        var fromNode = await pathFindingRepository.GetNodeForPoi(startPoiId, Mapper, cancellationToken);
-        var toNode = await pathFindingRepository.GetNodeForPoi(destinationPoiId, Mapper, cancellationToken);
+        var fromNode = await pathFindingRepository.GetNodeForPoiAsync(startPoiId, Mapper, cancellationToken);
+        var toNode = await pathFindingRepository.GetNodeForPoiAsync(destinationPoiId, Mapper, cancellationToken);
 
         var iterations = FindPathAsync(fromNode.OsmNodeId, toNode.OsmNodeId, cancellationToken);
         await foreach (var iteration in iterations)

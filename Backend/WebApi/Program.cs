@@ -62,6 +62,8 @@ builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document 
     Title = "City map planner backend API"
 });
 
+builder.Services.AddResponseCompression();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -92,5 +94,6 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
 app.AddAdditionalIdentityEndpoints();
+app.UseResponseCompression();
 
 app.Run();
