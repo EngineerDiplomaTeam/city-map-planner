@@ -11,7 +11,16 @@ import {
   OlLine,
   OlMapLineManager,
 } from '../open-layers-map/ol-map-lines-manager.service';
-import { OL_MAP } from '../open-layers-map/ol-token';
+import { pairwise } from '../utils';
+
+interface PathFindingIteration {
+  complete: boolean;
+  route: {
+    lat: number;
+    lon: number;
+    osmNodeId: number;
+  }[];
+}
 
 @Component({
   selector: 'app-path-preview',
@@ -25,7 +34,6 @@ import { OL_MAP } from '../open-layers-map/ol-token';
 export class PathPreviewComponent implements OnInit {
   public from = input<string>();
   public to = input<string>();
-  private readonly olMap = inject(OL_MAP);
   private readonly olMapLinesManager = inject(OlMapLineManager);
 
   public ngOnInit(): void {
@@ -34,7 +42,7 @@ export class PathPreviewComponent implements OnInit {
 
   private async sample(): Promise<void> {
     const response = await fetch(
-      `/Api/PathFinding/test?from=${this.from()}&to=${this.to()}`,
+      `/Api/PathFinding/GetPathBetweenPois?startingPoiId=${this.from()}&destinationPoiId=${this.to()}`,
     );
 
     if (response.status !== 200 || !response.body) {
@@ -42,7 +50,7 @@ export class PathPreviewComponent implements OnInit {
       return;
     }
 
-    const stream: ReadableStream<OlLine[]> = response.body
+    const stream: ReadableStream<PathFindingIteration> = response.body
       .pipeThrough(
         new JSONParser({
           stringBufferSize: undefined,
@@ -54,28 +62,36 @@ export class PathPreviewComponent implements OnInit {
         new TransformStream({ transform: (x, c) => c.enqueue(x.value) }),
       );
 
-    let x = false;
+    const completeRoutes: PathFindingIteration['route'][] = [];
 
-    let last: any;
-    for await (const l of stream) {
-      if (!x) {
-        x = true;
-        const ll = this.olMapLinesManager.setLines(l);
-        this.olMap.getView().fit(ll[0].getGeometry()!.getExtent(), {
-          minResolution: 1,
-        });
+    const alreadyDrawn = new Set<number>();
+    for await (const { complete, route } of stream) {
+      if (complete) completeRoutes.push(route);
+
+      for (const [from, to] of pairwise(route)) {
+        if (alreadyDrawn.has(to.osmNodeId)) continue;
+        alreadyDrawn.add(to.osmNodeId);
+
+        const line: OlLine = {
+          from,
+          to,
+        };
+
+        this.olMapLinesManager.addLine(line);
       }
-
-      // console.log(l);
-      // this.olMapLinesManager.setLines(l);
-      // await new Promise((r) => setTimeout(r, 0));
-      l.forEach((x: any) => this.olMapLinesManager.addLine(x));
-      last = l;
-      // this.olMapLinesManager.addLine(l);
     }
 
     this.olMapLinesManager.setLines([]);
 
-    last.forEach((x: any) => this.olMapLinesManager.addLine(x, 'red'));
+    for (const completeRoute of completeRoutes) {
+      for (const [from, to] of pairwise(completeRoute)) {
+        const line: OlLine = {
+          from,
+          to,
+        };
+
+        this.olMapLinesManager.addLine(line, 'red');
+      }
+    }
   }
 }

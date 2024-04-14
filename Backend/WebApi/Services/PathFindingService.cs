@@ -1,14 +1,15 @@
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using WebApi.Data.Model;
 using WebApi.Data.Repositories;
-using WebApi.DTO;
+using WebApi.Domain;
 
 namespace WebApi.Services;
 
 public interface IPathFindingService
 {
-    IAsyncEnumerable<PathDto> GetPathAsync(long startNodeId, long destinationNodeId,
-        CancellationToken cancellationToken = default);
+    IAsyncEnumerable<PathFindingIteration> FindPathAsync(long startOsmNodeId, long destinationOsmNodeId, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<PathFindingIteration> FindPathBetweenPoisAsync(long startPoiId, long destinationPoiId, CancellationToken cancellationToken = default);
 }
 
 public class PathFindingService(
@@ -16,84 +17,72 @@ public class PathFindingService(
     ILogger<PathFindingService> logger
 ) : IPathFindingService
 {
-    public async IAsyncEnumerable<PathDto> GetPathAsync(
+    public async IAsyncEnumerable<PathFindingIteration> FindPathAsync(
         long startNodeId, 
         long destinationNodeId, 
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        var startNode = await pathFindingRepository.GetNodeByIdAsync(startNodeId, cancellationToken);
-        if (startNode is null)
-        {
-            throw new NodeNotFoundException(startNodeId);
-        }
+        var startNode = await pathFindingRepository.GetNodeById(startNodeId, Mapper, cancellationToken);
         
-        var destinationNode = await pathFindingRepository.GetNodeByIdAsync(destinationNodeId, cancellationToken);
-        if (destinationNode is null)
-        {
-            throw new NodeNotFoundException(destinationNodeId);
-        }
-    
-        logger.LogInformation("Looking for path from {StartNode} to {DestinationNode}", 
-            startNode.Id, destinationNode.Id);
-
-        Dictionary<OsmNode, double> fScore = [];
-        Dictionary<OsmNode, double> gScore = [];
-        Dictionary<OsmNode, OsmNode> cameFrom = [];
-        var openSet = new SortedSet<OsmNode>(Comparer<OsmNode>.Create((left, right) => (int)(fScore[left] - fScore[right])));
+        var visited = new HashSet<long>([startNodeId]);
+        var queue = new PriorityQueue<PathFindingIteration, double>([
+            (new PathFindingIteration(false, [startNode]), 0)
+        ]);
         
-        gScore[startNode] = 0;
-        fScore[startNode] = GetDistance(startNode, destinationNode);
-        openSet.Add(startNode);
-        
-        while (openSet.Count > 0)
+        while (queue.Count > 0 && !cancellationToken.IsCancellationRequested)
         {
-            var current = openSet.Min()!;
-            openSet.Remove(current);
-
-            if (current.Id == destinationNode.Id)
+            if (!queue.TryDequeue(out var pathFindingIteration, out var priority))
             {
-                yield break; // Reconstruct Path
+                logger.LogError("Could not deque");
+                break;
             }
 
-            var edges = await pathFindingRepository.GetEdgesAsync(current, cancellationToken);
-            foreach (var edge in edges)
+            var (_, pathFindingRoute) = pathFindingIteration;
+
+            var currentNode = pathFindingRoute[^1];
+
+            var neighbours = await pathFindingRepository.GetNodeNeighbours(currentNode.OsmNodeId, Mapper, cancellationToken);
+            var notVisitedNeighbours = neighbours.Where(x => !visited.Contains(x.OsmNodeId));
+            
+            foreach (var neighbour in notVisitedNeighbours)
             {
-                var neighbour = edge.To;
-                var tentativeGScore = gScore[current] + GetDistance(current, neighbour);
-
-                if (gScore.TryGetValue(neighbour, out var neighbourGScore) &&
-                    !(tentativeGScore < neighbourGScore)) continue;
-                cameFrom[neighbour] = current;
-                gScore[neighbour] = tentativeGScore;
-                fScore[neighbour] = gScore[neighbour] + GetDistance(neighbour, destinationNode);
-
-                if (openSet.Add(neighbour)) continue;
-                openSet.Remove(neighbour);
-                openSet.Add(neighbour);
+                var concatenated = pathFindingRoute.Append(neighbour).ToArray();
+                var iteration = new PathFindingIteration(neighbour.OsmNodeId == destinationNodeId, concatenated);
+                var d = Haversine(neighbour.Lat, currentNode.Lat, neighbour.Lon, currentNode.Lon);
+                
+                queue.Enqueue(iteration, d + priority);
+                visited.Add(neighbour.OsmNodeId);
+        
+                yield return iteration;
             }
         }
     }
 
-    private static double GetDistance(OsmNode left, OsmNode right)
+    public async IAsyncEnumerable<PathFindingIteration> FindPathBetweenPoisAsync(long startPoiId, long destinationPoiId, CancellationToken cancellationToken = default)
     {
-        const double earthRadiusKm = 6371;
+        var fromNode = await pathFindingRepository.GetNodeForPoi(startPoiId, Mapper, cancellationToken);
+        var toNode = await pathFindingRepository.GetNodeForPoi(destinationPoiId, Mapper, cancellationToken);
 
-        var dLat = ToRadians(left.Lat - right.Lat);
-        var dLon = ToRadians(left.Lon - right.Lon);
-        var leftLatInRadians = ToRadians(left.Lat);
-        var rightLatInRadians = ToRadians(right.Lat);
-
-        var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                   Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(leftLatInRadians) * Math.Cos(rightLatInRadians);
-        var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
-
-        return earthRadiusKm * c;
+        var iterations = FindPathAsync(fromNode.OsmNodeId, toNode.OsmNodeId, cancellationToken);
+        await foreach (var iteration in iterations)
+        {
+            yield return iteration;
+            if (iteration.Complete) break;
+        }
     }
-    
-    private static double ToRadians(double angleIn10ThOfADegree) {
-        // Angle in 10th of a degree converted to radians.
-        return angleIn10ThOfADegree * Math.PI / 180;
+
+    private static double Haversine(double lat1, double lat2, double lon1, double lon2)
+    {
+        const double r = 6_378_100; // meters
+            
+        var sdlat = Math.Sin((lat2 - lat1) / 2);
+        var sdlon = Math.Sin((lon2 - lon1) / 2);
+        var q = sdlat * sdlat + Math.Cos(lat1) * Math.Cos(lat2) * sdlon * sdlon;
+        var d = 2 * r * Math.Asin(Math.Sqrt(q));
+
+        return d;
     }
+
+    private static readonly Expression<Func<OsmNode, PathFindingNode>> Mapper = node => new PathFindingNode(node.Lat, node.Lon, node.Id);
 }
 
-public sealed class NodeNotFoundException(long nodeId) : Exception($"Node with id {nodeId} not found");

@@ -39,8 +39,4 @@
       <ProjectReference Include="..\OverpassClient\OverpassClient.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Domain\" />
-    </ItemGroup>
-
 </Project>

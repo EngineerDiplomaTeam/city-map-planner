@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data.Model;
 
@@ -5,49 +6,30 @@ namespace WebApi.Data.Repositories;
 
 public interface IPathFindingRepository
 {
-    Task<OsmNode?> GetNodeByIdAsync(long nodeId, CancellationToken cancellationToken = default);
-    Task<IEnumerable<OsmNode>> GetNeighbours(OsmNode node, CancellationToken cancellationToken = default);
-    Task<IEnumerable<OsmEdge>> GetEdgesAsync(OsmNode node, CancellationToken cancellationToken = default);
+    Task<T> GetNodeById<T>(long nodeId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default);
+    Task<T[]> GetNodeNeighbours<T>(long nodeId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default);
+    Task<T> GetNodeForPoi<T>(long poiId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default);
 }
 
 public class PathFindingRepository(DataDbContext dbContext) : IPathFindingRepository
 {
-    // public Task<OsmNode?> GetNodeByIdAsync(long nodeId, CancellationToken cancellationToken = default)
-    // {
-    //     return dbContext.Nodes
-    //         .SingleOrDefaultAsync(n => n.Id == nodeId, cancellationToken);
-    // }
-    //
-    // public async Task<IEnumerable<OsmNode>> GetNeighbours(OsmNode node, CancellationToken cancellationToken = default)
-    // {
-    //     return await dbContext.Nodes
-    //         .Include(n => n.Edges)
-    //         .ThenInclude(e => e.To)
-    //         .SelectMany(n => n.Edges)
-    //         .Select(e => e.To)
-    //         .ToListAsync(cancellationToken);
-    // }
-    //
-    // public async Task<IEnumerable<OsmEdge>> GetEdgesAsync(OsmNode node, CancellationToken cancellationToken = default)
-    // {
-    //     return (await dbContext.Nodes
-    //         .Include(n => n.Edges)
-    //         .ThenInclude(e => e.To)
-    //         .Where(n => n.Id == node.Id)
-    //         .SingleOrDefaultAsync(n => n.Id == node.Id, cancellationToken))?.Edges ?? [];
-    // }
-    public Task<OsmNode?> GetNodeByIdAsync(long nodeId, CancellationToken cancellationToken = default)
+    public async Task<T> GetNodeById<T>(long nodeId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.Nodes.Where(x => x.Id == nodeId).Select(mapper).FirstAsync(cancellationToken);
     }
 
-    public Task<IEnumerable<OsmNode>> GetNeighbours(OsmNode node, CancellationToken cancellationToken = default)
+    public async Task<T[]> GetNodeNeighbours<T>(long nodeId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.Nodes.Where(x => x.Id == nodeId).SelectMany(x => x.Edges).Select(x => x.To).Select(mapper).ToArrayAsync(cancellationToken);
     }
 
-    public Task<IEnumerable<OsmEdge>> GetEdgesAsync(OsmNode node, CancellationToken cancellationToken = default)
+    public async Task<T> GetNodeForPoi<T>(long poiId, Expression<Func<OsmNode, T>> mapper, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await dbContext.PointOfInterests
+            .Where(x => x.Id == poiId)
+            .Select(x => x.Entrances.First())
+            .Select(x => x.OsmNode)
+            .Select(mapper)
+            .FirstAsync(cancellationToken);
     }
 }
