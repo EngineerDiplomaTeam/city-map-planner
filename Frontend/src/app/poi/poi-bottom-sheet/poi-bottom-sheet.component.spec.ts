@@ -4,7 +4,11 @@ import { PoiBottomSheetComponent } from './poi-bottom-sheet.component';
 import { MockProviders } from 'ng-mocks';
 import { provideMockStore } from '@ngrx/store/testing';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { selectPoiOpenedInBottomSheet } from '../poi.selectors';
+import {
+  selectPoiIdsInBasket,
+  selectPoiOpenedInBottomSheet,
+  selectPoiState,
+} from '../poi.selectors';
 
 describe('PoiBottomSheetComponent', () => {
   let component: PoiBottomSheetComponent;
@@ -18,6 +22,14 @@ describe('PoiBottomSheetComponent', () => {
           selectors: [
             {
               selector: selectPoiOpenedInBottomSheet,
+              value: {},
+            },
+            {
+              selector: selectPoiIdsInBasket,
+              value: [],
+            },
+            {
+              selector: selectPoiState,
               value: {},
             },
           ],

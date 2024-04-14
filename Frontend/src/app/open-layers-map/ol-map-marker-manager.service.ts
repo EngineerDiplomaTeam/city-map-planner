@@ -38,7 +38,7 @@ export class OlMapMarkerManager {
   constructor() {
     this.olMap.addLayer(this.vectorLayer);
 
-    this.olMap.on('singleclick', (evt) => {
+    this.olMap.on('click', (evt) => {
       const [feature] = this.olMap.getFeaturesAtPixel(evt.pixel);
       if (!feature) return;
 
@@ -66,6 +66,7 @@ export class OlMapMarkerManager {
     const blob = await response.blob();
     const bitmap = await createImageBitmap(blob);
     const canvas = new OffscreenCanvas(512, 512);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const context = canvas.getContext('2d')!;
 
     context.drawImage(bitmap, 0, 0, 512, 512);
@@ -133,7 +134,7 @@ export class OlMapMarkerManager {
   }
 
   public async setMarkers(markers: OlMapMarker[]): Promise<void> {
-    const features = await Array.fromAsync(
+    const features = await Promise.all(
       markers.map((x) => this.createMarkerFeature(x)),
     );
 

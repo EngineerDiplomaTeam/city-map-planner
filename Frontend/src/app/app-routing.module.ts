@@ -10,6 +10,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'preview/:from/:to',
+    loadComponent: () =>
+      import('./path-preview/path-preview.component').then(
+        (m) => m.PathPreviewComponent,
+      ),
+  },
+  {
     path: 'weather',
     loadChildren: () =>
       import('./weather/weather.module').then((m) => m.WeatherModule),
@@ -17,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

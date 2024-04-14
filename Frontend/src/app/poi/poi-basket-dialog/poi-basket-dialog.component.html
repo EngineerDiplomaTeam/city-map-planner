@@ -1,0 +1,20 @@
+<mat-list>
+  @for (poi of poisInBasket(); track poi.id) {
+    @if (!$first) {
+      <a mat-dialog-close mat-icon-button routerLink="/preview/{{ poisInBasket()[$index - 1].id }}/{{ poi.id }}">
+        <mat-icon>route</mat-icon>
+      </a>
+    }
+
+    <mat-list-item lines="3">
+      <img matListItemAvatar [src]="poi.map.iconSrc" alt="">
+      <span matListItemTitle>{{ poi.details.title }}</span>
+      <button mat-icon-button matListItemMeta (click)="this.store.dispatch(poiActions.removeFromBasket({
+        poiId: poi.id
+      }))">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+      {{ poi.details.description }}
+    </mat-list-item>
+  }
+</mat-list>

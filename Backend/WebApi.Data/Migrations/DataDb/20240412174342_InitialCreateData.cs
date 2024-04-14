@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -28,6 +29,21 @@ namespace WebApi.Data.Migrations.DataDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "point_of_interests",
+                schema: "data",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_point_of_interests", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tags",
                 schema: "data",
                 columns: table => new
@@ -50,6 +66,29 @@ namespace WebApi.Data.Migrations.DataDb
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_ways", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "entrances",
+                schema: "data",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    osm_node_id = table.Column<long>(type: "bigint", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_entrances", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_entrances_nodes_osm_node_id",
+                        column: x => x.osm_node_id,
+                        principalSchema: "data",
+                        principalTable: "nodes",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,6 +154,33 @@ namespace WebApi.Data.Migrations.DataDb
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "entrance_point_of_interest",
+                schema: "data",
+                columns: table => new
+                {
+                    entrances_id = table.Column<long>(type: "bigint", nullable: false),
+                    point_of_interests_id = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_entrance_point_of_interest", x => new { x.entrances_id, x.point_of_interests_id });
+                    table.ForeignKey(
+                        name: "fk_entrance_point_of_interest_entrances_entrances_id",
+                        column: x => x.entrances_id,
+                        principalSchema: "data",
+                        principalTable: "entrances",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "fk_entrance_point_of_interest_point_of_interests_point_of_inte",
+                        column: x => x.point_of_interests_id,
+                        principalSchema: "data",
+                        principalTable: "point_of_interests",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "ix_edges_to_id",
                 schema: "data",
@@ -126,6 +192,18 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 table: "edges",
                 column: "way_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_entrance_point_of_interest_point_of_interests_id",
+                schema: "data",
+                table: "entrance_point_of_interest",
+                column: "point_of_interests_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_entrances_osm_node_id",
+                schema: "data",
+                table: "entrances",
+                column: "osm_node_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_osm_tag_osm_way_tags_name_tags_value",
@@ -142,11 +220,19 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data");
 
             migrationBuilder.DropTable(
+                name: "entrance_point_of_interest",
+                schema: "data");
+
+            migrationBuilder.DropTable(
                 name: "osm_tag_osm_way",
                 schema: "data");
 
             migrationBuilder.DropTable(
-                name: "nodes",
+                name: "entrances",
+                schema: "data");
+
+            migrationBuilder.DropTable(
+                name: "point_of_interests",
                 schema: "data");
 
             migrationBuilder.DropTable(
@@ -155,6 +241,10 @@ namespace WebApi.Data.Migrations.DataDb
 
             migrationBuilder.DropTable(
                 name: "ways",
+                schema: "data");
+
+            migrationBuilder.DropTable(
+                name: "nodes",
                 schema: "data");
         }
     }

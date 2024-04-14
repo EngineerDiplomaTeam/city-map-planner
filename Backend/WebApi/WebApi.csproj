@@ -15,17 +15,17 @@
         <PackageReference Include="Bogus" Version="35.5.0" />
         <PackageReference Include="DotNetBungieAPI.AspNet.Security.OAuth.Providers" Version="1.0.2" />
         <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="morelinq" Version="4.1.0" />
+        <PackageReference Include="morelinq" Version="4.2.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
-        <PackageReference Include="NSwag.AspNetCore" Version="14.0.3" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
         <PackageReference Include="NSwag.Examples" Version="1.0.12" />
-        <PackageReference Include="SendGrid" Version="9.29.2" />
+        <PackageReference Include="SendGrid" Version="9.29.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
     </ItemGroup>

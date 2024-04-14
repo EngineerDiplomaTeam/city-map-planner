@@ -1,3 +1,12 @@
 <img [src]="selectedPoi()?.details?.bannerSrc" alt="">
+<button class="add-remove" mat-fab color="primary" (click)="toggleInBasket()">
+  <mat-icon>
+    @if (isInBasket()) {
+      remove_shopping_cart
+    } @else {
+      add_shopping_cart
+    }
+  </mat-icon>
+</button>
 <h2>{{ selectedPoi()?.details?.title }}</h2>
 <p>{{ selectedPoi()?.details?.description }}</p>

@@ -23,18 +23,18 @@ $dark-theme: mat.define-dark-theme((
     accent: $accent,
     warn: $warn,
   ),
-  typography: mat.define-typography-config(),
-  density: 0,
 ));
 
 $light-theme: mat.define-light-theme((
   color: (
     primary: $primary,
     accent: $accent,
+    warn: $warn,
   ),
 ));
 
 // Apply the light theme by default
+//@include mat.all-component-themes($light-theme);
 @include mat.core-theme($light-theme);
 @include mat.toolbar-theme($light-theme);
 @include mat.icon-theme($light-theme);
@@ -46,8 +46,9 @@ $light-theme: mat.define-light-theme((
 @include mat.form-field-theme($light-theme);
 @include mat.progress-bar-theme($light-theme);
 @include mat.snack-bar-theme($light-theme);
-@include mat.list-theme($light-theme);
 @include mat.bottom-sheet-theme($light-theme);
+@include mat.fab-theme($light-theme);
+@include mat.badge-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
@@ -64,11 +65,19 @@ $light-theme: mat.define-light-theme((
   @include mat.form-field-color($dark-theme);
   @include mat.progress-bar-color($dark-theme);
   @include mat.snack-bar-color($dark-theme);
-  @include mat.list-color($dark-theme);
   @include mat.bottom-sheet-color($dark-theme);
+  @include mat.fab-color($dark-theme);
+  @include mat.badge-color($dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
+:root {
+  // Why Angular why? FIXME: Remove these variables, yet without breaking app
+  --mat-badge-text-font: Roboto, sans-serif;
+  --mat-badge-text-size: 0.688rem;
+  --mat-badge-small-size-text-size: 0.688rem;
+  --mat-badge-text-weight: 500;
+}
 
 html, body {
   height: 100%;

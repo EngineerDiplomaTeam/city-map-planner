@@ -7,7 +7,7 @@ import {
 import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { Store } from '@ngrx/store';
 import { poiActions } from '../poi.actions';
-import { selectPoiMarkers } from '../poi.selectors';
+import { selectOlMarkers } from '../poi.selectors';
 import { OlMapMarkerManager } from '../../open-layers-map/ol-map-marker-manager.service';
 
 @Component({
@@ -20,12 +20,12 @@ import { OlMapMarkerManager } from '../../open-layers-map/ol-map-marker-manager.
 })
 export class PoiSelectorComponent {
   private readonly store = inject(Store);
-  private readonly poiMarkers = this.store.selectSignal(selectPoiMarkers);
+  private readonly olMarkers = this.store.selectSignal(selectOlMarkers);
   private readonly olMapMarkerManager = inject(OlMapMarkerManager);
 
   constructor() {
     this.store.dispatch(poiActions.loadPois());
 
-    effect(() => void this.olMapMarkerManager.setMarkers(this.poiMarkers()));
+    effect(() => void this.olMapMarkerManager.setMarkers(this.olMarkers()));
   }
 }

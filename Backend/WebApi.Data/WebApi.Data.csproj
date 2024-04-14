@@ -13,9 +13,9 @@
     <ItemGroup>
       <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
       <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
-      <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="8.102.1.1" />
+      <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="8.102.2.1" />
     </ItemGroup>
 
 </Project>

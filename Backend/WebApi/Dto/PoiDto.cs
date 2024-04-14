@@ -14,7 +14,7 @@ public record PoiDetailsDto(
 );
 
 public record PoiDto(
-    int Id,
+    long Id,
     PoiMapDto Map,
     PoiDetailsDto Details
 );

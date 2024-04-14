@@ -32,9 +32,10 @@ builder.Services.AddDbContext<DataDbContext>(
 );
 
 builder.Services.AddTransient<IPathFindingService, PathFindingService>();
-
 builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
+builder.Services.AddTransient<IPoiRepository, PoiRepository>();
+builder.Services.AddTransient<IPoisService, PoisService>();
 
 builder.Services.AddAuthorization();
 builder.Services
@@ -60,6 +61,8 @@ builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document 
 {
     Title = "City map planner backend API"
 });
+
+builder.Services.AddResponseCompression();
 
 var app = builder.Build();
 
@@ -91,5 +94,6 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
 app.AddAdditionalIdentityEndpoints();
+app.UseResponseCompression();
 
 app.Run();

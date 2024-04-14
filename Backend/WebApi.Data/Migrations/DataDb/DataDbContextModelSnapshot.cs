@@ -22,6 +22,25 @@ namespace WebApi.Data.Migrations.DataDb
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("EntrancePointOfInterest", b =>
+                {
+                    b.Property<long>("EntrancesId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("entrances_id");
+
+                    b.Property<long>("PointOfInterestsId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("point_of_interests_id");
+
+                    b.HasKey("EntrancesId", "PointOfInterestsId")
+                        .HasName("pk_entrance_point_of_interest");
+
+                    b.HasIndex("PointOfInterestsId")
+                        .HasDatabaseName("ix_entrance_point_of_interest_point_of_interests_id");
+
+                    b.ToTable("entrance_point_of_interest", "data");
+                });
+
             modelBuilder.Entity("OsmTagOsmWay", b =>
                 {
                     b.Property<long>("WaysId")
@@ -43,6 +62,38 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasDatabaseName("ix_osm_tag_osm_way_tags_name_tags_value");
 
                     b.ToTable("osm_tag_osm_way", "data");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Model.Entrance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.Property<long>("OsmNodeId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("osm_node_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_entrances");
+
+                    b.HasIndex("OsmNodeId")
+                        .HasDatabaseName("ix_entrances_osm_node_id");
+
+                    b.ToTable("entrances", "data");
                 });
 
             modelBuilder.Entity("WebApi.Data.Model.OsmEdge", b =>
@@ -119,6 +170,48 @@ namespace WebApi.Data.Migrations.DataDb
                     b.ToTable("ways", "data");
                 });
 
+            modelBuilder.Entity("WebApi.Data.Model.PointOfInterest", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_point_of_interests");
+
+                    b.ToTable("point_of_interests", "data");
+                });
+
+            modelBuilder.Entity("EntrancePointOfInterest", b =>
+                {
+                    b.HasOne("WebApi.Data.Model.Entrance", null)
+                        .WithMany()
+                        .HasForeignKey("EntrancesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_entrance_point_of_interest_entrances_entrances_id");
+
+                    b.HasOne("WebApi.Data.Model.PointOfInterest", null)
+                        .WithMany()
+                        .HasForeignKey("PointOfInterestsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_entrance_point_of_interest_point_of_interests_point_of_inte");
+                });
+
             modelBuilder.Entity("OsmTagOsmWay", b =>
                 {
                     b.HasOne("WebApi.Data.Model.OsmWay", null)
@@ -136,10 +229,22 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasConstraintName("fk_osm_tag_osm_way_tags_tags_name_tags_value");
                 });
 
+            modelBuilder.Entity("WebApi.Data.Model.Entrance", b =>
+                {
+                    b.HasOne("WebApi.Data.Model.OsmNode", "OsmNode")
+                        .WithMany("Entrances")
+                        .HasForeignKey("OsmNodeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_entrances_nodes_osm_node_id");
+
+                    b.Navigation("OsmNode");
+                });
+
             modelBuilder.Entity("WebApi.Data.Model.OsmEdge", b =>
                 {
                     b.HasOne("WebApi.Data.Model.OsmNode", "From")
-                        .WithMany()
+                        .WithMany("Edges")
                         .HasForeignKey("FromId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
@@ -153,7 +258,7 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasConstraintName("fk_edges_nodes_to_id");
 
                     b.HasOne("WebApi.Data.Model.OsmWay", "Way")
-                        .WithMany()
+                        .WithMany("Edges")
                         .HasForeignKey("WayId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
@@ -164,6 +269,18 @@ namespace WebApi.Data.Migrations.DataDb
                     b.Navigation("To");
 
                     b.Navigation("Way");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Model.OsmNode", b =>
+                {
+                    b.Navigation("Edges");
+
+                    b.Navigation("Entrances");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Model.OsmWay", b =>
+                {
+                    b.Navigation("Edges");
                 });
 #pragma warning restore 612, 618
         }
