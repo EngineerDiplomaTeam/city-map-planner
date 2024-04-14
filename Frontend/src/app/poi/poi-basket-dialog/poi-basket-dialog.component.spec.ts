@@ -8,10 +8,9 @@ describe('PoiBasketDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoiBasketDialogComponent]
-    })
-    .compileComponents();
-    
+      imports: [PoiBasketDialogComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PoiBasketDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

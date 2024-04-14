@@ -1,7 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
 import { poiActions } from './poi.actions';
-import { authActions } from '../auth/auth.actions';
-import { AuthState } from '../auth/auth.reducer';
 
 export type PointOfInterest = {
   id: number;

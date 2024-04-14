@@ -66,6 +66,7 @@ export class OlMapMarkerManager {
     const blob = await response.blob();
     const bitmap = await createImageBitmap(blob);
     const canvas = new OffscreenCanvas(512, 512);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const context = canvas.getContext('2d')!;
 
     context.drawImage(bitmap, 0, 0, 512, 512);

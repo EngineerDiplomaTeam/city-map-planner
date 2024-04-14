@@ -1,32 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PoiService } from './poi.service';
 import { poiActions } from './poi.actions';
-import {
-  exhaustMap,
-  map,
-  mergeMap,
-  of,
-  switchMap,
-  switchMapTo,
-  withLatestFrom,
-} from 'rxjs';
+import { exhaustMap, map, switchMap } from 'rxjs';
 import {
   BottomSheetData,
   PoiBottomSheetComponent,
 } from './poi-bottom-sheet/poi-bottom-sheet.component';
-import { authActions } from '../auth/auth.actions';
-import { AuthDialogComponent } from '../auth/auth-dialog/auth-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
-import {
-  selectBaskedDialogId,
-  selectPoiIdsInBasket,
-  selectPoiInBasketCount,
-} from './poi.selectors';
-import { noopAction } from '../noop-action';
+import { selectBaskedDialogId } from './poi.selectors';
 
 @Injectable()
 export class PoiEffects {
@@ -67,40 +52,32 @@ export class PoiEffects {
   public readonly openBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.openBasked),
-      exhaustMap(
-        async () =>
-          this.dialog.open(PoiBasketDialogComponent, {
-            // width: '90svw',
-            // height: '70svh',
-            // disableClose: true,
-          }).id,
-      ),
+      exhaustMap(async () => this.dialog.open(PoiBasketDialogComponent, {}).id),
       map((id) => poiActions.baskedDialogOpened({ id })),
     );
   });
 
-  public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
+  public readonly closeBasket$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(poiActions.removeFromBasket),
-      switchMap(() => this.store.select(selectPoiInBasketCount)),
-      map((poisCount) => {
-        if (poisCount <= 0) {
-          return poiActions.closeBasked();
-        }
-
-        return noopAction();
-      }),
+      ofType(poiActions.closeBasked),
+      switchMap(() => this.store.select(selectBaskedDialogId)),
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      map((id) => this.dialog.getDialogById(id!)?.close()),
+      map(() => poiActions.baskedDialogClosed()),
     );
   });
 
-  // public readonly closeBasket$ = createEffect(
-  //   () => {
-  //     return this.actions$.pipe(
-  //       ofType(poiActions.closeBasked),
-  //       switchMap(() => this.store.select(selectBaskedDialogId)),
-  //       map((id) => this.dialog.getDialogById(id!)?.close()),
-  //     );
-  //   },
-  //   { dispatch: false },
-  // );
+  // public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(poiActions.removeFromBasket),
+  //     switchMap(() => this.store.select(selectPoiInBasketCount)),
+  //     map((poisCount) => {
+  //       if (poisCount <= 0) {
+  //         return poiActions.closeBasked();
+  //       }
+  //
+  //       return noopAction();
+  //     }),
+  //   );
+  // });
 }
