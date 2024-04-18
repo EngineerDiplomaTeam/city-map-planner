@@ -56,6 +56,7 @@ builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("Se
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
 builder.Services.AddHostedService<OsmUpdater>();
+builder.Services.AddHostedService<WeatherUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
 builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
 {

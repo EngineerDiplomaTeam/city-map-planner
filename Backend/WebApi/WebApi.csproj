@@ -38,5 +38,8 @@
     <ItemGroup>
       <ProjectReference Include="..\OverpassClient\OverpassClient.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
+    </ItemGroup>
 
 </Project>
