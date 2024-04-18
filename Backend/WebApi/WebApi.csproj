@@ -34,12 +34,11 @@
     <ItemGroup>
       <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\OverpassClient\OverpassClient.csproj" />
-    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\OverpassClient\OverpassClient.csproj" />
     </ItemGroup>
 
 </Project>
