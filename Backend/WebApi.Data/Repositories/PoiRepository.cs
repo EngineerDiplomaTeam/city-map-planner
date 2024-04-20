@@ -16,7 +16,7 @@ public class PoiRepository(DataDbContext dbContext) : IPoiRepository
 {
     public IAsyncEnumerable<T> SelectAllPoisAsync<T>(Expression<Func<PoiEntity, T>> mapper)
     {
-        return dbContext.PointOfInterests.Select(mapper).AsAsyncEnumerable();
+        return dbContext.PointOfInterests.AsSplitQuery().Select(mapper).AsAsyncEnumerable();
     }
 
     public async Task<PoiEntity> UpsertPoiAsync(PoiEntity poiEntity, CancellationToken cancellationToken = default)
