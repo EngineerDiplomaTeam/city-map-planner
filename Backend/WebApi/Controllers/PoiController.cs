@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
@@ -9,7 +10,7 @@ using WebApi.Services;
 
 namespace WebApi.Controllers;
 
-[ApiController]
+[ApiController, Authorize(Roles = "Administrator")]
 [Route("[controller]")]
 public class PoiController(IPoisManagerService poisManagerService) : ControllerBase
 {
