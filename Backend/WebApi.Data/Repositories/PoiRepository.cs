@@ -44,7 +44,7 @@ public class PoiRepository(DataDbContext dbContext) : IPoiRepository
     
     public async Task DeletePoiAsync(long id, CancellationToken cancellationToken = default)
     {
-        await dbContext.PointOfInterests.DeleteByKeyAsync(cancellationToken, id);
+        await dbContext.PointOfInterests.Where(x => x.Id == id).ExecuteDeleteAsync(cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

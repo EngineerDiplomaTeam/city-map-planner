@@ -10,7 +10,7 @@ using WebApi.Services;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("[controller]")]
 public class PoiController(IPoisManagerService poisManagerService) : ControllerBase
 {
     [HttpGet]
@@ -50,5 +50,13 @@ public class PoiController(IPoisManagerService poisManagerService) : ControllerB
         var entity = await poisManagerService.UpsertPoiAsync(domain, cancellationToken);
         
         return Ok(entity);
+    }
+
+    [HttpDelete]
+    [Route("{id:int}")]
+    public async Task<ActionResult> Delete([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        await poisManagerService.DeletePoiAsync(id, cancellationToken);
+        return Ok();
     }
 }
