@@ -7,6 +7,7 @@ using WebApi.Data;
 using WebApi.Data.Repositories;
 using WebApi.Services;
 using WebApi.Extensions;
+using WebApi.Services.PoiUpdaters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,17 @@ builder.Services.AddTransient<IPathFindingService, PathFindingService>();
 builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 builder.Services.AddTransient<IPoiRepository, PoiRepository>();
-builder.Services.AddTransient<IPoisService, PoisService>();
+builder.Services.AddTransient<IPoisManagerService, PoisManagerService>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
+builder.Services.AddHttpClient<IPoiUpdater, WwiiMuseumPoiUpdater>();
+builder.Services.AddHostedService<OsmUpdater>();
+builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
+
+builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
+{
+    Title = "City map planner backend API"
+});
 
 builder.Services.AddAuthorization();
 builder.Services
@@ -53,14 +64,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
-builder.Services.AddTransient<IEmailSender, EmailSender>();
-builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
-builder.Services.AddHostedService<OsmUpdater>();
-builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
-builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
-{
-    Title = "City map planner backend API"
-});
 
 builder.Services.AddResponseCompression();
 

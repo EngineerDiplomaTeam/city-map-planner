@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using WebApi.Data.Model;
+using WebApi.Data.Entities;
 using WebApi.Data.Repositories;
 using WebApi.Domain;
 
@@ -83,6 +83,6 @@ public class PathFindingService(
         return d;
     }
 
-    private static readonly Expression<Func<OsmNode, PathFindingNode>> Mapper = node => new PathFindingNode(node.Lat, node.Lon, node.Id);
+    private static readonly Expression<Func<OsmNodeEntity, PathFindingNode>> Mapper = node => new PathFindingNode(node.Lat, node.Lon, node.Id);
 }
 
