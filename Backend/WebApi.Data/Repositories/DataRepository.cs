@@ -77,6 +77,9 @@ public class DataRepository(DataDbContext dbContext, ILogger<DataRepository> log
         var transaction = await dbContext.Database.BeginTransactionAsync(cancellationToken);
         try
         {
+            logger.LogInformation("Backing up poi entrances");
+            var entrances = await dbContext.Entrances.ToListAsync(cancellationToken);
+
             logger.LogInformation("Truncating edges");
             await dbContext.Edges.ExecuteDeleteAsync(cancellationToken: cancellationToken);
             logger.LogInformation("Truncating nodes");
@@ -94,6 +97,10 @@ public class DataRepository(DataDbContext dbContext, ILogger<DataRepository> log
             await InsertIgnoreOsmNodesHugeAsync(osmNodes, cancellationToken);
             logger.LogInformation("Inserting edges");
             await InsertIgnoreOsmEdgesHugeAsync(osmEdges, cancellationToken);
+            
+            logger.LogInformation("Restoring poi entrances");
+            await dbContext.Entrances.UpsertRange(entrances).NoUpdate().RunAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
             
             logger.LogInformation("Commiting changes");
             await transaction.CommitAsync(cancellationToken);

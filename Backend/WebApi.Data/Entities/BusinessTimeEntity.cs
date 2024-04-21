@@ -11,7 +11,7 @@ public enum OpeningTimeType
 }
 
 [PrimaryKey(nameof(From), nameof(To), nameof(PoiId))]
-public class OpeningTimeEntity
+public class BusinessTimeEntity
 {
     public DateTime From { get; set; }
     public DateTime To { get; set; }

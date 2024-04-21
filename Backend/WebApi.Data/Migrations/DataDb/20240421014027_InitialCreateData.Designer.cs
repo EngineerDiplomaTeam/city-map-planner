@@ -12,7 +12,7 @@ using WebApi.Data;
 namespace WebApi.Data.Migrations.DataDb
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20240420224130_InitialCreateData")]
+    [Migration("20240421014027_InitialCreateData")]
     partial class InitialCreateData
     {
         /// <inheritdoc />
@@ -47,6 +47,33 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasDatabaseName("ix_osm_tag_entity_osm_way_entity_tags_name_tags_value");
 
                     b.ToTable("osm_tag_entity_osm_way_entity", "data");
+                });
+
+            modelBuilder.Entity("WebApi.Data.Entities.BusinessTimeEntity", b =>
+                {
+                    b.Property<DateTime>("From")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("from");
+
+                    b.Property<DateTime>("To")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("to");
+
+                    b.Property<long>("PoiId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("poi_id");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
+                        .HasColumnName("type");
+
+                    b.HasKey("From", "To", "PoiId")
+                        .HasName("pk_opening_times");
+
+                    b.HasIndex("PoiId")
+                        .HasDatabaseName("ix_opening_times_poi_id");
+
+                    b.ToTable("opening_times", "data");
                 });
 
             modelBuilder.Entity("WebApi.Data.Entities.EntranceEntity", b =>
@@ -112,33 +139,6 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasDatabaseName("ix_poi_images_poi_id");
 
                     b.ToTable("poi_images", "data");
-                });
-
-            modelBuilder.Entity("WebApi.Data.Entities.OpeningTimeEntity", b =>
-                {
-                    b.Property<DateTime>("From")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("from");
-
-                    b.Property<DateTime>("To")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("to");
-
-                    b.Property<long>("PoiId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("poi_id");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("integer")
-                        .HasColumnName("type");
-
-                    b.HasKey("From", "To", "PoiId")
-                        .HasName("pk_opening_times");
-
-                    b.HasIndex("PoiId")
-                        .HasDatabaseName("ix_opening_times_poi_id");
-
-                    b.ToTable("opening_times", "data");
                 });
 
             modelBuilder.Entity("WebApi.Data.Entities.OsmEdgeEntity", b =>
@@ -224,10 +224,46 @@ namespace WebApi.Data.Migrations.DataDb
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTime?>("BusinessHoursPageModified")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("business_hours_page_modified");
+
+                    b.Property<string>("BusinessHoursPageSnapshot")
+                        .HasColumnType("text")
+                        .HasColumnName("business_hours_page_snapshot");
+
+                    b.Property<string>("BusinessHoursPageUrl")
+                        .HasColumnType("text")
+                        .HasColumnName("business_hours_page_url");
+
+                    b.Property<string>("BusinessHoursPageXPath")
+                        .HasColumnType("text")
+                        .HasColumnName("business_hours_page_x_path");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
+
+                    b.Property<DateTime?>("HolidaysPageModified")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("holidays_page_modified");
+
+                    b.Property<string>("HolidaysPageSnapshot")
+                        .HasColumnType("text")
+                        .HasColumnName("holidays_page_snapshot");
+
+                    b.Property<string>("HolidaysPageUrl")
+                        .HasColumnType("text")
+                        .HasColumnName("holidays_page_url");
+
+                    b.Property<string>("HolidaysPageXPath")
+                        .HasColumnType("text")
+                        .HasColumnName("holidays_page_x_path");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("modified");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -266,6 +302,18 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasConstraintName("fk_osm_tag_entity_osm_way_entity_tags_tags_name_tags_value");
                 });
 
+            modelBuilder.Entity("WebApi.Data.Entities.BusinessTimeEntity", b =>
+                {
+                    b.HasOne("WebApi.Data.Entities.PoiEntity", "Poi")
+                        .WithMany("BusinessTimes")
+                        .HasForeignKey("PoiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_opening_times_point_of_interests_poi_id");
+
+                    b.Navigation("Poi");
+                });
+
             modelBuilder.Entity("WebApi.Data.Entities.EntranceEntity", b =>
                 {
                     b.HasOne("WebApi.Data.Entities.OsmNodeEntity", "OsmNode")
@@ -295,18 +343,6 @@ namespace WebApi.Data.Migrations.DataDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_poi_images_point_of_interests_poi_id");
-
-                    b.Navigation("Poi");
-                });
-
-            modelBuilder.Entity("WebApi.Data.Entities.OpeningTimeEntity", b =>
-                {
-                    b.HasOne("WebApi.Data.Entities.PoiEntity", "Poi")
-                        .WithMany("OpeningTimes")
-                        .HasForeignKey("PoiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_opening_times_point_of_interests_poi_id");
 
                     b.Navigation("Poi");
                 });
@@ -355,11 +391,11 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("WebApi.Data.Entities.PoiEntity", b =>
                 {
+                    b.Navigation("BusinessTimes");
+
                     b.Navigation("Entrances");
 
                     b.Navigation("Images");
-
-                    b.Navigation("OpeningTimes");
                 });
 #pragma warning restore 612, 618
         }

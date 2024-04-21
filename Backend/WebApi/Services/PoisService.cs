@@ -7,24 +7,33 @@ namespace WebApi.Services;
 
 public interface IPoisManagerService
 {
-    public IAsyncEnumerable<Poi> GetAllPoisAsync();
+    public IAsyncEnumerable<Poi> GetAllPoisAsyncWithoutPageSnapshots();
     public Task<Poi> UpsertPoiAsync(Poi poi, CancellationToken cancellationToken = default);
     public Task DeletePoiAsync(long id, CancellationToken cancellationToken = default);
 }
 
 public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerService
 {
-    public IAsyncEnumerable<Poi> GetAllPoisAsync()
+    public IAsyncEnumerable<Poi> GetAllPoisAsyncWithoutPageSnapshots()
     {
         return poiRepository.SelectAllPoisAsync(x => new Poi(
             x.Id,
             x.Name,
             x.Description,
+            x.Modified,
+            x.BusinessHoursPageUrl,
+            x.BusinessHoursPageXPath,
+            null,
+            x.BusinessHoursPageModified,
+            x.HolidaysPageUrl,
+            x.HolidaysPageXPath,
+            null,
+            x.HolidaysPageModified,
             x.Entrances.Select(e => new PoiEntrance(e.OsmNodeId, e.Name, e.Description)).ToList(),
             x.Images.Select(i => new PoiImage(i.FullSrc, i.IconSrc, i.Attribution)).ToList(),
             x.PreferredWmoCodes.ToList(),
             x.PreferredSightseeingTime,
-            x.OpeningTimes.Select(o => new PoiOpeningTime(
+            x.BusinessTimes.Select(o => new PoiBusinessTime(
                 o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
         ));
     }
@@ -45,7 +54,7 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             OsmNodeId = x.OsmNodeId,
         });
 
-        var openingTimeEntities = poi.OpeningTimes.Select(x => new OpeningTimeEntity
+        var openingTimeEntities = poi.BusinessTimes.Select(x => new BusinessTimeEntity
         {
             From = x.From,
             To = x.To,
@@ -56,11 +65,16 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
         {
             Id = poi.Id,
             Description = poi.Description,
+            Modified = poi.Modified,
+            BusinessHoursPageUrl = poi.BusinessHoursPageUrl,
+            BusinessHoursPageXPath = poi.BusinessHoursPageXPath,
+            HolidaysPageUrl = poi.HolidaysPageUrl,
+            HolidaysPageXPath = poi.HolidaysPageXPath,
             Name = poi.Name,
             Entrances = entranceEntities.ToList(),
             PreferredSightseeingTime = poi.PreferredSightseeingTime,
             PreferredWmoCodes = poi.PreferredWmoCodes.ToArray(),
-            OpeningTimes = openingTimeEntities.ToList(),
+            BusinessTimes = openingTimeEntities.ToList(),
             Images = imageEntities.ToList(),
         };
         
@@ -70,11 +84,20 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             x.Id,
             x.Name,
             x.Description,
+            x.Modified,
+            x.BusinessHoursPageUrl,
+            x.BusinessHoursPageXPath,
+            null,
+            x.BusinessHoursPageModified,
+            x.HolidaysPageUrl,
+            x.HolidaysPageXPath,
+            null,
+            x.HolidaysPageModified,
             x.Entrances.Select(e => new PoiEntrance(e.OsmNodeId, e.Name, e.Description)).ToList(),
             x.Images.Select(i => new PoiImage(i.FullSrc, i.IconSrc, i.Attribution)).ToList(),
             x.PreferredWmoCodes.ToList(),
             x.PreferredSightseeingTime,
-            x.OpeningTimes.Select(o => new PoiOpeningTime(o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
+            x.BusinessTimes.Select(o => new PoiBusinessTime(o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
         );
     }
 

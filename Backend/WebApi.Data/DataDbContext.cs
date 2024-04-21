@@ -11,7 +11,7 @@ public class DataDbContext(DbContextOptions<DataDbContext> options) : DbContext(
     public DbSet<OsmEdgeEntity> Edges { get; private set; } = null!;
     public DbSet<EntranceEntity> Entrances { get; private set; } = null!;
     public DbSet<ImageEntity> PoiImages { get; private set; } = null!;
-    public DbSet<OpeningTimeEntity> OpeningTimes { get; private set; } = null!;
+    public DbSet<BusinessTimeEntity> OpeningTimes { get; private set; } = null!;
     public DbSet<PoiEntity> PointOfInterests { get; private set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

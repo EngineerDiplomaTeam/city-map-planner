@@ -18,7 +18,7 @@ public record PoiEntrance(
     string Description
 );
 
-public record PoiOpeningTime(
+public record PoiBusinessTime(
     DateTime From,
     DateTime To,
     PoiOpeningTimeType Type
@@ -28,9 +28,18 @@ public record Poi(
     long Id,
     string Name,
     string Description,
+    DateTime Modified,
+    string? BusinessHoursPageUrl,
+    string? BusinessHoursPageXPath,
+    string? BusinessHoursPageSnapshot,
+    DateTime? BusinessHoursPageModified,
+    string? HolidaysPageUrl,
+    string? HolidaysPageXPath,
+    string? HolidaysPageSnapshot,
+    DateTime? HolidaysPageModified,
     ICollection<PoiEntrance> Entrances,
     ICollection<PoiImage> Images,
     ICollection<int> PreferredWmoCodes,
     TimeSpan PreferredSightseeingTime,
-    ICollection<PoiOpeningTime> OpeningTimes
+    ICollection<PoiBusinessTime> BusinessTimes
 );
