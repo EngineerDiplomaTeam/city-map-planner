@@ -1,0 +1,197 @@
+<h2 mat-dialog-title>Manage poi</h2>
+<mat-dialog-content>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="poi.name" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="poi.description" required></textarea>
+  </mat-form-field>
+
+  <h4>Changes tracking</h4>
+
+  <section class="grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Business hours page url</mat-label>
+      <input matInput [(ngModel)]="poi.businessHoursPageUrl">
+      <mat-icon matSuffix>web</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Holidays page url</mat-label>
+      <input matInput [(ngModel)]="poi.holidaysPageUrl">
+      <mat-icon matSuffix>web</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Business hours page XPath</mat-label>
+      <input matInput [(ngModel)]="poi.businessHoursPageXPath" placeholder='//*[@id="main"]/article'>
+      <mat-icon matSuffix>code</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Holidays page XPath</mat-label>
+      <input matInput [(ngModel)]="poi.holidaysPageXPath" placeholder='//*[@id="main"]/article'>
+      <mat-icon matSuffix>code</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preferred WMO codes</mat-label>
+      <mat-select [(ngModel)]="poi.preferredWmoCodes" multiple>
+        @for (wmoCode of WMO_CODES; track wmoCode.code) {
+          <mat-option [value]="wmoCode.code">{{ wmoCode.text }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preferred sightseeing time</mat-label>
+      <input matInput [(ngModel)]="poi.preferredSightseeingTime" placeholder="HH:MM:SS" required>
+      <mat-icon matSuffix>schedule</mat-icon>
+    </mat-form-field>
+  </section>
+
+  <h4>Entrances</h4>
+  <section class="entrances">
+    @for (entrance of poi.entrances; track entrance.osmNodeId) {
+
+      <section class="entrance-header">
+        <h5>Entrance #{{ $index + 1 }}</h5>
+        <button mat-icon-button (click)="removeEntrance($index)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </section>
+
+      <article class="entrance">
+        <mat-form-field appearance="outline">
+          <mat-label>Entrance name</mat-label>
+          <input matInput [(ngModel)]="entrance.name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>OSM node id</mat-label>
+          <input matInput [(ngModel)]="entrance.osmNodeId" type="number" required>
+          <mat-icon matSuffix>123</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Entrance description</mat-label>
+          <textarea matInput [(ngModel)]="entrance.description" required></textarea>
+        </mat-form-field>
+      </article>
+    }
+
+    <button color="accent" mat-raised-button (click)="addEntrance()">Add entrance</button>
+  </section>
+
+  <h4>Images</h4>
+  <section class="images">
+    @for (image of poi.images; track image.fullSrc) {
+
+      <section class="image-header">
+        <h5>Image #{{ $index + 1 }}</h5>
+        <button mat-icon-button (click)="removeImage($index)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </section>
+
+      <article class="image">
+        <mat-form-field appearance="outline">
+          <mat-label>Full source</mat-label>
+          <input matInput [(ngModel)]="image.fullSrc" required>
+          <mat-icon matSuffix>link</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Icon source</mat-label>
+          <input matInput [(ngModel)]="image.iconSrc">
+          <mat-icon matSuffix>link</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Attribution</mat-label>
+          <input matInput [(ngModel)]="image.attribution" required>
+          <mat-icon matSuffix>attribution</mat-icon>
+        </mat-form-field>
+      </article>
+    }
+
+    <button color="accent" mat-raised-button (click)="addImage()">Add image</button>
+  </section>
+
+  <h4>Business times</h4>
+  <section class="business-times">
+    @for (businessTime of poi.businessTimes; track $index) {
+
+      <section class="business-time-header">
+        <h5>Business time #{{ $index + 1 }}</h5>
+        <button mat-icon-button (click)="removeBusinessTime($index)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </section>
+
+      <article class="business-time">
+
+        <section class="top">
+          <mat-form-field class="effective-range" appearance="outline">
+            <mat-label>Effective range</mat-label>
+            <mat-date-range-input
+              [rangePicker]="picker" required>
+              <input matStartDate [(ngModel)]="businessTime.effectiveFrom" required>
+              <input matEndDate [(ngModel)]="businessTime.effectiveTo" required>
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Effective days</mat-label>
+            <mat-select [(ngModel)]="businessTime.effectiveDays" multiple required>
+              <mat-option [value]="0">Monday</mat-option>
+              <mat-option [value]="1">Tuesday</mat-option>
+              <mat-option [value]="2">Wednesday</mat-option>
+              <mat-option [value]="3">Thursday</mat-option>
+              <mat-option [value]="4">Friday</mat-option>
+              <mat-option [value]="5">Saturday</mat-option>
+              <mat-option [value]="6">Sunday</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+        <section class="bottom">
+          <mat-form-field appearance="outline">
+            <mat-label>Time from</mat-label>
+            <input matInput [(ngModel)]="businessTime.timeFrom" placeholder="12:30:00" required>
+            <mat-icon matSuffix>farsight_digital</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Time to</mat-label>
+            <input matInput [(ngModel)]="businessTime.timeTo" placeholder="12:30:00" required>
+            <mat-icon matSuffix>farsight_digital</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select [(ngModel)]="businessTime.state" required>
+              <mat-option [value]="0">Closed</mat-option>
+              <mat-option [value]="1">Opened</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+      </article>
+    }
+
+    <button color="accent" mat-raised-button (click)="addBusinessTime()">Add business time</button>
+  </section>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button color="warn" mat-raised-button [mat-dialog-close]="undefined">Cancel</button>
+  <button color="primary" mat-raised-button [mat-dialog-close]="poi" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

@@ -1,4 +1,19 @@
 :host {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .loader {
+    min-height: 4px;
+  }
+
+  .list {
+    flex-grow: 1;
+
+    .fab {
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
+    }
+  }
 }

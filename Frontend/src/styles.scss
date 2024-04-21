@@ -49,6 +49,10 @@ $light-theme: mat.define-light-theme((
 @include mat.bottom-sheet-theme($light-theme);
 @include mat.fab-theme($light-theme);
 @include mat.badge-theme($light-theme);
+@include mat.divider-theme($light-theme);
+@include mat.datepicker-theme($light-theme);
+@include mat.select-theme($light-theme);
+@include mat.menu-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
@@ -68,6 +72,10 @@ $light-theme: mat.define-light-theme((
   @include mat.bottom-sheet-color($dark-theme);
   @include mat.fab-color($dark-theme);
   @include mat.badge-color($dark-theme);
+  @include mat.divider-color($dark-theme);
+  @include mat.datepicker-color($dark-theme);
+  @include mat.select-color($dark-theme);
+  @include mat.menu-color($dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -106,6 +114,7 @@ a {
 }
 
 .error-snackbar {
+  white-space: pre-wrap;
   .mdc-snackbar__surface{
     --mdc-snackbar-container-color: #{mat.get-color-from-palette($warn, 900)};
     --mdc-snackbar-supporting-text-color: #{mat.get-color-from-palette($warn, A900)};
