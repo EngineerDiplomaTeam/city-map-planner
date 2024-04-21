@@ -7,7 +7,6 @@ using WebApi.Data;
 using WebApi.Data.Repositories;
 using WebApi.Services;
 using WebApi.Extensions;
-using WebApi.Services.PoiUpdaters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,8 +37,9 @@ builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 builder.Services.AddTransient<IPoiRepository, PoiRepository>();
 builder.Services.AddTransient<IPoisManagerService, PoisManagerService>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
-builder.Services.AddHttpClient<IPoiUpdater, WwiiMuseumPoiUpdater>();
+builder.Services.AddHostedService<PoiUpdater>();
 builder.Services.AddHostedService<OsmUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
 

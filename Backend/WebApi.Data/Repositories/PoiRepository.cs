@@ -29,6 +29,11 @@ public class PoiRepository(DataDbContext dbContext) : IPoiRepository
         
             if (current is not null)
             {
+                poiEntity.BusinessHoursPageSnapshot ??= current.BusinessHoursPageSnapshot;
+                poiEntity.BusinessHoursPageModified ??= current.BusinessHoursPageModified;
+                poiEntity.HolidaysPageSnapshot ??= current.HolidaysPageSnapshot;
+                poiEntity.HolidaysPageModified ??= current.HolidaysPageModified;
+                
                 dbContext.PointOfInterests.Remove(current);
                 await dbContext.SaveChangesAsync(cancellationToken);
             }
