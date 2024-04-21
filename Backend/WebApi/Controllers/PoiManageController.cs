@@ -7,11 +7,11 @@ using WebApi.Services;
 
 namespace WebApi.Controllers;
 
-[ApiController]
+[ApiController, Authorize(Roles = "Administrator")]
 [Route("[controller]")]
-public class PoiController(IPoisManagerService poisManagerService) : ControllerBase
+public class PoiManageController(IPoisManagerService poisManagerService) : ControllerBase
 {
-    [HttpGet, AllowAnonymous]
+    [HttpGet]
     public async IAsyncEnumerable<PoiDto> List([EnumeratorCancellation] CancellationToken cancellationToken)
     {
         var stream = poisManagerService.GetAllPoisAsyncWithoutPageSnapshots().WithCancellation(cancellationToken);
@@ -29,11 +29,26 @@ public class PoiController(IPoisManagerService poisManagerService) : ControllerB
                 entity.HolidaysPageUrl,
                 entity.HolidaysPageXPath,
                 entity.HolidaysPageModified,
-                entity.Entrances.Select(x => new PoiEntranceDto(x.OsmNodeId, x.Name, x.Description)),
-                entity.Images.Select(x => new PoiImageDto(x.FullSrc, x.IconSrc, x.Attribution)),
+                entity.Entrances.Select(x => new PoiEntranceDto(
+                    x.OsmNodeId,
+                    x.Name,
+                    x.Description
+                )),
+                entity.Images.Select(x => new PoiImageDto(
+                    x.FullSrc,
+                    x.IconSrc,
+                    x.Attribution
+                )),
                 entity.PreferredWmoCodes,
                 entity.PreferredSightseeingTime,
-                entity.BusinessTimes.Select(x => new PoiOpeningTimeDto(x.From, x.To, (PoiOpeningTimeTypeDto) x.Type))
+                entity.BusinessTimes.Select(x => new PoiBusinessTimeDto(
+                    x.EffectiveFrom,
+                    x.EffectiveTo,
+                    x.EffectiveDays,
+                    x.TimeFrom,
+                    x.TimeTo,
+                    (BusinessTimeStateDto) x.State
+                ))
             );
         }
     }
@@ -54,11 +69,26 @@ public class PoiController(IPoisManagerService poisManagerService) : ControllerB
             poi.HolidaysPageXPath,
             null,
             poi.HolidaysPageModified,
-            poi.Entrances.Select(x => new PoiEntrance(x.OsmNodeId, x.Name, x.Description)).ToList(),
-            poi.Images.Select(x => new PoiImage(x.FullSrc, x.IconSrc, x.Attribution)).ToList(),
+            poi.Entrances.Select(x => new PoiEntrance(
+                x.OsmNodeId,
+                x.Name,
+                x.Description
+            )).ToList(),
+            poi.Images.Select(x => new PoiImage(
+                x.FullSrc,
+                x.IconSrc,
+                x.Attribution
+            )).ToList(),
             poi.PreferredWmoCodes.ToArray(),
             poi.PreferredSightseeingTime,
-            poi.OpeningTimes.Select(x => new PoiBusinessTime(x.From.ToUniversalTime(), x.To.ToUniversalTime(), (PoiOpeningTimeType) x.Type)).ToList()
+            poi.BusinessTimes.Select(x => new PoiBusinessTime(
+                x.EffectiveFrom.ToUniversalTime(),
+                x.EffectiveTo.ToUniversalTime(),
+                x.EffectiveDays,
+                x.TimeFrom,
+                x.TimeTo,
+                (BusinessTimeState) x.State
+            )).ToList()
         );
         
         var entity = await poisManagerService.UpsertPoiAsync(domain, cancellationToken);

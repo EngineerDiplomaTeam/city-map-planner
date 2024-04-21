@@ -1,11 +1,5 @@
 namespace WebApi.Domain;
 
-public enum PoiOpeningTimeType
-{
-    Opened = 0,
-    Closed = 1,
-}
-
 public record PoiImage(
     string FullSrc,
     string? IconSrc,
@@ -18,10 +12,19 @@ public record PoiEntrance(
     string Description
 );
 
+public enum BusinessTimeState
+{
+    Opened = 0,
+    Closed = 1,
+}
+
 public record PoiBusinessTime(
-    DateTime From,
-    DateTime To,
-    PoiOpeningTimeType Type
+    DateTime EffectiveFrom,
+    DateTime EffectiveTo,
+    DayOfWeek[] EffectiveDays,
+    TimeOnly TimeFrom,
+    TimeOnly TimeTo,
+    BusinessTimeState State
 );
 
 public record Poi(

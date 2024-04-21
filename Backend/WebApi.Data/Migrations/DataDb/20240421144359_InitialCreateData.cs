@@ -81,6 +81,31 @@ namespace WebApi.Data.Migrations.DataDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "business_times",
+                schema: "data",
+                columns: table => new
+                {
+                    poi_id = table.Column<long>(type: "bigint", nullable: false),
+                    effective_from = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    effective_to = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    effective_days = table.Column<int[]>(type: "integer[]", nullable: false),
+                    time_from = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
+                    time_to = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
+                    state = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_business_times", x => new { x.poi_id, x.effective_from, x.effective_to, x.effective_days });
+                    table.ForeignKey(
+                        name: "fk_business_times_point_of_interests_poi_id",
+                        column: x => x.poi_id,
+                        principalSchema: "data",
+                        principalTable: "point_of_interests",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "entrances",
                 schema: "data",
                 columns: table => new
@@ -110,29 +135,7 @@ namespace WebApi.Data.Migrations.DataDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "opening_times",
-                schema: "data",
-                columns: table => new
-                {
-                    from = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    to = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    poi_id = table.Column<long>(type: "bigint", nullable: false),
-                    type = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_opening_times", x => new { x.from, x.to, x.poi_id });
-                    table.ForeignKey(
-                        name: "fk_opening_times_point_of_interests_poi_id",
-                        column: x => x.poi_id,
-                        principalSchema: "data",
-                        principalTable: "point_of_interests",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "poi_images",
+                name: "images",
                 schema: "data",
                 columns: table => new
                 {
@@ -145,9 +148,9 @@ namespace WebApi.Data.Migrations.DataDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_poi_images", x => x.id);
+                    table.PrimaryKey("pk_images", x => x.id);
                     table.ForeignKey(
-                        name: "fk_poi_images_point_of_interests_poi_id",
+                        name: "fk_images_point_of_interests_poi_id",
                         column: x => x.poi_id,
                         principalSchema: "data",
                         principalTable: "point_of_interests",
@@ -237,9 +240,9 @@ namespace WebApi.Data.Migrations.DataDb
                 column: "poi_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_opening_times_poi_id",
+                name: "ix_images_poi_id",
                 schema: "data",
-                table: "opening_times",
+                table: "images",
                 column: "poi_id");
 
             migrationBuilder.CreateIndex(
@@ -247,17 +250,15 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data",
                 table: "osm_tag_entity_osm_way_entity",
                 columns: new[] { "tags_name", "tags_value" });
-
-            migrationBuilder.CreateIndex(
-                name: "ix_poi_images_poi_id",
-                schema: "data",
-                table: "poi_images",
-                column: "poi_id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "business_times",
+                schema: "data");
+
             migrationBuilder.DropTable(
                 name: "edges",
                 schema: "data");
@@ -267,7 +268,7 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data");
 
             migrationBuilder.DropTable(
-                name: "opening_times",
+                name: "images",
                 schema: "data");
 
             migrationBuilder.DropTable(
@@ -275,11 +276,11 @@ namespace WebApi.Data.Migrations.DataDb
                 schema: "data");
 
             migrationBuilder.DropTable(
-                name: "poi_images",
+                name: "nodes",
                 schema: "data");
 
             migrationBuilder.DropTable(
-                name: "nodes",
+                name: "point_of_interests",
                 schema: "data");
 
             migrationBuilder.DropTable(
@@ -288,10 +289,6 @@ namespace WebApi.Data.Migrations.DataDb
 
             migrationBuilder.DropTable(
                 name: "ways",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "point_of_interests",
                 schema: "data");
         }
     }

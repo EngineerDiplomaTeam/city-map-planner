@@ -48,29 +48,38 @@ namespace WebApi.Data.Migrations.DataDb
 
             modelBuilder.Entity("WebApi.Data.Entities.BusinessTimeEntity", b =>
                 {
-                    b.Property<DateTime>("From")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("from");
-
-                    b.Property<DateTime>("To")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("to");
-
                     b.Property<long>("PoiId")
                         .HasColumnType("bigint")
                         .HasColumnName("poi_id");
 
-                    b.Property<int>("Type")
+                    b.Property<DateTime>("EffectiveFrom")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("effective_from");
+
+                    b.Property<DateTime>("EffectiveTo")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("effective_to");
+
+                    b.Property<int[]>("EffectiveDays")
+                        .HasColumnType("integer[]")
+                        .HasColumnName("effective_days");
+
+                    b.Property<int>("State")
                         .HasColumnType("integer")
-                        .HasColumnName("type");
+                        .HasColumnName("state");
 
-                    b.HasKey("From", "To", "PoiId")
-                        .HasName("pk_opening_times");
+                    b.Property<TimeOnly>("TimeFrom")
+                        .HasColumnType("time without time zone")
+                        .HasColumnName("time_from");
 
-                    b.HasIndex("PoiId")
-                        .HasDatabaseName("ix_opening_times_poi_id");
+                    b.Property<TimeOnly>("TimeTo")
+                        .HasColumnType("time without time zone")
+                        .HasColumnName("time_to");
 
-                    b.ToTable("opening_times", "data");
+                    b.HasKey("PoiId", "EffectiveFrom", "EffectiveTo", "EffectiveDays")
+                        .HasName("pk_business_times");
+
+                    b.ToTable("business_times", "data");
                 });
 
             modelBuilder.Entity("WebApi.Data.Entities.EntranceEntity", b =>
@@ -130,12 +139,12 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasColumnName("poi_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_poi_images");
+                        .HasName("pk_images");
 
                     b.HasIndex("PoiId")
-                        .HasDatabaseName("ix_poi_images_poi_id");
+                        .HasDatabaseName("ix_images_poi_id");
 
-                    b.ToTable("poi_images", "data");
+                    b.ToTable("images", "data");
                 });
 
             modelBuilder.Entity("WebApi.Data.Entities.OsmEdgeEntity", b =>
@@ -306,7 +315,7 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasForeignKey("PoiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_opening_times_point_of_interests_poi_id");
+                        .HasConstraintName("fk_business_times_point_of_interests_poi_id");
 
                     b.Navigation("Poi");
                 });
@@ -339,7 +348,7 @@ namespace WebApi.Data.Migrations.DataDb
                         .HasForeignKey("PoiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_poi_images_point_of_interests_poi_id");
+                        .HasConstraintName("fk_images_point_of_interests_poi_id");
 
                     b.Navigation("Poi");
                 });

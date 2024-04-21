@@ -2,12 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApi.Dto;
 
-public enum PoiOpeningTimeTypeDto
-{
-    Opened = 0,
-    Closed = 1,
-}
-
 public record PoiImageDto(
     string FullSrc,
     string? IconSrc,
@@ -21,20 +15,32 @@ public record PoiEntranceDto(
     string Description
 );
 
-public record PoiOpeningTimeDto(
+public enum BusinessTimeStateDto
+{
+    Opened = 0,
+    Closed = 1,
+}
+
+public record PoiBusinessTimeDto(
     [Required]
-    DateTime From,
+    DateTime EffectiveFrom,
     [Required]
-    DateTime To,
+    DateTime EffectiveTo,
     [Required]
-    PoiOpeningTimeTypeDto Type
+    DayOfWeek[] EffectiveDays,
+    [Required]
+    TimeOnly TimeFrom,
+    [Required]
+    TimeOnly TimeTo,
+    [Required]
+    BusinessTimeStateDto State
 );
 
 public record PoiDto(
     long Id,
     string Name,
     string Description,
-    DateTime Modified,
+    DateTime? Modified,
     string? BusinessHoursPageUrl,
     string? BusinessHoursPageXPath,
     DateTime? BusinessHoursPageModified,
@@ -46,5 +52,5 @@ public record PoiDto(
     IEnumerable<int> PreferredWmoCodes,
     [Required]
     TimeSpan PreferredSightseeingTime,
-    IEnumerable<PoiOpeningTimeDto> OpeningTimes
+    IEnumerable<PoiBusinessTimeDto> BusinessTimes
 );

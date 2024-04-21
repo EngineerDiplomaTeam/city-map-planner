@@ -16,49 +16,77 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
 {
     public IAsyncEnumerable<Poi> GetAllPoisAsyncWithoutPageSnapshots()
     {
-        return poiRepository.SelectAllPoisAsync(x => new Poi(
-            x.Id,
-            x.Name,
-            x.Description,
-            x.Modified,
-            x.BusinessHoursPageUrl,
-            x.BusinessHoursPageXPath,
+        return poiRepository.SelectAllPoisAsync(poi => new Poi(
+            poi.Id,
+            poi.Name,
+            poi.Description,
+            poi.Modified,
+            poi.BusinessHoursPageUrl,
+            poi.BusinessHoursPageXPath,
             null,
-            x.BusinessHoursPageModified,
-            x.HolidaysPageUrl,
-            x.HolidaysPageXPath,
+            poi.BusinessHoursPageModified,
+            poi.HolidaysPageUrl,
+            poi.HolidaysPageXPath,
             null,
-            x.HolidaysPageModified,
-            x.Entrances.Select(e => new PoiEntrance(e.OsmNodeId, e.Name, e.Description)).ToList(),
-            x.Images.Select(i => new PoiImage(i.FullSrc, i.IconSrc, i.Attribution)).ToList(),
-            x.PreferredWmoCodes.ToList(),
-            x.PreferredSightseeingTime,
-            x.BusinessTimes.Select(o => new PoiBusinessTime(
-                o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
+            poi.HolidaysPageModified,
+            poi.Entrances.Select(x => new PoiEntrance(
+                x.OsmNodeId,
+                x.Name,
+                x.Description
+            )).ToList(),
+            poi.Images.Select(x => new PoiImage(
+                x.FullSrc,
+                x.IconSrc,
+                x.Attribution
+            )).ToList(),
+            poi.PreferredWmoCodes.ToList(),
+            poi.PreferredSightseeingTime,
+            poi.BusinessTimes.Select(x => new PoiBusinessTime(
+                x.EffectiveFrom,
+                x.EffectiveTo,
+                x.EffectiveDays,
+                x.TimeFrom,
+                x.TimeTo,
+                (BusinessTimeState) x.State
+            )).ToList()
         ));
     }
 
     public IAsyncEnumerable<Poi> GetAllPoisAsyncWithPageSnapshots()
     {
-        return poiRepository.SelectAllPoisAsync(x => new Poi(
-            x.Id,
-            x.Name,
-            x.Description,
-            x.Modified,
-            x.BusinessHoursPageUrl,
-            x.BusinessHoursPageXPath,
-            x.BusinessHoursPageSnapshot,
-            x.BusinessHoursPageModified,
-            x.HolidaysPageUrl,
-            x.HolidaysPageXPath,
-            x.HolidaysPageSnapshot,
-            x.HolidaysPageModified,
-            x.Entrances.Select(e => new PoiEntrance(e.OsmNodeId, e.Name, e.Description)).ToList(),
-            x.Images.Select(i => new PoiImage(i.FullSrc, i.IconSrc, i.Attribution)).ToList(),
-            x.PreferredWmoCodes.ToList(),
-            x.PreferredSightseeingTime,
-            x.BusinessTimes.Select(o => new PoiBusinessTime(
-                o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
+        return poiRepository.SelectAllPoisAsync(poi => new Poi(
+            poi.Id,
+            poi.Name,
+            poi.Description,
+            poi.Modified,
+            poi.BusinessHoursPageUrl,
+            poi.BusinessHoursPageXPath,
+            poi.BusinessHoursPageSnapshot,
+            poi.BusinessHoursPageModified,
+            poi.HolidaysPageUrl,
+            poi.HolidaysPageXPath,
+            poi.HolidaysPageSnapshot,
+            poi.HolidaysPageModified,
+            poi.Entrances.Select(x => new PoiEntrance(
+                x.OsmNodeId,
+                x.Name,
+                x.Description
+            )).ToList(),
+            poi.Images.Select(x => new PoiImage(
+                x.FullSrc,
+                x.IconSrc,
+                x.Attribution
+            )).ToList(),
+            poi.PreferredWmoCodes.ToList(),
+            poi.PreferredSightseeingTime,
+            poi.BusinessTimes.Select(x => new PoiBusinessTime(
+                x.EffectiveFrom,
+                x.EffectiveTo,
+                x.EffectiveDays,
+                x.TimeFrom,
+                x.TimeTo,
+                (BusinessTimeState) x.State
+            )).ToList()
         ));
     }
 
@@ -80,10 +108,13 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
 
         var openingTimeEntities = poi.BusinessTimes.Select(x => new BusinessTimeEntity
         {
-            From = x.From,
-            To = x.To,
-            Type = (OpeningTimeType) x.Type,
-        });
+            EffectiveFrom = x.EffectiveFrom,
+            EffectiveTo = x.EffectiveTo,
+            EffectiveDays = x.EffectiveDays,
+            TimeFrom = x.TimeFrom,
+            TimeTo = x.TimeTo,
+            State = (BusinessTimeStateEntity) x.State
+        }).ToList();
 
         var poiEntity = new PoiEntity
         {
@@ -106,26 +137,41 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             Images = imageEntities.ToList(),
         };
         
-        var x = await poiRepository.UpsertPoiAsync(poiEntity, cancellationToken);
+        var upsertPoi = await poiRepository.UpsertPoiAsync(poiEntity, cancellationToken);
         
         return new Poi(
-            x.Id,
-            x.Name,
-            x.Description,
-            x.Modified,
-            x.BusinessHoursPageUrl,
-            x.BusinessHoursPageXPath,
-            x.BusinessHoursPageSnapshot,
-            x.BusinessHoursPageModified,
-            x.HolidaysPageUrl,
-            x.HolidaysPageXPath,
-            x.HolidaysPageSnapshot,
-            x.HolidaysPageModified,
-            x.Entrances.Select(e => new PoiEntrance(e.OsmNodeId, e.Name, e.Description)).ToList(),
-            x.Images.Select(i => new PoiImage(i.FullSrc, i.IconSrc, i.Attribution)).ToList(),
-            x.PreferredWmoCodes.ToList(),
-            x.PreferredSightseeingTime,
-            x.BusinessTimes.Select(o => new PoiBusinessTime(o.From, o.To, (PoiOpeningTimeType)o.Type)).ToList()
+            upsertPoi.Id,
+            upsertPoi.Name,
+            upsertPoi.Description,
+            upsertPoi.Modified,
+            upsertPoi.BusinessHoursPageUrl,
+            upsertPoi.BusinessHoursPageXPath,
+            upsertPoi.BusinessHoursPageSnapshot,
+            upsertPoi.BusinessHoursPageModified,
+            upsertPoi.HolidaysPageUrl,
+            upsertPoi.HolidaysPageXPath,
+            upsertPoi.HolidaysPageSnapshot,
+            upsertPoi.HolidaysPageModified,
+            upsertPoi.Entrances.Select(x => new PoiEntrance(
+                x.OsmNodeId,
+                x.Name,
+                x.Description
+            )).ToList(),
+            upsertPoi.Images.Select(x => new PoiImage(
+                x.FullSrc,
+                x.IconSrc,
+                x.Attribution
+            )).ToList(),
+            upsertPoi.PreferredWmoCodes.ToList(),
+            upsertPoi.PreferredSightseeingTime,
+            upsertPoi.BusinessTimes.Select(x => new PoiBusinessTime(
+                x.EffectiveFrom,
+                x.EffectiveTo,
+                x.EffectiveDays,
+                x.TimeFrom,
+                x.TimeTo,
+                (BusinessTimeState) x.State
+            )).ToList()
         );
     }
 
