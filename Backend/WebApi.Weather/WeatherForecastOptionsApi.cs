@@ -6,7 +6,7 @@ public class WeatherForecastOptionsApi
     private WeatherModelOptions _models = new();
 
     public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperature_Unit,
-          string timezone, HourlyOptions hourly, TimeformatType timeformat,
+        string timezone, HourlyOptions hourly, TimeformatType timeformat,
         int past_Days, string start_date, string end_date, WeatherModelOptions models)
     {
         Latitude = latitude;
@@ -67,20 +67,11 @@ public class WeatherForecastOptionsApi
     /// </summary>
     public TemperatureUnitType Temperature_Unit { get; set; }
 
-    /// <summary>
-    ///     Default is "kmh". Other options: "ms", "mph", "kn"
-    /// </summary>
-
 
     /// <summary>
     ///     Default is "mm". Other options: "inch"
     /// </summary>
     public PrecipitationUnitType Precipitation_Unit { get; set; }
-
-    /// <summary>
-    ///     Default is "land". Other options: "sea": prefers grid-cells on sea level, "nearest": nearest grid cell
-    /// </summary>
-
 
     /// <summary>
     ///     Default is "GMT". Any time zone name from the time zone database is supported.
@@ -133,4 +124,3 @@ public class WeatherForecastOptionsApi
     /// </summary>
     public string End_date { get; set; }
 }
-

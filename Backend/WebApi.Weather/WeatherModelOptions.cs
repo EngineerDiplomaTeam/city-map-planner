@@ -47,6 +47,11 @@ public class WeatherModelOptions : IEnumerable
         set => _parameter[index] = value;
     }
 
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
     public void Add(WeatherModelOptionsParameter param)
     {
         // Check that the parameter isn't already added
@@ -63,11 +68,6 @@ public class WeatherModelOptions : IEnumerable
     public IEnumerator<WeatherModelOptionsParameter> GetEnumerator()
     {
         return _parameter.GetEnumerator();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
     }
 
     public void Clear()

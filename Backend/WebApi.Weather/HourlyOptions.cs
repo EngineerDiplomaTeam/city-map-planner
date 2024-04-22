@@ -82,6 +82,3 @@ public class HourlyOptions : ICollection<HourlyOptionsParameter>
         foreach (var paramToAdd in param) Add(paramToAdd);
     }
 }
-
-// This is converted to string so it has to be the exact same name like in 
-// https://open-meteo.com/en/docs #Hourly Parameter Definition

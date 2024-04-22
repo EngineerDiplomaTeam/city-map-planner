@@ -181,7 +181,7 @@ public class WeatherClient
         if (options.End_date != string.Empty)
             uri.Query += "&end_date=" + options.End_date;
 
-        // Now we iterate through hourly and daily
+        // Now we iterate through hourly
 
         // Hourly
         if (options.Hourly.Count > 0)
