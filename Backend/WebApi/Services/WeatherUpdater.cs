@@ -2,11 +2,11 @@ using WebApi.Weather;
 namespace WebApi.Services;
 
 
-public class WeatherUpdater : BackgroundService
+public class WeatherUpdater(ILogger<WeatherUpdater> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var _lastUpdate = DateTime.Now;
+        var _lastUpdate = DateTime.MinValue;
         while (!stoppingToken.IsCancellationRequested)
         {
             if (DateTime.Now - _lastUpdate < TimeSpan.FromDays(1))
@@ -29,27 +29,28 @@ public class WeatherUpdater : BackgroundService
         string DateQueryEnd = theDayAfterTomorrow.ToString(FormatDateForOpenMeteo);// Example Weather for three days
         WebApi.Weather.WeatherClient client = new WebApi.Weather.WeatherClient();
     
-        WeatherForecastOptions options = new WeatherForecastOptions();
-        options.Latitude = 54.34f; // For Gdansk
-        options.Longitude = 18.64f; // For Gdansk
-        options.Start_date = DateQueryStart; 
-        options.End_date = DateQueryEnd;
-        options.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
+        WeatherForecastOptionsApi optionsApi = new WeatherForecastOptionsApi();
+        optionsApi.Latitude = 54.34f; // For Gdansk
+        optionsApi.Longitude = 18.64f; // For Gdansk
+        optionsApi.Start_date = DateQueryStart; 
+        optionsApi.End_date = DateQueryEnd;
+        optionsApi.Timezone = "Europe%2FBerlin";
+        optionsApi.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
 
         // Api call to get the current weather in Gdansk
-        WeatherForecast weatherData = await client.QueryAsync(options);
+        WeatherForecastApi weatherData = await client.QueryAsync(optionsApi);
     
         if (weatherData != null && weatherData.Hourly != null && weatherData.Hourly.Weathercode != null)
         {
             // Iterate through the hourly weather codes and print them
             for (int i = 0; i < weatherData.Hourly.Weathercode.Length; i++)
             {
-                Console.WriteLine($"Hour {i + 1}: Weather code {weatherData.Hourly.Weathercode[i]}");
+                logger.LogInformation($"Hour {i + 1}: Weather code {weatherData.Hourly.Weathercode[i]}");
             }
         }
         else
         {
-            Console.WriteLine("Weather data is unavailable.");
+            logger.LogDebug("Weather data is unavailable.");
         } 
     }
 }

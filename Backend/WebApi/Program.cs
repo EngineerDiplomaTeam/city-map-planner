@@ -7,6 +7,7 @@ using WebApi.Data;
 using WebApi.Data.Repositories;
 using WebApi.Services;
 using WebApi.Extensions;
+using WebApi.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,7 @@ builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
+builder.Services.AddHttpClient<WeatherClient>();
 builder.Services.AddHostedService<OsmUpdater>();
 builder.Services.AddHostedService<WeatherUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
