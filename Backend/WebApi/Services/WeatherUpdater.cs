@@ -50,7 +50,7 @@ public class WeatherUpdater(ILogger<WeatherUpdater> logger) : BackgroundService
         }
         else
         {
-            logger.LogDebug("Weather data is unavailable.");
+            logger.LogError("Weather data is unavailable.");
         } 
     }
 }
