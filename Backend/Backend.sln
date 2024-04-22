@@ -12,35 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{14F0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{E02C8468-89CA-4606-8659-1660BA013ADD}"
 EndProject
-Project("{00000000-0000-0000-0000-000000000000}") = "OverpassClient", "OverpassClient\OverpassClient.csproj", "{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFXD}") = "OverpassClient", "OverpassClient\OverpassClient.csproj", "{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Weather", "WebApi.Weather\WebApi.Weather.csproj", "{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}"
 EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{262F69FC-FCFA-424D-A2D3-D5FB40C12309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{262F69FC-FCFA-424D-A2D3-D5FB40C12309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{262F69FC-FCFA-424D-A2D3-D5FB40C12309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{262F69FC-FCFA-424D-A2D3-D5FB40C12309}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A84B8ACE-360E-4232-998A-B09B11F693DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E02C8468-89CA-4606-8659-1660BA013ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E02C8468-89CA-4606-8659-1660BA013ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-EndGlobal
