@@ -85,7 +85,3 @@ public class HourlyOptions : ICollection<HourlyOptionsParameter>
 
 // This is converted to string so it has to be the exact same name like in 
 // https://open-meteo.com/en/docs #Hourly Parameter Definition
-public enum HourlyOptionsParameter
-{
-    weathercode
-}
