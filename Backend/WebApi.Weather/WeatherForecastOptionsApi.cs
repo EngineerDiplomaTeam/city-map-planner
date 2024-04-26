@@ -4,14 +4,13 @@ public class WeatherForecastOptionsApi
 {
     public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperatureUnit,
         string timezone, HourlyOptions hourly, TimeformatType timeformat,
-        int pastDays, string startDate, string endDate, WeatherModelOptions models)
+        int pastDays, string startDate, string endDate)
     {
         Latitude = latitude;
         Longitude = longitude;
         TemperatureUnit = temperatureUnit;
         Timezone = timezone;
             Hourly = hourly;
-            Models = models;
 
 
         Timeformat = timeformat;
@@ -74,7 +73,7 @@ public class WeatherForecastOptionsApi
 
     public HourlyOptions Hourly { get; set; } = new();
 
-    public WeatherModelOptions Models { get; set; } = new();
+
 
 
     /// <summary>

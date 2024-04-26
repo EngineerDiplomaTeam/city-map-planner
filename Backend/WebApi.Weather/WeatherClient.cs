@@ -147,23 +147,7 @@ public class WeatherClient(ILogger<WeatherClient> logger)
                 }
         }
 
-
-        // Models
-        if (options.Models.Count > 0)
-        {
-            var firstModelsElement = true;
-            uri.Query += "&models=";
-            foreach (var option in options.Models)
-                if (firstModelsElement)
-                {
-                    uri.Query += option.ToString();
-                    firstModelsElement = false;
-                }
-                else
-                {
-                    uri.Query += "," + option;
-                }
-        }
+        
 
 
         return uri.ToString();

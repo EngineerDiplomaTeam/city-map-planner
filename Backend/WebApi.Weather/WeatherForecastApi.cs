@@ -24,7 +24,7 @@ public class WeatherForecastApi
 
 
     [JsonPropertyName("generationtime_ms")]
-    public float GenerationTime { get; set; }
+    public double GenerationTime { get; set; }
 
 
     [JsonPropertyName("utc_offset_seconds")]
