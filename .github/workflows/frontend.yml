@@ -32,6 +32,11 @@ jobs:
     - name: 'Checkout repository'
       uses: 'actions/checkout@v3'
 
+    - name: 'Setup pnpm'
+      uses: 'pnpm/action-setup@v2'
+      with:
+        version: 9
+
     - name: 'Use Node.js 20'
       uses: 'actions/setup-node@v3'
       with:
@@ -39,12 +44,9 @@ jobs:
         cache: 'pnpm'
         cache-dependency-path: 'Frontend/pnpm-lock.yaml'
 
-    - name: 'Setup pnpm'
-      run: |
-        corepack enable
-
     - name: 'Restore packages'
       run: |
+        corepack enable
         pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'
