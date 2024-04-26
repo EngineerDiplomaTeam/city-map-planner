@@ -25,12 +25,11 @@ public class PathFindingRepository(DataDbContext dbContext) : IPathFindingReposi
 
     public async Task<T> GetNodeForPoiAsync<T>(long poiId, Expression<Func<OsmNodeEntity, T>> mapper, CancellationToken cancellationToken = default)
     {
-        return default!;
-        // return await dbContext.PointOfInterests
-        //     .Where(x => x.Id == poiId)
-        //     .Select(x => x.Entrances.First())
-        //     .Select(x => x.OsmNode)
-        //     .Select(mapper)
-        //     .FirstAsync(cancellationToken);
+        return await dbContext.PointOfInterests
+            .Where(x => x.Id == poiId)
+            .Select(x => x.Entrances.First())
+            .Select(x => x.OsmNode)
+            .Select(mapper)
+            .FirstAsync(cancellationToken);
     }
 }
