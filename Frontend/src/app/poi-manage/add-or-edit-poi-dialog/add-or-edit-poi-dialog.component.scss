@@ -1,6 +1,12 @@
 mat-dialog-content {
+  overflow: hidden;
+  display: flex;
+}
+
+.scroll {
   padding-top: 5px !important;
-  overflow-x: scroll;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 mat-form-field {
