@@ -8,6 +8,8 @@ public record PoiImage(
 
 public record PoiEntrance(
     long OsmNodeId,
+    double? Lon,
+    double? Lat,
     string Name,
     string Description
 );

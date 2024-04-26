@@ -31,6 +31,8 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             poi.HolidaysPageModified,
             poi.Entrances.Select(x => new PoiEntrance(
                 x.OsmNodeId,
+                x.OsmNode.Lon,
+                x.OsmNode.Lat,
                 x.Name,
                 x.Description
             )).ToList(),
@@ -69,6 +71,8 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             poi.HolidaysPageModified,
             poi.Entrances.Select(x => new PoiEntrance(
                 x.OsmNodeId,
+                x.OsmNode.Lon,
+                x.OsmNode.Lat,
                 x.Name,
                 x.Description
             )).ToList(),
@@ -154,6 +158,8 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
             upsertPoi.HolidaysPageModified,
             upsertPoi.Entrances.Select(x => new PoiEntrance(
                 x.OsmNodeId,
+                null,
+                null,
                 x.Name,
                 x.Description
             )).ToList(),

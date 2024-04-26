@@ -71,6 +71,8 @@ public class PoiManageController(IPoisManagerService poisManagerService) : Contr
             poi.HolidaysPageModified,
             poi.Entrances.Select(x => new PoiEntrance(
                 x.OsmNodeId,
+                null,
+                null,
                 x.Name,
                 x.Description
             )).ToList(),
