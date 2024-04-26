@@ -2,54 +2,48 @@
 
 public class WeatherForecastOptionsApi
 {
-    private HourlyOptions _hourly = new();
-    private WeatherModelOptions _models = new();
-
-    public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperature_Unit,
+    public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperatureUnit,
         string timezone, HourlyOptions hourly, TimeformatType timeformat,
-        int past_Days, string start_date, string end_date, WeatherModelOptions models)
+        int pastDays, string startDate, string endDate, WeatherModelOptions models)
     {
         Latitude = latitude;
         Longitude = longitude;
-        Temperature_Unit = temperature_Unit;
+        TemperatureUnit = temperatureUnit;
         Timezone = timezone;
-
-        if (hourly != null)
             Hourly = hourly;
-        if (models != null)
             Models = models;
 
 
         Timeformat = timeformat;
-        Past_Days = past_Days;
-        Start_date = start_date;
-        End_date = end_date;
+        PastDays = pastDays;
+        StartDate = startDate;
+        EndDate = endDate;
     }
 
     public WeatherForecastOptionsApi(float latitude, float longitude)
     {
         Latitude = latitude;
         Longitude = longitude;
-        Temperature_Unit = TemperatureUnitType.celsius;
-        Precipitation_Unit = PrecipitationUnitType.mm;
+        TemperatureUnit = TemperatureUnitType.celsius;
+        PrecipitationUnit = PrecipitationUnitType.mm;
         Timeformat = TimeformatType.iso8601;
         Timezone = "GMT";
 
-        Start_date = string.Empty;
-        End_date = string.Empty;
+        StartDate = string.Empty;
+        EndDate = string.Empty;
     }
 
     public WeatherForecastOptionsApi()
     {
         Latitude = 0f;
         Longitude = 0f;
-        Temperature_Unit = TemperatureUnitType.celsius;
-        Precipitation_Unit = PrecipitationUnitType.mm;
+        TemperatureUnit = TemperatureUnitType.celsius;
+        PrecipitationUnit = PrecipitationUnitType.mm;
         Timeformat = TimeformatType.iso8601;
         Timezone = "GMT";
 
-        Start_date = string.Empty;
-        End_date = string.Empty;
+        StartDate = string.Empty;
+        EndDate = string.Empty;
     }
 
     /// <summary>
@@ -65,36 +59,22 @@ public class WeatherForecastOptionsApi
     /// <summary>
     ///     Default is "celsius". Use "fahrenheit" to convert temperature to fahrenheit
     /// </summary>
-    public TemperatureUnitType Temperature_Unit { get; set; }
+    public TemperatureUnitType TemperatureUnit { get; set; }
 
 
     /// <summary>
     ///     Default is "mm". Other options: "inch"
     /// </summary>
-    public PrecipitationUnitType Precipitation_Unit { get; set; }
+    public PrecipitationUnitType PrecipitationUnit { get; set; }
 
     /// <summary>
     ///     Default is "GMT". Any time zone name from the time zone database is supported.
     /// </summary>
     public string Timezone { get; set; }
 
-    public HourlyOptions Hourly
-    {
-        get => _hourly;
-        set
-        {
-            if (value != null) _hourly = value;
-        }
-    }
+    public HourlyOptions Hourly { get; set; } = new();
 
-    public WeatherModelOptions Models
-    {
-        get => _models;
-        set
-        {
-            if (value != null) _models = value;
-        }
-    }
+    public WeatherModelOptions Models { get; set; } = new();
 
 
     /// <summary>
@@ -108,19 +88,19 @@ public class WeatherForecastOptionsApi
     ///     Default is "0". Other options: "1", "2"
     /// </summary>
     /// <value></value>
-    public int Past_Days { get; set; }
+    public int PastDays { get; set; }
 
     /// <summary>
     ///     The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-06-30).
     ///     (yyyy-mm-dd)
     ///     https://open-meteo.com/en/docs
     /// </summary>
-    public string Start_date { get; set; }
+    public string StartDate { get; set; }
 
     /// <summary>
     ///     The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-06-30).
     ///     (yyyy-mm-dd)
     ///     https://open-meteo.com/en/docs
     /// </summary>
-    public string End_date { get; set; }
+    public string EndDate { get; set; }
 }
