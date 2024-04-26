@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PoiManageComponent } from './poi-manage.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PoiManageComponent', () => {
   let component: PoiManageComponent;
@@ -8,10 +9,9 @@ describe('PoiManageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoiManageComponent]
-    })
-    .compileComponents();
-    
+      imports: [PoiManageComponent, HttpClientTestingModule],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PoiManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
