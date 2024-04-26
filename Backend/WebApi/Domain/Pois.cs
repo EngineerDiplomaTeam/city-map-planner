@@ -1,56 +1,50 @@
-using System.ComponentModel.DataAnnotations;
+namespace WebApi.Domain;
 
-namespace WebApi.Dto;
-
-public record PoiImageDto(
+public record PoiImage(
     string FullSrc,
     string? IconSrc,
     string Attribution
 );
 
-public record PoiEntranceDto(
-    [Required]
+public record PoiEntrance(
     long OsmNodeId,
+    double? Lon,
+    double? Lat,
     string Name,
     string Description
 );
 
-public enum BusinessTimeStateDto
+public enum BusinessTimeState
 {
     Opened = 0,
     Closed = 1,
 }
 
-public record PoiBusinessTimeDto(
-    [Required]
+public record PoiBusinessTime(
     DateTime EffectiveFrom,
-    [Required]
     DateTime EffectiveTo,
-    [Required]
     DayOfWeek[] EffectiveDays,
-    [Required]
     TimeOnly TimeFrom,
-    [Required]
     TimeOnly TimeTo,
-    [Required]
-    BusinessTimeStateDto State
+    BusinessTimeState State
 );
 
-public record PoiDto(
+public record Poi(
     long Id,
     string Name,
     string Description,
-    DateTime? Modified,
+    DateTime Modified,
     string? BusinessHoursPageUrl,
     string? BusinessHoursPageXPath,
+    string? BusinessHoursPageSnapshot,
     DateTime? BusinessHoursPageModified,
     string? HolidaysPageUrl,
     string? HolidaysPageXPath,
+    string? HolidaysPageSnapshot,
     DateTime? HolidaysPageModified,
-    IEnumerable<PoiEntranceDto> Entrances,
-    IEnumerable<PoiImageDto> Images,
-    IEnumerable<int> PreferredWmoCodes,
-    [Required]
+    ICollection<PoiEntrance> Entrances,
+    ICollection<PoiImage> Images,
+    ICollection<int> PreferredWmoCodes,
     TimeSpan PreferredSightseeingTime,
-    IEnumerable<PoiBusinessTimeDto> BusinessTimes
+    ICollection<PoiBusinessTime> BusinessTimes
 );

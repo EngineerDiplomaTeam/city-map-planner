@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^17.3.4",
     "@angular/platform-browser-dynamic": "^17.3.4",
     "@angular/router": "^17.3.4",
-    "@asymmetrik/ngx-leaflet": "^17.0.0",
     "@ngrx/component-store": "^17.2.0",
     "@ngrx/effects": "^17.2.0",
     "@ngrx/store": "^17.2.0",
@@ -64,5 +63,5 @@
     "puppeteer": "^21.5.2",
     "typescript": "~5.4.3"
   },
-  "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991"
+  "packageManager": "pnpm@9.0.4+sha256.caa915eaae9d9aefccf50ee8aeda25a2f8684d8f9d5c6e367eaf176d97c1f89e"
 }
