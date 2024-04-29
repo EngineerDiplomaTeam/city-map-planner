@@ -23,7 +23,7 @@ Na ilustracji~\ref{fig:pjatklogo} widzimy oficjalne logo PJATK\@.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{attachments/pjatk}
+    \inputgraphics[width=0.5\textwidth]{../attachments/pjatk}
     \caption{Logo PJATK załączone jako obrazek}
     \label{fig:pjatklogo}
 \end{figure}
@@ -140,8 +140,8 @@ Tabela dotycząca wymagań pozafunkcjonalnych~\ref{tab:requirements:nonfunc1} je
         \umlassoc{admin}{usecase-6}
         \umlinherit{usecase-2}{usecase-1}
         \umlVHextend{usecase-5}{usecase-4}
-        \umlinclude[name=incl]{usecase-3}{usecase-4}
+        \umlinput[name=incl]{usecase-3}{usecase-4}
 
-        \umlnote[x=7, y=-7]{incl-1}{note on include dependency}
+        \umlnote[x=7, y=-7]{incl-1}{note on input dependency}
     \end{tikzpicture}
 \end{center}
