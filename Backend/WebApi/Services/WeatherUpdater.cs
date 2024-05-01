@@ -34,7 +34,7 @@ public class WeatherUpdater(ILogger<WeatherClient> logger) : BackgroundService
         optionsApi.Longitude = 18.64f; // For Gdansk
         optionsApi.StartDate = dateQueryStart; 
         optionsApi.EndDate = dateQueryEnd;
-        optionsApi.Timezone = "Europe%2FBerlin";
+        optionsApi.Timezone = "Europe/Berlin";
         optionsApi.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
 
         // Api call to get the current weather in Gdansk

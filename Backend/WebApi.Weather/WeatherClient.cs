@@ -1,6 +1,9 @@
-﻿using System.Globalization;
+﻿
+using System.Globalization;
 using System.Text.Json;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using static Microsoft.AspNetCore.Http.QueryString;
 
 namespace WebApi.Weather;
 
@@ -9,6 +12,8 @@ public class WeatherClient(ILogger<WeatherClient> logger)
     private readonly HttpClient _httpClient = new()
     {
         BaseAddress = new Uri("https://api.open-meteo.com/v1/forecast")
+        
+        
     };
 
     private readonly string _weatherApiUrl = "https://api.open-meteo.com/v1/forecast";
@@ -23,6 +28,7 @@ public class WeatherClient(ILogger<WeatherClient> logger)
         }
         catch (Exception)
         {
+            logger.LogError("Not Working");
             return null;
         }
     }
@@ -65,7 +71,7 @@ public class WeatherClient(ILogger<WeatherClient> logger)
             return "Invalid weather code";
         }
     }
-
+    
 
     private async Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi)
     {
@@ -90,42 +96,23 @@ public class WeatherClient(ILogger<WeatherClient> logger)
 
     private string MergeUrlWithOptions(string url, WeatherForecastOptionsApi? options)
     {
+
         if (options == null) return url;
 
-        var uri = new UriBuilder(url);
-        var isFirstParam = false;
-
-        // If no query given, add '?' to start the query string
-        if (uri.Query == string.Empty)
-        {
-            uri.Query = "?";
-
-            // isFirstParam becomes true because the query string is new
-            isFirstParam = true;
-        }
-
-        // Add the properties
-
-        // Begin with Latitude and Longitude since they're required
-        if (isFirstParam)
-            uri.Query += "latitude=" + options.Latitude.ToString(CultureInfo.InvariantCulture);
-        else
-            uri.Query += "&latitude=" + options.Latitude.ToString(CultureInfo.InvariantCulture);
-
-        uri.Query += "&longitude=" + options.Longitude.ToString(CultureInfo.InvariantCulture);
-        uri.Query += "&temperature_unit=" + options.TemperatureUnit;
-        uri.Query += "&precipitation_unit=" + options.PrecipitationUnit;
+        var queryString = QueryHelpers.ParseQuery("?");
+        queryString.Add("latitude", options.Latitude.ToString(CultureInfo.InvariantCulture));
+        queryString.Add("longitude", options.Longitude.ToString(CultureInfo.InvariantCulture));
+        queryString.Add("temperature_unit", options.TemperatureUnit.ToString());
+        queryString.Add("precipitation_unit", options.PrecipitationUnit.ToString());
         if (options.Timezone != string.Empty)
-            uri.Query += "&timezone=" + options.Timezone;
-
-        uri.Query += "&timeformat=" + options.Timeformat;
-
-        uri.Query += "&past_days=" + options.PastDays;
+            queryString.Add("timezone", options.Timezone);
+        queryString.Add("timeformat", options.Timeformat.ToString());
+        queryString.Add("past_days", options.PastDays.ToString());
 
         if (options.StartDate != string.Empty)
-            uri.Query += "&start_date=" + options.StartDate;
+            queryString.Add("start_date", options.StartDate);
         if (options.EndDate != string.Empty)
-            uri.Query += "&end_date=" + options.EndDate;
+            queryString.Add("end_date", options.EndDate);
 
         // Now we iterate through hourly
 
@@ -133,23 +120,23 @@ public class WeatherClient(ILogger<WeatherClient> logger)
         if (options.Hourly.Count > 0)
         {
             var firstHourlyElement = true;
-            uri.Query += "&hourly=";
-
+            
+            String queryValue = null; 
             foreach (var option in options.Hourly)
                 if (firstHourlyElement)
                 {
-                    uri.Query += option.ToString();
+                    queryValue += option.ToString();
                     firstHourlyElement = false;
                 }
                 else
                 {
-                    uri.Query += "," + option;
+                    queryValue+= "," + option;
                 }
+            queryString.Add("hourly", queryValue);
         }
+        String finalUrl = url + Create(queryString).ToString();
 
-        
-
-
-        return uri.ToString();
+            
+        return finalUrl;
     }
 }
