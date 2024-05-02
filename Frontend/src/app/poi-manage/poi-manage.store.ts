@@ -138,7 +138,7 @@ export class PoiManageStore extends ComponentStore<PoiManageState> {
     });
   }
 
-  private handleError(e: unknown) {
+  public handleError(e: unknown) {
     if (
       e &&
       typeof e === 'object' &&

@@ -59,7 +59,7 @@ export class AuthService {
     if (!currentAuthData) return '';
 
     if (
-      Date.now() - currentAuthData.tokenTimestamp >
+      Date.now() / 1_000 - currentAuthData.tokenTimestamp >
       currentAuthData.expiresIn
     ) {
       const fresh = await this.refresh(currentAuthData.refreshToken);

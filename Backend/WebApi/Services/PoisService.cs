@@ -10,6 +10,7 @@ public interface IPoisManagerService
     public IAsyncEnumerable<Poi> GetAllPoisAsyncWithPageSnapshots();
     public Task<Poi> UpsertPoiAsync(Poi poi, CancellationToken cancellationToken = default);
     public Task DeletePoiAsync(long id, CancellationToken cancellationToken = default);
+    public Task<(string? BusinessPageSnapshot, string? HolidaysPageSnapshot)> GetPoiPageSnapshotsAsync(long id, CancellationToken cancellationToken = default);
 }
 
 public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerService
@@ -184,5 +185,10 @@ public class PoisManagerService(IPoiRepository poiRepository) : IPoisManagerServ
     public async Task DeletePoiAsync(long id, CancellationToken cancellationToken = default)
     {
         await poiRepository.DeletePoiAsync(id, cancellationToken);
+    }
+
+    public async Task<(string? BusinessPageSnapshot, string? HolidaysPageSnapshot)> GetPoiPageSnapshotsAsync(long id, CancellationToken cancellationToken = default)
+    {
+        return await poiRepository.GetPoiPageSnapshotsAsync(id, cancellationToken);
     }
 }

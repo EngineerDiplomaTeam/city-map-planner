@@ -10,6 +10,7 @@ public interface IPoiRepository
     public IAsyncEnumerable<T> SelectAllPoisAsync<T>(Expression<Func<PoiEntity, T>> mapper);
     public Task<PoiEntity> UpsertPoiAsync(PoiEntity poiEntity, CancellationToken cancellationToken = default);
     public Task DeletePoiAsync(long id, CancellationToken cancellationToken = default);
+    public Task<(string? BusinessPageSnapshot, string? HolidaysPageSnapshot)> GetPoiPageSnapshotsAsync(long id, CancellationToken cancellationToken = default);
 }
 
 public class PoiRepository(DataDbContext dbContext) : IPoiRepository
@@ -51,5 +52,10 @@ public class PoiRepository(DataDbContext dbContext) : IPoiRepository
     {
         await dbContext.PointOfInterests.Where(x => x.Id == id).ExecuteDeleteAsync(cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<(string? BusinessPageSnapshot, string? HolidaysPageSnapshot)> GetPoiPageSnapshotsAsync(long id, CancellationToken cancellationToken = default)
+    {
+        return await dbContext.PointOfInterests.Where(x => x.Id == id).Select(x => ValueTuple.Create(x.BusinessHoursPageSnapshot, x.HolidaysPageSnapshot)).FirstAsync(cancellationToken);
     }
 }

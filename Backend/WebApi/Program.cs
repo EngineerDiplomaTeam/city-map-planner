@@ -1,6 +1,9 @@
+using ChatGPT.Net;
+using ChatGPT.Net.DTO.ChatGPT;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using NSwag;
 using OverpassClient;
 using WebApi.Data;
@@ -24,12 +27,11 @@ builder.Services.AddDbContext<UserDataDbContext>(
     )
 );
 
-builder.Services.AddDbContext<DataDbContext>(
-    options => options.UseNpgsql(
-        builder.Configuration.GetConnectionString("CityPlannerData"),
-        x => x.MigrationsHistoryTable("ef_migrations_history", "data")
-    )
-);
+var npgsqlDataSource = new NpgsqlDataSourceBuilder(builder.Configuration.GetConnectionString("CityPlannerData")).EnableRecordsAsTuples().Build();
+builder.Services.AddDbContext<DataDbContext>(options => options.UseNpgsql(
+    npgsqlDataSource,
+    x => x.MigrationsHistoryTable("ef_migrations_history", "data")
+));
 
 builder.Services.AddTransient<IPathFindingService, PathFindingService>();
 builder.Services.AddTransient<IDataRepository, DataRepository>();
@@ -42,6 +44,11 @@ builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
 builder.Services.AddHostedService<PoiUpdater>();
 builder.Services.AddHostedService<OsmUpdater>();
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
+builder.Services.AddTransient<ChatGpt>(_ => new ChatGpt(builder.Configuration.GetValue<string>("ChatGptApiToken") ?? throw new Exception("Missing ChatGptApiToken"), new ChatGptOptions()
+{
+    Model = "gpt-4",
+    MaxTokens = 2_000,
+}));
 
 builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
 {

@@ -34,7 +34,6 @@ $light-theme: mat.define-light-theme((
 ));
 
 // Apply the light theme by default
-//@include mat.all-component-themes($light-theme);
 @include mat.core-theme($light-theme);
 @include mat.toolbar-theme($light-theme);
 @include mat.icon-theme($light-theme);
@@ -54,6 +53,7 @@ $light-theme: mat.define-light-theme((
 @include mat.select-theme($light-theme);
 @include mat.menu-theme($light-theme);
 @include mat.toolbar-theme($light-theme);
+@include mat.progress-spinner-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
@@ -78,6 +78,7 @@ $light-theme: mat.define-light-theme((
   @include mat.select-color($dark-theme);
   @include mat.menu-color($dark-theme);
   @include mat.toolbar-color($dark-theme);
+  @include mat.progress-spinner-color($dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -102,8 +103,7 @@ body {
 app-root {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 100svh;
+  height: 100svh;
 }
 
 a {
