@@ -71,8 +71,7 @@ public class WeatherForecastOptionsApi
     /// </summary>
     public string Timezone { get; set; }
 
-    public HourlyOptions Hourly { get; set; } = new();
-
+    public HourlyOptions Hourly { get; set; } = new(); // lista Enumów
 
 
 

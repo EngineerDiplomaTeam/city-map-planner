@@ -2,7 +2,7 @@
 
 namespace WebApi.Weather;
 
-public class HourlyOptions : ICollection<HourlyOptionsParameter>
+public class HourlyOptions
 {
     private readonly List<HourlyOptionsParameter> _parameter;
 
@@ -51,11 +51,7 @@ public class HourlyOptions : ICollection<HourlyOptionsParameter>
     {
         return _parameter.GetEnumerator();
     }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    
 
     public void Clear()
     {

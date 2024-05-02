@@ -4,10 +4,10 @@ namespace WebApi.Services;
 
 public class WeatherUpdater: BackgroundService
 {
-    private readonly WeatherClient _weatherClient;
+    private readonly IWeatherClient _weatherClient;
     private readonly ILogger<WeatherUpdater> _logger;
 
-    public WeatherUpdater(WeatherClient weatherClient, ILogger<WeatherUpdater> logger)
+    public WeatherUpdater(IWeatherClient weatherClient, ILogger<WeatherUpdater> logger)
     {
         _weatherClient = weatherClient;
         _logger = logger;
@@ -47,7 +47,7 @@ public class WeatherUpdater: BackgroundService
         optionsApi.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
 
         // Api call to get the current weather in Gdansk
-        WeatherForecastApi? weatherData = await _weatherClient.QueryAsync(optionsApi);
+        WeatherForecastApi? weatherData = await _weatherClient.GetWeatherForecastAsync(optionsApi);
     
         if (weatherData != null && weatherData.Hourly != null)
         {

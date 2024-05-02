@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Weather;
 
-public class HourlyRequestBody
+public class HourlyResponseBody
 {
     public string[]? Time { get; set; }
     public int[] Weathercode { get; set; }

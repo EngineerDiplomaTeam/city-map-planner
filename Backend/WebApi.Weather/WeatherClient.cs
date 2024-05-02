@@ -12,19 +12,9 @@ public interface IWeatherClient
     Task<WeatherForecastApi> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi);
 }
 
-public class WeatherClient() : IWeatherClient
+public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : IWeatherClient
 {
-    private readonly IHttpClientFactory _factory;
-    private readonly ILogger<WeatherClient> _logger;
-
-    public WeatherClient(IHttpClientFactory factory, ILogger<WeatherClient> logger)
-    {
-        _factory = factory;
-        _logger = logger;
-    }
     
-
-
     private readonly string _weatherApiUrl = "https://api.open-meteo.com/v1/forecast";
 
 
@@ -37,7 +27,7 @@ public class WeatherClient() : IWeatherClient
         }
         catch (Exception)
         {
-            _logger.LogError("Not Working");
+            logger.LogError("Not Working");
             return null;
         }
     }
@@ -87,7 +77,6 @@ public class WeatherClient() : IWeatherClient
     {
         try
         {
-            var client = _factory.CreateClient("WeatherClient");
             var response = await client.GetAsync(MergeUrlWithOptions(_weatherApiUrl, optionsApi));
             response.EnsureSuccessStatusCode();
 
@@ -98,8 +87,8 @@ public class WeatherClient() : IWeatherClient
         }
         catch (HttpRequestException e)
         {
-            _logger.LogError(e.Message);
-            _logger.LogError(e.StackTrace);
+            logger.LogError(e.Message);
+            logger.LogError(e.StackTrace);
             return null;
         }
     }

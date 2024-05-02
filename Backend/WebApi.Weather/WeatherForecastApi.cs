@@ -55,5 +55,5 @@ public class WeatherForecastApi
     /// </summary>
 
     [JsonPropertyName("hourly")]
-    public HourlyRequestBody? Hourly { get; set; }
+    public HourlyResponseBody? Hourly { get; set; }
 }
