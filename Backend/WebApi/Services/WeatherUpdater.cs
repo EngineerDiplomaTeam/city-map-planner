@@ -2,8 +2,16 @@ using WebApi.Weather;
 namespace WebApi.Services;
 
 
-public class WeatherUpdater(ILogger<WeatherClient> logger) : BackgroundService
+public class WeatherUpdater: BackgroundService
 {
+    private readonly WeatherClient _weatherClient;
+    private readonly ILogger<WeatherUpdater> _logger;
+
+    public WeatherUpdater(WeatherClient weatherClient, ILogger<WeatherUpdater> logger)
+    {
+        _weatherClient = weatherClient;
+        _logger = logger;
+    }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var lastUpdate = DateTime.MinValue;
@@ -27,7 +35,8 @@ public class WeatherUpdater(ILogger<WeatherClient> logger) : BackgroundService
 
         string dateQueryStart = thisDay.ToString(formatDateForOpenMeteo);
         string dateQueryEnd = theDayAfterTomorrow.ToString(formatDateForOpenMeteo);// Example Weather for three days
-        WebApi.Weather.WeatherClient client = new WebApi.Weather.WeatherClient(logger);
+
+       
     
         WeatherForecastOptionsApi optionsApi = new WeatherForecastOptionsApi();
         optionsApi.Latitude = 54.34f; // For Gdansk
@@ -38,19 +47,19 @@ public class WeatherUpdater(ILogger<WeatherClient> logger) : BackgroundService
         optionsApi.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
 
         // Api call to get the current weather in Gdansk
-        WeatherForecastApi? weatherData = await client.QueryAsync(optionsApi);
+        WeatherForecastApi? weatherData = await _weatherClient.QueryAsync(optionsApi);
     
         if (weatherData != null && weatherData.Hourly != null)
         {
             // Iterate through the hourly weather codes and print them
             for (int i = 0; i < weatherData.Hourly.Weathercode.Length; i++)
             {
-                logger.LogInformation($"Hour {i + 1}: Weather code {weatherData.Hourly.Weathercode[i]}");
+                _logger.LogInformation($"Hour {i + 1}: Weather code {weatherData.Hourly.Weathercode[i]}");
             }
         }
         else
         {
-            logger.LogError("Weather data is unavailable.");
+            _logger.LogError("Weather data is unavailable.");
         } 
     }
 }

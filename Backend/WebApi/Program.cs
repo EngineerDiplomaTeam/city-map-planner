@@ -56,9 +56,15 @@ builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
-builder.Services.AddHttpClient<WeatherClient>();
-builder.Services.AddHostedService<OsmUpdater>();
+//builder.Services.AddHttpClient<WeatherClient>();
+builder.Services.AddHttpClient<WeatherClient>("WeatherClient",client =>
+{
+    client.BaseAddress = new Uri("https://api.open-meteo.com/v1/forecast");
+});
 builder.Services.AddHostedService<WeatherUpdater>();
+builder.Services.AddTransient<WeatherUpdater>();
+builder.Services.AddHostedService<OsmUpdater>();
+
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
 builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
 {

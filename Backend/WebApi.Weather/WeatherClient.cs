@@ -7,14 +7,23 @@ using static Microsoft.AspNetCore.Http.QueryString;
 
 namespace WebApi.Weather;
 
-public class WeatherClient(ILogger<WeatherClient> logger)
+public interface IWeatherClient
 {
-    private readonly HttpClient _httpClient = new()
+    Task<WeatherForecastApi> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi);
+}
+
+public class WeatherClient() : IWeatherClient
+{
+    private readonly IHttpClientFactory _factory;
+    private readonly ILogger<WeatherClient> _logger;
+
+    public WeatherClient(IHttpClientFactory factory, ILogger<WeatherClient> logger)
     {
-        BaseAddress = new Uri("https://api.open-meteo.com/v1/forecast")
-        
-        
-    };
+        _factory = factory;
+        _logger = logger;
+    }
+    
+
 
     private readonly string _weatherApiUrl = "https://api.open-meteo.com/v1/forecast";
 
@@ -28,7 +37,7 @@ public class WeatherClient(ILogger<WeatherClient> logger)
         }
         catch (Exception)
         {
-            logger.LogError("Not Working");
+            _logger.LogError("Not Working");
             return null;
         }
     }
@@ -51,6 +60,7 @@ public class WeatherClient(ILogger<WeatherClient> logger)
 
     public WeatherForecastApi? Query(WeatherForecastOptionsApi optionsApi)
     {
+
         return QueryAsync(optionsApi).GetAwaiter().GetResult();
     }
 
@@ -73,11 +83,12 @@ public class WeatherClient(ILogger<WeatherClient> logger)
     }
     
 
-    private async Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi)
+    public async Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi)
     {
         try
         {
-            var response = await _httpClient.GetAsync(MergeUrlWithOptions(_weatherApiUrl, optionsApi));
+            var client = _factory.CreateClient("WeatherClient");
+            var response = await client.GetAsync(MergeUrlWithOptions(_weatherApiUrl, optionsApi));
             response.EnsureSuccessStatusCode();
 
             var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
@@ -87,8 +98,8 @@ public class WeatherClient(ILogger<WeatherClient> logger)
         }
         catch (HttpRequestException e)
         {
-            logger.LogError(e.Message);
-            logger.LogError(e.StackTrace);
+            _logger.LogError(e.Message);
+            _logger.LogError(e.StackTrace);
             return null;
         }
     }
