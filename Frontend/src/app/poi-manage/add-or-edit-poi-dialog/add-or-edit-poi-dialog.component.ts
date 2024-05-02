@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,12 +11,15 @@ import { PoiManageStore } from '../poi-manage.store';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { ManageablePoi } from '../poi-manage.model';
+import { ManageablePoi, ManageablePoiBusinessTime } from '../poi-manage.model';
 import { FormsModule } from '@angular/forms';
 import { MatDivider } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 export interface AddOrEditPoiDialogData {
   poiManageStore: PoiManageStore;
@@ -148,14 +156,17 @@ const WMO_CODES = [
     MatSelectModule,
     MatMenu,
     MatMenuItem,
+    MatProgressSpinner,
   ],
   templateUrl: './add-or-edit-poi-dialog.component.html',
   styleUrl: './add-or-edit-poi-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddOrEditPoiDialogComponent {
+  protected readonly httpClient = inject(HttpClient);
   protected readonly data = inject<AddOrEditPoiDialogData>(DIALOG_DATA);
   protected readonly poi = this.data.poi;
+  protected readonly aiThinking = signal(false);
 
   public addEntrance(): void {
     this.poi.entrances.push({
@@ -197,4 +208,23 @@ export class AddOrEditPoiDialogComponent {
   }
 
   protected readonly WMO_CODES = WMO_CODES;
+
+  protected async addBusinessTimeWithAi(): Promise<void> {
+    if (this.aiThinking()) return;
+
+    this.aiThinking.set(true);
+    this.poi.businessTimes = [];
+
+    try {
+      this.poi.businessTimes = await firstValueFrom(
+        this.httpClient.get<ManageablePoiBusinessTime[]>(
+          `/Api/PoiManage/${this.poi.id}/Ai`,
+        ),
+      );
+    } catch (e) {
+      this.data.poiManageStore.handleError(e);
+    } finally {
+      this.aiThinking.set(false);
+    }
+  }
 }

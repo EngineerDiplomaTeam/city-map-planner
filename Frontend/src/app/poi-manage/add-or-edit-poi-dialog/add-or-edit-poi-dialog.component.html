@@ -125,6 +125,11 @@
 
     <h4>Business times</h4>
     <section class="business-times">
+      <button [disabled]="aiThinking()" color="primary" style="display: block; margin-bottom: 1em;" mat-raised-button (click)="addBusinessTimeWithAi()">Add business times with AI</button>
+      @if (aiThinking()) {
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      }
+
       @for (businessTime of poi.businessTimes; track $index) {
 
         <section class="business-time-header">
@@ -179,8 +184,8 @@
             <mat-form-field appearance="outline">
               <mat-label>State</mat-label>
               <mat-select [(ngModel)]="businessTime.state" required>
-                <mat-option [value]="0">Closed</mat-option>
-                <mat-option [value]="1">Opened</mat-option>
+                <mat-option [value]="0">Opened</mat-option>
+                <mat-option [value]="1">Closed</mat-option>
               </mat-select>
             </mat-form-field>
           </section>
@@ -188,7 +193,7 @@
         </article>
       }
 
-      <button color="accent" mat-raised-button (click)="addBusinessTime()">Add business time</button>
+      <button [disabled]="aiThinking()" color="accent" mat-raised-button (click)="addBusinessTime()">Add business time</button>
     </section>
   </main>
 
