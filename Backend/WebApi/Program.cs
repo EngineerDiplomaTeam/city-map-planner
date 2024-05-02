@@ -1,6 +1,9 @@
+using ChatGPT.Net;
+using ChatGPT.Net.DTO.ChatGPT;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using NSwag;
 using OverpassClient;
 using WebApi.Data;
@@ -25,18 +28,33 @@ builder.Services.AddDbContext<UserDataDbContext>(
     )
 );
 
-builder.Services.AddDbContext<DataDbContext>(
-    options => options.UseNpgsql(
-        builder.Configuration.GetConnectionString("CityPlannerData"),
-        x => x.MigrationsHistoryTable("ef_migrations_history", "data")
-    )
-);
+var npgsqlDataSource = new NpgsqlDataSourceBuilder(builder.Configuration.GetConnectionString("CityPlannerData")).EnableRecordsAsTuples().Build();
+builder.Services.AddDbContext<DataDbContext>(options => options.UseNpgsql(
+    npgsqlDataSource,
+    x => x.MigrationsHistoryTable("ef_migrations_history", "data")
+));
 
 builder.Services.AddTransient<IPathFindingService, PathFindingService>();
 builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 builder.Services.AddTransient<IPoiRepository, PoiRepository>();
-builder.Services.AddTransient<IPoisService, PoisService>();
+builder.Services.AddTransient<IPoisManagerService, PoisManagerService>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
+builder.Services.AddHostedService<PoiUpdater>();
+builder.Services.AddHostedService<OsmUpdater>();
+builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
+builder.Services.AddTransient<ChatGpt>(_ => new ChatGpt(builder.Configuration.GetValue<string>("ChatGptApiToken") ?? throw new Exception("Missing ChatGptApiToken"), new ChatGptOptions()
+{
+    Model = "gpt-4",
+    MaxTokens = 2_000,
+}));
+
+builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
+{
+    Title = "City map planner backend API"
+});
 
 builder.Services.AddAuthorization();
 builder.Services
@@ -54,22 +72,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
-builder.Services.AddTransient<IEmailSender, EmailSender>();
-builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
-//builder.Services.AddHttpClient<WeatherClient>();
-builder.Services.AddHttpClient<WeatherClient>("WeatherClient",client =>
-{
-    client.BaseAddress = new Uri("https://api.open-meteo.com/v1/forecast");
-});
-builder.Services.AddHostedService<WeatherUpdater>();
-builder.Services.AddTransient<WeatherUpdater>();
-builder.Services.AddHostedService<OsmUpdater>();
-
-builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
-builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
-{
-    Title = "City map planner backend API"
-});
 
 builder.Services.AddResponseCompression();
 

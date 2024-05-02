@@ -35,7 +35,7 @@ jobs:
     - name: 'Setup pnpm'
       uses: 'pnpm/action-setup@v2'
       with:
-        version: 8
+        version: 9
 
     - name: 'Use Node.js 20'
       uses: 'actions/setup-node@v3'
@@ -46,6 +46,7 @@ jobs:
 
     - name: 'Restore packages'
       run: |
+        corepack enable
         pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm
         pnpm i --frozen-lockfile
       working-directory: 'Frontend'

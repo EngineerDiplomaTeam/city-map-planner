@@ -1,0 +1,40 @@
+<section class="loader">
+  @if (poiManageStore.loading()) {
+    <mat-progress-bar mode="indeterminate"/>
+  }
+</section>
+
+<main class="list">
+  <mat-list>
+    <h3 matSubheader>Points of interest</h3>
+
+    @for (manageablePoi of poiManageStore.manageablePois(); track manageablePoi.id;) {
+        <mat-list-item lines="3">
+          <img matListItemAvatar [src]="(manageablePoi.images | findImageWithIcon)?.iconSrc" alt="">
+          <span matListItemTitle [matTooltipDisabled]="!(manageablePoi | requireUpdate)" matTooltipClass="warn" matTooltip="Poi websites have changed since last modification">{{ manageablePoi.name }}
+            <span [matBadgeHidden]="!(manageablePoi | requireUpdate)" matBadgeColor="warn" matBadgeOverlap="false" [matBadge]="1"></span>
+          </span>
+          <button mat-icon-button matListItemMeta [matMenuTriggerFor]="menu" [matMenuTriggerData]="{id: manageablePoi.id}">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          {{ manageablePoi.description }}
+        </mat-list-item>
+
+      @if (!$last) {
+        <mat-divider></mat-divider>
+      }
+    }
+
+  </mat-list>
+
+  <button class="fab" mat-mini-fab color="primary" (click)="poiManageStore.onAddPoiClick()">
+    <mat-icon>add_location</mat-icon>
+  </button>
+</main>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-id="id">
+    <button mat-menu-item (click)="poiManageStore.onEditPoiClick(id)">Edit</button>
+    <button mat-menu-item (click)="poiManageStore.onDeletePoiClick(id)">Delete</button>
+  </ng-template>
+</mat-menu>

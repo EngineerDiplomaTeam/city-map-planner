@@ -10,6 +10,6 @@ export class PoiService {
   private readonly http = inject(HttpClient);
 
   public listPois(): Observable<PointOfInterest[]> {
-    return this.http.get<PointOfInterest[]>('/Api/Poi');
+    return this.http.get<PointOfInterest[]>('/Api/PoiMap/List');
   }
 }

@@ -17,6 +17,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'poi-manage',
+    loadComponent: () =>
+      import('./poi-manage/poi-manage.component').then(
+        (m) => m.PoiManageComponent,
+      ),
+  },
+  {
     path: 'weather',
     loadChildren: () =>
       import('./weather/weather.module').then((m) => m.WeatherModule),
