@@ -15,6 +15,7 @@ public interface IDataRepository
     public Task InsertIgnoreOsmNodesHugeAsync(IEnumerable<OsmNodeEntity> osmNodes, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesAsync(IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesHugeAsync(IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
+    public Task InsertIgnoreWeatherStatusAsync(IEnumerable<WeatherStatusEntity> weatherStatus, CancellationToken cancellationToken = default);
     public Task ReplaceOsmDataAsync(IEnumerable<OsmWayEntity> osmWays, IEnumerable<OsmTagEntity> osmTags, IEnumerable<OsmNodeEntity> osmNodes, IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
 }
 

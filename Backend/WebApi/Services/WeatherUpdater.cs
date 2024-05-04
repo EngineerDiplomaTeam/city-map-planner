@@ -61,7 +61,7 @@ public class WeatherUpdater(
                 {
                     var weatherStatus = new WeatherStatusEntity()
                     {
-                        Time = Convert.ToDateTime(weatherData.Hourly.Time[i]),
+                        Time = weatherData.Hourly.Time[i],
                         WeatherCode = weatherData.Hourly.Weathercode[i],
                     };
                 
