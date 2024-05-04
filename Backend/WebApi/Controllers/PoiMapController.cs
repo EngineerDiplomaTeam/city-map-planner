@@ -52,7 +52,8 @@ public class PoiMapController(IPoisManagerService poisManagerService, ILogger<Po
                     bannerSrc,
                     poi.Name,
                     poi.Description
-                )
+                ),
+                poi.PreferredSightseeingTime
             );
         }
     }

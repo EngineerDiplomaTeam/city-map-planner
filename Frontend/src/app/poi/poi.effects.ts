@@ -52,7 +52,15 @@ export class PoiEffects {
   public readonly openBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.openBasked),
-      exhaustMap(async () => this.dialog.open(PoiBasketDialogComponent, {}).id),
+      exhaustMap(
+        async () =>
+          this.dialog.open(PoiBasketDialogComponent, {
+            width: '100svw',
+            height: '100svh',
+            maxWidth: '100svw',
+            maxHeight: '100svh',
+          }).id,
+      ),
       map((id) => poiActions.baskedDialogOpened({ id })),
     );
   });

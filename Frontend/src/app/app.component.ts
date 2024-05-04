@@ -19,6 +19,7 @@ export class AppComponent {
 
   constructor() {
     this.store.dispatch(authActions.loadUserFromLocalStorage());
+    this.store.dispatch(poiActions.openBasked());
   }
 
   protected readonly poiActions = poiActions;

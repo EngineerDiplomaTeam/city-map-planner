@@ -14,6 +14,7 @@ export type PointOfInterest = {
     title: string;
     description: string;
   };
+  preferredSightseeingTime: string;
 };
 
 export const POI_FEATURE_KEY = 'poi';
