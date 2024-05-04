@@ -300,9 +300,8 @@ namespace WebApi.Data.Migrations.DataDb
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("time");
 
                     b.Property<int>("WeatherCode")

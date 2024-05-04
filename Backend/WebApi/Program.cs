@@ -39,7 +39,6 @@ builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 builder.Services.AddTransient<IPoiRepository, PoiRepository>();
 builder.Services.AddTransient<IPoisManagerService, PoisManagerService>();
-builder.Services.AddTransient<IWeatherService, WeatherService>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
@@ -75,12 +74,16 @@ builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
+
 builder.Services.AddHttpClient<IWeatherClient, WeatherClient>("WeatherClient",client =>
 {
     client.BaseAddress = new Uri("https://api.open-meteo.com/v1/forecast");
 });
+builder.Services.AddTransient<IWeatherService, WeatherService>();
+builder.Services.AddTransient<IWeatherRepository, WeatherRepository>();
 builder.Services.AddHostedService<WeatherUpdater>();
 builder.Services.AddTransient<WeatherUpdater>();
+
 builder.Services.AddHostedService<OsmUpdater>();
 
 builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();

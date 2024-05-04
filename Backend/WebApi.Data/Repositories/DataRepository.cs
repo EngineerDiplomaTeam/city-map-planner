@@ -15,7 +15,6 @@ public interface IDataRepository
     public Task InsertIgnoreOsmNodesHugeAsync(IEnumerable<OsmNodeEntity> osmNodes, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesAsync(IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
     public Task InsertIgnoreOsmEdgesHugeAsync(IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
-    public Task InsertIgnoreWeatherStatusAsync(IEnumerable<WeatherStatusEntity> weatherStatus, CancellationToken cancellationToken = default);
     public Task ReplaceOsmDataAsync(IEnumerable<OsmWayEntity> osmWays, IEnumerable<OsmTagEntity> osmTags, IEnumerable<OsmNodeEntity> osmNodes, IEnumerable<OsmEdgeEntity> osmEdges, CancellationToken cancellationToken = default);
 }
 
@@ -112,10 +111,4 @@ public class DataRepository(DataDbContext dbContext, ILogger<DataRepository> log
             await transaction.RollbackAsync(cancellationToken);
         }
     }
-    public async Task InsertIgnoreWeatherStatusAsync(IEnumerable<WeatherStatusEntity> weatherstatus, CancellationToken cancellationToken = default)
-    {
-        await dbContext.WeatherStatus.UpsertRange(weatherstatus).NoUpdate().RunAsync(cancellationToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
-    }
-    
 }

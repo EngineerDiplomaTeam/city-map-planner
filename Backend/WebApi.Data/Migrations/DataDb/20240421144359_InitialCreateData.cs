@@ -220,6 +220,21 @@ namespace WebApi.Data.Migrations.DataDb
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            migrationBuilder.CreateTable(
+                name: "weather_status",
+                schema: "data",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    time = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    weather_code = table.Column<int>(type: "int", nullable: false),
+
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_weather_status", x => x.id);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "ix_edges_to_id",
@@ -290,6 +305,11 @@ namespace WebApi.Data.Migrations.DataDb
             migrationBuilder.DropTable(
                 name: "ways",
                 schema: "data");
+
+            migrationBuilder.DropTable(
+                name: "weather_status",
+                schema: "data");
+
         }
     }
 }

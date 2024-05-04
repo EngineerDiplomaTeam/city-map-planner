@@ -1,20 +1,46 @@
 using WebApi.Data;
 using WebApi.Data.Entities;
+using WebApi.Data.Repositories;
+using WebApi.Domain;
 
 namespace WebApi.Services;
 
 public interface IWeatherService
 {
-    Task AddWeatherStatusAsync(WeatherStatusEntity weatherStatusEntity);
+    public Task<WeatherStatus> AddWeatherStatusAsync(WeatherStatus weatherStatus,
+        CancellationToken cancellationToken = default);
+
+    public IAsyncEnumerable<WeatherStatus> GetAllWeatherStatusAsync();
+
 }
 
-public class WeatherService(DataDbContext dbContext) : IWeatherService
+public class WeatherService(IWeatherRepository weatherRepository) : IWeatherService
 {
-    private readonly DataDbContext _dbContext = dbContext;
-
-    public async Task AddWeatherStatusAsync(WeatherStatusEntity weatherStatusEntity)
+    public async Task<WeatherStatus> AddWeatherStatusAsync(WeatherStatus weatherStatus, CancellationToken cancellationToken = default)
     {
-        _dbContext.WeatherStatus.Add(weatherStatusEntity);
-        await _dbContext.SaveChangesAsync();
+        var weatherStatusEntity = new WeatherStatusEntity()
+        {
+            Id = weatherStatus.Id,
+            Time = weatherStatus.Time,
+            WeatherCode = weatherStatus.WeatherCode,
+        };
+        var upsertWeatherStatus = await weatherRepository.AddWeatherStatusAsync(weatherStatusEntity, cancellationToken);
+      
+            return new WeatherStatus(
+                upsertWeatherStatus.Id,
+                upsertWeatherStatus.Time,
+                upsertWeatherStatus.WeatherCode
+            );
     }
+    
+    public IAsyncEnumerable<WeatherStatus> GetAllWeatherStatusAsync()
+    {
+        return weatherRepository.SelectAllWeatherStatusAsync(weather => new WeatherStatus(
+                weather.Id,
+                weather.Time,
+                weather.WeatherCode
+            )
+        );
+    }
+
 }
