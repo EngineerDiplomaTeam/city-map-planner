@@ -291,6 +291,29 @@ namespace WebApi.Data.Migrations.DataDb
                     b.ToTable("point_of_interests", "data");
                 });
 
+            modelBuilder.Entity("WebApi.Data.Entities.WeatherStatusEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("time");
+
+                    b.Property<int>("WeatherCode")
+                        .HasColumnType("integer")
+                        .HasColumnName("weather_code");
+
+                    b.HasKey("Id")
+                        .HasName("pk_weather_status");
+
+                    b.ToTable("weather_status", "data");
+                });
+
             modelBuilder.Entity("OsmTagEntityOsmWayEntity", b =>
                 {
                     b.HasOne("WebApi.Data.Entities.OsmWayEntity", null)

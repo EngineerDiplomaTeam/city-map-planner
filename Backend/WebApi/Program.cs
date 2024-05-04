@@ -39,6 +39,7 @@ builder.Services.AddTransient<IDataRepository, DataRepository>();
 builder.Services.AddTransient<IPathFindingRepository, PathFindingRepository>();
 builder.Services.AddTransient<IPoiRepository, PoiRepository>();
 builder.Services.AddTransient<IPoisManagerService, PoisManagerService>();
+builder.Services.AddTransient<IWeatherService, WeatherService>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
@@ -104,14 +105,18 @@ if (app.Environment.IsDevelopment())
 
     // Add web UIs to interact with the document
     // Available at: http://localhost:<port>/swagger
-    app.UseSwaggerUi(c => c.CustomInlineStyles = darkStyles);
+    app.UseSwaggerUi(c =>
+    {
+        c.CustomInlineStyles = darkStyles;
+    }
+    );
 
     // Add ReDoc UI to interact with the document
     // Available at: http://localhost:<port>/redoc
-    app.UseReDoc(options =>
+    /*app.UseReDoc(options =>
     {
-        options.Path = "/redoc";
-    });
+        options.Path = "/redoc"; 
+    });*/
 }
 
 // Do not add here HTTPS redirection, we use NGINX for SSL

@@ -111,4 +111,10 @@ public class DataRepository(DataDbContext dbContext, ILogger<DataRepository> log
             await transaction.RollbackAsync(cancellationToken);
         }
     }
+    public async Task InsertIgnoreWeatherStatusAsync(IEnumerable<WeatherStatusEntity> weatherstatus, CancellationToken cancellationToken = default)
+    {
+        await dbContext.WeatherStatus.UpsertRange(weatherstatus).NoUpdate().RunAsync(cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+    
 }

@@ -1,17 +1,16 @@
+using WebApi.Data.Entities;
 using WebApi.Weather;
 namespace WebApi.Services;
 
 
-public class WeatherUpdater: BackgroundService
+public class WeatherUpdater(
+    IWeatherClient weatherClient,
+    ILogger<WeatherUpdater> logger,
+    IServiceProvider serviceProvider)
+    : BackgroundService
 {
-    private readonly IWeatherClient _weatherClient;
-    private readonly ILogger<WeatherUpdater> _logger;
 
-    public WeatherUpdater(IWeatherClient weatherClient, ILogger<WeatherUpdater> logger)
-    {
-        _weatherClient = weatherClient;
-        _logger = logger;
-    }
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var lastUpdate = DateTime.MinValue;
@@ -44,22 +43,39 @@ public class WeatherUpdater: BackgroundService
         optionsApi.StartDate = dateQueryStart; 
         optionsApi.EndDate = dateQueryEnd;
         optionsApi.Timezone = "Europe/Berlin";
-        optionsApi.Hourly = new HourlyOptions(HourlyOptionsParameter.weathercode);
+        
+        optionsApi.Hourly.Add(HourlyOptionsParameter.weathercode);
 
+        using var scope = serviceProvider.CreateScope();
+        var collector = scope.ServiceProvider.GetRequiredService<IWeatherService>();
+        
         // Api call to get the current weather in Gdansk
-        WeatherForecastApi? weatherData = await _weatherClient.GetWeatherForecastAsync(optionsApi);
+        WeatherForecastApi? weatherData = await weatherClient.GetWeatherForecastAsync(optionsApi);
     
-        if (weatherData != null && weatherData.Hourly != null)
+        if (weatherData.Hourly != null)
         {
             // Iterate through the hourly weather codes and print them
             for (int i = 0; i < weatherData.Hourly.Weathercode.Length; i++)
             {
-                _logger.LogInformation($"Hour {i + 1}: Weather code {weatherData.Hourly.Weathercode[i]}");
+                if (weatherData.Hourly.Time != null)
+                {
+                    var weatherStatus = new WeatherStatusEntity()
+                    {
+                        Time = Convert.ToDateTime(weatherData.Hourly.Time[i]),
+                        WeatherCode = weatherData.Hourly.Weathercode[i],
+                    };
+                
+                    logger.LogInformation($"Hour {weatherData.Hourly.Time[i] }: Weather code {weatherData.Hourly.Weathercode[i]}");
+                
+                    await collector.AddWeatherStatusAsync(weatherStatus);
+                }
             }
         }
         else
         {
-            _logger.LogError("Weather data is unavailable.");
+            logger.LogError("Weather data is unavailable.");
         } 
+
     }
+
 }
