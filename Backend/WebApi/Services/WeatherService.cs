@@ -23,7 +23,7 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
             Id = weatherStatus.Id,
             Time = weatherStatus.Time,
             WeatherCode = weatherStatus.WeatherCode,
-            Temperature2m =weatherStatus.Temperature2m
+            Temperature =weatherStatus.Temperature
         };
         var upsertWeatherStatus = await weatherRepository.AddWeatherStatusAsync(weatherStatusEntity, cancellationToken);
       
@@ -31,7 +31,7 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
                 upsertWeatherStatus.Id,
                 upsertWeatherStatus.Time,
                 upsertWeatherStatus.WeatherCode,
-                upsertWeatherStatus.Temperature2m
+                upsertWeatherStatus.Temperature
             );
     }
     
@@ -41,7 +41,7 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
                 weather.Id,
                 weather.Time,
                 weather.WeatherCode,
-                weather.Temperature2m
+                weather.Temperature
             )
         );
     }

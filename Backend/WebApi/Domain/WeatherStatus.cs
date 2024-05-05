@@ -4,6 +4,6 @@ public record WeatherStatus(
     long Id,
     DateTime Time,
     int WeatherCode,
-    double Temperature2m
+    double Temperature
 );
 

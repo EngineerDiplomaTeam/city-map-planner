@@ -6,5 +6,5 @@ public class WeatherStatusEntity
     public DateTime Time { get; set; }
     public int WeatherCode { get; set; } 
     
-    public double Temperature2m { get; set; }
+    public double Temperature { get; set; }
 }

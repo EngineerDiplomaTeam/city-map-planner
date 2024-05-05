@@ -12,7 +12,7 @@ using WebApi.Data;
 namespace WebApi.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20240505171333_InitialWeatherStatus")]
+    [Migration("20240505174112_InitialWeatherStatus")]
     partial class InitialWeatherStatus
     {
         /// <inheritdoc />
@@ -303,9 +303,9 @@ namespace WebApi.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<double>("Temperature2m")
+                    b.Property<double>("Temperature")
                         .HasColumnType("double precision")
-                        .HasColumnName("temperature2m");
+                        .HasColumnName("temperature");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("timestamp with time zone")

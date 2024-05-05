@@ -10,22 +10,21 @@ namespace WebApi.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<double>(
+            migrationBuilder.RenameColumn(
                 name: "temperature2m",
                 schema: "data",
                 table: "weather_status",
-                type: "double precision",
-                nullable: false,
-                defaultValue: 0.0);
+                newName: "temperature");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "temperature2m",
+            migrationBuilder.RenameColumn(
+                name: "temperature",
                 schema: "data",
-                table: "weather_status");
+                table: "weather_status",
+                newName: "temperature2m");
         }
     }
 }
