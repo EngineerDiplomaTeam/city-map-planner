@@ -13,6 +13,8 @@ public class DataDbContext(DbContextOptions<DataDbContext> options) : DbContext(
     public DbSet<ImageEntity> Images { get; private set; } = null!;
     public DbSet<BusinessTimeEntity> BusinessTimes { get; private set; } = null!;
     public DbSet<PoiEntity> PointOfInterests { get; private set; } = null!;
+    public DbSet<WeatherStatusEntity> WeatherStatus { get; private set; } = null!;
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
