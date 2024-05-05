@@ -44,6 +44,24 @@ importers:
       '@angular/router':
         specifier: ^17.3.4
         version: 17.3.5(@angular/common@17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(@angular/platform-browser@17.3.5(@angular/animations@17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4)))(@angular/common@17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4)))(rxjs@7.8.1)
+      '@fullcalendar/angular':
+        specifier: ^6.1.10
+        version: 6.1.10(@angular/common@17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(@fullcalendar/core@6.1.11)
+      '@fullcalendar/core':
+        specifier: ^6.1.11
+        version: 6.1.11
+      '@fullcalendar/daygrid':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/interaction':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource-timegrid':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))
+      '@fullcalendar/timegrid':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)
       '@ngrx/component-store':
         specifier: ^17.2.0
         version: 17.2.0(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1)
@@ -1291,6 +1309,53 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fullcalendar/angular@6.1.10':
+    resolution: {integrity: sha512-y0aIC5Zexu8PaULF4u+K8LzMVu8pI7kLkEI53c7gV2/1OOGMg5Ld3tVeuArsHfAdlPdOqiWa/q2/ECZj28/Izg==}
+    peerDependencies:
+      '@angular/common': 12 - 17
+      '@angular/core': 12 - 17
+      '@fullcalendar/core': ~6.1.10
+
+  '@fullcalendar/core@6.1.11':
+    resolution: {integrity: sha512-TjG7c8sUz+Vkui2FyCNJ+xqyu0nq653Ibe99A66LoW95oBo6tVhhKIaG1Wh0GVKymYiqAQN/OEdYTuj4ay27kA==}
+
+  '@fullcalendar/daygrid@6.1.11':
+    resolution: {integrity: sha512-hF5jJB7cgUIxWD5MVjj8IU407HISyLu7BWXcEIuTytkfr8oolOXeCazqnnjmRbnFOncoJQVstTtq6SIhaT32Xg==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
+  '@fullcalendar/interaction@6.1.11':
+    resolution: {integrity: sha512-ynOKjzuPwEAMgTQ6R/Z2zvzIIqG4p8/Qmnhi1q0vzPZZxSIYx3rlZuvpEK2WGBZZ1XEafDOP/LGfbWoNZe+qdg==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
+  '@fullcalendar/premium-common@6.1.11':
+    resolution: {integrity: sha512-3WsSizkGDJEu+AlgQlFXKI+/DYCYTRp0PQRz0vS63qKBEUsVzfSD0oi/7jCylZJlCUteIjbi4Hu1I2I5o6UHrQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
+  '@fullcalendar/resource-daygrid@6.1.11':
+    resolution: {integrity: sha512-d/tuNS3mEDELlcohaJ/tQh4SbfeJzO6+1jLZ7Zzpm2oerdYskAzroB0qUlzhs4F9E5WeMj5RfXWUbZ+bmeoYvQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+      '@fullcalendar/resource': ~6.1.11
+
+  '@fullcalendar/resource-timegrid@6.1.11':
+    resolution: {integrity: sha512-oomckSrvBjRpp2U8knsimhUWIaIcHf834gWOHpNMwxthzDX1CZ+QzQ3/ZSwMSu0N+L8y2TMpfcBwddX3gCEkTA==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+      '@fullcalendar/resource': ~6.1.11
+
+  '@fullcalendar/resource@6.1.11':
+    resolution: {integrity: sha512-hxTQQ+eywfcC28JeyQEdJov+Jqa73zy4xU0Gg7DTTOVlS2lFVrQKM5aMXW8iz800rPbvHFAyVwfFNHclJrRoeQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
+  '@fullcalendar/timegrid@6.1.11':
+    resolution: {integrity: sha512-0seUHK/ferH89IeuCvV4Bib0zWjgK0nsptNdmAc9wDBxD/d9hm5Mdti0URJX6bDoRtsSfRDu5XsRcrzwoc+AUQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4453,6 +4518,9 @@ packages:
     resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  preact@10.12.1:
+    resolution: {integrity: sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -6820,6 +6888,54 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@fullcalendar/angular@6.1.10(@angular/common@17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@angular/common': 17.3.5(@angular/core@17.3.5(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1)
+      '@angular/core': 17.3.5(rxjs@7.8.1)(zone.js@0.14.4)
+      '@fullcalendar/core': 6.1.11
+      tslib: 2.6.2
+
+  '@fullcalendar/core@6.1.11':
+    dependencies:
+      preact: 10.12.1
+
+  '@fullcalendar/daygrid@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+
+  '@fullcalendar/interaction@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+
+  '@fullcalendar/premium-common@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+
+  '@fullcalendar/resource-daygrid@6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/daygrid': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource': 6.1.11(@fullcalendar/core@6.1.11)
+
+  '@fullcalendar/resource-timegrid@6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource-daygrid': 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))
+      '@fullcalendar/timegrid': 6.1.11(@fullcalendar/core@6.1.11)
+
+  '@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+
+  '@fullcalendar/timegrid@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/daygrid': 6.1.11(@fullcalendar/core@6.1.11)
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
@@ -10844,6 +10960,8 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.2.0
+
+  preact@10.12.1: {}
 
   prelude-ls@1.2.1: {}
 

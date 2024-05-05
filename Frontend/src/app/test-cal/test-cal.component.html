@@ -1,0 +1,11 @@
+<p>test-cal works!</p>
+
+<!--@if (calendarOptions()) {-->
+  <full-calendar [options]="calendarOptions()" [deepChangeDetection]="true">
+    <ng-template #eventContent let-arg>
+      <b>{{ arg.event.title }}</b>
+
+      <div style="background: red; height: 10px"></div>
+    </ng-template>
+  </full-calendar>
+<!--}-->

@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <button (click)="toggleSidenavs()">toggle</button>
+</mat-toolbar>
+
+<mat-sidenav-container #sidenavContainer class="container">
+
+  <mat-sidenav position="start" mode="side" opened class="unassigned-pois">
+    @for (unassigned of unassignedPois; track unassigned.id) {
+      <article
+        cdkDrag
+        class="poi"
+        [style.--banner-url]="unassigned.details.bannerSrc | toUrl"
+        [style.--time-height]="unassigned.preferredSightseeingTime | toHeight"
+      >
+        <h5 class="title">{{ unassigned.details.title }}</h5>
+        <span class="duration">{{ unassigned.preferredSightseeingTime | toDuration }}</span>
+      </article>
+    }
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <full-calendar [options]="calendarOptions()" [deepChangeDetection]="true">
+      <ng-template #eventContent let-arg>
+        <b>{{ arg.event.title }}</b>
+
+        <div style="background: red; height: 10px"></div>
+      </ng-template>
+    </full-calendar>
+  </mat-sidenav-content>
+
+  <mat-sidenav position="end" mode="side" opened class="selected-time-ranges">Sidenav content</mat-sidenav>
+
+</mat-sidenav-container>
