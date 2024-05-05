@@ -114,25 +114,25 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
         if (options.EndDate != string.Empty)
             queryString.Add("end_date", options.EndDate);
 
-        // Now we iterate through hourly
+        // Now we iterate through minutely15
 
-        // Hourly
-        if (options.Hourly.Count > 0)
+        // minutely15
+        if (options.Minutely15.Count > 0)
         {
-            var firstHourlyElement = true;
+            var firstminutely15Element = true;
             
             String queryValue = null; 
-            foreach (var option in options.Hourly)
-                if (firstHourlyElement)
+            foreach (var option in options.Minutely15)
+                if (firstminutely15Element)
                 {
                     queryValue += option.ToString();
-                    firstHourlyElement = false;
+                    firstminutely15Element = false;
                 }
                 else
                 {
                     queryValue+= "," + option;
                 }
-            queryString.Add("hourly", queryValue);
+            queryString.Add("minutely_15", queryValue);
         }
         String finalUrl = url + Create(queryString).ToString();
 

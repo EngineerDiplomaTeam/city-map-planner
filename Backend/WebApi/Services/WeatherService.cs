@@ -23,13 +23,15 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
             Id = weatherStatus.Id,
             Time = weatherStatus.Time,
             WeatherCode = weatherStatus.WeatherCode,
+            Temperature2m =weatherStatus.Temperature2m
         };
         var upsertWeatherStatus = await weatherRepository.AddWeatherStatusAsync(weatherStatusEntity, cancellationToken);
       
             return new WeatherStatus(
                 upsertWeatherStatus.Id,
                 upsertWeatherStatus.Time,
-                upsertWeatherStatus.WeatherCode
+                upsertWeatherStatus.WeatherCode,
+                upsertWeatherStatus.Temperature2m
             );
     }
     
@@ -38,7 +40,8 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
         return weatherRepository.SelectAllWeatherStatusAsync(weather => new WeatherStatus(
                 weather.Id,
                 weather.Time,
-                weather.WeatherCode
+                weather.WeatherCode,
+                weather.Temperature2m
             )
         );
     }

@@ -3,14 +3,14 @@
 public class WeatherForecastOptionsApi
 {
     public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperatureUnit,
-        string timezone, List<HourlyOptionsParameter>? hourly, TimeformatType timeformat,
+        string timezone, List<Minutely15OptionsParameter>? minutely15, TimeformatType timeformat,
         int pastDays, string startDate, string endDate)
     {
         Latitude = latitude;
         Longitude = longitude;
         TemperatureUnit = temperatureUnit;
         Timezone = timezone;
-            Hourly = hourly;
+            minutely15 = minutely15;
 
 
         Timeformat = timeformat;
@@ -71,7 +71,7 @@ public class WeatherForecastOptionsApi
     /// </summary>
     public string Timezone { get; set; }
 
-    public List<HourlyOptionsParameter> Hourly { get; set; } = new(); // lista Enumów
+    public List<Minutely15OptionsParameter> Minutely15 { get; set; } = new(); // lista Enumów
 
 
 

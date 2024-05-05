@@ -43,17 +43,17 @@ public class WeatherForecastApi
 
 
     /// <summary>
-    ///     For each selected <see cref="HourlyOptionsParameter" />, the unit will be listed here
+    ///     For each selected <see cref="minutely15OptionsParameter" />, the unit will be listed here
     /// </summary>
 
-    [JsonPropertyName("hourly_units")]
-    public HourlyUnits? HourlyUnits { get; set; }
+    [JsonPropertyName("minutely_15_units")]
+    public Minutely15Units? Minutely15Units { get; set; }
 
     /// <summary>
     ///     For each selected weather variable, data will be returned as a floating point array.
     ///     Additionally a time array will be returned with ISO8601 timestamps.
     /// </summary>
 
-    [JsonPropertyName("hourly")]
-    public HourlyResponseBody? Hourly { get; set; }
+    [JsonPropertyName("minutely_15")]
+    public Minutely15ResponseBody? Minutely15 { get; set; }
 }

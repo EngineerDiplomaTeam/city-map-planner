@@ -53,9 +53,9 @@ public class WeatherUpdater(
         optionsApi.EndDate = dateQueryEnd;
         optionsApi.Timezone = "Europe/Berlin";
 
-        optionsApi.Hourly.Add(HourlyOptionsParameter.weathercode);
-
-
+        optionsApi.Minutely15.Add(Minutely15OptionsParameter.weathercode);
+        optionsApi.Minutely15.Add(Minutely15OptionsParameter.temperature_2m);
+        
 
         // Api call to get the current weather in Gdansk
         WeatherForecastApi? weatherData = await weatherClient.GetWeatherForecastAsync(optionsApi);
@@ -67,14 +67,14 @@ public class WeatherUpdater(
         // Weather Database is null
         if (weatherAll.Count == 0)
         {
-            for (int i = 0; i < weatherData.Hourly.Weathercode.Length; i++)
+            for (int i = 0; i < weatherData.Minutely15.Weathercode.Length; i++)
             {
 
-                if (weatherData.Hourly.Time != null)
+                if (weatherData.Minutely15.Time != null)
                 {
-                    update = new WeatherStatus(i+1, ToDateTime(weatherData.Hourly.Time[i]).ToUniversalTime(),
-                        weatherData.Hourly.Weathercode[i]);
-                    // logger.LogInformation($"Hour {weatherData.Hourly.Time[i] }: Weather code {weatherData.Hourly.Weathercode[i]}");
+                    update = new WeatherStatus(i+1, ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
+                        weatherData.Minutely15.Weathercode[i],Convert.ToDouble(weatherData.Minutely15.Temperature2m[i]));
+                    // logger.LogInformation($"Hour {weatherData.Minutely15.Time[i] }: Weather code {weatherData.Minutely15.Weathercode[i]}");
                     logger.LogInformation("Add new weatherCode");
 
                     await weatherService.AddWeatherStatusAsync(update, cancellationToken);
@@ -84,22 +84,22 @@ public class WeatherUpdater(
         }
         else
         {
-            if (weatherData.Hourly != null)
+            if (weatherData.Minutely15 != null)
             {
-                for (int i = 0; i < weatherData.Hourly.Weathercode.Length; i++)
+                for (int i = 0; i < weatherData.Minutely15.Weathercode.Length; i++)
                 {
-                    var x = weatherAll.Find(info => info.Time == ToDateTime(weatherData.Hourly.Time[i]).ToUniversalTime());
+                    var x = weatherAll.Find(info => info.Time == ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime());
                     if (x != null)
                     {
                         break;
                     }
                     else
                     {
-                        if (weatherData.Hourly.Time != null)
+                        if (weatherData.Minutely15.Time != null)
                         {
                             update = new WeatherStatus(weatherAll.Count + 1,
-                                ToDateTime(weatherData.Hourly.Time[i]).ToUniversalTime(),
-                                weatherData.Hourly.Weathercode[i]);
+                                ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
+                                weatherData.Minutely15.Weathercode[i],weatherData.Minutely15.Temperature2m[i]);
                             logger.LogInformation("Add new weatherCode");
                             await weatherService.AddWeatherStatusAsync(update, cancellationToken);
                         }
