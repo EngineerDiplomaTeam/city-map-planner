@@ -127,6 +127,35 @@ a {
   background: mat.get-color-from-palette($warn, 900);
 }
 
+mat-sidenav {
+  border: none !important;
+}
+
 .fc-timegrid-slot {
   line-height: 40px;
+}
+
+.slot-lane {
+  background-color: transparent !important;
+}
+
+.fl-view-custom {
+  background-color: #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fc-today-bg-color: transparent;
+    --fc-neutral-bg-color: transparent;
+    --fc-border-color: #cddc3950;
+  }
+
+
+  .fl-view-custom {
+    background-color: rgb(40, 40, 40) !important;
+  }
+
+  .fc-theme-standard td, .fc-theme-standard th {
+    //border: 1px solid #000;
+  }
 }

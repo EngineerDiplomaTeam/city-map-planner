@@ -15,6 +15,14 @@ export type PointOfInterest = {
     description: string;
   };
   preferredSightseeingTime: string;
+  businessHours: {
+    effectiveFrom: string;
+    effectiveTo: string;
+    effectiveDays: (0 | 1 | 2 | 3 | 4 | 5 | 6)[];
+    timeFrom: string;
+    timeTo: string;
+    state: 0 | 1;
+  }[];
 };
 
 export const POI_FEATURE_KEY = 'poi';

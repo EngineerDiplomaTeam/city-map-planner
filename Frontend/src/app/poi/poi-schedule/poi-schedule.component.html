@@ -1,23 +1,8 @@
-<mat-toolbar>
-  <button (click)="toggleSidenavs()">toggle</button>
-
-  <section class="add-timespan">
-
-    <mat-form-field appearance="outline">
-      <mat-label>Choose a date</mat-label>
-      <input [min]="today" [formControl]="formGroup.controls.dateOnly" matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <app-time-range-picker
-      [formControlStart]="formGroup.controls.timeFrom"
-      [formControlEnd]="formGroup.controls.timeTo"
-    />
-
-    <button mat-raised-button color="primary">Add sightseeing timespan</button>
-  </section>
+<mat-toolbar class="context-bar">
+  <button mat-raised-button (click)="toggleSidenavs()">Toggle pane</button>
+  <button mat-raised-button (click)="manageSightSeeingDays()">Manage sightseeing days</button>
+  <a routerLink="/" mat-raised-button>Go back to map</a>
+  <a routerLink="/" mat-raised-button>Go to summary</a>
 </mat-toolbar>
 
 <mat-sidenav-container #sidenavContainer class="container">
@@ -35,7 +20,5 @@
       </ng-template>
     </full-calendar>
   </mat-sidenav-content>
-
-  <mat-sidenav position="end" mode="side" opened class="selected-time-ranges">Sidenav content</mat-sidenav>
 
 </mat-sidenav-container>

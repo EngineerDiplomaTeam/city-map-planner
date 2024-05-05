@@ -62,6 +62,9 @@ importers:
       '@fullcalendar/resource-timegrid':
         specifier: ^6.1.11
         version: 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))
+      '@fullcalendar/resource-timeline':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))
       '@fullcalendar/timegrid':
         specifier: ^6.1.11
         version: 6.1.11(@fullcalendar/core@6.1.11)
@@ -1350,13 +1353,29 @@ packages:
       '@fullcalendar/core': ~6.1.11
       '@fullcalendar/resource': ~6.1.11
 
+  '@fullcalendar/resource-timeline@6.1.11':
+    resolution: {integrity: sha512-RIQOwGxN8n2jSIOsEGUjzoGgdYDZq8t4sUvSUfnahGwyCesMqsYNmpA+58PFy/BHPIgxyvy8awH2CnjjSN7Uiw==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+      '@fullcalendar/resource': ~6.1.11
+
   '@fullcalendar/resource@6.1.11':
     resolution: {integrity: sha512-hxTQQ+eywfcC28JeyQEdJov+Jqa73zy4xU0Gg7DTTOVlS2lFVrQKM5aMXW8iz800rPbvHFAyVwfFNHclJrRoeQ==}
     peerDependencies:
       '@fullcalendar/core': ~6.1.11
 
+  '@fullcalendar/scrollgrid@6.1.11':
+    resolution: {integrity: sha512-GRhhU8ACHqgfxdMnP59VPThfNG3Stkp9zq1sLnI992g1fZQ+V2UhYvl5qhu3eEVSp2KTDPx4NaoR35cQGrC1Mw==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
   '@fullcalendar/timegrid@6.1.11':
     resolution: {integrity: sha512-0seUHK/ferH89IeuCvV4Bib0zWjgK0nsptNdmAc9wDBxD/d9hm5Mdti0URJX6bDoRtsSfRDu5XsRcrzwoc+AUQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.11
+
+  '@fullcalendar/timeline@6.1.11':
+    resolution: {integrity: sha512-MGUEAHlFBWxpuhSWhZbHOtD9i+b8GZjqNV82MH+vwPHq1Jjqe8qj9Wby00vKikdWH+RuAB+IuiKjQaROEU0Ecw==}
     peerDependencies:
       '@fullcalendar/core': ~6.1.11
 
@@ -6930,7 +6949,20 @@ snapshots:
       '@fullcalendar/resource-daygrid': 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))
       '@fullcalendar/timegrid': 6.1.11(@fullcalendar/core@6.1.11)
 
+  '@fullcalendar/resource-timeline@6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/scrollgrid': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/timeline': 6.1.11(@fullcalendar/core@6.1.11)
+
   '@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+
+  '@fullcalendar/scrollgrid@6.1.11(@fullcalendar/core@6.1.11)':
     dependencies:
       '@fullcalendar/core': 6.1.11
       '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
@@ -6939,6 +6971,12 @@ snapshots:
     dependencies:
       '@fullcalendar/core': 6.1.11
       '@fullcalendar/daygrid': 6.1.11(@fullcalendar/core@6.1.11)
+
+  '@fullcalendar/timeline@6.1.11(@fullcalendar/core@6.1.11)':
+    dependencies:
+      '@fullcalendar/core': 6.1.11
+      '@fullcalendar/premium-common': 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/scrollgrid': 6.1.11(@fullcalendar/core@6.1.11)
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:

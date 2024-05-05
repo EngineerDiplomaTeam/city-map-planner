@@ -12,14 +12,21 @@
 
 .unassigned-pois {
   width: 140px;
-  background-color: aqua;
-}
-
-.selected-time-ranges {
-  width: 140px;
-  background-color: aquamarine;
 }
 
 full-calendar {
   height: 100%;
+}
+
+.context-bar {
+  display: flex;
+  justify-content: space-between;
+  height: auto !important;
+  padding-bottom: 0.5em;
+  overflow-x: auto;
+  gap: 0.5em;
+
+  [mat-raised-button] {
+    flex-shrink: 0;
+  }
 }

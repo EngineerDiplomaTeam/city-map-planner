@@ -1,8 +1,7 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { EventInput } from '@fullcalendar/core';
-import { ChangeDetectorRef, effect, inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable } from '@angular/core';
 import { ResourceInput } from '@fullcalendar/resource';
-import { EventData } from '@angular/cdk/testing';
 import { Store } from '@ngrx/store';
 import { selectAllPois } from '../poi.selectors';
 import { PointOfInterest } from '../poi.reducer';
@@ -13,10 +12,11 @@ interface PoiScheduleState {
   unassigned: PointOfInterest[];
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
   private readonly store = inject(Store);
-  protected readonly cdr = inject(ChangeDetectorRef);
   protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
   public readonly events = this.selectSignal((x) => x.events);
   public readonly resources = this.selectSignal((x) => x.resources);
@@ -24,12 +24,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
   protected readonly addInitialUnassignedPoisEffect = effect(
     () => {
-      // TODO: Filter out these that are assigned
-      const inBasket = this.poisInBasket();
-      const pois = structuredClone(inBasket);
-
+      const pois = structuredClone(this.poisInBasket());
       this.patchState(() => ({ unassigned: pois }));
-      this.cdr.detectChanges();
     },
     { allowSignalWrites: true },
   );
@@ -50,18 +46,6 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
         {
           id: 'day-4',
           title: '15.12.2024',
-        },
-        {
-          id: 'day-5',
-          title: '16.12.2024',
-        },
-        {
-          id: 'day-6',
-          title: '19.12.2024',
-        },
-        {
-          id: 'day-7',
-          title: '22.12.2024',
         },
       ],
     });
