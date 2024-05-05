@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   effect,
+  ElementRef,
   inject,
   TemplateRef,
   viewChild,
@@ -18,7 +19,7 @@ import {
   FullCalendarModule,
 } from '@fullcalendar/angular';
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/core';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { ToDurationPipe } from '../poi-basket-dialog/to-duration.pipe';
@@ -28,10 +29,36 @@ import { PointOfInterest } from '../poi.reducer';
 import { selectAllPois } from '../poi.selectors';
 import { Store } from '@ngrx/store';
 import { poiActions } from '../poi.actions';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerToggle,
+} from '@angular/material/datepicker';
+import {
+  MatFormField,
+  MatHint,
+  MatLabel,
+  MatSuffix,
+} from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { TimeRangePickerComponent } from '../../time-range-picker/time-range-picker.component';
+import { PoiScheduleStore } from './poi-schedule.store';
+import { ToDataEventPipe } from '../to-data-event.pipe';
+import { PoiEventComponent } from '../poi-event/poi-event.component';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-poi-schedule',
   standalone: true,
+  providers: [PoiScheduleStore],
   imports: [
     MatToolbar,
     MatSidenavModule,
@@ -40,12 +67,31 @@ import { poiActions } from '../poi.actions';
     ToDurationPipe,
     ToHeightPipe,
     ToUrlPipe,
+    FormsModule,
+    MatButton,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatFormField,
+    MatHint,
+    MatInput,
+    MatLabel,
+    MatSuffix,
+    TimeRangePickerComponent,
+    ReactiveFormsModule,
+    ToDataEventPipe,
+    PoiEventComponent,
+    JsonPipe,
   ],
   templateUrl: './poi-schedule.component.html',
   styleUrl: './poi-schedule.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiScheduleComponent {
+  protected readonly dragableUnassignedPois = viewChild.required(
+    'dragableUnassignedPois',
+    { read: ElementRef<HTMLElement> },
+  );
   protected readonly sidenavContainer = viewChild.required(MatSidenavContainer);
   protected readonly fullCalendar = viewChild.required(FullCalendarComponent);
   protected readonly eventContent = viewChild.required('eventContent', {
@@ -53,16 +99,23 @@ export class PoiScheduleComponent {
   });
 
   protected readonly store = inject(Store);
-  protected readonly cdr = inject(ChangeDetectorRef);
+  protected readonly formBuilder = inject(FormBuilder);
+  protected readonly poiScheduleStore = inject(PoiScheduleStore);
+  protected readonly today = new Date();
 
-  protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
-
-  protected unassignedPois: PointOfInterest[] = [];
-
-  protected readonly addInitialUnassignedPoisEffect = effect(() => {
-    // TODO: Filter out these that are assigned
-    this.unassignedPois = structuredClone(this.poisInBasket());
-    this.cdr.detectChanges();
+  protected readonly formGroup = this.formBuilder.group({
+    dateOnly: new FormControl(new Date(), {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    timeFrom: new FormControl<string>('13:37', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    timeTo: new FormControl<string>('21:37', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
   });
 
   protected readonly calendarOptions = computed<CalendarOptions | undefined>(
@@ -71,18 +124,6 @@ export class PoiScheduleComponent {
         ? undefined
         : {
             plugins: [resourceTimeGridPlugin, interactionPlugin],
-            events: [
-              {
-                title: 'Meeting',
-                start: new Date(),
-                resourceId: 'day-1',
-                className: 'pure-container',
-                end: new Date().setHours(new Date().getHours() + 4),
-                extendedProps: {
-                  // poi,
-                },
-              },
-            ],
             schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
             initialView: 'resourceTimeGridDay',
             slotLabelFormat: {
@@ -91,6 +132,7 @@ export class PoiScheduleComponent {
               meridiem: 'short',
               hour12: false,
             },
+            eventOverlap: false,
             headerToolbar: false,
             allDaySlot: false,
             editable: true,
@@ -99,34 +141,19 @@ export class PoiScheduleComponent {
             eventDurationEditable: false,
             droppable: true,
             eventContent: this.eventContent(),
-            resources: [
-              {
-                id: 'day-1',
-                title: '12.12.2024',
-              },
-              {
-                id: 'day-3',
-                title: '14.12.2024',
-              },
-              {
-                id: 'day-4',
-                title: '15.12.2024',
-              },
-              {
-                id: 'day-5',
-                title: '16.12.2024',
-              },
-              {
-                id: 'day-6',
-                title: '19.12.2024',
-              },
-              {
-                id: 'day-7',
-                title: '22.12.2024',
-              },
-            ],
           },
   );
+
+  protected readonly dragableUnassignedPoisEffect = effect(() => {
+    console.log(this.dragableUnassignedPois());
+
+    const draggable = new Draggable(
+      this.dragableUnassignedPois().nativeElement,
+      {
+        itemSelector: 'app-poi-event',
+      },
+    );
+  });
 
   constructor() {
     this.store.dispatch(poiActions.loadPois());

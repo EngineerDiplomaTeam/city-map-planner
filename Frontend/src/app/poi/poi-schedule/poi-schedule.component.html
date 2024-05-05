@@ -1,29 +1,37 @@
 <mat-toolbar>
   <button (click)="toggleSidenavs()">toggle</button>
+
+  <section class="add-timespan">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input [min]="today" [formControl]="formGroup.controls.dateOnly" matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <app-time-range-picker
+      [formControlStart]="formGroup.controls.timeFrom"
+      [formControlEnd]="formGroup.controls.timeTo"
+    />
+
+    <button mat-raised-button color="primary">Add sightseeing timespan</button>
+  </section>
 </mat-toolbar>
 
 <mat-sidenav-container #sidenavContainer class="container">
 
-  <mat-sidenav position="start" mode="side" opened class="unassigned-pois">
-    @for (unassigned of unassignedPois; track unassigned.id) {
-      <article
-        cdkDrag
-        class="poi"
-        [style.--banner-url]="unassigned.details.bannerSrc | toUrl"
-        [style.--time-height]="unassigned.preferredSightseeingTime | toHeight"
-      >
-        <h5 class="title">{{ unassigned.details.title }}</h5>
-        <span class="duration">{{ unassigned.preferredSightseeingTime | toDuration }}</span>
-      </article>
+  <mat-sidenav position="start" mode="side" opened class="unassigned-pois" #dragableUnassignedPois>
+    @for (unassigned of poiScheduleStore.unassigned(); track unassigned.id) {
+      <app-poi-event [poi]="unassigned" [attr.data-event]="unassigned | toDataEvent"/>
     }
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <full-calendar [options]="calendarOptions()" [deepChangeDetection]="true">
+    <full-calendar [options]="calendarOptions()" [events]="poiScheduleStore.events()" [resources]="poiScheduleStore.resources()">
       <ng-template #eventContent let-arg>
-        <b>{{ arg.event.title }}</b>
-
-        <div style="background: red; height: 10px"></div>
+        <app-poi-event [poi]="arg.event.extendedProps.poi"/>
       </ng-template>
     </full-calendar>
   </mat-sidenav-content>

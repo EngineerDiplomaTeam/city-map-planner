@@ -56,6 +56,9 @@ importers:
       '@fullcalendar/interaction':
         specifier: ^6.1.11
         version: 6.1.11(@fullcalendar/core@6.1.11)
+      '@fullcalendar/resource':
+        specifier: ^6.1.11
+        version: 6.1.11(@fullcalendar/core@6.1.11)
       '@fullcalendar/resource-timegrid':
         specifier: ^6.1.11
         version: 6.1.11(@fullcalendar/core@6.1.11)(@fullcalendar/resource@6.1.11(@fullcalendar/core@6.1.11))

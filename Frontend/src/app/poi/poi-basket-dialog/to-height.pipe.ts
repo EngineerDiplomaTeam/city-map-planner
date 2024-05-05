@@ -9,6 +9,6 @@ export class ToHeightPipe implements PipeTransform {
   transform(value: string): string {
     const [hours, minutes, seconds] = value.split(':').map(Number);
 
-    return `${hours * 80 + minutes * 2 + seconds * 0}px`;
+    return `${hours * 80 + minutes * 1.33 + seconds * 0}px`;
   }
 }

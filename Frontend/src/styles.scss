@@ -126,3 +126,7 @@ a {
 .warn {
   background: mat.get-color-from-palette($warn, 900);
 }
+
+.fc-timegrid-slot {
+  line-height: 40px;
+}

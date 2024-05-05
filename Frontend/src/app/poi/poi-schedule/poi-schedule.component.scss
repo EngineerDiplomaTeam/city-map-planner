@@ -11,43 +11,15 @@
 }
 
 .unassigned-pois {
+  width: 140px;
   background-color: aqua;
 }
 
 .selected-time-ranges {
+  width: 140px;
   background-color: aquamarine;
 }
 
 full-calendar {
   height: 100%;
-}
-
-.poi {
-  box-sizing: border-box;
-  width: 140px;
-  height: var(--time-height);
-  background-image: var(--banner-url);
-  background-size: cover;
-  background-position: center;
-  background-color: #cddc39;
-  border-left: #cddc39 solid 4px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  .title {
-    background-color: #00000050;
-    //backdrop-filter: blur(10px);
-    margin: 0;
-    padding: 0.2em;
-  }
-
-  .duration {
-    align-self: end;
-    display: block;
-    background-color: #00000050;
-    //backdrop-filter: blur(10px);
-  }
 }
