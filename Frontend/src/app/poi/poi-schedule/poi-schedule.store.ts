@@ -33,19 +33,42 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
   constructor() {
     super({
       unassigned: [],
-      events: [],
+      events: [
+        {
+          resourceId: 'day-1',
+          groupId: 'availableForMeeting',
+          start: '2024-05-05T10:00:00',
+          end: '2024-05-05T18:00:00',
+          display: 'background',
+        },
+      ],
       resources: [
         {
           id: 'day-1',
           title: '12.12.2024',
+          businessHours: [
+            {
+              startTime: '11:00',
+              endTime: '17:00',
+              daysOfWeek: [0, 1, 2, 3, 4, 5, 6, 7],
+            },
+          ],
         },
         {
           id: 'day-3',
           title: '14.12.2024',
-        },
-        {
-          id: 'day-4',
-          title: '15.12.2024',
+          businessHours: [
+            {
+              startTime: '08:00',
+              endTime: '10:00',
+              daysOfWeek: [0, 1, 2, 3, 4, 5, 6, 7],
+            },
+            {
+              startTime: '14:00',
+              endTime: '18:00',
+              daysOfWeek: [0, 1, 2, 3, 4, 5, 6, 7],
+            },
+          ],
         },
       ],
     });

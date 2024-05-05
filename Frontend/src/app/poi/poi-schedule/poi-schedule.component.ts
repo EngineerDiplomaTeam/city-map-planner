@@ -129,17 +129,20 @@ export class PoiScheduleComponent {
             },
             slotLaneClassNames: ['slot-lane'],
             viewClassNames: ['fl-view-custom'],
-            eventOverlap: false,
-            headerToolbar: false,
+            // eventOverlap: false,
+            // headerToolbar: false,
             allDaySlot: false,
             editable: true,
             eventStartEditable: true,
             eventResourceEditable: true,
             eventDurationEditable: false,
             droppable: true,
-            eventContent: this.eventContent(),
-            eventReceive: (e) => {
-              console.log(e);
+            // eventContent: this.eventContent(),
+            // eventReceive: (e) => {
+            //   console.log(e);
+            // },
+            eventOverlap: (a, b) => {
+              return Boolean(a.groupId ?? b?.groupId);
             },
           },
   );

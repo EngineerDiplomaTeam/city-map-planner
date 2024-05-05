@@ -16,7 +16,9 @@
   <mat-sidenav-content>
     <full-calendar [options]="calendarOptions()" [events]="poiScheduleStore.events()" [resources]="poiScheduleStore.resources()">
       <ng-template #eventContent let-arg>
-        <app-poi-event [poi]="arg.event.extendedProps.poi"/>
+        @if (arg.event.extendedProps.poi) {
+          <app-poi-event [poi]="arg.event.extendedProps.poi"/>
+        }
       </ng-template>
     </full-calendar>
   </mat-sidenav-content>
