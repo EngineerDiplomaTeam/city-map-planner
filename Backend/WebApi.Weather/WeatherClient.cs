@@ -1,5 +1,7 @@
 ﻿
 using System.Globalization;
+using System.Runtime.InteropServices.JavaScript;
+using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
@@ -82,12 +84,12 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
 
             var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
                 await response.Content.ReadAsStreamAsync(),
-                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             return weatherForecast;
         }
         catch (HttpRequestException e)
         {
-            logger.LogError(e.Message);
+            logger.LogError(e, "padło na wysyłaniu requesta");
             logger.LogError(e.StackTrace);
             return null;
         }
@@ -121,18 +123,19 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
         {
             var firstminutely15Element = true;
             
-            String queryValue = null; 
+            StringBuilder queryValue = new StringBuilder();
+            
             foreach (var option in options.Minutely15)
                 if (firstminutely15Element)
                 {
-                    queryValue += option.ToString();
+                    queryValue.Append(option.ToString());
                     firstminutely15Element = false;
                 }
                 else
                 {
-                    queryValue+= "," + option;
+                    queryValue.Append("," + option.ToString());
                 }
-            queryString.Add("minutely_15", queryValue);
+            queryString.Add("minutely_15", queryValue.ToString());
         }
         String finalUrl = url + Create(queryString).ToString();
 

@@ -23,13 +23,7 @@ public interface IWeatherRepository
 public class WeatherRepository(DataDbContext dbContext, ILogger<DataRepository> logger) : IWeatherRepository
 {
     
-    private static readonly Action<BulkOperation> BulkActionIgnore = config =>
-    {
-        config.IncludeGraph = true;
-        config.InsertKeepIdentity = true;
-        config.UsePostgreSqlInsertOnConflictDoNothing = true;
-        config.InsertIfNotExists = true;
-    };
+
     public async Task InsertIgnoreWeatherStatusAsync(IEnumerable<WeatherStatusEntity> weatherstatus, CancellationToken cancellationToken = default)
     {
         await dbContext.WeatherStatus.UpsertRange(weatherstatus).NoUpdate().RunAsync(cancellationToken);

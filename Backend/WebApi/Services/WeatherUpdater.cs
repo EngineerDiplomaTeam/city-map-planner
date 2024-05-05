@@ -51,7 +51,7 @@ public class WeatherUpdater(
         optionsApi.Longitude = 18.64f; // For Gdansk
         optionsApi.StartDate = dateQueryStart;
         optionsApi.EndDate = dateQueryEnd;
-        optionsApi.Timezone = "Europe/Berlin";
+        optionsApi.Timezone = "Europe/Warsaw";
 
         optionsApi.Minutely15.Add(Minutely15OptionsParameter.weathercode);
         optionsApi.Minutely15.Add(Minutely15OptionsParameter.temperature_2m);
@@ -74,7 +74,6 @@ public class WeatherUpdater(
                 {
                     update = new WeatherStatus(i+1, ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
                         weatherData.Minutely15.Weathercode[i],Convert.ToDouble(weatherData.Minutely15.Temperature2m[i]));
-                    // logger.LogInformation($"Hour {weatherData.Minutely15.Time[i] }: Weather code {weatherData.Minutely15.Weathercode[i]}");
                     logger.LogInformation("Add new weatherCode");
 
                     await weatherService.AddWeatherStatusAsync(update, cancellationToken);
