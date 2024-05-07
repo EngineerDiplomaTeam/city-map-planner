@@ -28,13 +28,7 @@ import { ToHeightPipe } from '../poi-basket-dialog/to-height.pipe';
 import { ToUrlPipe } from '../poi-basket-dialog/to-url.pipe';
 import { Store } from '@ngrx/store';
 import { poiActions } from '../poi.actions';
-import {
-  FormBuilder,
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAnchor, MatButton } from '@angular/material/button';
 import {
   MatDatepicker,
@@ -159,7 +153,6 @@ export class PoiScheduleComponent {
 
   constructor() {
     this.store.dispatch(poiActions.loadPois());
-    this.poiScheduleStore.manageSightSeeingDays();
   }
 
   public async toggleSidenavs(): Promise<void> {

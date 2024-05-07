@@ -71,16 +71,24 @@ public partial class PoiUpdater(IHttpClientFactory factory, ILogger<PoiUpdater> 
 
     private async Task<string> ExtractTextFromPage(string url, string? xpath, CancellationToken cancellationToken)
     {
-        var page = await _httpClient.GetStreamAsync(url, cancellationToken);
-        var doc = page.ToHtmlDocument();
+        try
+        {
+            var page = await _httpClient.GetStreamAsync(url, cancellationToken);
+            var doc = page.ToHtmlDocument();
 
-        var contentNode = xpath is null
-            ? doc.DocumentNode
-            : doc.DocumentNode.SelectSingleNode(xpath);
+            var contentNode = xpath is null
+                ? doc.DocumentNode
+                : doc.DocumentNode.SelectSingleNode(xpath);
 
-        var contentText = string.Join('\n', contentNode.SelectNodes(".//text()").Select(x => x.InnerText.Trim()));
+            var contentText = string.Join('\n', contentNode.SelectNodes(".//text()").Select(x => x.InnerText.Trim()));
 
-        return CollapseNewLines().Replace(contentText, "\n").Trim();
+            return CollapseNewLines().Replace(contentText, "\n").Trim();
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Failed to extract text from {Url}", url);
+            return string.Empty;
+        }
     }
 
     [GeneratedRegex(@"(?:\r\n|\r(?!\n)|(?<!\r)\n){2,}")]

@@ -12,6 +12,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { formatDate } from 'date-fns';
 import { firstValueFrom, Observable, of, tap } from 'rxjs';
+import { PointOfInterest } from '../poi.reducer';
 
 export interface Range<T> {
   from: T;
@@ -26,11 +27,28 @@ interface PoiScheduleState {
   sightseeingTimeSpans: TimeSpansMap;
 }
 
+function get0BasedDayOfWeek(date: string): 0 | 1 | 2 | 3 | 4 | 5 | 6 {
+  const zeroBased = [6, 0, 1, 2, 3, 4, 5];
+  return zeroBased[new Date(date).getDay()] as 0 | 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+function greater(timeFrom: string, times: string[]): string {
+  const greatestFromTimes =
+    times.sort((a, b) => Number(a > b)).at(0) ?? '00:00:00';
+  return timeFrom > greatestFromTimes ? timeFrom : greatestFromTimes;
+}
+
+function smaller(timeTo: string, times: string[]): string {
+  const smallestFromTimes =
+    times.sort((a, b) => Number(a < b)).at(0) ?? '23:59:59';
+  return timeTo < smallestFromTimes ? timeTo : smallestFromTimes;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
-  public static readonly dateOnlyFormat = 'MM/dd/yyyy';
+  public static readonly dateOnlyFormat = 'yyyy-MM-dd';
   public static readonly defaultDateOnly = formatDate(
     new Date(),
     PoiScheduleStore.dateOnlyFormat,
@@ -55,7 +73,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
   private readonly matDialog = inject(MatDialog);
   private readonly store = inject(Store);
-  protected readonly poisInBasket = this.store.select(selectAllPois);
+  protected readonly poisInBasket$ = this.store.select(selectAllPois);
+  protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
   public readonly events = this.selectSignal((x) => x.events);
   public readonly resources = this.selectSignal((x) => x.resources);
   public readonly sightseeingTimeSpans = this.selectSignal(
@@ -64,16 +83,55 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
   public static calculateEventsFromTimeSpans(
     timeSpans: TimeSpansMap,
+    pois: PointOfInterest[],
   ): EventInput[] {
-    return [
-      {
-        resourceId: 'day-1',
-        groupId: 'availableForMeeting',
-        start: '2024-05-06T10:00:00',
-        end: '2024-05-06T18:00:00',
-        display: 'background',
-      },
-    ];
+    const resources = Array.from(timeSpans.entries()); // It is a date string
+
+    return resources
+      .flatMap(([resourceId, resourceRange]) =>
+        pois.flatMap((poi) =>
+          poi.businessHours
+            .filter(
+              (x) =>
+                new Date(x.effectiveFrom.split('T')[0]) <=
+                  new Date(resourceId) &&
+                new Date(x.effectiveTo.split('T')[0]) >= new Date(resourceId),
+            )
+            .filter((x) => x.state == 0)
+            .filter((x) =>
+              x.effectiveDays.includes(get0BasedDayOfWeek(resourceId)),
+            )
+            .flatMap((businessHour) => [
+              {
+                resourceId,
+                groupId: `poi-${poi.id}-indicator`,
+                start: `${PoiScheduleStore.defaultDateOnly}T${businessHour.timeFrom}`,
+                end: `${PoiScheduleStore.defaultDateOnly}T${businessHour.timeTo}`,
+                editable: false,
+                eventStartEditable: false,
+                eventResourceEditable: false,
+                display: 'block', // 'background',
+              },
+              {
+                resourceId,
+                groupId: `poi-${poi.id}`,
+                start: `${PoiScheduleStore.defaultDateOnly}T${greater(
+                  businessHour.timeFrom,
+                  resourceRange.map((x) => x.from + ':00'),
+                )}`,
+                end: `${PoiScheduleStore.defaultDateOnly}T${smaller(
+                  businessHour.timeTo,
+                  resourceRange.map((x) => x.to + ':00'),
+                )}`,
+                editable: false,
+                eventStartEditable: false,
+                eventResourceEditable: false,
+                display: 'none',
+              },
+            ]),
+        ),
+      )
+      .filter((x) => x.start < x.end);
   }
 
   public static calculateResourcesFromTimeSpans(
@@ -102,16 +160,38 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       ),
   );
 
+  private readonly recalculateEventsEffect = this.effect(
+    (timeSpans$: Observable<TimeSpansMap>) =>
+      timeSpans$.pipe(
+        tap((timeSpans) => {
+          const events = PoiScheduleStore.calculateEventsFromTimeSpans(
+            timeSpans,
+            this.poisInBasket(),
+          );
+
+          this.patchState(() => ({ events }));
+        }),
+      ),
+  );
+
   constructor() {
     super({
       sightseeingTimeSpans: PoiScheduleStore.initialSightseeingTimeSpans,
-      events: PoiScheduleStore.calculateEventsFromTimeSpans(
-        PoiScheduleStore.initialSightseeingTimeSpans,
-      ),
-      resources: PoiScheduleStore.calculateResourcesFromTimeSpans(
-        PoiScheduleStore.initialSightseeingTimeSpans,
-      ),
+      events: [],
+      resources: [],
     });
+
+    this.recalculateResourcesEffect(
+      of(PoiScheduleStore.initialSightseeingTimeSpans),
+    );
+
+    this.recalculateEventsEffect(
+      of(PoiScheduleStore.initialSightseeingTimeSpans),
+    );
+
+    this.poisInBasket$.subscribe(() =>
+      this.recalculateEventsEffect(of(this.state().sightseeingTimeSpans)),
+    );
   }
 
   public async manageSightSeeingDays(): Promise<void> {
@@ -150,5 +230,6 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     }));
 
     this.recalculateResourcesEffect(of(newMap));
+    this.recalculateEventsEffect(of(newMap));
   }
 }
