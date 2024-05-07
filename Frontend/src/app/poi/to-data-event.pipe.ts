@@ -12,7 +12,7 @@ export class ToDataEventPipe implements PipeTransform {
       duration: value.preferredSightseeingTime,
       extendedProps: { poi: value },
       classNames: ['pure-container'],
-      constraint: 'availableForMeeting',
+      constraint: `poi-${value.id}`,
     });
   }
 }

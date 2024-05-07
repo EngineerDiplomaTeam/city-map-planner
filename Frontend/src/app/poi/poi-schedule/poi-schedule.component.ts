@@ -55,8 +55,7 @@ import { PoiEventComponent } from '../poi-event/poi-event.component';
 import { JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatActionList, MatListItem } from '@angular/material/list';
-import { MatDialog } from '@angular/material/dialog';
-import { PoiSightseeingDaysManageDialogComponent } from '../poi-sightseeing-days-manage-dialog/poi-sightseeing-days-manage-dialog.component';
+import { selectAllPois } from '../poi.selectors';
 
 @Component({
   selector: 'app-poi-schedule',
@@ -107,7 +106,8 @@ export class PoiScheduleComponent {
   protected readonly store = inject(Store);
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly matDialog = inject(MatDialog);
+
+  protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
 
   protected readonly calendarOptions = computed<CalendarOptions | undefined>(
     () =>
@@ -129,8 +129,7 @@ export class PoiScheduleComponent {
             },
             slotLaneClassNames: ['slot-lane'],
             viewClassNames: ['fl-view-custom'],
-            // eventOverlap: false,
-            // headerToolbar: false,
+            headerToolbar: false,
             allDaySlot: false,
             editable: true,
             eventStartEditable: true,
@@ -142,7 +141,7 @@ export class PoiScheduleComponent {
             //   console.log(e);
             // },
             eventOverlap: (a, b) => {
-              return Boolean(a.groupId ?? b?.groupId);
+              return Boolean(a.groupId ?? b?.groupId); // Allow overlap only when placing event on resource constraint
             },
           },
   );
@@ -160,14 +159,11 @@ export class PoiScheduleComponent {
 
   constructor() {
     this.store.dispatch(poiActions.loadPois());
+    this.poiScheduleStore.manageSightSeeingDays();
   }
 
   public async toggleSidenavs(): Promise<void> {
     await this.sidenavContainer().start?.toggle();
     this.fullCalendar().getApi().render();
-  }
-
-  public manageSightSeeingDays(): void {
-    this.matDialog.open(PoiSightseeingDaysManageDialogComponent);
   }
 }

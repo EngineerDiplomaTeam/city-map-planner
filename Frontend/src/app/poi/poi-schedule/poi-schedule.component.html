@@ -1,6 +1,6 @@
 <mat-toolbar class="context-bar">
   <button mat-raised-button (click)="toggleSidenavs()">Toggle pane</button>
-  <button mat-raised-button (click)="manageSightSeeingDays()">Manage sightseeing days</button>
+  <button mat-raised-button (click)="poiScheduleStore.manageSightSeeingDays()">Manage sightseeing days</button>
   <a routerLink="/" mat-raised-button>Go back to map</a>
   <a routerLink="/" mat-raised-button>Go to summary</a>
 </mat-toolbar>
@@ -8,7 +8,7 @@
 <mat-sidenav-container #sidenavContainer class="container">
 
   <mat-sidenav position="start" mode="side" opened class="unassigned-pois" #dragableUnassignedPois>
-    @for (unassigned of poiScheduleStore.unassigned(); track unassigned.id) {
+    @for (unassigned of poisInBasket(); track unassigned.id) {
       <app-poi-event [poi]="unassigned" [attr.data-event]="unassigned | toDataEvent"/>
     }
   </mat-sidenav>
