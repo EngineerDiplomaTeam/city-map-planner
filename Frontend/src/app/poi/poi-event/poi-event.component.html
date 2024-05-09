@@ -4,5 +4,11 @@
   [style.--time-height]="poi().preferredSightseeingTime | toHeight"
 >
   <h5 class="title">{{ poi().details.title }}</h5>
-  <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
+
+  <span class="controls">
+    @if (id()) {
+      <span class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</span>
+    }
+    <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
+  </span>
 </article>

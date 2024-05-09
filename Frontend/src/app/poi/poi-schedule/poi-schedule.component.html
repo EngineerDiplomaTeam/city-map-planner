@@ -17,7 +17,7 @@
     <full-calendar [options]="calendarOptions()" [events]="poiScheduleStore.events()" [resources]="poiScheduleStore.resources()">
       <ng-template #eventContent let-arg>
         @if (arg.event.extendedProps.poi) {
-          <app-poi-event [poi]="arg.event.extendedProps.poi"/>
+          <app-poi-event [poi]="arg.event.extendedProps.poi" [id]="arg.event.id"/>
         }
       </ng-template>
     </full-calendar>

@@ -17,13 +17,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'preview/:from/:to',
-    loadComponent: () =>
-      import('./path-preview/path-preview.component').then(
-        (m) => m.PathPreviewComponent,
-      ),
-  },
-  {
     path: 'poi-schedule',
     loadComponent: () =>
       import('./poi/poi-schedule/poi-schedule.component').then(

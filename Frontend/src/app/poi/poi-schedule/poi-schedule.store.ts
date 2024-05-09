@@ -295,4 +295,10 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       events: state.events.filter((x) => x.id !== mapped.id).concat(mapped),
     }));
   }
+
+  public removeEvent(id: string): void {
+    this.patchState((state) => ({
+      events: state.events.filter((x) => x.id !== id),
+    }));
+  }
 }
