@@ -270,41 +270,6 @@ namespace WebApi.Data.Migrations.DataDb
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "business_times",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "edges",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "entrances",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "images",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "osm_tag_entity_osm_way_entity",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "nodes",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "point_of_interests",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "tags",
-                schema: "data");
-
-            migrationBuilder.DropTable(
-                name: "ways",
-                schema: "data");
 
             migrationBuilder.DropTable(
                 name: "weather_status",
