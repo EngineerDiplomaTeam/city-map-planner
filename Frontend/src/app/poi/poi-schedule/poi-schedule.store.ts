@@ -3,7 +3,7 @@ import { EventChangeArg, EventInput } from '@fullcalendar/core';
 import { inject, Injectable } from '@angular/core';
 import { ResourceInput } from '@fullcalendar/resource';
 import { Store } from '@ngrx/store';
-import { selectAllPois } from '../poi.selectors';
+import { selectAllPois, selectPoisInBasket } from '../poi.selectors';
 import {
   PoiSightseeingDaysManageDialogComponent,
   PoiSightseeingDaysManageDialogData,
@@ -14,7 +14,6 @@ import { formatDate } from 'date-fns';
 import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { PointOfInterest } from '../poi.reducer';
 import { EventReceiveArg } from '@fullcalendar/interaction';
-import { eb } from '@fullcalendar/core/internal-common';
 
 export interface Range<T> {
   from: T;
@@ -77,8 +76,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
   private readonly matDialog = inject(MatDialog);
   private readonly store = inject(Store);
-  protected readonly poisInBasket$ = this.store.select(selectAllPois);
-  protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
+  protected readonly poisInBasket$ = this.store.select(selectPoisInBasket);
+  protected readonly poisInBasket = this.store.selectSignal(selectPoisInBasket);
   public readonly events = this.selectSignal((x) =>
     x.events.concat(x.eventGroups),
   );
@@ -87,7 +86,14 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     (x) => x.sightseeingTimeSpans,
   );
 
-  public readonly scheduledEvents = this.selectSignal((x) => x.events);
+  public readonly scheduledEvents = this.selectSignal(
+    (x) =>
+      x.events as (EventInput & {
+        extendedProps: { poi: PointOfInterest };
+        start: string;
+        end: string;
+      })[],
+  );
 
   public static calculateEventGroupsFromTimeSpans(
     timeSpans: TimeSpansMap,

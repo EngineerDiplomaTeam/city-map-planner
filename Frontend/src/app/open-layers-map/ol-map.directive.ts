@@ -1,4 +1,4 @@
-import { Directive, effect, ElementRef, inject } from '@angular/core';
+import { Directive, effect, ElementRef, inject, Injector } from '@angular/core';
 import { OL_MAP, OL_TILE_LAYER } from './ol-token';
 import { useColorScheme } from './color-scheme-signal';
 import OlTileLayer from 'ol/layer/Tile';
@@ -35,6 +35,7 @@ import { OlMapLineManager } from './ol-map-lines-manager.service';
   ],
 })
 export class OlMapDirective {
+  public readonly injector = inject(Injector, { self: true });
   protected readonly elementRef = inject(ElementRef);
   protected readonly colorScheme = useColorScheme();
   protected readonly tileLayer = new OlTileLayer();

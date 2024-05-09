@@ -10,6 +10,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'summary',
+    loadComponent: () =>
+      import('./poi/poi-summary/poi-summary.component').then(
+        (m) => m.PoiSummaryComponent,
+      ),
+  },
+  {
     path: 'preview/:from/:to',
     loadComponent: () =>
       import('./path-preview/path-preview.component').then(

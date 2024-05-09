@@ -49,7 +49,7 @@ import { PoiEventComponent } from '../poi-event/poi-event.component';
 import { JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatActionList, MatListItem } from '@angular/material/list';
-import { selectAllPois } from '../poi.selectors';
+import { selectAllPois, selectPoisInBasket } from '../poi.selectors';
 
 @Component({
   selector: 'app-poi-schedule',
@@ -101,7 +101,7 @@ export class PoiScheduleComponent {
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
+  protected readonly poisInBasket = this.store.selectSignal(selectPoisInBasket);
 
   protected readonly calendarOptions = computed<CalendarOptions | undefined>(
     () =>
