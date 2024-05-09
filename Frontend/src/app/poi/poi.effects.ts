@@ -4,14 +4,18 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PoiService } from './poi.service';
 import { poiActions } from './poi.actions';
-import { exhaustMap, map, switchMap } from 'rxjs';
+import { exhaustMap, filter, first, map, switchMap } from 'rxjs';
 import {
   BottomSheetData,
   PoiBottomSheetComponent,
 } from './poi-bottom-sheet/poi-bottom-sheet.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
-import { selectBaskedDialogId } from './poi.selectors';
+import {
+  selectBaskedDialogId,
+  selectPoiInBasketCount,
+  selectPoisInBasket,
+} from './poi.selectors';
 
 @Injectable()
 export class PoiEffects {
@@ -52,7 +56,9 @@ export class PoiEffects {
   public readonly openBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.openBasked),
-      exhaustMap(async () => this.dialog.open(PoiBasketDialogComponent, {}).id),
+      switchMap(() => this.store.select(selectPoisInBasket).pipe(first())),
+      filter((x) => x.length > 0),
+      exhaustMap(async () => this.dialog.open(PoiBasketDialogComponent).id),
       map((id) => poiActions.baskedDialogOpened({ id })),
     );
   });
@@ -60,24 +66,19 @@ export class PoiEffects {
   public readonly closeBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.closeBasked),
-      switchMap(() => this.store.select(selectBaskedDialogId)),
+      switchMap(() => this.store.select(selectBaskedDialogId).pipe(first())),
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       map((id) => this.dialog.getDialogById(id!)?.close()),
       map(() => poiActions.baskedDialogClosed()),
     );
   });
 
-  // public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(poiActions.removeFromBasket),
-  //     switchMap(() => this.store.select(selectPoiInBasketCount)),
-  //     map((poisCount) => {
-  //       if (poisCount <= 0) {
-  //         return poiActions.closeBasked();
-  //       }
-  //
-  //       return noopAction();
-  //     }),
-  //   );
-  // });
+  public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(poiActions.removeFromBasket),
+      switchMap(() => this.store.select(selectPoiInBasketCount).pipe(first())),
+      filter((poisCount) => poisCount <= 0),
+      map(() => poiActions.closeBasked()),
+    );
+  });
 }

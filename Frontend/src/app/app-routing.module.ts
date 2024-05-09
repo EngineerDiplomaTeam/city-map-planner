@@ -10,10 +10,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'preview/:from/:to',
+    path: 'summary',
     loadComponent: () =>
-      import('./path-preview/path-preview.component').then(
-        (m) => m.PathPreviewComponent,
+      import('./poi/poi-summary/poi-summary.component').then(
+        (m) => m.PoiSummaryComponent,
+      ),
+  },
+  {
+    path: 'poi-schedule',
+    loadComponent: () =>
+      import('./poi/poi-schedule/poi-schedule.component').then(
+        (m) => m.PoiScheduleComponent,
       ),
   },
   {

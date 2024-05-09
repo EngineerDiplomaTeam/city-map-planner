@@ -16,5 +16,7 @@ public record PoiOnMapMapDto(
 public record PoiOnMapDto(
     long Id,
     PoiOnMapMapDto Map,
-    PoiOnMapDetailsDto Details
+    PoiOnMapDetailsDto Details,
+    TimeSpan PreferredSightseeingTime,
+    IEnumerable<PoiBusinessTimeDto> BusinessHours
 );

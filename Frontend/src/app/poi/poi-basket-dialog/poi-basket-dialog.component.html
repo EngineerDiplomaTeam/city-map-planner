@@ -1,11 +1,5 @@
 <mat-list>
   @for (poi of poisInBasket(); track poi.id) {
-    @if (!$first) {
-      <a mat-dialog-close mat-icon-button routerLink="/preview/{{ poisInBasket()[$index - 1].id }}/{{ poi.id }}">
-        <mat-icon>route</mat-icon>
-      </a>
-    }
-
     <mat-list-item lines="3">
       <img matListItemAvatar [src]="poi.map.iconSrc" alt="">
       <span matListItemTitle>{{ poi.details.title }}</span>
@@ -18,3 +12,5 @@
     </mat-list-item>
   }
 </mat-list>
+
+<a mat-dialog-close routerLink="/poi-schedule" mat-raised-button color="primary">Go to schedule</a>

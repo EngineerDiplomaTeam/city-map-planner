@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PoiBasketDialogComponent } from './poi-basket-dialog.component';
+import { PoiScheduleComponent } from './poi-schedule.component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { selectPoisInBasket } from '../poi.selectors';
 import { MockProvider } from 'ng-mocks';
 import { ActivatedRoute } from '@angular/router';
 
-describe('PoiBasketDialogComponent', () => {
-  let component: PoiBasketDialogComponent;
-  let fixture: ComponentFixture<PoiBasketDialogComponent>;
+describe('PoiScheduleComponent', () => {
+  let component: PoiScheduleComponent;
+  let fixture: ComponentFixture<PoiScheduleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoiBasketDialogComponent],
+      imports: [PoiScheduleComponent],
       providers: [
         provideMockStore({
           selectors: [
@@ -26,7 +26,7 @@ describe('PoiBasketDialogComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PoiBasketDialogComponent);
+    fixture = TestBed.createComponent(PoiScheduleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

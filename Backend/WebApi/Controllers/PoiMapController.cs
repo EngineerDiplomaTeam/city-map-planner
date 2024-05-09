@@ -52,7 +52,16 @@ public class PoiMapController(IPoisManagerService poisManagerService, ILogger<Po
                     bannerSrc,
                     poi.Name,
                     poi.Description
-                )
+                ),
+                poi.PreferredSightseeingTime,
+                poi.BusinessTimes.Select(x => new PoiBusinessTimeDto(
+                    x.EffectiveFrom,
+                    x.EffectiveTo,
+                    x.EffectiveDays,
+                    x.TimeFrom,
+                    x.TimeTo,
+                    (BusinessTimeStateDto) x.State
+                ))
             );
         }
     }
