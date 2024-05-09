@@ -49,7 +49,7 @@ import { PoiEventComponent } from '../poi-event/poi-event.component';
 import { JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatActionList, MatListItem } from '@angular/material/list';
-import { selectAllPois, selectPoisInBasket } from '../poi.selectors';
+import { selectPoisInBasket } from '../poi.selectors';
 
 @Component({
   selector: 'app-poi-schedule',

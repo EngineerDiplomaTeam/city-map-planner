@@ -7,7 +7,7 @@
 
   <span class="controls">
     @if (id()) {
-      <span class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</span>
+      <button class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</button>
     }
     <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
   </span>

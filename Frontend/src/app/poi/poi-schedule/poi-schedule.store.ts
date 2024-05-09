@@ -3,7 +3,7 @@ import { EventChangeArg, EventInput } from '@fullcalendar/core';
 import { inject, Injectable } from '@angular/core';
 import { ResourceInput } from '@fullcalendar/resource';
 import { Store } from '@ngrx/store';
-import { selectAllPois, selectPoisInBasket } from '../poi.selectors';
+import { selectPoisInBasket } from '../poi.selectors';
 import {
   PoiSightseeingDaysManageDialogComponent,
   PoiSightseeingDaysManageDialogData,

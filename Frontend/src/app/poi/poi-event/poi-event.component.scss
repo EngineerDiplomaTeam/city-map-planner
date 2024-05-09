@@ -32,7 +32,10 @@
     }
 
     .remove {
+      cursor: pointer;
       display: block;
+      border: 0;
+      padding: 0;
       background-color: #00000050;
       backdrop-filter: blur(5px);
     }
