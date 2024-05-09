@@ -72,7 +72,8 @@ public class WeatherUpdater(
 
                 if (weatherData.Minutely15.Time != null)
                 {
-                    update = new WeatherStatus(i+1, ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
+                    var id = i + 1;
+                    update = new WeatherStatus(id, ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
                         weatherData.Minutely15.Weathercode[i],Convert.ToDouble(weatherData.Minutely15.Temperature2m[i]));
                     logger.LogInformation("Add new weatherCode");
 
@@ -90,13 +91,13 @@ public class WeatherUpdater(
                     var x = weatherAll.Find(info => info.Time == ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime());
                     if (x != null)
                     {
-                        break;
+                        continue;
                     }
                     else
                     {
                         if (weatherData.Minutely15.Time != null)
                         {
-                            update = new WeatherStatus(weatherAll.Count + 1,
+                            update = new WeatherStatus(weatherAll.Count +  i + 1,
                                 ToDateTime(weatherData.Minutely15.Time[i]).ToUniversalTime(),
                                 weatherData.Minutely15.Weathercode[i],weatherData.Minutely15.Temperature2m[i]);
                             logger.LogInformation("Add new weatherCode");
