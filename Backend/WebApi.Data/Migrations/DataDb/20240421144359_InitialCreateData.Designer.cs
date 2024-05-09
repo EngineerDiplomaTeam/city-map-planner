@@ -9,11 +9,11 @@ using WebApi.Data;
 
 #nullable disable
 
-namespace WebApi.Data.Migrations
+namespace WebApi.Data.Migrations.DataDb
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20240509195001_WeatherInit")]
-    partial class WeatherInit
+    [Migration("20240421144359_InitialCreateData")]
+    partial class InitialCreateData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,33 +292,6 @@ namespace WebApi.Data.Migrations
                         .HasName("pk_point_of_interests");
 
                     b.ToTable("point_of_interests", "data");
-                });
-
-            modelBuilder.Entity("WebApi.Data.Entities.WeatherStatusEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<double>("Temperature")
-                        .HasColumnType("double precision")
-                        .HasColumnName("temperature");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("time");
-
-                    b.Property<int>("WeatherCode")
-                        .HasColumnType("integer")
-                        .HasColumnName("weather_code");
-
-                    b.HasKey("Id")
-                        .HasName("pk_weather_status");
-
-                    b.ToTable("weather_status", "data");
                 });
 
             modelBuilder.Entity("OsmTagEntityOsmWayEntity", b =>
