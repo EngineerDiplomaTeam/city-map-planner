@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PoiBasketDialogComponent } from './poi-basket-dialog.component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { selectPoisInBasket } from '../poi.selectors';
+import { MockProvider } from 'ng-mocks';
+import { ActivatedRoute } from '@angular/router';
 
 describe('PoiBasketDialogComponent', () => {
   let component: PoiBasketDialogComponent;
@@ -20,6 +22,7 @@ describe('PoiBasketDialogComponent', () => {
             },
           ],
         }),
+        MockProvider(ActivatedRoute),
       ],
     }).compileComponents();
 
