@@ -4,14 +4,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PoiService } from './poi.service';
 import { poiActions } from './poi.actions';
-import { exhaustMap, map, switchMap } from 'rxjs';
+import { exhaustMap, filter, first, map, switchMap } from 'rxjs';
 import {
   BottomSheetData,
   PoiBottomSheetComponent,
 } from './poi-bottom-sheet/poi-bottom-sheet.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
-import { selectBaskedDialogId } from './poi.selectors';
+import { selectBaskedDialogId, selectPoisInBasket } from './poi.selectors';
 
 @Injectable()
 export class PoiEffects {
@@ -52,15 +52,9 @@ export class PoiEffects {
   public readonly openBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.openBasked),
-      exhaustMap(
-        async () =>
-          this.dialog.open(PoiBasketDialogComponent, {
-            width: '100svw',
-            height: '100svh',
-            maxWidth: '100svw',
-            maxHeight: '100svh',
-          }).id,
-      ),
+      switchMap(() => this.store.select(selectPoisInBasket).pipe(first())),
+      filter((x) => x.length > 0),
+      exhaustMap(async () => this.dialog.open(PoiBasketDialogComponent).id),
       map((id) => poiActions.baskedDialogOpened({ id })),
     );
   });

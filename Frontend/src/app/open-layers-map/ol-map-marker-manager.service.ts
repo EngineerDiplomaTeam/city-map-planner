@@ -120,15 +120,20 @@ export class OlMapMarkerManager {
 
     markerFeature.set(OlMapMarkerManager.featureKeyId, id);
 
-    const iconImg = await this.createIconImg(iconSrc);
+    try {
+      const iconImg = await this.createIconImg(iconSrc);
 
-    markerFeature.setStyle(
-      () =>
-        new OlStyle({
-          image: this.createMarkerImage(iconImg),
-          text: this.createMarkerText(label),
-        }),
-    );
+      markerFeature.setStyle(
+        () =>
+          new OlStyle({
+            image: this.createMarkerImage(iconImg),
+            text: this.createMarkerText(label),
+          }),
+      );
+    } catch (e) {
+      console.log(e, iconSrc);
+      // nothing
+    }
 
     return markerFeature;
   }

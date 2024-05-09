@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ToDataEventPipe } from '../to-data-event.pipe';
-import { ToDurationPipe } from '../poi-basket-dialog/to-duration.pipe';
-import { ToHeightPipe } from '../poi-basket-dialog/to-height.pipe';
-import { ToUrlPipe } from '../poi-basket-dialog/to-url.pipe';
+import { ToDurationPipe } from '../to-duration.pipe';
+import { ToHeightPipe } from '../to-height.pipe';
+import { ToUrlPipe } from '../to-url.pipe';
 import { PointOfInterest } from '../poi.reducer';
 
 @Component({

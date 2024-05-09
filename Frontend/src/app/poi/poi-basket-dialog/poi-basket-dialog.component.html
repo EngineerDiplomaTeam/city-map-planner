@@ -1,82 +1,16 @@
-<main class="basket" cdkDropListGroup>
-  <section class="top-bar">
-    <section class="add-timespan">
+<mat-list>
+  @for (poi of poisInBasket(); track poi.id) {
+    <mat-list-item lines="3">
+      <img matListItemAvatar [src]="poi.map.iconSrc" alt="">
+      <span matListItemTitle>{{ poi.details.title }}</span>
+      <button mat-icon-button matListItemMeta (click)="this.store.dispatch(poiActions.removeFromBasket({
+        poiId: poi.id
+      }))">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+      {{ poi.details.description }}
+    </mat-list-item>
+  }
+</mat-list>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Choose a date</mat-label>
-        <input [min]="today" [formControl]="formGroup.controls.dateOnly" matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <app-time-range-picker
-        [formControlStart]="formGroup.controls.timeFrom"
-        [formControlEnd]="formGroup.controls.timeTo"
-      />
-
-      <button mat-raised-button color="primary">Add sightseeing timespan</button>
-    </section>
-
-    <button (click)="addTimespan()" mat-icon-button mat-dialog-close>
-      <mat-icon>close</mat-icon>
-    </button>
-  </section>
-
-  <h2 class="section-title">Unassigned points of interest</h2>
-
-  <section class="unassigned" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="unassignedPois" (cdkDropListDropped)="drop($event)">
-    @for (unassigned of unassignedPois; track unassigned.id) {
-      <article
-        cdkDrag
-        class="poi"
-        [style.--banner-url]="unassigned.details.bannerSrc | toUrl"
-        [style.--time-height]="unassigned.preferredSightseeingTime | toHeight"
-      >
-        <h5 class="title">{{ unassigned.details.title }}</h5>
-        <span class="duration">{{ unassigned.preferredSightseeingTime | toDuration }}</span>
-      </article>
-    }
-  </section>
-
-  <h2 class="section-title">Time ranges</h2>
-
-  <section class="days">
-
-    @for (day of days(); track day.title) {
-      <section class="day">
-        <h5 class="title">{{ day.title }}</h5>
-
-        <section class="slots" cdkDropList [cdkDropListData]="day.slots" (cdkDropListDropped)="drop($event)">
-          @for (slot of day.slots; track slot.id) {
-            <div cdkDrag class="slot" [class.occupied]="slot.occupied"></div>
-          }
-        </section>
-      </section>
-    }
-
-
-  </section>
-</main>
-
-
-<!--<mat-list>-->
-<!--  @for (poi of poisInBasket(); track poi.id) {-->
-<!--    @if (!$first) {-->
-<!--      <a mat-dialog-close mat-icon-button routerLink="/preview/{{ poisInBasket()[$index - 1].id }}/{{ poi.id }}">-->
-<!--        <mat-icon>route</mat-icon>-->
-<!--      </a>-->
-<!--    }-->
-
-<!--    <mat-list-item lines="3">-->
-<!--      <img matListItemAvatar [src]="poi.map.iconSrc" alt="">-->
-<!--      <span matListItemTitle>{{ poi.details.title }}</span>-->
-<!--      <button mat-icon-button matListItemMeta (click)="this.store.dispatch(poiActions.removeFromBasket({-->
-<!--        poiId: poi.id-->
-<!--      }))">-->
-<!--        <mat-icon>remove_shopping_cart</mat-icon>-->
-<!--      </button>-->
-<!--      {{ poi.details.description }}-->
-<!--    </mat-list-item>-->
-<!--  }-->
-<!--</mat-list>-->
+<a mat-dialog-close routerLink="/poi-schedule" mat-raised-button color="primary">Go to schedule</a>

@@ -4,9 +4,11 @@
 
     <span class="spacer"></span>
 
-    <button mat-icon-button (click)="store.dispatch(poiActions.openBasked())">
-      <mat-icon [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
-    </button>
+    @if (basketCount() > 0) {
+      <button mat-icon-button (click)="store.dispatch(poiActions.openBasked())">
+        <mat-icon [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
+      </button>
+    }
 
     <button mat-icon-button (click)="store.dispatch(authActions.openDialog())">
       <mat-icon>account_circle</mat-icon>

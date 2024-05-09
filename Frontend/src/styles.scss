@@ -143,6 +143,16 @@ mat-sidenav {
   background-color: #ddd;
 }
 
+.poi-business-hours {
+  background-color: green !important;
+  opacity: 0.1 !important;
+}
+
+.fc-non-business {
+  background-color: red !important;
+  opacity: 0.1 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --fc-today-bg-color: transparent;

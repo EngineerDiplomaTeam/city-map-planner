@@ -110,7 +110,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
                 editable: false,
                 eventStartEditable: false,
                 eventResourceEditable: false,
-                display: 'block', // 'background',
+                display: 'background',
+                classNames: ['poi-business-hours'],
               },
               {
                 resourceId,
