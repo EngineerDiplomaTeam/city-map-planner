@@ -6,7 +6,7 @@
 
     @if (basketCount() > 0) {
       <button mat-icon-button (click)="store.dispatch(poiActions.openBasked())">
-        <mat-icon [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
+        <mat-icon aria-hidden="false" [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
       </button>
     }
 

@@ -131,9 +131,8 @@ export class PoiScheduleComponent {
             eventDurationEditable: false,
             droppable: true,
             // eventContent: this.eventContent(),
-            // eventReceive: (e) => {
-            //   console.log(e);
-            // },
+            eventReceive: (e) => this.poiScheduleStore.eventReceive(e),
+            eventChange: (e) => this.poiScheduleStore.eventChange(e),
             eventOverlap: (a, b) => {
               return Boolean(a.groupId ?? b?.groupId); // Allow overlap only when placing event on resource constraint
             },

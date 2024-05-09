@@ -1,5 +1,5 @@
 import { ComponentStore } from '@ngrx/component-store';
-import { EventInput } from '@fullcalendar/core';
+import { EventChangeArg, EventInput } from '@fullcalendar/core';
 import { inject, Injectable } from '@angular/core';
 import { ResourceInput } from '@fullcalendar/resource';
 import { Store } from '@ngrx/store';
@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { formatDate } from 'date-fns';
 import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { PointOfInterest } from '../poi.reducer';
+import { EventReceiveArg } from '@fullcalendar/interaction';
+import { eb } from '@fullcalendar/core/internal-common';
 
 export interface Range<T> {
   from: T;
@@ -23,6 +25,7 @@ type TimeSpansMap = Map<string, Range<string>[]>;
 
 interface PoiScheduleState {
   events: EventInput[];
+  eventGroups: EventInput[];
   resources: ResourceInput[];
   sightseeingTimeSpans: TimeSpansMap;
 }
@@ -48,12 +51,13 @@ function smaller(timeTo: string, times: string[]): string {
   providedIn: 'root',
 })
 export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
+  private static id = 0;
   public static readonly dateOnlyFormat = 'yyyy-MM-dd';
   public static readonly defaultDateOnly = formatDate(
     new Date(),
     PoiScheduleStore.dateOnlyFormat,
   );
-  public static readonly defaultTimeFrom = formatDate(new Date(), 'HH:mm');
+  public static readonly defaultTimeFrom = '10:00'; //formatDate(new Date(), 'HH:mm');
   public static readonly defaultTimeTo = '23:59';
 
   private static readonly initialSightseeingTimeSpans = new Map<
@@ -75,13 +79,17 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
   private readonly store = inject(Store);
   protected readonly poisInBasket$ = this.store.select(selectAllPois);
   protected readonly poisInBasket = this.store.selectSignal(selectAllPois);
-  public readonly events = this.selectSignal((x) => x.events);
+  public readonly events = this.selectSignal((x) =>
+    x.events.concat(x.eventGroups),
+  );
   public readonly resources = this.selectSignal((x) => x.resources);
   public readonly sightseeingTimeSpans = this.selectSignal(
     (x) => x.sightseeingTimeSpans,
   );
 
-  public static calculateEventsFromTimeSpans(
+  public readonly scheduledEvents = this.selectSignal((x) => x.events);
+
+  public static calculateEventGroupsFromTimeSpans(
     timeSpans: TimeSpansMap,
     pois: PointOfInterest[],
   ): EventInput[] {
@@ -161,16 +169,17 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       ),
   );
 
-  private readonly recalculateEventsEffect = this.effect(
+  private readonly recalculateEventsGroupsEffect = this.effect(
     (timeSpans$: Observable<TimeSpansMap>) =>
       timeSpans$.pipe(
         tap((timeSpans) => {
-          const events = PoiScheduleStore.calculateEventsFromTimeSpans(
-            timeSpans,
-            this.poisInBasket(),
-          );
+          const eventGroups =
+            PoiScheduleStore.calculateEventGroupsFromTimeSpans(
+              timeSpans,
+              this.poisInBasket(),
+            );
 
-          this.patchState(() => ({ events }));
+          this.patchState(() => ({ eventGroups }));
         }),
       ),
   );
@@ -179,6 +188,7 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     super({
       sightseeingTimeSpans: PoiScheduleStore.initialSightseeingTimeSpans,
       events: [],
+      eventGroups: [],
       resources: [],
     });
 
@@ -186,12 +196,12 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       of(PoiScheduleStore.initialSightseeingTimeSpans),
     );
 
-    this.recalculateEventsEffect(
+    this.recalculateEventsGroupsEffect(
       of(PoiScheduleStore.initialSightseeingTimeSpans),
     );
 
     this.poisInBasket$.subscribe(() =>
-      this.recalculateEventsEffect(of(this.state().sightseeingTimeSpans)),
+      this.recalculateEventsGroupsEffect(of(this.state().sightseeingTimeSpans)),
     );
   }
 
@@ -231,6 +241,52 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     }));
 
     this.recalculateResourcesEffect(of(newMap));
-    this.recalculateEventsEffect(of(newMap));
+    this.recalculateEventsGroupsEffect(of(newMap));
+  }
+
+  public eventReceive({ event }: EventReceiveArg): void {
+    const poi = event.extendedProps['poi'] as PointOfInterest | undefined;
+    if (!poi) return;
+
+    const [resource] = event.getResources();
+
+    const mapped: EventInput = {
+      id: `${PoiScheduleStore.id++}`,
+      title: poi.map.label,
+      duration: poi.preferredSightseeingTime,
+      extendedProps: { poi },
+      classNames: ['pure-container'],
+      constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',
+      start: event.startStr,
+      end: event.endStr,
+      resourceId: resource.id,
+    };
+
+    this.patchState((state) => ({
+      events: state.events.concat(mapped),
+    }));
+  }
+
+  public eventChange({ event }: EventChangeArg): void {
+    const poi = event.extendedProps['poi'] as PointOfInterest | undefined;
+    if (!poi) return;
+
+    const [resource] = event.getResources();
+
+    const mapped: EventInput = {
+      id: event.id,
+      title: poi.map.label,
+      duration: poi.preferredSightseeingTime,
+      extendedProps: { poi },
+      classNames: ['pure-container'],
+      constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',
+      start: event.startStr,
+      end: event.endStr,
+      resourceId: resource.id,
+    };
+
+    this.patchState((state) => ({
+      events: state.events.filter((x) => x.id !== mapped.id).concat(mapped),
+    }));
   }
 }

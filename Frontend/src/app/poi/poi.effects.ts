@@ -11,7 +11,11 @@ import {
 } from './poi-bottom-sheet/poi-bottom-sheet.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
-import { selectBaskedDialogId, selectPoisInBasket } from './poi.selectors';
+import {
+  selectBaskedDialogId,
+  selectPoiInBasketCount,
+  selectPoisInBasket,
+} from './poi.selectors';
 
 @Injectable()
 export class PoiEffects {
@@ -62,24 +66,19 @@ export class PoiEffects {
   public readonly closeBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.closeBasked),
-      switchMap(() => this.store.select(selectBaskedDialogId)),
+      switchMap(() => this.store.select(selectBaskedDialogId).pipe(first())),
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       map((id) => this.dialog.getDialogById(id!)?.close()),
       map(() => poiActions.baskedDialogClosed()),
     );
   });
 
-  // public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(poiActions.removeFromBasket),
-  //     switchMap(() => this.store.select(selectPoiInBasketCount)),
-  //     map((poisCount) => {
-  //       if (poisCount <= 0) {
-  //         return poiActions.closeBasked();
-  //       }
-  //
-  //       return noopAction();
-  //     }),
-  //   );
-  // });
+  public readonly closeBasketWhenNoItemsInside$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(poiActions.removeFromBasket),
+      switchMap(() => this.store.select(selectPoiInBasketCount).pipe(first())),
+      filter((poisCount) => poisCount <= 0),
+      map(() => poiActions.closeBasked()),
+    );
+  });
 }
