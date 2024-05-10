@@ -6,4 +6,3 @@ public record WeatherStatus(
     int WeatherCode,
     double Temperature
 );
-

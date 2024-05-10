@@ -30,5 +30,5 @@ public enum WeatherCode
     Thunderstorm = 95,
     ThunderstormWithLightHail = 96,
     ThunderstormWithHeavyHail = 99,
-    InvalidWeatherCode = -1 
+    InvalidWeatherCode = -1
 }

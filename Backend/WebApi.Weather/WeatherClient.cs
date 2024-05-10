@@ -1,5 +1,4 @@
-﻿
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.WebUtilities;
@@ -15,9 +14,29 @@ public interface IWeatherClient
 
 public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : IWeatherClient
 {
-    
     private readonly string _weatherApiUrl = "https://api.open-meteo.com/v1/forecast";
 
+
+    public async Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi)
+    {
+        try
+        {
+            var response = await client.GetAsync(MergeUrlWithOptions(_weatherApiUrl, optionsApi));
+            response.EnsureSuccessStatusCode();
+
+            var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
+                await response.Content.ReadAsStreamAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            if (weatherForecast != null) return weatherForecast;
+        }
+        catch (HttpRequestException e)
+        {
+            logger.LogError(e, "padło na wysyłaniu requesta");
+            return null;
+        }
+
+        return null;
+    }
 
 
     public async Task<WeatherForecastApi?> QueryAsync(WeatherForecastOptionsApi optionsApi)
@@ -51,7 +70,6 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
 
     public WeatherForecastApi? Query(WeatherForecastOptionsApi optionsApi)
     {
-
         return QueryAsync(optionsApi).GetAwaiter().GetResult();
     }
 
@@ -64,42 +82,13 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
     public string WeatherCodeToString(int weatherCode)
     {
         if (Enum.IsDefined(typeof(WeatherCode), weatherCode))
-        {
             return ((WeatherCode)weatherCode).ToString().Replace('_', ' ');
-        }
-        else
-        {
-            return "Invalid weather code";
-        }
-    }
-    
-
-    public async Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi)
-    {
-        try
-        {
-            var response = await client.GetAsync(MergeUrlWithOptions(_weatherApiUrl, optionsApi));
-            response.EnsureSuccessStatusCode();
-
-            var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
-                await response.Content.ReadAsStreamAsync(),
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            if (weatherForecast != null) return weatherForecast;
-        }
-        catch (HttpRequestException e)
-        {
-            logger.LogError(e, "padło na wysyłaniu requesta");
-            logger.LogError(e.StackTrace);
-            return null;
-        }
-
-        return null;
+        return "Invalid weather code";
     }
 
 
     private string MergeUrlWithOptions(string url, WeatherForecastOptionsApi? options)
     {
-
         if (options == null) return url;
 
         var queryString = QueryHelpers.ParseQuery("?");
@@ -123,9 +112,9 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
         if (options.Minutely15.Count > 0)
         {
             var firstminutely15Element = true;
-            
-            StringBuilder queryValue = new StringBuilder();
-            
+
+            var queryValue = new StringBuilder();
+
             foreach (var option in options.Minutely15)
                 if (firstminutely15Element)
                 {
@@ -134,13 +123,15 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
                 }
                 else
                 {
-                    queryValue.Append("," + option.ToString());
+                    queryValue.Append("," + option);
                 }
+
             queryString.Add("minutely_15", queryValue.ToString());
         }
-        String finalUrl = url + Create(queryString).ToString();
 
-            
+        var finalUrl = url + Create(queryString);
+
+
         return finalUrl;
     }
 }

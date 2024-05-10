@@ -17,18 +17,6 @@ public class WeatherForecastOptionsApi
         EndDate = endDate;
     }
 
-    public WeatherForecastOptionsApi(float latitude, float longitude)
-    {
-        Latitude = latitude;
-        Longitude = longitude;
-        TemperatureUnit = TemperatureUnitType.celsius;
-        PrecipitationUnit = PrecipitationUnitType.mm;
-        Timeformat = TimeformatType.iso8601;
-        Timezone = "GMT";
-
-        StartDate = string.Empty;
-        EndDate = string.Empty;
-    }
 
     public WeatherForecastOptionsApi()
     {
@@ -70,7 +58,6 @@ public class WeatherForecastOptionsApi
     public string Timezone { get; set; }
 
     public List<Minutely15OptionsParameter> Minutely15 { get; set; } = new(); // lista Enumów
-
 
 
     /// <summary>

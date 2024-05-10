@@ -10,30 +10,30 @@ public interface IWeatherService
         CancellationToken cancellationToken = default);
 
     public IAsyncEnumerable<WeatherStatus> GetAllWeatherStatusAsync();
-
 }
 
 public class WeatherService(IWeatherRepository weatherRepository) : IWeatherService
 {
-    public async Task<WeatherStatus> AddWeatherStatusAsync(WeatherStatus weatherStatus, CancellationToken cancellationToken = default)
+    public async Task<WeatherStatus> AddWeatherStatusAsync(WeatherStatus weatherStatus,
+        CancellationToken cancellationToken = default)
     {
-        var weatherStatusEntity = new WeatherStatusEntity()
+        var weatherStatusEntity = new WeatherStatusEntity
         {
             Id = weatherStatus.Id,
             Time = weatherStatus.Time,
             WeatherCode = weatherStatus.WeatherCode,
-            Temperature =weatherStatus.Temperature
+            Temperature = weatherStatus.Temperature
         };
         var upsertWeatherStatus = await weatherRepository.AddWeatherStatusAsync(weatherStatusEntity, cancellationToken);
-      
-            return new WeatherStatus(
-                upsertWeatherStatus.Id,
-                upsertWeatherStatus.Time,
-                upsertWeatherStatus.WeatherCode,
-                upsertWeatherStatus.Temperature
-            );
+
+        return new WeatherStatus(
+            upsertWeatherStatus.Id,
+            upsertWeatherStatus.Time,
+            upsertWeatherStatus.WeatherCode,
+            upsertWeatherStatus.Temperature
+        );
     }
-    
+
     public IAsyncEnumerable<WeatherStatus> GetAllWeatherStatusAsync()
     {
         return weatherRepository.SelectAllWeatherStatusAsync(weather => new WeatherStatus(
@@ -44,5 +44,4 @@ public class WeatherService(IWeatherRepository weatherRepository) : IWeatherServ
             )
         );
     }
-
 }
