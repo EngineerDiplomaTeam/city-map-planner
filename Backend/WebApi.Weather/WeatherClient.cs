@@ -1,6 +1,5 @@
 ﻿
 using System.Globalization;
-using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.WebUtilities;
@@ -11,7 +10,7 @@ namespace WebApi.Weather;
 
 public interface IWeatherClient
 {
-    Task<WeatherForecastApi> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi);
+    Task<WeatherForecastApi?> GetWeatherForecastAsync(WeatherForecastOptionsApi optionsApi);
 }
 
 public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : IWeatherClient
@@ -85,7 +84,7 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
             var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
                 await response.Content.ReadAsStreamAsync(),
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return weatherForecast;
+            if (weatherForecast != null) return weatherForecast;
         }
         catch (HttpRequestException e)
         {
@@ -93,6 +92,8 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
             logger.LogError(e.StackTrace);
             return null;
         }
+
+        return null;
     }
 
 

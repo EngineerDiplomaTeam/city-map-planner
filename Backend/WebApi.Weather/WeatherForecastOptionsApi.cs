@@ -3,16 +3,14 @@
 public class WeatherForecastOptionsApi
 {
     public WeatherForecastOptionsApi(float latitude, float longitude, TemperatureUnitType temperatureUnit,
-        string timezone, List<Minutely15OptionsParameter>? minutely15, TimeformatType timeformat,
+        string timezone, List<Minutely15OptionsParameter> minutely15, TimeformatType timeformat,
         int pastDays, string startDate, string endDate)
     {
         Latitude = latitude;
         Longitude = longitude;
         TemperatureUnit = temperatureUnit;
         Timezone = timezone;
-            minutely15 = minutely15;
-
-
+        Minutely15 = minutely15;
         Timeformat = timeformat;
         PastDays = pastDays;
         StartDate = startDate;

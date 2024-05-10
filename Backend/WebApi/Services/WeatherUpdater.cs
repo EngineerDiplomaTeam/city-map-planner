@@ -57,7 +57,7 @@ public class WeatherUpdater(
         
 
         // Api call to get the current weather in Gdansk
-        WeatherForecastApi weatherData = await weatherClient.GetWeatherForecastAsync(optionsApi);
+        WeatherForecastApi? weatherData = await weatherClient.GetWeatherForecastAsync(optionsApi);
 
         WeatherStatus? update;
 
