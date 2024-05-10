@@ -66,7 +66,7 @@ public class WeatherUpdater(
         // Weather Database is null
         if (weatherAll.Count == 0)
         {
-            if (weatherData.Minutely15 != null)
+            if (weatherData != null && weatherData.Minutely15 != null)
                 for (int i = 0; i < weatherData.Minutely15.Weathercode.Length; i++)
                 {
                     if (weatherData.Minutely15.Time != null)
@@ -83,7 +83,7 @@ public class WeatherUpdater(
         }
         else
         {
-            if (weatherData.Minutely15 != null)
+            if (weatherData != null && weatherData.Minutely15 != null)
             {
                 for (int i = 0; i < weatherData.Minutely15.Weathercode.Length; i++)
                 {
