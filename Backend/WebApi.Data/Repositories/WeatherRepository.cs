@@ -1,8 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.Extensions.Logging;
 using WebApi.Data.Entities;
-using Z.BulkOperations;
 using System.Linq.Expressions;
 
 namespace WebApi.Data.Repositories;
@@ -20,7 +18,7 @@ public interface IWeatherRepository
 
 
 }
-public class WeatherRepository(DataDbContext dbContext, ILogger<DataRepository> logger) : IWeatherRepository
+public class WeatherRepository(DataDbContext dbContext) : IWeatherRepository
 {
     
 

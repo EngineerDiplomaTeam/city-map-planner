@@ -1,4 +1,3 @@
-using WebApi.Data;
 using WebApi.Data.Entities;
 using WebApi.Data.Repositories;
 using WebApi.Domain;
