@@ -45,9 +45,9 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
         {
             return await GetWeatherForecastAsync(optionsApi);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            logger.LogError("Not Working");
+            logger.LogError(e, "QueryAsync Not Working");
             return null;
         }
     }
