@@ -32,7 +32,6 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
         catch (HttpRequestException e)
         {
             logger.LogError(e, "padło na wysyłaniu requesta");
-            return null;
         }
 
         return null;
