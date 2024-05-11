@@ -27,7 +27,7 @@ public class WeatherClient(ILogger<WeatherClient> logger, HttpClient client) : I
             var weatherForecast = await JsonSerializer.DeserializeAsync<WeatherForecastApi>(
                 await response.Content.ReadAsStreamAsync(),
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            if (weatherForecast != null) return weatherForecast;
+            return weatherForecast;
         }
         catch (HttpRequestException e)
         {
