@@ -5,7 +5,7 @@ namespace WebApi.Extensions;
 
 public static class IdentityApiEndpointsExtensions
 {
-    private static readonly string[] AdminEmails = ["electroluxv2@gmail.com", "miloszchoj@gmail.com"];
+    private static readonly string[] AdminEmails = ["electroluxv2@gmail.com","00wertipl@gmail.com", "miloszchoj@gmail.com"];
     public static void AddAdditionalIdentityEndpoints(this WebApplication app)
     {
         // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-8.0#log-out
