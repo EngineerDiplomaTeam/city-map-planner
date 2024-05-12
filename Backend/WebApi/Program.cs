@@ -5,7 +5,11 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using NSwag;
-using OverpassClient;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using WebApi.OverpassClient;
 using WebApi.Data;
 using WebApi.Data.Repositories;
 using WebApi.Services;
@@ -14,7 +18,35 @@ using WebApi.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Open telemetry
+builder.Logging.AddOpenTelemetry(logging =>
+{
+    logging.IncludeFormattedMessage = true;
+    logging.IncludeScopes = true;
+});
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(c => c.AddService("WebApi"))
+    .WithMetrics(metrics =>
+    {
+        metrics
+            .AddHttpClientInstrumentation()
+            .AddRuntimeInstrumentation()
+            .AddMeter("Microsoft.AspNetCore.Hosting", "Microsoft.AspNetCore.Server.Kestrel", "System.Net.Http", "WebApi");
+    })
+    .WithTracing(tracing =>
+    {
+        tracing.SetSampler<AlwaysOnSampler>();
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddHttpClientInstrumentation();
+    });
+
+// Use the OTLP exporter
+builder.Services.Configure<OpenTelemetryLoggerOptions>(x => x.AddOtlpExporter());
+builder.Services.ConfigureOpenTelemetryMeterProvider(x => x.AddOtlpExporter());
+builder.Services.ConfigureOpenTelemetryTracerProvider(x => x.AddOtlpExporter());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

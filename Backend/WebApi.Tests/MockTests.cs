@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace WebApiTests;
+namespace WebApi.Tests;
 
 public class MockTests
 {
