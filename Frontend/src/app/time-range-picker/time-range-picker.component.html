@@ -1,0 +1,27 @@
+<mat-form-field appearance="outline">
+  <mat-label>Enter a time range</mat-label>
+  <mat-date-range-input>
+    <input matStartDate [formControl]="range().controls.start" placeholder="13:37">
+    <input matEndDate [formControl]="range().controls.end" placeholder="21:37">
+  </mat-date-range-input>
+  <button mat-icon-button matSuffix (click)="openTimePicker()">
+    <mat-icon>watch_later</mat-icon>
+  </button>
+  <mat-hint>HH:MM - HH:MM</mat-hint>
+
+  <input type="hidden" [format]="24" [ngxMatTimepicker]="timePickerStart" [formControl]="range().controls.start">
+  <input type="hidden" [format]="24" [ngxMatTimepicker]="timePickerEnd" [formControl]="range().controls.end">
+
+  @if (range().controls.start.errors) {
+    <mat-error>Invalid start time</mat-error>
+  }
+  @if (range().controls.end.errors) {
+    <mat-error>Invalid end time</mat-error>
+  }
+</mat-form-field>
+
+<ngx-mat-timepicker [editableHintTmpl]="hintTemplateStart" [enableKeyboardInput]="true" appendToInput="true" #timePickerStart></ngx-mat-timepicker>
+<ngx-mat-timepicker [editableHintTmpl]="hintTemplateEnd" [enableKeyboardInput]="true" appendToInput="true" #timePickerEnd></ngx-mat-timepicker>
+
+<ng-template #hintTemplateStart>Start</ng-template>
+<ng-template #hintTemplateEnd>End</ng-template>

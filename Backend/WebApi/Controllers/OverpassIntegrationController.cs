@@ -5,7 +5,7 @@ using WebApi.Services;
 
 namespace WebApi.Controllers;
 
-[Controller, Authorize(Roles = "Administrator")]
+[ApiController, Authorize(Roles = "Administrator")]
 [Route("[controller]/[action]")]
 public class OverpassIntegrationController : ControllerBase
 {

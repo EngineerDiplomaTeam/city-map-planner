@@ -1,0 +1,14 @@
+<article
+  class="poi"
+  [style.--banner-url]="poi().details.bannerSrc | toUrl"
+  [style.--time-height]="poi().preferredSightseeingTime | toHeight"
+>
+  <h5 class="title">{{ poi().details.title }}</h5>
+
+  <span class="controls">
+    @if (id()) {
+      <button class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</button>
+    }
+    <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
+  </span>
+</article>

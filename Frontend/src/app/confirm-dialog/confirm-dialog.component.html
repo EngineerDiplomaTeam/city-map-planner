@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confirm action</h2>
+<mat-dialog-content>
+  <p>This action cannot be undone, are you sure?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" [mat-dialog-close]="false">No Thanks</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>

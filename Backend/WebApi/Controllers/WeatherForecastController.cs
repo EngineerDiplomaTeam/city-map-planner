@@ -16,7 +16,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
     public IEnumerable<WeatherForecast> Get()
     {
         logger.LogInformation("Sample {Type} log", "structured");
-        
+
         return Enumerable
             .Range(1, 5)
             .Select(index => new WeatherForecast

@@ -23,6 +23,7 @@ import { tokenInterceptor } from './auth/token.interceptor';
 import { POI_FEATURE_KEY, poiReducer } from './poi/poi.reducer';
 import { PoiEffects } from './poi/poi.effects';
 import { MatBadgeModule } from '@angular/material/badge';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -45,6 +46,7 @@ import { MatBadgeModule } from '@angular/material/badge';
   ],
   providers: [
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent],
 })

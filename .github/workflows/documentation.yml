@@ -50,8 +50,14 @@ jobs:
 
     - name: 'Deploy Documentation'
       run: |
-        rm -Rf /opt/city-planner-documentation/*
-        cp thesis.pdf /opt/city-planner-documentation/
+        cp thesis.pdf /opt/city-planner-documentation/${{ github.event_name == 'pull_request' && format('{0}.pdf', github.sha) || 'thesis.pdf' }}
       working-directory: 'Documentation'
-      # Do not run deployment from PR
-      if: github.event_name != 'pull_request'
+
+    - name: 'Create comment'
+      uses: peter-evans/create-or-update-comment@v4
+      with:
+        issue-number: ${{ github.event.number }}
+        body: |
+            Preview of thesis at latest HEAD avliable at: [https://city-planner.budziszm.pl/thesis/${{ github.sha }}](https://city-planner.budziszm.pl/thesis/${{ github.sha }})
+      # Comment only on PR
+      if: github.event_name == 'pull_request'
