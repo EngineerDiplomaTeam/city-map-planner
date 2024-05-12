@@ -1,5 +1,5 @@
 using MoreLinq.Extensions;
-using OverpassClient;
+using WebApi.OverpassClient;
 using WebApi.Data.Entities;
 using WebApi.Data.Repositories;
 

@@ -8,6 +8,7 @@
         <LangVersion>12</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
+        <RootNamespace>WebApi.OverpassClient</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

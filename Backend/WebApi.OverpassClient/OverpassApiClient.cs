@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Extensions.Logging;
 
-namespace OverpassClient;
+namespace WebApi.OverpassClient;
 
 public interface IOverpassClient
 {

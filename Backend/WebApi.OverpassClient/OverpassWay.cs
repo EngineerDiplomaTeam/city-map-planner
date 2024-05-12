@@ -1,4 +1,4 @@
-namespace OverpassClient;
+namespace WebApi.OverpassClient;
 
 public record OverpassWay(
     long Id,
