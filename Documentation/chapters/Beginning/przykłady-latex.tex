@@ -1,0 +1,147 @@
+%! Author = mate
+%! Date = 11.11.2023
+
+\chapter{Przykłady LaTeX}
+\label{ch:przykady-latex}
+
+\section{Cytaty, źródła}
+\label{sec:cytaty-zroda}
+Cytat: \cite{bla}
+
+\section{Listingi}
+\label{sec:listingi}
+Jak załączać kod źródłowy jest pokazane na listingu~\ref{lst:helloworld}
+
+\begin{lstlisting}[language=c,caption={Przykładowy witaj w świecie}, label={lst:helloworld}]
+printf("hello");
+\end{lstlisting}
+
+\section{Obrazki}
+\label{sec:obrazki}
+
+Na ilustracji~\ref{fig:pjatklogo} widzimy oficjalne logo PJATK\@.
+
+\begin{figure}[h]
+    \centering
+    \inputgraphics[width=0.5\textwidth]{../attachments/pjatk}
+    \caption{Logo PJATK załączone jako obrazek}
+    \label{fig:pjatklogo}
+\end{figure}
+
+albo dla wygody jako makro tak jak na obrazku~\ref{img:pjatklogo2}
+
+\putimage{Obrazek załączony za pomocą makra}{attachments/pjatk}{img:pjatklogo2}{0.5\textwidth}
+
+\section{Karty udziałowca}
+\label{sec:karty-udziaowca}
+
+\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Przykładowy opis udzialowca}]
+    \id{UOB 01}
+    \name{nazwa udziałowca}
+    \descr{opis udziałowca}
+    \type{ożywiony/nieożywiony, bezpośredni/pośredni}
+    \viewpoint{z jakiej perspektywy patrzy udziałowiec np. technicznej, ekonomicznej, operatora systemu itp.}
+    \limitations{ograniczenia udziałowca np. administrator nie powinien specyfikować wymagań finansowych}
+    \requ{tu tylko symbole wymagań wyspecyfikowanych w rozdziale 3}
+\end{stakeholder}
+
+\section{Wymagania wszelakie}
+\label{sec:wymagania-wszelakie}
+
+Na tabeli~\ref{tab:requirements:general} pokazano jak można definiować wymagania ogólne lub dziedzinowe.
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Przykładowe wymaganie ogólne lub dziedzinowe}]
+    \id{WO1}
+    \priority{M}
+    \name{krótki opis}
+    \descr{opis szczegółowy, należy dążyć do tego, żeby wszystkie znane na ten moment szczegóły wymagania zostały wydobyte i wyspecyfikowane}
+    \sholder{nazwa udziałowca, który podał wymaganie}
+    \reqrelated{wymagania zależne i uszczegóławiające – odesłanie poprzez identyfikator}
+\end{requirementstab}
+
+Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Pryzkładowa tabela z wymaganiami na interfejs z otoczeniem}]
+    \id{FO1}
+    \priority{S}
+    \name{krótki opis}
+    \descr{opis szczegółowy, należy dążyć do tego, żeby wszystkie znane na ten moment szczegóły wymagania zostały wydobyte i wyspecyfikowane
+
+    Można zastosować opis jak w User Story
+        \begin{itemize}
+            \item Jako.. (konkretny użytkownik systemu)
+            \item chcę... (pożądana cecha lub problem, który trzeba rozwiązać)
+            \item bo wtedy/ponieważ… (korzyść płynąca z ukończenia story)
+        \end{itemize}
+    }
+    \acceptcrit{Warunki Satysfakcji (Szczegóły dodane na potrzeby  testów akceptacyjnych)}
+    \inputdata{uzupełniane w trakcie sprintu – dane wejściowe, związane z wymaganiem}
+    \preconditions{ uzupełniane w trakcie sprintu – warunki, które muszą być prawdziwe przed wywołaniem operacji}
+    \postconditions{ uzupełniane w trakcie sprintu – warunki, które muszą być prawdziwe po wywołaniu operacji}
+    \exceptions{ uzupełniane w trakcie sprintu – niepożądane sytuacje i sposoby ich obsługi}
+    \implementation{ uzupełniane w trakcie sprintu – opis sposobu realizacji}
+    \sholder{nazwa udziałowca, który podał wymaganie}
+    \reqrelated{wymagania zależne i uszczegóławiające – odesłanie poprzez identyfikator}
+\end{requirementstab}
+
+
+Natomiast tabela~\ref{tab:requirements:env1} pokazuje wymagania na interfejs z otoczeniem.
+
+\begin{requirementstab}[label={tab:requirements:env1},caption={Pryzkładowa tabela z wymaganiami na interfejs z otoczeniem}]
+    \id{IO1}
+    \priority{C}
+    \name{krótki opis}
+    \descr{opis szczegółowy, należy dążyć do tego, żeby wszystkie znane na ten moment szczegóły wymagania zostały wydobyte i wyspecyfikowane}
+    \acceptcrit{Warunki Satysfakcji (Szczegóły dodane na potrzeby  testów akceptacyjnych)}
+    \inputdata{uzupełniane w trakcie sprintu – dane wejściowe, związane z wymaganiem}
+    \preconditions{ uzupełniane w trakcie sprintu – warunki, które muszą być prawdziwe przed wywołaniem operacji}
+    \postconditions{ uzupełniane w trakcie sprintu – warunki, które muszą być prawdziwe po wywołaniu operacji}
+    \exceptions{ uzupełniane w trakcie sprintu – niepożądane sytuacje i sposoby ich obsługi}
+    \implementation{ uzupełniane w trakcie sprintu – opis sposobu realizacji}
+    \sholder{nazwa udziałowca, który podał wymaganie}
+    \reqrelated{wymagania zależne i uszczegóławiające – odesłanie poprzez identyfikator}
+\end{requirementstab}
+
+Tabela dotycząca wymagań pozafunkcjonalnych~\ref{tab:requirements:nonfunc1} jest także widoczne.
+
+\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Pryzkładowa tabela z wymaganiami pozafunkcjonalnymi}]
+    \id{NFO1}
+    \priority{W}
+    \name{krótki opis}
+    \descr{opis szczegółowy, należy dążyć do tego, żeby wszystkie znane na ten moment szczegóły wymagania zostały wydobyte i wyspecyfikowane}
+    \acceptcrit{Warunki Satysfakcji (Szczegóły dodane na potrzeby  testów akceptacyjnych)}
+    \sholder{nazwa udziałowca, który podał wymaganie}
+    \reqrelated{wymagania zależne i uszczegóławiające – odesłanie poprzez identyfikator}
+\end{requirementstab}
+
+\section{Przykładowy UML}
+\label {sec:przykadowy-uml}
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{umlsystem}[x=4, fill=red!10]{The system}
+            \umlusecase{use case1}
+            \umlusecase[y=-2]{use case2}
+            \umlusecase[y=-4]{use case3}
+            \umlusecase[x=4, y=-2, width=1.5cm]{use case4 on 2 lines}
+            \umlusecase[x=6, fill=green!20]{use case5}
+            \umlusecase[x=6, y=-4]{use case6}
+        \end{umlsystem}
+
+        \umlactor{user}
+        \umlactor[y=-3]{subuser}
+        \umlactor[x=14, y=-1.5]{admin}
+
+        \umlinherit{subuser}{user}
+        \umlassoc{user}{usecase-1}
+        \umlassoc{subuser}{usecase-2}
+        \umlassoc{subuser}{usecase-3}
+        \umlassoc{admin}{usecase-5}
+        \umlassoc{admin}{usecase-6}
+        \umlinherit{usecase-2}{usecase-1}
+        \umlVHextend{usecase-5}{usecase-4}
+        \umlinput[name=incl]{usecase-3}{usecase-4}
+
+        \umlnote[x=7, y=-7]{incl-1}{note on input dependency}
+    \end{tikzpicture}
+\end{center}
