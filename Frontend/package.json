@@ -33,6 +33,7 @@
     "@fullcalendar/timegrid": "^6.1.11",
     "@ngrx/component-store": "^17.2.0",
     "@ngrx/effects": "^17.2.0",
+    "@ngrx/operators": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
     "@streamparser/json": "^0.0.20",

@@ -1,13 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
+  effect,
   inject,
   OnInit,
   viewChild,
 } from '@angular/core';
 import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
 import { DatePipe } from '@angular/common';
@@ -18,12 +18,13 @@ import {
 import { JSONParser } from '@streamparser/json-whatwg';
 import { pairwise } from '../../utils';
 import {
-  OlMapMarker,
   OlMapMarkerManager,
+  OlMapNumericMarker,
 } from '../../open-layers-map/ol-map-marker-manager.service';
 import { OL_MAP } from '../../open-layers-map/ol-token';
 import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface PathFindingIteration {
   complete: boolean;
@@ -40,24 +41,37 @@ interface PathFindingIteration {
   imports: [OlMapDirective, MatStepperModule, MatButton, DatePipe],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
+  hostDirectives: [OlMapDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiSummaryComponent implements OnInit {
-  protected readonly olMapDirective = viewChild.required(OlMapDirective);
-
-  private readonly olMapLinesManager = computed(() =>
-    this.olMapDirective().injector.get(OlMapLineManager),
-  );
-
-  private readonly olMapMarkerManager = computed(() =>
-    this.olMapDirective().injector.get(OlMapMarkerManager),
-  );
-
-  private readonly olMap = computed(() =>
-    this.olMapDirective().injector.get(OL_MAP),
-  );
-
+  private readonly olMapLinesManager = inject(OlMapLineManager);
+  private readonly olMapMarkerManager = inject(OlMapMarkerManager);
+  private readonly olMap = inject(OL_MAP);
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
+  protected readonly steeper = viewChild.required(MatStepper);
+
+  private readonly setMarkersEffect = effect(() => {
+    const pois = this.poiScheduleStore.scheduledEvents();
+
+    const markers: OlMapNumericMarker[] = pois.map((x, i) => ({
+      number: i + 1,
+      lat: x.extendedProps.poi.map.lat,
+      lon: x.extendedProps.poi.map.lon,
+    }));
+
+    for (const marker of markers) {
+      void this.olMapMarkerManager.addNumericMarker(marker);
+    }
+  });
+
+  private readonly clickMarkerEffect = this.olMapMarkerManager.markerClicked
+    .pipe(takeUntilDestroyed())
+    .subscribe((id) => {
+      const index = id - 1;
+      this.steeper().selectedIndex = index;
+      this.onStepChange(index);
+    });
 
   ngOnInit(): void {
     this.onStepChange(0);
@@ -70,17 +84,7 @@ export class PoiSummaryComponent implements OnInit {
 
     const previousEvent = this.poiScheduleStore.scheduledEvents()[index - 1];
 
-    const markers: OlMapMarker[] = [];
-
-    markers.push({
-      iconSrc: eventAtIndex.extendedProps.poi.map.iconSrc,
-      id: eventAtIndex.extendedProps.poi.id,
-      label: eventAtIndex.extendedProps.poi.map.label,
-      lat: eventAtIndex.extendedProps.poi.map.lat,
-      lon: eventAtIndex.extendedProps.poi.map.lon,
-    });
-
-    this.olMap()
+    this.olMap
       .getView()
       .fit(
         new Point(
@@ -92,19 +96,8 @@ export class PoiSummaryComponent implements OnInit {
       );
 
     if (!eventAtIndex || !previousEvent) {
-      void this.olMapMarkerManager().setMarkers(markers);
       return;
     }
-
-    markers.push({
-      iconSrc: previousEvent.extendedProps.poi.map.iconSrc,
-      id: previousEvent.extendedProps.poi.id,
-      label: previousEvent.extendedProps.poi.map.label,
-      lat: previousEvent.extendedProps.poi.map.lat,
-      lon: previousEvent.extendedProps.poi.map.lon,
-    });
-
-    void this.olMapMarkerManager().setMarkers(markers);
 
     void this.showRouteBetween(
       eventAtIndex.extendedProps.poi.id,
@@ -113,7 +106,7 @@ export class PoiSummaryComponent implements OnInit {
   }
 
   private async showRouteBetween(from: number, to: number): Promise<void> {
-    const manager = this.olMapLinesManager();
+    const manager = this.olMapLinesManager;
 
     const response = await fetch(
       `/Api/PathFinding/GetPathBetweenPois?startingPoiId=${from}&destinationPoiId=${to}`,

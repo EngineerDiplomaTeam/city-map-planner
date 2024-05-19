@@ -53,7 +53,6 @@ $light-theme: mat.define-light-theme((
 @include mat.select-theme($light-theme);
 @include mat.menu-theme($light-theme);
 @include mat.progress-spinner-theme($light-theme);
-@include mat.bottom-sheet-theme($light-theme);
 @include mat.stepper-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
@@ -79,7 +78,6 @@ $light-theme: mat.define-light-theme((
   @include mat.select-color($dark-theme);
   @include mat.menu-color($dark-theme);
   @include mat.progress-spinner-color($dark-theme);
-  @include mat.bottom-sheet-color($dark-theme);
   @include mat.stepper-color($dark-theme);
 }
 

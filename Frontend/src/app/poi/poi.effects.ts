@@ -16,9 +16,11 @@ import {
   selectPoiInBasketCount,
   selectPoisInBasket,
 } from './poi.selectors';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PoiEffects {
+  private readonly router = inject(Router);
   private readonly store = inject(Store);
   private readonly dialog = inject(MatDialog);
   private readonly actions$ = inject(Actions);
@@ -28,6 +30,7 @@ export class PoiEffects {
   public readonly poiMarkerClick$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(poiActions.mapMarkerClicked),
+      filter(() => !this.router.url.includes('summary')),
       map(({ markerId }) => poiActions.openBottomSheet({ poiId: markerId })),
     );
   });
