@@ -127,11 +127,11 @@ export class PoiSightseeingDaysManageDialogComponent {
         validators: [Validators.required],
         nonNullable: true,
       }),
-      timeFrom: new FormControl<string>('13:37', {
+      timeFrom: new FormControl<string>(PoiScheduleStore.defaultTimeFrom, {
         validators: [Validators.required],
         nonNullable: true,
       }),
-      timeTo: new FormControl<string>('21:37', {
+      timeTo: new FormControl<string>(PoiScheduleStore.defaultTimeTo, {
         validators: [Validators.required],
         nonNullable: true,
       }),
