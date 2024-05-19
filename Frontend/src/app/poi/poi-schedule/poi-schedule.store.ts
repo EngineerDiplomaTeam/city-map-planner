@@ -56,8 +56,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     new Date(),
     PoiScheduleStore.dateOnlyFormat,
   );
-  public static readonly defaultTimeFrom = '10:00'; //formatDate(new Date(), 'HH:mm');
-  public static readonly defaultTimeTo = '23:59';
+  public static readonly defaultTimeFrom = '10:00';
+  public static readonly defaultTimeTo = '20:00';
 
   private static readonly initialSightseeingTimeSpans = new Map<
     string,
@@ -65,6 +65,30 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
   >([
     [
       PoiScheduleStore.defaultDateOnly,
+      [
+        {
+          from: PoiScheduleStore.defaultTimeFrom,
+          to: PoiScheduleStore.defaultTimeTo,
+        },
+      ],
+    ],
+    [
+      formatDate(
+        new Date().setDate(new Date().getDate() + 1),
+        PoiScheduleStore.dateOnlyFormat,
+      ),
+      [
+        {
+          from: PoiScheduleStore.defaultTimeFrom,
+          to: PoiScheduleStore.defaultTimeTo,
+        },
+      ],
+    ],
+    [
+      formatDate(
+        new Date().setDate(new Date().getDate() + 2),
+        PoiScheduleStore.dateOnlyFormat,
+      ),
       [
         {
           from: PoiScheduleStore.defaultTimeFrom,

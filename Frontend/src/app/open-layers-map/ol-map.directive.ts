@@ -1,4 +1,9 @@
-import { Directive, effect, ElementRef, inject, Injector } from '@angular/core';
+import {
+  afterRender,
+  AfterRenderPhase,
+  Directive,
+  effect,
+} from '@angular/core';
 import { OL_MAP, OL_TILE_LAYER } from './ol-token';
 import { useColorScheme } from './color-scheme-signal';
 import OlTileLayer from 'ol/layer/Tile';
@@ -35,14 +40,16 @@ import { OlMapLineManager } from './ol-map-lines-manager.service';
   ],
 })
 export class OlMapDirective {
-  public readonly injector = inject(Injector, { self: true });
-  protected readonly elementRef = inject(ElementRef);
   protected readonly colorScheme = useColorScheme();
   protected readonly tileLayer = new OlTileLayer();
 
+  private readonly setMapTargetRef = afterRender(
+    () => this.olMap.setTarget('map'),
+    { phase: AfterRenderPhase.Write },
+  );
+
   protected readonly olMap = new OlMap({
     layers: [this.tileLayer],
-    target: this.elementRef.nativeElement,
     controls: [],
     interactions: defaultInteractions().extend([
       new DblClickDragZoom({
@@ -82,7 +89,7 @@ export class OlMapDirective {
 
       const stadiaSource = new StadiaMaps({
         layer,
-        retina: true,
+        retina: window.devicePixelRatio > 1,
       });
 
       this.tileLayer.setSource(stadiaSource);

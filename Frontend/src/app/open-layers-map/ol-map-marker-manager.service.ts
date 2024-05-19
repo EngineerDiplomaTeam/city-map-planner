@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { EventEmitter, inject, Injectable, NgZone } from '@angular/core';
 import {
   Fill as OlFill,
   Icon as OlIcon,
@@ -23,9 +23,16 @@ export interface OlMapMarker {
   label: string;
 }
 
+export interface OlMapNumericMarker {
+  number: number;
+  lat: number;
+  lon: number;
+}
+
 @Injectable()
 export class OlMapMarkerManager {
   private static readonly featureKeyId = 'marker-id';
+  private readonly zone = inject(NgZone);
   protected readonly store = inject(Store);
   protected readonly olMap = inject(OL_MAP);
   protected readonly vectorSource = new OlVectorSource();
@@ -35,6 +42,8 @@ export class OlMapMarkerManager {
     updateWhileInteracting: true,
   });
 
+  public readonly markerClicked = new EventEmitter<number>();
+
   constructor() {
     this.olMap.addLayer(this.vectorLayer);
 
@@ -42,10 +51,15 @@ export class OlMapMarkerManager {
       const [feature] = this.olMap.getFeaturesAtPixel(evt.pixel);
       if (!feature) return;
 
-      const markerId: number = feature.get(OlMapMarkerManager.featureKeyId);
+      const markerId: string = feature.get(OlMapMarkerManager.featureKeyId);
       if (markerId === undefined) return;
 
-      this.store.dispatch(poiActions.mapMarkerClicked({ markerId }));
+      this.zone.run(() => {
+        this.markerClicked.emit(Number(markerId));
+        this.store.dispatch(
+          poiActions.mapMarkerClicked({ markerId: Number(markerId) }),
+        );
+      });
     });
   }
 
@@ -145,5 +159,45 @@ export class OlMapMarkerManager {
 
     this.vectorSource.clear();
     this.vectorSource.addFeatures(features);
+  }
+
+  public async addNumericMarker(marker: OlMapNumericMarker): Promise<void> {
+    const markerFeature = new OlFeature({
+      geometry: new OlPoint(fromLonLat([marker.lon, marker.lat])),
+    });
+
+    markerFeature.set(OlMapMarkerManager.featureKeyId, marker.number);
+
+    const size = 24 * window.devicePixelRatio;
+
+    const canvas = new OffscreenCanvas(size, size);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const context = canvas.getContext('2d')!;
+
+    context.arc(size / 2, size / 2, size / 2, 0, 2 * Math.PI);
+    context.fillStyle = '#cddc39';
+    context.fill();
+
+    const background = canvas.transferToImageBitmap();
+
+    markerFeature.setStyle(
+      () =>
+        new OlStyle({
+          image: new OlIcon({
+            img: background,
+            width: size / window.devicePixelRatio,
+          }),
+          text: new OlText({
+            text: `${marker.number}`,
+            font: '16px Roboto, "Helvetica Neue", sans-serif',
+            fill: new OlFill({
+              color: [0, 0, 0, 1],
+            }),
+            padding: [2, 2, 2, 2].map((x) => x / this.olMapResolution),
+          }),
+        }),
+    );
+
+    this.vectorSource.addFeature(markerFeature);
   }
 }
