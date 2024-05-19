@@ -72,6 +72,30 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
         },
       ],
     ],
+    [
+      formatDate(
+        new Date().setDate(new Date().getDate() + 1),
+        PoiScheduleStore.dateOnlyFormat,
+      ),
+      [
+        {
+          from: PoiScheduleStore.defaultTimeFrom,
+          to: PoiScheduleStore.defaultTimeTo,
+        },
+      ],
+    ],
+    [
+      formatDate(
+        new Date().setDate(new Date().getDate() + 2),
+        PoiScheduleStore.dateOnlyFormat,
+      ),
+      [
+        {
+          from: PoiScheduleStore.defaultTimeFrom,
+          to: PoiScheduleStore.defaultTimeTo,
+        },
+      ],
+    ],
   ]);
 
   private readonly matDialog = inject(MatDialog);
