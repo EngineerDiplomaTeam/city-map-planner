@@ -51,7 +51,6 @@ builder.Services.ConfigureOpenTelemetryTracerProvider(x => x.AddOtlpExporter());
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UserDataDbContext>(
     options => options.UseNpgsql(
@@ -104,8 +103,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Configuration.AddEnvironmentVariables(prefix: "CITY_MAP_PLANNER_");
 builder.Services.Configure<SendGridOptions>(builder.Configuration.GetSection("SendGrid"));
-builder.Services.AddTransient<IEmailSender, EmailSender>();
-builder.Services.AddHttpClient<IOverpassClient, OverpassApiClient>();
 
 builder.Services.AddHttpClient<IWeatherClient, WeatherClient>("WeatherClient",client =>
 {
@@ -114,15 +111,6 @@ builder.Services.AddHttpClient<IWeatherClient, WeatherClient>("WeatherClient",cl
 builder.Services.AddTransient<IWeatherService, WeatherService>();
 builder.Services.AddTransient<IWeatherRepository, WeatherRepository>();
 builder.Services.AddHostedService<WeatherUpdater>();
-builder.Services.AddTransient<WeatherUpdater>();
-
-builder.Services.AddHostedService<OsmUpdater>();
-
-builder.Services.AddTransient<IOverpassCollectorService, OverpassCollectorService>();
-builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
-{
-    Title = "City map planner backend API"
-});
 
 builder.Services.AddResponseCompression();
 
@@ -148,10 +136,10 @@ if (app.Environment.IsDevelopment())
 
     // Add ReDoc UI to interact with the document
     // Available at: http://localhost:<port>/redoc
-    /*app.UseReDoc(options =>
+    app.UseReDoc(options =>
     {
-        options.Path = "/redoc"; 
-    });*/
+        options.Path = "/redoc";
+    });
 }
 
 // Do not add here HTTPS redirection, we use NGINX for SSL
