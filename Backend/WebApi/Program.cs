@@ -83,11 +83,6 @@ builder.Services.AddTransient<ChatGpt>(_ => new ChatGpt(builder.Configuration.Ge
     MaxTokens = 2_000,
 }));
 
-builder.Services.AddOpenApiDocument(settings => settings.PostProcess = document => document.Info = new OpenApiInfo
-{
-    Title = "City map planner backend API"
-});
-
 builder.Services.AddAuthorization();
 builder.Services
     .AddIdentityApiEndpoints<IdentityUser>()
