@@ -5,6 +5,7 @@
 \usepackage[english,polish]{babel}
 \usepackage{tikz-uml}
 \usepackage[acronym, toc]{glossaries}
+\glstoctrue
 
 \addbibresource{attachments/bibliography.bip}
 
@@ -47,21 +48,18 @@
 
 	\tableofcontents
 	\clearpage
-	\include{chapters/przykłady-latex}
+%	\include{chapters/przykłady-latex}
 	\include{chapters/Beginning/beginning}
-	\include{chapters/Market-Analytics/market-analytics}
+
+	\printglossary[type=\acronymtype]
+	\printglossary
+
+	\include{chapters/Kontekst-Projektu/kontekst-projektu}
 	\include{chapters/Project-Requirement/project-requirement}
 	\include{chapters/Solution/solution}
-	\include{chapters/Work-Methodology/work-methodology}
 	\include{chapters/Tests/tests}
 	\include{chapters/Summary/summary}
 
-
-
-	% Początek słownika, akronimów i bibliografii
-	\printbibliography[heading=bibintoc]
-	\printglossary[type=\acronymtype]
-	\printglossary
-	% Koniec słownika, akronimów i bibliografii
+	\printbibliography[heading=bibnumbered]
 
 \end{document}
