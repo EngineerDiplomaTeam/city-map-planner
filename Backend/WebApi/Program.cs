@@ -110,7 +110,7 @@ builder.Services.AddHttpClient<IWeatherClient, WeatherClient>("WeatherClient",cl
 });
 builder.Services.AddTransient<IWeatherService, WeatherService>();
 builder.Services.AddTransient<IWeatherRepository, WeatherRepository>();
-builder.Services.AddHostedService<WeatherUpdater>();
+// builder.Services.AddHostedService<WeatherUpdater>();
 
 builder.Services.AddResponseCompression();
 

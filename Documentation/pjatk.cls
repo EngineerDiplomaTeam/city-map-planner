@@ -17,6 +17,7 @@
 \RequirePackage{polski} % Włączenie obsługi polskich liter
 \RequirePackage{tabularx}
 \RequirePackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\RequirePackage[all]{nowidow}
 \RequirePackage{url}
 \RequirePackage{graphicx}
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
