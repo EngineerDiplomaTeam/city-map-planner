@@ -47,20 +47,18 @@
 
 	\tableofcontents
 	\clearpage
-	\include{chapters/przykłady-latex}
+%	\include{chapters/przykłady-latex}
 	\include{chapters/Beginning/beginning}
+
+	\printglossary[type=\acronymtype]
+	\printglossary
+
 	\include{chapters/Kontekst-Projektu/kontekst-projektu}
 	\include{chapters/Project-Requirement/project-requirement}
 	\include{chapters/Solution/solution}
 	\include{chapters/Tests/tests}
 	\include{chapters/Summary/summary}
 
-
-
-	% Początek słownika, akronimów i bibliografii
 	\printbibliography[heading=bibnumbered]
-	\printglossary[type=\acronymtype]
-	\printglossary
-	% Koniec słownika, akronimów i bibliografii
 
 \end{document}
