@@ -23,8 +23,6 @@
 \RequirePackage{multirow}
 \RequirePackage{graphicx}
 \RequirePackage{csquotes}
-\glstoctrue
-
 
 \newcommand{\@nabstract}{\@latex@error{No \noexpand\@nabstract given}\@ehc}
 \newcommand{\nabstract}[1]{\renewcommand{\@nabstract}{#1}}
