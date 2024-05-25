@@ -4,13 +4,29 @@
 \usepackage{hyperref}
 \usepackage[english,polish]{babel}
 \usepackage{tikz-uml}
-\usepackage[acronym, toc]{glossaries}
-\glstoctrue
+\usepackage[acronym, toc, numberedsection]{glossaries}
+\usepackage{indentfirst} % wcięcie w pierwszym akapicie rozdziału
+\usepackage{parskip} % przerwa między akapitami
+\usepackage[defaultlines=4,all]{nowidow}
+\usepackage[T1]{fontenc} % better font encoding
+\usepackage{lmodern}
 
-\addbibresource{attachments/bibliography.bip}
+\glstoctrue
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\addbibresource{bibliography.bip}
 
 \makeglossaries
-\input{chapters/słownik-pojęć}
+\input{słownik-pojęć}
 
 \studfield{Informatyka}
 \studtype{Zaoczne}
@@ -46,19 +62,26 @@
 	\makedeclaration
 	% PJATK Template End
 
+    % Spis treści
 	\tableofcontents
 	\clearpage
-%	\include{chapters/przykłady-latex}
-	\include{chapters/Beginning/beginning}
 
+    % \include{chapters/przykłady-latex}
+	\input{chapters/wstep}
+	\input{chapters/opis-problemu}
+
+	% Słownik pojęć i skrótów
 	\printglossary[type=\acronymtype]
 	\printglossary
 
-	\include{chapters/Kontekst-Projektu/kontekst-projektu}
-	\include{chapters/Project-Requirement/project-requirement}
-	\include{chapters/Solution/solution}
-	\include{chapters/Tests/tests}
-	\include{chapters/Summary/summary}
+	\input{chapters/kontekst-projektu}
+	\input{chapters/analiza-wymagań}
+    % \input{chapters/projekt}
+    \input{chapters/decyzje-projektowe} % przepisać od 0 jako rozdział "projekt"
+	\input{chapters/realizacja}
+	\input{chapters/testy}
+	\input{chapters/prezentacja-systemu}
+	\input{chapters/podsumowanie}
 
 	\printbibliography[heading=bibnumbered]
 

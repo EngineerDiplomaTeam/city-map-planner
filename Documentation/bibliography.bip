@@ -24,3 +24,39 @@
   year = {2021},
   author = {Mohammad {Beheshti Roui} and Mariam Zomorodi and Masoomeh Sarvelayati and Moloud Abdar and Hamid Noori and Paweł Pławiak and Ryszard Tadeusiewicz and Xujuan Zhou and Abbas Khosravi and Saeid Nahavandi and U. Rajendra Acharya}
 }
+
+@online{statcounter-os-shares,
+  title = {Operating System Market Share Worldwide},
+  url = {https://gs.statcounter.com/os-market-share#monthly-202304-202404-bar},
+  year = {2024},
+  urldate = {2024-12-02}
+}
+
+@book{flutter-quick-start,
+  author = {Prajyot Mainkar, Salvatore Giordano},
+  year = {2019},
+  title = {Google Flutter Mobile Development Quick Start Guide},
+  publisher = {Packt Publishing}
+}
+
+@online{flutter-perf,
+  author = {Arnold Parge},
+  title = {My experience with Flutter Web (Performance, Advantages, Disadvantages)},
+  url = {https://blog.nonstopio.com/my-experience-with-flutter-web-performance-advantages-disadvantages-part-2-556eaa5d6e4a},
+  year = {2021},
+  urldate = {2024-12-02}
+}
+
+@book{electron-in-action,
+  author = {Steve Kinney},
+  year = {2018},
+  title = {Electron in Action},
+  publisher = {Manning Publications}
+}
+
+@book{pwa-book,
+  author = {Dean Alan Hume},
+  year = {2017},
+  title = {Progressive Web Apps},
+  publisher = {Manning Publications}
+}
