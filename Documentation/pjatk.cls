@@ -16,7 +16,15 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{polski} % Włączenie obsługi polskich liter
 \RequirePackage{tabularx}
-\RequirePackage[backend=biber,language=polish,style=ieee,sorting=none]{biblatex}
+%\RequirePackage[backend=biber,language=polish,style=ieee,sorting=none]{biblatex}
+\RequirePackage[style=ieee,natbib,
+    language=polish,
+    sortlocale=pl_PL,
+    doi=false,
+    isbn=false,
+    url=false,
+    eprint=false
+]{biblatex}
 \RequirePackage{url}
 \RequirePackage{graphicx}
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
