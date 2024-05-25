@@ -11,33 +11,75 @@
 \label{subsec:jezyki-programowania-i-biblioteki}
 
 \subsubsection{Oprogramowanie po stronie użytkownika}
-Jednym z celi projektu jest stworzenie aplikacji progresywnej dostępnej na większości urządzeń codziennego użytku tj.: komputery i smartfony.
-Według statystyk prowadzonych przez Google za znaczną część konsumenckiego ruchu internetowego odpowiadają te systemy operacyjne: Android, ios, MacOS, Windows, Linux.
-To aż 5 bardzo różniących się od siebie środowisk docelowych, każde z nich posiada swój dedykowany sposób wytwarzania i utrzymywania oprogramowania.
-Nasz zespół składający się z czterech pracujących na etacie studentów nie byłby w stanie stworzyć a co dopiero utrzymywać rozwiązania na tylu różnych platformach na raz.
+Jednym z kluczowych celów projektu jest stworzenie progresywnej aplikacji internetowej (PWA) dostępnej na większości urządzeń codziennego użytku, takich jak komputery osobiste i smartfony.
+Według statystyk prowadzonych przez StatCounter większość konsumenckiego ruchu internetowego jest generowana przez systemy operacyjne Android, Windows i iOS~\cite{statcounter-os-shares}\@.
+To zróżnicowanie platform stawia przed zespołem projektowym wyzwanie polegające na opracowaniu aplikacji, która będzie działała efektywnie na każdym z tych systemów.
+Nasz zespół składający się z czterech pracujących na etacie studentów nie byłby w stanie stworzyć a co dopiero utrzymywać rozwiązania na 3 różnych platformach na raz.
 Istnieją rozwiązania niwelujące ten problem w znacznym stopniu, zespół projektowy przeanalizował część z nich pod kątem naszego doświadczenia.
 
 \paragraph{Flutter}
-Jest otwartoźródłowy zestaw narzędzi dla programistów przeznaczony do tworzenia natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych, stworzony przez firmę Google.
-Aplikacja stworzona w tej technologii pozwala na napisanie kodu źródłowego w jednej wersji i uruchomienie go na szerokiej gamie zróżnicowanych urządzeń docelowych.
-Problemem tej technologii jest dość niszowy język programowania, z którym nikt z nas nie miał do czynienia oraz relatywnie słaba wydajność dostarczonego oprogramowania.
+Flutter to otwartoźródłowy zestaw narzędzi dla programistów stworzony przez firmę Google~\cite{flutter-quick-start}.
+Pozwala na tworzenie natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych.
+Aplikacja stworzona przy użyciu tej technologii umożliwia napisanie kodu źródłowego w jednej wersji i uruchomienie go na szerokiej gamie urządzeń docelowych.
+
+Zalety:
+\begin{itemize}
+    \item Jednolity kod źródłowy dla wielu platform
+    \item Obsługa natywnych funkcji systemów mobilnych i desktopowych
+\end{itemize}
+
+Wady:
+\begin{itemize}
+    \item Język programowania Dart, który jest stosunkowo niszowy i nieznany zespołowi
+    \item Relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}
+\end{itemize}
 
 \paragraph{Electron}
-Jest to otwartoźródłowy projekt, który umożliwia stworzenie oprogramowania w formie strony internetowej oraz osadzenia jej w minimalistycznej wersji przeglądarki wysyłanej wraz z aplikacją.
-Dużym plusem tej technologii jest to, że na uczelni mieliśmy zajęcia z React-a, który jest jedną z opcji pisania aplikacji w Electron-ie.
-Minusem tego rozwiązania jest bardzo duży rozmiar docelowej aplikacji z uwagi na potrzebę doczepienia przeglądarki internetowej poza samą aplikacją.
+Electron to otwartoźródłowa platforma umożliwiająca tworzenie aplikacji w formie stron internetowych oraz osadzanie ich w minimalistycznej wersji przeglądarki, która jest dostarczana razem z aplikacją~\cite{electron-in-action}.
+
+Zalety:
+\begin{itemize}
+    \item Możliwość wykorzystania React-a, poznanego przez zespół podczas zajęć akademickich
+    \item Wsparcie dla szerokiej gamy platform docelowych
+\end{itemize}
+
+Wady:
+\begin{itemize}
+    \item Duży rozmiar końcowej aplikacji z powodu konieczności dołączenia przeglądarki internetowej
+    \item Potencjalne problemy z wydajnością
+\end{itemize}
 
 \paragraph{Progresywna Aplikacja Internetowa}
-Z języka angielskiego Progressive Web App to aplikacja internetowa uruchamiana tak jak zwykła strona internetowa, ale umożliwiająca stworzenie wrażenia działania jak natywna aplikacja mobilna lub aplikacja desktopowa.
-Technologia bardzo podobna do Electron-a, z tym że zamiast wysyłać spreparowaną przeglądarkę, polegamy na przeglądarce uprzednio zainstalowanej u użytkownika.
-Plusem jest bardzo mały rozmiar docelowej aplikacji oraz relatywnie dobra wydajność, ponieważ przeglądarki internetowe są specjalnie optymalizowane pod wiele platform docelowych.
-Minusem tego rozwiązania jest poleganie na przeglądarce użytkownika docelowego, która może nie wspierać wszystkich funkcjonalności.
+Progresywne aplikacje internetowe (Progressive Web Apps) to aplikacje uruchamiane jak zwykłe strony internetowe, ale zapewniające doświadczenie podobne do natywnych aplikacji mobilnych lub desktopowych.\cite{pwa-book}
 
-\paragraph{Wybór}
-Każda z wymienionych opcji ma swoje poważne wady.
-Nasz zespół podejmując dedycję, kierował się następującymi priorytetami: znajomość technologii wewnątrz zespołu, wydajność rozwiązania.
-Biorąc pod uwagę te 2 czynniki, postawiliśmy na \acrshort{pwa}\@.
-Pragnąc wykorzystać komercyjne doświadczenie zespołu, zamiast używać poznanego na uczelni React-a, zaimplementujemy aplikację we framework-u Angular.
+Zalety:
+\begin{itemize}
+    \item Bardzo mały rozmiar końcowej aplikacji
+    \item Relatywnie dobra wydajność dzięki optymalizacji przeglądarek pod kątem wielu platform docelowych
+\end{itemize}
+
+Wady:
+\begin{itemize}
+    \item Zależność od przeglądarki użytkownika, która może nie obsługiwać wszystkich funkcjonalności
+\end{itemize}
+
+\paragraph{Wybór technologii}
+Każde z analizowanych rozwiązań ma swoje unikalne zalety i wady.
+Zespół projektowy kierował się następującymi priorytetami podczas wyboru technologii:
+
+\begin{enumerate}
+    \item Znajomość technologii w zespole
+    \item Wydajność rozwiązania
+\end{enumerate}
+
+Na podstawie powyższych czynników zdecydowaliśmy się na Progressive Web Apps.
+Dzięki temu rozwiązaniu możliwe jest stworzenie aplikacji internetowej, która działa jak natywna aplikacja mobilna czy desktopowa, a jednocześnie nie wymaga dołączenia przeglądarki do paczki instalacyjnej, jak w przypadku Electron.
+
+Aby wykorzystać komercyjne doświadczenie zespołu, zdecydowaliśmy się zaimplementować aplikację w frameworku Angular, zamiast korzystać z React-a poznanego na uczelni.
+Angular oferuje solidne narzędzia do tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z \acrshort{pwa}.
+
+Wybór technologii Progressive Web Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej na większości urządzeń codziennego użytku.
+Decyzja ta pozwoliła na efektywne wykorzystanie umiejętności zespołu, a także na dostarczenie rozwiązania zgodnego z priorytetami projektu, jakimi są wydajność i znajomość technologii.
 
 \subsubsection{Oprogramowanie niewidoczne dla użytkownika}
 Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania na podstawie danych czasu rzeczywistego.
@@ -208,4 +250,3 @@ Zespół projektowy postanowił oprzeć swoją pracę na podstawie GIT, natomias
 \paragraph{BitBucket}
 \paragraph{Microsoft Azure Repositories}
 \paragraph{Github}
-
