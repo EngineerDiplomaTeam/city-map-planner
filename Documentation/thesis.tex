@@ -53,6 +53,10 @@
 
 	\tableofcontents
 	\clearpage
+
+	\catcode`.=\active \def.{\char`.\penalty -200\relax}
+	\catcode`,=\active \def,{\char`,\penalty -200\relax}
+
 %	\include{chapters/przykłady-latex}
 	\include{chapters/Beginning/beginning}
 
