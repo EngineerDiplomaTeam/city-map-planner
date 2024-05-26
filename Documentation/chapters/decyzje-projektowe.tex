@@ -22,14 +22,14 @@ Aplikacja stworzona przy użyciu~tej~technologii umożliwia napisanie kodu źró
 
 Zalety:
 \begin{itemize}
-    \item Jednolity~kod~źródłowy~dla~wielu platform
-    \item Obsługa natywnych funkcji systemów mobilnych i~desktopowych
+    \item Jednolity~kod~źródłowy~dla~wielu platform.
+    \item Obsługa natywnych funkcji systemów mobilnych i~desktopowych.
 \end{itemize}
 
 Wady:
 \begin{itemize}
-    \item Język programowania Dart, który jest stosunkowo niszowy i~nieznany zespołowi
-    \item Relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}
+    \item Język programowania Dart, który jest stosunkowo niszowy i~nieznany zespołowi.
+    \item Relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}.
 \end{itemize}
 
 \paragraph{Electron}
@@ -37,14 +37,14 @@ Electron~to~otwartoźródłowa platforma umożliwiająca tworzenie aplikacji w~f
 
 Zalety:
 \begin{itemize}
-    \item Możliwość wykorzystania React-a, poznanego przez zespół podczas zajęć akademickich
-    \item Wsparcie~dla~szerokiej gamy platform docelowych
+    \item Możliwość wykorzystania React-a, poznanego przez zespół podczas zajęć akademickich.
+    \item Wsparcie~dla~szerokiej gamy platform docelowych.
 \end{itemize}
 
 Wady:
 \begin{itemize}
-    \item Duży rozmiar końcowej aplikacji z~powodu konieczności dołączenia przeglądarki internetowej
-    \item Potencjalne problemy z~wydajnością
+    \item Duży rozmiar końcowej aplikacji z~powodu konieczności dołączenia przeglądarki internetowej.
+    \item Potencjalne problemy z~wydajnością.
 \end{itemize}
 
 \paragraph{Progresywna Aplikacja Internetowa}
@@ -103,29 +103,26 @@ Nasz zespół składa się z~osób, które mają znaczne doświadczenie w~oprogr
 Wybrany przez~nas~stos technologiczny składa się z~.NET C\#, Angular oraz PostgreSql.
 Wszystkie~te~technologie, pomimo iż są utrzymywane przez ogromne korporacje, są otwarto-źródłowe,~co~w~praktyce pozwala~na~tworzenie narzędzi deweloperskich przez niezależnych twórców, dzięki czemu~nie~bylibyśmy uwiązani~do~konkretnego rozwiązania.
 Wybór oprogramowania~do~tworzenia kodu został podyktowany wybraną technologią a~w~drugiej kolejności z~uwagi~na~zróżnicowany sprzęt komputerowy, którym dysponujemy  dostępnością oprogramowania~na~wielu platformach (tj.: Windows, MacOS, Linux).
-
 \subsubsection{.NET} ~to~framework stworzony i~rozwijany przez Microsoft wspólnie~ze~społecznością otwartego oprogramowania.
 Pierwszym oprogramowaniem, które przychodzi~nam~do głowy,~gdy~słyszymy .NET, jest Microsoft Visual Studio.
 Oprogramowanie~to~powstało w~1997 roku i~przez wiele~lat~było konsekwentnie ulepszane.
 W~2016 roku~VS~zostało wydane~na~komputery Mac, jednakże,~po~7 latach, w~2023 roku Microsoft ogłosił zakończenie wsparcia~dla~wersji MacOS.
 Jeśli chodzi o~systemy Linux,~to~VS nigdy~nie~zostało wydane~na~ten system.
 
-Zespół projektowy bardzo~nie~chciał uzależnić pracy~nad~projektem~od~systemu Windows, Microsoft poleca użycie programu Visual Studio Code, który jest wspierany~na~wszystkich systemach operacyjnych, których używamy.
+\indent Zespół projektowy bardzo~nie~chciał uzależnić pracy~nad~projektem~od~systemu Windows, Microsoft poleca użycie programu Visual Studio Code, który jest wspierany~na~wszystkich systemach operacyjnych, których używamy.
 Niestety~VSC~jest edytorem przeznaczenia ogólnego,~co~za~tym~idzie, znaczna większość specjalistycznych~dla~danej technologii narzędzi jest obsługiwana przy pomocy rozszerzeń.
 Rozszerzenia mogą tworzyć wszyscy, jest~ich~całkiem sporo niestety wszystkie rozszerzenia skupiające się~na~technologii .NET/C\# są~we~wczesnej fazie rozwoju i~nie wspierają~tak~podstawowych rzeczy,~jak~debugowanie kodu.
 Nawet~gdy~dane rozszerzenie wspiera jakąś zaawansowaną funkcjonalność,~to~przeważnie konfiguracja takiego rozszerzenia bardzo różni się pomiędzy systemami operacyjnymi co,~de~facto niweczy sens wieloplatformowości.
-
-W~2016 roku został ogłoszony JetBrains Rider niejako odpowiedź~na~VS~na~MacOS~od~Microsoftu.
+\indent W~2016 roku został ogłoszony JetBrains Rider niejako odpowiedź~na~VS~na~MacOS~od~Microsoftu.
 Rider bardzo dynamicznie się rozwijał, nadganiając, a~nawet prześcigając~VS~pod względem funkcjonalności,~do~momentu, w~wyniku czego duża część środowiska programistycznego zaczęła~go~używać jako głównego narzędzia~do~pracy.
 Programy firmy JetBrains są znane~ze~świetnej integracji wieloplatformowej oraz dbania o~szczegóły,~co~zapewnia dobre doświadczenie deweloperskie.
-
-Dzięki PJATK nasz zespół mógł przetestować, każdy z~tych programów w~ramach licencji edukacyjnej.
+\indent Dzięki PJATK nasz zespół mógł przetestować, każdy z~tych programów w~ramach licencji edukacyjnej.
 Nasze testy doprowadziły~nas~do decyzji,~aby~postawić~na~Ridera~od~JetBrains-ów, z~zachowaniem możliwości uruchomienia projektu w~Visual Studio,~aby~koledzy z~dużym doświadczeniem komercyjnym opartym o~VS~nie~musieli zmieniać swoich przyzwyczajeń.
 
 \subsubsection{Angular} z~natury bycia technologią tworzenia stron internetowych~nie~posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
 Zespół tworzący~ten~framework stworzył własny program wspomagania deweloperów~na~podstawie protokółu \acrshort{lsp},~co~sprowadza się~do~tego, że każde środowisko programistyczne wspierające~ten~protokół zapewni~ten~sam poziom wsparcia~dla~Angular'a.
 
-Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara.
+\indent Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara. \newline
 
 JetBrains też~ma~w~swojej ofercie program~do~tworzenia w~technologiach internetowych o~nazwie WebStorm, który posiada automatyczną konfigurację~dla~Angular-a,~jak~i~wielu innych technologii, więc~nie~potrzebuje bezpośredniego wsparcia~od~autorów technologi.
 
@@ -157,25 +154,25 @@ Wytworzone oprogramowanie potrzebuje serwerów,~na~których będzie wdrożone.
 Zespół projektowy~zna~2~podejścia~do~tego problemu.
 
 \subsubsection{Oprogramowanie w~chmurze}
-Dostawcy oprogramowania w~chmurze umożliwiają bardzo elastyczny system rozliczania się~za~moc obliczeniową.
+\indent Dostawcy oprogramowania w~chmurze umożliwiają bardzo elastyczny system rozliczania się~za~moc obliczeniową.
 ~Gdy~aplikacja~nie~wymaga ciągłej pracy oraz w~sposób deterministyczny można ustalić warunki czasowe~dla~aplikacji, możemy~jej~użyć w~stylu \gls{on-demand}.
 Sposób~ten~charakteryzuje bardzo korzystny sposób rozliczania, gdzie płacimy~za~faktycznie wykorzystany czas pracy maszyn oraz potencjalnie nieskończone możliwości horizontal-scallingu.
 
-Wybór takiego rozwiązania mocno wpłynąłby~na~architekturę naszego rozwiązania.
+\indent Wybór takiego rozwiązania mocno wpłynąłby~na~architekturę naszego rozwiązania.
 Niejako wymusiłby~na~nas, podział projektu~na~niezależne~od~siebie moduły i~z~uwagi~na~bardzo skomplikowany \gls{refactoring} przy 4-osobowym zespole~de~facto scementowałby strukturę projektu.
 
-Nasz projekt teoretycznie można podzielić~na~niezależne~od~siebie części o~różnym zapotrzebowaniu~na~moc obliczeniową.
+\indent Nasz projekt teoretycznie można podzielić~na~niezależne~od~siebie części o~różnym zapotrzebowaniu~na~moc obliczeniową.
 Pierwszym modułem musi być baza danych, w~której będziemy trzymać graf możliwych połączeń między atrakcjami oraz informacje o~samych atrakcjach,~ten~moduł musiałby być cały czas dostępny z~uwagi~na~duży koszt wyprodukowania danych, przeważający koszt utrzymania bazy w~sposób ciągły.
 Drugim modułem mógłby być \gls{job} aktualizujący dane z~OSM, urzędu miasta oraz atrakcji turystycznych, taki moduł mógłby uruchamiać się~na~przykład~raz~dziennie.
 Trzecim modułem byłby serwis implementujący algorytm, dobierania trasy pomiędzy podanymi POI, taki serwis uruchamiałby się~na~zapytanie użytkownika i~kończył swoją pracę wraz z~podaniem optymalnie dobranej trasy.
 Ostatnim modułem byłaby aplikacja \gls{frontend}-owa implementująca UI, włączana z~osobna~dla~każdego użytkownika,~gdy~ten podejmie próbę wejścia~na~adres naszego rozwiązania.
 
-Takie podejście w~praktyce zmniejsza koszt utrzymania~do~kosztu utrzymywania bazy danych, ponieważ~gdy~zapotrzebowanie~na~pozostałe moduły drastycznie~by~zmalało,~to~nie będą~one~chodzić i~czekać~na~ruch użytkowników.
+\indent Takie podejście w~praktyce zmniejsza koszt utrzymania~do~kosztu utrzymywania bazy danych, ponieważ~gdy~zapotrzebowanie~na~pozostałe moduły drastycznie~by~zmalało,~to~nie będą~one~chodzić i~czekać~na~ruch użytkowników.
 Niestety uruchamianie programów~na~żądanie wiąże się~ze~znaczącym opóźnieniem wobec żądań użytkownika docelowego.~Gdy~użytkownik postanowi skorzystać z~naszej aplikacji, dostawca chmury obliczeniowej musi uruchomić~co~najmniej dwie maszyny,~dla~modułu 3~i~4,~co~czasami potrafi zająć kilka sekund.~Gdy~dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu~na~obsłużenie żądania.
 W~przypadku modułu 3~musimy nawiązać połączenie z~bazą danych, odczytać dane, zastosować~na~nich skomplikowany obliczeniowo algorytm i~wysłać odpowiedź, obawiamy się, że w~skrajnych przypadkach może~to~zająć~za~dużo czasu~aby~odpowiedź trafiła~do~użytkownika przed zamknięciem połączenia.
 W~przypadku modułu 4~możemy odroczyć oczekiwanie~na~odpowiedź modułu 3~i~poinformować użytkownika o~wydłużonym czasie oczekiwania, niemniej jednak,~aby~cokolwiek użytkownikowi pokazać i~tak jesteśmy zmuszeni~do~wykonania kodu odpowiedzialnego~za~stworzenie \gls{ui}, według doświadczeń zespołu czas potrzebny~na~\gls{rendering} \gls{hello-world} pozostawia niewiele czasu~do~przekroczenia średniego time span nowego użytkownika (TODO: source).
 
-Istnieją techniki pozwalające~na~optymalizację tych rozwiązań,~aby~wyeliminować przytoczone problemy.
+\indent Istnieją techniki pozwalające~na~optymalizację tych rozwiązań,~aby~wyeliminować przytoczone problemy.
 Jednak opierają się~one~o~jeszcze większą fragmentację aplikacji,~na~którą~nie~możemy sobie pozwolić z~uwagi~na~liniowo rosnący czas potrzebny~na~konfigurację infrastruktury potrzebnej~do~skomunikowana wszystkich modułów w~\glslink{hermetyzacja}{hermetyczny} sposób.
 Infrastrukturę chmury internetowej w~każdym~ze~znanych~nam~dostawców~to~jest: \acrshort{aws}, \acrshort{gcp}, \acrshort{azure} możemy wyklikać w~przeglądarce internetowej.
 Jednak usługi~te~znacząco się~od~siebie różnią.
@@ -184,34 +181,29 @@ Pomimo iż dostawcy oferują podobne rozwiązania,~to~różnią się~one~w~sposo
 Terraform daje możliwość skorzystania z~dodatkowej warstwy abstrakcji pozwalającej~na~opisanie architektury~dla~\acrshort{aws},~jak~i~zarówno \acrshort{gcp}, jednakże~nie~jest~to~pełne wsparcie i~niektóre usługi~po~prostu~nie~pokrywają się pomiędzy dostawcami.
 Ponadto Terraform~nie~wspiera takiej funkcjonalności~dla~Azure.
 
-\subsubsection{Oprogramowanie~on~premise}
-Oprogramowanie~on~premise możemy podzielić~na~bare metal i~virtual.
+\subsubsection{Oprogramowanie~on~premise} możemy podzielić~na~bare metal i~virtual.
 
-Bare metal~to~takie, gdzie mamy fizyczny dostęp~do~maszyny i~płacimy~za~konkretne podzespoły, mamy pełną kontrolę~nad~maszyną.
+\indent Bare metal~to~takie, gdzie mamy fizyczny dostęp~do~maszyny i~płacimy~za~konkretne podzespoły, mamy pełną kontrolę~nad~maszyną.
 Virtual~to~oprogramowanie, w~którym~tak~jak w~przypadku bare-metal musimy sami zarządzać maszyną.
 Różni się jednak tym, że płacimy~za~parametry podzespołów,~nie~za konkretne podzespoły.~Nie~mamy też fizycznego dostępu~do~maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż fizyczna maszyna jest w~stanie zapewnić, przez~to~właściciele takich maszyn stosują \glslink{virt}{wirtualizację}.
 
-Bare metal~ma~taką zaletę, że jesteśmy pewni, że nikt poza nami~na~takiej maszynie~nie~będzie pracował.
+\indent Bare metal~ma~taką zaletę, że jesteśmy pewni, że nikt poza nami~na~takiej maszynie~nie~będzie pracował.
 Minusem jest mała elastyczność podzespołów (musimy wiedzieć,~co~będzie działać, z~czym) oraz wysoki koszt początkowy.
 W~przypadku wirtualizacji~na~początku rozwoju aplikacji możemy poprosić o~niewielkie parametry a~wraz z~rozwojem przeskalować parametry~do~naszych potrzeb.
-
 Pomimo faktu, iż w~przypadku \gls{on-prem} musimy sami zarządzać infrastrukturą,~to~jest~to~niezależne~od~dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację~do~innego dostawcy.
 Biorąć~pod~uwagę~ten~fakt oraz brak możliwości napisania oprogramowania w~sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się~na~on premise w~wariancie virtual.
 
 \subsubsection{Przegląd rynku}
-\paragraph{Microsoft Azure Cloud}
-Chmura obliczeniowa Microsoftu została~nam~udostępniona w~ramach zajęć z~konteneryzacji.
+\paragraph{Microsoft Azure Cloud} to chmura obliczeniowa Microsoftu została~nam~udostępniona w~ramach zajęć z~konteneryzacji.
 Microsoft udostępnia studentom jednorazowo 200\$~do~wykorzystania~na~okres roku.
 W~ramach okresu edukacyjnego mamy~do~dyspozycji najsłabsze i~najmniej stabilne maszyny dostępne w~ofercie.
 W~trakcie zajęć natknęliśmy się~na~wiele problemów~ze~stabilnością i~wydajnością~tej~chmury.
 Jednorazowy roczny okres próbny w~połączeniu z~ograniczeniem budżetowym całkowicie deklasuje tą chmurę z~powodu braku możliwości utrzymania rozwiązania w~rozumieniu długoterminowym
-
-\paragraph{Amazon~Web~Services}
-Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć~na~szkoleniu organizowanym przez Merapar.
+\paragraph{Amazon~Web~Services} Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć~na~szkoleniu organizowanym przez Merapar.
 W~trakcie zajęć chmura~nie~sprawiła najmniejszych problemów,~co~pokrywa się z~licznymi opiniami rynkowymi.
 Niestety pomimo wielu darmowych progów zużycia, Amazon~nie~oferuje darmowego progu w~przypadku usługi EC2 (\gls{on-prem} virtual).
 
-\paragraph{Google Cloud Platform}~GCP~zostało~nam~zaprezentowane w~ramach projektu PJATK cloudelina.
+\paragraph{Google Cloud Platform}~zostało~nam~zaprezentowane w~ramach projektu PJATK cloudelina.
 Usługi w~ramach~GCP~wydają się znacznie prostsze w~konfiguracji oraz bardzo dobrze integrują się z~Angular-em.
 Niestety podobnie~jak~w~przypadku Amazon-u,~GCP~nie oferuje darmowego progu~dla~maszyn wirtualnych.
 
