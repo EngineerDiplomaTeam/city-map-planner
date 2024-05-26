@@ -101,7 +101,7 @@ Z~uwagi~na~doświadczenie zespołu postawiliśmy~na~C\#.
 Wybrany przez~nas~stos technologiczny składa się z~.NET C\#, Angular oraz PostgreSql.
 Wszystkie~te~technologie, pomimo iż są utrzymywane przez ogromne korporacje, są otwarto-źródłowe,~co~w~praktyce pozwala~na~tworzenie narzędzi deweloperskich przez niezależnych twórców, dzięki czemu~nie~bylibyśmy uwiązani~do~konkretnego rozwiązania.
 Wybór oprogramowania~do~tworzenia kodu został podyktowany wybraną technologią a~w~drugiej kolejności z~uwagi~na~zróżnicowany sprzęt komputerowy, którym dysponujemy  dostępnością oprogramowania~na~wielu platformach (tj.: Windows, MacOS, Linux).
-\indent .NET ~to~framework stworzony i~rozwijany przez Microsoft wspólnie~ze~społecznością otwartego oprogramowania.
+\newline \indent .NET ~to~framework stworzony i~rozwijany przez Microsoft wspólnie~ze~społecznością otwartego oprogramowania.
 Pierwszym oprogramowaniem, które przychodzi~nam~do głowy,~gdy~słyszymy .NET, jest Microsoft Visual Studio.
 Oprogramowanie~to~powstało w~1997 roku i~przez wiele~lat~było konsekwentnie ulepszane.
 W~2016 roku~VS~zostało wydane~na~komputery Mac, jednakże,~po~7 latach, w~2023 roku Microsoft ogłosił zakończenie wsparcia~dla~wersji MacOS.
@@ -120,7 +120,7 @@ Nasze testy doprowadziły~nas~do decyzji,~aby~postawić~na~Ridera~od~JetBrains-�
 \indent Angular z~natury bycia technologią tworzenia stron internetowych~nie~posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
 Zespół tworzący~ten~framework stworzył własny program wspomagania deweloperów~na~podstawie protokółu \acrshort{lsp},~co~sprowadza się~do~tego, że każde środowisko programistyczne wspierające~ten~protokół zapewni~ten~sam poziom wsparcia~dla~Angular'a.
 
-\indent Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara. \newline
+\indent Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara.
 
 JetBrains też~ma~w~swojej ofercie program~do~tworzenia w~technologiach internetowych o~nazwie WebStorm, który posiada automatyczną konfigurację~dla~Angular-a,~jak~i~wielu innych technologii, więc~nie~potrzebuje bezpośredniego wsparcia~od~autorów technologi.
 
@@ -178,7 +178,7 @@ Pomimo iż dostawcy oferują podobne rozwiązania,~to~różnią się~one~w~sposo
 Terraform daje możliwość skorzystania z~dodatkowej warstwy abstrakcji pozwalającej~na~opisanie architektury~dla~\acrshort{aws},~jak~i~zarówno \acrshort{gcp}, jednakże~nie~jest~to~pełne wsparcie i~niektóre usługi~po~prostu~nie~pokrywają się pomiędzy dostawcami.
 Ponadto Terraform~nie~wspiera takiej funkcjonalności~dla~Azure.
 
-\subsubsection{Oprogramowanie~on~premise} możemy podzielić~na~bare metal i~virtual.
+\paragraph*{Oprogramowanie~on~premise możemy podzielić~na~bare metal i~virtual.} 
 
 \indent Bare metal~to~takie, gdzie mamy fizyczny dostęp~do~maszyny i~płacimy~za~konkretne podzespoły, mamy pełną kontrolę~nad~maszyną.
 Virtual~to~oprogramowanie, w~którym~tak~jak w~przypadku bare-metal musimy sami zarządzać maszyną.
@@ -190,7 +190,7 @@ W~przypadku wirtualizacji~na~początku rozwoju aplikacji możemy poprosić o~nie
 Pomimo faktu, iż w~przypadku \gls{on-prem} musimy sami zarządzać infrastrukturą,~to~jest~to~niezależne~od~dostawcy sprzętu, dzięki czemu można łatwo przenieść całą aplikację~do~innego dostawcy.
 Biorąć~pod~uwagę~ten~fakt oraz brak możliwości napisania oprogramowania w~sposób pełni agnostyczny względem konkretnych usług chmury obliczeniowej, zespół projektowy zdecydował się~na~on premise w~wariancie virtual.
 
-\subsubsection{Przegląd rynku}
+\subsubsection{\textnormal{Przegląd rynku}}
 \indent Microsoft Azure Cloud to chmura obliczeniowa Microsoftu została~nam~udostępniona w~ramach zajęć z~konteneryzacji.
 Microsoft udostępnia studentom jednorazowo 200\$~do~wykorzystania~na~okres roku.
 W~ramach okresu edukacyjnego mamy~do~dyspozycji najsłabsze i~najmniej stabilne maszyny dostępne w~ofercie.
