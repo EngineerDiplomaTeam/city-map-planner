@@ -32,8 +32,7 @@ Wady:
     \item Relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}.
 \end{itemize}
 
-\paragraph{Electron}
-Electron~to~otwartoźródłowa platforma umożliwiająca tworzenie aplikacji w~formie stron internetowych oraz osadzanie~ich~w~minimalistycznej wersji przeglądarki, która jest dostarczana razem z~aplikacją~\cite{electron-in-action}.
+\paragraph{Electron}~to~otwartoźródłowa platforma umożliwiająca tworzenie aplikacji w~formie stron internetowych oraz osadzanie~ich~w~minimalistycznej wersji przeglądarki, która jest dostarczana razem z~aplikacją~\cite{electron-in-action}.
 
 Zalety:
 \begin{itemize}
@@ -47,8 +46,7 @@ Wady:
     \item Potencjalne problemy z~wydajnością.
 \end{itemize}
 
-\paragraph{Progresywna Aplikacja Internetowa}
-Progresywne aplikacje internetowe (Progressive~Web~Apps)~to~aplikacje uruchamiane~jak~zwykłe strony internetowe,~ale~zapewniające doświadczenie podobne~do~natywnych aplikacji mobilnych~lub~desktopowych.\cite{pwa-book}
+\paragraph{Progresywna Aplikacja Internetowa} (Progressive~Web~Apps)~to~aplikacje uruchamiane~jak~zwykłe strony internetowe,~ale~zapewniające doświadczenie podobne~do~natywnych aplikacji mobilnych~lub~desktopowych.\cite{pwa-book}
 
 Zalety:
 \begin{itemize}
@@ -62,28 +60,28 @@ Wady:
 \end{itemize}
 
 \paragraph{Wybór technologii}
-Każde z~analizowanych rozwiązań~ma~swoje unikalne zalety i~wady.
+\indent Każde z~analizowanych rozwiązań~ma~swoje unikalne zalety i~wady.
 Zespół projektowy kierował się następującymi priorytetami podczas wyboru technologii:
 
 \begin{enumerate}
     \item Znajomość technologii w~zespole.
     \item Wydajność rozwiązania.
 \end{enumerate}
-~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
+\indent ~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
 Dzięki temu rozwiązaniu możliwe jest stworzenie aplikacji internetowej, która działa~jak~natywna aplikacja mobilna~czy~desktopowa, a~jednocześnie~nie~wymaga dołączenia przeglądarki~do~paczki instalacyjnej,~jak~w~przypadku Electron.
 ~Aby~wykorzystać komercyjne doświadczenie zespołu, zdecydowaliśmy się zaimplementować aplikację w~frameworku Angular, zamiast korzystać z~React-a~poznanego~na~uczelni.
 Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z~\acrshort{pwa}.
 
-Wybór technologii Progressive~Web~Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej~na~większości urządzeń codziennego użytku.
+\indent Wybór technologii Progressive~Web~Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej~na~większości urządzeń codziennego użytku.
 Decyzja~ta~pozwoliła~na~efektywne wykorzystanie umiejętności zespołu, a~także~na~dostarczenie rozwiązania zgodnego z~priorytetami projektu, jakimi są wydajność i~znajomość technologii.
 
 \subsubsection{Oprogramowanie niewidoczne~dla~użytkownika}
-Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania~na~podstawie danych czasu rzeczywistego.
+\indent Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania~na~podstawie danych czasu rzeczywistego.
 Ciągłe aktualizacje danych~po~stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie~po~stronie dostawców danych.
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać~za~aktualność danych oraz wyznaczanie trasy.
 Z~uwagi~na~\acrshort{pwa}, język, w~którym stworzymy~ten~serwis, musi mieć bardzo dobre wsparcie~dla~protokołu HTTP\@.~Na~uczelni poznaliśmy 2~technologie tworzenia takich serwisów.
 
-\paragraph{Java} ~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
+\indent \paragraph{Java} ~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
 W~trakcie zajęć~na~uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http} w~technologii Spring.
 Części naszego zespołu~nie~podobają się konwencje narzucone przez tę technologię,~jak~i~sposób komunikacji z~bazą danych.
 Należy zaznaczyć, że nikt z~naszego zespołu~nie~posada komercyjnego doświadczenia z~tą technologią.
