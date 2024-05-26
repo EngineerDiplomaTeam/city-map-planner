@@ -11,7 +11,7 @@
 \label{subsec:jezyki-programowania-i-biblioteki}
 
 \subsubsection{Oprogramowanie~po~stronie użytkownika}
-Jednym z~kluczowych celów projektu jest stworzenie progresywnej aplikacji internetowej (PWA) dostępnej~na~większości urządzeń codziennego użytku, takich~jak~komputery osobiste i~smartfony.
+\indent Jednym z~kluczowych celów projektu jest stworzenie progresywnej aplikacji internetowej (PWA) dostępnej~na~większości urządzeń codziennego użytku, takich~jak~komputery osobiste i~smartfony.
 Według statystyk prowadzonych przez StatCounter większość konsumenckiego ruchu internetowego jest generowana przez systemy operacyjne Android, Windows i~iOS~\cite{statcounter-os-shares}\@.~To~zróżnicowanie platform stawia przed zespołem projektowym wyzwanie polegające~na~opracowaniu aplikacji, która będzie działała efektywnie~na~każdym z~tych systemów.
 Nasz zespół składający się z~czterech pracujących~na~etacie studentów~nie~byłby w~stanie stworzyć a~co dopiero utrzymywać rozwiązania~na~3~różnych platformach~na~raz.
 Istnieją rozwiązania niwelujące~ten~problem w~znacznym stopniu, zespół projektowy przeanalizował część z~nich~pod~kątem naszego doświadczenia.
@@ -22,13 +22,13 @@ Aplikacja stworzona przy użyciu~tej~technologii umożliwia napisanie kodu źró
 
 Zalety:
 \begin{itemize}
-    \item jednolity~kod~źródłowy~dla~wielu platform.
+    \item jednolity~kod~źródłowy~dla~wielu platform,
     \item obsługa natywnych funkcji systemów mobilnych i~desktopowych.
 \end{itemize}
 
 Wady:
 \begin{itemize}
-    \item język programowania Dart, który jest stosunkowo niszowy i~nieznany zespołowi.
+    \item język programowania Dart, który jest stosunkowo niszowy i~nieznany zespołowi,
     \item relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}.
 \end{itemize}
 
@@ -36,13 +36,13 @@ Wady:
 
 Zalety:
 \begin{itemize}
-    \item możliwość wykorzystania React-a, poznanego przez zespół podczas zajęć akademickich.
+    \item możliwość wykorzystania React-a, poznanego przez zespół podczas zajęć akademickich,
     \item wsparcie~dla~szerokiej gamy platform docelowych.
 \end{itemize}
 
 Wady:
 \begin{itemize}
-    \item duży rozmiar końcowej aplikacji z~powodu konieczności dołączenia przeglądarki internetowej.
+    \item duży rozmiar końcowej aplikacji z~powodu konieczności dołączenia przeglądarki internetowej,
     \item potencjalne problemy z~wydajnością.
 \end{itemize}
 
@@ -50,7 +50,7 @@ Wady:
 
 Zalety:
 \begin{itemize}
-    \item bardzo mały rozmiar końcowej aplikacji.
+    \item bardzo mały rozmiar końcowej aplikacji,
     \item relatywnie dobra wydajność dzięki optymalizacji przeglądarek~pod~kątem wielu platform docelowych.
 \end{itemize}
 
@@ -64,7 +64,7 @@ Wady:
 Zespół projektowy kierował się następującymi priorytetami podczas wyboru technologii:
 
 \begin{enumerate}
-    \item znajomość technologii w~zespole.
+    \item znajomość technologii w~zespole,
     \item wydajność rozwiązania.
 \end{enumerate}
 \indent ~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
@@ -132,7 +132,6 @@ W~przypadku PostgreSql narzędzie~to~nazywa się pgAdmin, umożliwia kompleksow�
 
 Należy jednak wspomnieć~tu~o~integracji Ridera z~bazą danych~we~współpracy z~programem DataGrip.~Gdy~mamy licencję~na~DataGrip-a,~to~wewnątrz Rider-a~możemy podłączyć się~do~bazy danych i~otrzymywać dodatkowe wsparcie w~kontekście bazy danych.
 Wsparcie~nie~ogranicza się tylko~do~dodatkowego kolorowania składni w~zależności~od~dialektu wybranej bazy danych, a~deweloper jest wspierany przez podpowiadanie nazw kolumn, tabeli oraz poprawność zapytań~do~bazy jest  weryfikowana w~czasie rzeczywistym, a~w~przypadku wątpliwości Rider pozwala~na~szczegółową analizę kwerendy w~DataGrip'e.
-
 Mając~na~uwadze powyższe, zespół projektowy zaleca użycie DataGrip-a~jako narzędzia~do~projektowania rozwiązań dookoła bazy danych z~uwagi~na~kompleksową integrację z~Riderem.
 
 \subsubsection{Dalekosiężność wyborów}
