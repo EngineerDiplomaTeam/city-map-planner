@@ -16,8 +16,7 @@ Według statystyk prowadzonych przez StatCounter większość konsumenckiego ruc
 Nasz zespół składający się z~czterech pracujących~na~etacie studentów~nie~byłby w~stanie stworzyć a~co dopiero utrzymywać rozwiązania~na~3~różnych platformach~na~raz.
 Istnieją rozwiązania niwelujące~ten~problem w~znacznym stopniu, zespół projektowy przeanalizował część z~nich~pod~kątem naszego doświadczenia.
 
-\paragraph{Flutter}
-Flutter~to~otwartoźródłowy zestaw narzędzi~dla~programistów stworzony przez firmę Google~\cite{flutter-quick-start}.
+\paragraph{Flutter}~to~otwartoźródłowy zestaw narzędzi~dla~programistów stworzony przez firmę Google~\cite{flutter-quick-start}.
 Pozwala~na~tworzenie natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych.
 Aplikacja stworzona przy użyciu~tej~technologii umożliwia napisanie kodu źródłowego w~jednej wersji i~uruchomienie~go~na szerokiej gamie urządzeń docelowych.
 
@@ -53,13 +52,13 @@ Progresywne aplikacje internetowe (Progressive~Web~Apps)~to~aplikacje uruchamian
 
 Zalety:
 \begin{itemize}
-    \item Bardzo mały rozmiar końcowej aplikacji
-    \item Relatywnie dobra wydajność dzięki optymalizacji przeglądarek~pod~kątem wielu platform docelowych
+    \item Bardzo mały rozmiar końcowej aplikacji.
+    \item Relatywnie dobra wydajność dzięki optymalizacji przeglądarek~pod~kątem wielu platform docelowych.
 \end{itemize}
 
 Wady:
 \begin{itemize}
-    \item Zależność~od~przeglądarki użytkownika, która może~nie~obsługiwać wszystkich funkcjonalności
+    \item Zależność~od~przeglądarki użytkownika, która może~nie~obsługiwać wszystkich funkcjonalności.
 \end{itemize}
 
 \paragraph{Wybór technologii}
@@ -67,8 +66,8 @@ Każde z~analizowanych rozwiązań~ma~swoje unikalne zalety i~wady.
 Zespół projektowy kierował się następującymi priorytetami podczas wyboru technologii:
 
 \begin{enumerate}
-    \item Znajomość technologii w~zespole
-    \item Wydajność rozwiązania
+    \item Znajomość technologii w~zespole.
+    \item Wydajność rozwiązania.
 \end{enumerate}
 ~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
 Dzięki temu rozwiązaniu możliwe jest stworzenie aplikacji internetowej, która działa~jak~natywna aplikacja mobilna~czy~desktopowa, a~jednocześnie~nie~wymaga dołączenia przeglądarki~do~paczki instalacyjnej,~jak~w~przypadku Electron.
@@ -84,14 +83,12 @@ Ciągłe aktualizacje danych~po~stronie użytkowników spowodowałoby wysokie zu
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać~za~aktualność danych oraz wyznaczanie trasy.
 Z~uwagi~na~\acrshort{pwa}, język, w~którym stworzymy~ten~serwis, musi mieć bardzo dobre wsparcie~dla~protokołu HTTP\@.~Na~uczelni poznaliśmy 2~technologie tworzenia takich serwisów.
 
-\paragraph{Java}
-Java~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
+\paragraph{Java} ~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
 W~trakcie zajęć~na~uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http} w~technologii Spring.
 Części naszego zespołu~nie~podobają się konwencje narzucone przez tę technologię,~jak~i~sposób komunikacji z~bazą danych.
 Należy zaznaczyć, że nikt z~naszego zespołu~nie~posada komercyjnego doświadczenia z~tą technologią.
 
-\paragraph{.NET}
-C\#~to~jeden z~języków z~rodziny .NET, który mielimy szanse poznać~na~uczelni.
+\paragraph{.NET} ~to~jeden z~języków z~rodziny .NET, który mielimy szanse poznać~na~uczelni.
 Łączy~on~w~sobie paradygmaty obiektowe i~funkcyjne, dzięki czemu jest bardziej elastyczny, jeśli chodzi o~styl programowania.
 Trzy z~czterech osób w~naszym zespole~ma~doświadczenie komercyjne w~tej technologi.
 
@@ -107,8 +104,7 @@ Wybrany przez~nas~stos technologiczny składa się z~.NET C\#, Angular oraz Post
 Wszystkie~te~technologie, pomimo iż są utrzymywane przez ogromne korporacje, są otwarto-źródłowe,~co~w~praktyce pozwala~na~tworzenie narzędzi deweloperskich przez niezależnych twórców, dzięki czemu~nie~bylibyśmy uwiązani~do~konkretnego rozwiązania.
 Wybór oprogramowania~do~tworzenia kodu został podyktowany wybraną technologią a~w~drugiej kolejności z~uwagi~na~zróżnicowany sprzęt komputerowy, którym dysponujemy  dostępnością oprogramowania~na~wielu platformach (tj.: Windows, MacOS, Linux).
 
-\subsubsection{.NET/C\#}
-.NET~to~framework stworzony i~rozwijany przez Microsoft wspólnie~ze~społecznością otwartego oprogramowania.
+\subsubsection{.NET} ~to~framework stworzony i~rozwijany przez Microsoft wspólnie~ze~społecznością otwartego oprogramowania.
 Pierwszym oprogramowaniem, które przychodzi~nam~do głowy,~gdy~słyszymy .NET, jest Microsoft Visual Studio.
 Oprogramowanie~to~powstało w~1997 roku i~przez wiele~lat~było konsekwentnie ulepszane.
 W~2016 roku~VS~zostało wydane~na~komputery Mac, jednakże,~po~7 latach, w~2023 roku Microsoft ogłosił zakończenie wsparcia~dla~wersji MacOS.
@@ -126,8 +122,7 @@ Programy firmy JetBrains są znane~ze~świetnej integracji wieloplatformowej ora
 Dzięki PJATK nasz zespół mógł przetestować, każdy z~tych programów w~ramach licencji edukacyjnej.
 Nasze testy doprowadziły~nas~do decyzji,~aby~postawić~na~Ridera~od~JetBrains-ów, z~zachowaniem możliwości uruchomienia projektu w~Visual Studio,~aby~koledzy z~dużym doświadczeniem komercyjnym opartym o~VS~nie~musieli zmieniać swoich przyzwyczajeń.
 
-\subsubsection{Angular}
-Angular z~natury bycia technologią tworzenia stron internetowych~nie~posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
+\subsubsection{Angular} z~natury bycia technologią tworzenia stron internetowych~nie~posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
 Zespół tworzący~ten~framework stworzył własny program wspomagania deweloperów~na~podstawie protokółu \acrshort{lsp},~co~sprowadza się~do~tego, że każde środowisko programistyczne wspierające~ten~protokół zapewni~ten~sam poziom wsparcia~dla~Angular'a.
 
 Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara.
