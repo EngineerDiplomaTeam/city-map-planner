@@ -1,5 +1,5 @@
-%! Author = Mateusz Budzisz
-%! Date = 26/05/2024
+%! Author = Wiktor Rostkowski
+%! Date = 28/05/2024
 
 \chapter{Analiza wymagań}
 \label{ch:analiza-wymagan}
@@ -124,17 +124,168 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 
 
 
-
-
-
-
-
-
-
 \subsection{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
 
-TODO
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO1}
+    \priority{M}
+    \name{Przeglądanie Widoku mapy z pinezkami }
+    \descr{Jako turysta chciałbym zobaczyć Mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
+    }
+    \acceptcrit{Użytkownik może zobaczyć aktualne dostępne atrakcje dostępne w danym mieście }
+    \inputdata{Użytkownik logując się widzi przedstawioną Mapę}
+    \preconditions{ Po otwarciu aplikacji PWA przestawi się zachęcają Mapa  }
+    \postconditions{ Wyświetlenie zaznaczonych atrakcji. }
+    \exceptions{ Wyświetlanie komunikatu w przypadku niedostępności atrakcji w aktualnej chwili oraz przedstawienia propozycji zmiany punktu docelowego. }
+    \implementation{ Użytkownik wykorzystując przeglądarkę bądź aplikacje widzi Dostępne Atrakcje ogólnie dostępnych w danym mieście. }
+    \sholder{UOB01, UOB02 }
+    \reqrelated{}
+\end{requirementstab}
+
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO2}
+    \priority{C}
+    \name{Synchronizacja danych i wyświetlanie powiadomień o zmianach. }
+    \descr{\begin{itemize}
+        \item Jako Turysta 
+        \item chcę dostawać powiadomienia o zmianach w planie,
+        \item bo wtedy nie spóźnię się na czas otwarcia atrakcji. 
+    \end{itemize}
+    }
+    \acceptcrit{Powiadomienie będzie zgodnie z aktualnym planem  }
+    \inputdata{Aplikacja pamięta jakie użytkownik wybrał atrakcje do odwiedzenia i informuje o zmianach po synchronizacji. }
+    \preconditions{ Użytkownik był wcześniej odwiedził stronę i posiada zapisane atrakcje.  }
+    \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu w powiadomienie.   }
+    \exceptions{ Użytkownik nie zezwolił powiadomienia bądź nowe dane nie istnieją. }
+    \implementation{ Na planie zajęć wyświetlają się nowe zmiany w innym kolorze  }
+    \sholder{UOB01, UOB02 }
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO3}
+    \priority{M}
+    \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce korzystać z aplikacji z listą dostępnych atrakcji 
+        \item Ponieważ chce zobaczyć dostępne spektrum możlwości. 
+    \end{itemize}
+    }
+    \acceptcrit{Lista dostępnych punktów. }
+    \inputdata{Brak}
+    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
+    \postconditions{ Użytkownik może przeczytać lub klinknąć na interesujące go atrakcje.   }
+    \exceptions{ Brak grupy, której szuka użytkownik. Użytkownik musi użyć regularnego planu zajęć.   }
+    \implementation{ Aplikacja pobiera w tle plik bazy danych ważący 1MB.  }
+    \sholder{UOB01, UOB02, UOB03 }
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO4}
+    \priority{M}
+    \name{Panel zarządzania atrakcjami w aplikacji. }
+    \descr{\begin{itemize}
+        \item Jako Administrator 
+        \item mieć panel administracyjny do wymuszania odświeżenia godzin otwarcia, edycja opisu itd 
+        \item Ponieważ  potrzebuje mieć wygodny interfejs do edycji atrakcji dostępnych na mapie. 
+    \end{itemize}
+    }
+    \acceptcrit{Lista dostępnych punktów. }
+    \inputdata{Konto z uprawnieniami Administracyjnymi}
+    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
+    \postconditions{ Można edytować/usuwać/ dodawać recznie atrakcje.   }
+    \exceptions{ Jest możliwość dodawania kolejnych atrakcji .   }
+    \implementation{ Panel administracyjny do zarządzania opiniami użytkowników (umożliwia cenzurę.).   }
+    \sholder{ UOB02 }
+    \reqrelated{W03}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO5}
+    \priority{M}
+    \name{Znaczniki na interaktywnej mapie informujące o punktach zainteresowania.}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce móc wyświetlić wybrane atrakcje, które mnie interesują
+        \item Ponieważ umożliwi to spojrzenie na opis POI. 
+    \end{itemize}
+    }
+    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez Administratora/. }
+    \inputdata{Użytkownik wyświetla zakładkę z mapą atrakcji. }
+    \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez twórców aplikacji.}
+    \postconditions{ Wyświetlenie wszystkie atrakcje turystyczne plus atrakcje dodane przez użytkowników  }
+    \exceptions{ Aplikacja wyświetla błąd w przerwie transmisji aplikacji.    }
+    \implementation{ Tu musi być wybór pois i podanie czasu na zwiedzanie.    }
+    \sholder{ UOB01, UOB02, UOB03  }
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO6}
+    \priority{C}
+    \name{Możliwość oceniania atrakcji turystycznych .}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość oceniania atrakcjami gwiazdkami 1-5
+        \item Ponieważ umożliwi to dodawania indywidualnych ocenaniai i ich edytowania. 
+    \end{itemize}
+    }
+    \acceptcrit{Każda atrakcja posiada możliwośc dodawania opinii. }
+    \inputdata{Nazwa użytkownika, mail. }
+    \preconditions{ Można dodawać opinie liczbową.}
+    \postconditions{ Wyświetla tylko średnią z opinii, brak możliwości komentowania.  }
+    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
+    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją opinia oraz powyżej średnia z opini, każdy użytkownik może dodać jedną opinie w gwiazdkach od 1 do 5.    }
+    \sholder{ UOB01  }
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO7}
+    \priority{C}
+    \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość pisania pisemnych opinii z możliwością dodania zdjecia
+        \item Ponieważ umożliwi to dodawania indywidualnych opinii atrakcji i ich edytowania. 
+    \end{itemize}
+    }
+    \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
+    \inputdata{Nazwa użytkownika, mail. }
+    \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
+    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją  }
+    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
+    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
+    Opinia musi zostać zatweirdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
+    \sholder{ UOB01  }
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO8}
+    \priority{S}
+    \name{Zapisywanie list wybranych pois pod konkretną nazwą.}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość zapisania wybranej trasy.
+        \item Ponieważ umożliwi to korzystania z przygotowaniej trasy na później. 
+    \end{itemize}
+    }
+    \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
+    \inputdata{Nazwa użytkownika, mail. }
+    \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
+    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją  }
+    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
+    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
+    Opinia musi zostać zatweirdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
+    \sholder{ UOB01  }
+    \reqrelated{}
+\end{requirementstab}
 
 \subsection{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
