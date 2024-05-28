@@ -9,42 +9,147 @@
 
 Wymagania dla projektu zostały zebrane w pierwszym semestrze. Zostały określone na podstawie analizy funkcjonowania
 
-\section{Aktorzy}
+Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkcjonalności projektu. Wykorzystana została metodyka priorytetyzacji wymagań MoSCoW\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
+\begin{itemize}
+    \item \textbf{M – must (musi być)} – wymaganie bezkompromisowo musi zostać zrealizowane, bez niego projekt nie zostanie ukończony;
+    \item \textbf{S – should (powinno być)} – wymaganie powinno być zrealizowane, jeżeli tylko jest taka możliwość;
+    \item \textbf{C – could (może być)} – wymaganie powinno być zawarte w projekcie, jeśli wystarczy na nie czasu;
+    \item \textbf{W – won't (nie będzie)} – wymaganie nie powinno być zawarte w tym wydaniu projektu, ale może być zrealizowane w przyszłości.
+\end{itemize}
+
+
+\subsection{Aktorzy}
 \label{sec:aktorzy}
 
-TODO
+\begin{stakeholder}[label={tab:stakeholder:someholder},caption={opis udzialowca}]
+    \id{UOB 01}
+    \name{Podstawowy użytkownik aplikacji (np. Turysta) }
+    \descr{Osoba korzystająca z aplikacji w celu poznawania PoI i optymalnego przemieszczania się między nimi }
+    \type{Ożywiony bezpośredni}
+    \viewpoint{Użytkownik - operator}
+    \limitations{Widzi tylko widok końcowy}
+    \requ{-----------------}
+\end{stakeholder}
 
-\section{Wymagania ogólne i dziedzinowe}
+\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
+    \id{UOB 02}
+    \name{Zespół Projektowy}
+    \descr{Osoba korzystająca z aplikacji w celu poznawania PoI i optymalnego przemieszczania się między nimi}
+    \type{Ożywiony bezpośredni}
+    \viewpoint{Techniczny}
+    \limitations{Brak}
+    \requ{-----------------}
+\end{stakeholder}
+
+\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
+    \id{UOB 03}
+    \name{Firmy o charakterze najmu krótko-terminowym }
+    \descr{Firmy o charakterze najmu krótko-terminowego mają bezpośredni kontakt z turystami}
+    \type{Ożywiony niebezpośredni }
+    \viewpoint{Współpraca z Turystami}
+    \limitations{Brak}
+    \requ{-----------------}
+\end{stakeholder}
+
+\subsection{Wymagania ogólne i dziedzinowe}
 \label{sec:wymagania-ogolne-i-dziedzinowe}
 
-\begin{requirementstab}[label={tab:requirements:general},caption={Przykładowe wymaganie ogólne lub dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO1}
     \priority{M}
-    \name{krótki opis}
-    \descr{opis szczegółowy, należy dążyć do tego, żeby wszystkie znane na ten moment szczegóły wymagania zostały wydobyte i wyspecyfikowane}
-    \sholder{nazwa udziałowca, który podał wymaganie}
-    \reqrelated{wymagania zależne i uszczegóławiające – odesłanie poprzez identyfikator}
+    \name{Obsługa użytkowników}
+    \descr{System powinien działać bez większych przestojów i przerw w funkcjonowaniu, nawet przy dużej liczbie użytkowników. }
+    \sholder{UOB2}
+    \reqrelated{}
 \end{requirementstab}
 
-\section{Wymagania funkcjonalne}
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO2}
+    \priority{C}
+    \name{Działanie w czasie rzeczywistym Offline lub Online }
+    \descr{Aplikacja musi działać i synchronizować dane do jak najmniejszej możliwej jednostki czasowej. 
+    Wersja offline wykorzystuje ostatnie zapisane informacje }
+    \sholder{UOB2}
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO3}
+    \priority{M}
+    \name{Zarządzanie danymi z aplikacji}
+    \descr{Możliwość sprawdzanie aktualnych danych poprzez panel aplikacji internetowej (Panel Administracyjny) }
+    \sholder{UOB2}
+    \reqrelated{}
+\end{requirementstab}
+
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO4}
+    \priority{M}
+    \name{Licencje i prawa}
+    \descr{Wszystkie technologie, narzędzia, wzorce itp. potrzebne do wykonania systemu muszą być licencjonowane oraz od głównych dostawców nie pośredników. }
+    \sholder{UOB2}
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO5}
+    \priority{M}
+    \name{Wyglad interface responsywny do standardowych urządzeń }
+    \descr{System powinien działać na wielu platformach. 
+    System powinien wyglądać estetycznie, poukładanie i działać płynnie, bez większych opóźnień w reakcji na zdarzenie.  }
+    \sholder{UOB2}
+    \reqrelated{}
+\end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO6}
+    \priority{M}
+    \name{Rejestracja użytkowników  }
+    \descr{Rejestracja powinna przebiegać sprawnie i wraz z wszystkimi standardami i prawami.  }
+    \sholder{UOB2, UOB1}
+    \reqrelated{}
+\end{requirementstab}
+
+
+\begin{requirementstab}[label={tab:requirements:general},caption={Wymaganie ogólne i dziedzinowe}]
+    \id{WO7}
+    \priority{M}
+    \name{Komercjalizacji (reklamy) }
+    \descr{W przyszłości system może wykorzystać system płatności abonamentowej w celu całkowitego usunięcia z niego reklam.   }
+    \sholder{UOB01, UOB02, UOB03}
+    \reqrelated{}
+\end{requirementstab}
+
+
+
+
+
+
+
+
+
+
+\subsection{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
 
 TODO
 
-\section{Interfejs z otoczeniem}
+\subsection{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
 
 TODO
 
-\section{Wymagania niefunkcjonalne}
+\subsection{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
 
 TODO
 
-\section{Wymagania dotyczące procesu wytwarzania}
+\subsection{Wymagania dotyczące procesu wytwarzania}
 \label{sec:wymagania-dotyczace-procesu-wytwarzania}
 
 TODO
 
-\section{Wymagania jakościowe i inne}
+\subsection{Wymagania jakościowe i inne}
 \label{sec:wymagania-jakosciowe-i-inne}
