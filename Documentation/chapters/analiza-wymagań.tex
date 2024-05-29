@@ -53,7 +53,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 
 \section{Wymagania ogólne i dziedzinowe}
 \label{sec:wymagania-ogolne-i-dziedzinowe}
-Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymagania ogólne lub dziedzinowe.
+
 
 \begin{requirementstab}[label={tab:requirements:general1},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO1}
@@ -63,8 +63,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-
-
 \begin{requirementstab}[label={tab:requirements:general2},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO2}
     \priority{C}
@@ -74,7 +72,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:general3},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO3}
     \priority{M}
@@ -83,8 +80,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-
-
 \begin{requirementstab}[label={tab:requirements:general4},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO4}
     \priority{M}
@@ -93,7 +88,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:general5},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO5}
     \priority{M}
@@ -103,7 +97,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:general6},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO6}
     \priority{M}
@@ -112,8 +105,6 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \sholder{UOB2, UOB1}
     \reqrelated{}
 \end{requirementstab}
-
-
 \begin{requirementstab}[label={tab:requirements:general7},caption={Wymaganie ogólne i dziedzinowe}]
     \id{WO7}
     \priority{M}
@@ -123,13 +114,8 @@ Na tabeli~\ref{tab:requirements:general1} pokazano jak można definiować wymaga
     \reqrelated{}
 \end{requirementstab}
 
-
-
 \section{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
-Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
-
-
 \begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO1}
     \priority{M}
@@ -145,8 +131,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-
-
 \begin{requirementstab}[label={tab:requirements:func2},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO2}
     \priority{C}
@@ -166,7 +150,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func3},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO3}
     \priority{M}
@@ -186,7 +169,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func4},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO4}
     \priority{M}
@@ -206,7 +188,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{ UOB02 }
     \reqrelated{W03}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func5},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO5}
     \priority{M}
@@ -226,7 +207,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{ UOB01, UOB02, UOB03  }
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func6},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO6}
     \priority{C}
@@ -246,7 +226,6 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \sholder{ UOB01  }
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func7},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO7}
     \priority{C}
@@ -260,34 +239,126 @@ Teraz czas na wymagania funkcjonalne, na przykład~\ref{tab:requirements:func1}
     \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
     \inputdata{Nazwa użytkownika, mail. }
     \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
-    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją  }
+    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją. }
     \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
     \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
-    Opinia musi zostać zatweirdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
+    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
     \sholder{ UOB01  }
     \reqrelated{}
 \end{requirementstab}
-
 \begin{requirementstab}[label={tab:requirements:func8},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{FO8}
     \priority{S}
     \name{Zapisywanie list wybranych pois pod konkretną nazwą.}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
-        \item Chce mieć możliwość zapisania wybranej trasy.
-        \item Ponieważ umożliwi to korzystania z przygotowaniej trasy na później. 
+        \item Chce możliwość zapisania wybranej trasy
+        \item Ponieważ umożliwi to przygotowanie trasy na później. 
     \end{itemize}
     }
-    \acceptcrit{ }
-    \inputdata{Nazwa użytkownika, mail. }
-    \preconditions{ }
-    \postconditions{   }
-    \exceptions{     }
-    \implementation{ 
+    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona pokazuje się dymek dodaj do swoich tras}
+    \inputdata{Wybrane atrakcje turystyczne z mapy bądź listy atrakcji,  }
+    \preconditions{ Wpis do zakładki ostatnich wybranych tras. }
+    \postconditions{ Odpowiednia zakładka z listą Zapisane Trasy.  }
+    \exceptions{  Jeśli użytkownik jest offline(lub nie zalogowany) wyskakuje błąd żeby dodać trase trzeba być zalogowanym online.   }
+    \implementation{ Możliwość otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania.
+    Możliwość otworzenia zapisanej trasy bez połączenia internetowego.
+    
         }
-    \sholder{ UOB01, UOB02, UOB03   }
+    \sholder{ UOB01, UOB02   }
     \reqrelated{}
 \end{requirementstab}
+
+\begin{requirementstab}[label={tab:requirements:func9},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{FO9}
+    \priority{C}
+    \name{Udostępnianie zapisanych list pois pomiędzy użytkownikami}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość udostępnienia wybranej trasy
+        \item Ponieważ umożliwi to polecania wybranych trasy. 
+    \end{itemize}
+    }
+    \acceptcrit{ W zakładce zapisanych listy widniej dymek z udostępnię danej trasy}
+    \inputdata{Na podstawie zapisanej trasy jest możliwość wysłania krótko trwałego kodu trasy.  }
+    \preconditions{ Link do zapisanej trasy }
+    \postconditions{ Przesłania linku bądź kodu dla drugiego użytkownika w celu dodania tej trasy u siebie  }
+    \exceptions{  Wszystkie trasy udostępnione są dostępne online dla wszystkich użytkowników Internetu.  }
+    \implementation{ Każda trasa ma indywidualny kod w bazie danych
+        }
+    \sholder{ UOB01, UOB02, UOB03   }
+    \reqrelated{F10}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func10},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F10}
+    \priority{M}
+    \name{Udostępnianie zapisanych list pois pomiędzy użytkownikami}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość przejścia wybranej trasy tylko na pieszo
+        \item Ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
+    \end{itemize}
+    }
+    \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pierwszego do punktu ostatniego .}
+    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
+    \postconditions{ Trasa przedstawia w sposób edytowalny dla użytkownika  }
+    \exceptions{ Wybrano punkt, który w dostępnym czasie jest nie dostępny wyświetlenia godzin otwarcia danego punktu z sugestią zmiany czasu  }
+    \implementation{ *************************************************
+        }
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func11},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F11}
+    \priority{S}
+    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
+        \item Ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
+    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
+    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej  }
+    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
+    \implementation{ *************************************************
+        }
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09,F10}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func11},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F11}
+    \priority{S}
+    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
+        \item Ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
+    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
+    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej  }
+    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
+    \implementation{ *************************************************
+        }
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09,F10}
+\end{requirementstab}
+
+
+
+
+
+
+
+
+
+
 
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
