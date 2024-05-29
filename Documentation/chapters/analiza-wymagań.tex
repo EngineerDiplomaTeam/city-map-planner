@@ -342,19 +342,147 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
     \inputdata{Wybrane atrakcje turystyczne - trasę.  }
     \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej  }
-    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
+    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej.  }
+    \exceptions{ Zaproponowanie innego transportu np. pieszo. }
     \implementation{ *************************************************
         }
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10}
 \end{requirementstab}
-
-
-
-
-
-
+\begin{requirementstab}[label={tab:requirements:func12},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F12}
+    \priority{S}
+    \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość przejścia wybranej trasy samochodem
+        \item Ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwość wyboru trasy z transportem własnym samochodem.}
+    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
+    \postconditions{ Algorytm zaprezentował  trasę z wykorzystaniem samochodu  }
+    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
+    \implementation{ *************************************************
+        }
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09,F10,F11}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func13},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F13}
+    \priority{M}
+    \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość przejrzenia całej trasy 
+        \item Ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
+    \end{itemize}
+    }
+    \acceptcrit{ Wyświetla lista z czasem początkowym i końcowym każdego punktu odwiedzanego.}
+    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \preconditions{ Lista podróżowania wyświetlona na osi czasu. }
+    \postconditions{ Prezentacja na aktywnej mapie całej trasy Funkcja podróży  }
+    \exceptions{  Brak wybranej trasy }
+    \implementation{ Z lewej strony widać proponowaną trase a z prawej strony ekranu widać oś czas z wybranymi atrakcjami.}
+    \sholder{ UOB01, UOB03   }
+    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func14},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F14}
+    \priority{M}
+    \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania pois co w efekcie dostosuje resztę optymalnej trasy}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
+        \item Ponieważ to edycje personalizacji zaproponowanej trasy. 
+    \end{itemize}
+    }
+    \acceptcrit{ Użytkownik może wybrać każdy element z proponowanej trasy i go zmienić}
+    \inputdata{Wybrane atrakcje turystyczne – trasa np. Zapisana trasa lub stworzenie nowej trasy.  }
+    \preconditions{ Z edytowana nowa trasa. }
+    \postconditions{ Prezentacja nowej trasy o nowe sugestie w podróży.  }
+    \exceptions{  Brak przeładowania trasy przez brak internetu. }
+    \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func15},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F15}
+    \priority{C}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych pois}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
+        \item Ponieważ umożliwi to dodani personalizacji zaproponowanej trasy. 
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
+    \inputdata{Wybrane atrakcje turystyczne - trasa. }
+    \preconditions{ Trasa zaktualizowana o niestandardowe punkty. }
+    \postconditions{ Prezentacja finalnej trasy.  }
+    \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
+    \implementation{ na początku osi harmonogramu istnieje możliwośc dodania punktu startu i adekwaniet punktu końcowego.}
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func16},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F16}
+    \priority{C}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych pois}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość dodania nowych własnych punktów
+        \item Ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu poi.}
+    \inputdata{Przez formularz możliwość dodać atrakcje turystyczne. }
+    \preconditions{ Administrator otrzymuje w panelu propozycje nowych miejsc. }
+    \postconditions{ Użytkownik zostaje poinformowany o dodaniu kolejnych punktów.  }
+    \exceptions{  Dane w formularzu nie spełniają wymagań do zatwierdzenia. }
+    \implementation{ Dodane przez użytkowników poi powinny dzielić się na publiczne i prywatne.}
+    \sholder{ UOB01, UOB02   }
+    \reqrelated{}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func17},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F17}
+    \priority{C}
+    \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mmożliwość aktualnego podążania z trasą 
+        \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
+    \end{itemize}
+    }
+    \acceptcrit{ Dodany Tryb podróży.}
+    \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
+    \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
+    \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
+    \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
+    \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
+    \sholder{ UOB01 }
+    \reqrelated{}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func18},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F18}
+    \priority{C}
+    \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce mmożliwość aktualnego podążania z trasą 
+        \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
+    \end{itemize}
+    }
+    \acceptcrit{ Dodany Tryb podróży.}
+    \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
+    \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
+    \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
+    \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
+    \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
+    \sholder{ UOB01 }
+    \reqrelated{}
+\end{requirementstab}
 
 
 
