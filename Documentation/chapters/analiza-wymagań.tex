@@ -447,22 +447,22 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func17},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{F17}
-    \priority{C}
-    \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
+    \priority{S}
+   \name{Aktualna trasa w trakcie bez ciągłego obliczania}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
-        \item Chce mmożliwość aktualnego podążania z trasą 
-        \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
+        \item Chce otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania   
+        \item Ponieważ umożliwi to interaktywne korzystanie. 
     \end{itemize}
     }
-    \acceptcrit{ Dodany Tryb podróży.}
-    \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
-    \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
-    \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
-    \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
-    \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
+    \acceptcrit{Każda zapisana trasa zapisuje się na urządzeniu wykorzystywanym do otwarcia/wyboru trasy w celu późniejszego jej odtworzenia.}
+    \inputdata{Wybrane atrakcje turystyczne – Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera) }
+    \preconditions{ Po wybraniu zapisanej trasy wchodzi ona do trybu osi czasu z możliwością trybu nawigacji. }
+    \postconditions{ Wyświetla się wybrana zapisana trasa z ostatnimi informacjami możliwość aktualizacji. }
+    \exceptions{  Jeśli jest tryb offiline trasa się nie aktualizuje. }
+    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych informacji na telefonie śledzi trase.}
     \sholder{ UOB01 }
-    \reqrelated{}
+    \reqrelated{F18}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func18},caption={Tabela z wymaganiami funkcjonalnymi}]
     \id{F18}
@@ -473,7 +473,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item Chce mmożliwość aktualnego podążania z trasą 
         \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
     \end{itemize}
-    }
+    } 
     \acceptcrit{ Dodany Tryb podróży.}
     \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
     \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
@@ -481,11 +481,75 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
     \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
     \sholder{ UOB01 }
+    \reqrelated{F17}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func19},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F19}
+    \priority{S}
+    \name{Trasa Offline}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość otworzenia zapisanej trasy bez połączenia internetowego  
+        \item Ponieważ umożliwi to interaktywne korzystanie z aplikacji cały czas. 
+    \end{itemize}
+    }
+    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
+    \inputdata{Wybrane atrakcje turystyczne – trasa. }
+    \preconditions{Aplikacja działa na zapisanych danych.   }
+    \postconditions{ Aplikacja działająca bez podłączenia do internetu. }
+    \exceptions{  Aplikacja została uruchomiona automatycznie po pobraniu bez Internetu (prosi o podłączenie do Internetu). }
+    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych lokalnych informacjami na urządzeniu.}
+    \sholder{ UOB01 }
+    \reqrelated{F16}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func20},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F20}
+    \priority{S}
+    \name{Algorytm Plannera}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce żeby planner korzystał z wszystkich możliwości 
+        \item Ponieważ umożliwi to interaktywne korzystanie cały czas bez dłużych nakładu czasowego. 
+    \end{itemize}
+    }
+    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
+    \inputdata{Wybrane atrakcje turystyczne – trasa. }
+    \preconditions{Przestawia optymalną trase.   }
+    \postconditions{ Trasa zostaje przedstawiona użytkownikowi. }
+    \exceptions{ Brak atrakcji brak planu.}
+    \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
+    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
+    Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
+    Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać poi wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
+    \sholder{ UOB02 }
+    \reqrelated{F09,F10,F11,F12,F14, F15}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func21},caption={Tabela z wymaganiami funkcjonalnymi}]
+    \id{F21}
+    \priority{C}
+    \name{Algorytm Plannera - środek transportu rower}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
+        \item Ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
+    \end{itemize}
+    }
+    \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
+    \inputdata{Wybrane atrakcje turystyczne – trasa. }
+    \preconditions{Przestawia optymalną trase.   }
+    \postconditions{ ATrasa zostaje przedstawiona użytkownikowi. }
+    \exceptions{ Brak atrakcji brak planu.}
+    \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
+    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
+    Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
+    Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać poi wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
+    \sholder{ UOB02 }
     \reqrelated{}
 \end{requirementstab}
-
-
-
 
 
 \section{Interfejs z otoczeniem}
