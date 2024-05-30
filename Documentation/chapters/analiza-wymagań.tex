@@ -25,7 +25,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{stakeholder}[label={tab:stakeholder:someholder},caption={opis udzialowca}]
     \id{UOB 01}
     \name{Podstawowy użytkownik aplikacji (np. Turysta) }
-    \descr{Osoba korzystająca z aplikacji w celu poznawania PoI i optymalnego przemieszczania się między nimi }
+    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi }
     \type{Ożywiony bezpośredni}
     \viewpoint{Użytkownik - operator}
     \limitations{Widzi tylko widok końcowy}
@@ -35,7 +35,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
     \id{UOB 02}
     \name{Zespół Projektowy}
-    \descr{Osoba korzystająca z aplikacji w celu poznawania PoI i optymalnego przemieszczania się między nimi}
+    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi}
     \type{Ożywiony bezpośredni}
     \viewpoint{Techniczny}
     \limitations{Brak}
@@ -56,7 +56,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \label{sec:wymagania-ogolne-i-dziedzinowe}
 
 
-\begin{requirementstab}[label={tab:requirements:general1},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general1},caption={Karta wymagania: Obsługa użytkowników}]
     \id{WO1}
     \priority{M}
     \name{Obsługa użytkowników}
@@ -64,16 +64,16 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general2},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general2},caption={Karta wymagania: Działanie w czasie rzeczywistym Offline}]
     \id{WO2}
     \priority{C}
     \name{Działanie w czasie rzeczywistym Offline lub Online }
     \descr{Aplikacja musi działać i synchronizować dane do jak najmniejszej możliwej jednostki czasowej. 
     Wersja offline wykorzystuje ostatnie zapisane informacje }
     \sholder{UOB2}
-    \reqrelated{}
+    \reqrelated{F19}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general3},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel Administracyjny}]
     \id{WO3}
     \priority{M}
     \name{Zarządzanie danymi z aplikacji}
@@ -81,7 +81,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general4},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general4},caption={Karta wymagania: Licencje i prawa}]
     \id{WO4}
     \priority{M}
     \name{Licencje i prawa}
@@ -89,7 +89,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general5},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general5},caption={Karta wymagania: Responsywny Interfejs}]
     \id{WO5}
     \priority{M}
     \name{Wyglad interface responsywny do standardowych urządzeń }
@@ -98,7 +98,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general6},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general6},caption={Karta wymagania: Rejestracja użytkowników}]
     \id{WO6}
     \priority{M}
     \name{Rejestracja użytkowników  }
@@ -106,7 +106,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB2, UOB1}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general7},caption={Wymaganie ogólne i dziedzinowe}]
+\begin{requirementstab}[label={tab:requirements:general7},caption={Karta wymagania: Komercjalizacji}]
     \id{WO7}
     \priority{M}
     \name{Komercjalizacji (reklamy) }
@@ -117,7 +117,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 
 \section{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
-\begin{requirementstab}[label={tab:requirements:func1},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func1},caption={Karta wymagania: Przeglądanie Widoku mapy}]
     \id{FO1}
     \priority{M}
     \name{Przeglądanie Widoku mapy z pinezkami }
@@ -132,7 +132,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func2},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Synchronizacja danych }]
     \id{FO2}
     \priority{C}
     \name{Synchronizacja danych i wyświetlanie powiadomień o zmianach. }
@@ -151,7 +151,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func3},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Zakładka z POI}]
     \id{FO3}
     \priority{M}
     \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
@@ -170,7 +170,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func4},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func4},caption={Karta wymagania: Panel zarządzania atrakcjami}]
     \id{FO4}
     \priority{M}
     \name{Panel zarządzania atrakcjami w aplikacji. }
@@ -189,7 +189,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB02 }
     \reqrelated{W03}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func5},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Znaczniki na interaktywnej mapie}]
     \id{FO5}
     \priority{M}
     \name{Znaczniki na interaktywnej mapie informujące o punktach zainteresowania.}
@@ -199,19 +199,19 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item Ponieważ umożliwi to spojrzenie na opis POI. 
     \end{itemize}
     }
-    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez Administratora/. }
+    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez Administratora. }
     \inputdata{Użytkownik wyświetla zakładkę z mapą atrakcji. }
     \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez twórców aplikacji.}
     \postconditions{ Wyświetlenie wszystkie atrakcje turystyczne plus atrakcje dodane przez użytkowników  }
     \exceptions{ Aplikacja wyświetla błąd w przerwie transmisji aplikacji.    }
-    \implementation{ Tu musi być wybór pois i podanie czasu na zwiedzanie.    }
+    \implementation{ Tu musi być wybór POI i podanie czasu na zwiedzanie.    }
     \sholder{ UOB01, UOB02, UOB03  }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func6},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: oceniania atrakcji turystycznych }]
     \id{FO6}
     \priority{C}
-    \name{Możliwość oceniania atrakcji turystycznych .}
+    \name{Możliwość oceniania atrakcji turystycznych.}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce mieć możliwość oceniania atrakcjami gwiazdkami 1-5
@@ -225,9 +225,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
     \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją opinia oraz powyżej średnia z opini, każdy użytkownik może dodać jedną opinie w gwiazdkach od 1 do 5.    }
     \sholder{ UOB01  }
-    \reqrelated{}
+    \reqrelated{F07}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func7},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Możliwość pisania opinii wraz ze zdjęciami}]
     \id{FO7}
     \priority{C}
     \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
@@ -245,12 +245,12 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
     Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
     \sholder{ UOB01  }
-    \reqrelated{}
+    \reqrelated{F06}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func8},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisywanie list wybranych POI}]
     \id{FO8}
     \priority{S}
-    \name{Zapisywanie list wybranych pois pod konkretną nazwą.}
+    \name{Zapisywanie list wybranych POI pod konkretną nazwą.}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce możliwość zapisania wybranej trasy
@@ -270,10 +270,10 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \reqrelated{}
 \end{requirementstab}
 
-\begin{requirementstab}[label={tab:requirements:func9},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list POI}]
     \id{FO9}
     \priority{C}
-    \name{Udostępnianie zapisanych list pois pomiędzy użytkownikami}
+    \name{Udostępnianie zapisanych list POI pomiędzy użytkownikami}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce mieć możliwość udostępnienia wybranej trasy
@@ -285,15 +285,14 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \preconditions{ Link do zapisanej trasy }
     \postconditions{ Przesłania linku bądź kodu dla drugiego użytkownika w celu dodania tej trasy u siebie  }
     \exceptions{  Wszystkie trasy udostępnione są dostępne online dla wszystkich użytkowników Internetu.  }
-    \implementation{ Każda trasa ma indywidualny kod w bazie danych
-        }
+    \implementation{ Każda trasa ma indywidualny kod w bazie danych.}
     \sholder{ UOB01, UOB02, UOB03   }
     \reqrelated{F10}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func10},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func10},caption={Karta wymagania: Wyznaczanie trasy pieszej }]
     \id{F10}
     \priority{M}
-    \name{Udostępnianie zapisanych list pois pomiędzy użytkownikami}
+    \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi POI}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce mieć możliwość przejścia wybranej trasy tylko na pieszo
@@ -310,7 +309,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func11},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func11},caption={Karta wymagania: Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}]
     \id{F11}
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
@@ -330,27 +329,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func11},caption={Tabela z wymaganiami funkcjonalnymi}]
-    \id{F11}
-    \priority{S}
-    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
-        \item Ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
-    \end{itemize}
-    }
-    \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej.  }
-    \exceptions{ Zaproponowanie innego transportu np. pieszo. }
-    \implementation{ *************************************************
-        }
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func12},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej Trasy z udziałem samochodów osobowych}]
     \id{F12}
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
@@ -370,7 +349,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func13},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Widok Generowania Optymalnej Trasy }]
     \id{F13}
     \priority{M}
     \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
@@ -389,10 +368,10 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB03   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func14},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Zmiana Optymalnej trasy według preferencji }]
     \id{F14}
     \priority{M}
-    \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania pois co w efekcie dostosuje resztę optymalnej trasy}
+    \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania POI co w efekcie dostosuje resztę optymalnej trasy}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
@@ -408,10 +387,10 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func15},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: Dodawania na mapę własnych POI }]
     \id{F15}
     \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych pois}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
@@ -427,26 +406,26 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func16},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Własne POI}]
     \id{F16}
     \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych pois}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
     \descr{\begin{itemize}
         \item Jako Użytkownik 
         \item Chce możliwość dodania nowych własnych punktów
         \item Ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
     \end{itemize}
     }
-    \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu poi.}
+    \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu POI.}
     \inputdata{Przez formularz możliwość dodać atrakcje turystyczne. }
     \preconditions{ Administrator otrzymuje w panelu propozycje nowych miejsc. }
-    \postconditions{ Użytkownik zostaje poinformowany o dodaniu kolejnych punktów.  }
+    \postconditions{ Użytkownik zostaje POInformowany o dodaniu kolejnych punktów.  }
     \exceptions{  Dane w formularzu nie spełniają wymagań do zatwierdzenia. }
-    \implementation{ Dodane przez użytkowników poi powinny dzielić się na publiczne i prywatne.}
+    \implementation{ Dodane przez użytkowników POI powinny dzielić się na publiczne i prywatne.}
     \sholder{ UOB01, UOB02   }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func17},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:Aktualna trasa - bez dodatkowego obliczania}]
     \id{F17}
     \priority{S}
    \name{Aktualna trasa w trakcie bez ciągłego obliczania}
@@ -465,7 +444,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01 }
     \reqrelated{F18}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func18},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępn}]
     \id{F18}
     \priority{C}
     \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
@@ -484,7 +463,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01 }
     \reqrelated{F17}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func19},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func19},caption={Karta wymagania: Trasa Offline}]
     \id{F19}
     \priority{S}
     \name{Trasa Offline}
@@ -503,7 +482,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01 }
     \reqrelated{F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func20},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func20},caption={Karta wymagania: Algorytm Plannera}]
     \id{F20}
     \priority{S}
     \name{Algorytm Plannera}
@@ -522,12 +501,12 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać poi wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func21},caption={Tabela z wymaganiami funkcjonalnymi}]
+\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
     \id{F21}
     \priority{C}
     \name{Algorytm Plannera - środek transportu rower}
@@ -546,13 +525,51 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać poi wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
-    \reqrelated{}
+    \reqrelated{F20}
 \end{requirementstab}
-
-
+\begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Widok Druku - Pdf }]
+    \id{F22}
+    \priority{C}
+    \name{Widok Druku - Pdf}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf
+        \item Ponieważ chciałbym mieć na kartce swój plan. 
+    \end{itemize}
+    }
+    \acceptcrit{ Aplikacja umożliwia zapisanie w pdf widoku osi czasu}
+    \inputdata{Wybrane atrakcje turystyczne – Zapisana trasa. }
+    \preconditions{ Wybrana trasa nie może mieć błedów   }
+    \postconditions{ Przełącza na tryb druku wbudowany w urządzenie. }
+    \exceptions{ Jeśli urządzenie nie ma możliwości druku przełącza na pobieranie PDF.}
+    \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
+    }
+    \sholder{UOB01, UOB02,UOB03 }
+    \reqrelated{F12, F13,F14, F20,F21}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Filtracja dostępnych Atrakcji - Menu }]
+    \id{F23}
+    \priority{C}
+    \name{Filtracja dostępnych Atrakcji - Menu}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
+        \item Ponieważ chciałbym mieć dokładniejszej selekcji POI.
+    \end{itemize}
+    }
+    \acceptcrit{ Możliwości wyboru kategorii POI}
+    \inputdata{Wybrane atrakcje turystyczne, okres czasowy jaki nas interesuje dotyczące atrakcji. }
+    \preconditions{ Włączona lista z wszystkimi POI }
+    \postconditions{ Wyświetlaja się potrzebne POI. }
+    \exceptions{ Jeśli urządzenie nie ma możliwości druku przełącza na pobieranie PDF.}
+    \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
+    }
+    \sholder{UOB01, UOB02, UOB03 }
+    \reqrelated{F20,F21,}
+\end{requirementstab}
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
 
