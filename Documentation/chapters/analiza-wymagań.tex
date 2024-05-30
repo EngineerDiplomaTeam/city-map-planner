@@ -564,8 +564,68 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \inputdata{Wybrane atrakcje turystyczne, okres czasowy jaki nas interesuje dotyczące atrakcji. }
     \preconditions{ Włączona lista z wszystkimi POI }
     \postconditions{ Wyświetlaja się potrzebne POI. }
-    \exceptions{ Jeśli urządzenie nie ma możliwości druku przełącza na pobieranie PDF.}
-    \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
+    \exceptions{ Brak dostępnych POI w zadanyum czasie.}
+    \implementation{ Możliwość filtrowania poi na podstawie kategorii takich jak ilość osób, cena itd
+    }
+    \sholder{UOB01, UOB02 }
+    \reqrelated{F20,F21,}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Przeliczanie Trasy o aktualną datę i czas}]
+    \id{F24}
+    \priority{C}
+    \name{Przeliczanie Trasy o aktualną datę i czas}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
+        \item Ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
+    \end{itemize}
+    }
+    \acceptcrit{ Przycisk odświeżenia planu trasy}
+    \inputdata{Wybrana trasa turystyczna. }
+    \preconditions{ Wybrana trasa była wcześniej włączona }
+    \postconditions{ Wyświetla się aktualny plan trasy. }
+    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
+    \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
+    }
+    \sholder{UOB01, UOB02, UOB03 }
+    \reqrelated{F20,F21,}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
+    \id{F25}
+    \priority{C}
+    \name{Przeliczanie Trasy o opóźnienia komunikacji}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Chce dostawać aktualne dane o czasie oczekiwania na środek transportu
+        \item Ponieważ chciałbym mieć aktualne dane ile będę czekać
+    \end{itemize}
+    }
+    \acceptcrit{ Przycisk odświeżenia planu trasy}
+    \inputdata{Wybrana trasa turystyczna. }
+    \preconditions{ Wybrana trasa była wcześniej włączona }
+    \postconditions{ Wyświetla się aktualny plan trasy. }
+    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
+    \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
+    }
+    \sholder{UOB01, UOB02, UOB03 }
+    \reqrelated{F20,F21,}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Możliwość korzystania jako gość}]
+    \id{F26}
+    \priority{C}
+    \name{Możliwość korzystania jako gość}
+    \descr{\begin{itemize}
+        \item Jako Użytkownik 
+        \item Nie Chce logować się do aplikacji
+        \item Ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
+    \end{itemize}
+    }
+    \acceptcrit{ Dostęp do podstawowych funkcjonalności bez konieczności posiadania konta}
+    \inputdata{ Praca bez danych wejściowych }
+    \preconditions{ Aplikacja działa bez dodatkowych danych }
+    \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
+    \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji, .}
+    \implementation{ aplikacja dostępna bez logowania
     }
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21,}
@@ -573,7 +633,20 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
 
-TODO
+\begin{requirementstab}[label={tab:requirements:env1},caption={Karta wymagania: Komunikacja z API MZK Gdańsk}]
+    \id{IO1}
+    \priority{S}
+    \name{Komunikacja z API MZK Gdańsk}
+    \descr{Interfejs pozyskujący dane o komunikacji publicznej miasta Gdańsk}
+    \acceptcrit{Pozyskanie aktualnych danych}
+    \inputdata{API MZK Gdańsk}
+    \preconditions{ Platforma MZK Gdańsk działa}
+    \postconditions{ Informacje zostały poprawnie przekazane do plików}
+    \exceptions{ Przekierowanie do map Google}
+    \implementation{ Pobieranie danych z API będzie integrowane w wewnętrzny algorytm}
+    \sholder{UOB01, UOB02, UOB03}
+    \reqrelated{F20}
+\end{requirementstab}
 
 \section{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
