@@ -642,12 +642,81 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \inputdata{API MZK Gdańsk}
     \preconditions{ Platforma MZK Gdańsk działa}
     \postconditions{ Informacje zostały poprawnie przekazane do plików}
-    \exceptions{ Przekierowanie do map Google}
-    \implementation{ Pobieranie danych z API będzie integrowane w wewnętrzny algorytm}
+    \exceptions{ API urzędu transportu miejskiego w Gdańsku nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji}
+    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych}
     \sholder{UOB01, UOB02, UOB03}
     \reqrelated{F20}
 \end{requirementstab}
-
+\begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem open Weather API}]
+    \id{IO2}
+    \priority{S}
+    \name{Integracja z systemem open Weather API}
+    \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z POI np.Gdańska}
+    \acceptcrit{Integracja algorytmu planowania trasy na podstawie pogody}
+    \inputdata{Miasto np. Miasto Gdańsk}
+    \preconditions{ Okres potrzebowania na podróż a}
+    \postconditions{ Informacje zostały poprawnie przekazane do plików}
+    \exceptions{ Wyświetla błąd iż plan trasy nie został uzwgledniony o pogodę, gdyż wystąpił błąd np. Brak połączenia internetowego}
+    \implementation{ Dodanie Klienta Pogodowego, który przechowuje dane z wiarygodnością do 15minut.}
+    \sholder{UOB01, UOB02, UOB03}
+    \reqrelated{F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env3},caption={Karta wymagania: Integracja z systemem overpass API}]
+    \id{IO3}
+    \priority{M}
+    \name{Integracja z systemem overpass API}
+    \descr{cykliczna aktualizacja bazy dróg, ścieżek itd w Gdańsku}
+    \acceptcrit{Integracja algorytmu planowania trasy na podstawie danych transportu publicznego}
+    \inputdata{Graf połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, 2 wybrane przez użytkownika punkty - początek i koniec}
+    \preconditions{ Okres potrzebowania na podróż a}
+    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
+    \exceptions{ Brak połączenia między wybranymi punktami, system powinien zwrócić informację o takiej styacji zamiast zakończyć żądanie niepowodzeniem.}
+    \implementation{ Cała mapa Gdańska zajmuje ok 100 MB w formacie JSON, system powinien obliczać optymalną trasę na pełnym grafie połączeń, nie ma potrzeby tworzenia pod grafów..}
+    \sholder{UOB01, UOB02, UOB03}
+    \reqrelated{F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy internetowej w oparciu o Open layers    }]
+    \id{IO4}
+    \priority{S}
+    \name{Implementacja interaktywnej mapy internetowej w oparciu o Open layers}
+    \descr{Aplikacja zawiera dwuwymiarową mapę, kolorystycznie dostosowaną do trybu ciemnego / jasnego zgodnie z ustawieniami urządzenia użytkownika.}
+    \acceptcrit{Mapa zawiera ikony przedstawiające atrakcje turystycznych, po których kliknięciu otworzy się okienko z informacjami o tej atrakcji. Mapa obsługuje urządzenia obsługiwane przy pomocy myszki jak i urządzenia z ekranami dotykowymi.}
+    \inputdata{Lista atrakcji turystycznych wraz z informacjami o nich, schemat kolorystyczny urządzenia (jasny / ciemny)}
+    \preconditions{ Załadowane dane z Aplikacji}
+    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
+    \exceptions{ Brak atrakcji turystycznych – mapa powinna pokazać informację o braku danych.}
+    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa Stadia Maps.}
+    \sholder{ UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
+    \id{IO4}
+    \priority{C}
+    \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
+    \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
+    \acceptcrit{Mapa podczas tworzenia proponowanej trasy robi możliwe opcje z wykorzystaniem tych informacji.}
+    \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
+    \preconditions{ Załadowane dane z Aplikacji}
+    \postconditions{ Docelowa baza danych działa poprawnie}
+    \exceptions{ API urzędu nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
+    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
+    \sholder{UOB01, UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
+    \id{IO5}
+    \priority{C}
+    \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
+    \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
+    \acceptcrit{Mapa podczas tworzenia proponowanej trasy robi możliwe opcje z wykorzystaniem tych informacji.}
+    \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
+    \preconditions{ Załadowane dane z Aplikacji}
+    \postconditions{ Docelowa baza danych działa poprawnie}
+    \exceptions{ API urzędu nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
+    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
+    \sholder{UOB01, UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
 \section{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
 
