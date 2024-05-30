@@ -712,21 +712,118 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
     \preconditions{ Załadowane dane z Aplikacji}
     \postconditions{ Docelowa baza danych działa poprawnie}
-    \exceptions{ API urzędu nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
+    \exceptions{ API nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
     \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
     \sholder{UOB01, UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env6},caption={Karta wymagania: Opcja  do zakupu biletów dla komunikacji miejskiej }]
+    \id{IO6}
+    \priority{W}
+    \name{Opcja przekierowania do zakupu biletów dla komunikacji miejskiej}
+    \descr{Po wybraniu trybu transportu z wykorzystaniem Komunikacji miejskiej pojawia się propozycja skorzystania z jakieś aplikacji do zakupu biletów np. skycash}
+    \acceptcrit{Opcja transportu przekazuje informacje w formie linka do polecanej aplikacji.}
+    \inputdata{Transport publiczny}
+    \preconditions{ Użytkownik wybrał tryb nawigacji poprzez transport publiczny}
+    \postconditions{ Przekierowanie działa}
+    \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
+    \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
+    \sholder{UOB01, UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Opcja  do zakupu biletów dla POI }]
+    \id{IO7}
+    \priority{C}
+    \name{Integracja z system biletów konkretnej atrakcji online}
+    \descr{cykliczna aktualizacja danych o cennikach danej atrakcji}
+    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
+    \inputdata{Użytkownik wybrał szczegółowe informacje dotyczące atrakcji}
+    \preconditions{ Miejsce z informacją polecanych platformach kupna}
+    \postconditions{ Przekierowanie działa}
+    \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
+    \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
+    \sholder{UOB01}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env8},caption={Karta wymagania: Cykliczna aktualizacja danych POI Miasta Gdańsk}]
+    \id{IO8}
+    \priority{S}
+    \name{Cykliczna aktualizacja danych POI Miasta Gdańsk}
+    \descr{cykliczna aktualizacja danych POI Miasta Gdańsk}
+    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
+    \inputdata{Nazwa , czasy otwarcia }
+    \preconditions{ Dla podstawowych poi system powinien implementować web scrappera który automatycznie będzie aktualizować godziny otwarcia oraz stan atrakcji}
+    \postconditions{ Integracje przewiduje 10 ATRAKCJI Najbardziej popularnych w gdańsku}
+    \exceptions{Jeśli scapper nie działą przedstawia ostatnią aktualną informacje.}
+    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i przesyłamy HTML do Chata GPT. 
+    Chat GPT generuje Tabele z potrzebnymi dla nas danymi, według ustalonego schematu dla bazy danych.
+    Następnie Administrator akceptuje zmiany.
+    }
+    \sholder{UOB02}
+    \reqrelated{IO3,F20}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:env9},caption={Karta wymagania: Informacja o aktualnych danych POI }]
+    \id{IO9}
+    \priority{S}
+    \name{Informacja o aktualnych danych POI - potrzebna aktualizacja}
+    \descr{Wykorzystując pobieranie strony HTML, (sprawdzamy co godzine zmiany), powiadamy Administratora w Panelu o potrzebie zaaktulizowania danych}
+    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
+    \inputdata{Nazwa , czasy otwarcia }
+    \preconditions{ Dla podstawowych poi system powinien pokazywać potrzebe informacji o zmianach}
+    \postconditions{ Integracje przewiduje atrakcje w Gdańsku}
+    \exceptions{Jeśli scapper nie działa przedstawia ostatnią aktualną informacje. - Brak zmian}
+    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i jeśli strona różni się od poprzedniego stanu informujemy o tym}
+    \sholder{UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
 \section{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
 
-TODO
+\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Karta wymagania: Dostęp 24/7}]
+    \id{NFO1}
+    \priority{S}
+    \name{Dostęp 24/7}
+    \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność max 8h w skali miesiąca w godzinach nocnych (SLA 98.905 \%) }
+    \acceptcrit{maksymalny czas niedostępności systemu w skali miesiąca to 8h w godzinach 22:00-06:00}
+    \sholder{UOB01, UOB02}
+    \reqrelated{}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność Systemu na mobilnych urządzeniach}]
+    \id{NFO1}
+    \priority{M}
+    \name{System musi być intuicyjny oraz responsywny na urządzeniach z małym ekranem}
+    \descr{System używany na urządzeniach mobilnych, musi charakteryzować się wysoką responsywnością}
+    \acceptcrit{Wynik Lighthouse w kategorii performance na poziomie co najmniej 90\%}
+    \sholder{UOB02}
+    \reqrelated{WO5}
+\end{requirementstab}
 
 \section{Wymagania dotyczące procesu wytwarzania}
 \label{sec:wymagania-dotyczace-procesu-wytwarzania}
 
-TODO
-
+\begin{requirementstab}[label={tab:requirements:envfunc1},caption={Karta wymagania: Android}]
+    \id{ŚDO1}
+    \priority{C}
+    \name{Android (PWA)}
+    \descr{W dniu premiery musi być dostępny na systemy mobilne Android }
+    \acceptcrit{System będzie działał sprawnie na systemy Android min. 2 dni przed premierą}
+    \sholder{UOB02}
+    \reqrelated{}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:envfunc2},caption={Karta wymagania: Przeglądarka internetowa}]
+    \id{ŚDO1}
+    \priority{M}
+    \name{Android}
+    \descr{W dniu premiery musi być dostępny na urządzenia mobilne  }
+    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych 
+    Interaktywna mapa wraz ze znacznikami poi powinna być responsywna i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
+    }
+    \sholder{UOB01, UOB02,UOB03}
+    \reqrelated{}
+\end{requirementstab}
 \section{Wymagania jakościowe i inne}
 \label{sec:wymagania-jakosciowe-i-inne}
+
+
+
 \restoregeometry % Przywrócenie poprzednich marginesów
