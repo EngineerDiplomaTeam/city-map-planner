@@ -10,7 +10,7 @@
 
 Wymagania dla projektu zostały zebrane w pierwszym semestrze. Zostały określone na podstawie analizy funkcjonowania
 
-Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkcjonalności projektu. Wykorzystana została metodyka priorytetyzacji wymagań MoSCoW\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
+Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkcjonalności projektu. \newline Wykorzystana została metodyka priorytetyzacji wymagań MoSCoW\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
 \begin{itemize}
     \item \textbf{M – must (musi być)} – wymaganie bezkompromisowo musi zostać zrealizowane, bez niego projekt nie zostanie ukończony;
     \item \textbf{S – should (powinno być)} – wymaganie powinno być zrealizowane, jeżeli tylko jest taka możliwość;
@@ -28,26 +28,26 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi }
     \type{Ożywiony bezpośredni}
     \viewpoint{Użytkownik - operator}
-    \limitations{Widzi tylko widok końcowy}
+    \limitations{Wymaga umiarkowanych umiejętności technicznych}
     \requ{-----------------}
 \end{stakeholder}
 
 \begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
     \id{UOB 02}
-    \name{Zespół Projektowy}
-    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi}
+    \name{Zespół projektowy}
+    \descr{Pomysłodawcy i autorzy rozwiązania}
     \type{Ożywiony bezpośredni}
     \viewpoint{Techniczny}
-    \limitations{Brak}
+    \limitations{Ograniczony czas realizacji projektu}
     \requ{-----------------}
 \end{stakeholder}
 
 \begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
     \id{UOB 03}
     \name{Firmy o charakterze najmu krótko-terminowym }
-    \descr{Firmy o charakterze najmu krótko-terminowego mają bezpośredni kontakt z turystami}
+    \descr{Firmy o charakterze najmu krótko-terminowego mające bezpośredni kontakt z turystami}
     \type{Ożywiony niebezpośredni }
-    \viewpoint{Współpraca z Turystami}
+    \viewpoint{Współpraca z turystami}
     \limitations{Brak}
     \requ{-----------------}
 \end{stakeholder}
@@ -67,75 +67,75 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:general2},caption={Karta wymagania: Działanie w czasie rzeczywistym Offline}]
     \id{WO2}
     \priority{C}
-    \name{Działanie w czasie rzeczywistym Offline lub Online }
-    \descr{Aplikacja musi działać i synchronizować dane do jak najmniejszej możliwej jednostki czasowej. 
-    Wersja offline wykorzystuje ostatnie zapisane informacje }
+    \name{Działanie w czasie rzeczywistym offline lub online }
+    \descr{Aplikacja musi działać i synchronizować dane do 15 minut. 
+    Wersja offline wykorzystuje ostatnie zapisane informacje takie jak Umożliwia podgląd wcześniej zaplanowanych wycieczek}
     \sholder{UOB2}
     \reqrelated{F19}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel Administracyjny}]
+\begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel administracyjny}]
     \id{WO3}
-    \priority{M}
-    \name{Zarządzanie danymi z aplikacji}
-    \descr{Możliwość sprawdzanie aktualnych danych poprzez panel aplikacji internetowej (Panel Administracyjny) }
+    \priority{S}
+    \name{Zarządzanie danymi z poziomu aplikacji}
+    \descr{Możliwość sprawdzanie aktualnych danych POI poprzez panel aplikacji internetowej (Panel administracyjny) }
     \sholder{UOB2}
-    \reqrelated{}
+    \reqrelated{WO3}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general4},caption={Karta wymagania: Licencje i prawa}]
     \id{WO4}
     \priority{M}
     \name{Licencje i prawa}
-    \descr{Wszystkie technologie, narzędzia, wzorce itp. potrzebne do wykonania systemu muszą być licencjonowane oraz od głównych dostawców nie pośredników. }
+    \descr{Wszystkie technologie, narzędzia, wzorce oraz inne elementy niezbędne do realizacji systemu muszą być licencjonowane i pochodzić bezpośrednio od głównych dostawców, a nie od pośredników. }
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general5},caption={Karta wymagania: Responsywny Interfejs}]
+\begin{requirementstab}[label={tab:requirements:general5},caption={Karta wymagania: Responsywny interfejs}]
     \id{WO5}
     \priority{M}
-    \name{Wyglad interface responsywny do standardowych urządzeń }
-    \descr{System powinien działać na wielu platformach. 
-    System powinien wyglądać estetycznie, poukładanie i działać płynnie, bez większych opóźnień w reakcji na zdarzenie.  }
+    \name{Responsywny interfejs}
+    \descr{Interfejs użytkownika powinien być wykonany zgodnie z praktyką programowania responsywnych stron internetowych.  }
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general6},caption={Karta wymagania: Rejestracja użytkowników}]
     \id{WO6}
-    \priority{M}
+    \priority{S}
     \name{Rejestracja użytkowników  }
-    \descr{Rejestracja powinna przebiegać sprawnie i wraz z wszystkimi standardami i prawami.  }
+    \descr{Rejestracja powinna przebiegać sprawnie, zgodnie ze wszystkimi standardami i przepisami prawa, a przede wszystkim musi być zgodna z RODO.  }
     \sholder{UOB2, UOB1}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general7},caption={Karta wymagania: Komercjalizacji}]
+\begin{requirementstab}[label={tab:requirements:general7},caption={Karta wymagania: Komercjalizacja}]
     \id{WO7}
-    \priority{M}
-    \name{Komercjalizacji (reklamy) }
-    \descr{W przyszłości system może wykorzystać system płatności abonamentowej w celu całkowitego usunięcia z niego reklam.   }
+    \priority{S}
+    \name{Komercjalizacja }
+    \descr{Aplikacja ma umożliwiać reklamowanie swoich usług partnerom biznesowym w sposób spójny z interfejsem.  }
     \sholder{UOB01, UOB02, UOB03}
     \reqrelated{}
 \end{requirementstab}
 
 \section{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
-\begin{requirementstab}[label={tab:requirements:func1},caption={Karta wymagania: Przeglądanie Widoku mapy}]
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Karta wymagania: Interaktywna mapa}]
     \id{FO1}
     \priority{M}
-    \name{Przeglądanie Widoku mapy z pinezkami }
-    \descr{Jako turysta chciałbym zobaczyć Mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
+    \name{Interaktywna mapa}
+    \descr{Jako turysta chciałbym zobaczyć mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
     }
     \acceptcrit{Użytkownik może zobaczyć aktualne dostępne atrakcje dostępne w danym mieście }
-    \inputdata{Użytkownik logując się widzi przedstawioną Mapę}
-    \preconditions{ Po otwarciu aplikacji PWA przestawi się zachęcają Mapa  }
-    \postconditions{ Wyświetlenie zaznaczonych atrakcji. }
+    \inputdata{Użytkownik włączająć aplikacje widzi przedstawioną mapę}
+    \preconditions{ dostępność systemów partnerów, głównie Stadia maps   }
+    \postconditions{ Wyświetlenie atrakcji. }
     \exceptions{ Wyświetlanie komunikatu w przypadku niedostępności atrakcji w aktualnej chwili oraz przedstawienia propozycji zmiany punktu docelowego. }
-    \implementation{ Użytkownik wykorzystując przeglądarkę bądź aplikacje widzi Dostępne Atrakcje ogólnie dostępnych w danym mieście. }
+    \implementation{ Użytkownik, korzystając z przeglądarki lub aplikacji, widzi interaktywną mapę z atrakcjami w danym mieście.}
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Synchronizacja danych }]
+\begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Dane czasu rzeczywistego }]
     \id{FO2}
-    \priority{C}
-    \name{Synchronizacja danych i wyświetlanie powiadomień o zmianach. }
+    \priority{S}
+    \name{Wyświetlanie powiadomień o zmianach. }
     \descr{\begin{itemize}
         \item Jako Turysta 
         \item chcę dostawać powiadomienia o zmianach w planie,
@@ -151,21 +151,21 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Zakładka z POI}]
+\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Widok listy POI}]
     \id{FO3}
     \priority{M}
     \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce korzystać z aplikacji z listą dostępnych atrakcji 
-        \item Ponieważ chce zobaczyć dostępne spektrum możlwości. 
+        \item Jako użytkownik  
+        \item chce korzystać z aplikacji z listą dostępnych atrakcji w wersji pisanej
+        \item ponieważ chce zobaczyć dostępne spektrum możlwości, bez szukania informacji na mapie i przeciągania. 
     \end{itemize}
     }
-    \acceptcrit{Lista dostępnych punktów. }
+    \acceptcrit{Lista dostępnych POI. }
     \inputdata{Brak}
-    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
+    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami.  }
     \postconditions{ Użytkownik może przeczytać lub klinknąć na interesujące go atrakcje.   }
-    \exceptions{ Brak grupy, której szuka użytkownik. Użytkownik musi użyć regularnego planu zajęć.   }
+    \exceptions{ brak dostępnych atrakcji w wyznaczonym zakresie czasowym  }
     \implementation{ Aplikacja pobiera w tle plik bazy danych ważący 1MB.  }
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{}
@@ -173,68 +173,68 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:func4},caption={Karta wymagania: Panel zarządzania atrakcjami}]
     \id{FO4}
     \priority{M}
-    \name{Panel zarządzania atrakcjami w aplikacji. }
+    \name{Panel zarządzania atrakcjami. }
     \descr{\begin{itemize}
-        \item Jako Administrator 
-        \item mieć panel administracyjny do wymuszania odświeżenia godzin otwarcia, edycja opisu itd 
-        \item Ponieważ  potrzebuje mieć wygodny interfejs do edycji atrakcji dostępnych na mapie. 
+        \item Jako administrator 
+        \item potrzebuję panelu do zarządzania danymi atrakcji turystycznych wspomaganego sztuczną inteligencją
+        \item aby szybko reagować na zmiany wprowadzane przez właścicieli atrakcji turystycznych. 
     \end{itemize}
     }
     \acceptcrit{Lista dostępnych punktów. }
-    \inputdata{Konto z uprawnieniami Administracyjnymi}
-    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
-    \postconditions{ Można edytować/usuwać/ dodawać recznie atrakcje.   }
-    \exceptions{ Jest możliwość dodawania kolejnych atrakcji .   }
+    \inputdata{Konto z uprawnieniami administracyjnymi}
+    \preconditions{ Użytkownik wszedł na ukrytą strone z panelem.  }
+    \postconditions{ wykonywać podstawowe operacje CRUD   }
+    \exceptions{ Jest możliwość dodawania kolejnych atrakcji. Sztuczna inteligencja może błędnie wykonać swoje zadanie.   }
     \implementation{ Panel administracyjny do zarządzania opiniami użytkowników (umożliwia cenzurę.).   }
     \sholder{ UOB02 }
-    \reqrelated{W03}
+    \reqrelated{W03,IO9}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Znaczniki na interaktywnej mapie}]
+\begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Punkty interaktywnej mapy}]
     \id{FO5}
     \priority{M}
-    \name{Znaczniki na interaktywnej mapie informujące o punktach zainteresowania.}
+    \name{Znaczniki na interaktywnej mapie informujące o POI.}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce móc wyświetlić wybrane atrakcje, które mnie interesują
-        \item Ponieważ umożliwi to spojrzenie na opis POI. 
+        \item Jako użytkownik 
+        \item chce móc wyświetlić wybrane atrakcje, które mnie interesują
+        \item ponieważ  umożliwi to spojrzenie na opis POI.
     \end{itemize}
     }
-    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez Administratora. }
-    \inputdata{Użytkownik wyświetla zakładkę z mapą atrakcji. }
-    \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez twórców aplikacji.}
-    \postconditions{ Wyświetlenie wszystkie atrakcje turystyczne plus atrakcje dodane przez użytkowników  }
-    \exceptions{ Aplikacja wyświetla błąd w przerwie transmisji aplikacji.    }
-    \implementation{ Tu musi być wybór POI i podanie czasu na zwiedzanie.    }
+    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez administratora. Po kliknięciu znacznika pojawią się szczegółowe informacje o POI }
+    \inputdata{Otwiera Aplikacje. }
+    \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez administratora  aplikacji.}
+    \postconditions{ Brak  }
+    \exceptions{ Brak dostępności API, aplikacja powinna wtedy pokazać błąd i próbować pobrać dane ponow    }
+    \implementation{ Mają być duże znaczniki ze zdjęciami atrakcji które po kliknięciu otwierają szczegółowy widok    }
     \sholder{ UOB01, UOB02, UOB03  }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: oceniania atrakcji turystycznych }]
+\begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: Oceny użytkowników }]
     \id{FO6}
     \priority{C}
-    \name{Możliwość oceniania atrakcji turystycznych.}
+    \name{Oceny użytkowników}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość oceniania atrakcjami gwiazdkami 1-5
-        \item Ponieważ umożliwi to dodawania indywidualnych ocenaniai i ich edytowania. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość oceniania atrakcjami gwiazdkami w skali 1-5
+        \item ponieważ chciałbym podzielić się swoją opinią. 
     \end{itemize}
     }
     \acceptcrit{Każda atrakcja posiada możliwośc dodawania opinii. }
-    \inputdata{Nazwa użytkownika, mail. }
+    \inputdata{Posiadanie konta Opinia w skali od 1-5 }
     \preconditions{ Można dodawać opinie liczbową.}
-    \postconditions{ Wyświetla tylko średnią z opinii, brak możliwości komentowania.  }
-    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
-    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją opinia oraz powyżej średnia z opini, każdy użytkownik może dodać jedną opinie w gwiazdkach od 1 do 5.    }
+    \postconditions{ Brak  }
+    \exceptions{ Użytkownik nie posiada konta albo został zablokowany na platformie.   }
+    \implementation{ Przy danym punkcie zainteresowania (POI) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
     \sholder{ UOB01  }
     \reqrelated{F07}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Możliwość pisania opinii wraz ze zdjęciami}]
+\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników }]
     \id{FO7}
     \priority{C}
     \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość pisania pisemnych opinii z możliwością dodania zdjecia
-        \item Ponieważ umożliwi to dodawania indywidualnych opinii atrakcji i ich edytowania. 
+        \item Jako użytkownik 
+        \item chce możliwość pisania pisemnych opinii z możliwością dodania zdjecia
+        \item ponieważ umożliwi to dodawania indywidualnych opinii atrakcji i ich edytowania. 
     \end{itemize}
     }
     \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
@@ -252,9 +252,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
     \name{Zapisywanie list wybranych POI pod konkretną nazwą.}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość zapisania wybranej trasy
-        \item Ponieważ umożliwi to przygotowanie trasy na później. 
+        \item Jako użytkownik 
+        \item chce możliwość zapisania wybranej trasy
+        \item ponieważ umożliwi to przygotowanie trasy na później. 
     \end{itemize}
     }
     \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona pokazuje się dymek dodaj do swoich tras}
@@ -275,9 +275,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Udostępnianie zapisanych list POI pomiędzy użytkownikami}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość udostępnienia wybranej trasy
-        \item Ponieważ umożliwi to polecania wybranych trasy. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość udostępnienia wybranej trasy
+        \item ponieważ umożliwi to polecania wybranych trasy. 
     \end{itemize}
     }
     \acceptcrit{ W zakładce zapisanych listy widniej dymek z udostępnię danej trasy}
@@ -294,9 +294,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi POI}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy tylko na pieszo
-        \item Ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość przejścia wybranej trasy tylko na pieszo
+        \item ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
     \end{itemize}
     }
     \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pierwszego do punktu ostatniego .}
@@ -314,9 +314,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
-        \item Ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
+        \item ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
     \end{itemize}
     }
     \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
@@ -334,9 +334,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy samochodem
-        \item Ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość przejścia wybranej trasy samochodem
+        \item ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
     \end{itemize}
     }
     \acceptcrit{ Możliwość wyboru trasy z transportem własnym samochodem.}
@@ -354,9 +354,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejrzenia całej trasy 
-        \item Ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość przejrzenia całej trasy 
+        \item ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
     \end{itemize}
     }
     \acceptcrit{ Wyświetla lista z czasem początkowym i końcowym każdego punktu odwiedzanego.}
@@ -373,9 +373,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania POI co w efekcie dostosuje resztę optymalnej trasy}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
-        \item Ponieważ to edycje personalizacji zaproponowanej trasy. 
+        \item Jako użytkownik 
+        \item chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
+        \item ponieważ to edycje personalizacji zaproponowanej trasy. 
     \end{itemize}
     }
     \acceptcrit{ Użytkownik może wybrać każdy element z proponowanej trasy i go zmienić}
@@ -392,9 +392,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
-        \item Ponieważ umożliwi to dodani personalizacji zaproponowanej trasy. 
+        \item Jako użytkownik 
+        \item chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
+        \item ponieważ umożliwi to dodani personalizacji zaproponowanej trasy. 
     \end{itemize}
     }
     \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
@@ -411,9 +411,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość dodania nowych własnych punktów
-        \item Ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
+        \item Jako użytkownik 
+        \item chce możliwość dodania nowych własnych punktów
+        \item ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
     \end{itemize}
     }
     \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu POI.}
@@ -430,9 +430,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
    \name{Aktualna trasa w trakcie bez ciągłego obliczania}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania   
-        \item Ponieważ umożliwi to interaktywne korzystanie. 
+        \item Jako użytkownik 
+        \item chce otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania   
+        \item ponieważ umożliwi to interaktywne korzystanie. 
     \end{itemize}
     }
     \acceptcrit{Każda zapisana trasa zapisuje się na urządzeniu wykorzystywanym do otwarcia/wyboru trasy w celu późniejszego jej odtworzenia.}
@@ -449,9 +449,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mmożliwość aktualnego podążania z trasą 
-        \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
+        \item Jako użytkownik 
+        \item chce mmożliwość aktualnego podążania z trasą 
+        \item ponieważ umożliwi to dynamiczne śledzenia trasy. 
     \end{itemize}
     } 
     \acceptcrit{ Dodany Tryb podróży.}
@@ -468,9 +468,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
     \name{Trasa Offline}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość otworzenia zapisanej trasy bez połączenia internetowego  
-        \item Ponieważ umożliwi to interaktywne korzystanie z aplikacji cały czas. 
+        \item Jako użytkownik 
+        \item chce możliwość otworzenia zapisanej trasy bez połączenia internetowego  
+        \item ponieważ umożliwi to interaktywne korzystanie z aplikacji cały czas. 
     \end{itemize}
     }
     \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
@@ -487,9 +487,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{S}
     \name{Algorytm Plannera}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce żeby planner korzystał z wszystkich możliwości 
-        \item Ponieważ umożliwi to interaktywne korzystanie cały czas bez dłużych nakładu czasowego. 
+        \item Jako użytkownik 
+        \item chce żeby planner korzystał z wszystkich możliwości 
+        \item ponieważ umożliwi to interaktywne korzystanie cały czas bez dłużych nakładu czasowego. 
     \end{itemize}
     }
     \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
@@ -511,9 +511,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Algorytm Plannera - środek transportu rower}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
-        \item Ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
+        \item Jako użytkownik 
+        \item chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
+        \item ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
     \end{itemize}
     }
     \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
@@ -535,9 +535,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Widok Druku - Pdf}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf
-        \item Ponieważ chciałbym mieć na kartce swój plan. 
+        \item Jako użytkownik 
+        \item chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf
+        \item ponieważ chciałbym mieć na kartce swój plan. 
     \end{itemize}
     }
     \acceptcrit{ Aplikacja umożliwia zapisanie w pdf widoku osi czasu}
@@ -555,9 +555,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Filtracja dostępnych Atrakcji - Menu}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
-        \item Ponieważ chciałbym mieć dokładniejszej selekcji POI.
+        \item Jako użytkownik 
+        \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
+        \item ponieważ chciałbym mieć dokładniejszej selekcji POI.
     \end{itemize}
     }
     \acceptcrit{ Możliwości wyboru kategorii POI}
@@ -575,9 +575,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Przeliczanie Trasy o aktualną datę i czas}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
-        \item Ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
+        \item Jako użytkownik 
+        \item chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
+        \item ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
     \end{itemize}
     }
     \acceptcrit{ Przycisk odświeżenia planu trasy}
@@ -595,9 +595,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Przeliczanie Trasy o opóźnienia komunikacji}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce dostawać aktualne dane o czasie oczekiwania na środek transportu
-        \item Ponieważ chciałbym mieć aktualne dane ile będę czekać
+        \item Jako użytkownik 
+        \item chce dostawać aktualne dane o czasie oczekiwania na środek transportu
+        \item ponieważ chciałbym mieć aktualne dane ile będę czekać
     \end{itemize}
     }
     \acceptcrit{ Przycisk odświeżenia planu trasy}
@@ -615,9 +615,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{C}
     \name{Możliwość korzystania jako gość}
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Nie Chce logować się do aplikacji
-        \item Ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
+        \item Jako użytkownik 
+        \item Nie chce logować się do aplikacji
+        \item ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
     \end{itemize}
     }
     \acceptcrit{ Dostęp do podstawowych funkcjonalności bez konieczności posiadania konta}
