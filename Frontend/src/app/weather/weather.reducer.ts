@@ -3,8 +3,8 @@ import { weatherActions } from './weather.actions';
 
 export type WeatherStatus = {
   time: string;
-  weathercode: number;
-  temperature: number;
+  weatherCode: number;
+  temperature2M: number;
 };
 
 export const WEATHERSTATUS_FEATURE_KEY = 'weatherStatus';

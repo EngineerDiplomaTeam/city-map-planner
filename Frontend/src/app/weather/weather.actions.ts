@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { WeatherStatus } from "./weatherstatus.reducer";
+import { WeatherStatus } from "./weather.reducer";
 
 export const weatherActions = createActionGroup({
   source: 'Weather',
