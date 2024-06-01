@@ -35,16 +35,12 @@ function get0BasedDayOfWeek(date: string): 0 | 1 | 2 | 3 | 4 | 5 | 6 {
   return zeroBased[new Date(date).getDay()] as 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-function greater(timeFrom: string, times: string[]): string {
-  const greatestFromTimes =
-    times.sort((a, b) => Number(a > b)).at(0) ?? '00:00:00';
-  return timeFrom > greatestFromTimes ? timeFrom : greatestFromTimes;
+function greater(timeFrom: string, time: string): string {
+  return timeFrom > time ? timeFrom : time;
 }
 
-function smaller(timeTo: string, times: string[]): string {
-  const smallestFromTimes =
-    times.sort((a, b) => Number(a < b)).at(0) ?? '23:59:59';
-  return timeTo < smallestFromTimes ? timeTo : smallestFromTimes;
+function smaller(timeTo: string, time: string): string {
+  return timeTo < time ? timeTo : time;
 }
 
 @Injectable({
@@ -124,9 +120,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     timeSpans: TimeSpansMap,
     pois: PointOfInterest[],
   ): EventInput[] {
-    console.log('timeSpans', timeSpans);
-
     const resources = Array.from(timeSpans.entries()); // It is a date string
+    console.log('resources', resources);
 
     return resources
       .flatMap(([resourceId, resourceRange]) =>
@@ -156,22 +151,22 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
                   `poi-business-hours-${IdToColorPipe.getColorForId(poi.id)}`,
                 ],
               },
-              {
+              ...resourceRange.map((range) => ({
                 resourceId,
                 groupId: `poi-${poi.id}`,
                 start: `${PoiScheduleStore.defaultDateOnly}T${greater(
                   businessHour.timeFrom,
-                  resourceRange.map((x) => x.from + ':00'),
+                  range.from + ':00',
                 )}`,
                 end: `${PoiScheduleStore.defaultDateOnly}T${smaller(
                   businessHour.timeTo,
-                  resourceRange.map((x) => x.to + ':00'),
+                  range.to + ':00',
                 )}`,
                 editable: false,
                 eventStartEditable: false,
                 eventResourceEditable: false,
                 display: 'none',
-              },
+              })),
             ]),
         ),
       )
