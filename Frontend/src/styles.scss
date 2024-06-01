@@ -143,7 +143,7 @@ mat-sidenav {
   background-color: #ddd;
 }
 
-$colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6;
+$colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6;
 @for $i from 1 through length($colors) {
   .poi-business-hours-#{$i} {
     opacity: 1 !important;
