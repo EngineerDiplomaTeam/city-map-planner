@@ -10,6 +10,6 @@
     @if (id()) {
       <button class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</button>
     }
-      <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
+    <span class="duration">{{ poi().preferredSightseeingTime | toDuration }}</span>
   </span>
 </article>
