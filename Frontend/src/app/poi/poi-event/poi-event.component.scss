@@ -1,14 +1,18 @@
 ::ng-deep.poi {
   box-sizing: border-box;
-  height: var(--time-height);
   background-image: var(--banner-url);
   background-size: cover;
   background-position: center;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+
+  &.hei {
+    height: var(--time-height);
+  }
 
   .title {
     align-self: stretch;

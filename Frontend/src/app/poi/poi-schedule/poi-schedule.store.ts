@@ -30,6 +30,19 @@ interface PoiScheduleState {
   sightseeingTimeSpans: TimeSpansMap;
 }
 
+function getTimeRange(startDate: Date, endDate: Date): string {
+  const diff = Math.abs(endDate.getTime() - startDate.getTime());
+
+  const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+  const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(
+    2,
+    '0',
+  );
+  const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+  return `${hours}:${minutes}:${seconds}`;
+}
+
 function get0BasedDayOfWeek(date: string): 0 | 1 | 2 | 3 | 4 | 5 | 6 {
   const zeroBased = [6, 0, 1, 2, 3, 4, 5];
   return zeroBased[new Date(date).getDay()] as 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -121,8 +134,6 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     pois: PointOfInterest[],
   ): EventInput[] {
     const resources = Array.from(timeSpans.entries()); // It is a date string
-    console.log('resources', resources);
-
     return resources
       .flatMap(([resourceId, resourceRange]) =>
         pois.flatMap((poi) =>
@@ -284,6 +295,7 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       id: `${PoiScheduleStore.id++}`,
       title: poi.map.label,
       duration: poi.preferredSightseeingTime,
+      editable: true,
       extendedProps: { poi },
       classNames: ['pure-container'],
       constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',
@@ -303,10 +315,15 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
     const [resource] = event.getResources();
 
+    const duration =
+      event.start && event.end
+        ? getTimeRange(event.start ?? new Date(), event.end ?? new Date())
+        : poi.preferredSightseeingTime;
+
     const mapped: EventInput = {
       id: event.id,
       title: poi.map.label,
-      duration: poi.preferredSightseeingTime,
+      duration: duration,
       extendedProps: { poi },
       classNames: ['pure-container'],
       constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',
