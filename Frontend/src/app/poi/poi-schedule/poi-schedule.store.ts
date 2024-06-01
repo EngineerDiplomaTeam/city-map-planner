@@ -14,6 +14,7 @@ import { formatDate } from 'date-fns';
 import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { PointOfInterest } from '../poi.reducer';
 import { EventReceiveArg } from '@fullcalendar/interaction';
+import { IdToColorPipe } from '../id-to-color.pipe';
 
 export interface Range<T> {
   from: T;
@@ -29,21 +30,30 @@ interface PoiScheduleState {
   sightseeingTimeSpans: TimeSpansMap;
 }
 
+function getTimeRange(startDate: Date, endDate: Date): string {
+  const diff = Math.abs(endDate.getTime() - startDate.getTime());
+
+  const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+  const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(
+    2,
+    '0',
+  );
+  const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+  return `${hours}:${minutes}:${seconds}`;
+}
+
 function get0BasedDayOfWeek(date: string): 0 | 1 | 2 | 3 | 4 | 5 | 6 {
   const zeroBased = [6, 0, 1, 2, 3, 4, 5];
   return zeroBased[new Date(date).getDay()] as 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-function greater(timeFrom: string, times: string[]): string {
-  const greatestFromTimes =
-    times.sort((a, b) => Number(a > b)).at(0) ?? '00:00:00';
-  return timeFrom > greatestFromTimes ? timeFrom : greatestFromTimes;
+function greater(timeFrom: string, time: string): string {
+  return timeFrom > time ? timeFrom : time;
 }
 
-function smaller(timeTo: string, times: string[]): string {
-  const smallestFromTimes =
-    times.sort((a, b) => Number(a < b)).at(0) ?? '23:59:59';
-  return timeTo < smallestFromTimes ? timeTo : smallestFromTimes;
+function smaller(timeTo: string, time: string): string {
+  return timeTo < time ? timeTo : time;
 }
 
 @Injectable({
@@ -124,7 +134,6 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     pois: PointOfInterest[],
   ): EventInput[] {
     const resources = Array.from(timeSpans.entries()); // It is a date string
-
     return resources
       .flatMap(([resourceId, resourceRange]) =>
         pois.flatMap((poi) =>
@@ -149,24 +158,26 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
                 eventStartEditable: false,
                 eventResourceEditable: false,
                 display: 'background',
-                classNames: ['poi-business-hours'],
+                classNames: [
+                  `poi-business-hours-${IdToColorPipe.getColorForId(poi.id)}`,
+                ],
               },
-              {
+              ...resourceRange.map((range) => ({
                 resourceId,
                 groupId: `poi-${poi.id}`,
                 start: `${PoiScheduleStore.defaultDateOnly}T${greater(
                   businessHour.timeFrom,
-                  resourceRange.map((x) => x.from + ':00'),
+                  range.from + ':00',
                 )}`,
                 end: `${PoiScheduleStore.defaultDateOnly}T${smaller(
                   businessHour.timeTo,
-                  resourceRange.map((x) => x.to + ':00'),
+                  range.to + ':00',
                 )}`,
                 editable: false,
                 eventStartEditable: false,
                 eventResourceEditable: false,
                 display: 'none',
-              },
+              })),
             ]),
         ),
       )
@@ -284,6 +295,7 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
       id: `${PoiScheduleStore.id++}`,
       title: poi.map.label,
       duration: poi.preferredSightseeingTime,
+      editable: true,
       extendedProps: { poi },
       classNames: ['pure-container'],
       constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',
@@ -303,10 +315,15 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
 
     const [resource] = event.getResources();
 
+    const duration =
+      event.start && event.end
+        ? getTimeRange(event.start ?? new Date(), event.end ?? new Date())
+        : poi.preferredSightseeingTime;
+
     const mapped: EventInput = {
       id: event.id,
       title: poi.map.label,
-      duration: poi.preferredSightseeingTime,
+      duration: duration,
       extendedProps: { poi },
       classNames: ['pure-container'],
       constraint: poi.businessHours.length ? `poi-${poi.id}` : 'businessHours',

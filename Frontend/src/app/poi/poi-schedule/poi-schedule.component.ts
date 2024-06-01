@@ -128,7 +128,7 @@ export class PoiScheduleComponent {
             editable: true,
             eventStartEditable: true,
             eventResourceEditable: true,
-            eventDurationEditable: false,
+            eventDurationEditable: true,
             droppable: true,
             // eventContent: this.eventContent(),
             eventReceive: (e) => this.poiScheduleStore.eventReceive(e),
