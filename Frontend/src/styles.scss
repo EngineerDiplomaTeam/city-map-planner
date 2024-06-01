@@ -143,9 +143,19 @@ mat-sidenav {
   background-color: #ddd;
 }
 
-.poi-business-hours {
-  background-color: green !important;
-  opacity: 0.1 !important;
+$colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6;
+@for $i from 1 through length($colors) {
+  .poi-business-hours-#{$i} {
+    opacity: 1 !important;
+    background-color: nth($colors, $i) !important;
+    width: 8px;
+    margin-left: #{8 * ($i - 1)}px;
+  }
+
+  .poi-color-#{$i} {
+    background-color: nth($colors, $i);
+    border-left: nth($colors, $i) solid 4px;
+  }
 }
 
 .fc-non-business {

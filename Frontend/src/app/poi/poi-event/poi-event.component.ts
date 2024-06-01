@@ -12,6 +12,7 @@ import { PointOfInterest } from '../poi.reducer';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
+import { IdToColorPipe } from '../id-to-color.pipe';
 
 @Component({
   selector: 'app-poi-event',
@@ -23,6 +24,7 @@ import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
     ToUrlPipe,
     MatIconButton,
     MatIcon,
+    IdToColorPipe,
   ],
   templateUrl: './poi-event.component.html',
   styleUrl: './poi-event.component.scss',

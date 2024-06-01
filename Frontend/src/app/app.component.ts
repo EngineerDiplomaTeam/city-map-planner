@@ -19,6 +19,8 @@ export class AppComponent {
 
   constructor() {
     this.store.dispatch(authActions.loadUserFromLocalStorage());
+    this.store.dispatch(poiActions.addToBasket({ poiId: 12 }));
+    this.store.dispatch(poiActions.addToBasket({ poiId: 13 }));
   }
 
   protected readonly poiActions = poiActions;

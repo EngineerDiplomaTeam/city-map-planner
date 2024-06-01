@@ -14,6 +14,7 @@ import { formatDate } from 'date-fns';
 import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { PointOfInterest } from '../poi.reducer';
 import { EventReceiveArg } from '@fullcalendar/interaction';
+import { IdToColorPipe } from '../id-to-color.pipe';
 
 export interface Range<T> {
   from: T;
@@ -123,6 +124,8 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
     timeSpans: TimeSpansMap,
     pois: PointOfInterest[],
   ): EventInput[] {
+    console.log('timeSpans', timeSpans);
+
     const resources = Array.from(timeSpans.entries()); // It is a date string
 
     return resources
@@ -149,7 +152,9 @@ export class PoiScheduleStore extends ComponentStore<PoiScheduleState> {
                 eventStartEditable: false,
                 eventResourceEditable: false,
                 display: 'background',
-                classNames: ['poi-business-hours'],
+                classNames: [
+                  `poi-business-hours-${IdToColorPipe.getColorForId(poi.id)}`,
+                ],
               },
               {
                 resourceId,

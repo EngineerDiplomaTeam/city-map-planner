@@ -1,5 +1,5 @@
 <article
-  class="poi"
+  class="poi {{ poi().id | idToColor }}"
   [style.--banner-url]="poi().details.bannerSrc | toUrl"
   [style.--time-height]="poi().preferredSightseeingTime | toHeight"
 >
