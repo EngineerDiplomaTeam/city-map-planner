@@ -380,7 +380,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \exceptions{  Brak przeładowania trasy przez brak internetu. }
     \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
     \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+    \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: POI użytkowników }]
     \id{F15}
@@ -393,13 +393,13 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \end{itemize}
     }
     \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
-    \inputdata{Wybrane atrakcje turystyczne - trasa. }
+    \inputdata{ Zalogowany użytkownik}
     \preconditions{  }
     \postconditions{   }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
     \implementation{ Na interaktywnej mapie powienien znajdować się przycisk do dodania własnych atrakcji, ale tylko gdy użytkownik jest zalogowany.}
     \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+    \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
     \id{F18}
@@ -411,9 +411,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item aby móc ocenić postępy w trasie.
     \end{itemize}
     } 
-    \acceptcrit{ Dodany Tryb podróży.}
+    \acceptcrit{ Pozycja użytkownika (gps) }
     \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
-    \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
+    \preconditions{Zgoda użytkownika na dostęp do lokalizacji}
     \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
     \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
     \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
