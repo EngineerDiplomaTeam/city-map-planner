@@ -227,27 +227,27 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01  }
     \reqrelated{F07}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników }]
+\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników + tekst}]
     \id{FO7}
     \priority{C}
     \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce możliwość pisania pisemnych opinii z możliwością dodania zdjecia
-        \item ponieważ umożliwi to dodawania indywidualnych opinii atrakcji i ich edytowania. 
+        \item aby móc przekazać większy kontekst moich opinii. 
     \end{itemize}
     }
-    \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
-    \inputdata{Nazwa użytkownika, mail. }
+    \acceptcrit{Opinia musi zostać zatwierdzona przez administratora, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
+    \inputdata{Posiadanie konta zdjecia, tekst }
     \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
-    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją. }
-    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
+    \postconditions{  }
+    \exceptions{     brak konta, za duże zdjęcie, nie prawidłowy format zdjęcia      }
     \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
-    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
+    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjecia używa kompresji formatu zdjecia. }
     \sholder{ UOB01  }
-    \reqrelated{F06}
+    \reqrelated{F06,F27}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisywanie list wybranych POI}]
+\begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisane atrakcje turystyczne}]
     \id{FO8}
     \priority{S}
     \name{Zapisywanie list wybranych POI pod konkretną nazwą.}
@@ -624,11 +624,28 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \inputdata{ Praca bez danych wejściowych }
     \preconditions{ Aplikacja działa bez dodatkowych danych }
     \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
-    \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji, .}
+    \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji.}
     \implementation{ aplikacja dostępna bez logowania
     }
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21,}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func27},caption={Karta wymagania: Panel Moderacji Opinii}]
+    \id{F27}
+    \priority{C}
+    \name{Panel Moderacji Opinii}
+    \descr{
+     Jako Administrator chce panel do administracyji opinii aby treści były zgodne obowiązującym prawem.
+    }
+    \acceptcrit{ Możliwość zarządzania opiniami wyświetlenie - akceptowanie - odrzucaniem  }
+    \inputdata{ Nowo dodane opinie użytkowników }
+    \preconditions{  }
+    \postconditions{  }
+    \exceptions{ Użytkownik dodał opinie nieodpowiednią dla dzieci. }
+    \implementation{ Dodanie kolejnej strony dostepnej tylko dla administratora, w któy będą wyświetlały się nowo dodane opinie oraz wszystkie zaakceptowane. 
+    }
+    \sholder{ UOB02 }
+    \reqrelated{F07}
 \end{requirementstab}
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
