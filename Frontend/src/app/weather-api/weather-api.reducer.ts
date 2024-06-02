@@ -7,7 +7,7 @@ export type WeatherStatus = {
   temperature2M: number;
 };
 
-export const WEATHERSTATUS_FEATURE_KEY = 'weatherStatus';
+export const WEATHERAPISTATUS_FEATURE_KEY = 'weatherStatus';
 
 export interface WeatherState {
   weatherStatus: WeatherStatus[];
