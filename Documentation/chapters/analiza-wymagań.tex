@@ -292,11 +292,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \id{F10}
     \priority{M}
     \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi POI}
-    \descr{\begin{itemize}
-        \item Jako użytkownik 
-        \item chce mieć możliwość przejścia wybranej trasy tylko na pieszo
-        \item ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
-    \end{itemize}
+    \descr{Jako użytkownik chcę w sposób automatyczny wyznaczyć optymalną trasę między atrakcjami aby wiedzieć jak map się przedostać do danej atrakcj
     }
     \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
     \inputdata{Wybrane 2 atrakcje turystyczne - trasę.  }
@@ -313,8 +309,8 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
-        \item ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
+        \item chce mieć możliwość przejścia wybranej trasy pieszo oraz dostępnej komunikacji miejskiej
+        \item aby przyśpieszyć podróż i zaoszczędzić czas
     \end{itemize}
     }
     \acceptcrit{ Możliwość wyboru trasy z udziałem komunikacji miejskiej.}
@@ -333,7 +329,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość przejścia wybranej trasy samochodem
+        \item chce mieć możliwość odbyć wybraną trase z udziałem samochodu
         \item ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
     \end{itemize}
     }
@@ -354,7 +350,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce mieć możliwość przejrzenia całej trasy 
-        \item ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
+        \item ponieważ umożliwi to przejrzenia zaproponowanej trasy, atrakcja po atrakcji. 
     \end{itemize}
     }
     \acceptcrit{ Widok listy zawierającej wszystkie uprzednio wybrane atrakcje turystyczne wraz z podstawowymi informacjiami o nich oraz trasy po między nimi.}
@@ -392,65 +388,27 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
-        \item ponieważ umożliwi to dodani personalizacji zaproponowanej trasy. 
+        \item chce możliwość dodania nowych punktów i usunięcia z aktualnej listy dostępnych punków
+        \item ponieważ chciałbym wyznaczyć trasę między punktami, którymi administratorzy nie dodali. 
     \end{itemize}
     }
     \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
     \inputdata{Wybrane atrakcje turystyczne - trasa. }
-    \preconditions{ Trasa zaktualizowana o niestandardowe punkty. }
-    \postconditions{ Prezentacja finalnej trasy.  }
+    \preconditions{  }
+    \postconditions{   }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
-    \implementation{ na początku osi harmonogramu istnieje możliwośc dodania punktu startu i adekwaniet punktu końcowego.}
+    \implementation{ Na interaktywnej mapie powienien znajdować się przycisk do dodania własnych atrakcji, ale tylko gdy użytkownik jest zalogowany.}
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Własne POI}]
-    \id{F16}
-    \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
-    \descr{\begin{itemize}
-        \item Jako użytkownik 
-        \item chce możliwość dodania nowych własnych punktów
-        \item ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
-    \end{itemize}
-    }
-    \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu POI.}
-    \inputdata{Przez formularz możliwość dodać atrakcje turystyczne. }
-    \preconditions{ Administrator otrzymuje w panelu propozycje nowych miejsc. }
-    \postconditions{ Użytkownik zostaje POInformowany o dodaniu kolejnych punktów.  }
-    \exceptions{  Dane w formularzu nie spełniają wymagań do zatwierdzenia. }
-    \implementation{ Dodane przez użytkowników POI powinny dzielić się na publiczne i prywatne.}
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:Aktualna trasa - bez dodatkowego obliczania}]
-    \id{F17}
-    \priority{S}
-   \name{Aktualna trasa w trakcie bez ciągłego obliczania}
-    \descr{\begin{itemize}
-        \item Jako użytkownik 
-        \item chce otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania   
-        \item ponieważ umożliwi to interaktywne korzystanie. 
-    \end{itemize}
-    }
-    \acceptcrit{Każda zapisana trasa zapisuje się na urządzeniu wykorzystywanym do otwarcia/wyboru trasy w celu późniejszego jej odtworzenia.}
-    \inputdata{Wybrane atrakcje turystyczne – Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera) }
-    \preconditions{ Po wybraniu zapisanej trasy wchodzi ona do trybu osi czasu z możliwością trybu nawigacji. }
-    \postconditions{ Wyświetla się wybrana zapisana trasa z ostatnimi informacjami możliwość aktualizacji. }
-    \exceptions{  Jeśli jest tryb offiline trasa się nie aktualizuje. }
-    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych informacji na telefonie śledzi trase.}
-    \sholder{ UOB01 }
-    \reqrelated{F18}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Pozycja użytkownika}]
+\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
     \id{F18}
     \priority{C}
-    \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
+    \name{Aktualna pozycja użytkownika na interaktywnej mapie}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mmożliwość aktualnego podążania z trasą 
-        \item ponieważ umożliwi to dynamiczne śledzenia trasy. 
+        \item chce widzieć swoją pozycję na mapie 
+        \item aby móc ocenić postępy w trasie.
     \end{itemize}
     } 
     \acceptcrit{ Dodany Tryb podróży.}
