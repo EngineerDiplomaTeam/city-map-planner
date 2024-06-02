@@ -33,7 +33,12 @@
         "plugin:import/typescript"
       ],
       "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier":  [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
         "@angular-eslint/directive-selector": [
           "error",
           {

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { authActions } from './auth/auth.actions';
 import { poiActions } from './poi/poi.actions';
 import { selectPoiInBasketCount } from './poi/poi.selectors';
-import { weatherActions } from './weather/weather.actions';
+import { weatherApiActions } from './weather-api/weather-api.actions';
 
 @Component({
   selector: 'app-root',
@@ -23,5 +23,5 @@ export class AppComponent {
   }
 
   protected readonly poiActions = poiActions;
-  protected readonly weatherActions = weatherActions;
+  protected readonly weatherApiActions = weatherApiActions;
 }
