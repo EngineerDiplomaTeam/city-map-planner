@@ -257,17 +257,15 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ umożliwi to przygotowanie trasy na później. 
     \end{itemize}
     }
-    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona pokazuje się dymek dodaj do swoich tras}
-    \inputdata{Wybrane atrakcje turystyczne z mapy bądź listy atrakcji,  }
-    \preconditions{ Wpis do zakładki ostatnich wybranych tras. }
-    \postconditions{ Odpowiednia zakładka z listą Zapisane Trasy.  }
-    \exceptions{  Jeśli użytkownik jest offline(lub nie zalogowany) wyskakuje błąd żeby dodać trase trzeba być zalogowanym online.   }
-    \implementation{ Możliwość otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania.
-    Możliwość otworzenia zapisanej trasy bez połączenia internetowego.
-    
-        }
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{}
+    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona, wyskakuje dymek z zapytaniem czy  chcesz dodać tą trase do ulubionych}
+    \inputdata{  }
+    \preconditions{ Zaplanowanie trasy w poprzednich widokach aplikacji }
+    \postconditions{  Brak }
+    \exceptions{  Jeśli użytkownik jest offline lub niezalogowany, pojawia się komunikat o błędzie:
+     "Aby dodać trasę, należy być zalogowanym i mieć połączenie z internetem."   }
+    \implementation{ Możliwość otworzenia zapisanej, optymalnej trasy bez konieczności ponownego jej obliczania oraz bez połączenia internetowego.}
+    \sholder{ UOB01, UOB02 }
+    \reqrelated{F09,F28}
 \end{requirementstab}
 
 \begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list POI}]
@@ -279,15 +277,16 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item chce mieć możliwość udostępnienia wybranej trasy
         \item ponieważ umożliwi to polecania wybranych trasy. 
     \end{itemize}
-    }
+        }
     \acceptcrit{ W zakładce zapisanych listy widniej dymek z udostępnię danej trasy}
-    \inputdata{Na podstawie zapisanej trasy jest możliwość wysłania krótko trwałego kodu trasy.  }
-    \preconditions{ Link do zapisanej trasy }
-    \postconditions{ Przesłania linku bądź kodu dla drugiego użytkownika w celu dodania tej trasy u siebie  }
-    \exceptions{  Wszystkie trasy udostępnione są dostępne online dla wszystkich użytkowników Internetu.  }
-    \implementation{ Każda trasa ma indywidualny kod w bazie danych.}
+    \inputdata{Użytkownik klika na przycisk udostępnienia trasy.  }
+    \preconditions{ Posiadanie zapisanej trasy  }
+    \postconditions{     Użytkownik udostępniający musi przekazać link do udostępnionej trasy, 
+     użytkownik odstający link musi zaakceptować udostępnioną trasę  }
+    \exceptions{  Nie można przekroczyć 100 zapisanych tras.  }
+    \implementation{ Każda trasa ma indywidualny kod w bazie danych. Właściciel trasy może ją edytować. a zobaczyć może każda osoba posiadająca link.}
     \sholder{ UOB01, UOB02, UOB03   }
-    \reqrelated{F10}
+    \reqrelated{F08,F28}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func10},caption={Karta wymagania: Wyznaczanie trasy pieszej }]
     \id{F10}
@@ -299,37 +298,36 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
     \end{itemize}
     }
-    \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pierwszego do punktu ostatniego .}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Trasa przedstawia w sposób edytowalny dla użytkownika  }
-    \exceptions{ Wybrano punkt, który w dostępnym czasie jest nie dostępny wyświetlenia godzin otwarcia danego punktu z sugestią zmiany czasu  }
-    \implementation{ *************************************************
-        }
+    \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
+    \inputdata{Wybrane 2 atrakcje turystyczne - trasę.  }
+    \preconditions{ brak }
+    \postconditions{ brak  }
+    \exceptions{ Brak dostępnej trasy między podanymi punktami  }
+    \implementation{ Implementacja na podstawie BFS i Priority Queue.    }
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func11},caption={Karta wymagania: Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}]
     \id{F11}
     \priority{S}
-    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
+    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
         \item ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
     \end{itemize}
     }
-    \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \acceptcrit{ Możliwość wyboru trasy z udziałem komunikacji miejskiej.}
+    \inputdata{Wybrane 2 POI }
     \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej  }
+    \postconditions{ brak albo połączenie z internetem aby aktualizować na bieżąco rozkład jazdy  }
     \exceptions{ Zaproponowanie innego transportu np. pieszo  }
     \implementation{ *************************************************
         }
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej Trasy z udziałem samochodów osobowych}]
+\begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej trasy z udziałem samochodów osobowych}]
     \id{F12}
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
@@ -339,17 +337,17 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
     \end{itemize}
     }
-    \acceptcrit{ Możliwość wyboru trasy z transportem własnym samochodem.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trasę z wykorzystaniem samochodu  }
-    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
+    \acceptcrit{ Algorytm umożliwia planowanie trasy z użyciem dróg przeznaczonych dla samochodów przy zachowaniu przepisów prawa drogowego takich jak drogi jednokierunkowe}
+    \inputdata{Wybrane 2 POI }
+    \preconditions{ Brak}
+    \postconditions{  Algorytm zaprezentował  trasę z wykorzystaniem dróg przeznaczonych dla samochodów     }
+    \exceptions{ Brak trasy możliwej do pokonania samochodem     }
     \implementation{ *************************************************
         }
     \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11}
+    \reqrelated{IO1,F09,F10,F11}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Widok Generowania Optymalnej Trasy }]
+\begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Podgląd Wygenerowanej optymalnej trasy }]
     \id{F13}
     \priority{M}
     \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
@@ -359,23 +357,24 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
     \end{itemize}
     }
-    \acceptcrit{ Wyświetla lista z czasem początkowym i końcowym każdego punktu odwiedzanego.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Lista podróżowania wyświetlona na osi czasu. }
-    \postconditions{ Prezentacja na aktywnej mapie całej trasy Funkcja podróży  }
-    \exceptions{  Brak wybranej trasy }
-    \implementation{ Z lewej strony widać proponowaną trase a z prawej strony ekranu widać oś czas z wybranymi atrakcjami.}
+    \acceptcrit{ Widok listy zawierającej wszystkie uprzednio wybrane atrakcje turystyczne wraz z podstawowymi informacjiami o nich oraz trasy po między nimi.}
+    \inputdata{ Uprzednio wygenerowany plan zwiedzania}
+    \preconditions{ Brak }
+    \postconditions{ Dostęp do internetu aby pobrać aktualizacje trasdy w przypadku zmian danych. }
+    \exceptions{  Brak wybranego planu zwiedzania }
+    \implementation{ Z lewej strony widać proponowaną trase a z prawej strony ekranu widać oś czas z wybranymi atrakcjami. Użytkownik może modyfikować trase oraz wybierać konkretne punkty na trasie, 
+    w celu bliższego przyjrzenia się nim}
     \sholder{ UOB01, UOB03   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Zmiana Optymalnej trasy według preferencji }]
+\begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Widok kalendarza podróży }]
     \id{F14}
     \priority{M}
-    \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania POI co w efekcie dostosuje resztę optymalnej trasy}
+    \name{Widok kalendarza podróży trasy powinien umożliwiać zmianę kolejności odwiedzania na osi czasu POI co w efekcie dostosuje resztę optymalnej trasy}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
-        \item ponieważ to edycje personalizacji zaproponowanej trasy. 
+        \item chce mieć możliwość ustalania godzin zwiedzania
+        \item ponieważ kalendarz pokaże mi możliwość edycji trasy wycieczki optymalnej do godzin otwarcia. 
     \end{itemize}
     }
     \acceptcrit{ Użytkownik może wybrać każdy element z proponowanej trasy i go zmienić}
@@ -387,7 +386,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: Dodawania na mapę własnych POI }]
+\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: POI użytkowników }]
     \id{F15}
     \priority{C}
     \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
@@ -647,6 +646,22 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB02 }
     \reqrelated{F07}
 \end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func28},caption={Karta wymagania: Widok list atrakcji}]
+    \id{F28}
+    \priority{C}
+    \name{Widok zapisanych list atrakcji}
+    \descr{Użytkownik dodaje atrakcje do koszyka, liste takich atrakcji może zapisać do ulubionych i jakąś ją nazwać, w celu późniejszego odtworzenia.
+    }
+    \acceptcrit{ użytkownik dodał liste atracji do ulubionych }
+    \inputdata{ Zapisane listy atrakcji }
+    \preconditions{  }
+    \postconditions{  }
+    \exceptions{ Atrakcje z listy są niedostępne }
+    \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane listy atrakcji do ulubionych. Widok ten włącza się z menu konta użytkownika.
+    }
+    \sholder{ UOB01 }
+    \reqrelated{F09}
+\end{requirementstab}
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
 
@@ -662,7 +677,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \exceptions{ API urzędu transportu miejskiego w Gdańsku nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji}
     \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych}
     \sholder{UOB01, UOB02, UOB03}
-    \reqrelated{F20}
+    \reqrelated{F11,F20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem open Weather API}]
     \id{IO2}
