@@ -71,7 +71,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \descr{Aplikacja musi działać i synchronizować dane do 15 minut. 
     Wersja offline wykorzystuje ostatnie zapisane informacje takie jak Umożliwia podgląd wcześniej zaplanowanych wycieczek}
     \sholder{UOB2}
-    \reqrelated{F19}
+    \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel administracyjny}]
     \id{WO3}
@@ -401,8 +401,32 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
+    \id{F16}
+    \priority{C}
+    \name{Algorytm Plannera - środek transportu rower}
+    \descr{\begin{itemize}
+        \item Jako użytkownik 
+        \item chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
+        \item ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
+    \end{itemize}
+    }
+    \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
+    \inputdata{Wybrane atrakcje turystyczne – trasa. }
+    \preconditions{Przestawia optymalną trase.   }
+    \postconditions{ ATrasa zostaje przedstawiona użytkownikowi. }
+    \exceptions{ Brak atrakcji brak planu.}
+    \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
+    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
+    Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
+    Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
+    \sholder{ UOB02 }
+    \reqrelated{F20}
+\end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
-    \id{F18}
+    \id{F17}
     \priority{C}
     \name{Aktualna pozycja użytkownika na interaktywnej mapie}
     \descr{\begin{itemize}
@@ -414,30 +438,31 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \acceptcrit{ Pozycja użytkownika (gps) }
     \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
     \preconditions{Zgoda użytkownika na dostęp do lokalizacji}
-    \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
-    \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
-    \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
+    \postconditions{ Brak }
+    \exceptions{  Brak zgody użytkownika na dostęp do lokalizacji. zgubiony sygnał gps     }
+    \implementation{ Aplikacja na podstawie danych GPS pokazuje postęp użytkownika.}
     \sholder{ UOB01 }
     \reqrelated{F17}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func19},caption={Karta wymagania: Trasa Offline}]
-    \id{F19}
-    \priority{S}
-    \name{Trasa Offline}
+\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Filtracja POI }]
+    \id{F18}
+    \priority{C}
+    \name{Filtracja atrakcji turystycznych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość otworzenia zapisanej trasy bez połączenia internetowego  
-        \item ponieważ umożliwi to interaktywne korzystanie z aplikacji cały czas. 
+        \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
+        \item ponieważ chciałbym mieć dokładniejszej selekcji POI.
     \end{itemize}
     }
-    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Aplikacja działa na zapisanych danych.   }
-    \postconditions{ Aplikacja działająca bez podłączenia do internetu. }
-    \exceptions{  Aplikacja została uruchomiona automatycznie po pobraniu bez Internetu (prosi o podłączenie do Internetu). }
-    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych lokalnych informacjami na urządzeniu.}
-    \sholder{ UOB01 }
-    \reqrelated{F16}
+    \acceptcrit{ Możliwości wyboru kategorii POI}
+    \inputdata{Wybrana kategoria. }
+    \preconditions{     Włączony widok interaktywnej mapy lub listy pois     }
+    \postconditions{ Brak }
+    \exceptions{ Brak }
+    \implementation{ Możliwość filtrowania poi na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
+    }
+    \sholder{UOB01, UOB02 }
+    \reqrelated{F20,F21,}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func20},caption={Karta wymagania: Algorytm Plannera}]
     \id{F20}
@@ -463,30 +488,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB02 }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
-    \id{F21}
-    \priority{C}
-    \name{Algorytm Plannera - środek transportu rower}
-    \descr{\begin{itemize}
-        \item Jako użytkownik 
-        \item chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
-        \item ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
-    \end{itemize}
-    }
-    \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Przestawia optymalną trase.   }
-    \postconditions{ ATrasa zostaje przedstawiona użytkownikowi. }
-    \exceptions{ Brak atrakcji brak planu.}
-    \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
-    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
-    Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
-    Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
-    Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
-    \sholder{ UOB02 }
-    \reqrelated{F20}
-\end{requirementstab}
+
 \begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Druk planu zwiedzania }]
     \id{F22}
     \priority{C}
@@ -507,42 +509,23 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02,UOB03 }
     \reqrelated{F12, F13,F14, F20,F21}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Filtracja POI }]
-    \id{F23}
-    \priority{C}
-    \name{Filtracja atrakcji turystycznych}
-    \descr{\begin{itemize}
-        \item Jako użytkownik 
-        \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
-        \item ponieważ chciałbym mieć dokładniejszej selekcji POI.
-    \end{itemize}
-    }
-    \acceptcrit{ Możliwości wyboru kategorii POI}
-    \inputdata{Wybrane atrakcje turystyczne, okres czasowy jaki nas interesuje dotyczące atrakcji. }
-    \preconditions{ Włączona lista z wszystkimi POI }
-    \postconditions{ Wyświetlaja się potrzebne POI. }
-    \exceptions{ Brak dostępnych POI w zadanyum czasie.}
-    \implementation{ Możliwość filtrowania poi na podstawie kategorii takich jak ilość osób, cena itd
-    }
-    \sholder{UOB01, UOB02 }
-    \reqrelated{F20,F21,}
-\end{requirementstab}
+
 \begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Automatyczna aktualizacja planu}]
     \id{F24}
     \priority{C}
-    \name{Przeliczanie Trasy o aktualną datę i czas}
+    \name{Automatyczna aktualizacja planu zwiedzania w przypadku zmianu danych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
         \item ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
     \end{itemize}
     }
-    \acceptcrit{ Przycisk odświeżenia planu trasy}
-    \inputdata{Wybrana trasa turystyczna. }
-    \preconditions{ Wybrana trasa była wcześniej włączona }
-    \postconditions{ Wyświetla się aktualny plan trasy. }
-    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
-    \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
+    \acceptcrit{ Automatyczne zmiany}
+    \inputdata{ Uprzednio wygenerowany plan zwiedzania}
+    \preconditions{ Wygenerowany plan }
+    \postconditions{ Brak }
+    \exceptions{ Wyświetla błąd że nie udało się wygenerować planu po zmianie danych}
+    \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.*****************
     }
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21,}
@@ -550,7 +533,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
     \id{F25}
     \priority{C}
-    \name{Przeliczanie Trasy o opóźnienia komunikacji}
+    \name{Przeliczanie Trasy o opóźnienia komunikacji miejskiej}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce dostawać aktualne dane o czasie oczekiwania na środek transportu
@@ -578,8 +561,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \end{itemize}
     }
     \acceptcrit{ Dostęp do podstawowych funkcjonalności bez konieczności posiadania konta}
-    \inputdata{ Praca bez danych wejściowych }
-    \preconditions{ Aplikacja działa bez dodatkowych danych }
+    \inputdata{ Brak }
     \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
     \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji.}
     \implementation{ aplikacja dostępna bez logowania
@@ -630,35 +612,34 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \descr{Interfejs pozyskujący dane o komunikacji publicznej miasta Gdańsk}
     \acceptcrit{Pozyskanie aktualnych danych}
     \inputdata{API MZK Gdańsk}
-    \preconditions{ Platforma MZK Gdańsk działa}
-    \postconditions{ Informacje zostały poprawnie przekazane do plików}
+    \preconditions{ API MZK Gdańsk działa}
+    \postconditions{ Informacje zostały poprawnie przekazane do bazy danych}
     \exceptions{ API urzędu transportu miejskiego w Gdańsku nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji}
     \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych}
     \sholder{UOB01, UOB02, UOB03}
     \reqrelated{F11,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem open Weather API}]
+\begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem openMeteo}]
     \id{IO2}
     \priority{S}
-    \name{Integracja z systemem open Weather API}
+    \name{Integracja z systemem openMeteoI}
     \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z POI np.Gdańska}
-    \acceptcrit{Integracja algorytmu planowania trasy na podstawie pogody}
+    \acceptcrit{Dane zostały zapisane do bazy danych i aktalizują się co 15 minut}
     \inputdata{Miasto np. Miasto Gdańsk}
     \preconditions{ Okres potrzebowania na podróż a}
-    \postconditions{ Informacje zostały poprawnie przekazane do plików}
-    \exceptions{ Wyświetla błąd iż plan trasy nie został uzwgledniony o pogodę, gdyż wystąpił błąd np. Brak połączenia internetowego}
-    \implementation{ Dodanie Klienta Pogodowego, który przechowuje dane z wiarygodnością do 15minut.}
+    \postconditions{ Informacje zostały poprawnie przekazane do bazy danych}
+    \exceptions{ Open Meteo nie działa}
+    \implementation{ Dodanie klienta pogodowego, który przechowuje dane z rozdzielczością do 15minut.}
     \sholder{UOB01, UOB02, UOB03}
     \reqrelated{F20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env3},caption={Karta wymagania: Integracja z systemem overpass API}]
     \id{IO3}
     \priority{M}
-    \name{Integracja z systemem overpass API}
-    \descr{cykliczna aktualizacja bazy dróg, ścieżek itd w Gdańsku}
+    \name{Integracja z systemem Overpass Turbo}
+    \descr{Cykliczna aktualizacja bazy dróg, ścieżek itd w Gdańsku}
     \acceptcrit{Integracja algorytmu planowania trasy na podstawie danych transportu publicznego}
     \inputdata{Graf połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, 2 wybrane przez użytkownika punkty - początek i koniec}
-    \preconditions{ Okres potrzebowania na podróż a}
     \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
     \exceptions{ Brak połączenia między wybranymi punktami, system powinien zwrócić informację o takiej styacji zamiast zakończyć żądanie niepowodzeniem.}
     \implementation{ Cała mapa Gdańska zajmuje ok 100 MB w formacie JSON, system powinien obliczać optymalną trasę na pełnym grafie połączeń, nie ma potrzeby tworzenia pod grafów..}
