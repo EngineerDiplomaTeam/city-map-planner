@@ -1,4 +1,9 @@
-<p>weather-api works!</p>
 <p>
-  {{ weatherapiservice.listWeather() | json }}
+<!--
+  {{ weather | async | json }}
+-->
 </p>
+<div *ngIf="closestWeather$ | async as closestWeather;">
+  <p> {{ closestWeather.temperature2M }}°C</p>
+
+</div>
