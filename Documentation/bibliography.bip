@@ -60,3 +60,9 @@
   title = {Progressive Web Apps},
   publisher = {Manning Publications}
 }
+@article{fakenews,
+  title = {The evaluation of fake and true news: on the role of intelligence, personality, interpersonal trust, ideological attitudes, and news consumption},
+  journal = {Heliyon},
+  year = {2021},
+  author = {Christian Montag, Helena S. Schmitt,Dmitri Rozgonjuk, Dmitri Rozgonjuk, Jon D. Elhai}
+}
