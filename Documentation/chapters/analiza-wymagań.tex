@@ -8,7 +8,7 @@
 \section{Sposób gromadzenia wymagań}
 \label{sec:sposob-gromadzenia-wymagan}
 
-Wymagania dla projektu zostały zebrane w pierwszym semestrze. Zostały określone na podstawie analizy funkcjonowania
+Wymagania dla projektu zostały wybrane przez zespół projektowy w pierwszym semestrze. Zostały określone na podstawie analizy aktualnych rozwiązań i bieżąco potrzeb użytkowników.
 
 Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkcjonalności projektu. \newline Wykorzystana została metodyka priorytetyzacji wymagań MoSCoW\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
 \begin{itemize}
@@ -22,17 +22,17 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \section{Aktorzy}
 \label{sec:aktorzy}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={opis udzialowca}]
+\begin{stakeholder}[label={tab:stakeholder:someholder1},caption={opis udzialowca}]
     \id{UOB 01}
     \name{Podstawowy użytkownik aplikacji (np. Turysta) }
-    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi }
+    \descr{Osoba korzystająca z aplikacji w celu poznawania \glslink{poidef}{POI} i optymalnego przemieszczania się między nimi }
     \type{Ożywiony bezpośredni}
     \viewpoint{Użytkownik - operator}
     \limitations{Wymaga umiarkowanych umiejętności technicznych}
     \requ{-----------------}
 \end{stakeholder}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
+\begin{stakeholder}[label={tab:stakeholder:someholder2},caption={Opis udzialowca}]
     \id{UOB 02}
     \name{Zespół projektowy}
     \descr{Pomysłodawcy i autorzy rozwiązania}
@@ -42,7 +42,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \requ{-----------------}
 \end{stakeholder}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
+\begin{stakeholder}[label={tab:stakeholder:someholder3},caption={Opis udzialowca}]
     \id{UOB 03}
     \name{Firmy o charakterze najmu krótko-terminowym }
     \descr{Firmy o charakterze najmu krótko-terminowego mające bezpośredni kontakt z turystami}
@@ -77,7 +77,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \id{WO3}
     \priority{S}
     \name{Zarządzanie danymi z poziomu aplikacji}
-    \descr{Możliwość sprawdzanie aktualnych danych POI poprzez panel aplikacji internetowej (Panel administracyjny) }
+    \descr{Możliwość sprawdzanie aktualnych danych \glslink{poidef}{POI} poprzez panel aplikacji internetowej (Panel administracyjny) }
     \sholder{UOB2}
     \reqrelated{WO3}
 \end{requirementstab}
@@ -151,7 +151,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Widok listy POI}]
+\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Widok listy \glslink{poidef}{POI}}]
     \id{FO3}
     \priority{M}
     \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
@@ -161,7 +161,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ chce zobaczyć dostępne spektrum możlwości, bez szukania informacji na mapie i przeciągania. 
     \end{itemize}
     }
-    \acceptcrit{Lista dostępnych POI. }
+    \acceptcrit{Lista dostępnych \glslink{poidef}{POI}. }
     \inputdata{Brak}
     \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami.  }
     \postconditions{ Użytkownik może przeczytać lub klinknąć na interesujące go atrakcje.   }
@@ -192,14 +192,14 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Punkty interaktywnej mapy}]
     \id{FO5}
     \priority{M}
-    \name{Znaczniki na interaktywnej mapie informujące o POI.}
+    \name{Znaczniki na interaktywnej mapie informujące o \glslink{poidef}{POI}.}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce móc wyświetlić wybrane atrakcje, które mnie interesują
-        \item ponieważ  umożliwi to spojrzenie na opis POI.
+        \item ponieważ  umożliwi to spojrzenie na opis \glslink{poidef}{POI}.
     \end{itemize}
     }
-    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez administratora. Po kliknięciu znacznika pojawią się szczegółowe informacje o POI }
+    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez administratora. Po kliknięciu znacznika pojawią się szczegółowe informacje o \glslink{poidef}{POI} }
     \inputdata{Otwiera Aplikacje. }
     \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez administratora  aplikacji.}
     \postconditions{ Brak  }
@@ -223,7 +223,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \preconditions{ Można dodawać opinie liczbową.}
     \postconditions{ Brak  }
     \exceptions{ Użytkownik nie posiada konta albo został zablokowany na platformie.   }
-    \implementation{ Przy danym punkcie zainteresowania (POI) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
+    \implementation{ Przy danym punkcie zainteresowania (\glslink{poidef}{POI}) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
     \sholder{ UOB01  }
     \reqrelated{F07}
 \end{requirementstab}
@@ -242,15 +242,15 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
     \postconditions{  }
     \exceptions{     brak konta, za duże zdjęcie, nie prawidłowy format zdjęcia      }
-    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
+    \implementation{ Przy danym \glslink{poidef}{POI} po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
     Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjecia używa kompresji formatu zdjecia. }
     \sholder{ UOB01  }
-    \reqrelated{F06,F27}
+    \reqrelated{F06,F25}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisane atrakcje turystyczne}]
     \id{FO8}
     \priority{S}
-    \name{Zapisywanie list wybranych POI pod konkretną nazwą.}
+    \name{Zapisywanie list wybranych \glslink{poidef}{POI} pod konkretną nazwą.}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce możliwość zapisania wybranej trasy
@@ -265,13 +265,13 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
      "Aby dodać trasę, należy być zalogowanym i mieć połączenie z internetem."   }
     \implementation{ Możliwość otworzenia zapisanej, optymalnej trasy bez konieczności ponownego jej obliczania oraz bez połączenia internetowego.}
     \sholder{ UOB01, UOB02 }
-    \reqrelated{F09,F28}
+    \reqrelated{F09,F26}
 \end{requirementstab}
 
-\begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list POI}]
+\begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list \glslink{poidef}{POI}}]
     \id{FO9}
     \priority{C}
-    \name{Udostępnianie zapisanych list POI pomiędzy użytkownikami}
+    \name{Udostępnianie zapisanych list \glslink{poidef}{POI} pomiędzy użytkownikami}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce mieć możliwość udostępnienia wybranej trasy
@@ -286,12 +286,12 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \exceptions{  Nie można przekroczyć 100 zapisanych tras.  }
     \implementation{ Każda trasa ma indywidualny kod w bazie danych. Właściciel trasy może ją edytować. a zobaczyć może każda osoba posiadająca link.}
     \sholder{ UOB01, UOB02, UOB03   }
-    \reqrelated{F08,F28}
+    \reqrelated{F08,F26}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func10},caption={Karta wymagania: Wyznaczanie trasy pieszej }]
     \id{F10}
     \priority{M}
-    \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi POI}
+    \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi \glslink{poidef}{POI}}
     \descr{Jako użytkownik chcę w sposób automatyczny wyznaczyć optymalną trasę między atrakcjami aby wiedzieć jak map się przedostać do danej atrakcj
     }
     \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
@@ -314,7 +314,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \end{itemize}
     }
     \acceptcrit{ Możliwość wyboru trasy z udziałem komunikacji miejskiej.}
-    \inputdata{Wybrane 2 POI }
+    \inputdata{Wybrane 2 \glslink{poidef}{POI} }
     \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
     \postconditions{ brak albo połączenie z internetem aby aktualizować na bieżąco rozkład jazdy  }
     \exceptions{ Zaproponowanie innego transportu np. pieszo  }
@@ -334,7 +334,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \end{itemize}
     }
     \acceptcrit{ Algorytm umożliwia planowanie trasy z użyciem dróg przeznaczonych dla samochodów przy zachowaniu przepisów prawa drogowego takich jak drogi jednokierunkowe}
-    \inputdata{Wybrane 2 POI }
+    \inputdata{Wybrane 2 \glslink{poidef}{POI} }
     \preconditions{ Brak}
     \postconditions{  Algorytm zaprezentował  trasę z wykorzystaniem dróg przeznaczonych dla samochodów     }
     \exceptions{ Brak trasy możliwej do pokonania samochodem     }
@@ -366,7 +366,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Widok kalendarza podróży }]
     \id{F14}
     \priority{M}
-    \name{Widok kalendarza podróży trasy powinien umożliwiać zmianę kolejności odwiedzania na osi czasu POI co w efekcie dostosuje resztę optymalnej trasy}
+    \name{Widok kalendarza podróży trasy powinien umożliwiać zmianę kolejności odwiedzania na osi czasu \glslink{poidef}{POI} co w efekcie dostosuje resztę optymalnej trasy}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce mieć możliwość ustalania godzin zwiedzania
@@ -382,10 +382,10 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: POI użytkowników }]
+\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: \glslink{poidef}{POI} użytkowników }]
     \id{F15}
     \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych \glslink{poidef}{POI}}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce możliwość dodania nowych punktów i usunięcia z aktualnej listy dostępnych punków
@@ -401,7 +401,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
+\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
     \id{F16}
     \priority{C}
     \name{Algorytm Plannera - środek transportu rower}
@@ -420,12 +420,12 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
     \reqrelated{F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
+\begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
     \id{F17}
     \priority{C}
     \name{Aktualna pozycja użytkownika na interaktywnej mapie}
@@ -444,22 +444,22 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{ UOB01 }
     \reqrelated{F17}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Filtracja POI }]
+\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Filtracja \glslink{poidef}{POI} }]
     \id{F18}
     \priority{C}
     \name{Filtracja atrakcji turystycznych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
         \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
-        \item ponieważ chciałbym mieć dokładniejszej selekcji POI.
+        \item ponieważ chciałbym mieć dokładniejszej selekcji \glslink{poidef}{POI}.
     \end{itemize}
     }
-    \acceptcrit{ Możliwości wyboru kategorii POI}
+    \acceptcrit{ Możliwości wyboru kategorii \glslink{poidef}{POI}}
     \inputdata{Wybrana kategoria. }
     \preconditions{     Włączony widok interaktywnej mapy lub listy pois     }
     \postconditions{ Brak }
     \exceptions{ Brak }
-    \implementation{ Możliwość filtrowania poi na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
+    \implementation{ Możliwość filtrowania \glslink{poidef}{poi} na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
     }
     \sholder{UOB01, UOB02 }
     \reqrelated{F20,F21,}
@@ -483,14 +483,14 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
 
-\begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Druk planu zwiedzania }]
-    \id{F22}
+\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Druk planu zwiedzania }]
+    \id{F21}
     \priority{C}
     \name{Widok Druku - Pdf}
     \descr{\begin{itemize}
@@ -499,19 +499,19 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
         \item ponieważ chciałbym mieć na kartce swój plan. 
     \end{itemize}
     }
-    \acceptcrit{ Aplikacja umożliwia zapisanie w pdf widoku osi czasu}
-    \inputdata{Wybrane atrakcje turystyczne – Zapisana trasa. }
-    \preconditions{ Wybrana trasa nie może mieć błedów   }
-    \postconditions{ Przełącza na tryb druku wbudowany w urządzenie. }
-    \exceptions{ Jeśli urządzenie nie ma możliwości druku przełącza na pobieranie PDF.}
+    \acceptcrit{ Aplikacja wyświetli monit "drukowanie" dostosowany do używanego systemu operacyjnego}
+    \inputdata{Uprzednio wygenerowany plan zwiedzania }
+    \preconditions{ Brak }
+    \postconditions{Wsparcie systemu operacyjnego użytkownika w drukowaniu.    }
+    \exceptions{ Brak wsparcia systemu operacyjnego użytkownika w drukowaniu..}
     \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
     }
     \sholder{UOB01, UOB02,UOB03 }
-    \reqrelated{F12, F13,F14, F20,F21}
+    \reqrelated{F12, F13,F14, F20}
 \end{requirementstab}
 
-\begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Automatyczna aktualizacja planu}]
-    \id{F24}
+\begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Automatyczna aktualizacja planu}]
+    \id{F22}
     \priority{C}
     \name{Automatyczna aktualizacja planu zwiedzania w przypadku zmianu danych}
     \descr{\begin{itemize}
@@ -530,8 +530,8 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21,}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
-    \id{F25}
+\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
+    \id{F23}
     \priority{C}
     \name{Przeliczanie Trasy o opóźnienia komunikacji miejskiej}
     \descr{\begin{itemize}
@@ -550,8 +550,8 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21,}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Dostęp bez autoryzacji}]
-    \id{F26}
+\begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Dostęp bez autoryzacji}]
+    \id{F24}
     \priority{C}
     \name{Możliwość korzystania jako gość}
     \descr{\begin{itemize}
@@ -564,13 +564,12 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \inputdata{ Brak }
     \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
     \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji.}
-    \implementation{ aplikacja dostępna bez logowania
-    }
+    \implementation{ Aplikacja dostępna bez logowania, możliwość przeglądania i wybierania atrakcji z interaktywnej mapy z wszystkimi jej funkcjami dotyczących atrakcji bez możliwości dodawania opinii, ani żadnych modyfikacji na mapie.}
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func27},caption={Karta wymagania: Panel Moderacji Opinii}]
-    \id{F27}
+    \id{F25}
     \priority{C}
     \name{Panel Moderacji Opinii}
     \descr{
@@ -587,7 +586,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \reqrelated{F07}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func28},caption={Karta wymagania: Widok list atrakcji}]
-    \id{F28}
+    \id{F26}
     \priority{C}
     \name{Widok zapisanych list atrakcji}
     \descr{Użytkownik dodaje atrakcje do koszyka, liste takich atrakcji może zapisać do ulubionych i jakąś ją nazwać, w celu późniejszego odtworzenia.
@@ -623,7 +622,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \id{IO2}
     \priority{S}
     \name{Integracja z systemem openMeteoI}
-    \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z POI np.Gdańska}
+    \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z \glslink{poidef}{POI} np.Gdańska}
     \acceptcrit{Dane zostały zapisane do bazy danych i aktalizują się co 15 minut}
     \inputdata{Miasto np. Miasto Gdańsk}
     \preconditions{ Okres potrzebowania na podróż a}
@@ -638,30 +637,29 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Integracja z systemem Overpass Turbo}
     \descr{Cykliczna aktualizacja bazy dróg, ścieżek itd w Gdańsku}
-    \acceptcrit{Integracja algorytmu planowania trasy na podstawie danych transportu publicznego}
-    \inputdata{Graf połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, 2 wybrane przez użytkownika punkty - początek i koniec}
-    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
-    \exceptions{ Brak połączenia między wybranymi punktami, system powinien zwrócić informację o takiej styacji zamiast zakończyć żądanie niepowodzeniem.}
-    \implementation{ Cała mapa Gdańska zajmuje ok 100 MB w formacie JSON, system powinien obliczać optymalną trasę na pełnym grafie połączeń, nie ma potrzeby tworzenia pod grafów..}
+    \acceptcrit{Dane o mapie są aktualne}
+    \inputdata{Dane połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, 2 wybrane przez użytkownika punkty - początek i koniec. Przekazane w formacie xml}
+    \postconditions{ Proces aktualizacji nie wywołuje przerw w działaniu}
+    \exceptions{ API nie działą lub zawiera błędne dane}
+    \implementation{ Trzeba napisać program który zrozumie xml i przerobi go na graf połączeń w formie akceptowalnym przez postgres.}
     \sholder{UOB01, UOB02, UOB03}
     \reqrelated{F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy internetowej w oparciu o Open layers    }]
+\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy}]
     \id{IO4}
-    \priority{S}
-    \name{Implementacja interaktywnej mapy internetowej w oparciu o Open layers}
+    \priority{M}
+    \name{Implementacja interaktywnej mapy internetowej oprzy użyciu biblioteki Open layers}
     \descr{Aplikacja zawiera dwuwymiarową mapę, kolorystycznie dostosowaną do trybu ciemnego / jasnego zgodnie z ustawieniami urządzenia użytkownika.}
     \acceptcrit{Mapa zawiera ikony przedstawiające atrakcje turystycznych, po których kliknięciu otworzy się okienko z informacjami o tej atrakcji. Mapa obsługuje urządzenia obsługiwane przy pomocy myszki jak i urządzenia z ekranami dotykowymi.}
     \inputdata{Lista atrakcji turystycznych wraz z informacjami o nich, schemat kolorystyczny urządzenia (jasny / ciemny)}
-    \preconditions{ Załadowane dane z Aplikacji}
-    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
+    \preconditions{ Załadowanie danych z bazy danych}
     \exceptions{ Brak atrakcji turystycznych – mapa powinna pokazać informację o braku danych.}
-    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa Stadia Maps.}
+    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa Stadia Maps przy połączeniu biblioteki  Open layers}
     \sholder{ UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
-    \id{IO4}
+\begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
+    \id{IO5}
     \priority{C}
     \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
     \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
@@ -674,92 +672,62 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \sholder{UOB01, UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
-    \id{IO5}
-    \priority{C}
-    \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
-    \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
-    \acceptcrit{Mapa podczas tworzenia proponowanej trasy robi możliwe opcje z wykorzystaniem tych informacji.}
-    \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
-    \preconditions{ Załadowane dane z Aplikacji}
-    \postconditions{ Docelowa baza danych działa poprawnie}
-    \exceptions{ API nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
-    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
-    \sholder{UOB01, UOB02}
-    \reqrelated{IO3,F20}
-\end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env6},caption={Karta wymagania: Opcja  do zakupu biletów dla komunikacji miejskiej }]
     \id{IO6}
-    \priority{W}
-    \name{Opcja przekierowania do zakupu biletów dla komunikacji miejskiej}
+    \priority{C}
+    \name{Pośrednik do zakupu biletów dla komunikacji miejskiej}
     \descr{Po wybraniu trybu transportu z wykorzystaniem Komunikacji miejskiej pojawia się propozycja skorzystania z jakieś aplikacji do zakupu biletów np. skycash}
     \acceptcrit{Opcja transportu przekazuje informacje w formie linka do polecanej aplikacji.}
     \inputdata{Transport publiczny}
     \preconditions{ Użytkownik wybrał tryb nawigacji poprzez transport publiczny}
-    \postconditions{ Przekierowanie działa}
+    \postconditions{ Przekierowanie jako pośrednik działa na podstawie \glslink{reflink}{reflinku}}
     \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
     \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
     \sholder{UOB01, UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Opcja  do zakupu biletów dla POI }]
+\begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Opcja  do zakupu biletów dla \glslink{poidef}{POI} }]
     \id{IO7}
-    \priority{C}
+    \priority{W}
     \name{Integracja z system biletów konkretnej atrakcji online}
     \descr{cykliczna aktualizacja danych o cennikach danej atrakcji}
     \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
     \inputdata{Użytkownik wybrał szczegółowe informacje dotyczące atrakcji}
     \preconditions{ Miejsce z informacją polecanych platformach kupna}
     \postconditions{ Przekierowanie działa}
-    \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
-    \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
+    \exceptions{ Brak możliwości kupna wstępu do \glslink{poidef}{poi}  na dany termin.}
+    \implementation{ Na osi czasu widać opcje do partnerskiej aplikacji}
     \sholder{UOB01}
     \reqrelated{IO3,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env8},caption={Karta wymagania: Cykliczna aktualizacja danych POI Miasta Gdańsk}]
+\begin{requirementstab}[label={tab:requirements:env8},caption={Karta wymagania: Cykliczna aktualizacja danych \glslink{poidef}{POI} }]
     \id{IO8}
     \priority{S}
-    \name{Cykliczna aktualizacja danych POI Miasta Gdańsk}
-    \descr{cykliczna aktualizacja danych POI Miasta Gdańsk}
-    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
-    \inputdata{Nazwa , czasy otwarcia }
-    \preconditions{ Dla podstawowych poi system powinien implementować web scrappera który automatycznie będzie aktualizować godziny otwarcia oraz stan atrakcji}
-    \postconditions{ Integracje przewiduje 10 ATRAKCJI Najbardziej popularnych w gdańsku}
-    \exceptions{Jeśli scapper nie działą przedstawia ostatnią aktualną informacje.}
-    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i przesyłamy HTML do Chata GPT. 
-    Chat GPT generuje Tabele z potrzebnymi dla nas danymi, według ustalonego schematu dla bazy danych.
-    Następnie Administrator akceptuje zmiany.
+    \name{Cykliczna aktualizacja danych \glslink{poidef}{POI} }
+    \descr{Cykliczna aktualizacja danych wszystkich\glslink{poidef}{POI} dostępnych w bazie danych.}
+    \acceptcrit{Aktualizowane dane są zgodne z schematem przechowania danych}
+    \inputdata{Dane o atrakcji }
+    \preconditions{ Poprawna konfiguracja, tak aby scrapper działał.}
+    \exceptions{AI nie działa - Brak zmian w bazie}
+    \implementation{ Strona jest scrapowana, pozyskiwane są potrzebne dane, a następnie przesyłany jest HTML do Chat GPT. Generowana jest tabela z wymaganymi danymi, zgodnie z ustalonym schematem dla bazy danych. Zmiany są następnie akceptowane przez administratora.
     }
     \sholder{UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env9},caption={Karta wymagania: Informacja o aktualnych danych POI }]
-    \id{IO9}
-    \priority{S}
-    \name{Informacja o aktualnych danych POI - potrzebna aktualizacja}
-    \descr{Wykorzystując pobieranie strony HTML, (sprawdzamy co godzine zmiany), powiadamy Administratora w Panelu o potrzebie zaaktulizowania danych}
-    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
-    \inputdata{Nazwa , czasy otwarcia }
-    \preconditions{ Dla podstawowych poi system powinien pokazywać potrzebe informacji o zmianach}
-    \postconditions{ Integracje przewiduje atrakcje w Gdańsku}
-    \exceptions{Jeśli scapper nie działa przedstawia ostatnią aktualną informacje. - Brak zmian}
-    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i jeśli strona różni się od poprzedniego stanu informujemy o tym}
-    \sholder{UOB02}
-    \reqrelated{IO3,F20}
-\end{requirementstab}
+
 \section{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
 
-\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Karta wymagania: Dostęp 24/7}]
+\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Karta wymagania: Dostępność rozwiązania}]
     \id{NFO1}
     \priority{S}
-    \name{Dostęp 24/7}
-    \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność max 8h w skali miesiąca w godzinach nocnych (SLA 98.905 \%) }
+    \name{ Dostępność rozwiązania}
+    \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność maksymalnie 8 godzin w skali miesiąca w godzinach nocnych (\glslink{sla}{SLA} 98.905 \%) }
     \acceptcrit{maksymalny czas niedostępności systemu w skali miesiąca to 8h w godzinach 22:00-06:00}
     \sholder{UOB01, UOB02}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność Systemu na mobilnych urządzeniach}]
+\begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność systemu na mobilnych urządzeniach}]
     \id{NFO1}
     \priority{M}
     \name{System musi być intuicyjny oraz responsywny na urządzeniach z małym ekranem}
@@ -786,8 +754,7 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Przeglądarka internetowa}
     \descr{W dniu premiery musi być dostępny na urządzenia mobilne  }
-    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych 
-    Interaktywna mapa wraz ze znacznikami poi powinna być responsywna i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
+    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
     }
     \sholder{UOB01, UOB02,UOB03}
     \reqrelated{}
