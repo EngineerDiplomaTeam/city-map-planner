@@ -203,7 +203,7 @@
 </place>
 <place id="Logowanie">
 <graphics>
-<position x="1275.0" y="705.0"/>
+<position x="915.0" y="795.0"/>
 </graphics>
 <name>
 <value>Logowanie</value>
@@ -303,10 +303,30 @@
 </place>
 <place id="Nie zalogowany">
 <graphics>
-<position x="990.0" y="660.0"/>
+<position x="930.0" y="660.0"/>
 </graphics>
 <name>
 <value>Nie zalogowany</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="P21">
+<graphics>
+<position x="1335.0" y="615.0"/>
+</graphics>
+<name>
+<value>P21</value>
 <graphics>
 <offset x="0.0" y="0.0"/>
 </graphics>
@@ -381,9 +401,29 @@
 <value>0</value>
 </capacity>
 </place>
+<place id="Zalogowany">
+<graphics>
+<position x="795.0" y="960.0"/>
+</graphics>
+<name>
+<value>Zalogowany</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
 <place id="Zarz&#261;dzanie kontem">
 <graphics>
-<position x="1095.0" y="615.0"/>
+<position x="1185.0" y="645.0"/>
 </graphics>
 <name>
 <value>Zarz&#261;dzanie kontem</value>
@@ -609,32 +649,6 @@
 <value>1</value>
 </priority>
 </transition>
-<transition id="otwarcie">
-<graphics>
-<position x="1050.0" y="645.0"/>
-</graphics>
-<name>
-<value>otwarcie</value>
-<graphics>
-<offset x="-5.0" y="35.0"/>
-</graphics>
-</name>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-<timed>
-<value>true</value>
-</timed>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<priority>
-<value>1</value>
-</priority>
-</transition>
 <transition id="Otwarcie Kalendarza">
 <graphics>
 <position x="1080.0" y="180.0"/>
@@ -689,7 +703,7 @@
 </transition>
 <transition id="Otwarcie Menu">
 <graphics>
-<position x="870.0" y="480.0"/>
+<position x="870.0" y="495.0"/>
 </graphics>
 <name>
 <value>Otwarcie Menu</value>
@@ -739,12 +753,64 @@
 <value>1</value>
 </priority>
 </transition>
+<transition id="Podaj dane - zaloguj">
+<graphics>
+<position x="915.0" y="720.0"/>
+</graphics>
+<name>
+<value>Podaj dane - zaloguj</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
 <transition id="Podano poprawne dane">
 <graphics>
 <position x="585.0" y="825.0"/>
 </graphics>
 <name>
 <value>Podano poprawne dane</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Powrót do menu">
+<graphics>
+<position x="990.0" y="915.0"/>
+</graphics>
+<name>
+<value>Powrót do menu</value>
 <graphics>
 <offset x="-5.0" y="35.0"/>
 </graphics>
@@ -947,9 +1013,61 @@
 <value>1</value>
 </priority>
 </transition>
+<transition id="Zalogowano">
+<graphics>
+<position x="870.0" y="870.0"/>
+</graphics>
+<name>
+<value>Zalogowano</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zalogowany admin">
+<graphics>
+<position x="780.0" y="750.0"/>
+</graphics>
+<name>
+<value>Zalogowany admin</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
 <transition id="Zamkniecie">
 <graphics>
-<position x="870.0" y="510.0"/>
+<position x="870.0" y="525.0"/>
 </graphics>
 <name>
 <value>Zamkniecie</value>
@@ -1417,6 +1535,19 @@
 <arcpath id="001" x="926" y="281" curvePoint="false"/>
 <type value="normal"/>
 </arc>
+<arc id="Logowanie to Zalogowano" source="Logowanie" target="Zalogowano">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="918" y="819" curvePoint="false"/>
+<arcpath id="001" x="882" y="867" curvePoint="false"/>
+<type value="normal"/>
+</arc>
 <arc id="MAPA to Otwarcie menad&#380;era" source="MAPA" target="Otwarcie menad&#380;era">
 <graphics/>
 <inscription>
@@ -1439,8 +1570,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="761" y="518" curvePoint="false"/>
-<arcpath id="001" x="876" y="492" curvePoint="false"/>
+<arcpath id="000" x="761" y="520" curvePoint="false"/>
+<arcpath id="001" x="876" y="507" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="MAPA to Przekazanie danych" source="MAPA" target="Przekazanie danych">
@@ -1495,7 +1626,7 @@
 <arcpath id="001" x="751" y="437" curvePoint="false"/>
 <type value="normal"/>
 </arc>
-<arc id="Menu U&#380;ytkownika u góry to Zamkniecie" source="Menu U&#380;ytkownika u góry" target="Zamkniecie">
+<arc id="Naci&#347;niecie przycisku zarz&#261;dzanie kontem to Nie zalogowany" source="Naci&#347;niecie przycisku zarz&#261;dzanie kontem" target="Nie zalogowany">
 <graphics/>
 <inscription>
 <value>Default,1</value>
@@ -1504,11 +1635,12 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1017" y="495" curvePoint="false"/>
-<arcpath id="001" x="886" y="522" curvePoint="false"/>
+<arcpath id="000" x="1041" y="571" curvePoint="false"/>
+<arcpath id="001" x="987" y="657" curvePoint="false"/>
+<arcpath id="002" x="956" y="667" curvePoint="false"/>
 <type value="normal"/>
 </arc>
-<arc id="Naci&#347;niecie przycisku zarz&#261;dzanie kontem to Zarz&#261;dzanie kontem" source="Naci&#347;niecie przycisku zarz&#261;dzanie kontem" target="Zarz&#261;dzanie kontem">
+<arc id="Naci&#347;niecie przycisku zarz&#261;dzanie kontem to Zalogowany" source="Naci&#347;niecie przycisku zarz&#261;dzanie kontem" target="Zalogowany">
 <graphics/>
 <inscription>
 <value>Default,1</value>
@@ -1517,8 +1649,22 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1046" y="571" curvePoint="false"/>
-<arcpath id="001" x="1095" y="616" curvePoint="false"/>
+<arcpath id="000" x="1051" y="572" curvePoint="false"/>
+<arcpath id="001" x="1002" y="852" curvePoint="false"/>
+<arcpath id="002" x="819" y="964" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Nie zalogowany to Podaj dane - zaloguj" source="Nie zalogowany" target="Podaj dane - zaloguj">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="937" y="686" curvePoint="false"/>
+<arcpath id="001" x="927" y="717" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Otwarcie Kalendarza to Kalendarz" source="Otwarcie Kalendarza" target="Kalendarz">
@@ -1569,8 +1715,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="887" y="487" curvePoint="false"/>
-<arcpath id="001" x="1017" y="491" curvePoint="false"/>
+<arcpath id="000" x="887" y="502" curvePoint="false"/>
+<arcpath id="001" x="1017" y="493" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Otwarcie POI to Formularz edycji POI" source="Otwarcie POI" target="Formularz edycji POI">
@@ -1586,6 +1732,19 @@
 <arcpath id="001" x="687" y="912" curvePoint="false"/>
 <type value="normal"/>
 </arc>
+<arc id="Podaj dane - zaloguj to Logowanie" source="Podaj dane - zaloguj" target="Logowanie">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="927" y="747" curvePoint="false"/>
+<arcpath id="001" x="927" y="792" curvePoint="false"/>
+<type value="normal"/>
+</arc>
 <arc id="Podano poprawne dane to Sprawdzenie poprawno&#347;ci danych" source="Podano poprawne dane" target="Sprawdzenie poprawno&#347;ci danych">
 <graphics/>
 <inscription>
@@ -1597,6 +1756,20 @@
 </tagged>
 <arcpath id="000" x="591" y="837" curvePoint="false"/>
 <arcpath id="001" x="574" y="805" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Powrót do menu to Zarz&#261;dzanie kontem" source="Powrót do menu" target="Zarz&#261;dzanie kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1006" y="927" curvePoint="false"/>
+<arcpath id="001" x="1137" y="807" curvePoint="false"/>
+<arcpath id="002" x="1191" y="670" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Przekazanie danych to Baza Danych" source="Przekazanie danych" target="Baza Danych">
@@ -1718,6 +1891,58 @@
 <arcpath id="001" x="1317" y="342" curvePoint="false"/>
 <type value="normal"/>
 </arc>
+<arc id="Zalogowano to Zalogowany" source="Zalogowano" target="Zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="876" y="882" curvePoint="false"/>
+<arcpath id="001" x="816" y="960" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany admin to Menad&#380;er POI" source="Zalogowany admin" target="Menad&#380;er POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="786" y="762" curvePoint="false"/>
+<arcpath id="001" x="698" y="682" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Powrót do menu" source="Zalogowany" target="Powrót do menu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="821" y="968" curvePoint="false"/>
+<arcpath id="001" x="996" y="927" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Zalogowany admin" source="Zalogowany" target="Zalogowany admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="805" y="957" curvePoint="false"/>
+<arcpath id="001" x="792" y="777" curvePoint="false"/>
+<type value="normal"/>
+</arc>
 <arc id="Zamkniecie to MAPA" source="Zamkniecie" target="MAPA">
 <graphics/>
 <inscription>
@@ -1727,8 +1952,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="877" y="517" curvePoint="false"/>
-<arcpath id="001" x="761" y="521" curvePoint="false"/>
+<arcpath id="000" x="877" y="532" curvePoint="false"/>
+<arcpath id="001" x="761" y="523" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Zapis danych mapy to Baza Danych" source="Zapis danych mapy" target="Baza Danych">
