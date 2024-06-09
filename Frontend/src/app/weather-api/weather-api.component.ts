@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { WeatherIconsService } from "../weather-icons/weather-icons-service";
+import { WeatherIconsService } from '../weather-icons/weather-icons-service';
 import { WeatherApiService } from './weather-api.service';
 import { AsyncPipe, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { WeatherStatus } from './WeatherStatus';

@@ -6,8 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [],
   templateUrl: './weather-icons.component.html',
   styleUrl: './weather-icons.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WeatherIconsComponent {
-
-}
+export class WeatherIconsComponent {}
