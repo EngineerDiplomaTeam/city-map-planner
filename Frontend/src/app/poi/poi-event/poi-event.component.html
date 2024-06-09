@@ -1,6 +1,7 @@
 <article
-  class="poi"
+  class="poi {{ poi().id | idToColor }}"
   [style.--banner-url]="poi().details.bannerSrc | toUrl"
+  [class.hei]="!id()"
   [style.--time-height]="poi().preferredSightseeingTime | toHeight"
 >
   <h5 class="title">{{ poi().details.title }}</h5>
