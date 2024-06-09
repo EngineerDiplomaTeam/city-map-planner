@@ -81,6 +81,26 @@
 <value>0</value>
 </capacity>
 </place>
+<place id="Atrakcja naniesiona na kalendarz">
+<graphics>
+<position x="1203.75" y="348.75"/>
+</graphics>
+<name>
+<value>Atrakcja naniesiona na kalendarz</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
 <place id="Baza Danych">
 <graphics>
 <position x="570.0" y="570.0"/>
@@ -163,7 +183,7 @@
 </place>
 <place id="Kalendarz">
 <graphics>
-<position x="1200.0" y="180.0"/>
+<position x="1162.5" y="142.5"/>
 </graphics>
 <name>
 <value>Kalendarz</value>
@@ -223,7 +243,7 @@
 </place>
 <place id="Logowanie">
 <graphics>
-<position x="915.0" y="795.0"/>
+<position x="915.0" y="776.25"/>
 </graphics>
 <name>
 <value>Logowanie</value>
@@ -301,6 +321,26 @@
 <value>0</value>
 </capacity>
 </place>
+<place id="niepoprawne miesjce w kalendarzu">
+<graphics>
+<position x="1376.25" y="288.75"/>
+</graphics>
+<name>
+<value>niepoprawne miesjce w kalendarzu</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
 <place id="Nie zalogowany">
 <graphics>
 <position x="930.0" y="660.0"/>
@@ -323,7 +363,7 @@
 </place>
 <place id="Podsumowanie Trasy">
 <graphics>
-<position x="1305.0" y="345.0"/>
+<position x="1305.0" y="438.75"/>
 </graphics>
 <name>
 <value>Podsumowanie Trasy</value>
@@ -381,9 +421,29 @@
 <value>0</value>
 </capacity>
 </place>
+<place id="Umieszczenie w kalendarzu">
+<graphics>
+<position x="1335.0" y="168.75"/>
+</graphics>
+<name>
+<value>Umieszczenie w kalendarzu</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
 <place id="Wygenerowana Trasa">
 <graphics>
-<position x="1125.0" y="345.0"/>
+<position x="1106.25" y="457.5"/>
 </graphics>
 <name>
 <value>Wygenerowana Trasa</value>
@@ -567,7 +627,7 @@
 </transition>
 <transition id="Generowanie trasy">
 <graphics>
-<position x="1125.0" y="240.0"/>
+<position x="1106.25" y="352.5"/>
 </graphics>
 <name>
 <value>Generowanie trasy</value>
@@ -721,9 +781,35 @@
 <value>1</value>
 </priority>
 </transition>
+<transition id="naniesienie na kalanerz">
+<graphics>
+<position x="1106.25" y="191.25"/>
+</graphics>
+<name>
+<value>naniesienie na kalanerz</value>
+<graphics>
+<offset x="-6.25" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
 <transition id="Otwarcie Kalendarza">
 <graphics>
-<position x="1080.0" y="180.0"/>
+<position x="1023.75" y="161.25"/>
 </graphics>
 <name>
 <value>Otwarcie Kalendarza</value>
@@ -827,7 +913,7 @@
 </transition>
 <transition id="Podaj dane - zaloguj">
 <graphics>
-<position x="915.0" y="720.0"/>
+<position x="858.75" y="663.75"/>
 </graphics>
 <name>
 <value>Podaj dane - zaloguj</value>
@@ -967,6 +1053,32 @@
 </name>
 <orientation>
 <value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Walidacja poprawno&#347;ci przedzia&#322;u czasowego">
+<graphics>
+<position x="1380.0" y="213.75"/>
+</graphics>
+<name>
+<value>Walidacja poprawno&#347;ci przedzia&#322;u czasowego</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
 </orientation>
 <rate>
 <value>1.0</value>
@@ -1139,7 +1251,7 @@
 </transition>
 <transition id="Wy&#347;wietlenie podsumowania">
 <graphics>
-<position x="1305.0" y="270.0"/>
+<position x="1305.0" y="363.75"/>
 </graphics>
 <name>
 <value>Wy&#347;wietlenie podsumowania</value>
@@ -1407,7 +1519,7 @@
 <value>false</value>
 </tagged>
 <arcpath id="000" x="1542" y="586" curvePoint="false"/>
-<arcpath id="001" x="885" y="886" curvePoint="false"/>
+<arcpath id="001" x="885" y="881" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="API Overpass to B&#322;&#261;d serwisu" source="API Overpass" target="B&#322;&#261;d Serwisu">
@@ -1447,6 +1559,32 @@
 </tagged>
 <arcpath id="000" x="355" y="740" curvePoint="false"/>
 <arcpath id="001" x="500" y="686" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Atrakcja naniesiona na kalendarz to Generowanie trasy" source="Atrakcja naniesiona na kalendarz" target="Generowanie trasy">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1200" y="360" curvePoint="false"/>
+<arcpath id="001" x="1121" y="363" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Atrakcja naniesiona na kalendarz to Wy&#347;wietlenie podsumowania" source="Atrakcja naniesiona na kalendarz" target="Wy&#347;wietlenie podsumowania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1228" y="361" curvePoint="false"/>
+<arcpath id="001" x="1310" y="375" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Atrakcja to Dodanie do koszyka" source="Atrakcja" target="Dodanie do koszyka">
@@ -1629,8 +1767,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1136" y="266" curvePoint="false"/>
-<arcpath id="001" x="1136" y="341" curvePoint="false"/>
+<arcpath id="000" x="1117" y="378" curvePoint="false"/>
+<arcpath id="001" x="1117" y="453" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Interwa&#322;owa aktualizacja pogody to API Pogodowe" source="Interwa&#322;owa aktualizacja pogody" target="API Pogodowe">
@@ -1659,7 +1797,7 @@
 <arcpath id="001" x="413" y="566" curvePoint="false"/>
 <type value="normal"/>
 </arc>
-<arc id="Kalendarz to Generowanie trasy" source="Kalendarz" target="Generowanie trasy">
+<arc id="Kalendarz to naniesienie na kalanerz" source="Kalendarz" target="naniesienie na kalanerz">
 <graphics/>
 <inscription>
 <value>Default,1</value>
@@ -1668,21 +1806,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1198" y="200" curvePoint="false"/>
-<arcpath id="001" x="1140" y="251" curvePoint="false"/>
-<type value="normal"/>
-</arc>
-<arc id="Kalendarz to Wy&#347;wietlenie podsumowania" source="Kalendarz" target="Wy&#347;wietlenie podsumowania">
-<graphics/>
-<inscription>
-<value>Default,1</value>
-<graphics/>
-</inscription>
-<tagged>
-<value>false</value>
-</tagged>
-<arcpath id="000" x="1221" y="201" curvePoint="false"/>
-<arcpath id="001" x="1310" y="281" curvePoint="false"/>
+<arcpath id="000" x="1161" y="162" curvePoint="false"/>
+<arcpath id="001" x="1117" y="197" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Komunika dla u&#380;ytkownika to Zamkniecie komunikatu" source="Komunika dla u&#380;ytkownika" target="Zamkniecie komunikatu">
@@ -1707,8 +1832,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="935" y="360" curvePoint="false"/>
-<arcpath id="001" x="1085" y="191" curvePoint="false"/>
+<arcpath id="000" x="933" y="357" curvePoint="false"/>
+<arcpath id="001" x="1035" y="187" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Koszyk z atrakcjami to Usuniecie z koszyka" source="Koszyk z atrakcjami" target="Usuniecie z koszyka">
@@ -1733,8 +1858,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="918" y="818" curvePoint="false"/>
-<arcpath id="001" x="886" y="876" curvePoint="false"/>
+<arcpath id="000" x="918" y="800" curvePoint="false"/>
+<arcpath id="001" x="881" y="866" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="MAPA to Otwarcie menad&#380;era" source="MAPA" target="Otwarcie menad&#380;era">
@@ -1883,6 +2008,45 @@
 <arcpath id="002" x="955" y="670" curvePoint="false"/>
 <type value="normal"/>
 </arc>
+<arc id="naniesienie na kalanerz to Atrakcja naniesiona na kalendarz" source="naniesienie na kalanerz" target="Atrakcja naniesiona na kalendarz">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1117" y="207" curvePoint="false"/>
+<arcpath id="001" x="1206" y="346" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="naniesienie na kalanerz to Umieszczenie w kalendarzu" source="naniesienie na kalanerz" target="Umieszczenie w kalendarzu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1132" y="201" curvePoint="false"/>
+<arcpath id="001" x="1331" y="181" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="niepoprawne miesjce w kalendarzu to naniesienie na kalanerz" source="niepoprawne miesjce w kalendarzu" target="naniesienie na kalanerz">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1372" y="293" curvePoint="false"/>
+<arcpath id="001" x="1132" y="201" curvePoint="false"/>
+<type value="normal"/>
+</arc>
 <arc id="Nie zalogowany to Podaj dane - zaloguj" source="Nie zalogowany" target="Podaj dane - zaloguj">
 <graphics/>
 <inscription>
@@ -1892,8 +2056,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="936" y="685" curvePoint="false"/>
-<arcpath id="001" x="926" y="716" curvePoint="false"/>
+<arcpath id="000" x="926" y="671" curvePoint="false"/>
+<arcpath id="001" x="873" y="675" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Nie zalogowany to Wprowadz dane" source="Nie zalogowany" target="Wprowadz dane">
@@ -1919,8 +2083,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1095" y="191" curvePoint="false"/>
-<arcpath id="001" x="1196" y="191" curvePoint="false"/>
+<arcpath id="000" x="1038" y="172" curvePoint="false"/>
+<arcpath id="001" x="1158" y="155" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Otwarcie menad&#380;era to MAPA" source="Otwarcie menad&#380;era" target="MAPA">
@@ -1959,7 +2123,7 @@
 <value>false</value>
 </tagged>
 <arcpath id="000" x="886" y="501" curvePoint="false"/>
-<arcpath id="001" x="1016" y="492" curvePoint="false"/>
+<arcpath id="001" x="1016" y="491" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Otwarcie POI to Formularz edycji POI" source="Otwarcie POI" target="Formularz edycji POI">
@@ -1984,8 +2148,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="926" y="746" curvePoint="false"/>
-<arcpath id="001" x="926" y="791" curvePoint="false"/>
+<arcpath id="000" x="870" y="690" curvePoint="false"/>
+<arcpath id="001" x="918" y="773" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Podano poprawne dane to Sprawdzenie poprawno&#347;ci danych" source="Podano poprawne dane" target="Sprawdzenie poprawno&#347;ci danych">
@@ -2066,6 +2230,19 @@
 <arcpath id="001" x="566" y="716" curvePoint="false"/>
 <type value="normal"/>
 </arc>
+<arc id="Umieszczenie w kalendarzu to Walidacja poprawno&#347;ci przedzia&#322;u czasowego" source="Umieszczenie w kalendarzu" target="Walidacja poprawno&#347;ci przedzia&#322;u czasowego">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1356" y="188" curvePoint="false"/>
+<arcpath id="001" x="1391" y="220" curvePoint="false"/>
+<type value="normal"/>
+</arc>
 <arc id="Usuniecie z koszyka to Koszyk z atrakcjami" source="Usuniecie z koszyka" target="Koszyk z atrakcjami">
 <graphics/>
 <inscription>
@@ -2090,6 +2267,19 @@
 </tagged>
 <arcpath id="000" x="710" y="1016" curvePoint="false"/>
 <arcpath id="001" x="445" y="1016" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Walidacja poprawno&#347;ci przedzia&#322;u czasowego to niepoprawne miesjce w kalendarzu" source="Walidacja poprawno&#347;ci przedzia&#322;u czasowego" target="niepoprawne miesjce w kalendarzu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1391" y="230" curvePoint="false"/>
+<arcpath id="001" x="1387" y="285" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Wczytanie danych to Menad&#380;er POI" source="Wczytanie danych" target="Menad&#380;er POI">
@@ -2183,8 +2373,8 @@
 <tagged>
 <value>false</value>
 </tagged>
-<arcpath id="000" x="1316" y="296" curvePoint="false"/>
-<arcpath id="001" x="1316" y="341" curvePoint="false"/>
+<arcpath id="000" x="1316" y="390" curvePoint="false"/>
+<arcpath id="001" x="1316" y="435" curvePoint="false"/>
 <type value="normal"/>
 </arc>
 <arc id="Zalogowano to Zalogowany" source="Zalogowano" target="Zalogowany">
