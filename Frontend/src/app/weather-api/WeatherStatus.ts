@@ -1,6 +1,6 @@
 export type WeatherStatus = {
   time: string;
-  weatherCode: number;
+  weathercode: number;
   temperature2M: number;
 };
 export interface WeatherState {

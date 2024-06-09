@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-
+import { WeatherIconsService } from "../weather-icons/weather-icons-service";
 import { WeatherApiService } from './weather-api.service';
 import { AsyncPipe, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { WeatherStatus } from './WeatherStatus';
@@ -14,6 +14,7 @@ import { map, Observable } from 'rxjs';
 })
 export class WeatherApiComponent {
   private readonly weatherApiService = inject(WeatherApiService);
+  protected readonly weatherIconService = inject(WeatherIconsService);
   protected weather = this.weatherApiService.listWeather();
   protected closestWeather$: Observable<WeatherStatus | null> =
     this.weatherApiService

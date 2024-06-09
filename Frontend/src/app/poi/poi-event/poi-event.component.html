@@ -4,7 +4,7 @@
   [style.--time-height]="poi().preferredSightseeingTime | toHeight"
 >
   <h5 class="title">{{ poi().details.title }}</h5>
-
+      {{ poi().preferredWmoCodes}}
   <span class="controls">
     @if (id()) {
       <button class="remove" (click)="scheduleStore.removeEvent(id()!)">Remove</button>
