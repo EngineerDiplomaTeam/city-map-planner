@@ -15,6 +15,44 @@
 \usepackage{array}
 \usepackage{lscape}
 \usepackage{graphicx, multirow}
+\definecolor{background}{rgb}{0.95,0.95,0.95}
+\definecolor{comment}{rgb}{0.0,0.5,0.0}
+\definecolor{keyword}{rgb}{0.0,0.0,1.0}
+\definecolor{string}{rgb}{0.58,0.0,0.82}
+
+\lstdefinelanguage{nginx}{
+	keywords={server, location, root, index, try_files, listen, ssl_certificate, ssl_certificate_key, include, ssl_dhparam, if, return, proxy_pass, proxy_redirect, proxy_set_header, auth_basic, auth_basic_user_file, error_log, gzip, gzip_static, gzip_types, gzip_proxied, add_header, rewrite},
+	keywordstyle=\color{keyword}\bfseries,
+	sensitive=false,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{comment}\ttfamily,
+	stringstyle=\color{string}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	backgroundcolor=\color{background},
+	basicstyle=\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	extendedchars=true,
+	frame=single,
+	language=nginx,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{gray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	tabsize=4,
+	title=\lstname
+}
+
 \geometry{} %definicja marginesów
 \glstoctrue
 \clubpenalty=9996
@@ -89,8 +127,8 @@
 	\input{chapters/opis-problemu}
 	\input{chapters/kontekst-projektu}
 	\input{chapters/analiza-wymagań}
-    % \input{chapters/projekt}
-    \input{chapters/decyzje-projektowe} % przepisać od 0 jako rozdział "projekt"
+    \input{chapters/decyzje-projektowe}
+	\input{chapters/projekt}
 	\input{chapters/realizacja}
 	\input{chapters/testy}
 	\input{chapters/prezentacja-systemu}
