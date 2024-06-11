@@ -7,16 +7,14 @@
 \section{Narzędzia i technologie}
 \label{sec:narzedzia-i-technologie}
 
-\subsection{Języki programowania i biblioteki}
-\label{subsec:jezyki-programowania-i-biblioteki}
-
-\subsubsection{Oprogramowanie po stronie użytkownika}
+\subsection{Oprogramowanie po stronie użytkownika}
+\label{subsec:oprogramowanie-po-stronie-uzytkownika}
 Jednym z~kluczowych celów projektu jest stworzenie progresywnej aplikacji internetowej (PWA) dostępnej~na~większości urządzeń codziennego użytku, takich~jak~komputery osobiste i~smartfony.
 Według statystyk prowadzonych przez StatCounter większość konsumenckiego ruchu internetowego jest generowana przez systemy operacyjne Android, Windows i~iOS~\cite{statcounter-os-shares}\@.~To~zróżnicowanie platform stawia przed zespołem projektowym wyzwanie polegające~na~opracowaniu aplikacji, która będzie działała efektywnie~na~każdym z~tych systemów.
 Nasz zespół składający się z~czterech pracujących~na~etacie studentów~nie~byłby w~stanie stworzyć a~co dopiero utrzymywać rozwiązania~na~3~różnych platformach~na~raz.
 Istnieją rozwiązania niwelujące~ten~problem w~znacznym stopniu, zespół projektowy przeanalizował część z~nich~pod~kątem naszego doświadczenia.
 
-\paragraph{Flutter}
+\subsubsection{Flutter}
 Flutter~to~otwartoźródłowy zestaw narzędzi~dla~programistów stworzony przez firmę Google~\cite{flutter-quick-start}.
 Pozwala~na~tworzenie natywnych, wieloplatformowych aplikacji mobilnych, komputerowych oraz internetowych.
 Aplikacja stworzona przy użyciu~tej~technologii umożliwia napisanie kodu źródłowego w~jednej wersji i~uruchomienie~go~na szerokiej gamie urządzeń docelowych.
@@ -33,7 +31,7 @@ Wady:
     \item Relatywnie niska wydajność dostarczonego oprogramowania\cite{flutter-perf}
 \end{itemize}
 
-\paragraph{Electron}
+\subsubsection{Electron}
 Electron~to~otwartoźródłowa platforma umożliwiająca tworzenie aplikacji w~formie stron internetowych oraz osadzanie~ich~w~minimalistycznej wersji przeglądarki, która jest dostarczana razem z~aplikacją~\cite{electron-in-action}.
 
 Zalety:
@@ -48,7 +46,7 @@ Wady:
     \item Potencjalne problemy z~wydajnością
 \end{itemize}
 
-\paragraph{Progresywna Aplikacja Internetowa}
+\subsubsection{Progresywna Aplikacja Internetowa}
 Progresywne aplikacje internetowe (Progressive~Web~Apps)~to~aplikacje uruchamiane~jak~zwykłe strony internetowe,~ale~zapewniające doświadczenie podobne~do~natywnych aplikacji mobilnych~lub~desktopowych.\cite{pwa-book}
 
 Zalety:
@@ -62,7 +60,7 @@ Wady:
     \item Zależność~od~przeglądarki użytkownika, która może~nie~obsługiwać wszystkich funkcjonalności
 \end{itemize}
 
-\paragraph{Wybór technologii}
+\subsubsection{Wybór technologii}
 Każde z~analizowanych rozwiązań~ma~swoje unikalne zalety i~wady.
 Zespół projektowy kierował się następującymi priorytetami podczas wyboru technologii:
 
@@ -78,27 +76,29 @@ Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowyc
 Wybór technologii Progressive~Web~Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej~na~większości urządzeń codziennego użytku.
 Decyzja~ta~pozwoliła~na~efektywne wykorzystanie umiejętności zespołu, a~także~na~dostarczenie rozwiązania zgodnego z~priorytetami projektu, jakimi są wydajność i~znajomość technologii.
 
-\subsubsection{Oprogramowanie niewidoczne dla użytkownika}
+\subsection{Oprogramowanie niewidoczne dla użytkownika}
+\label{subsec:oprogramowanie-niewidoczne-dla-uzytkownika}
 Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania~na~podstawie danych czasu rzeczywistego.
 Ciągłe aktualizacje danych~po~stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie~po~stronie dostawców danych.
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać~za~aktualność danych oraz wyznaczanie trasy.
 Z~uwagi~na~\acrshort{pwa}, język, w~którym stworzymy~ten~serwis, musi mieć bardzo dobre wsparcie~dla~protokołu HTTP\@.~Na~uczelni poznaliśmy 2~technologie tworzenia takich serwisów.
 
-\paragraph{Java}
+\subsubsection{Java}
 Java~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
 W~trakcie zajęć~na~uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http} w~technologii Spring.
 Części naszego zespołu~nie~podobają się konwencje narzucone przez tę technologię,~jak~i~sposób komunikacji z~bazą danych.
 Należy zaznaczyć, że nikt z~naszego zespołu~nie~posada komercyjnego doświadczenia z~tą technologią.
 
-\paragraph{.NET}
+\subsubsection{.NET}
 C\#~to~jeden z~języków z~rodziny .NET, który mielimy szanse poznać~na~uczelni.
 Łączy~on~w~sobie paradygmaty obiektowe i~funkcyjne, dzięki czemu jest bardziej elastyczny, jeśli chodzi o~styl programowania.
 Trzy z~czterech osób w~naszym zespole~ma~doświadczenie komercyjne w~tej technologi.
 
-\paragraph{Wybór}
+\subsubsection{Wybór}
 Z~uwagi~na~doświadczenie zespołu postawiliśmy~na~C\#.
 
-\subsubsection{Baza danych}~Na~uczelni dogłębnie poznaliśmy bazę danych PostgreSql, zespół~ma~komercyjne doświadczenie z~tą bazą, więc~nie~braliśmy innych rozwiązań~pod~uwagę.
+\subsubsection{Baza danych}
+Na~uczelni dogłębnie poznaliśmy bazę danych PostgreSql, zespół~ma~komercyjne doświadczenie z~tą bazą, więc~nie~braliśmy innych rozwiązań~pod~uwagę.
 
 \subsection{Narzędzia programistyczne}
 \label{subsec:narzedzia-programistyczne}
@@ -231,10 +231,4 @@ Taki próg pozwoli~nie~tylko~na~wytworzenie oprogramowania, przeprowadzenie test
 W~trakcie zajęć~na~uczelni,~jak~i~pracy indywidualnej członków zespołu projektowego poznaliśmy 2~systemy kontroli wersji.
 Są~to~GIT oraz Mercurial.
 ~GIT~pod każdym względem jest lepszy~od~Mercurial,~sam~Mercurial jest uznany~za~projekt~bez~rozwoju.
-Zespół projektowy postanowił oprzeć swoją pracę~na~podstawie GIT, natomiast~nie~chcemy samodzielnie zarządzać serwerem repozytorium.
-
-\subsubsection{Usługi internetowe ułatwiające pracę wielu współbieżną w~repozytorium GIT}
-\paragraph{GitLab}
-\paragraph{BitBucket}
-\paragraph{Microsoft Azure Repositories}
-\paragraph{Github}
+Zespół projektowy postanowił oprzeć swoją pracę~na~podstawie GIT, i trzymać repozytorium na GitHub.
