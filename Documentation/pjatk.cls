@@ -285,8 +285,9 @@
                     \@productsandservices
                 \end{enumerate}}                                                                                \\
             {}                 & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Główne funkcjonalności i/lub cechy:}
-
-            \@mainfunctionalities}                                                                                \\       \hline
+                \begin{enumerate}
+                \@mainfunctionalities
+                \end{enumerate}}                                                                              \\       \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Miary sukcesu:}
 
             \@successmeasure}                                                                                     \\ \hline
