@@ -216,7 +216,7 @@
 \renewcommand{\maketitle}{%
     \begin{titlepage}
         \enlargethispage{1\baselineskip}
-        \newgeometry{bottom=0.1cm}
+        \newgeometry{bottom=3cm}
         \begin{center}
             \includegraphics[width=0.8\textwidth]{attachments/pjatk}
             \vspace{0.5cm}
