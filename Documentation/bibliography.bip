@@ -68,6 +68,12 @@
   author = {Christian Montag and Helena S. Schmitt and Dmitri Rozgonjuk and Dmitri Rozgonjuk and Jon D. Elhai}
 }
 
+@article{cognitive-biases,
+  title = {A systematic review of cognitive biases in tourist decisions},
+  journal = {Elsevier},
+  year = {2019},
+  author = {Walanchalee Wattanacharoensil and Dolchai La-ornual}
+
 @article{sdlm,
   title = {Software development lifecycle models},
   journal = {ACM SIGSOFT Software Engineering Notes},
