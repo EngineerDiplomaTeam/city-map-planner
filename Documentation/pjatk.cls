@@ -273,7 +273,7 @@
             \multicolumn{2}{|p{0.65\linewidth}|}{\textbf{Promotor:}
 
             \@supervisor}      & \@mysmartparbox{0.35\linewidth}{\textbf{Konsultanci:}
-                \begin{enumerate}
+                \begin{enumerate}[label=(\alph*)]
                     \@consultants
                 \end{enumerate}}                                                                           \\
             \hline
@@ -281,11 +281,11 @@
 
             \@projectgoals}                                                                                       \\ \hline
             Rezultaty i zakres & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Oczekiwane produkty/usługi:}
-                \begin{enumerate}
+                \begin{enumerate}[label=(\alph*)]
                     \@productsandservices
                 \end{enumerate}}                                                                                \\
             {}                 & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Główne funkcjonalności i/lub cechy:}
-                \begin{enumerate}
+                \begin{enumerate}[label=(\alph*)]
                 \@mainfunctionalities
                 \end{enumerate}}                                                                              \\       \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Miary sukcesu:}
