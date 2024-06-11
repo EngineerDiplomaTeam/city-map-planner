@@ -259,6 +259,7 @@
 
 
 \newcommand{\makeprojectcard}{%
+    \newgeometry{top=2cm,bottom=2cm}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{attachments/pjatk} \\
         {
@@ -321,6 +322,7 @@
             \@authorstablerows
         \end{tabular}
     \end{center}
+    \restoregeometry
     \newpage
 }
 \newcommand{\makedeclaration}{%
