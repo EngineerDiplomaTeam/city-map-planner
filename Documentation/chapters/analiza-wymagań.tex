@@ -111,7 +111,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \priority{S}
     \name{Komercjalizacja }
     \descr{Aplikacja ma umożliwiać reklamowanie swoich usług partnerom biznesowym w sposób spójny z interfejsem.  }
-    \sholder{UOB01, UOB02, UOB03}
+    \sholder{UOB1, UOB2, UOB3}
     \reqrelated{}
 \end{requirementstab}
 
@@ -130,7 +130,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Wyświetlenie atrakcji. }
     \exceptions{ Wyświetlanie komunikatu w przypadku niedostępności atrakcji w aktualnej chwili oraz przedstawienia propozycji zmiany punktu docelowego. }
     \implementation{ Użytkownik, korzystając z przeglądarki lub aplikacji, widzi interaktywną mapę z atrakcjami w danym mieście.}
-    \sholder{UOB01, UOB02 }
+    \sholder{UOB1, UOB2 }
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Dane czasu rzeczywistego }]
@@ -149,7 +149,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu powiadomienie.   }
     \exceptions{ Użytkownik nie zezwolił powiadomienia bądź nowe dane nie istnieją. }
     \implementation{ Na planie zajęć wyświetlają się nowe zmiany w innym kolorze  }
-    \sholder{UOB01, UOB02 }
+    \sholder{UOB1, UOB2 }
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Widok listy \glslink{poidef}{POI}}]
@@ -168,7 +168,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Użytkownik może przeczytać lub klikać na interesujące go atrakcje.   }
     \exceptions{ Brak dostępnych atrakcji w wyznaczonym zakresie czasowym  }
     \implementation{ Aplikacja pobiera w tle plik bazy danych ważący 1MB.  }
-    \sholder{UOB01, UOB02, UOB03 }
+    \sholder{UOB1, UOB2, UOB3 }
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func4},caption={Karta wymagania: Panel zarządzania atrakcjami}]
@@ -187,7 +187,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Można wykonywać podstawowe operacje \glslink{CRUD}{CRUD}   }
     \exceptions{ Jest możliwość dodawania kolejnych atrakcji. Sztuczna inteligencja może błędnie wykonać swoje zadanie.   }
     \implementation{ Panel administracyjny do zarządzania opiniami użytkowników (umożliwia cenzurę.).   }
-    \sholder{ UOB02 }
+    \sholder{ UOB2 }
     \reqrelated{W03,IO9}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Punkty interaktywnej mapy}]
@@ -204,7 +204,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{Brak}
     \exceptions{Brak dostępności API, aplikacja powinna wtedy pokazać błąd i próbować pobrać dane ponownie    }
     \implementation{ Mają być duże znaczniki ze zdjęciami atrakcji, które po kliknięciu otwierają szczegółowy widok    }
-    \sholder{ UOB01, UOB02, UOB03  }
+    \sholder{ UOB1, UOB2, UOB3  }
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: Oceny użytkowników }]
@@ -221,7 +221,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Brak  }
     \exceptions{ Użytkownik nie posiada konta albo został zablokowany na platformie.   }
     \implementation{ Przy danym punkcie zainteresowania (\glslink{poidef}{POI}) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
-    \sholder{ UOB01  }
+    \sholder{ UOB1  }
     \reqrelated{F07}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników + tekst}]
@@ -238,7 +238,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{Brak konta, za duże zdjęcie, nieprawidłowy format zdjęcia      }
     \implementation{ Przy danym \glslink{poidef}{POI} po kliknięciu, jest dostępny przycisk z opcją napisania opinia, każdy użytkownik może dodać jedną opinię.
     Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjęcia używa kompresji formatu zdjęcia. }
-    \sholder{ UOB01  }
+    \sholder{ UOB1  }
     \reqrelated{F06,FO25}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisane atrakcje turystyczne}]
@@ -255,7 +255,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Jeśli użytkownik jest offline lub niezalogowany, pojawia się komunikat o błędzie:
      "Aby dodać trasę, należy być zalogowanym i mieć połączenie z internetem."   }
     \implementation{ Możliwość otworzenia zapisanej, optymalnej trasy bez konieczności ponownego jej obliczania oraz bez połączenia internetowego.}
-    \sholder{ UOB01, UOB02 }
+    \sholder{ UOB1, UOB2 }
     \reqrelated{F09,FO26}
 \end{requirementstab}
 
@@ -274,7 +274,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
      użytkownik otrzymujący link musi zaakceptować udostępnioną trasę  }
     \exceptions{  Nie można przekroczyć 100 zapisanych tras.  }
     \implementation{ Każda trasa ma indywidualny kod w bazie danych. Właściciel trasy może ją edytować. a zobaczyć może każda osoba posiadająca link.}
-    \sholder{ UOB01, UOB02, UOB03   }
+    \sholder{ UOB1, UOB2, UOB3   }
     \reqrelated{F08,FO26}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func10},caption={Karta wymagania: Wyznaczanie trasy pieszej }]
@@ -289,7 +289,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Brak  }
     \exceptions{ Brak dostępnej trasy między podanymi punktami  }
     \implementation{ Implementacja na podstawie przeszukiwania wszerz i kolejki priorytyzacji.    }
-    \sholder{ UOB01, UOB02   }
+    \sholder{ UOB1, UOB2   }
     \reqrelated{F09}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func11},caption={Karta wymagania: Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}]
@@ -306,7 +306,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Brak albo połączenie z internetem, aby aktualizować na bieżąco rozkład jazdy  }
     \exceptions{ Zaproponowanie innego transportu np. pieszo  }
     \implementation{ Dodanie integracji z API komunikacji miejskiej, synchronizując dane aktualnych rozkładów jazdy do proponowanej trasy.}
-    \sholder{ UOB01, UOB02   }
+    \sholder{ UOB1, UOB2   }
     \reqrelated{F09,FO10}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej trasy z udziałem samochodów osobowych}]
@@ -323,7 +323,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{  Algorytm zaprezentował  trasę z wykorzystaniem dróg przeznaczonych dla samochodów     }
     \exceptions{ Brak trasy możliwej do pokonania samochodem     }
     \implementation{ Dodanie planowania trasy na podstawie dróg dostępnych tylko dla pojazdów do trzy i pół tony, używając OpenStreetMap   }
-    \sholder{ UOB01, UOB02   }
+    \sholder{ UOB1, UOB2   }
     \reqrelated{IO1,F09,FO10,FO11}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Podgląd Wygenerowanej optymalnej trasy }]
@@ -341,7 +341,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{  Brak wybranego planu zwiedzania }
     \implementation{ Z lewej strony widać proponowaną trasę a z prawej strony ekranu widać oś czas z wybranymi atrakcjami. Użytkownik może modyfikować trasę oraz wybierać konkretne punkty na trasie, 
     w celu bliższego przyjrzenia się nim}
-    \sholder{ UOB01, UOB02, UOB03   }
+    \sholder{ UOB1, UOB2, UOB3   }
     \reqrelated{F09,FO10,FO11,FO12,FO14, FO15, FO16}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Widok kalendarza podróży }]
@@ -358,7 +358,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Prezentacja nowej trasy o nowe sugestie w podróży.  }
     \exceptions{  Brak przeładowania trasy przez brak internetu. }
     \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
-    \sholder{ UOB01, UOB02 }
+    \sholder{ UOB1, UOB2 }
     \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: \glslink{poidef}{POI} użytkowników }]
@@ -375,7 +375,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{   }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
     \implementation{ Na interaktywnej mapie powinien znajdować się przycisk do dodania własnych atrakcji, ale tylko, gdy użytkownik jest zalogowany.}
-    \sholder{ UOB01, UOB02   }
+    \sholder{ UOB1, UOB2   }
     \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Środek transportu rower}]
@@ -397,7 +397,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
     Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
-    \sholder{ UOB02 }
+    \sholder{ UOB2 }
     \reqrelated{FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
@@ -414,7 +414,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Brak }
     \exceptions{  Brak zgody użytkownika na dostęp do lokalizacji lub zgubiony sygnał GPS }
     \implementation{ Aplikacja na podstawie danych GPS pokazuje postęp użytkownika.}
-    \sholder{ UOB01 }
+    \sholder{ UOB1 }
     \reqrelated{FO17}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Filtracja \glslink{poidef}{POI} }]
@@ -432,7 +432,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Brak }
     \implementation{ Możliwość filtrowania \glslink{poidef}{POI} na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
     }
-    \sholder{UOB01, UOB02 }
+    \sholder{UOB1, UOB2 }
     \reqrelated{FO20,FO21,}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func19},caption={Karta wymagania: Widok wybranych atrakcji}]
@@ -450,7 +450,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Użytkownik przeciągnął atrakcje na okres czasowych, w którym ona jest niedostępna}
     \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane atrakcję do koszyka. Atrakcje można przeciągać po kalendarzu (wcześniej) 
     }
-    \sholder{ UOB02 }
+    \sholder{ UOB2 }
     \reqrelated{F09}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func20},caption={Karta wymagania: Algorytm Plannera}]
@@ -472,7 +472,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
     Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
-    \sholder{ UOB02 }
+    \sholder{ UOB2 }
     \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
 
@@ -491,7 +491,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Brak wsparcia systemu operacyjnego użytkownika w drukowaniu.}
     \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
     }
-    \sholder{UOB01, UOB02,UOB03 }
+    \sholder{UOB1, UOB2,UOB3 }
     \reqrelated{FO12, FO13,FO14, FO20}
 \end{requirementstab}
 
@@ -510,7 +510,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Wyświetla błąd, że nie udało się wygenerować planu po zmianie danych}
     \implementation{ Widok optymalnej trasy powinien, być zaktualizowany o nowe dane GPS czas, miejsce, w tym dane pogodowe, oraz czas pracy atrakcji, widoczne zmiany przestawią się na kalendarzu.
     }
-    \sholder{UOB01, UOB02, UOB03 }
+    \sholder{UOB1, UOB2, UOB3 }
     \reqrelated{FO20,FO21,}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
@@ -528,7 +528,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Wyświetla błąd, że aktualna atrakcja jest już zamknięta.}
     \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
     }
-    \sholder{UOB01, UOB02 }
+    \sholder{UOB1, UOB2 }
     \reqrelated{FO20,FO21,}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Dostęp bez autoryzacji}]
@@ -544,7 +544,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
     \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji.}
     \implementation{ Aplikacja dostępna bez logowania, możliwość przeglądania i wybierania atrakcji z interaktywnej mapy z wszystkimi jej funkcjami dotyczących atrakcji bez możliwości dodawania opinii, ani żadnych modyfikacji na mapie.}
-    \sholder{UOB01, UOB02, UOB03 }
+    \sholder{UOB1, UOB2, UOB3 }
     \reqrelated{FO20,FO21}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Panel Moderacji Opinii}]
@@ -559,7 +559,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Użytkownik dodał opinię nieodpowiednią dla dzieci. }
     \implementation{ Dodanie kolejnej strony dostępnej tylko dla administratora, w któy będą wyświetlały się nowo dodane opinie oraz wszystkie zaakceptowane. 
     }
-    \sholder{ UOB02 }
+    \sholder{ UOB2 }
     \reqrelated{F07}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Widok list atrakcji}]
@@ -573,7 +573,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{ Atrakcje z listy są niedostępne }
     \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane listy atrakcji do ulubionych. Widok ten włącza się z menu konta użytkownika.
     }
-    \sholder{ UOB01 }
+    \sholder{ UOB1 }
     \reqrelated{F09}
 \end{requirementstab}
 
@@ -591,7 +591,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Informacje zostały poprawnie przekazane do bazy danych}
     \exceptions{ API urzędu transportu miejskiego w Gdańsku nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji}
     \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych}
-    \sholder{UOB01, UOB02, UOB03}
+    \sholder{UOB1, UOB2, UOB3}
     \reqrelated{FO11,FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem \glslink{openmeteo}{openMeteo}}]
@@ -605,7 +605,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Informacje zostały poprawnie przekazane do bazy danych z dokładnością do trzech dni wprzód}
     \exceptions{ Open Meteo nie działa}
     \implementation{ Dodanie klienta pogodowego, który przechowuje dane z rozdzielczością do piętnastu minut z możliwością błędu do trzydziestu minut.}
-    \sholder{UOB01, UOB02, UOB03}
+    \sholder{UOB1, UOB2, UOB3}
     \reqrelated{FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env3},caption={Karta wymagania: Integracja z systemem overpass API}]
@@ -618,7 +618,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Proces aktualizacji nie wywołuje przerw w działaniu}
     \exceptions{ API nie działą lub zawiera błędne dane}
     \implementation{ Trzeba napisać program który zrozumie xml i przerobi go na graf połączeń w formie akceptowalnym przez postgres.}
-    \sholder{UOB01, UOB02, UOB03}
+    \sholder{UOB1, UOB2, UOB3}
     \reqrelated{FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy}]
@@ -631,7 +631,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \preconditions{ Załadowanie danych z bazy danych}
     \exceptions{ Brak atrakcji turystycznych – mapa powinna pokazać informację o braku danych.}
     \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa \glslink{stadiamaps}{Stadia Maps} przy połączeniu biblioteki  \glslink{openlayers}{Open layers} }
-    \sholder{ UOB02}
+    \sholder{ UOB2}
     \reqrelated{IO3,FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Opcja  do zakupu biletów dla komunikacji miejskiej }]
@@ -645,7 +645,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Przekierowanie jako pośrednik działa na podstawie \glslink{reflink}{reflinku}}
     \exceptions{ Brak internetu informacje przekazuje, że bez internetu ta funkcja nie działa.}
     \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
-    \sholder{UOB01, UOB02}
+    \sholder{UOB1, UOB2}
     \reqrelated{IO3,FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env6},caption={Karta wymagania: Opcja  do zakupu biletów dla \glslink{poidef}{POI} }]
@@ -659,7 +659,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Przekierowanie działa}
     \exceptions{ Brak możliwości kupna wstępu do \glslink{poidef}{poi}  na dany termin.}
     \implementation{ Na osi czasu widać opcje do partnerskiej aplikacji}
-    \sholder{UOB01}
+    \sholder{UOB1}
     \reqrelated{IO3,FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Cykliczna aktualizacja danych \glslink{poidef}{POI} }]
@@ -673,7 +673,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \exceptions{AI nie działa - Brak zmian w bazie}
     \implementation{ Strona jest \glslink{scraping}{scrapowana}, pozyskiwane są potrzebne dane, a następnie przesyłany jest HTML do Chat GPT. Generowana jest tabela z wymaganymi danymi, zgodnie z ustalonym schematem dla bazy danych. Zmiany są następnie akceptowane przez administratora.
     }
-    \sholder{UOB02}
+    \sholder{UOB2}
     \reqrelated{IO3,FO20}
 \end{requirementstab}
 
@@ -686,7 +686,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{ Dostępność rozwiązania}
     \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność maksymalnie 8 godzin w skali miesiąca w godzinach nocnych (\glslink{sla}{SLA} 98.905 \%) }
     \acceptcrit{maksymalny czas niedostępności systemu w skali miesiąca to osiem godzin w godzinach od 22:00-06:00}
-    \sholder{UOB01, UOB02}
+    \sholder{UOB1, UOB2}
     \reqrelated{WO1}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność systemu na mobilnych urządzeniach}]
@@ -695,7 +695,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{System musi być intuicyjny oraz responsywny na urządzeniach z małym ekranem}
     \descr{System używany na urządzeniach mobilnych, musi charakteryzować się wysoką responsywnością}
     \acceptcrit{Wynik \glslink{lighthouse}{Lighthouse} w kategorii performance na poziomie co najmniej 90\%}
-    \sholder{UOB02}
+    \sholder{UOB2}
     \reqrelated{WO5}
 \end{requirementstab}
 
@@ -708,7 +708,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Android (\glslink{pwa}{PWA})}
     \descr{W dniu premiery musi być dostępny na systemy mobilne Android }
     \acceptcrit{System będzie działał sprawnie na systemy Android min. 2 dni przed premierą}
-    \sholder{UOB02}
+    \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:envfunc2},caption={Karta wymagania: Przeglądarka internetowa}]
@@ -718,7 +718,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \descr{W dniu premiery musi być dostępny na urządzenia mobilne  }
     \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
     }
-    \sholder{UOB01, UOB02,UOB03}
+    \sholder{UOB1, UOB2,UOB3}
     \reqrelated{}
 \end{requirementstab}
 
