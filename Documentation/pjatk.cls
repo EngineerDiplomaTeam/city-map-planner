@@ -222,7 +222,7 @@
             \begin{tabularx}{\textwidth}{X r}
                 \textbf{Kierunek studiów: \@studfield} & \textbf{Rodzaj studiów: \@studtype}
             \end{tabularx}
-            \vspace{1cm}
+            \vspace{0.5cm}
             \huge
             \textbf{Praca dyplomowa}
         \end{center}
