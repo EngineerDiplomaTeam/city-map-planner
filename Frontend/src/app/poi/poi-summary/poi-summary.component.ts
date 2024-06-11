@@ -25,6 +25,8 @@ import { OL_MAP } from '../../open-layers-map/ol-token';
 import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { WeatherIconsService } from '../../weather-icons/weather-icons-service';
+import { WeatherIconsComponent } from '../../weather-icons/weather-icons.component';
 
 interface PathFindingIteration {
   complete: boolean;
@@ -38,13 +40,20 @@ interface PathFindingIteration {
 @Component({
   selector: 'app-poi-summary',
   standalone: true,
-  imports: [OlMapDirective, MatStepperModule, MatButton, DatePipe],
+  imports: [
+    OlMapDirective,
+    MatStepperModule,
+    MatButton,
+    DatePipe,
+    WeatherIconsComponent,
+  ],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
   hostDirectives: [OlMapDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiSummaryComponent implements OnInit {
+
   private readonly olMapLinesManager = inject(OlMapLineManager);
   private readonly olMapMarkerManager = inject(OlMapMarkerManager);
   private readonly olMap = inject(OL_MAP);

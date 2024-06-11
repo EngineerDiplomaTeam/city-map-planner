@@ -8,7 +8,12 @@
           <ng-template matStepLabel>{{ event.title }}</ng-template>
           <p>{{ event.start | date : 'short' }} - {{ event.end | date : 'short' }}</p>
 
+          <app-weather-icons [data]="event.start"  />
+
+
           <i>{{ event.extendedProps.poi.details.description }}</i>
+
+
 
           <section class="buttons">
             @if (!$first) {

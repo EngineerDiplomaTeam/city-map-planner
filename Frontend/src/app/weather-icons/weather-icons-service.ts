@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { WeatherStatus } from '../weather-api/WeatherStatus';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +42,48 @@ export class WeatherIconsService {
       'Thunderstorm With HeavyHail',
     ],
   };
+  private timeSource = new BehaviorSubject<Date>(new Date());
+  currentTime = this.timeSource.asObservable();
+  updateTime(time: Date) {
+    this.timeSource.next(time);
+  }
 
-  // Function to get the SVG based on weather condition code
+  findClosestWeather(
+    statuses: WeatherStatus[],
+    now: Date,
+  ): WeatherStatus | null {
+    const roundedNow = this.roundToNearest15Minutes(now);
+    let closest: WeatherStatus | null = null;
+    const ms = 1000 * 60 * 15;
+    for (const status of statuses) {
+      const statusTime = new Date(status.time);
+
+      if (statusTime.getTime() === roundedNow.getTime() - ms) {
+        closest = status;
+        break;
+      } else if (statusTime.getTime() === roundedNow.getTime()) {
+        closest = status;
+        break;
+      } else if (statusTime.getTime() === roundedNow.getTime() + ms) {
+        closest = status;
+        break;
+      }
+    }
+
+    return closest;
+  }
+
+  private roundToNearest15Minutes(date: Date): Date {
+    const ms = 1000 * 60 * 15; // 15 minutes in milliseconds
+    const rounded = new Date(Math.round(date.getTime() / ms) * ms);
+    // Ensure rounding to the previous 15 minutes if we are past the 7.5 minute mark
+    if (rounded.getTime() > date.getTime()) {
+      rounded.setTime(rounded.getTime() - ms);
+    }
+    return rounded;
+  }
+
+  // Function to get the IMG based on weather condition code
   public getWeatherIconSrc(weathercode: number): string {
     const img = this.weatherIcons[weathercode];
     if (!img) {
