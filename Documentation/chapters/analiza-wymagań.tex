@@ -8,9 +8,9 @@
 \section{Sposób gromadzenia wymagań}
 \label{sec:sposob-gromadzenia-wymagan}
 
-Wymagania dla projektu zostały wybrane przez zespół projektowy w pierwszym semestrze. Zostały określone na podstawie analizy aktualnych rozwiązań i bieżąco potrzeb użytkowników.
+Wymagania dla projektu zostały wybrane przez zespół projektowy w pierwszym semestrze. Zostały określone na podstawie analizy aktualnych rozwiązań oraz potrzeb zespołu projektowego.
 
-Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania dotyczące funkcjonalności projektu. \newline Wykorzystana została metodyka priorytetyzacji wymagań \glslink{moscow}{MoSCoW}\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
+Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania dotyczące funkcjonalności projektu. \newline Wykorzystana została metodyka priorytezacji wymagań \glslink{moscow}{MoSCoW}\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
 \begin{itemize}
     \item \textbf{M – must (musi być)} – wymaganie bezkompromisowo musi zostać zrealizowane, bez niego projekt nie zostanie ukończony;
     \item \textbf{S – should (powinno być)} – wymaganie powinno być zrealizowane, jeżeli tylko jest taka możliwość;
@@ -121,11 +121,11 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \id{FO1}
     \priority{M}
     \name{Interaktywna mapa}
-    \descr{Jako turysta chciałbym zobaczyć mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
+    \descr{Jako turysta chciałbym, zobaczyć mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
     }
     \acceptcrit{Użytkownik może zobaczyć aktualne dostępne atrakcje dostępne w danym mieście }
-    \inputdata{Użytkownik włączająć aplikacje widzi przedstawioną mapę}
-    \preconditions{ dostępność systemów partnerów, głównie Stadia maps   }
+    \inputdata{Użytkownik włączając aplikacje widzi przedstawioną mapę}
+    \preconditions{ Dostępność systemów partnerów, głównie \glslink{stadiamaps}{Stadia Maps}   }
     \postconditions{ Wyświetlenie atrakcji. }
     \exceptions{ Wyświetlanie komunikatu w przypadku niedostępności atrakcji w aktualnej chwili oraz przedstawienia propozycji zmiany punktu docelowego. }
     \implementation{ Użytkownik, korzystając z przeglądarki lub aplikacji, widzi interaktywną mapę z atrakcjami w danym mieście.}
@@ -142,10 +142,10 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
         \item bo wtedy nie spóźnię się na czas otwarcia atrakcji. 
     \end{itemize}
     }
-    \acceptcrit{Powiadomienie będzie zgodnie z aktualnym planem  }
-    \inputdata{Aplikacja pamięta jakie użytkownik wybrał atrakcje do odwiedzenia i informuje o zmianach po synchronizacji. }
-    \preconditions{ Użytkownik był wcześniej odwiedził stronę i posiada zapisane atrakcje.  }
-    \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu w powiadomienie.   }
+    \acceptcrit{Powiadomienie będzie, zgodnie z aktualnym planem  }
+    \inputdata{Aplikacja pamięta, jakie użytkownik wybrał atrakcje do odwiedzenia i informuje o zmianach po synchronizacji. }
+    \preconditions{ Użytkownik  odwiedził stronę i posiada zapisane atrakcje.  }
+    \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu powiadomienie.   }
     \exceptions{ Użytkownik nie zezwolił powiadomienia bądź nowe dane nie istnieją. }
     \implementation{ Na planie zajęć wyświetlają się nowe zmiany w innym kolorze  }
     \sholder{UOB01, UOB02 }
@@ -157,15 +157,15 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
     \descr{\begin{itemize}
         \item Jako użytkownik  
-        \item chce korzystać z aplikacji z listą dostępnych atrakcji w wersji pisanej
-        \item ponieważ chce zobaczyć dostępne spektrum możlwości, bez szukania informacji na mapie i przeciągania. 
+        \item chce korzystać z aplikacji z listą dostępnych atrakcji w wersji tekstowej,
+        \item ponieważ chce zobaczyć dostępne spektrum możliwości, bez szukania informacji na mapie i przeciągania. 
     \end{itemize}
     }
     \acceptcrit{Lista dostępnych \glslink{poidef}{POI}. }
     \inputdata{Brak}
-    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami.  }
-    \postconditions{ Użytkownik może przeczytać lub klinknąć na interesujące go atrakcje.   }
-    \exceptions{ brak dostępnych atrakcji w wyznaczonym zakresie czasowym  }
+    \preconditions{ Użytkownik wszedł na stronę z dostępnymi atrakcjami.  }
+    \postconditions{ Użytkownik może przeczytać lub klikać na interesujące go atrakcje.   }
+    \exceptions{ Brak dostępnych atrakcji w wyznaczonym zakresie czasowym  }
     \implementation{ Aplikacja pobiera w tle plik bazy danych ważący 1MB.  }
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{}
@@ -176,14 +176,14 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Panel zarządzania atrakcjami. }
     \descr{\begin{itemize}
         \item Jako administrator 
-        \item potrzebuję panelu do zarządzania danymi atrakcji turystycznych wspomaganego sztuczną inteligencją
+        \item potrzebuję panelu do zarządzania danymi atrakcji turystycznych wspomaganego sztuczną inteligencją,
         \item aby szybko reagować na zmiany wprowadzane przez właścicieli atrakcji turystycznych. 
     \end{itemize}
     }
     \acceptcrit{Lista dostępnych punktów. }
     \inputdata{Konto z uprawnieniami administracyjnymi}
-    \preconditions{ Użytkownik wszedł na ukrytą strone z panelem.  }
-    \postconditions{ wykonywać podstawowe operacje CRUD   }
+    \preconditions{ Użytkownik wszedł na ukrytą stronę z panelem.  }
+    \postconditions{ Można wykonywać podstawowe operacje \glslink{CRUD}{CRUD}   }
     \exceptions{ Jest możliwość dodawania kolejnych atrakcji. Sztuczna inteligencja może błędnie wykonać swoje zadanie.   }
     \implementation{ Panel administracyjny do zarządzania opiniami użytkowników (umożliwia cenzurę.).   }
     \sholder{ UOB02 }
@@ -195,16 +195,16 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Znaczniki na interaktywnej mapie informujące o \glslink{poidef}{POI}.}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce móc wyświetlić wybrane atrakcje, które mnie interesują
+        \item chce móc wyświetlić wybrane atrakcje, które mnie interesują,
         \item ponieważ  umożliwi to spojrzenie na opis \glslink{poidef}{POI}.
     \end{itemize}
     }
     \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez administratora. Po kliknięciu znacznika pojawią się szczegółowe informacje o \glslink{poidef}{POI} }
     \inputdata{Otwiera Aplikacje. }
-    \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez administratora  aplikacji.}
-    \postconditions{ Brak  }
-    \exceptions{ Brak dostępności API, aplikacja powinna wtedy pokazać błąd i próbować pobrać dane ponow    }
-    \implementation{ Mają być duże znaczniki ze zdjęciami atrakcji które po kliknięciu otwierają szczegółowy widok    }
+    \preconditions{ Mapa Atrakcji ze znacznikami dodanymi przez administratora  aplikacji.}
+    \postconditions{Brak}
+    \exceptions{Brak dostępności API, aplikacja powinna wtedy pokazać błąd i próbować pobrać dane ponownie    }
+    \implementation{ Mają być duże znaczniki ze zdjęciami atrakcji, które po kliknięciu otwierają szczegółowy widok    }
     \sholder{ UOB01, UOB02, UOB03  }
     \reqrelated{}
 \end{requirementstab}
@@ -214,13 +214,13 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Oceny użytkowników}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość oceniania atrakcjami gwiazdkami w skali 1-5
+        \item chce mieć możliwość oceniania atrakcjami gwiazdkami w skali od jeden do pięciu,
         \item ponieważ chciałbym podzielić się swoją opinią. 
     \end{itemize}
     }
-    \acceptcrit{Każda atrakcja posiada możliwośc dodawania opinii. }
-    \inputdata{Posiadanie konta Opinia w skali od 1-5 }
-    \preconditions{ Można dodawać opinie liczbową.}
+    \acceptcrit{Każda atrakcja ma możliwość dodawania opinii. }
+    \inputdata{Posiadanie konta Opinia w skali od jeden do pięciu }
+    \preconditions{ Można dodawać opinię liczbową.}
     \postconditions{ Brak  }
     \exceptions{ Użytkownik nie posiada konta albo został zablokowany na platformie.   }
     \implementation{ Przy danym punkcie zainteresowania (\glslink{poidef}{POI}) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
@@ -230,20 +230,19 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
 \begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników + tekst}]
     \id{FO7}
     \priority{C}
-    \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
+    \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania.}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość pisania pisemnych opinii z możliwością dodania zdjecia
+        \item chce możliwość pisania pisemnych opinii z możliwością dodania zdjęcia,
         \item aby móc przekazać większy kontekst moich opinii. 
     \end{itemize}
     }
-    \acceptcrit{Opinia musi zostać zatwierdzona przez administratora, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
-    \inputdata{Posiadanie konta zdjecia, tekst }
-    \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
-    \postconditions{  }
-    \exceptions{     brak konta, za duże zdjęcie, nie prawidłowy format zdjęcia      }
-    \implementation{ Przy danym \glslink{poidef}{POI} po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
-    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjecia używa kompresji formatu zdjecia. }
+    \acceptcrit{Opinia musi zostać zatwierdzona przez administratora, można dodać na późniejszym etapie na podstawie algorytmu, który spełnia jakąś politykę prywatności. }
+    \inputdata{Posiadanie konta zdjęcia, tekst }
+    \preconditions{ Można dodawać opinie (ewentualnie ze zdjęciem).}
+    \exceptions{Brak konta, za duże zdjęcie, nieprawidłowy format zdjęcia      }
+    \implementation{ Przy danym \glslink{poidef}{POI} po kliknięciu, jest dostępny przycisk z opcją napisania opinia, każdy użytkownik może dodać jedną opinię.
+    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjęcia używa kompresji formatu zdjęcia. }
     \sholder{ UOB01  }
     \reqrelated{F06,F25}
 \end{requirementstab}
@@ -253,15 +252,15 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Zapisywanie list wybranych \glslink{poidef}{POI} pod konkretną nazwą.}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość zapisania wybranej trasy
+        \item chce możliwość zapisania wybranej trasy,
         \item ponieważ umożliwi to przygotowanie trasy na później. 
     \end{itemize}
     }
-    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona, wyskakuje dymek z zapytaniem czy  chcesz dodać tą trase do ulubionych}
+    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona, wyskakuje dymek z zapytaniem, czy  chcesz dodać tę trasę do ulubionych}
     \inputdata{  }
     \preconditions{ Zaplanowanie trasy w poprzednich widokach aplikacji }
     \postconditions{  Brak }
-    \exceptions{  Jeśli użytkownik jest offline lub niezalogowany, pojawia się komunikat o błędzie:
+    \exceptions{ Jeśli użytkownik jest offline lub niezalogowany, pojawia się komunikat o błędzie:
      "Aby dodać trasę, należy być zalogowanym i mieć połączenie z internetem."   }
     \implementation{ Możliwość otworzenia zapisanej, optymalnej trasy bez konieczności ponownego jej obliczania oraz bez połączenia internetowego.}
     \sholder{ UOB01, UOB02 }
@@ -274,15 +273,15 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Udostępnianie zapisanych list \glslink{poidef}{POI} pomiędzy użytkownikami}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość udostępnienia wybranej trasy
+        \item chce mieć możliwość udostępnienia wybranej trasy,
         \item ponieważ umożliwi to polecania wybranych trasy. 
     \end{itemize}
         }
     \acceptcrit{ W zakładce zapisanych listy widniej dymek z udostępnię danej trasy}
-    \inputdata{Użytkownik klika na przycisk udostępnienia trasy.  }
+    \inputdata{Użytkownik klika  przycisk udostępnienia trasy.  }
     \preconditions{ Posiadanie zapisanej trasy  }
     \postconditions{     Użytkownik udostępniający musi przekazać link do udostępnionej trasy, 
-     użytkownik odstający link musi zaakceptować udostępnioną trasę  }
+     użytkownik otrzymujący link musi zaakceptować udostępnioną trasę  }
     \exceptions{  Nie można przekroczyć 100 zapisanych tras.  }
     \implementation{ Każda trasa ma indywidualny kod w bazie danych. Właściciel trasy może ją edytować. a zobaczyć może każda osoba posiadająca link.}
     \sholder{ UOB01, UOB02, UOB03   }
@@ -292,14 +291,14 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \id{F10}
     \priority{M}
     \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi \glslink{poidef}{POI}}
-    \descr{Jako użytkownik chcę w sposób automatyczny wyznaczyć optymalną trasę między atrakcjami aby wiedzieć jak map się przedostać do danej atrakcj
+    \descr{Jako użytkownik chcę w sposób automatyczny wyznaczyć optymalną trasę między atrakcjami, aby wiedzieć, jak map się przedostać do danej atrakcji
     }
-    \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
+    \acceptcrit{ Algorytm wyznacza trasę od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
     \inputdata{Wybrane 2 atrakcje turystyczne - trasę.  }
-    \preconditions{ brak }
-    \postconditions{ brak  }
+    \preconditions{ Brak }
+    \postconditions{ Brak  }
     \exceptions{ Brak dostępnej trasy między podanymi punktami  }
-    \implementation{ Implementacja na podstawie BFS i Priority Queue.    }
+    \implementation{ Implementacja na podstawie przeszukiwania wszerz i kolejki priorytyzacji.    }
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09}
 \end{requirementstab}
@@ -309,17 +308,16 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość przejścia wybranej trasy pieszo oraz dostępnej komunikacji miejskiej
+        \item chce mieć możliwość przejścia wybranej trasy pieszo oraz dostępnej komunikacji miejskiej,
         \item aby przyśpieszyć podróż i zaoszczędzić czas
     \end{itemize}
     }
     \acceptcrit{ Możliwość wyboru trasy z udziałem komunikacji miejskiej.}
     \inputdata{Wybrane 2 \glslink{poidef}{POI} }
     \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ brak albo połączenie z internetem aby aktualizować na bieżąco rozkład jazdy  }
+    \postconditions{ Brak albo połączenie z internetem, aby aktualizować na bieżąco rozkład jazdy  }
     \exceptions{ Zaproponowanie innego transportu np. pieszo  }
-    \implementation{ *************************************************
-        }
+    \implementation{ Dodanie integracji z API komunikacji miejskiej, synchronizując dane aktualnych rozkładów jazdy do proponowanej trasy.}
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10}
 \end{requirementstab}
@@ -329,7 +327,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość odbyć wybraną trase z udziałem samochodu
+        \item chce mieć możliwość odbyć wybraną trase z udziałem samochodu,
         \item ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
     \end{itemize}
     }
@@ -338,8 +336,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \preconditions{ Brak}
     \postconditions{  Algorytm zaprezentował  trasę z wykorzystaniem dróg przeznaczonych dla samochodów     }
     \exceptions{ Brak trasy możliwej do pokonania samochodem     }
-    \implementation{ *************************************************
-        }
+    \implementation{ Dodanie planowania trasy na podstawie dróg dostępnych tylko dla pojazdów do trzy i pół tony, używając OpenStreetMap   }
     \sholder{ UOB01, UOB02   }
     \reqrelated{IO1,F09,F10,F11}
 \end{requirementstab}
@@ -349,16 +346,16 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość przejrzenia całej trasy 
+        \item chce mieć możliwość przejrzenia całej trasy,
         \item ponieważ umożliwi to przejrzenia zaproponowanej trasy, atrakcja po atrakcji. 
     \end{itemize}
     }
-    \acceptcrit{ Widok listy zawierającej wszystkie uprzednio wybrane atrakcje turystyczne wraz z podstawowymi informacjiami o nich oraz trasy po między nimi.}
+    \acceptcrit{ Widok listy zawierającej wszystkie uprzednio wybrane atrakcje turystyczne wraz z podstawowymi informacjami o nich oraz trasy pomiędzy nimi.}
     \inputdata{ Uprzednio wygenerowany plan zwiedzania}
     \preconditions{ Brak }
-    \postconditions{ Dostęp do internetu aby pobrać aktualizacje trasdy w przypadku zmian danych. }
+    \postconditions{ Dostęp do internetu, aby pobrać aktualizacje trasy w przypadku zmian danych. }
     \exceptions{  Brak wybranego planu zwiedzania }
-    \implementation{ Z lewej strony widać proponowaną trase a z prawej strony ekranu widać oś czas z wybranymi atrakcjami. Użytkownik może modyfikować trase oraz wybierać konkretne punkty na trasie, 
+    \implementation{ Z lewej strony widać proponowaną trasę a z prawej strony ekranu widać oś czas z wybranymi atrakcjami. Użytkownik może modyfikować trasę oraz wybierać konkretne punkty na trasie, 
     w celu bliższego przyjrzenia się nim}
     \sholder{ UOB01, UOB03   }
     \reqrelated{F09,F10,F11,F12,F14, F15, F16}
@@ -369,7 +366,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Widok kalendarza podróży trasy powinien umożliwiać zmianę kolejności odwiedzania na osi czasu \glslink{poidef}{POI} co w efekcie dostosuje resztę optymalnej trasy}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce mieć możliwość ustalania godzin zwiedzania
+        \item chce mieć możliwość ustalania godzin zwiedzania,
         \item ponieważ kalendarz pokaże mi możliwość edycji trasy wycieczki optymalnej do godzin otwarcia. 
     \end{itemize}
     }
@@ -379,7 +376,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \postconditions{ Prezentacja nowej trasy o nowe sugestie w podróży.  }
     \exceptions{  Brak przeładowania trasy przez brak internetu. }
     \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
-    \sholder{ UOB01, UOB02   }
+    \sholder{ UOB01, UOB02 }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: \glslink{poidef}{POI} użytkowników }]
@@ -388,7 +385,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych \glslink{poidef}{POI}}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość dodania nowych punktów i usunięcia z aktualnej listy dostępnych punków
+        \item chce mieć możliwość dodania nowych punktów i usunięcia z aktualnej listy dostępnych punków,
         \item ponieważ chciałbym wyznaczyć trasę między punktami, którymi administratorzy nie dodali. 
     \end{itemize}
     }
@@ -397,30 +394,30 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \preconditions{  }
     \postconditions{   }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
-    \implementation{ Na interaktywnej mapie powienien znajdować się przycisk do dodania własnych atrakcji, ale tylko gdy użytkownik jest zalogowany.}
+    \implementation{ Na interaktywnej mapie powinien znajdować się przycisk do dodania własnych atrakcji, ale tylko, gdy użytkownik jest zalogowany.}
     \sholder{ UOB01, UOB02   }
     \reqrelated{F09,F10,F11,F12,F14, F15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
+\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Środek transportu rower}]
     \id{F16}
     \priority{C}
-    \name{Algorytm Plannera - środek transportu rower}
+    \name{Wybór środka transportu rower}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
-        \item ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
+        \item chce możliwość  wyznaczenia trasy z wykorzystanie roweru np. \glslink{mevo}{mevo}, 
+        \item ponieważ chciałbym korzystać ze swojego roweru bądź wypożyczonego podczas zwiedzania. 
     \end{itemize}
     }
-    \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Przestawia optymalną trase.   }
-    \postconditions{ ATrasa zostaje przedstawiona użytkownikowi. }
+    \acceptcrit{ Aplikacja ma tryb trasy rowerej}
+    \inputdata{Wybrane atrakcje turystyczne }
+    \preconditions{Przestawia optymalną trasę   }
+    \postconditions{ Trasa zostaje przedstawiona użytkownikowi. }
     \exceptions{ Brak atrakcji brak planu.}
     \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
     \reqrelated{F20}
@@ -431,7 +428,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Aktualna pozycja użytkownika na interaktywnej mapie}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce widzieć swoją pozycję na mapie 
+        \item chce widzieć swoją pozycję na mapie, 
         \item aby móc ocenić postępy w trasie.
     \end{itemize}
     } 
@@ -439,7 +436,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
     \preconditions{Zgoda użytkownika na dostęp do lokalizacji}
     \postconditions{ Brak }
-    \exceptions{  Brak zgody użytkownika na dostęp do lokalizacji. zgubiony sygnał gps     }
+    \exceptions{  Brak zgody użytkownika na dostęp do lokalizacji lub zgubiony sygnał GPS }
     \implementation{ Aplikacja na podstawie danych GPS pokazuje postęp użytkownika.}
     \sholder{ UOB01 }
     \reqrelated{F17}
@@ -450,16 +447,16 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Filtracja atrakcji turystycznych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
+        \item chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa,
         \item ponieważ chciałbym mieć dokładniejszej selekcji \glslink{poidef}{POI}.
     \end{itemize}
     }
     \acceptcrit{ Możliwości wyboru kategorii \glslink{poidef}{POI}}
     \inputdata{Wybrana kategoria. }
-    \preconditions{     Włączony widok interaktywnej mapy lub listy pois     }
+    \preconditions{     Włączony widok interaktywnej mapy lub listy \glslink{poidef}{POI}}
     \postconditions{ Brak }
     \exceptions{ Brak }
-    \implementation{ Możliwość filtrowania \glslink{poidef}{poi} na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
+    \implementation{ Możliwość filtrowania \glslink{poidef}{POI} na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
     }
     \sholder{UOB01, UOB02 }
     \reqrelated{F20,F21,}
@@ -470,11 +467,11 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Algorytm Plannera}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce żeby planner korzystał z wszystkich możliwości 
-        \item ponieważ umożliwi to interaktywne korzystanie cały czas bez dłużych nakładu czasowego. 
+        \item chce żeby planner korzystał z wszystkich możliwości,
+        \item ponieważ umożliwi to interaktywne korzystanie cały czas bez dłuższego nakładu czasowego. 
     \end{itemize}
     }
-    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
+    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu, na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji użytkownika).}
     \inputdata{Wybrane atrakcje turystyczne – trasa. }
     \preconditions{Przestawia optymalną trase.   }
     \postconditions{ Trasa zostaje przedstawiona użytkownikowi. }
@@ -483,7 +480,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
     \sholder{ UOB02 }
     \reqrelated{F09,F10,F11,F12,F14, F15}
@@ -495,7 +492,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Widok Druku - Pdf}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf
+        \item chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf,
         \item ponieważ chciałbym mieć na kartce swój plan. 
     \end{itemize}
     }
@@ -503,7 +500,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \inputdata{Uprzednio wygenerowany plan zwiedzania }
     \preconditions{ Brak }
     \postconditions{Wsparcie systemu operacyjnego użytkownika w drukowaniu.    }
-    \exceptions{ Brak wsparcia systemu operacyjnego użytkownika w drukowaniu..}
+    \exceptions{ Brak wsparcia systemu operacyjnego użytkownika w drukowaniu.}
     \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
     }
     \sholder{UOB01, UOB02,UOB03 }
@@ -516,8 +513,8 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Automatyczna aktualizacja planu zwiedzania w przypadku zmianu danych}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
-        \item ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
+        \item chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie,
+        \item ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np. Pójdę coś zjeść.
     \end{itemize}
     }
     \acceptcrit{ Automatyczne zmiany}
@@ -536,15 +533,15 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Przeliczanie Trasy o opóźnienia komunikacji miejskiej}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item chce dostawać aktualne dane o czasie oczekiwania na środek transportu
-        \item ponieważ chciałbym mieć aktualne dane ile będę czekać
+        \item chce dostawać aktualne dane o czasie oczekiwania na środek transportu,
+        \item ponieważ chciałbym posiadać aktualne dane ile będę czekać
     \end{itemize}
     }
     \acceptcrit{ Przycisk odświeżenia planu trasy}
     \inputdata{Wybrana trasa turystyczna. }
     \preconditions{ Wybrana trasa była wcześniej włączona }
     \postconditions{ Wyświetla się aktualny plan trasy. }
-    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
+    \exceptions{ Wyświetla błąd, że aktualna atrakcja jest już zamknięta.}
     \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
     }
     \sholder{UOB01, UOB02, UOB03 }
@@ -556,7 +553,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \name{Możliwość korzystania jako gość}
     \descr{\begin{itemize}
         \item Jako użytkownik 
-        \item Nie chce logować się do aplikacji
+        \item Nie chce logować się do aplikacji,
         \item ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
     \end{itemize}
     }
@@ -568,24 +565,22 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \sholder{UOB01, UOB02, UOB03 }
     \reqrelated{F20,F21}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func27},caption={Karta wymagania: Panel Moderacji Opinii}]
+\begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Panel Moderacji Opinii}]
     \id{F25}
     \priority{C}
     \name{Panel Moderacji Opinii}
     \descr{
-     Jako Administrator chce panel do administracyji opinii aby treści były zgodne obowiązującym prawem.
+     Jako Administrator chce panel do administracji opinii, aby treści były zgodne obowiązującym prawem.
     }
-    \acceptcrit{ Możliwość zarządzania opiniami wyświetlenie - akceptowanie - odrzucaniem  }
+    \acceptcrit{ Możliwość zarządzania opiniami wyświetlenie,  akceptowanie oraz odrzucaniem  }
     \inputdata{ Nowo dodane opinie użytkowników }
-    \preconditions{  }
-    \postconditions{  }
-    \exceptions{ Użytkownik dodał opinie nieodpowiednią dla dzieci. }
-    \implementation{ Dodanie kolejnej strony dostepnej tylko dla administratora, w któy będą wyświetlały się nowo dodane opinie oraz wszystkie zaakceptowane. 
+    \exceptions{ Użytkownik dodał opinię nieodpowiednią dla dzieci. }
+    \implementation{ Dodanie kolejnej strony dostępnej tylko dla administratora, w któy będą wyświetlały się nowo dodane opinie oraz wszystkie zaakceptowane. 
     }
     \sholder{ UOB02 }
     \reqrelated{F07}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func28},caption={Karta wymagania: Widok list atrakcji}]
+\begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Widok list atrakcji}]
     \id{F26}
     \priority{C}
     \name{Widok zapisanych list atrakcji}
@@ -593,10 +588,27 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     }
     \acceptcrit{ użytkownik dodał liste atracji do ulubionych }
     \inputdata{ Zapisane listy atrakcji }
-    \preconditions{  }
-    \postconditions{  }
     \exceptions{ Atrakcje z listy są niedostępne }
     \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane listy atrakcji do ulubionych. Widok ten włącza się z menu konta użytkownika.
+    }
+    \sholder{ UOB01 }
+    \reqrelated{F09}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func27},caption={Karta wymagania: Widok wybranych atrakcji}]
+    \id{F27}
+    \priority{S}
+    \name{Widok kalendarza planowania podróży}
+    \descr{Widok kalendarza przedstawia wybrane atrakcje przez użytkownika.
+    Użytkownik może wybrać zakres przedziału czasowego, jaki ma odwiedzanie atrakcji.
+    Kalendarz umożliwia wybór  przedziałów czasowych, oraz ustalenie możliwości odwiedzin dla danej atrakcji według dostępności czasowych tej atrakcji.
+    }
+    \acceptcrit{  }
+    \inputdata{ Dodane atrakcje do koszyka}
+    \preconditions{  }
+    \postconditions{  }
+    \exceptions{ Użytkownik przeciągnął atrakcje na okres czasowych, w którym ona jest nie dostępna}
+    \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane atrakcję do koszyka. Atrakcje można przeciągać po kalendzarzu ( wcześniej ) 
+
     }
     \sholder{ UOB01 }
     \reqrelated{F09}
@@ -654,7 +666,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \inputdata{Lista atrakcji turystycznych wraz z informacjami o nich, schemat kolorystyczny urządzenia (jasny / ciemny)}
     \preconditions{ Załadowanie danych z bazy danych}
     \exceptions{ Brak atrakcji turystycznych – mapa powinna pokazać informację o braku danych.}
-    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa Stadia Maps przy połączeniu biblioteki  Open layers}
+    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa \glslink{stadiamaps}{Stadia Maps} przy połączeniu biblioteki  \glslink{openlayers}{Open layers} }
     \sholder{ UOB02}
     \reqrelated{IO3,F20}
 \end{requirementstab}
