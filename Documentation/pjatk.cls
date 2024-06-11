@@ -72,13 +72,23 @@
 \newcommand{\@projectgoals}{\@latex@error{No \noexpand\@projectgoals given}\@ehc}
 \newcommand{\projectgoals}[1]{\renewcommand{\@projectgoals}{#1}}
 
-\newcommand{\@successmeasure}{\@latex@error{No \noexpand\@successmeasure given}\@ehc}
-\newcommand{\successmeasure}[1]{\renewcommand{\@successmeasure}{#1}}
+%\newcommand{\@successmeasure}{\@latex@error{No \noexpand\@successmeasure given}\@ehc}
+%\newcommand{\successmeasure}[1]{\renewcommand{\@successmeasure}{#1}}
 
-\newcommand{\@projlimitations}{\@latex@error{No \noexpand\@projlimitations given}\@ehc}
-\newcommand{\projlimitations}[1]{\renewcommand{\@projlimitations}{#1}}
+\newcommand{\@successmeasure}{}
+\newcommand{\successmeasure}[1]{%
+    \expandafter\g@addto@macro\expandafter\@successmeasure\expandafter{\item #1
+    }
+}
 
+%\newcommand{\@projlimitations}{\@latex@error{No \noexpand\@projlimitations given}\@ehc}
+%\newcommand{\projlimitations}[1]{\renewcommand{\@projlimitations}{#1}}
 
+\newcommand{\@projlimitations}{}
+\newcommand{\projlimitation}[1]{%
+    \expandafter\g@addto@macro\expandafter\@projlimitations\expandafter{\item #1
+    }
+}
 
 
 \newcommand{\@authors}{}
@@ -273,7 +283,7 @@
             \multicolumn{2}{|p{0.65\linewidth}|}{\textbf{Promotor:}
 
             \@supervisor}      & \@mysmartparbox{0.35\linewidth}{\textbf{Konsultanci:}
-                \begin{enumerate}[label=(\alph*)]
+                \begin{enumerate}
                     \@consultants
                 \end{enumerate}}                                                                           \\
             \hline
@@ -286,14 +296,17 @@
                 \end{enumerate}}                                                                                \\
             {}                 & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Główne funkcjonalności i/lub cechy:}
                 \begin{enumerate}[label=(\alph*)]
-                \@mainfunctionalities
+                    \@mainfunctionalities
                 \end{enumerate}}                                                                              \\       \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Miary sukcesu:}
-
-            \@successmeasure}                                                                                     \\ \hline
+                \begin{enumerate}[label=(\alph*)]
+                    \@successmeasure
+                \end{enumerate}}                                                                               \\ \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Ograniczenia:}
 
-            \@projlimitations}                                                                                    \\ \hline
+                \begin{enumerate}[label=(\alph*)]
+                    \@projlimitations
+                \end{enumerate}}                                                                                  \\ \hline
         \end{tabular}
     \end{center}
 
