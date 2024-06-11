@@ -202,32 +202,46 @@ Biorąć~pod~uwagę~ten~fakt oraz brak możliwości napisania oprogramowania w~s
 
 \subsection{Przegląd rynku}\label{subsec:przeglad-rynku}
 
-\subsubsection{Microsoft Azure Cloud}
+\subsection{Microsoft Azure Cloud}\label{subsec:microsoft-azure-cloud}
 Chmura obliczeniowa Microsoftu została~nam~udostępniona w~ramach zajęć z~konteneryzacji.
 Microsoft udostępnia studentom jednorazowo 200\$~do~wykorzystania~na~okres roku.
 W~ramach okresu edukacyjnego mamy~do~dyspozycji najsłabsze i~najmniej stabilne maszyny dostępne w~ofercie.
 W~trakcie zajęć natknęliśmy się~na~wiele problemów~ze~stabilnością i~wydajnością~tej~chmury.
 Jednorazowy roczny okres próbny w~połączeniu z~ograniczeniem budżetowym całkowicie deklasuje tą chmurę z~powodu braku możliwości utrzymania rozwiązania w~rozumieniu długoterminowym
 
-\subsubsection{Amazon Web Services}
+\subsection{Amazon Web Services}\label{subsec:amazon-web-services}
 Chmurę obliczeniową Amazon mieliśmy okazję zobaczyć~na~szkoleniu organizowanym przez Merapar.
 W~trakcie zajęć chmura~nie~sprawiła najmniejszych problemów,~co~pokrywa się z~licznymi opiniami rynkowymi.
 Niestety pomimo wielu darmowych progów zużycia, Amazon~nie~oferuje darmowego progu w~przypadku usługi EC2 (\gls{on-prem} virtual).
 
-\subsubsection{Google Cloud Platform}
+\subsection{Google Cloud Platform}\label{subsec:google-cloud-platform}
 GCP~zostało~nam~zaprezentowane w~ramach projektu PJATK cloudelina.
 Usługi w~ramach~GCP~wydają się znacznie prostsze w~konfiguracji oraz bardzo dobrze integrują się z~Angular-em.
 Niestety podobnie~jak~w~przypadku Amazon-u,~GCP~nie oferuje darmowego progu~dla~maszyn wirtualnych.
 
-\subsubsection{Oracle Cloud Platform}
+\subsection{Oracle Cloud Platform}\label{subsec:oracle-cloud-platform}
 Oracle cloud jako jedyne~nie~posiada usług typowych~dla~architektury chmurowych.
 Oracle daje bardzo hojny darmowy limit~dla~maszyn wirtualnych opartych o~\glslink{arm}{architekturę arm} wynoszący 6 CPU, 24~GB~RAM, 200~HDD~i~100~Mbs~ethernet.
 Taki próg pozwoli~nie~tylko~na~wytworzenie oprogramowania, przeprowadzenie testów,~ale~nawet i~obsługę średniej wielkości ruchu użytkowników.
 
-\section{Przechowywanie kodu oraz potok ciągłego wdrożenia}
-\label{sec:przechowywanie-kodu-oraz-potok-ciagego-wdrozenia}
+\section{Wersjonowanie kodu}
+\label{sec:wersjonowanie-kodu}
 
 W~trakcie zajęć~na~uczelni,~jak~i~pracy indywidualnej członków zespołu projektowego poznaliśmy 2~systemy kontroli wersji.
 Są~to~GIT oraz Mercurial.
 ~GIT~pod każdym względem jest lepszy~od~Mercurial,~sam~Mercurial jest uznany~za~projekt~bez~rozwoju.
 Zespół projektowy postanowił oprzeć swoją pracę~na~podstawie GIT, i trzymać repozytorium na GitHub.
+
+\section{Potok ciągłego wdrożenia}
+\label{sec:github-actions}
+Trzymanie repozytorium na GitHub zapewnia bezkompromisową integrację z GitHub Actions, co pozwala na automatyzację wielu procesów związanych z rozwojem oprogramowania.
+Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różne potoki ciągłej integracji.
+
+\subsection{Potok Backendu}
+\label{subsec:potok-backendu}
+
+\subsection{Potok Frontendu}
+\label{subsec:potok-frontendu}
+
+\subsection{Potok Dokumentacji}
+\label{subsec:potok-dokumentacji}
