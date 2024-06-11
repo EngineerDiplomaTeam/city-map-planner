@@ -74,3 +74,10 @@
   year = {2019},
   author = {Walanchalee Wattanacharoensil and Dolchai La-ornual}
 }
+
+@article{sdlm,
+  title = {Software development lifecycle models},
+  journal = {ACM SIGSOFT Software Engineering Notes},
+  year = {2010},
+  author = {Nayan B. Ruparelia}
+}
