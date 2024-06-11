@@ -197,28 +197,7 @@ export class AuthService {
     );
   }
 
-  public async enable2fa(code: string): Promise<Enable2faResponse> {
-    return await firstValueFrom(
-      this.http.post<Enable2faResponse>('/Api/Manage/2fa', {
-        enable: true,
-        twoFactorCode: code.toString(),
-      }),
-    );
-  }
-
-  async getQrCode(code: string): Promise<string> {
-    return await firstValueFrom(
-      this.http
-        .get<{ qrCode: string }>('/Api/Generate', {
-          params: {
-            code,
-          },
-        })
-        .pipe(map((r) => r.qrCode)),
-    );
-  }
-
-  getQrCodeLink(code: string): string {
+  public getQrCodeLink(code: string): string {
     return '/Api/generate-qr-code?code=' + code;
   }
 
