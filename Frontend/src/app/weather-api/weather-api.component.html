@@ -1,13 +1,11 @@
-<p>
-<!--
+<!--<p>
+
   {{ weather | async | json }}
--->
-</p>
-<div *ngIf="closestWeather$ | async as closestWeather;">
-  <p> {{ closestWeather.temperature2M }}°C <img [src]="weatherIconService.getWeatherIcon(closestWeather.weathercode)" style="width: 50px;height: 25px;filter: contrast(0.0000000015); " alt="Weather Icon">
-  </p>
 
-  <div>
-  </div>
-
+</p>-->
+<div class="flex-container" *ngIf="closestWeather$ | async as closestWeather;">
+  <span>{{ closestWeather.temperature2M }}°C
+  </span><img [src]="weatherIconService.getWeatherIconSrc(closestWeather.weathercode)"
+              style="width: 50px;height: 25px;filter: contrast(0.0000000015); "
+              [alt]="weatherIconService.getWeatherName(closestWeather.weathercode)">
 </div>
