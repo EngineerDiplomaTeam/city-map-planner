@@ -59,10 +59,12 @@
     }
 }
 
-\newcommand{\@mainfunctionalities}{\@latex@error{No \noexpand\@mainfunctionalities given}\@ehc}
-\newcommand{\mainfunctionalities}[1]{\renewcommand{\@mainfunctionalities}{#1}}
 
-
+\newcommand{\@mainfunctionalities}{}
+\newcommand{\mainfunctionality}[1]{%
+    \expandafter\g@addto@macro\expandafter\@mainfunctionalities\expandafter{\item #1
+    }
+}
 
 \newcommand{\@supervisor}{\@latex@error{No \noexpand\@supervisor given}\@ehc}
 \newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
