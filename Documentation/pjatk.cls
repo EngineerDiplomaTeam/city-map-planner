@@ -53,10 +53,11 @@
 \newcommand{\titledate}[1]{\renewcommand{\@titledate}{#1}}
 
 
-
-\newcommand{\@productsandservices}{\@latex@error{No \noexpand\@productsandservices given}\@ehc}
-\newcommand{\productsandservices}[1]{\renewcommand{\@productsandservices}{#1}}
-
+\newcommand{\@productsandservices}{}
+\newcommand{\productsandservice}[1]{%
+    \expandafter\g@addto@macro\expandafter\@productsandservices\expandafter{\item #1
+    }
+}
 
 \newcommand{\@mainfunctionalities}{\@latex@error{No \noexpand\@mainfunctionalities given}\@ehc}
 \newcommand{\mainfunctionalities}[1]{\renewcommand{\@mainfunctionalities}{#1}}
@@ -278,8 +279,9 @@
 
             \@projectgoals}                                                                                       \\ \hline
             Rezultaty i zakres & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Oczekiwane produkty/usługi:}
-
-            \@productsandservices}                                                                                \\
+                \begin{enumerate}
+                    \@productsandservices
+                \end{enumerate}}                                                                                \\
             {}                 & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Główne funkcjonalności i/lub cechy:}
 
             \@mainfunctionalities}                                                                                \\       \hline
