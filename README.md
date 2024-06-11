@@ -6,9 +6,8 @@ App created by: Mateusz Budzisz, Wiktor Rostkowski, Sebastian Kreft, Damian Kref
 1. `Rider`, `Webstorm` & `Datagrip` 
 2. `.NET 8.2 SDK` [MacOS](https://learn.microsoft.com/pl-pl/dotnet/core/install/macos), [Linux](https://learn.microsoft.com/pl-pl/dotnet/core/install/linux), [Windows](https://learn.microsoft.com/pl-pl/dotnet/core/install/windows?tabs=net70).
 3. `Node 20+` [MacOS and Linux](https://github.com/nvm-sh/nvm), [Windows](https://github.com/coreybutler/nvm-windows).
-4. `Pnpm 8+` once you got node installed just run:
+4. `Pnpm 9+` once you got node installed just run:
    - `corepack enable`
-   - `corepack prepare pnpm@latest-8 --activate`
 
 ## Local setup
 **Assuming you run latest Rider, Datagrip + Webstorm (though Visual Studio + VS code should work fine too)**
@@ -63,9 +62,12 @@ The default branch is `main`, it is protected from direct pushes.
    You may track deployment via logs [here](https://github.com/EngineerDiplomaTeam/city-map-planner/actions).
 
 ## EF always inside `Backend` directory
-1. Initial setup: `dotnet ef migrations add InitialCreate --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
-2. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
-3. Update: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+1. Initial setup user data: `dotnet ef migrations add InitialCreateUserData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
+2. Initial setup data: `dotnet ef migrations add InitialCreateData --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
+3. Remove all migrations: `dotnet ef migrations remove --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj`
+4. Update user data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context UserDataDbContext`
+5. Update data: `dotnet ef database update --project WebApi.Data/WebApi.Data.csproj --startup-project WebApi/WebApi.csproj --context DataDbContext`
+6. Run permission script after each migration: `../Database/structure.sql` (Use DataGrip or psql)
 
 ## Sources used
 

@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Manage sightseeing time spans</h2>
+<mat-dialog-content>
+
+  <main class="time-spans">
+    @for (formGroup of formArray.controls; track $index) {
+      <article class="time-span">
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input [min]="today" [formControl]="formGroup.controls.dateOnly" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <app-time-range-picker
+          [formControlStart]="formGroup.controls.timeFrom"
+          [formControlEnd]="formGroup.controls.timeTo"
+        />
+
+        <button mat-mini-fab class="remove" (click)="removeTimeSpan($index)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </article>
+    }
+  </main>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="addTimeSpan()">Add sightseeing timespan</button>
+  <button mat-raised-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>

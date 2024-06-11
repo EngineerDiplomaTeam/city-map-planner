@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
@@ -21,6 +20,10 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { tokenInterceptor } from './auth/token.interceptor';
+import { POI_FEATURE_KEY, poiReducer } from './poi/poi.reducer';
+import { PoiEffects } from './poi/poi.effects';
+import { MatBadgeModule } from '@angular/material/badge';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -33,14 +36,17 @@ import { tokenInterceptor } from './auth/token.interceptor';
     MatCardModule,
     MatListModule,
     MatButtonModule,
+    MatBadgeModule,
     StoreModule.forRoot({
       [AUTH_FEATURE_KEY]: authReducer,
+      [POI_FEATURE_KEY]: poiReducer,
     }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, PoiEffects]),
     StoreDevtoolsModule.instrument(),
   ],
   providers: [
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent],
 })

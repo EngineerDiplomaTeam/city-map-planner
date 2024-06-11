@@ -23,14 +23,13 @@ $dark-theme: mat.define-dark-theme((
     accent: $accent,
     warn: $warn,
   ),
-  typography: mat.define-typography-config(),
-  density: 0,
 ));
 
 $light-theme: mat.define-light-theme((
   color: (
     primary: $primary,
     accent: $accent,
+    warn: $warn,
   ),
 ));
 
@@ -46,11 +45,15 @@ $light-theme: mat.define-light-theme((
 @include mat.form-field-theme($light-theme);
 @include mat.progress-bar-theme($light-theme);
 @include mat.snack-bar-theme($light-theme);
-@include mat.list-theme($light-theme);
-
-html {
-  color-scheme: light;
-}
+@include mat.bottom-sheet-theme($light-theme);
+@include mat.fab-theme($light-theme);
+@include mat.badge-theme($light-theme);
+@include mat.divider-theme($light-theme);
+@include mat.datepicker-theme($light-theme);
+@include mat.select-theme($light-theme);
+@include mat.menu-theme($light-theme);
+@include mat.progress-spinner-theme($light-theme);
+@include mat.stepper-theme($light-theme);
 
 // Apply the dark theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
@@ -67,31 +70,29 @@ html {
   @include mat.form-field-color($dark-theme);
   @include mat.progress-bar-color($dark-theme);
   @include mat.snack-bar-color($dark-theme);
-  @include mat.list-color($dark-theme);
-
-  html {
-    color-scheme: dark;
-
-    .leaflet-bar a {
-      background-color: #212121;
-      color: #fff;
-    }
-
-    .leaflet-container .leaflet-control-attribution {
-      background: rgba(33, 33, 33, 0.8);
-      color: #fff;
-    }
-
-    .leaflet-container {
-      background-color: #303030;
-    }
-  }
+  @include mat.bottom-sheet-color($dark-theme);
+  @include mat.fab-color($dark-theme);
+  @include mat.badge-color($dark-theme);
+  @include mat.divider-color($dark-theme);
+  @include mat.datepicker-color($dark-theme);
+  @include mat.select-color($dark-theme);
+  @include mat.menu-color($dark-theme);
+  @include mat.progress-spinner-color($dark-theme);
+  @include mat.stepper-color($dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
+:root {
+  // Why Angular why? FIXME: Remove these variables, yet without breaking app
+  --mat-badge-text-font: Roboto, sans-serif;
+  --mat-badge-text-size: 0.688rem;
+  --mat-badge-small-size-text-size: 0.688rem;
+  --mat-badge-text-weight: 500;
+}
 
 html, body {
   height: 100%;
+  color-scheme: light dark;
 }
 
 body {
@@ -102,8 +103,7 @@ body {
 app-root {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 100svh;
+  height: 100svh;
 }
 
 a {
@@ -116,8 +116,66 @@ a {
 }
 
 .error-snackbar {
+  white-space: pre-wrap;
   .mdc-snackbar__surface{
     --mdc-snackbar-container-color: #{mat.get-color-from-palette($warn, 900)};
     --mdc-snackbar-supporting-text-color: #{mat.get-color-from-palette($warn, A900)};
+  }
+}
+
+.warn {
+  background: mat.get-color-from-palette($warn, 900);
+}
+
+mat-sidenav {
+  border: none !important;
+}
+
+.fc-timegrid-slot {
+  line-height: 40px;
+}
+
+.slot-lane {
+  background-color: transparent !important;
+}
+
+.fl-view-custom {
+  background-color: #ddd;
+}
+
+$colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6;
+@for $i from 1 through length($colors) {
+  .poi-business-hours-#{$i} {
+    opacity: 1 !important;
+    background-color: nth($colors, $i) !important;
+    width: 8px;
+    margin-left: #{8 * ($i - 1)}px;
+  }
+
+  .poi-color-#{$i} {
+    background-color: nth($colors, $i);
+    border-left: nth($colors, $i) solid 4px;
+  }
+}
+
+.fc-non-business {
+  background-color: red !important;
+  opacity: 0.1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fc-today-bg-color: transparent;
+    --fc-neutral-bg-color: transparent;
+    --fc-border-color: #cddc3950;
+  }
+
+
+  .fl-view-custom {
+    background-color: rgb(40, 40, 40) !important;
+  }
+
+  .fc-theme-standard td, .fc-theme-standard th {
+    //border: 1px solid #000;
   }
 }

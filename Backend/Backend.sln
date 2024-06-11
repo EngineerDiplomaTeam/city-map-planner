@@ -1,8 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{262F69FC-FCFA-424D-A2D3-D5FB40C12309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiTests", "WebApiTests\WebApiTests.csproj", "{A84B8ACE-360E-4232-998A-B09B11F693DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "WebApi.Tests\WebApi.Tests.csproj", "{A84B8ACE-360E-4232-998A-B09B11F693DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{14F04E96-462E-4018-9627-B1836EFC2967}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{14F0
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Data", "WebApi.Data\WebApi.Data.csproj", "{E02C8468-89CA-4606-8659-1660BA013ADD}"
+EndProject
+Project("{00000000-0000-0000-0000-000000000000}") = "WebApi.OverpassClient", "WebApi.OverpassClient\WebApi.OverpassClient.csproj", "{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Weather", "WebApi.Weather\WebApi.Weather.csproj", "{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +33,11 @@ Global
 		{E02C8468-89CA-4606-8659-1660BA013ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E02C8468-89CA-4606-8659-1660BA013ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3544CDA7-E680-4DB3-9F5E-BE4014F43DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89E578F-9925-4841-8E9A-A9A2CBF12EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

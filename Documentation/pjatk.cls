@@ -16,14 +16,22 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{polski} % Włączenie obsługi polskich liter
 \RequirePackage{tabularx}
-\RequirePackage[backend=biber,style=numeric,sorting=none]{biblatex}
+%\RequirePackage[backend=biber,language=polish,style=ieee,sorting=none]{biblatex}
+\RequirePackage[style=ieee,natbib,
+    language=polish,
+    sortlocale=pl_PL,
+    doi=false,
+    isbn=false,
+    url=false,
+    eprint=false
+]{biblatex}
 \RequirePackage{url}
 \RequirePackage{graphicx}
 \RequirePackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
 \RequirePackage{multirow}
 \RequirePackage{graphicx}
 \RequirePackage{csquotes}
-
+\linespread{1.25}% Equals to 1.5 in Word
 
 \newcommand{\@nabstract}{\@latex@error{No \noexpand\@nabstract given}\@ehc}
 \newcommand{\nabstract}[1]{\renewcommand{\@nabstract}{#1}}
@@ -45,15 +53,18 @@
 \newcommand{\titledate}[1]{\renewcommand{\@titledate}{#1}}
 
 
-
-\newcommand{\@productsandservices}{\@latex@error{No \noexpand\@productsandservices given}\@ehc}
-\newcommand{\productsandservices}[1]{\renewcommand{\@productsandservices}{#1}}
-
-
-\newcommand{\@mainfunctionalities}{\@latex@error{No \noexpand\@mainfunctionalities given}\@ehc}
-\newcommand{\mainfunctionalities}[1]{\renewcommand{\@mainfunctionalities}{#1}}
+\newcommand{\@productsandservices}{}
+\newcommand{\productsandservice}[1]{%
+    \expandafter\g@addto@macro\expandafter\@productsandservices\expandafter{\item #1
+    }
+}
 
 
+\newcommand{\@mainfunctionalities}{}
+\newcommand{\mainfunctionality}[1]{%
+    \expandafter\g@addto@macro\expandafter\@mainfunctionalities\expandafter{\item #1
+    }
+}
 
 \newcommand{\@supervisor}{\@latex@error{No \noexpand\@supervisor given}\@ehc}
 \newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
@@ -61,13 +72,23 @@
 \newcommand{\@projectgoals}{\@latex@error{No \noexpand\@projectgoals given}\@ehc}
 \newcommand{\projectgoals}[1]{\renewcommand{\@projectgoals}{#1}}
 
-\newcommand{\@successmeasure}{\@latex@error{No \noexpand\@successmeasure given}\@ehc}
-\newcommand{\successmeasure}[1]{\renewcommand{\@successmeasure}{#1}}
+%\newcommand{\@successmeasure}{\@latex@error{No \noexpand\@successmeasure given}\@ehc}
+%\newcommand{\successmeasure}[1]{\renewcommand{\@successmeasure}{#1}}
 
-\newcommand{\@projlimitations}{\@latex@error{No \noexpand\@projlimitations given}\@ehc}
-\newcommand{\projlimitations}[1]{\renewcommand{\@projlimitations}{#1}}
+\newcommand{\@successmeasure}{}
+\newcommand{\successmeasure}[1]{%
+    \expandafter\g@addto@macro\expandafter\@successmeasure\expandafter{\item #1
+    }
+}
 
+%\newcommand{\@projlimitations}{\@latex@error{No \noexpand\@projlimitations given}\@ehc}
+%\newcommand{\projlimitations}[1]{\renewcommand{\@projlimitations}{#1}}
 
+\newcommand{\@projlimitations}{}
+\newcommand{\projlimitation}[1]{%
+    \expandafter\g@addto@macro\expandafter\@projlimitations\expandafter{\item #1
+    }
+}
 
 
 \newcommand{\@authors}{}
@@ -105,11 +126,11 @@
     \newcommand{\id}[1]{Identyfikator: & ##1 \\ \hline}
     \newcommand{\name}[1]{Nazwa:: & ##1 \\ \hline}
     \newcommand{\descr}[1]{Opis:: & ##1 \\ \hline}
-    \newcommand{\type}[1]{Typ udziałowca:: & ##1 \\ \hline}
-    \newcommand{\viewpoint}[1]{Punkt widzenia:: & ##1 \\ \hline}
-    \newcommand{\limitations}[1]{Ograniczenia:: & ##1 \\ \hline}
+    \newcommand{\type}[1]{Typ udziałowca: & ##1 \\ \hline}
+    \newcommand{\viewpoint}[1]{Punkt widzenia: & ##1 \\ \hline}
+    \newcommand{\limitations}[1]{Ograniczenia: & ##1 \\ \hline}
     \newcommand{\requ}[1]{Wymagania:: & ##1 \\ \hline}
-    \table[h]
+    \table[H]
     \centering
     \begin{tabular}{|>{\columncolor{lightgray}}c|p{0.6\linewidth}|}
         \hline
@@ -138,7 +159,7 @@
     \newcommand{\implementation}[1]{Szczegóły implementacji: & \multicolumn{3}{|p{0.6\linewidth}|}{##1}  \\ \hline}
     \newcommand{\sholder}[1]{Udziałowiec: & \multicolumn{3}{|p{0.6\linewidth}|}{##1}  \\ \hline}
     \newcommand{\reqrelated}[1]{Wymagania powiązane: & \multicolumn{3}{|p{0.6\linewidth}|}{##1}  \\ \hline}
-    \table[h]
+    \table[H]
     \centering
     \begin{tabular}{|>{\columncolor{lightgray}}l|l|>{\columncolor{lightgray}}l|p{0.1\linewidth}|}
         \hline
@@ -194,14 +215,16 @@
 
 \renewcommand{\maketitle}{%
     \begin{titlepage}
+        \enlargethispage{1\baselineskip}
+        \newgeometry{bottom=3cm}
         \begin{center}
             \includegraphics[width=0.8\textwidth]{attachments/pjatk}
-            \vspace{1cm}
+            \vspace{0.5cm}
             \large
             \begin{tabularx}{\textwidth}{X r}
                 \textbf{Kierunek studiów: \@studfield} & \textbf{Rodzaj studiów: \@studtype}
             \end{tabularx}
-            \vspace{1cm}
+            \vspace{0.5cm}
             \huge
             \textbf{Praca dyplomowa}
         \end{center}
@@ -219,7 +242,7 @@
                 \@authors
             \end{tabularx}
         \end{center}
-        \vspace{1cm}
+        \vspace{0.5cm}
         \textbf{\\Streszczenie:}
 
         \@nabstract
@@ -227,6 +250,7 @@
             \vfill{\textbf{Gdańsk, \@date}}
         \end{center}
         \newpage
+        \restoregeometry
     \end{titlepage}
 }
 \newcommand{\@mysmartparbox}[2]{%
@@ -235,6 +259,7 @@
 
 
 \newcommand{\makeprojectcard}{%
+    \newgeometry{top=2cm,bottom=2cm}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{attachments/pjatk} \\
         {
@@ -270,17 +295,22 @@
 
             \@projectgoals}                                                                                       \\ \hline
             Rezultaty i zakres & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Oczekiwane produkty/usługi:}
-
-            \@productsandservices}                                                                                \\
+                \begin{enumerate}[label=(\alph*)]
+                    \@productsandservices
+                \end{enumerate}}                                                                                \\
             {}                 & \multicolumn{2}{|p{0.6\linewidth}|}{\textbf{Główne funkcjonalności i/lub cechy:}
-
-            \@mainfunctionalities}                                                                                \\       \hline
+                \begin{enumerate}[label=(\alph*)]
+                    \@mainfunctionalities
+                \end{enumerate}}                                                                              \\       \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Miary sukcesu:}
-
-            \@successmeasure}                                                                                     \\ \hline
+                \begin{enumerate}[label=(\alph*)]
+                    \@successmeasure
+                \end{enumerate}}                                                                               \\ \hline
             \multicolumn{3}{|p{1\linewidth}|}{\textbf{Ograniczenia:}
 
-            \@projlimitations}                                                                                    \\ \hline
+                \begin{enumerate}[label=(\alph*)]
+                    \@projlimitations
+                \end{enumerate}}                                                                                  \\ \hline
         \end{tabular}
     \end{center}
 
@@ -292,6 +322,7 @@
             \@authorstablerows
         \end{tabular}
     \end{center}
+    \restoregeometry
     \newpage
 }
 \newcommand{\makedeclaration}{%

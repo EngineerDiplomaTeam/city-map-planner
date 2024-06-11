@@ -1,0 +1,83 @@
+@misc{wikipedia:loremipsum,
+  title = {Lorem Ipsum},
+  howpublished = {\url{https://pl.wikipedia.org/wiki/Lorem_ipsum}},
+  note = {Accessed: 2023-10-29}
+}
+
+@article{BEHESHTIROUI2021107419,
+  title = {A novel approach based on genetic algorithm to speed up the discovery of classification rules on GPUs},
+  journal = {Knowledge-Based Systems},
+  volume = {231},
+  pages = {107419},
+  year = {2021},
+  issn = {0950-7051},
+  doi = {https://doi.org/10.1016/j.knosys.2021.107419},
+  url = {https://www.sciencedirect.com/science/article/pii/S095070512100681X},
+  author = {Mohammad {Beheshti Roui} and Mariam Zomorodi and Masoomeh Sarvelayati and Moloud Abdar and Hamid Noori and Paweł Pławiak and Ryszard Tadeusiewicz and Xujuan Zhou and Abbas Khosravi and Saeid Nahavandi and U. Rajendra Acharya},
+  keywords = {Data mining, Machine learning, Rule discovery, Genetic algorithm, GPU programming, Classification rules},
+  abstract = {This paper proposes a new approach to produce classification rules based on evolutionary computation with novel crossover and mutation operators customized for execution on graphics processing unit (GPU). Also, a novel method is presented to define the fitness function, i.e. the function which measures quantitatively the accuracy of the rule. The proposed fitness function is benefited from parallelism due to the parallel execution of data instances. To this end, two novel concepts; coverage matrix and reduction vectors are used and an altered form of the reduction vector is compared with previous works. Our CUDA program performs operations on coverage matrix and reduction vector in parallel. Also these data structures are used for evaluation of fitness function and calculation of genetic operators in parallel. We proposed a vector called average coverage to handle crossover and mutation properly. Our proposed method obtained a maximum accuracy of 99.74% for Hepatitis C Virus (HCV) dataset, 95.73% for Poker dataset, and 100% for COVID-19 dataset. Our speedup is higher than 20% for HCV and COVID-19, and 50% for Poker, compared to using single core processors.}
+}
+
+@article{bla,
+  title = {Bla bal},
+  journal = {XXY},
+  year = {2021},
+  author = {Mohammad {Beheshti Roui} and Mariam Zomorodi and Masoomeh Sarvelayati and Moloud Abdar and Hamid Noori and Paweł Pławiak and Ryszard Tadeusiewicz and Xujuan Zhou and Abbas Khosravi and Saeid Nahavandi and U. Rajendra Acharya}
+}
+
+@online{statcounter-os-shares,
+  title = {Operating System Market Share Worldwide},
+  url = {https://gs.statcounter.com/os-market-share#monthly-202304-202404-bar},
+  year = {2024},
+  urldate = {2024-12-02}
+}
+
+@book{flutter-quick-start,
+  author = {Prajyot Mainkar, Salvatore Giordano},
+  year = {2019},
+  title = {Google Flutter Mobile Development Quick Start Guide},
+  publisher = {Packt Publishing}
+}
+
+@online{flutter-perf,
+  author = {Arnold Parge},
+  title = {My experience with Flutter Web (Performance, Advantages, Disadvantages)},
+  url = {https://blog.nonstopio.com/my-experience-with-flutter-web-performance-advantages-disadvantages-part-2-556eaa5d6e4a},
+  year = {2021},
+  urldate = {2024-12-02}
+}
+
+@book{electron-in-action,
+  author = {Steve Kinney},
+  year = {2018},
+  title = {Electron in Action},
+  publisher = {Manning Publications}
+}
+
+@book{pwa-book,
+  author = {Dean Alan Hume},
+  year = {2017},
+  title = {Progressive Web Apps},
+  publisher = {Manning Publications}
+}
+
+@article{fakenews,
+  title = {The evaluation of fake and true news: on the role of intelligence, personality, interpersonal trust, ideological attitudes, and news consumption},
+  journal = {Heliyon},
+  year = {2021},
+  author = {Christian Montag and Helena S. Schmitt and Dmitri Rozgonjuk and Dmitri Rozgonjuk and Jon D. Elhai}
+}
+
+@article{cognitive-biases,
+  title = {A systematic review of cognitive biases in tourist decisions},
+  journal = {Elsevier},
+  year = {2019},
+  author = {Walanchalee Wattanacharoensil and Dolchai La-ornual}
+}
+
+@article{sdlm,
+  title = {Software development lifecycle models},
+  journal = {ACM SIGSOFT Software Engineering Notes},
+  year = {2010},
+  author = {Nayan B. Ruparelia}
+}

@@ -1,0 +1,27 @@
+<main class="container">
+  <section class="map" id="map"></section>
+  <aside class="controls">
+    <mat-vertical-stepper #stepper [linear]="false" (selectedIndexChange)="onStepChange($event)">
+
+      @for (event of poiScheduleStore.scheduledEvents(); track event.id) {
+        <mat-step completed="false">
+          <ng-template matStepLabel>{{ event.title }}</ng-template>
+          <p>{{ event.start | date : 'short' }} - {{ event.end | date : 'short' }}</p>
+
+          <i>{{ event.extendedProps.poi.details.description }}</i>
+
+          <section class="buttons">
+            @if (!$first) {
+              <button mat-raised-button color="primary" matStepperPrevious>Previous</button>
+            }
+            @if (!$last) {
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            }
+          </section>
+
+        </mat-step>
+      }
+
+    </mat-vertical-stepper>
+  </aside>
+</main>

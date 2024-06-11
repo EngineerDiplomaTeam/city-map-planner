@@ -1,0 +1,17 @@
+:host {
+  display: grid;
+  //height: 70vh;
+  gap: 1em;
+
+  img {
+    width: 100%;
+  }
+
+  .add-remove {
+    position: sticky;
+  }
+
+  h2 {
+    margin: 0;
+  }
+}

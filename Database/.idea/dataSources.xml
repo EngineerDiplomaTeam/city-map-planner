@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://city-planner.budziszm.pl:5432/city_planner</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="city_planner@localhost" uuid="b7c2ce82-a3bc-4de2-9d42-58e72d9b682e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/city_planner</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -1,15 +1,37 @@
 \documentclass{pjatk}
-
 \usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage[english,polish]{babel}
 \usepackage{tikz-uml}
-\usepackage[acronym, toc]{glossaries}
-
-\addbibresource{attachments/bibliography.bip}
+\usepackage{enumitem}
+\usepackage[acronym, toc, numberedsection]{glossaries}
+\usepackage{indentfirst} % wcięcie w pierwszym akapicie rozdziału
+\usepackage{parskip} % przerwa między akapitami
+\usepackage[defaultlines=4,all]{nowidow}
+\usepackage[T1]{fontenc} % better font encoding
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{graphicx, multirow}
+\geometry{} %definicja marginesów
+\glstoctrue
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\parindent30pt
+\addbibresource{bibliography.bip}
 
 \makeglossaries
-\input{chapters/słownik-pojęć}
+\input{słownik-pojęć}
 
 \studfield{Informatyka}
 \studtype{Zaoczne}
@@ -17,22 +39,30 @@
 \engtitle{City Map Planner}
 \acronym{City Planner}
 \titledate{2023-10-14}
-\supervisor{prof. dr hab. Marek A. Bednarczyk}
+\supervisor{dr hab. Marek A. Bednarczyk, prof. PJATK}
 \author{Mateusz Budzisz}{s24048}{Aplikacje Internetowe}{Zaoczny}
 \author{Wiktor Rostkowski}{s23141}{Aplikacje Internetowe}{Zaoczny}
-\author{Sebastian Kreft}{s23133}{Aplikacje Internetowe}{Zaoczny}
-\author{Damian Kreft}{s23447}{Aplikacje Internetowe}{Zaoczny}
 \consultant{--- brak ---} % Koniecznie trzeba podać brak, albo wpisać konsultantów tak jak przy autorach
-\projectgoals{Stworzenie interaktywnej mapy miejskiej do planowania zwiedzania atrakcji turstycznych z wkykorzystaniem dynamicznych danych}
-\productsandservices{Aplikacja progresywana}
-\mainfunctionalities{Planowanie trasy}
-\successmeasure{Wdrożenie rozwiązania jako oficjalnego rozwiązania miejskiego}
-\projlimitations{Brak budżetu}
+\projectgoals{Stworzenie interaktywnej aplikacji progresywnej do planowania zwiedzania atrakcji turystycznych z wykorzystaniem dynamicznych danych.}
+\productsandservice{Internetowa aplikacja progresywna}
+\productsandservice{Dokumentacja projektu}
+\mainfunctionality{Katalog atrakcji turystycznych w postacji interaktywnej map.}
+\mainfunctionality{Planer rozkładu zwiedzania atrakcji oparty na rzeczywistych danych dotyczących godzin otwarcia oraz szacowanego czasu potrzebnego na zwiedzanie.}
+\mainfunctionality{Generowanie trasy między wybranymi atrakcjami turystycznymi wraz z wizualizacją algorytmu wyznaczania trasy.}
+\successmeasure{Wdrożenie rozwiązania w Gdańsku.}
+\successmeasure{Realizacja w terminie zgodna z wymaganiami.}
+\projlimitation{Budżetowe: brak środków na wdrożenie.}
+\projlimitation{Czasowe: jeden rok akademicki (10.2023 - 06.2024)}
+\projlimitation{Ludzkie: dwuosobowy zespół (początkowo czteroosobowy)}
 \date{\today}
 \nabstract{
-	Praca zakłada utworzenie interaktywnej mapy z punktami zainteresowań na podstawie listy atrakcji turystycznych wyróżnionych przez urząd miejski,
-	umożliwiającej kompleksowe zaplanowanie optymalnej trasy zwiedzania z uwzględnieniem środków komunikacji miejskiej,
-	godzin otwarcia atrakcji turystycznych oraz warunków pogodowych.
+	Celem niniejszej pracy było stworzenie progresywnej aplikacji internetowej pozwalającej na kompleksowe tworzenie planu zwiedzania atrakcji turystycznych w Gdańsku uwzględniającego dane czasu rzeczywistego, takie jak godziny otwarcia, komunikacja miejska i prognoza pogody.
+	W ramach pracy stworzono system składający się z trzech komponentów: frontendu, backendu oraz bazy danych.
+	Progresywna aplikacja internetowa została wykonana przy pomocy frameworka Angular w języku TypeScript oraz biblioteki RxJs.
+    Serwis backendowy został stworzony w środowisku .NET w języku C\# oraz bibliotek Asp.NET.
+    Baza danych to PostgreSql wzbogacony o rozszerzenia TimescaleDB.
+    Kominukacja między komponentami odbywała się zgodnie ze standardem REST oraz reverse proxy (Ngnix).
+    Projekt został zrealizowany w podejściu ewolucyjno-przyrostowym z elementami Kanban.
 }
 
 \graphicspath {{attachments/}}
@@ -45,18 +75,27 @@
 	\makedeclaration
 	% PJATK Template End
 
+    % Spis treści
 	\tableofcontents
 	\clearpage
 
-	\include{chapters/wstęp}
-	\include{chapters/decyzje-projektowe}
-	\include{chapters/przykłady-latex}
-	\include{chapters/rozwiazania-konkurencyjne}
+    % \include{chapters/przykłady-latex}
+	\input{chapters/wstep}
 
-	% Początek słownika, akronimów i bibliografii
-	\printbibliography[heading=bibintoc]
+	% Słownik pojęć i skrótów
 	\printglossary[type=\acronymtype]
 	\printglossary
-	% Koniec słownika, akronimów i bibliografii
+
+	\input{chapters/opis-problemu}
+	\input{chapters/kontekst-projektu}
+	\input{chapters/analiza-wymagań}
+    % \input{chapters/projekt}
+    \input{chapters/decyzje-projektowe} % przepisać od 0 jako rozdział "projekt"
+	\input{chapters/realizacja}
+	\input{chapters/testy}
+	\input{chapters/prezentacja-systemu}
+	\input{chapters/podsumowanie}
+
+	\printbibliography[heading=bibnumbered]
 
 \end{document}

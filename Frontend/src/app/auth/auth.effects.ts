@@ -23,7 +23,6 @@ export class AuthEffects {
           this.dialog.open(AuthDialogComponent, {
             width: '90svw',
             height: '70svh',
-            disableClose: true,
           }).id,
       ),
       map((id) => authActions.dialogOpened({ id })),

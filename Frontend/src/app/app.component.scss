@@ -1,6 +1,10 @@
 .top-bar {
   justify-content: space-between;
-  gap: 0.5em;
+  gap: 0;
+
+  .spacer {
+    flex-grow: 1;
+  }
 
   > .app-title {
     color: inherit;
