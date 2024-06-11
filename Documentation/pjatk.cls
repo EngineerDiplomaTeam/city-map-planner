@@ -217,7 +217,7 @@
     \begin{titlepage}
         \begin{center}
             \includegraphics[width=0.8\textwidth]{attachments/pjatk}
-            \vspace{1cm}
+            \vspace{0.5cm}
             \large
             \begin{tabularx}{\textwidth}{X r}
                 \textbf{Kierunek studiów: \@studfield} & \textbf{Rodzaj studiów: \@studtype}
@@ -240,7 +240,7 @@
                 \@authors
             \end{tabularx}
         \end{center}
-        \vspace{1cm}
+        \vspace{0.5cm}
         \textbf{\\Streszczenie:}
 
         \@nabstract
