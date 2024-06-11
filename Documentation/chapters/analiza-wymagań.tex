@@ -8,9 +8,9 @@
 \section{Sposób gromadzenia wymagań}
 \label{sec:sposob-gromadzenia-wymagan}
 
-Wymagania dla projektu zostały zebrane w pierwszym semestrze. Zostały określone na podstawie analizy funkcjonowania
+Wymagania dla projektu zostały wybrane przez zespół projektowy w pierwszym semestrze. Zostały określone na podstawie analizy aktualnych rozwiązań oraz potrzeb zespołu projektowego.
 
-Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkcjonalności projektu. Wykorzystana została metodyka priorytetyzacji wymagań MoSCoW\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
+Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania dotyczące funkcjonalności projektu. \newline Wykorzystana została metodyka priorytezacji wymagań \glslink{moscow}{MoSCoW}\footnote{Metoda MoSCoW – Must, Should, Could, Won't}[]:
 \begin{itemize}
     \item \textbf{M – must (musi być)} – wymaganie bezkompromisowo musi zostać zrealizowane, bez niego projekt nie zostanie ukończony;
     \item \textbf{S – should (powinno być)} – wymaganie powinno być zrealizowane, jeżeli tylko jest taka możliwość;
@@ -22,34 +22,35 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \section{Aktorzy}
 \label{sec:aktorzy}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={opis udzialowca}]
-    \id{UOB 01}
+\begin{stakeholder}[label={tab:stakeholder:someholder1},caption={opis udzialowca}]
+    \id{UOB1}
     \name{Podstawowy użytkownik aplikacji (np. Turysta) }
-    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi }
+    \descr{Osoba korzystająca z aplikacji w celu poznawania \glslink{poidef}{POI} i optymalnego przemieszczania się między nimi }
     \type{Ożywiony bezpośredni}
-    \viewpoint{Użytkownik - operator}
-    \limitations{Widzi tylko widok końcowy}
-    \requ{-----------------}
+    \viewpoint{Użytkownik  operator}
+    \limitations{Wymaga umiarkowanych umiejętności technicznych}
+    \requ{F01,WO6,WO7, FO1, FO2, FO3, FO5, FO7, FO8, FO9, FO10, FO11, FO12, FO13, FO14, FO15, FO17, FO18, FO21, FO22, FO23, FO24, FO26, IO1, IO2, IO3, IO5, IO6, NFO1, ŚDO2}
 \end{stakeholder}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
-    \id{UOB 02}
-    \name{Zespół Projektowy}
-    \descr{Osoba korzystająca z aplikacji w celu poznawania POI i optymalnego przemieszczania się między nimi}
+\begin{stakeholder}[label={tab:stakeholder:someholder2},caption={Opis udzialowca}]
+    \id{UOB2}
+    \name{Zespół projektowy}
+    \descr{Pomysłodawcy i autorzy rozwiązania}
     \type{Ożywiony bezpośredni}
     \viewpoint{Techniczny}
-    \limitations{Brak}
-    \requ{-----------------}
+    \limitations{Ograniczony czas realizacji projektu}
+    \requ{WO1, WO2, WO3, WO4, WO5, WO6, WO7, FO1, FO2, FO3, FO4, FO5, FO7, FO8, FO9, FO10, FO11, FO12, FO13, 
+    FO14, FO15, FO16, FO18, FO19, FO20, FO21, FO22, FO23, FO24, FO25, IO1, IO2, IO3, IO4, IO5, IO7, NFO1, NFO2, ŚDO1, ŚDO2}
 \end{stakeholder}
 
-\begin{stakeholder}[label={tab:stakeholder:someholder},caption={Opis udzialowca}]
-    \id{UOB 03}
+\begin{stakeholder}[label={tab:stakeholder:someholder3},caption={Opis udzialowca}]
+    \id{UOB3}
     \name{Firmy o charakterze najmu krótko-terminowym }
-    \descr{Firmy o charakterze najmu krótko-terminowego mają bezpośredni kontakt z turystami}
+    \descr{Firmy o charakterze najmu krótko-terminowego mające bezpośredni kontakt z turystami}
     \type{Ożywiony niebezpośredni }
-    \viewpoint{Współpraca z Turystami}
+    \viewpoint{Współpraca z turystami}
     \limitations{Brak}
-    \requ{-----------------}
+    \requ{WO7, FO3, FO5, FO9, FO21, FO22, FO24, IO1, IO2, IO3, ŚDO2}
 \end{stakeholder}
 
 \section{Wymagania ogólne i dziedzinowe}
@@ -67,316 +68,289 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:general2},caption={Karta wymagania: Działanie w czasie rzeczywistym Offline}]
     \id{WO2}
     \priority{C}
-    \name{Działanie w czasie rzeczywistym Offline lub Online }
-    \descr{Aplikacja musi działać i synchronizować dane do jak najmniejszej możliwej jednostki czasowej. 
-    Wersja offline wykorzystuje ostatnie zapisane informacje }
-    \sholder{UOB2}
-    \reqrelated{F19}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel Administracyjny}]
-    \id{WO3}
-    \priority{M}
-    \name{Zarządzanie danymi z aplikacji}
-    \descr{Możliwość sprawdzanie aktualnych danych poprzez panel aplikacji internetowej (Panel Administracyjny) }
+    \name{Działanie w czasie rzeczywistym offline lub online }
+    \descr{Aplikacja musi działać i synchronizować dane do 15 minut. 
+    Wersja offline wykorzystuje ostatnie zapisane informacje takie jak Umożliwia podgląd wcześniej zaplanowanych wycieczek}
     \sholder{UOB2}
     \reqrelated{}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel administracyjny}]
+    \id{WO3}
+    \priority{S}
+    \name{Zarządzanie danymi z poziomu aplikacji}
+    \descr{Możliwość sprawdzanie aktualnych danych \glslink{poidef}{POI} poprzez panel aplikacji internetowej (Panel administracyjny) }
+    \sholder{UOB2}
+    \reqrelated{WO3}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general4},caption={Karta wymagania: Licencje i prawa}]
     \id{WO4}
     \priority{M}
     \name{Licencje i prawa}
-    \descr{Wszystkie technologie, narzędzia, wzorce itp. potrzebne do wykonania systemu muszą być licencjonowane oraz od głównych dostawców nie pośredników. }
+    \descr{Wszystkie technologie, narzędzia, wzorce oraz inne elementy niezbędne do realizacji systemu muszą być licencjonowane i pochodzić bezpośrednio od głównych dostawców, a nie od pośredników. }
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general5},caption={Karta wymagania: Responsywny Interfejs}]
+\begin{requirementstab}[label={tab:requirements:general5},caption={Karta wymagania: Responsywny interfejs}]
     \id{WO5}
     \priority{M}
-    \name{Wyglad interface responsywny do standardowych urządzeń }
-    \descr{System powinien działać na wielu platformach. 
-    System powinien wyglądać estetycznie, poukładanie i działać płynnie, bez większych opóźnień w reakcji na zdarzenie.  }
+    \name{Responsywny interfejs}
+    \descr{Interfejs użytkownika powinien być wykonany zgodnie z praktyką programowania responsywnych stron internetowych.  }
     \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general6},caption={Karta wymagania: Rejestracja użytkowników}]
     \id{WO6}
-    \priority{M}
+    \priority{S}
     \name{Rejestracja użytkowników  }
-    \descr{Rejestracja powinna przebiegać sprawnie i wraz z wszystkimi standardami i prawami.  }
+    \descr{Rejestracja powinna przebiegać sprawnie, zgodnie ze wszystkimi standardami i przepisami prawa, a przede wszystkim musi być zgodna z RODO.  }
     \sholder{UOB2, UOB1}
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:general7},caption={Karta wymagania: Komercjalizacji}]
+\begin{requirementstab}[label={tab:requirements:general7},caption={Karta wymagania: Komercjalizacja}]
     \id{WO7}
-    \priority{M}
-    \name{Komercjalizacji (reklamy) }
-    \descr{W przyszłości system może wykorzystać system płatności abonamentowej w celu całkowitego usunięcia z niego reklam.   }
-    \sholder{UOB01, UOB02, UOB03}
+    \priority{S}
+    \name{Komercjalizacja }
+    \descr{Aplikacja ma umożliwiać reklamowanie swoich usług partnerom biznesowym w sposób spójny z interfejsem.  }
+    \sholder{UOB1, UOB2, UOB3}
     \reqrelated{}
 \end{requirementstab}
 
 \section{Wymagania funkcjonalne}
 \label{sec:wymagania-funkcjonalne}
-\begin{requirementstab}[label={tab:requirements:func1},caption={Karta wymagania: Przeglądanie Widoku mapy}]
+
+\begin{requirementstab}[label={tab:requirements:func1},caption={Karta wymagania: Interaktywna mapa}]
     \id{FO1}
     \priority{M}
-    \name{Przeglądanie Widoku mapy z pinezkami }
-    \descr{Jako turysta chciałbym zobaczyć Mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
+    \name{Interaktywna mapa}
+    \descr{Jako turysta chciałbym, zobaczyć mapę wszystkich atrakcji dostępnych w mieście z lotu ptaka 
     }
     \acceptcrit{Użytkownik może zobaczyć aktualne dostępne atrakcje dostępne w danym mieście }
-    \inputdata{Użytkownik logując się widzi przedstawioną Mapę}
-    \preconditions{ Po otwarciu aplikacji PWA przestawi się zachęcają Mapa  }
-    \postconditions{ Wyświetlenie zaznaczonych atrakcji. }
+    \inputdata{Użytkownik, włączając aplikacje widzi przedstawioną mapę}
+    \preconditions{ Dostępność systemów partnerów, głównie \glslink{stadiamaps}{Stadia Maps}   }
+    \postconditions{ Wyświetlenie atrakcji. }
     \exceptions{ Wyświetlanie komunikatu w przypadku niedostępności atrakcji w aktualnej chwili oraz przedstawienia propozycji zmiany punktu docelowego. }
-    \implementation{ Użytkownik wykorzystując przeglądarkę bądź aplikacje widzi Dostępne Atrakcje ogólnie dostępnych w danym mieście. }
-    \sholder{UOB01, UOB02 }
+    \implementation{ Użytkownik, korzystając z przeglądarki lub aplikacji, widzi interaktywną mapę z atrakcjami w danym mieście.}
+    \sholder{UOB1, UOB2 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Synchronizacja danych }]
+\begin{requirementstab}[label={tab:requirements:func2},caption={Karta wymagania: Dane czasu rzeczywistego }]
     \id{FO2}
-    \priority{C}
-    \name{Synchronizacja danych i wyświetlanie powiadomień o zmianach. }
+    \priority{S}
+    \name{Wyświetlanie powiadomień o zmianach. }
     \descr{\begin{itemize}
         \item Jako Turysta 
         \item chcę dostawać powiadomienia o zmianach w planie,
         \item bo wtedy nie spóźnię się na czas otwarcia atrakcji. 
     \end{itemize}
     }
-    \acceptcrit{Powiadomienie będzie zgodnie z aktualnym planem  }
-    \inputdata{Aplikacja pamięta jakie użytkownik wybrał atrakcje do odwiedzenia i informuje o zmianach po synchronizacji. }
-    \preconditions{ Użytkownik był wcześniej odwiedził stronę i posiada zapisane atrakcje.  }
-    \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu w powiadomienie.   }
+    \acceptcrit{Powiadomienie będzie, zgodnie z aktualnym planem  }
+    \inputdata{Aplikacja pamięta, jakie użytkownik wybrał atrakcje do odwiedzenia i informuje o zmianach po synchronizacji. }
+    \preconditions{ Użytkownik  odwiedził stronę i posiada zapisane atrakcje.  }
+    \postconditions{ Aplikacja przedstawi nowe zmiany po kliknięciu powiadomienie.   }
     \exceptions{ Użytkownik nie zezwolił powiadomienia bądź nowe dane nie istnieją. }
     \implementation{ Na planie zajęć wyświetlają się nowe zmiany w innym kolorze  }
-    \sholder{UOB01, UOB02 }
+    \sholder{UOB1, UOB2 }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Zakładka z POI}]
+\begin{requirementstab}[label={tab:requirements:func3},caption={Karta wymagania: Widok listy \glslink{poidef}{POI}}]
     \id{FO3}
     \priority{M}
     \name{Zakładka z przestawionymi dostępnymi wszystkimi atrakcjami  }
     \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce korzystać z aplikacji z listą dostępnych atrakcji 
-        \item Ponieważ chce zobaczyć dostępne spektrum możlwości. 
+        \item Jako użytkownik  
+        \item chce korzystać z aplikacji z listą dostępnych atrakcji w wersji tekstowej,
+        \item ponieważ chce zobaczyć dostępne spektrum możliwości, bez szukania informacji na mapie i przeciągania. 
     \end{itemize}
     }
-    \acceptcrit{Lista dostępnych punktów. }
+    \acceptcrit{Lista dostępnych \glslink{poidef}{POI}. }
     \inputdata{Brak}
-    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
-    \postconditions{ Użytkownik może przeczytać lub klinknąć na interesujące go atrakcje.   }
-    \exceptions{ Brak grupy, której szuka użytkownik. Użytkownik musi użyć regularnego planu zajęć.   }
+    \preconditions{ Użytkownik wszedł na stronę z dostępnymi atrakcjami.  }
+    \postconditions{ Użytkownik może przeczytać lub klikać na interesujące go atrakcje.   }
+    \exceptions{ Brak dostępnych atrakcji w wyznaczonym zakresie czasowym  }
     \implementation{ Aplikacja pobiera w tle plik bazy danych ważący 1MB.  }
-    \sholder{UOB01, UOB02, UOB03 }
+    \sholder{UOB1, UOB2, UOB3 }
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func4},caption={Karta wymagania: Panel zarządzania atrakcjami}]
     \id{FO4}
     \priority{M}
-    \name{Panel zarządzania atrakcjami w aplikacji. }
+    \name{Panel zarządzania atrakcjami. }
     \descr{\begin{itemize}
-        \item Jako Administrator 
-        \item mieć panel administracyjny do wymuszania odświeżenia godzin otwarcia, edycja opisu itd 
-        \item Ponieważ  potrzebuje mieć wygodny interfejs do edycji atrakcji dostępnych na mapie. 
+        \item Jako administrator 
+        \item potrzebuję panelu do zarządzania danymi atrakcji turystycznych wspomaganego sztuczną inteligencją,
+        \item aby szybko reagować na zmiany wprowadzane przez właścicieli atrakcji turystycznych. 
     \end{itemize}
     }
     \acceptcrit{Lista dostępnych punktów. }
-    \inputdata{Konto z uprawnieniami Administracyjnymi}
-    \preconditions{ Użytkownik wszedł na strone z dostępnymi atrakcjami lub na Mape z atrakcjami.  }
-    \postconditions{ Można edytować/usuwać/ dodawać recznie atrakcje.   }
-    \exceptions{ Jest możliwość dodawania kolejnych atrakcji .   }
+    \inputdata{Konto z uprawnieniami administracyjnymi}
+    \preconditions{ Użytkownik wszedł na ukrytą stronę z panelem.  }
+    \postconditions{ Można wykonywać podstawowe operacje \glslink{CRUD}{CRUD}   }
+    \exceptions{ Jest możliwość dodawania kolejnych atrakcji. Sztuczna inteligencja może błędnie wykonać swoje zadanie.   }
     \implementation{ Panel administracyjny do zarządzania opiniami użytkowników (umożliwia cenzurę.).   }
-    \sholder{ UOB02 }
-    \reqrelated{W03}
+    \sholder{ UOB2 }
+    \reqrelated{W03,IO9}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Znaczniki na interaktywnej mapie}]
+\begin{requirementstab}[label={tab:requirements:func5},caption={Karta wymagania: Punkty interaktywnej mapy}]
     \id{FO5}
     \priority{M}
-    \name{Znaczniki na interaktywnej mapie informujące o punktach zainteresowania.}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce móc wyświetlić wybrane atrakcje, które mnie interesują
-        \item Ponieważ umożliwi to spojrzenie na opis POI. 
-    \end{itemize}
+    \name{Znaczniki na interaktywnej mapie informujące o \glslink{poidef}{POI}.}
+    \descr{Jako użytkownik chce móc wyświetlić wybrane atrakcje, które mnie interesują,
+         ponieważ  umożliwi to spojrzenie na opis \glslink{poidef}{POI}.
+    
     }
-    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez Administratora. }
-    \inputdata{Użytkownik wyświetla zakładkę z mapą atrakcji. }
-    \preconditions{ Mapa Atrakcji z znacznikami dodanymi przez twórców aplikacji.}
-    \postconditions{ Wyświetlenie wszystkie atrakcje turystyczne plus atrakcje dodane przez użytkowników  }
-    \exceptions{ Aplikacja wyświetla błąd w przerwie transmisji aplikacji.    }
-    \implementation{ Tu musi być wybór POI i podanie czasu na zwiedzanie.    }
-    \sholder{ UOB01, UOB02, UOB03  }
+    \acceptcrit{Mapa posiada znaczniki atrakcji dodanych poprzez administratora. Po kliknięciu znacznika pojawią się szczegółowe informacje o \glslink{poidef}{POI} }
+    \inputdata{Otwiera Aplikacje. }
+    \preconditions{ Mapa Atrakcji ze znacznikami dodanymi przez administratora  aplikacji.}
+    \postconditions{Brak}
+    \exceptions{Brak dostępności API, aplikacja powinna wtedy pokazać błąd i próbować pobrać dane ponownie    }
+    \implementation{ Mają być duże znaczniki ze zdjęciami atrakcji, które po kliknięciu otwierają szczegółowy widok    }
+    \sholder{ UOB1, UOB2, UOB3  }
     \reqrelated{}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: oceniania atrakcji turystycznych }]
+\begin{requirementstab}[label={tab:requirements:func6},caption={Karta wymagania: Oceny użytkowników }]
     \id{FO6}
     \priority{C}
-    \name{Możliwość oceniania atrakcji turystycznych.}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość oceniania atrakcjami gwiazdkami 1-5
-        \item Ponieważ umożliwi to dodawania indywidualnych ocenaniai i ich edytowania. 
-    \end{itemize}
+    \name{Oceny użytkowników}
+    \descr{Jako użytkownik chce mieć możliwość oceniania atrakcjami gwiazdkami w skali od jeden do pięciu,
+         ponieważ chciałbym podzielić się swoją opinią. 
+    
     }
-    \acceptcrit{Każda atrakcja posiada możliwośc dodawania opinii. }
-    \inputdata{Nazwa użytkownika, mail. }
-    \preconditions{ Można dodawać opinie liczbową.}
-    \postconditions{ Wyświetla tylko średnią z opinii, brak możliwości komentowania.  }
-    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
-    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją opinia oraz powyżej średnia z opini, każdy użytkownik może dodać jedną opinie w gwiazdkach od 1 do 5.    }
-    \sholder{ UOB01  }
+    \acceptcrit{Każda atrakcja ma możliwość dodawania opinii. }
+    \inputdata{Posiadanie konta Opinia w skali od jeden do pięciu }
+    \preconditions{ Można dodawać opinię liczbową.}
+    \postconditions{ Brak  }
+    \exceptions{ Użytkownik nie posiada konta albo został zablokowany na platformie.   }
+    \implementation{ Przy danym punkcie zainteresowania (\glslink{poidef}{POI}) dostępny jest przycisk z opcją dodania opinii, a powyżej wyświetlana jest średnia ocen. Każdy użytkownik może dodać jedną opinię w formie gwiazdek od 1 do 5.    }
+    \sholder{ UOB1  }
     \reqrelated{F07}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Możliwość pisania opinii wraz ze zdjęciami}]
+\begin{requirementstab}[label={tab:requirements:func7},caption={Karta wymagania: Zdjęcia użytkowników + tekst}]
     \id{FO7}
     \priority{C}
-    \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania .}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość pisania pisemnych opinii z możliwością dodania zdjecia
-        \item Ponieważ umożliwi to dodawania indywidualnych opinii atrakcji i ich edytowania. 
-    \end{itemize}
+    \name{Możliwość pisania opinii wraz ze zdjęciami pod punktami zainteresowania.}
+    \descr{Jako użytkownik chce możliwość pisania pisemnych opinii z możliwością dodania zdjęcia,
+         aby móc przekazać większy kontekst moich opinii. 
+    
     }
-    \acceptcrit{Opinia musi zostać zatwierdzona przez administrator, może póżniejszym etapie na podstawie algorytmu, który spełnia jakąś polityke prywatności. }
-    \inputdata{Nazwa użytkownika, mail. }
-    \preconditions{ Można dodawać opinie (ewentualnie ze zdjeciem).}
-    \postconditions{ Brak możliwości komentowania, wyświetla się opinia pod atrakcją. }
-    \exceptions{ Do każdej atrakcji po zalogowaniu użytkownik widzi opcje dodaj opinie.    }
-    \implementation{ Przy danym POI po kliknięciu jest dostępny przycisk z opcją napisania opinia , każdy użytkownik może dodać jedną opinie.
-    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.    }
-    \sholder{ UOB01  }
-    \reqrelated{F06}
+    \acceptcrit{Opinia musi zostać zatwierdzona przez administratora, można dodać na późniejszym etapie na podstawie algorytmu, który spełnia jakąś politykę prywatności. }
+    \inputdata{Posiadanie konta zdjęcia, tekst }
+    \preconditions{ Można dodawać opinie (ewentualnie ze zdjęciem).}
+    \exceptions{Brak konta, za duże zdjęcie, nieprawidłowy format zdjęcia      }
+    \implementation{ Przy danym \glslink{poidef}{POI} po kliknięciu, jest dostępny przycisk z opcją napisania opinia, każdy użytkownik może dodać jedną opinię.
+    Opinia musi zostać zatwierdzona przez moderatora, nowe opinie wyświetlają się w panelu administratora.  Formularz dodawania zdjęcia używa kompresji formatu zdjęcia. }
+    \sholder{ UOB1  }
+    \reqrelated{F06,FO25}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisywanie list wybranych POI}]
+\begin{requirementstab}[label={tab:requirements:func8},caption={Karta wymagania: Zapisane atrakcje turystyczne}]
     \id{FO8}
     \priority{S}
-    \name{Zapisywanie list wybranych POI pod konkretną nazwą.}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość zapisania wybranej trasy
-        \item Ponieważ umożliwi to przygotowanie trasy na później. 
-    \end{itemize}
-    }
-    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona pokazuje się dymek dodaj do swoich tras}
-    \inputdata{Wybrane atrakcje turystyczne z mapy bądź listy atrakcji,  }
-    \preconditions{ Wpis do zakładki ostatnich wybranych tras. }
-    \postconditions{ Odpowiednia zakładka z listą Zapisane Trasy.  }
-    \exceptions{  Jeśli użytkownik jest offline(lub nie zalogowany) wyskakuje błąd żeby dodać trase trzeba być zalogowanym online.   }
-    \implementation{ Możliwość otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania.
-    Możliwość otworzenia zapisanej trasy bez połączenia internetowego.
+    \name{Zapisywanie list wybranych \glslink{poidef}{POI} pod konkretną nazwą.}
+    \descr{Jako użytkownik chce możliwość zapisania wybranej trasy,
+         ponieważ umożliwi to przygotowanie trasy na później. 
     
-        }
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{}
+    }
+    \acceptcrit{ Po wybraniu trasy, która zostanie przedstawiona, wyskakuje dymek z zapytaniem, czy  chcesz dodać tę trasę do ulubionych}
+    \preconditions{ Zaplanowanie trasy w poprzednich widokach aplikacji }
+    \postconditions{  Brak }
+    \exceptions{ Jeśli użytkownik jest offline lub niezalogowany, pojawia się komunikat o błędzie:
+     "Aby dodać trasę, należy być zalogowanym i mieć połączenie z internetem."   }
+    \implementation{ Możliwość otworzenia zapisanej, optymalnej trasy bez konieczności ponownego jej obliczania oraz bez połączenia internetowego.}
+    \sholder{ UOB1, UOB2 }
+    \reqrelated{F09,FO26}
 \end{requirementstab}
 
-\begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list POI}]
+\begin{requirementstab}[label={tab:requirements:func9},caption={Karta wymagania: Udostępnianie zapisanych list \glslink{poidef}{POI}}]
     \id{FO9}
     \priority{C}
-    \name{Udostępnianie zapisanych list POI pomiędzy użytkownikami}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość udostępnienia wybranej trasy
-        \item Ponieważ umożliwi to polecania wybranych trasy. 
-    \end{itemize}
-    }
+    \name{Udostępnianie zapisanych list \glslink{poidef}{POI} pomiędzy użytkownikami}
+    \descr{Jako użytkownik chce mieć możliwość udostępnienia wybranej trasy,
+         ponieważ umożliwi to polecania wybranych trasy. 
+    
+        }
     \acceptcrit{ W zakładce zapisanych listy widniej dymek z udostępnię danej trasy}
-    \inputdata{Na podstawie zapisanej trasy jest możliwość wysłania krótko trwałego kodu trasy.  }
-    \preconditions{ Link do zapisanej trasy }
-    \postconditions{ Przesłania linku bądź kodu dla drugiego użytkownika w celu dodania tej trasy u siebie  }
-    \exceptions{  Wszystkie trasy udostępnione są dostępne online dla wszystkich użytkowników Internetu.  }
-    \implementation{ Każda trasa ma indywidualny kod w bazie danych.}
-    \sholder{ UOB01, UOB02, UOB03   }
-    \reqrelated{F10}
+    \inputdata{Użytkownik klika  przycisk udostępnienia trasy.  }
+    \preconditions{ Posiadanie zapisanej trasy  }
+    \postconditions{     Użytkownik udostępniający musi przekazać link do udostępnionej trasy, 
+     użytkownik otrzymujący link musi zaakceptować udostępnioną trasę  }
+    \exceptions{  Nie można przekroczyć 100 zapisanych tras.  }
+    \implementation{ Każda trasa ma indywidualny kod w bazie danych. Właściciel trasy może ją edytować. a zobaczyć może każda osoba posiadająca link.}
+    \sholder{ UOB1, UOB2, UOB3   }
+    \reqrelated{F08,FO26}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func10},caption={Karta wymagania: Wyznaczanie trasy pieszej }]
-    \id{F10}
+    \id{FO10}
     \priority{M}
-    \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi POI}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy tylko na pieszo
-        \item Ponieważ umożliwi to to wykorzystanie tylko pieszych dróżek. 
-    \end{itemize}
+    \name{Wyznaczanie optymalnej trasy pieszej pomiędzy wybranymi \glslink{poidef}{POI}}
+    \descr{Jako użytkownik chcę w sposób automatyczny wyznaczyć optymalną trasę między atrakcjami, aby wiedzieć, jak map się przedostać do danej atrakcji
     }
-    \acceptcrit{ Algorytm wyznacza trase od wybranego punktu pierwszego do punktu ostatniego .}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Trasa przedstawia w sposób edytowalny dla użytkownika  }
-    \exceptions{ Wybrano punkt, który w dostępnym czasie jest nie dostępny wyświetlenia godzin otwarcia danego punktu z sugestią zmiany czasu  }
-    \implementation{ *************************************************
-        }
-    \sholder{ UOB01, UOB02   }
+    \acceptcrit{ Algorytm wyznacza trasę od wybranego punktu pomiędzy 2 podanymi punktami na mapie.}
+    \inputdata{Wybrane 2 atrakcje turystyczne - trasę.  }
+    \preconditions{ Brak }
+    \postconditions{ Brak  }
+    \exceptions{ Brak dostępnej trasy między podanymi punktami  }
+    \implementation{ Implementacja na podstawie przeszukiwania wszerz i kolejki priorytyzacji.    }
+    \sholder{ UOB1, UOB2   }
     \reqrelated{F09}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:func11},caption={Karta wymagania: Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}]
-    \id{F11}
+    \id{FO11}
     \priority{S}
-    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej (tylko 1 wariant)}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy pieszo oraz aktualnej komunikacji miejskiej
-        \item Ponieważ umożliwi to wykorzystanie optymalnego połączenia drogi pieszej jak i uaktualnianej komunikacji miejskiej. 
-    \end{itemize}
+    \name{Wyznaczanie optymalnej trasy z udziałem komunikacji miejskiej}
+    \descr{Jako użytkownik chce mieć możliwość przejścia wybranej trasy pieszo oraz dostępnej komunikacji miejskiej,
+         aby przyśpieszyć podróż i zaoszczędzić czas
+    
     }
-    \acceptcrit{ Możliwość wyboru trasy z transportem komunikacji miejskiej.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
+    \acceptcrit{ Możliwość wyboru trasy z udziałem komunikacji miejskiej.}
+    \inputdata{Wybrane 2 \glslink{poidef}{POI} }
     \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trase z wykorzystaniem komunikacji miejskiej  }
+    \postconditions{ Brak albo połączenie z internetem, aby aktualizować na bieżąco rozkład jazdy  }
     \exceptions{ Zaproponowanie innego transportu np. pieszo  }
-    \implementation{ *************************************************
-        }
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10}
+    \implementation{ Dodanie integracji z API komunikacji miejskiej, synchronizując dane aktualnych rozkładów jazdy do proponowanej trasy.}
+    \sholder{ UOB1, UOB2   }
+    \reqrelated{F09,FO10}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej Trasy z udziałem samochodów osobowych}]
-    \id{F12}
+\begin{requirementstab}[label={tab:requirements:func12},caption={Karta wymagania: Wyznacznia optymalnej trasy z udziałem samochodów osobowych}]
+    \id{FO12}
     \priority{S}
     \name{Wyznaczanie optymalnej trasy z udziałem samochodów osobowych}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejścia wybranej trasy samochodem
-        \item Ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
-    \end{itemize}
+    \descr{Jako użytkownik chce mieć możliwość odbyć wybraną trase z udziałem samochodu,
+         ponieważ umożliwi to wykorzystanie szybszego transportu z punktu A do B. 
+    
     }
-    \acceptcrit{ Możliwość wyboru trasy z transportem własnym samochodem.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Przedstawienie trasy podstawie wybranych punktów. }
-    \postconditions{ Algorytm zaprezentował  trasę z wykorzystaniem samochodu  }
-    \exceptions{ Zaproponowanie innego transportu np. pieszo  }
-    \implementation{ *************************************************
-        }
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11}
+    \acceptcrit{ Algorytm umożliwia planowanie trasy z użyciem dróg przeznaczonych dla samochodów przy zachowaniu przepisów prawa drogowego takich jak drogi jednokierunkowe}
+    \inputdata{Wybrane 2 \glslink{poidef}{POI} }
+    \preconditions{ Brak}
+    \postconditions{  Algorytm zaprezentował  trasę z wykorzystaniem dróg przeznaczonych dla samochodów     }
+    \exceptions{ Brak trasy możliwej do pokonania samochodem     }
+    \implementation{ Dodanie planowania trasy na podstawie dróg dostępnych tylko dla pojazdów do trzy i pół tony, używając OpenStreetMap   }
+    \sholder{ UOB1, UOB2   }
+    \reqrelated{IO1,F09,FO10,FO11}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Widok Generowania Optymalnej Trasy }]
-    \id{F13}
+\begin{requirementstab}[label={tab:requirements:func13},caption={Karta wymagania: Podgląd Wygenerowanej optymalnej trasy }]
+    \id{FO13}
     \priority{M}
     \name{Widok wygenerowanej optymalnej trasy z możliwością podglądu jej na osi czasu}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość przejrzenia całej trasy 
-        \item Ponieważ umożliwi to przejrzenia zaproponowanej trasy punkt po punkcie. 
-    \end{itemize}
+    \descr{Jako użytkownik chce mieć możliwość przejrzenia całej trasy,
+         ponieważ umożliwi to przejrzenia zaproponowanej trasy, atrakcja po atrakcji. 
+    
     }
-    \acceptcrit{ Wyświetla lista z czasem początkowym i końcowym każdego punktu odwiedzanego.}
-    \inputdata{Wybrane atrakcje turystyczne - trasę.  }
-    \preconditions{ Lista podróżowania wyświetlona na osi czasu. }
-    \postconditions{ Prezentacja na aktywnej mapie całej trasy Funkcja podróży  }
-    \exceptions{  Brak wybranej trasy }
-    \implementation{ Z lewej strony widać proponowaną trase a z prawej strony ekranu widać oś czas z wybranymi atrakcjami.}
-    \sholder{ UOB01, UOB03   }
-    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+    \acceptcrit{ Widok listy zawierającej wszystkie uprzednio wybrane atrakcje turystyczne wraz z podstawowymi informacjami o nich oraz trasy pomiędzy nimi.}
+    \inputdata{ Uprzednio wygenerowany plan zwiedzania}
+    \preconditions{ Brak }
+    \postconditions{ Dostęp do internetu, aby pobrać aktualizacje trasy w przypadku zmian danych. }
+    \exceptions{  Brak wybranego planu zwiedzania }
+    \implementation{ Z lewej strony widać proponowaną trasę a z prawej strony ekranu widać oś czas z wybranymi atrakcjami. Użytkownik może modyfikować trasę oraz wybierać konkretne punkty na trasie, 
+    w celu bliższego przyjrzenia się nim}
+    \sholder{ UOB1, UOB2, UOB3   }
+    \reqrelated{F09,FO10,FO11,FO12,FO14, FO15, FO16}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Zmiana Optymalnej trasy według preferencji }]
-    \id{F14}
+\begin{requirementstab}[label={tab:requirements:func14},caption={Karta wymagania: Widok kalendarza podróży }]
+    \id{FO14}
     \priority{M}
-    \name{Widok optymalnej trasy powinien umożliwiać zmianę kolejności odwiedzania POI co w efekcie dostosuje resztę optymalnej trasy}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mieć możliwość edycji kolejności punktów względem preferencji osobistych 
-        \item Ponieważ to edycje personalizacji zaproponowanej trasy. 
-    \end{itemize}
+    \name{Widok kalendarza podróży trasy powinien umożliwiać zmianę kolejności odwiedzania na osi czasu \glslink{poidef}{POI} co w efekcie dostosuje resztę optymalnej trasy}
+    \descr{Jako użytkownik chce mieć możliwość ustalania godzin zwiedzania,
+         ponieważ kalendarz pokaże mi możliwość edycji trasy wycieczki optymalnej do godzin otwarcia. 
+    
     }
     \acceptcrit{ Użytkownik może wybrać każdy element z proponowanej trasy i go zmienić}
     \inputdata{Wybrane atrakcje turystyczne – trasa np. Zapisana trasa lub stworzenie nowej trasy.  }
@@ -384,252 +358,225 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \postconditions{ Prezentacja nowej trasy o nowe sugestie w podróży.  }
     \exceptions{  Brak przeładowania trasy przez brak internetu. }
     \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+    \sholder{ UOB1, UOB2 }
+    \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: Dodawania na mapę własnych POI }]
-    \id{F15}
+\begin{requirementstab}[label={tab:requirements:func15},caption={Karta wymagania: \glslink{poidef}{POI} użytkowników }]
+    \id{FO15}
     \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość dodania nowych punktów i usunięcia z aktualnej listy domyślnych punktów 
-        \item Ponieważ umożliwi to dodani personalizacji zaproponowanej trasy. 
-    \end{itemize}
+    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych \glslink{poidef}{POI}}
+    \descr{Jako użytkownik chce mieć możliwość dodania nowych punktów i usunięcia z aktualnej listy dostępnych punków,
+         ponieważ chciałbym wyznaczyć trasę między punktami, którymi administratorzy nie dodali. 
+    
     }
     \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
-    \inputdata{Wybrane atrakcje turystyczne - trasa. }
-    \preconditions{ Trasa zaktualizowana o niestandardowe punkty. }
-    \postconditions{ Prezentacja finalnej trasy.  }
+    \inputdata{ Zalogowany użytkownik}
+    \preconditions{  }
+    \postconditions{   }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się w obrębie dostępnej mapy. }
-    \implementation{ na początku osi harmonogramu istnieje możliwośc dodania punktu startu i adekwaniet punktu końcowego.}
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{F09,F10,F11,F12,F14, F15, F16}
+    \implementation{ Na interaktywnej mapie powinien znajdować się przycisk do dodania własnych atrakcji, ale tylko, gdy użytkownik jest zalogowany.}
+    \sholder{ UOB1, UOB2   }
+    \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Własne POI}]
-    \id{F16}
+\begin{requirementstab}[label={tab:requirements:func16},caption={Karta wymagania: Środek transportu rower}]
+    \id{FO16}
     \priority{C}
-    \name{Użytkownicy powinni mieć możliwość dodawania na mapę własnych POI}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość dodania nowych własnych punktów
-        \item Ponieważ umożliwi to dodania własnego punktu prywatnie lub publicznie. 
-    \end{itemize}
+    \name{Wybór środka transportu rower}
+    \descr{Jako użytkownik chce możliwość  wyznaczenia trasy z wykorzystanie roweru np. \glslink{mevo}{mevo}, 
+         ponieważ chciałbym korzystać ze swojego roweru bądź wypożyczonego podczas zwiedzania. 
+    
     }
-    \acceptcrit{ Możliwość zaproponowania przez użytkownika nowego punktu POI.}
-    \inputdata{Przez formularz możliwość dodać atrakcje turystyczne. }
-    \preconditions{ Administrator otrzymuje w panelu propozycje nowych miejsc. }
-    \postconditions{ Użytkownik zostaje POInformowany o dodaniu kolejnych punktów.  }
-    \exceptions{  Dane w formularzu nie spełniają wymagań do zatwierdzenia. }
-    \implementation{ Dodane przez użytkowników POI powinny dzielić się na publiczne i prywatne.}
-    \sholder{ UOB01, UOB02   }
-    \reqrelated{}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:Aktualna trasa - bez dodatkowego obliczania}]
-    \id{F17}
-    \priority{S}
-   \name{Aktualna trasa w trakcie bez ciągłego obliczania}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce otworzenia zapisanej optymalnej trasy bez konieczności ponownego jej obliczania   
-        \item Ponieważ umożliwi to interaktywne korzystanie. 
-    \end{itemize}
-    }
-    \acceptcrit{Każda zapisana trasa zapisuje się na urządzeniu wykorzystywanym do otwarcia/wyboru trasy w celu późniejszego jej odtworzenia.}
-    \inputdata{Wybrane atrakcje turystyczne – Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera) }
-    \preconditions{ Po wybraniu zapisanej trasy wchodzi ona do trybu osi czasu z możliwością trybu nawigacji. }
-    \postconditions{ Wyświetla się wybrana zapisana trasa z ostatnimi informacjami możliwość aktualizacji. }
-    \exceptions{  Jeśli jest tryb offiline trasa się nie aktualizuje. }
-    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych informacji na telefonie śledzi trase.}
-    \sholder{ UOB01 }
-    \reqrelated{F18}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępn}]
-    \id{F18}
-    \priority{C}
-    \name{Możliwość śledzenia obecnej pozycji na mapie – Nawigacja Wstępna}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce mmożliwość aktualnego podążania z trasą 
-        \item Ponieważ umożliwi to dynamiczne śledzenia trasy. 
-    \end{itemize}
-    } 
-    \acceptcrit{ Dodany Tryb podróży.}
-    \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
-    \preconditions{Możliwość wykorzystanie oprogramowania jako nawigacja.   }
-    \postconditions{ Tryb nawigacja daje wskazówki drogowe. }
-    \exceptions{  Za mało wybranych punktów, np. Nie brak udostępnienia lokalizacji urządzenia. }
-    \implementation{ Aplikacja na podstawie danych GPS śledzi postęp użytkownika.}
-    \sholder{ UOB01 }
-    \reqrelated{F17}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func19},caption={Karta wymagania: Trasa Offline}]
-    \id{F19}
-    \priority{S}
-    \name{Trasa Offline}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość otworzenia zapisanej trasy bez połączenia internetowego  
-        \item Ponieważ umożliwi to interaktywne korzystanie z aplikacji cały czas. 
-    \end{itemize}
-    }
-    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Aplikacja działa na zapisanych danych.   }
-    \postconditions{ Aplikacja działająca bez podłączenia do internetu. }
-    \exceptions{  Aplikacja została uruchomiona automatycznie po pobraniu bez Internetu (prosi o podłączenie do Internetu). }
-    \implementation{ Aplikacja na podstawie danych GPS oraz zapisanych lokalnych informacjami na urządzeniu.}
-    \sholder{ UOB01 }
-    \reqrelated{F16}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func20},caption={Karta wymagania: Algorytm Plannera}]
-    \id{F20}
-    \priority{S}
-    \name{Algorytm Plannera}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce żeby planner korzystał z wszystkich możliwości 
-        \item Ponieważ umożliwi to interaktywne korzystanie cały czas bez dłużych nakładu czasowego. 
-    \end{itemize}
-    }
-    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu na którym obecnie znajduje się użytkownik ( na podstawie czasu i pozycji usera).}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Przestawia optymalną trase.   }
+    \acceptcrit{ Aplikacja ma tryb trasy rowerej}
+    \inputdata{Wybrane atrakcje turystyczne }
+    \preconditions{Przestawia optymalną trasę   }
     \postconditions{ Trasa zostaje przedstawiona użytkownikowi. }
     \exceptions{ Brak atrakcji brak planu.}
     \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
     Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
-    \sholder{ UOB02 }
-    \reqrelated{F09,F10,F11,F12,F14, F15}
+    \sholder{ UOB2 }
+    \reqrelated{FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Algorytm Plannera - środek transportu rower}]
-    \id{F21}
+\begin{requirementstab}[label={tab:requirements:func17},caption={Karta wymagania:  Aktualna pozycja użytkownika na interaktywnej mapie}]
+    \id{FO17}
     \priority{C}
-    \name{Algorytm Plannera - środek transportu rower}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość  wyznaczenia trasy z wykorzystanie roweru / mevo 
-        \item Ponieważ chciałbym korzystać z swojego roweru bądź wypożyczonego podczas zwiedzania. 
-    \end{itemize}
+    \name{Aktualna pozycja użytkownika na interaktywnej mapie}
+    \descr{Jako użytkownik chce widzieć swoją pozycję na mapie, 
+         aby móc ocenić postępy w trasie.
+    
+    } 
+    \acceptcrit{ Pozycja użytkownika (gps) }
+    \inputdata{Wybrane atrakcje turystyczne – inicjacja trasy. }
+    \preconditions{Zgoda użytkownika na dostęp do lokalizacji}
+    \postconditions{ Brak }
+    \exceptions{  Brak zgody użytkownika na dostęp do lokalizacji lub zgubiony sygnał GPS }
+    \implementation{ Aplikacja na podstawie danych GPS pokazuje postęp użytkownika.}
+    \sholder{ UOB1 }
+    \reqrelated{FO17}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func18},caption={Karta wymagania: Filtracja \glslink{poidef}{POI} }]
+    \id{FO18}
+    \priority{C}
+    \name{Filtracja atrakcji turystycznych}
+    \descr{Jako użytkownik chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa,
+         ponieważ chciałbym mieć dokładniejszej selekcji \glslink{poidef}{POI}.
+    
     }
-    \acceptcrit{ Aplikacja ma tryb trasy rowerej.}
-    \inputdata{Wybrane atrakcje turystyczne – trasa. }
-    \preconditions{Przestawia optymalną trase.   }
-    \postconditions{ ATrasa zostaje przedstawiona użytkownikowi. }
+    \acceptcrit{ Możliwości wyboru kategorii \glslink{poidef}{POI}}
+    \inputdata{Wybrana kategoria. }
+    \preconditions{     Włączony widok interaktywnej mapy lub listy \glslink{poidef}{POI}}
+    \postconditions{ Brak }
+    \exceptions{ Brak }
+    \implementation{ Możliwość filtrowania \glslink{poidef}{POI} na podstawie wyznaczonych kategorii. Rozpisać na 2 widoki: listę i mapę, gdzie to ma się znajdować.
+    }
+    \sholder{UOB1, UOB2 }
+    \reqrelated{FO20,FO21,}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func19},caption={Karta wymagania: Widok wybranych atrakcji}]
+    \id{FO19}
+    \priority{S}
+    \name{Widok kalendarza planowania podróży}
+    \descr{Widok kalendarza przedstawia wybrane atrakcje przez użytkownika.
+    Użytkownik może wybrać zakres przedziału czasowego, jaki ma odwiedzanie atrakcji.
+    Kalendarz umożliwia wybór  przedziałów czasowych oraz ustalenie możliwości odwiedzin dla danej atrakcji według dostępności czasowych tej atrakcji.
+    }
+    \acceptcrit{  }
+    \inputdata{ Dodane atrakcje do koszyka}
+    \preconditions{  }
+    \postconditions{  }
+    \exceptions{ Użytkownik przeciągnął atrakcje na okres czasowych, w którym ona jest niedostępna}
+    \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane atrakcję do koszyka. Atrakcje można przeciągać po kalendarzu (wcześniej) 
+    }
+    \sholder{ UOB2 }
+    \reqrelated{F09}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func20},caption={Karta wymagania: Algorytm Plannera}]
+    \id{FO20}
+    \priority{S}
+    \name{Algorytm Plannera}
+    \descr{Jako użytkownik chce, żeby planner korzystał z wszystkich możliwości,
+         ponieważ umożliwi to interaktywne korzystanie cały czas bez dłuższego nakładu czasowego. 
+    
+    }
+    \acceptcrit{ Widok osi czasu obecnej trasy powinien domyślnie przeskakiwać do etapu, na którym obecnie znajduje się użytkownik (na podstawie czasu i pozycji użytkownika).}
+    \inputdata{Wybrane atrakcje turystyczne oraz trasa. }
+    \preconditions{Przestawia optymalną trasę.   }
+    \postconditions{ Trasa zostaje przedstawiona użytkownikowi. }
     \exceptions{ Brak atrakcji brak planu.}
     \implementation{ Algorytm optymalnej trasy powinien brać pod uwagę czas potrzeby na zwiedzenie konkretnej atrakcji.
-    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenia w ciągu danego dnia.
+    Algorytm optymalnej trasy powinien brać pod uwagę czas przeznaczony na zwiedzenie w ciągu danego dnia.
     Algorytm optymalnej trasy powinien brać pod uwagę dni przeznaczone na zwiedzanie.
     Algorytm optymalnej trasy powinien brać pod uwagę status atrakcji (np otwarte tylko w środy o konkretnych godzinach).
-    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać POI wymagające odpowiedniej kolejności względem siebie jeśli to możliwe.
+    Algorytm optymalnej trasy powinien brać pod uwagę warunki pogodowe i przesuwać \glslink{poidef}{POI} wymagające odpowiedniej kolejności względem siebie, jeśli to możliwe.
     Algorytm optymalnej trasy powinien informować użytkownika o zmianie pogody i powinien zaproponować alternatywny plan zwiedzania.}
-    \sholder{ UOB02 }
-    \reqrelated{F20}
+    \sholder{ UOB2 }
+    \reqrelated{F09,FO10,FO11,FO12,FO14, FO15}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Widok Druku - Pdf }]
-    \id{F22}
+
+\begin{requirementstab}[label={tab:requirements:func21},caption={Karta wymagania: Druk planu zwiedzania }]
+    \id{FO21}
     \priority{C}
-    \name{Widok Druku - Pdf}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf
-        \item Ponieważ chciałbym mieć na kartce swój plan. 
-    \end{itemize}
+    \name{Widok Druku planu zwiedzania}
+    \descr{Jako użytkownik chce możliwość prezentacji trasy z wszystkimi punktami w formacie pdf,
+         ponieważ chciałbym mieć na kartce swój plan. 
+    
     }
-    \acceptcrit{ Aplikacja umożliwia zapisanie w pdf widoku osi czasu}
-    \inputdata{Wybrane atrakcje turystyczne – Zapisana trasa. }
-    \preconditions{ Wybrana trasa nie może mieć błedów   }
-    \postconditions{ Przełącza na tryb druku wbudowany w urządzenie. }
-    \exceptions{ Jeśli urządzenie nie ma możliwości druku przełącza na pobieranie PDF.}
+    \acceptcrit{ Aplikacja wyświetli monit "drukowanie" dostosowany do używanego systemu operacyjnego}
+    \inputdata{Uprzednio wygenerowany plan zwiedzania }
+    \preconditions{ Brak }
+    \postconditions{Wsparcie systemu operacyjnego użytkownika w drukowaniu.    }
+    \exceptions{ Brak wsparcia systemu operacyjnego użytkownika w drukowaniu.}
     \implementation{ Widok optymalnej trasy powinien umożliwiać wydruk trasy w formie przystępnej drukarkom 
     }
-    \sholder{UOB01, UOB02,UOB03 }
-    \reqrelated{F12, F13,F14, F20,F21}
+    \sholder{UOB1, UOB2,UOB3 }
+    \reqrelated{FO12, FO13,FO14, FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Filtracja dostępnych Atrakcji - Menu }]
-    \id{F23}
+
+\begin{requirementstab}[label={tab:requirements:func22},caption={Karta wymagania: Automatyczna aktualizacja planu}]
+    \id{FO22}
     \priority{C}
-    \name{Filtracja dostępnych Atrakcji - Menu}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce możliwość filtrowanie atrakcji po kategoriach takie jak ilość osób czy nazwa
-        \item Ponieważ chciałbym mieć dokładniejszej selekcji POI.
-    \end{itemize}
+    \name{Automatyczna aktualizacja planu zwiedzania w przypadku zmiany danych}
+    \descr{Jako użytkownik chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie,
+         ponieważ chciałbym mieć aktualne dane w sytuacji, gdy nie będę mógł zrealizować całego planu, na przykład, gdy pójdę coś zjeść.
+    
     }
-    \acceptcrit{ Możliwości wyboru kategorii POI}
-    \inputdata{Wybrane atrakcje turystyczne, okres czasowy jaki nas interesuje dotyczące atrakcji. }
-    \preconditions{ Włączona lista z wszystkimi POI }
-    \postconditions{ Wyświetlaja się potrzebne POI. }
-    \exceptions{ Brak dostępnych POI w zadanyum czasie.}
-    \implementation{ Możliwość filtrowania poi na podstawie kategorii takich jak ilość osób, cena itd
+    \acceptcrit{ Automatyczne zmiany}
+    \inputdata{ Uprzednio wygenerowany plan zwiedzania}
+    \preconditions{ Wygenerowany plan }
+    \postconditions{ Brak }
+    \exceptions{ Wyświetla błąd, że nie udało się wygenerować planu po zmianie danych}
+    \implementation{ Widok optymalnej trasy powinien, być zaktualizowany o nowe dane GPS czas, miejsce, w tym dane pogodowe, oraz czas pracy atrakcji, widoczne zmiany przestawią się na kalendarzu.
     }
-    \sholder{UOB01, UOB02 }
-    \reqrelated{F20,F21,}
+    \sholder{UOB1, UOB2, UOB3 }
+    \reqrelated{FO20,FO21,}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Przeliczanie Trasy o aktualną datę i czas}]
-    \id{F24}
+\begin{requirementstab}[label={tab:requirements:func23},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
+    \id{FO23}
     \priority{C}
-    \name{Przeliczanie Trasy o aktualną datę i czas}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce dostawać aktualne (ciągle odświeżane) dane o mojej trasie
-        \item Ponieważ chciałbym mieć aktualne dane np.  nie będę mógł spełnić całego planu np.. Pójdę coś zjeść.
-    \end{itemize}
+    \name{Przeliczanie Trasy o opóźnienia komunikacji miejskiej}
+    \descr{Jako użytkownik chce dostawać aktualne dane o czasie oczekiwania na środek transportu,
+         ponieważ chciałbym posiadać aktualne dane ile będę czekać.
+    
     }
     \acceptcrit{ Przycisk odświeżenia planu trasy}
     \inputdata{Wybrana trasa turystyczna. }
     \preconditions{ Wybrana trasa była wcześniej włączona }
     \postconditions{ Wyświetla się aktualny plan trasy. }
-    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
+    \exceptions{ Wyświetla błąd, że aktualna atrakcja jest już zamknięta.}
     \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
     }
-    \sholder{UOB01, UOB02, UOB03 }
-    \reqrelated{F20,F21,}
+    \sholder{UOB1, UOB2 }
+    \reqrelated{FO20,FO21,}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Przeliczanie Trasy o opóźnienia komunikacji}]
-    \id{F25}
-    \priority{C}
-    \name{Przeliczanie Trasy o opóźnienia komunikacji}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Chce dostawać aktualne dane o czasie oczekiwania na środek transportu
-        \item Ponieważ chciałbym mieć aktualne dane ile będę czekać
-    \end{itemize}
-    }
-    \acceptcrit{ Przycisk odświeżenia planu trasy}
-    \inputdata{Wybrana trasa turystyczna. }
-    \preconditions{ Wybrana trasa była wcześniej włączona }
-    \postconditions{ Wyświetla się aktualny plan trasy. }
-    \exceptions{ Wyświetla błąd że aktualna atrakcja jest już zamknięta.}
-    \implementation{ Widok optymalnej trasy powinien być zaktualizowany o nowe dane.
-    }
-    \sholder{UOB01, UOB02, UOB03 }
-    \reqrelated{F20,F21,}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Możliwość korzystania jako gość}]
-    \id{F26}
+\begin{requirementstab}[label={tab:requirements:func24},caption={Karta wymagania: Dostęp bez autoryzacji}]
+    \id{FO24}
     \priority{C}
     \name{Możliwość korzystania jako gość}
-    \descr{\begin{itemize}
-        \item Jako Użytkownik 
-        \item Nie Chce logować się do aplikacji
-        \item Ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
-    \end{itemize}
+    \descr{Jako użytkownik Nie chce logować się do aplikacji,
+         ponieważ chciałbym przetestować aplikacje bez tworzenia konta.
+    
     }
     \acceptcrit{ Dostęp do podstawowych funkcjonalności bez konieczności posiadania konta}
-    \inputdata{ Praca bez danych wejściowych }
-    \preconditions{ Aplikacja działa bez dodatkowych danych }
+    \inputdata{ Brak }
     \postconditions{ Użytkownik ma możliwość skorzystania z wybranej funkcji bez konta. }
-    \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji, .}
-    \implementation{ aplikacja dostępna bez logowania
-    }
-    \sholder{UOB01, UOB02, UOB03 }
-    \reqrelated{F20,F21,}
+    \exceptions{ Użytkownik próbuje wykonać akcję, która wymaga posiadania konta – system powinien powiadomić użytkownika o konieczności posiadania konta do wykonania tej akcji.}
+    \implementation{ Aplikacja dostępna bez logowania, możliwość przeglądania i wybierania atrakcji z interaktywnej mapy z wszystkimi jej funkcjami dotyczących atrakcji bez możliwości dodawania opinii, ani żadnych modyfikacji na mapie.}
+    \sholder{UOB1, UOB2, UOB3 }
+    \reqrelated{FO20,FO21}
 \end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func25},caption={Karta wymagania: Panel Moderacji Opinii}]
+    \id{FO25}
+    \priority{C}
+    \name{Panel Moderacji Opinii}
+    \descr{
+     Jako Administrator chce panel do administracji opinii, aby treści były zgodne obowiązującym prawem.
+    }
+    \acceptcrit{ Możliwość zarządzania opiniami wyświetlenie,  akceptowanie oraz odrzucaniem  }
+    \inputdata{ Nowo dodane opinie użytkowników }
+    \exceptions{ Użytkownik dodał opinię nieodpowiednią dla dzieci. }
+    \implementation{ Dodanie kolejnej strony dostępnej tylko dla administratora, w któy będą wyświetlały się nowo dodane opinie oraz wszystkie zaakceptowane. 
+    }
+    \sholder{ UOB2 }
+    \reqrelated{F07}
+\end{requirementstab}
+\begin{requirementstab}[label={tab:requirements:func26},caption={Karta wymagania: Widok list atrakcji}]
+    \id{FO26}
+    \priority{C}
+    \name{Widok zapisanych list atrakcji}
+    \descr{Użytkownik dodaje atrakcje do koszyka, listę takich atrakcji może zapisać do ulubionych i jakąś ją nazwać, w celu późniejszego odtworzenia.
+    }
+    \acceptcrit{ Użytkownik dodał listę atrakcji do ulubionych }
+    \inputdata{ Zapisane listy atrakcji }
+    \exceptions{ Atrakcje z listy są niedostępne }
+    \implementation{ Dodanie widoku dla użytkownika, którym będzie mógł zobaczyć dodane listy atrakcji do ulubionych. Widok ten włącza się z menu konta użytkownika.
+    }
+    \sholder{ UOB1 }
+    \reqrelated{F09}
+\end{requirementstab}
+
 \section{Interfejs z otoczeniem}
 \label{sec:interfejs-z-otoczeniem}
 
@@ -640,161 +587,115 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \descr{Interfejs pozyskujący dane o komunikacji publicznej miasta Gdańsk}
     \acceptcrit{Pozyskanie aktualnych danych}
     \inputdata{API MZK Gdańsk}
-    \preconditions{ Platforma MZK Gdańsk działa}
-    \postconditions{ Informacje zostały poprawnie przekazane do plików}
+    \preconditions{ API MZK Gdańsk działa}
+    \postconditions{ Informacje zostały poprawnie przekazane do bazy danych}
     \exceptions{ API urzędu transportu miejskiego w Gdańsku nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji}
     \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych}
-    \sholder{UOB01, UOB02, UOB03}
-    \reqrelated{F20}
+    \sholder{UOB1, UOB2, UOB3}
+    \reqrelated{FO11,FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem open Weather API}]
+\begin{requirementstab}[label={tab:requirements:env2},caption={Karta wymagania: Integracja z systemem \glslink{openmeteo}{openMeteo}}]
     \id{IO2}
     \priority{S}
-    \name{Integracja z systemem open Weather API}
-    \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z POI np.Gdańska}
-    \acceptcrit{Integracja algorytmu planowania trasy na podstawie pogody}
+    \name{Integracja z systemem \glslink{openmeteo}{openMeteo}}
+    \descr{Cykliczna aktualizacja bazy pogodowej dla Miast z \glslink{poidef}{POI} np.Gdańska}
+    \acceptcrit{Dane zostały zapisane do bazy danych i aktualizują się, z dokładnością do piętnastu minut z możliwością błędu do trzydziestu minut}
     \inputdata{Miasto np. Miasto Gdańsk}
-    \preconditions{ Okres potrzebowania na podróż a}
-    \postconditions{ Informacje zostały poprawnie przekazane do plików}
-    \exceptions{ Wyświetla błąd iż plan trasy nie został uzwgledniony o pogodę, gdyż wystąpił błąd np. Brak połączenia internetowego}
-    \implementation{ Dodanie Klienta Pogodowego, który przechowuje dane z wiarygodnością do 15minut.}
-    \sholder{UOB01, UOB02, UOB03}
-    \reqrelated{F20}
+    \preconditions{ Okres zapotrzebowania na podróż}
+    \postconditions{ Informacje zostały poprawnie przekazane do bazy danych z dokładnością do trzech dni wprzód}
+    \exceptions{ Open Meteo nie działa}
+    \implementation{ Dodanie klienta pogodowego, który przechowuje dane z rozdzielczością do piętnastu minut z możliwością błędu do trzydziestu minut.}
+    \sholder{UOB1, UOB2, UOB3}
+    \reqrelated{FO20}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:env3},caption={Karta wymagania: Integracja z systemem overpass API}]
     \id{IO3}
     \priority{M}
-    \name{Integracja z systemem overpass API}
-    \descr{cykliczna aktualizacja bazy dróg, ścieżek itd w Gdańsku}
-    \acceptcrit{Integracja algorytmu planowania trasy na podstawie danych transportu publicznego}
-    \inputdata{Graf połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, 2 wybrane przez użytkownika punkty - początek i koniec}
-    \preconditions{ Okres potrzebowania na podróż a}
-    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
-    \exceptions{ Brak połączenia między wybranymi punktami, system powinien zwrócić informację o takiej styacji zamiast zakończyć żądanie niepowodzeniem.}
-    \implementation{ Cała mapa Gdańska zajmuje ok 100 MB w formacie JSON, system powinien obliczać optymalną trasę na pełnym grafie połączeń, nie ma potrzeby tworzenia pod grafów..}
-    \sholder{UOB01, UOB02, UOB03}
-    \reqrelated{F20}
+    \name{Integracja z systemem Overpass Turbo}
+    \descr{Cykliczna aktualizacja bazy dróg, ścieżek i tym podobne w Gdańsku}
+    \acceptcrit{Dane o mapie są aktualne}
+    \inputdata{Dane połączeń pieszych, samochodowych i transportu miejskiego z punktami docelowymi na mapie, dwa wybrane przez użytkownika punkty początek i koniec. Przekazane w formacie xml}
+    \postconditions{ Proces aktualizacji nie wywołuje przerw w działaniu}
+    \exceptions{ API nie działą lub zawiera błędne dane}
+    \implementation{ Trzeba napisać program który zrozumie xml i przerobi go na graf połączeń w formie akceptowalnym przez postgres.}
+    \sholder{UOB1, UOB2, UOB3}
+    \reqrelated{FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy internetowej w oparciu o Open layers    }]
+\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Implementacja interaktywnej mapy}]
     \id{IO4}
-    \priority{S}
-    \name{Implementacja interaktywnej mapy internetowej w oparciu o Open layers}
+    \priority{M}
+    \name{Implementacja interaktywnej mapy internetowej przy użyciu biblioteki \glslink{openlayers}{Open layers}}
     \descr{Aplikacja zawiera dwuwymiarową mapę, kolorystycznie dostosowaną do trybu ciemnego / jasnego zgodnie z ustawieniami urządzenia użytkownika.}
     \acceptcrit{Mapa zawiera ikony przedstawiające atrakcje turystycznych, po których kliknięciu otworzy się okienko z informacjami o tej atrakcji. Mapa obsługuje urządzenia obsługiwane przy pomocy myszki jak i urządzenia z ekranami dotykowymi.}
     \inputdata{Lista atrakcji turystycznych wraz z informacjami o nich, schemat kolorystyczny urządzenia (jasny / ciemny)}
-    \preconditions{ Załadowane dane z Aplikacji}
-    \postconditions{ Baza danych zawiera aktualne informacje o ścieżkach w grafie}
+    \preconditions{ Załadowanie danych z bazy danych}
     \exceptions{ Brak atrakcji turystycznych – mapa powinna pokazać informację o braku danych.}
-    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa Stadia Maps.}
-    \sholder{ UOB02}
-    \reqrelated{IO3,F20}
+    \implementation{ Kafelki mapy w różnych wersjach kolorystycznych zapewni usługa \glslink{stadiamaps}{Stadia Maps} przy połączeniu biblioteki  \glslink{openlayers}{Open layers} }
+    \sholder{ UOB2}
+    \reqrelated{IO3,FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env4},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
-    \id{IO4}
-    \priority{C}
-    \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
-    \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
-    \acceptcrit{Mapa podczas tworzenia proponowanej trasy robi możliwe opcje z wykorzystaniem tych informacji.}
-    \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
-    \preconditions{ Załadowane dane z Aplikacji}
-    \postconditions{ Docelowa baza danych działa poprawnie}
-    \exceptions{ API urzędu nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
-    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
-    \sholder{UOB01, UOB02}
-    \reqrelated{IO3,F20}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Integracja z systemem otwartych danych o dostępnym transporcie }]
+\begin{requirementstab}[label={tab:requirements:env5},caption={Karta wymagania: Opcja  do zakupu biletów dla komunikacji miejskiej }]
     \id{IO5}
     \priority{C}
-    \name{Integracja z systemem otwartych danych o transporcie w Gdańsku}
-    \descr{Aplikacja zawiera aktualne dane o komunikacji miejskiej w częstotliwości zmian co do 5 minut, dostępnych trasporcie takich jak rowery i hulajnogi w danej lokalizacji}
-    \acceptcrit{Mapa podczas tworzenia proponowanej trasy robi możliwe opcje z wykorzystaniem tych informacji.}
-    \inputdata{API urzędu transportu miejskiego w Gdańsku działa poprawnie}
-    \preconditions{ Załadowane dane z Aplikacji}
-    \postconditions{ Docelowa baza danych działa poprawnie}
-    \exceptions{ API nie działa poprawnie, system powinien zapisać w logach informację o błędzie w przeładowaniu danych i ponowić działanie w następnym okresie synchronizacji.}
-    \implementation{ Dane powinny być strumieniowane w formacje JSON a przechowywane w bazie danych.}
-    \sholder{UOB01, UOB02}
-    \reqrelated{IO3,F20}
-\end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env6},caption={Karta wymagania: Opcja  do zakupu biletów dla komunikacji miejskiej }]
-    \id{IO6}
-    \priority{W}
-    \name{Opcja przekierowania do zakupu biletów dla komunikacji miejskiej}
+    \name{Pośrednik do zakupu biletów dla komunikacji miejskiej}
     \descr{Po wybraniu trybu transportu z wykorzystaniem Komunikacji miejskiej pojawia się propozycja skorzystania z jakieś aplikacji do zakupu biletów np. skycash}
     \acceptcrit{Opcja transportu przekazuje informacje w formie linka do polecanej aplikacji.}
     \inputdata{Transport publiczny}
     \preconditions{ Użytkownik wybrał tryb nawigacji poprzez transport publiczny}
-    \postconditions{ Przekierowanie działa}
-    \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
+    \postconditions{ Przekierowanie jako pośrednik działa na podstawie \glslink{reflink}{reflinku}}
+    \exceptions{ Brak internetu informacje przekazuje, że bez internetu ta funkcja nie działa.}
     \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
-    \sholder{UOB01, UOB02}
-    \reqrelated{IO3,F20}
+    \sholder{UOB1, UOB2}
+    \reqrelated{IO3,FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Opcja  do zakupu biletów dla POI }]
-    \id{IO7}
-    \priority{C}
+\begin{requirementstab}[label={tab:requirements:env6},caption={Karta wymagania: Opcja  do zakupu biletów dla \glslink{poidef}{POI} }]
+    \id{IO6}
+    \priority{W}
     \name{Integracja z system biletów konkretnej atrakcji online}
     \descr{cykliczna aktualizacja danych o cennikach danej atrakcji}
-    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
+    \acceptcrit{Link przekierowujący do strony ze sklepem internetowym danej atrakcji.}
     \inputdata{Użytkownik wybrał szczegółowe informacje dotyczące atrakcji}
     \preconditions{ Miejsce z informacją polecanych platformach kupna}
     \postconditions{ Przekierowanie działa}
-    \exceptions{ Brak internetu informacje przekazuje że bez internetu ta funkcja nie działa.}
-    \implementation{ Na osi czasu widać przekierowanie do partnerskiej aplikacji}
-    \sholder{UOB01}
-    \reqrelated{IO3,F20}
+    \exceptions{ Brak możliwości kupna wstępu do \glslink{poidef}{poi}  na dany termin.}
+    \implementation{ Na osi czasu widać opcje do partnerskiej aplikacji}
+    \sholder{UOB1}
+    \reqrelated{IO3,FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env8},caption={Karta wymagania: Cykliczna aktualizacja danych POI Miasta Gdańsk}]
-    \id{IO8}
+\begin{requirementstab}[label={tab:requirements:env7},caption={Karta wymagania: Cykliczna aktualizacja danych \glslink{poidef}{POI} }]
+    \id{IO7}
     \priority{S}
-    \name{Cykliczna aktualizacja danych POI Miasta Gdańsk}
-    \descr{cykliczna aktualizacja danych POI Miasta Gdańsk}
-    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
-    \inputdata{Nazwa , czasy otwarcia }
-    \preconditions{ Dla podstawowych poi system powinien implementować web scrappera który automatycznie będzie aktualizować godziny otwarcia oraz stan atrakcji}
-    \postconditions{ Integracje przewiduje 10 ATRAKCJI Najbardziej popularnych w gdańsku}
-    \exceptions{Jeśli scapper nie działą przedstawia ostatnią aktualną informacje.}
-    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i przesyłamy HTML do Chata GPT. 
-    Chat GPT generuje Tabele z potrzebnymi dla nas danymi, według ustalonego schematu dla bazy danych.
-    Następnie Administrator akceptuje zmiany.
+    \name{Cykliczna aktualizacja danych \glslink{poidef}{POI} }
+    \descr{Cykliczna aktualizacja danych wszystkich\glslink{poidef}{POI} dostępnych w bazie danych.}
+    \acceptcrit{Aktualizowane dane są zgodne ze schematem przechowania danych}
+    \inputdata{Dane o atrakcji }
+    \preconditions{ Poprawna konfiguracja, tak aby glslink{scraping}{scrapowanie} danych działało.}
+    \exceptions{AI nie działa - Brak zmian w bazie}
+    \implementation{ Strona jest \glslink{scraping}{scrapowana}, pozyskiwane są potrzebne dane, a następnie przesyłany jest HTML do Chat GPT. Generowana jest tabela z wymaganymi danymi, zgodnie z ustalonym schematem dla bazy danych. Zmiany są następnie akceptowane przez administratora.
     }
-    \sholder{UOB02}
-    \reqrelated{IO3,F20}
+    \sholder{UOB2}
+    \reqrelated{IO3,FO20}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:env9},caption={Karta wymagania: Informacja o aktualnych danych POI }]
-    \id{IO9}
-    \priority{S}
-    \name{Informacja o aktualnych danych POI - potrzebna aktualizacja}
-    \descr{Wykorzystując pobieranie strony HTML, (sprawdzamy co godzine zmiany), powiadamy Administratora w Panelu o potrzebie zaaktulizowania danych}
-    \acceptcrit{Link przekierowujący do strony z sklepem internetowym danej atrakcji.}
-    \inputdata{Nazwa , czasy otwarcia }
-    \preconditions{ Dla podstawowych poi system powinien pokazywać potrzebe informacji o zmianach}
-    \postconditions{ Integracje przewiduje atrakcje w Gdańsku}
-    \exceptions{Jeśli scapper nie działa przedstawia ostatnią aktualną informacje. - Brak zmian}
-    \implementation{ Scrapujemy strone z potrzebnymi dla nas danymi i jeśli strona różni się od poprzedniego stanu informujemy o tym}
-    \sholder{UOB02}
-    \reqrelated{IO3,F20}
-\end{requirementstab}
+
 \section{Wymagania niefunkcjonalne}
 \label{sec:wymagania-niefunkcjonalne}
 
-\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Karta wymagania: Dostęp 24/7}]
+\begin{requirementstab}[label={tab:requirements:nonfunc1},caption={Karta wymagania: Dostępność rozwiązania}]
     \id{NFO1}
     \priority{S}
-    \name{Dostęp 24/7}
-    \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność max 8h w skali miesiąca w godzinach nocnych (SLA 98.905 \%) }
-    \acceptcrit{maksymalny czas niedostępności systemu w skali miesiąca to 8h w godzinach 22:00-06:00}
-    \sholder{UOB01, UOB02}
-    \reqrelated{}
+    \name{ Dostępność rozwiązania}
+    \descr{System powinien być dostępny 7 dni w tygodniu, 24 godziny na dobę. Na potrzeby prac utrzymaniowych dopuszcza się niedostępność maksymalnie 8 godzin w skali miesiąca w godzinach nocnych (\glslink{sla}{SLA} 98.905 \%) }
+    \acceptcrit{maksymalny czas niedostępności systemu w skali miesiąca to osiem godzin w godzinach od 22:00-06:00}
+    \sholder{UOB1, UOB2}
+    \reqrelated{WO1}
 \end{requirementstab}
-\begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność Systemu na mobilnych urządzeniach}]
-    \id{NFO1}
+\begin{requirementstab}[label={tab:requirements:nonfunc2},caption={Karta wymagania: Responsywność systemu na mobilnych urządzeniach}]
+    \id{NFO2}
     \priority{M}
     \name{System musi być intuicyjny oraz responsywny na urządzeniach z małym ekranem}
     \descr{System używany na urządzeniach mobilnych, musi charakteryzować się wysoką responsywnością}
-    \acceptcrit{Wynik Lighthouse w kategorii performance na poziomie co najmniej 90\%}
-    \sholder{UOB02}
+    \acceptcrit{Wynik \glslink{lighthouse}{Lighthouse} w kategorii performance na poziomie co najmniej 90\%}
+    \sholder{UOB2}
     \reqrelated{WO5}
 \end{requirementstab}
 
@@ -804,10 +705,10 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
 \begin{requirementstab}[label={tab:requirements:envfunc1},caption={Karta wymagania: Android}]
     \id{ŚDO1}
     \priority{C}
-    \name{Android (PWA)}
+    \name{Android (\glslink{pwa}{PWA})}
     \descr{W dniu premiery musi być dostępny na systemy mobilne Android }
     \acceptcrit{System będzie działał sprawnie na systemy Android min. 2 dni przed premierą}
-    \sholder{UOB02}
+    \sholder{UOB2}
     \reqrelated{}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:envfunc2},caption={Karta wymagania: Przeglądarka internetowa}]
@@ -815,10 +716,9 @@ Na podstawie opracowanego dokumentu SWS, przygotowano wymagania dotyczące funkc
     \priority{M}
     \name{Przeglądarka internetowa}
     \descr{W dniu premiery musi być dostępny na urządzenia mobilne  }
-    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych 
-    Interaktywna mapa wraz ze znacznikami poi powinna być responsywna i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
+    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
     }
-    \sholder{UOB01, UOB02,UOB03}
+    \sholder{UOB1, UOB2,UOB3}
     \reqrelated{}
 \end{requirementstab}
 

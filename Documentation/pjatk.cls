@@ -126,9 +126,9 @@
     \newcommand{\id}[1]{Identyfikator: & ##1 \\ \hline}
     \newcommand{\name}[1]{Nazwa:: & ##1 \\ \hline}
     \newcommand{\descr}[1]{Opis:: & ##1 \\ \hline}
-    \newcommand{\type}[1]{Typ udziałowca:: & ##1 \\ \hline}
-    \newcommand{\viewpoint}[1]{Punkt widzenia:: & ##1 \\ \hline}
-    \newcommand{\limitations}[1]{Ograniczenia:: & ##1 \\ \hline}
+    \newcommand{\type}[1]{Typ udziałowca: & ##1 \\ \hline}
+    \newcommand{\viewpoint}[1]{Punkt widzenia: & ##1 \\ \hline}
+    \newcommand{\limitations}[1]{Ograniczenia: & ##1 \\ \hline}
     \newcommand{\requ}[1]{Wymagania:: & ##1 \\ \hline}
     \table[H]
     \centering
