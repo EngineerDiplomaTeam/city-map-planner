@@ -39,15 +39,14 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.0" />
     </ItemGroup>
 
-
     <ItemGroup>
-        <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
+      <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
+      <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\WebApi.OverpassClient\WebApi.OverpassClient.csproj" />
+      <ProjectReference Include="..\WebApi.OverpassClient\WebApi.OverpassClient.csproj" />
     </ItemGroup>
 
 </Project>
