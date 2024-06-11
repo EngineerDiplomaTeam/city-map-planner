@@ -60,3 +60,24 @@
   title = {Progressive Web Apps},
   publisher = {Manning Publications}
 }
+
+@article{fakenews,
+  title = {The evaluation of fake and true news: on the role of intelligence, personality, interpersonal trust, ideological attitudes, and news consumption},
+  journal = {Heliyon},
+  year = {2021},
+  author = {Christian Montag and Helena S. Schmitt and Dmitri Rozgonjuk and Dmitri Rozgonjuk and Jon D. Elhai}
+}
+
+@article{cognitive-biases,
+  title = {A systematic review of cognitive biases in tourist decisions},
+  journal = {Elsevier},
+  year = {2019},
+  author = {Walanchalee Wattanacharoensil and Dolchai La-ornual}
+}
+
+@article{sdlm,
+  title = {Software development lifecycle models},
+  journal = {ACM SIGSOFT Software Engineering Notes},
+  year = {2010},
+  author = {Nayan B. Ruparelia}
+}
