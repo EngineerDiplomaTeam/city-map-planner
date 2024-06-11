@@ -8,7 +8,7 @@
         <LangVersion>12</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
-        <UserSecretsId>b5084fa4-4153-4647-aa7e-79f934f79098</UserSecretsId>
+        <UserSecretsId>8c5fab58-abe6-497d-a3d1-5aad4e68c46c</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,14 +22,13 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="morelinq" Version="4.2.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
         <PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
         <PackageReference Include="NSwag.Examples" Version="1.0.12" />
-        <PackageReference Include="QRCoder" Version="1.5.1" />
         <PackageReference Include="SendGrid" Version="9.29.3" />
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
         <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.8.1" />
@@ -38,21 +37,21 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.8.1" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.0" />
     </ItemGroup>
-    
+
+
     <ItemGroup>
-      <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
+        <ProjectReference Include="..\WebApi.Data\WebApi.Data.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
+        <ProjectReference Include="..\WebApi.Weather\WebApi.Weather.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\WebApi.OverpassClient\WebApi.OverpassClient.csproj" />
-        <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
-        <PackageReference Include="Markdig" Version="0.37.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+        <ProjectReference Include="..\WebApi.OverpassClient\WebApi.OverpassClient.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="QRCoder">
+        <HintPath>..\..\..\..\.nuget\packages\qrcoder\1.5.1\lib\net6.0\QRCoder.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
