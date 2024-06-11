@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatList, MatListItem, MatNavList } from '@angular/material/list';
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ManageUserAccountStore } from './manage-user-account.store';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressBar } from '@angular/material/progress-bar';
@@ -23,6 +23,8 @@ import { MatInput } from '@angular/material/input';
 import { passwordValidators } from '../password-validators';
 import { Store } from '@ngrx/store';
 import { selectUserAccount } from '../../auth.selectors';
+import { ManageTwoFactorAuthComponent } from '../manage-two-factor-auth/manage-two-factor-auth.component';
+import { ManageTwoFactorAuthStore } from '../manage-two-factor-auth/manage-two-factor-auth.store';
 
 @Component({
   selector: 'app-manage-user-account',
@@ -45,9 +47,9 @@ import { selectUserAccount } from '../../auth.selectors';
     MatLabel,
     MatSuffix,
     ReactiveFormsModule,
-    NgOptimizedImage,
+    ManageTwoFactorAuthComponent,
   ],
-  providers: [ManageUserAccountStore],
+  providers: [ManageUserAccountStore, ManageTwoFactorAuthStore],
   templateUrl: './manage-user-account.component.html',
   styleUrl: './manage-user-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -72,9 +74,5 @@ export class ManageUserAccountComponent {
         updateOn: 'change',
       },
     ],
-  });
-
-  protected readonly enable2faForm = this.formBuilder.group({
-    code: ['', { validators: Validators.required, updateOn: 'change' }],
   });
 }

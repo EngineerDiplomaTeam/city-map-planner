@@ -1,0 +1,26 @@
+<article>
+  @switch (state()) {
+    @case ('2fa-setup') {
+      <section>
+        <p>Two factor authentication disabled!</p>
+        <button mat-raised-button
+                color="primary"
+                (click)="loadQrCodeLink()" [disabled]="qrCodeLink() !== null">Enable 2FA</button>
+      </section>
+
+      @if (qrCodeLink() !== null) {
+        <section>
+          <img class="qr-code" [src]="qrCodeLink()" alt="QR Code">
+        </section>
+      }
+    }
+
+    @case ('2fa-enabled') {
+      <p>2fa enabled!</p>
+    }
+
+    @case ('2fa-save-recovery-codes') {
+      <p>2fa save recovery codes!</p>
+    }
+  }
+</article>

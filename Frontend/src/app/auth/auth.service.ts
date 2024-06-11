@@ -215,6 +215,10 @@ export class AuthService {
     );
   }
 
+  getQrCodeLink(code: string): string {
+    return '/Api/generate-qr-code?code=' + code;
+  }
+
   public async deleteMe(): Promise<void> {
     await firstValueFrom(this.http.post('/Api/DeleteMe', {}));
   }
