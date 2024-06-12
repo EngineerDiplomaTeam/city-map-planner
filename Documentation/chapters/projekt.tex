@@ -397,3 +397,39 @@ Ten krok wyświetla komunikat informujący o zakończeniu wdrożenia frontendu.
 
 +echo+ "Frontend deployment done"
 \end{longlisting}
+
+\section{Specyfikacja API}
+Do implementacji API został użyty framework ASP.NET, który umożliwia tworzenie wydajnych i skalowalnych aplikacji webowych. Do zarządzania warstwą dostępu do danych i mapowania obiektowo-relacyjnego (ORM) zastosowano Entity Framework, w połączeniu z biblioteką Npgsql, która pozwala na efektywną współpracę z bazą danych PostgreSQL\@.
+Dzięki temu rozwiązaniu możliwe było stworzenie solidnej i wydajnej aplikacji z wykorzystaniem nowoczesnych technologii .NET, zapewniając jednocześnie łatwość w zarządzaniu danymi i wysoką kompatybilność z relacyjnymi bazami danych.
+
+W trakcie prac do prezentacji dokumentacji endpointów użyto Swaggera i ReDoca.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{attachments/swagger}
+\caption{Dokumentacji API w programie Swagger}
+\label{fig:figure}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{attachments/redoc}
+\caption{Dokumentacji API w programie ReDoc}
+\label{fig:figure}
+\end{figure}
+
+Poniżej przedstawiono specyfikację dostępnych punktów końcowych:
+\subsection{\texttt{POST /register}}
+Rejestracja nowego użytkownika. \\
+\textbf{Request body:}
+\begin{lstlisting}[language=json]
+{
+"email": "string",
+"password": "string"
+}
+\end{lstlisting}
+\textbf{Responses:}
+\begin{itemize}
+\item 200: Rejestracja powiodła się.
+\item 400: Błąd walidacji danych.
+\end{itemize}

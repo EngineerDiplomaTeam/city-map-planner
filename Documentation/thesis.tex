@@ -22,6 +22,12 @@
 \definecolor{backgrey}{RGB}{245, 245, 245}
 \definecolor{orange}{RGB}{255, 165, 0}
 \definecolor{green}{RGB}{0, 128, 0}
+\definecolor{jsonkey}{RGB}{36, 33, 192}
+\definecolor{jsonstring}{RGB}{255, 0, 0}
+\definecolor{jsonnumber}{RGB}{0, 0, 255}
+\definecolor{jsonboolean}{RGB}{255, 102, 0}
+\definecolor{jsonnull}{rgb}{0.5, 0.5, 0.5}
+\definecolor{httptype}{RGB}{0, 128, 0}
 
 % Define custom style for shell script coloring
 \lstdefinestyle{shell-colored}{
@@ -45,6 +51,37 @@
 	stringstyle=\color{string}\ttfamily,
 	morestring=[b]',
 	morestring=[b]"
+}
+
+\lstdefinelanguage{json}{
+	basicstyle=\normalfont\ttfamily,
+	morestring=[b]",
+	literate=
+	*{0}{{{\color{jsonnumber}0}}}{1}
+		{1}{{{\color{jsonnumber}1}}}{1}
+		{2}{{{\color{jsonnumber}2}}}{1}
+		{3}{{{\color{jsonnumber}3}}}{1}
+		{4}{{{\color{jsonnumber}4}}}{1}
+		{5}{{{\color{jsonnumber}5}}}{1}
+		{6}{{{\color{jsonnumber}6}}}{1}
+		{7}{{{\color{jsonnumber}7}}}{1}
+		{8}{{{\color{jsonnumber}8}}}{1}
+		{9}{{{\color{jsonnumber}9}}}{1}
+		{:}{{{\color{jsonkey}:}}}{1}
+		{,}{{{\color{jsonkey},}}}{1}
+		{\{}{{{\color{jsonkey}{\{}}}}{1}
+		{\}}{{{\color{jsonkey}{\}}}}}{1}
+		{[}{{{\color{jsonkey}{[}}}}{1}
+		{]}{{{\color{jsonkey}{]}}}}{1},
+	stringstyle=\color{jsonstring},
+	keywordstyle=\color{jsonboolean},
+	ndkeywordstyle=\color{jsonnull},
+	sensitive=true
+}
+
+\lstdefinelanguage{http}{
+	morekeywords={GET, POST, PUT, DELETE, PATCH, OPTIONS},
+	keywordstyle=\color{httptype}\bfseries
 }
 
 \lstset{
