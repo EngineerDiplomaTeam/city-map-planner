@@ -599,3 +599,146 @@ Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, bu
 
 \subsection{Potok Dokumentacji}
 \label{subsec:potok-dokumentacji}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{attachments/docs-ci}
+    \caption{Screenshot potoku dokumentacji}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{attachments/docs-pr}
+    \caption{Screenshot komentarza w widoku Pull Request}
+\end{figure}
+
+\subsubsection{Uprawnienia}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{contents: read}} - pozwala na odczytanie zawartości repozytorium.
+    \item \texttt{\textcolor{codeblue}{issues: read}} - pozwala na odczytanie zgłoszeń.
+    \item \texttt{\textcolor{codeblue}{checks: write}} - pozwala na zapis wyników kontroli.
+    \item \texttt{\textcolor{codeblue}{pull-requests: write}} - pozwala na zapis pull requestów.
+\end{itemize}
+
+\subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Documentation/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+    \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Documentation/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+\end{itemize}
+
+\subsubsection{Zadania}
+Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
+\paragraph{Kroki:}
+\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Checkout repository'!
+      +uses+: !'actions/checkout@v3'!
+\end{lstlisting}
+
+\subparagraph{Build}: Buduje dokumentację LaTeX, uruchamiając komendy `pdflatex`, `biber`, `makeglossaries` i ponownie `pdflatex` w katalogu \texttt{\textcolor{codeblue}{Documentation}}.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Build'!
+      # Glossaries https://tex.stackexchange.com/a/46732
+      # Run build twice https://texfaq.org/FAQ-rerun
+      +run+: |
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
+        !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+      +working-directory+: !'Documentation'!
+\end{lstlisting}
+
+\subparagraph{Upload Artifact}: Przesyła wygenerowany plik PDF jako artefakt.
+\begin{lstlisting}[style=yaml-colored]
+    - +uses+: !actions/upload-artifact@v3!
+      +with+:
+        +name+: !'thesis.pdf'!
+        +path+: !'Documentation/thesis.pdf'!
+\end{lstlisting}
+
+\subparagraph{Deploy Documentation}: Kopiuje wygenerowany plik PDF do odpowiedniego katalogu w zależności od tego, czy wydarzenie jest pull requestem.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Deploy Documentation'!
+      +run+: |
+        !cp thesis.pdf /opt/city-planner-documentation/${{ github.event_name == 'pull_request' && format('{0}.pdf', github.sha) || 'thesis.pdf' }}!
+      +working-directory+: !'Documentation'!
+\end{lstlisting}
+
+\subparagraph{Create comment}: Tworzy komentarz w pull request, zawierający link do wygenerowanej dokumentacji.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Create comment'!
+      +uses+: !peter-evans/create-or-update-comment@v4!
+      +with+:
+        +issue-number+: ${{ github.event.number }}
+        +body+: |
+            !Preview of thesis at latest HEAD available at: [https://city-planner.budziszm.pl/thesis/${{ github.sha }}](https://city-planner.budziszm.pl/thesis/${{ github.sha }})!
+      # Comment only on PR
+      +if+: !github.event_name == 'pull_request'!
+\end{lstlisting}
+
+Ten przepływ pracy automatyzuje proces budowania i wdrażania dokumentacji LaTeX za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+
+\subsubsection{Kod YAML}
+\begin{lstlisting}[style=yaml-colored]
++name+: !'Documentation'!
++permissions+:
+  +contents+: !read!
+  +issues+: !read!
+  +checks+: !write!
+  +pull-requests+: !write!
+
++on+:
+  +workflow_dispatch+:
+    +inputs+:
+      +reason+:
+        +description+: !'Provide reason behind manual action run'!
+        +required+: !true!
+        +type+: !'string'!
+  +push+:
+    +paths+:
+    - !'Documentation/**'!
+    +branches+: [ !'main'! ]
+  +pull_request+:
+    +paths+:
+    - !'Documentation/**'!
+    +branches+: [ !'main'! ]
+
++jobs+:
+  +build+:
+    +runs-on+: !'self-hosted'!
+    +steps+:
+    - +name+: !'Checkout repository'!
+      +uses+: !'actions/checkout@v3'!
+
+    - +name+: !'Build'!
+      # Glossaries https://tex.stackexchange.com/a/46732
+      # Run build twice https://texfaq.org/FAQ-rerun
+      +run+: |
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
+        !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+      +working-directory+: !'Documentation'!
+
+    - +uses+: !actions/upload-artifact@v3!
+      +with+:
+        +name+: !'thesis.pdf'!
+        +path+: !'Documentation/thesis.pdf'!
+
+    - +name+: !'Deploy Documentation'!
+      +run+: |
+        !cp thesis.pdf /opt/city-planner-documentation/${{ github.event_name == 'pull_request' && format('{0}.pdf', github.sha) || 'thesis.pdf' }}!
+      +working-directory+: !'Documentation'!
+
+    - +name+: !'Create comment'!
+      +uses+: !peter-evans/create-or-update-comment@v4!
+      +with+:
+        +issue-number+: !${{ github.event.number }}!
+        +body+: |
+            !Preview of thesis at latest HEAD available at: [https://city-planner.budziszm.pl/thesis/${{ github.sha }}](https://city-planner.budziszm.pl/thesis/${{ github.sha }})!
+      # Comment only on PR
+      +if+: !github.event_name == 'pull_request'!
+\end{lstlisting}
