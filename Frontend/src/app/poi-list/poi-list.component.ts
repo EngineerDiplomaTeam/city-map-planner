@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   inject,
   OnInit,
 } from '@angular/core';
@@ -10,8 +9,8 @@ import {
   MatList,
   MatListItem,
   MatListItemAvatar,
-  MatListItemMeta,
   MatListItemTitle,
+  MatListItemMeta,
   MatListSubheaderCssMatStyler,
 } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
@@ -69,11 +68,6 @@ export class PoiListComponent implements OnInit {
   vm$ = this.store.select(selectAllPoisIsBacket);
   protected readonly poiActions = poiActions;
 
-  // protected readonly poiIdsInBasket =
-  //   this.store.selectSignal(selectAllPoisIsBacket);
-
-  // protected isInBasket = (poiIdx: number) =>
-  //   computed(() => this.vm$().includes(poiIdx));
   public toggleInBasket(poiIdx: number): void {
     this.store.dispatch(
       poiActions.changeBasket({

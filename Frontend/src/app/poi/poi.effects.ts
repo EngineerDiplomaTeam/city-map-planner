@@ -12,12 +12,13 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
 import {
-  selectBaskedDialogId, selectPoiIdsInBasket,
+  selectBaskedDialogId,
+  selectPoiIdsInBasket,
   selectPoiInBasketCount,
   selectPoisInBasket,
 } from './poi.selectors';
 import { Router } from '@angular/router';
-import {concatLatestFrom} from "@ngrx/operators";
+import { concatLatestFrom } from '@ngrx/operators';
 
 @Injectable()
 export class PoiEffects {
