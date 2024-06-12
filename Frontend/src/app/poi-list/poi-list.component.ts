@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject,
+  inject, OnInit,
 } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import {
@@ -56,20 +56,21 @@ import { AsyncPipe, NgForOf } from '@angular/common';
   styleUrl: './poi-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PoiListComponent {
+export class PoiListComponent implements OnInit {
+  pois$: Observable<PointOfInterest[]>;
+
   ngOnInit() {
     this.store.dispatch(poiActions.loadPois());
   }
   protected readonly store = inject(Store);
-  pois$: Observable<PointOfInterest[]>;
   constructor() {
     this.pois$ = this.store.select(selectAllPois);
   }
+
   protected readonly poiIdsInBasket =
     this.store.selectSignal(selectPoiIdsInBasket);
 
-
-  protected  isInBasket = (poiIdx: number) =>
+  protected isInBasket = (poiIdx: number) =>
     computed(() => this.poiIdsInBasket().includes(poiIdx));
   public toggleInBasket(poiIdx: number): void {
     if (!this.isInBasket(poiIdx)) {

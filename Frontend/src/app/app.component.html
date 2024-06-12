@@ -2,6 +2,7 @@
   <mat-toolbar-row class="top-bar">
     <a class="app-title" routerLink="/"><mat-icon color="primary">map</mat-icon>City map planner</a>
 
+
     <span class="spacer"></span>
 
     @if (basketCount() > 0) {
@@ -13,6 +14,7 @@
     <button mat-icon-button (click)="store.dispatch(authActions.openDialog())">
       <mat-icon>account_circle</mat-icon>
     </button>
+    <a class="app-title" routerLink="/poi-list"><mat-icon color="primary">list</mat-icon></a>
   </mat-toolbar-row>
 </mat-toolbar>
 
