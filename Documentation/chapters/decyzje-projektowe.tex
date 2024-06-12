@@ -240,6 +240,160 @@ Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różn
 \subsection{Potok Backendu}
 \label{subsec:potok-backendu}
 
+\subsubsection*{Uprawnienia}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{contents: read}} - pozwala na odczytanie zawartości repozytorium.
+    \item \texttt{\textcolor{codeblue}{issues: read}} - pozwala na odczytanie zgłoszeń.
+    \item \texttt{\textcolor{codeblue}{checks: write}} - pozwala na zapis wyników kontroli.
+    \item \texttt{\textcolor{codeblue}{pull-requests: write}} - pozwala na zapis pull requestów.
+\end{itemize}
+
+\subsubsection*{Wydarzenia Wyzwalające Przepływ Pracy}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Backend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+    \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Backend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+\end{itemize}
+
+\subsubsection{Zadanie: build}
+Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
+\paragraph{Kroki:}
+\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Checkout repository'!
+      @uses@: !'actions/checkout@v3'!
+\end{lstlisting}
+
+\subparagraph{Setup .NET}: Konfiguruje środowisko .NET w wersji 8.x.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Setup .NET'!
+      @uses@: !'actions/setup-dotnet@v3'!
+      @with@:
+        @dotnet-version@: !'8.x'!
+\end{lstlisting}
+
+\subparagraph{Restore dependencies}: Przywraca zależności projektu w katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Restore dependencies'!
+      @run@: !'dotnet restore'!
+      @working-directory@: !'Backend'!
+\end{lstlisting}
+
+\subparagraph{Build}: Buduje projekt bez przywracania zależności w katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Build'!
+      @run@: !'dotnet build --no-restore'!
+      @working-directory@: !'Backend'!
+\end{lstlisting}
+
+\subparagraph{Test}: Uruchamia testy jednostkowe z loggerem \texttt{\textcolor{codeblue}{trx}}, bez ponownego budowania projektu w katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Test'!
+      @run@: !'dotnet test --logger trx --no-build --verbosity normal'!
+      @working-directory@: !'Backend'!
+\end{lstlisting}
+
+\subparagraph{Setup Python}: Konfiguruje środowisko Pythona w wersji 3.8, potrzebne do publikowania wyników testów.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Setup Python'! # For publish test results
+      @uses@: !'deadsnakes/action@v3.1.0'!
+      @with@:
+        @python-version@: !3.8!
+\end{lstlisting}
+
+\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.trx}} z katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Publish Test Results'!
+      @uses@: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
+      @if@: !always()!
+      @with@:
+        @files@: |
+          !Backend/**/*.trx!
+\end{lstlisting}
+
+\subparagraph{Deploy Application}: Publikuje aplikację na runtime \texttt{\textcolor{codeblue}{linux-arm64}} jako aplikację samodzielną, w trybie produkcyjnym, a następnie uruchamia skrypt \texttt{\textcolor{codeblue}{deploy.sh}} w katalogu \texttt{\textcolor{codeblue}{Backend}}. Ten krok jest pomijany, jeśli wydarzenie jest pull requestem.
+\begin{lstlisting}[style=yaml-colored]
+    - @name@: !'Deploy Application'!
+      @run@: |
+        !dotnet publish --runtime linux-arm64 --self-contained -c production WebApi!
+        !./deploy.sh!
+      @working-directory@: !'Backend'!
+      # Do not run deployment from PR
+      @if@: !github.event_name != 'pull_request'!
+\end{lstlisting}
+
+Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania projektu .NET za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+
+\subsubsection*{Kod YAML}
+\begin{lstlisting}[style=yaml-colored]
+@name@: !'Backend'!
+@permissions@:
+  @contents@: !read!
+  @issues@: !read!
+  @checks@: !write!
+  @pull-requests@: !write!
+
+@on@:
+  @workflow_dispatch@:
+    @inputs@:
+      @reason@:
+        @description@: !'Provide reason behind manual action run'!
+        @required@: !true!
+        @type@: !'string'!
+  @push@:
+    @paths@:
+    - !'Backend/**'!
+    @branches@: [ !'main'! ]
+  @pull_request@:
+    @paths@:
+    - !'Backend/**'!
+    @branches@: [ !'main'! ]
+
+@jobs@:
+  @build@:
+    @runs-on@: !'self-hosted'!
+    @steps@:
+    - @name@: !'Checkout repository'!
+      @uses@: !'actions/checkout@v3'!
+
+    - @name@: !'Setup .NET'!
+      @uses@: !'actions/setup-dotnet@v3'!
+      @with@:
+        @dotnet-version@: !'8.x'!
+
+    - @name@: !'Restore dependencies'!
+      @run@: !'dotnet restore'!
+      @working-directory@: !'Backend'!
+
+    - @name@: !'Build'!
+      @run@: !'dotnet build --no-restore'!
+      @working-directory@: !'Backend'!
+
+    - @name@: !'Test'!
+      @run@: !'dotnet test --logger trx --no-build --verbosity normal'!
+      @working-directory@: !'Backend'!
+
+    - @name@: !'Setup Python'! # For publish test results
+      @uses@: !'deadsnakes/action@v3.1.0'!
+      @with@:
+        @python-version@: !3.8!
+
+    - @name@: !'Publish Test Results'!
+      @uses@: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
+      @if@: !always()!
+      @with@:
+        @files@: |
+          !Backend/**/*.trx!
+
+    - @name@: !'Deploy Application'!
+      @run@: |
+        !dotnet publish --runtime linux-arm64 --self-contained -c production WebApi!
+        !./deploy.sh!
+      @working-directory@: !'Backend'!
+      # Do not run deployment from PR
+      @if@: !github.event_name != 'pull_request'!
+\end{lstlisting}
+
 \subsection{Potok Frontendu}
 \label{subsec:potok-frontendu}
 
