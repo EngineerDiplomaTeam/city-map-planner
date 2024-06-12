@@ -10,7 +10,6 @@
 \LoadClass{report}
 
 \RequirePackage[a4paper]{geometry}
-\RequirePackage[table]
 \RequirePackage{algorithmic} %Aby dało się umieszczać algorytmy
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{polski} % Włączenie obsługi polskich liter
