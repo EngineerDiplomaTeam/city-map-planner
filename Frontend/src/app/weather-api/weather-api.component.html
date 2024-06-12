@@ -1,11 +1,1 @@
-<!--<p>
 
-  {{ weather | async | json }}
-
-</p>-->
-<div class="flex-container" *ngIf="currentWeather$ | async as closestWeather;">
-  <span>{{ closestWeather.temperature2M }}°C
-  </span><img [src]="weatherIconService.getWeatherIconSrc(closestWeather.weathercode)"
-              style="width: 50px;height: 25px;filter: contrast(0.0000000015); "
-              [alt]="weatherIconService.getWeatherName(closestWeather.weathercode)">
-</div>

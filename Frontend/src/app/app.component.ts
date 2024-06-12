@@ -22,4 +22,5 @@ export class AppComponent {
   }
 
   protected readonly poiActions = poiActions;
+    protected readonly Date = Date;
 }

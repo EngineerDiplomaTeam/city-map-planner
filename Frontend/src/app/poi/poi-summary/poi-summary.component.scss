@@ -24,4 +24,6 @@
       gap: 0.5em;
     }
   }
+  .weather-container { display: flex; }
+  .weather-item { max-width: 50px;}
 }

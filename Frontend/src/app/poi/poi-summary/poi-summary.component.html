@@ -8,8 +8,10 @@
           <ng-template matStepLabel>{{ event.title }}</ng-template>
           <p>{{ event.start | date : 'short' }} - {{ event.end | date : 'short' }}</p>
 
-          <app-weather-icons [data]="event.start"  />
-
+          <div class="weather-container" >
+            <div class="weather-item" *ngFor="let time of getSumHours(transformDate(event.start),transformDate(event.end))">
+              {{time | date: 'H:mm' }}<app-weather-icons [data]="time"  /></div>
+          </div>
 
           <i>{{ event.extendedProps.poi.details.description }}</i>
 

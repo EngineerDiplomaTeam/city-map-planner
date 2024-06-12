@@ -10,7 +10,7 @@ import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
-import { DatePipe } from '@angular/common';
+import {DatePipe, NgForOf} from '@angular/common';
 import {
   OlLine,
   OlMapLineManager,
@@ -46,6 +46,7 @@ interface PathFindingIteration {
     MatButton,
     DatePipe,
     WeatherIconsComponent,
+    NgForOf,
   ],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
@@ -53,12 +54,54 @@ interface PathFindingIteration {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiSummaryComponent implements OnInit {
-
   private readonly olMapLinesManager = inject(OlMapLineManager);
   private readonly olMapMarkerManager = inject(OlMapMarkerManager);
   private readonly olMap = inject(OL_MAP);
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
   protected readonly steeper = viewChild.required(MatStepper);
+
+  public transformDate(
+    value: (Date & string) | string | (number[] & string),
+  ): Date {
+    let date: Date;
+
+    if (typeof value === 'string') {
+      date = new Date(value);
+    } else if (Array.isArray(value)) {
+      const [
+        year,
+        month,
+        day,
+        hours,
+        minutes,
+        seconds,
+        milliseconds,
+      ]: number[] & string = value;
+      date = new Date(
+        Date.UTC(year, month - 1, day, hours, minutes, seconds, milliseconds),
+      );
+    } else {
+      throw new Error('Invalid date input');
+    }
+
+    if (isNaN(date.getTime())) {
+      throw new Error('Invalid date input');
+    }
+
+    return new Date(date.toUTCString());
+  }
+
+  protected getSumHours(start: Date, end: Date): string[] {
+    const hours = [];
+    const current = new Date(start);
+
+    while (current <= end) {
+      hours.push(current.toISOString());
+      current.setMinutes(current.getMinutes() + 30);
+    }
+
+    return hours;
+  }
 
   private readonly setMarkersEffect = effect(() => {
     const pois = this.poiScheduleStore.scheduledEvents();

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { WeatherStatus } from '../weather-api/WeatherStatus';
-import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -42,12 +41,6 @@ export class WeatherIconsService {
       'Thunderstorm With HeavyHail',
     ],
   };
-  private timeSource = new BehaviorSubject<Date>(new Date());
-  currentTime = this.timeSource.asObservable();
-  updateTime(time: Date) {
-    this.timeSource.next(time);
-  }
-
   findClosestWeather(
     statuses: WeatherStatus[],
     now: Date,
