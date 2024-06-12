@@ -1024,112 +1024,112 @@ Tabela przechowuje historię migracji bazy danych.
     \item \keyword{product\_version}: \keyword{varchar(32)}, nie może być \keyword{NULL}
 \end{itemize}
 
-%\subsubsection{Tabela \keyword{nodes}}
-%Tabela przechowuje informacje o węzłach, w tym ich identyfikator oraz współrzędne geograficzne.
-%\begin{itemize}
-%    \item \keyword{id}: \keyword{bigint}, klucz główny, nie może być \keyword{NULL}
-%    \item \keyword{lat}: \keyword{double precision}, nie może być \keyword{NULL}
-%    \item \keyword{lon}: \keyword{double precision}, nie może być \keyword{NULL}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{point\_of\_interests}}
-%Tabela przechowuje informacje o punktach zainteresowania, takich jak nazwa, opis oraz godziny otwarcia.
-%\begin{itemize}
-%    \item \keyword{id}: \keyword{bigint}, generowany automatycznie, klucz główny
-%    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{description}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{modified}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
-%    \item \keyword{business\_hours\_page\_url}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{business\_hours\_page\_x\_path}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{business\_hours\_page\_snapshot}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{business\_hours\_page\_modified}: \keyword{timestamp with time zone}, może być \keyword{NULL}
-%    \item \keyword{holidays\_page\_url}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{holidays\_page\_x\_path}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{holidays\_page\_snapshot}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{holidays\_page\_modified}: \keyword{timestamp with time zone}, może być \keyword{NULL}
-%    \item \keyword{preferred\_wmo\_codes}: \keyword{integer[]}, nie może być \keyword{NULL}
-%    \item \keyword{preferred\_sightseeing\_time}: \keyword{interval}, nie może być \keyword{NULL}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{tags}}
-%Tabela przechowuje tagi używane do opisywania różnych encji.
-%\begin{itemize}
-%    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{value}: \keyword{text}, nie może być \keyword{NULL}
-%    \item Klucz główny: (\keyword{name}, \keyword{value})
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{ways}}
-%Tabela przechowuje informacje o drogach.
-%\begin{itemize}
-%    \item \keyword{id}: \keyword{bigint}, klucz główny, nie może być \keyword{NULL}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{business\_times}}
-%Tabela przechowuje informacje o godzinach otwarcia dla punktów zainteresowania.
-%\begin{itemize}
-%    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
-%    \item \keyword{effective\_from}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
-%    \item \keyword{effective\_to}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
-%    \item \keyword{effective\_days}: \keyword{integer[]}, nie może być \keyword{NULL}
-%    \item \keyword{time\_from}: \keyword{time}, nie może być \keyword{NULL}
-%    \item \keyword{time\_to}: \keyword{time}, nie może być \keyword{NULL}
-%    \item \keyword{state}: \keyword{integer}, nie może być \keyword{NULL}
-%    \item Klucz główny: (\keyword{poi\_id}, \keyword{effective\_from}, \keyword{effective\_to}, \keyword{effective\_days})
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{entrances}}
-%Tabela przechowuje informacje o wejściach do punktów zainteresowania.
-%\begin{itemize}
-%    \item \keyword{osm\_node\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
-%    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
-%    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{description}: \keyword{text}, nie może być \keyword{NULL}
-%    \item Klucz główny: (\keyword{osm\_node\_id}, \keyword{poi\_id})
-%\end{itemize}
-%Indeksy:
-%\begin{itemize}
-%    \item \keyword{ix\_entrances\_poi\_id} na kolumnie \keyword{poi\_id}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{images}}
-%Tabela przechowuje informacje o obrazach związanych z punktami zainteresowania.
-%\begin{itemize}
-%    \item \keyword{id}: \keyword{bigint}, generowany automatycznie, klucz główny
-%    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
-%    \item \keyword{full\_src}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{icon\_src}: \keyword{text}, może być \keyword{NULL}
-%    \item \keyword{attribution}: \keyword{text}, nie może być \keyword{NULL}
-%\end{itemize}
-%Indeksy:
-%\begin{itemize}
-%    \item \keyword{ix\_images\_poi\_id} na kolumnie \keyword{poi\_id}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{edges}}
-%Tabela przechowuje informacje o połączeniach między węzłami.
-%\begin{itemize}
-%    \item \keyword{from\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
-%    \item \keyword{to\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
-%    \item \keyword{way\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{ways}, kaskadowe usuwanie
-%    \item Klucz główny: (\keyword{from\_id}, \keyword{to\_id})
-%\end{itemize}
-%Indeksy:
-%\begin{itemize}
-%    \item \keyword{ix\_edges\_to\_id} na kolumnie \keyword{to\_id}
-%    \item \keyword{ix\_edges\_way\_id} na kolumnie \keyword{way\_id}
-%\end{itemize}
-%
-%\subsubsection{Tabela \keyword{osm\_tag\_entity\_osm\_way\_entity}}
-%Tabela przechowuje informacje o tagach przypisanych do dróg.
-%\begin{itemize}
-%    \item \keyword{ways\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{ways}, kaskadowe usuwanie
-%    \item \keyword{tags\_name}: \keyword{text}, nie może być \keyword{NULL}
-%    \item \keyword{tags\_value}: \keyword{text}, nie może być \keyword{NULL}
-%    \item Klucz główny: (\keyword{ways\_id}, \keyword{tags\_name}, \keyword{tags\_value})
-%    \item Klucz obcy: (\keyword{tags\_name}, \keyword{tags\_value}) odnosi się do \keyword{tags}, kaskadowe usuwanie
-%\end{itemize}
-%Indeksy:
-%\begin{itemize}
-%    \item \keyword{ix\_osm\_tag\_entity\_osm\_way\_entity\_tags\_name\_tags\_value} na kolumnach \keyword{tags\_name}, \keyword{tags\_value}
-%\end{itemize}
+\subsubsection{Tabela \keyword{nodes}}
+Tabela przechowuje informacje o węzłach, w tym ich identyfikator oraz współrzędne geograficzne.
+\begin{itemize}
+    \item \keyword{id}: \keyword{bigint}, klucz główny, nie może być \keyword{NULL}
+    \item \keyword{lat}: \keyword{double precision}, nie może być \keyword{NULL}
+    \item \keyword{lon}: \keyword{double precision}, nie może być \keyword{NULL}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{point\_of\_interests}}
+Tabela przechowuje informacje o punktach zainteresowania, takich jak nazwa, opis oraz godziny otwarcia.
+\begin{itemize}
+    \item \keyword{id}: \keyword{bigint}, generowany automatycznie, klucz główny
+    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{description}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{modified}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
+    \item \keyword{business\_hours\_page\_url}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{business\_hours\_page\_x\_path}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{business\_hours\_page\_snapshot}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{business\_hours\_page\_modified}: \keyword{timestamp with time zone}, może być \keyword{NULL}
+    \item \keyword{holidays\_page\_url}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{holidays\_page\_x\_path}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{holidays\_page\_snapshot}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{holidays\_page\_modified}: \keyword{timestamp with time zone}, może być \keyword{NULL}
+    \item \keyword{preferred\_wmo\_codes}: \keyword{integer[]}, nie może być \keyword{NULL}
+    \item \keyword{preferred\_sightseeing\_time}: \keyword{interval}, nie może być \keyword{NULL}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{tags}}
+Tabela przechowuje tagi używane do opisywania różnych encji.
+\begin{itemize}
+    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{value}: \keyword{text}, nie może być \keyword{NULL}
+    \item Klucz główny: (\keyword{name}, \keyword{value})
+\end{itemize}
+
+\subsubsection{Tabela \keyword{ways}}
+Tabela przechowuje informacje o drogach.
+\begin{itemize}
+    \item \keyword{id}: \keyword{bigint}, klucz główny, nie może być \keyword{NULL}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{business\_times}}
+Tabela przechowuje informacje o godzinach otwarcia dla punktów zainteresowania.
+\begin{itemize}
+    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
+    \item \keyword{effective\_from}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
+    \item \keyword{effective\_to}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
+    \item \keyword{effective\_days}: \keyword{integer[]}, nie może być \keyword{NULL}
+    \item \keyword{time\_from}: \keyword{time}, nie może być \keyword{NULL}
+    \item \keyword{time\_to}: \keyword{time}, nie może być \keyword{NULL}
+    \item \keyword{state}: \keyword{integer}, nie może być \keyword{NULL}
+    \item Klucz główny: (\keyword{poi\_id}, \keyword{effective\_from}, \keyword{effective\_to}, \keyword{effective\_days})
+\end{itemize}
+
+\subsubsection{Tabela \keyword{entrances}}
+Tabela przechowuje informacje o wejściach do punktów zainteresowania.
+\begin{itemize}
+    \item \keyword{osm\_node\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
+    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
+    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{description}: \keyword{text}, nie może być \keyword{NULL}
+    \item Klucz główny: (\keyword{osm\_node\_id}, \keyword{poi\_id})
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_entrances\_poi\_id} na kolumnie \keyword{poi\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{images}}
+Tabela przechowuje informacje o obrazach związanych z punktami zainteresowania.
+\begin{itemize}
+    \item \keyword{id}: \keyword{bigint}, generowany automatycznie, klucz główny
+    \item \keyword{poi\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{point\_of\_interests}, kaskadowe usuwanie
+    \item \keyword{full\_src}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{icon\_src}: \keyword{text}, może być \keyword{NULL}
+    \item \keyword{attribution}: \keyword{text}, nie może być \keyword{NULL}
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_images\_poi\_id} na kolumnie \keyword{poi\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{edges}}
+Tabela przechowuje informacje o połączeniach między węzłami.
+\begin{itemize}
+    \item \keyword{from\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
+    \item \keyword{to\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{nodes}, kaskadowe usuwanie
+    \item \keyword{way\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{ways}, kaskadowe usuwanie
+    \item Klucz główny: (\keyword{from\_id}, \keyword{to\_id})
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_edges\_to\_id} na kolumnie \keyword{to\_id}
+    \item \keyword{ix\_edges\_way\_id} na kolumnie \keyword{way\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{osm\_tag\_entity\_osm\_way\_entity}}
+Tabela przechowuje informacje o tagach przypisanych do dróg.
+\begin{itemize}
+    \item \keyword{ways\_id}: \keyword{bigint}, nie może być \keyword{NULL}, klucz obcy od \keyword{ways}, kaskadowe usuwanie
+    \item \keyword{tags\_name}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{tags\_value}: \keyword{text}, nie może być \keyword{NULL}
+    \item Klucz główny: (\keyword{ways\_id}, \keyword{tags\_name}, \keyword{tags\_value})
+    \item Klucz obcy: (\keyword{tags\_name}, \keyword{tags\_value}) odnosi się do \keyword{tags}, kaskadowe usuwanie
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_osm\_tag\_entity\_osm\_way\_entity\_tags\_name\_tags\_value} na kolumnach \keyword{tags\_name}, \keyword{tags\_value}
+\end{itemize}
