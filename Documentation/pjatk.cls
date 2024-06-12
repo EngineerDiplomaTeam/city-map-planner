@@ -10,7 +10,6 @@
 \LoadClass{report}
 
 \RequirePackage[a4paper]{geometry}
-\RequirePackage{listings} %Aby dało się umieszczać kody źródłowe programów
 \RequirePackage[table]
 \RequirePackage{algorithmic} %Aby dało się umieszczać algorytmy
 \RequirePackage[utf8]{inputenc}
