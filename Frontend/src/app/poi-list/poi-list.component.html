@@ -1,13 +1,13 @@
 <main class="list">
   <mat-list>
     <h3 matSubheader>Points of interest</h3>
-    <div *ngFor="let manageablePoi of pois$ | async">
+    <div *ngFor="let manageablePoi of vm$ | async">
       <mat-list-item lines="3">
         <img matListItemAvatar [src]="manageablePoi.details.bannerSrc" [alt]="manageablePoi.details.title + 'image' ">
       <span matListItemTitle>{{ manageablePoi.details.title }}</span>
         <button matListItemMeta class="add-remove" mat-fab color="primary" (click)="toggleInBasket(manageablePoi.id)">
           <mat-icon>
-            @if (!isInBasket(manageablePoi.id)) {
+            @if (manageablePoi.isInBasket) {
               remove_shopping_cart
             } @else {
               add_shopping_cart

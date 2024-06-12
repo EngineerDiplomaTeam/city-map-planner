@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { POI_FEATURE_KEY, PoiState } from './poi.reducer';
 import { OlMapMarker } from '../open-layers-map/ol-map-marker-manager.service';
+import { state } from '@angular/animations';
 
 export const selectPoiState = createFeatureSelector<PoiState>(POI_FEATURE_KEY);
 
@@ -14,6 +15,7 @@ export const selectAllPois = createSelector(
   selectPoiState,
   (state) => state.pointsOfInterest,
 );
+
 
 export const selectOlMarkers = createSelector(selectAllPois, (s) =>
   s.map(
@@ -38,6 +40,16 @@ export const selectPoisInBasket = createSelector(
   (pois, ids) => pois.filter((x) => ids.includes(x.id)),
 );
 
+export const selectAllPoisIsBacket = createSelector(
+  selectAllPois,
+  selectPoiIdsInBasket,
+  (allPois, selectPoiIdsInBasket) => {
+    return allPois.map((x) => ({
+      ...x,
+      isInBasket: selectPoiIdsInBasket.includes(x.id),
+    }));
+  },
+);
 export const selectPoiInBasketCount = createSelector(
   selectPoiIdsInBasket,
   (ids) => ids.length,

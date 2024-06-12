@@ -12,6 +12,7 @@ export const poiActions = createActionGroup({
     'Pois loaded': props<{ pois: PointOfInterest[] }>(),
     'Add to basket': props<{ poiId: PointOfInterest['id'] }>(),
     'Remove from basket': props<{ poiId: PointOfInterest['id'] }>(),
+    'Change basket': props<{ poiId: PointOfInterest['id'] }>(),
     'Open basked': emptyProps(),
     'Close basked': emptyProps(),
     'Basked dialog opened': props<{ id: string }>(),
