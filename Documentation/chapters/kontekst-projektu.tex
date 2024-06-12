@@ -250,7 +250,7 @@ Założeniem zespołu projektowego było stworzenie produktu unikalnego na skal�
 Nasze rozwiązanie umożliwia użytkownikowi dynamiczne dostosowanie planu podróży na podstawie aktualnej pogody, zgodnie z jego dostępnością czasową w przystępny sposób. Dodatkowo użytkownik zawsze ma dostęp do informacji o dostępności wybranych atrakcji.
 \subsection{Model biznesowy}
 \label{sec:aspekty-biznesowy}
-
+Projekt został początkowo stworzony jako część pracy dyplomowej. Jednakże jego potencjał i unikalne rozwiązania sprawiają, że może zostać z powodzeniem skomercjalizowany. 
 Do dokładnej analizy możliwości komercjalizacji naszego projektu wykorzystaliśmy Business Model Canvas opracowanego przez Alexander Osterwalder  utworzonego na podstawie \cite{bmc}.
 Poniżej przedstawiono kierunki oraz możliwości komercjalizacji projektu, w operciu o poszczególne elementy szablonu.
 \begin{enumerate}[label=\Roman*.]
@@ -371,7 +371,7 @@ Poniżej przedstawiono kierunki oraz możliwości komercjalizacji projektu, w op
         \end{enumerate}
         \item zasoby ludzkie (dostępne):
         \begin{enumerate}[label=\roman*.]
-            \item \sout{Czteroosobowy zespół projektowy} zredukowany dwuosobowy zespół projektowy;
+            \item \sout{pierwotnie czteroosobowy zespół projektowy} został dwuosobowy zespół projektowy;
         \end{enumerate}
         \item zasoby finansowe (potrzebne):
         \begin{enumerate}[label=\roman*.]
@@ -379,5 +379,63 @@ Poniżej przedstawiono kierunki oraz możliwości komercjalizacji projektu, w op
             \item zakup i odnowienie domeny;
         \end{enumerate}
     \end{enumerate}
-    \item 
+    \item aktywności ważne dla utrzymania relacji z klientami:
+    \begin{enumerate}[label=\alph*.]
+        \item bezawaryjność działającej aplikacji;
+        \item aktualne dane;
+        \item szybkość realizacji działąnia
+    \end{enumerate}
+    \item przychody:
+    \begin{enumerate}[label=\alph*.]
+        \item nieinwazyjne reklamy w aplikacji;
+        \item sprzedaż umieszczenia punktów na mapie:
+        \begin{enumerate}[label=\roman*.]
+            \item restauracje;
+            \item noclegownie;
+            \item prywatne usługi związane z turystyką;
+        \end{enumerate}
+        \item leasing sprzedaż aplikacji poprzez dostosowanie aplikacji pod konkretne miasto na zamówienie;
+        \item usługa abonamentowa np. wariant, przy zwiększonej ilości użytkowników darmowy użytkownik ma ograniczoną ilość zapytań (np. 30 na dzień);
+        \item opłata maklerska możliwość rozwoju o sprzedaż biletów (komunikacja / atrakcje) jako pośrednik;
+    \end{enumerate}
+    \item koszty związane z projektem:
+    \begin{enumerate}[label=\alph*.]
+        \item koszta stałe:
+        \begin{enumerate}[label=\roman*.]
+            \item infrastruktura chmurowa: 150\$ / miesięcznie;
+            \item licencja JetBrains 65 * 2€ / miesięcznie;
+            \item licencja StadiaMaps 250\$ / miesięcznie;
+            \item licencja OpenMeteo 29€ / miesięcznie;
+            \item pensja dla pracowników;
+        \end{enumerate}
+        \item koszta zmienne:
+        \begin{enumerate}[label=\roman*.]
+        \item dostosowanie aplikacji pod miasto (finansowane przez miasto);
+        \item marketing (Google Ads);
+        \end{enumerate}
+    \end{enumerate}
+    \item kluczowe partnerstwo (bez tego typu partnerów nasza aplikacja nie mogłaby spełniać swoich założeń):
+    \begin{enumerate}[label=\alph*.]
+        \item krytyczni partnerzy:
+        \begin{enumerate}[label=\roman*.]
+            \item \glslink{osm}{OpenStreetMap}:  aktualizacja mapy miejskiej, partnerstwo na zasadzie dobrowolnej dotacji dla wolontariuszy nanoszących poprawki na mapę;
+        \end{enumerate}
+        \item normalni partnerzy (można zastąpić innym rozwiązaniem):
+        \begin{enumerate}[label=\roman*.]
+            \item \glslink{stadiamaps}{Stadia Maps};
+            \item \glslink{openmeteo}{OpenMeteo};
+            \item Overpass API;
+            \item OpenAI Chat GPT: Analiza stron internetowych w celu ekstrakcji danych;
+        \end{enumerate}
+    \end{enumerate}
 \end{enumerate}
+\subsection{Propozycja realizacji komercjalizacji}
+\label{sec:propozycja-komercjalizacji}
+\indent Do zrealizowania potencjału projektu komercyjnie potrzebna jest persona, która:
+\begin{enumerate}[label=\roman*.]
+    \item jest właścicielem firmy;
+    \item chcę posiadać lub posiada markę powiązaną z turystyką;
+    \item posiada zespół marketingowy lub posiada budżet na taki zespół;
+    \item posiada aspiracje na produkt miedzynarodowy;
+\end{enumerate}
+\indent 
