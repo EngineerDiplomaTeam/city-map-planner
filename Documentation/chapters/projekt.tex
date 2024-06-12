@@ -1016,6 +1016,113 @@ Tabele posiadają różnorodne klucze obce, które zapewniają integralność da
 
 \subsection{Schemat \texttt{user\_data}}
 
+\subsubsection{Tabela \keyword{ef\_migrations\_history}}
+Tabela przechowuje historię migracji bazy danych.
+\begin{itemize}
+    \item \keyword{migration\_id}: \keyword{varchar(150)}, klucz główny, nie może być \keyword{NULL}
+    \item \keyword{product\_version}: \keyword{varchar(32)}, nie może być \keyword{NULL}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_roles}}
+Tabela przechowuje informacje o rolach użytkowników.
+\begin{itemize}
+    \item \keyword{id}: \keyword{text}, klucz główny, nie może być \keyword{NULL}
+    \item \keyword{name}: \keyword{varchar(256)}
+    \item \keyword{normalized\_name}: \keyword{varchar(256)}
+    \item \keyword{concurrency\_stamp}: \keyword{text}
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{RoleNameIndex} na kolumnie \keyword{normalized\_name} (unikatowy)
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_users}}
+Tabela przechowuje informacje o użytkownikach.
+\begin{itemize}
+    \item \keyword{id}: \keyword{text}, klucz główny, nie może być \keyword{NULL}
+    \item \keyword{user\_name}: \keyword{varchar(256)}
+    \item \keyword{normalized\_user\_name}: \keyword{varchar(256)}
+    \item \keyword{email}: \keyword{varchar(256)}
+    \item \keyword{normalized\_email}: \keyword{varchar(256)}
+    \item \keyword{email\_confirmed}: \keyword{boolean}, nie może być \keyword{NULL}
+    \item \keyword{password\_hash}: \keyword{text}
+    \item \keyword{security\_stamp}: \keyword{text}
+    \item \keyword{concurrency\_stamp}: \keyword{text}
+    \item \keyword{phone\_number}: \keyword{text}
+    \item \keyword{phone\_number\_confirmed}: \keyword{boolean}, nie może być \keyword{NULL}
+    \item \keyword{two\_factor\_enabled}: \keyword{boolean}, nie może być \keyword{NULL}
+    \item \keyword{lockout\_end}: \keyword{timestamp with time zone}
+    \item \keyword{lockout\_enabled}: \keyword{boolean}, nie może być \keyword{NULL}
+    \item \keyword{access\_failed\_count}: \keyword{integer}, nie może być \keyword{NULL}
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{EmailIndex} na kolumnie \keyword{normalized\_email}
+    \item \keyword{UserNameIndex} na kolumnie \keyword{normalized\_user\_name} (unikatowy)
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_role\_claims}}
+Tabela przechowuje informacje o roszczeniach przypisanych do ról.
+\begin{itemize}
+    \item \keyword{id}: \keyword{integer}, generowany automatycznie, klucz główny
+    \item \keyword{role\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_roles}, kaskadowe usuwanie
+    \item \keyword{claim\_type}: \keyword{text}
+    \item \keyword{claim\_value}: \keyword{text}
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_asp\_net\_role\_claims\_role\_id} na kolumnie \keyword{role\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_user\_claims}}
+Tabela przechowuje informacje o roszczeniach przypisanych do użytkowników.
+\begin{itemize}
+    \item \keyword{id}: \keyword{integer}, generowany automatycznie, klucz główny
+    \item \keyword{user\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_users}, kaskadowe usuwanie
+    \item \keyword{claim\_type}: \keyword{text}
+    \item \keyword{claim\_value}: \keyword{text}
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_asp\_net\_user\_claims\_user\_id} na kolumnie \keyword{user\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_user\_logins}}
+Tabela przechowuje informacje o logowaniach użytkowników.
+\begin{itemize}
+    \item \keyword{login\_provider}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{provider\_key}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{provider\_display\_name}: \keyword{text}
+    \item \keyword{user\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_users}, kaskadowe usuwanie
+    \item Klucz główny: (\keyword{login\_provider}, \keyword{provider\_key})
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_asp\_net\_user\_logins\_user\_id} na kolumnie \keyword{user\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_user\_roles}}
+Tabela przechowuje informacje o przypisaniu ról do użytkowników.
+\begin{itemize}
+    \item \keyword{user\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_users}, kaskadowe usuwanie
+    \item \keyword{role\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_roles}, kaskadowe usuwanie
+    \item Klucz główny: (\keyword{user\_id}, \keyword{role\_id})
+\end{itemize}
+Indeksy:
+\begin{itemize}
+    \item \keyword{ix\_asp\_net\_user\_roles\_role\_id} na kolumnie \keyword{role\_id}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{asp\_net\_user\_tokens}}
+Tabela przechowuje informacje o tokenach użytkowników.
+\begin{itemize}
+    \item \keyword{user\_id}: \keyword{text}, nie może być \keyword{NULL}, klucz obcy od \keyword{asp\_net\_users}, kaskadowe usuwanie
+    \item \keyword{login\_provider}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{name}: \keyword{text}, nie może być \keyword{NULL}
+    \item \keyword{value}: \keyword{text}
+    \item Klucz główny: (\keyword{user\_id}, \keyword{login\_provider}, \keyword{name})
+\end{itemize}
+
 \subsection{Schemat \texttt{data}}
 
 \subsubsection{Tabela \keyword{ef\_migrations\_history}}
