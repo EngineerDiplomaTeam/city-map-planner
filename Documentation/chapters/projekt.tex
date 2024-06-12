@@ -1259,3 +1259,8 @@ Indeksy:
 \subsection{Uprawnienia}
 Wszystkie tabele i sekwencje są przypisane do właściciela \keyword{city\_planner\_user}.
 Użytkownik \keyword{city\_planner\_user} ma szerokie uprawnienia (\keyword{delete}, \keyword{insert}, \keyword{references}, \keyword{select}, \keyword{trigger}, \keyword{truncate}, \keyword{update}) na wszystkich tabelach oraz wybrane uprawnienia na sekwencjach (\keyword{select}, \keyword{update}, \keyword{usage}).
+
+\section{Frontend}
+Frontend został wykonany w technologii Angular 17, korzystając z języka TypeScript w wersji 5.4 oraz biblioteki RxJs w wersji 7.
+Aplikacja wykorzystuje różne wzorce projektowe, takie jak MVVM (Model-View-ViewModel), który oddziela logikę biznesową od interfejsu użytkownika, MVC (Model-View-Controller), który strukturalnie rozdziela dane aplikacji, logikę i interfejs użytkownika, oraz Dependency Injection, czyli wstrzykiwanie zależności, co pozwala na bardziej elastyczne zarządzanie zależnościami w aplikacji.
+Dodatkowo, za implementację stanu aplikacji odpowiada wzorzec Redux, który zapewnia centralne zarządzanie stanem aplikacji i ułatwia debugowanie oraz testowanie kodu.
