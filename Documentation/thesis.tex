@@ -69,6 +69,12 @@
 	title=\lstname
 }
 
+% Define a new listing environment that uses minipage
+\lstnewenvironment{longlisting}[1][]
+	{\noindent\minipage{\linewidth}\vspace{0.5\baselineskip}
+	\lstset{#1}}
+{\endminipage\vspace{0.5\baselineskip}}
+
 \geometry{} %definicja marginesów
 \glstoctrue
 \clubpenalty=9996
