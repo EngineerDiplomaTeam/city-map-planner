@@ -67,7 +67,7 @@ Przedstawiona poniżej konfiguracja serwera NGINX zawiera definicje kilku serwer
 Zamieszczono w niej szczegółowe wyjaśnienie każdego elementu konfiguracji.
 
 \subsubsection{Główny serwer obsługujący \texttt{city-planner.budziszm.pl}}
-\begin{longlisting}[label={lst:n1}]
+\begin{longlisting}[style=nginx,label={lst:n1}]
 server {
   server_name city-planner.budziszm.pl;
 
@@ -81,7 +81,7 @@ server {
     \item \texttt{index index.html;}: Ustawia domyślny plik indeksu.
 \end{itemize}
 
-\begin{longlisting}[label={lst:n2}]
+\begin{longlisting}[style=nginx,label={lst:n2}]
   location = /favicon.ico { access_log off; log_not_found off; }
 \end{longlisting}
 \begin{itemize}
@@ -90,7 +90,7 @@ server {
 \end{itemize}
 
 \subsubsection{Konfiguracja gzip}
-\begin{longlisting}[label={lst:n3}]
+\begin{longlisting}[style=nginx,label={lst:n3}]
   gzip on;
   gzip_static on;
   gzip_types
@@ -113,7 +113,7 @@ server {
 \end{itemize}
 
 \subsubsection{Konfiguracja cache dla CSS i JS}
-\begin{longlisting}[label={lst:n4}]
+\begin{longlisting}[style=nginx,label={lst:n4}]
   location ~*.(css|js)$ {
     add_header Cache-Control "public, immutable, max-age=31536000";
   }
@@ -124,7 +124,7 @@ server {
 \end{itemize}
 
 \subsubsection{Przekierowania proxy dla \texttt{/Api} i \texttt{/confirmEmail}}
-\begin{longlisting}[label={lst:n5}]
+\begin{longlisting}[style=nginx,label={lst:n5}]
   location /Api {
     rewrite /Api/(.*) /$1 break;
     proxy_pass http://localhost:5000;
@@ -143,7 +143,7 @@ server {
 \end{itemize}
 
 \subsubsection{Obsługa plików w \texttt{/thesis}}
-\begin{longlisting}[label={lst:n6}]
+\begin{longlisting}[style=nginx,label={lst:n6}]
   location ~* /thesis/(.*)$ {
     root /opt/city-planner-documentation;
     rewrite /thesis/(.*) /$1.pdf break;
@@ -163,7 +163,7 @@ server {
 \end{itemize}
 
 \subsubsection{Główne ustawienia dla ścieżek i SSL}
-\begin{longlisting}[label={lst:n7}]
+\begin{longlisting}[style=nginx,label={lst:n7}]
   location / {
     try_files $uri$args $uri$args/ /index.html;
   }
@@ -181,7 +181,7 @@ server {
 \end{itemize}
 
 \subsubsection{Przekierowanie HTTP do HTTPS}
-\begin{longlisting}[label={lst:n8}]
+\begin{longlisting}[style=nginx,label={lst:n8}]
 server {
     if ($host = city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -197,7 +197,7 @@ server {
 \end{itemize}
 
 \subsubsection{Serwer obsługujący \texttt{logs.city-planner.budziszm.pl}}
-\begin{longlisting}[label={lst:n9}]
+\begin{longlisting}[style=nginx,label={lst:n9}]
 server {
   server_name logs.city-planner.budziszm.pl;
   auth_basic           "Administrator's Area";
@@ -226,7 +226,7 @@ server {
 \end{itemize}
 
 \subsubsection{Przekierowanie HTTP do HTTPS dla \texttt{logs.city-planner.budziszm.pl}}
-\begin{longlisting}[label={lst:n10}]
+\begin{longlisting}[style=nginx,label={lst:n10}]
 server {
     if ($host = logs.city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -242,7 +242,7 @@ server {
 \end{itemize}
 
 \subsubsection{Mapowanie nagłówka \texttt{Connection} w zależności od nagłówka \texttt{Upgrade}}
-\begin{longlisting}[label={lst:n11}]
+\begin{longlisting}[style=nginx,label={lst:n11}]
 map $http_upgrade $connection_upgrade {
   default upgrade;
   ''      close;
