@@ -5,7 +5,7 @@
       <mat-list-item lines="3">
         <img matListItemAvatar [src]="manageablePoi.details.bannerSrc" [alt]="manageablePoi.details.title ">
       <span matListItemTitle>{{ manageablePoi.details.title }}</span>
-        <button matListItemMeta aria-label="Add Poi to backet"class="add-remove" mat-fab color="primary" (click)="toggleInBasket(manageablePoi.id)">
+        <button matListItemMeta aria-label="Add Poi to backet" class="add-remove" mat-fab color="primary" (click)="toggleInBasket(manageablePoi.id)">
           <mat-icon>
             @if (manageablePoi.isInBasket) {
               remove_shopping_cart

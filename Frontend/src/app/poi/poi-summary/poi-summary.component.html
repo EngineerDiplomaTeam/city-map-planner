@@ -7,15 +7,19 @@
         <mat-step completed="false">
           <ng-template matStepLabel>{{ event.title }}</ng-template>
           <p>{{ event.start | date : 'short' }} - {{ event.end | date : 'short' }}</p>
-
+          <p>Weather Forecast</p>
           <div class="weather-container" >
             <div class="weather-item" *ngFor="let time of getSumHours(transformDate(event.start),transformDate(event.end))">
               {{time | date: 'H:mm' }}<app-weather-icons [data]="time"  /></div>
           </div>
+          <p>Recommended Weather</p>
           <div class="weather-container" >
-              <app-weather-api [recommendedWeather]="event.extendedProps.poi.preferredWmoCodes"  />
+          <div class="weather-item" *ngFor="let number of event.extendedProps.poi.preferredWmoCodes">
+              <img [src]="weatherIconService.getWeatherIconSrc(number)"
+                 style="width: 50px; height: 25px; filter: contrast(0.0000000015);"
+                 [alt]="weatherIconService.getWeatherName(number)">
           </div>
-
+          </div>
           <i>{{ event.extendedProps.poi.details.description }}</i>
 
 

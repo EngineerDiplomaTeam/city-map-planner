@@ -10,7 +10,7 @@ import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
-import { DatePipe, NgForOf } from '@angular/common';
+import {AsyncPipe, DatePipe, NgForOf, NgIf} from '@angular/common';
 import {
   OlLine,
   OlMapLineManager,
@@ -27,6 +27,7 @@ import { fromLonLat } from 'ol/proj';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WeatherIconsComponent } from '../../weather-icons/weather-icons.component';
 import { WeatherApiComponent } from '../../weather-api/weather-api.component';
+import {WeatherIconsService} from "../../weather-icons/weather-icons-service";
 
 interface PathFindingIteration {
   complete: boolean;
@@ -48,6 +49,8 @@ interface PathFindingIteration {
     WeatherIconsComponent,
     NgForOf,
     WeatherApiComponent,
+    AsyncPipe,
+    NgIf,
   ],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
@@ -60,6 +63,7 @@ export class PoiSummaryComponent implements OnInit {
   private readonly olMap = inject(OL_MAP);
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
   protected readonly steeper = viewChild.required(MatStepper);
+  protected readonly weatherIconService = inject(WeatherIconsService);
 
   public transformDate(
     value: (Date & string) | string | (number[] & string),
