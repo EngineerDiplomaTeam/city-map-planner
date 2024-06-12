@@ -358,3 +358,42 @@ EOT
 
 +echo+ "Backend deployment done"
 \end{longlisting}
+
+\subsection{Deployment frontendu}
+Ten skrypt Bash wykonuje kilka kroków, aby wdrożyć frontend aplikacji.
+Poniżej znajduje się szczegółowy opis, co robi każda jego część:
+
+\subsubsection{Usuwanie wszystkich plików z \newline
+/var/www/city-planner.budziszm.pl/html}
+Ten krok usuwa wszystkie pliki z katalogu \texttt{/var/www/city-planner.budziszm.pl/html}, aby przygotować miejsce na nowe pliki.
+\begin{longlisting}[style=shell-colored]
++echo+ "Removing all files from /var/www/city-planner.budziszm.pl/html"
++rm -Rf+ /var/www/city-planner.budziszm.pl/html/*
+\end{longlisting}
+
+\subsubsection{Kopiowanie plików do /var/www/city-planner.budziszm.pl/html/}
+Ten krok kopiuje pliki z katalogu \texttt{dist/frontend/browser/} \newline
+do \texttt{/var/www/city-planner.budziszm.pl/html/}.
+\begin{longlisting}[style=shell-colored]
++echo+ "Copying dist files to /var/www/city-planner.budziszm.pl/html/"
++cp -r+ dist/frontend/browser/* /var/www/city-planner.budziszm.pl/html/
+\end{longlisting}
+
+\subsubsection{Zakończenie wdrożenia frontendu}
+Ten krok wyświetla komunikat informujący o zakończeniu wdrożenia frontendu.
+\begin{longlisting}[style=shell-colored]
++echo+ "Frontend deployment done"
+\end{longlisting}
+
+\subsubsection{Całość kodu}
+\begin{longlisting}[style=shell-colored]
+#!/bin/bash
+
++echo+ "Removing all files from /var/www/city-planner.budziszm.pl/html"
++rm -Rf+ /var/www/city-planner.budziszm.pl/html/*
+
++echo+ "Copying dist files to /var/www/city-planner.budziszm.pl/html/"
++cp -r+ dist/frontend/browser/* /var/www/city-planner.budziszm.pl/html/
+
++echo+ "Frontend deployment done"
+\end{longlisting}
