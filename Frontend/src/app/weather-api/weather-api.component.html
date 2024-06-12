@@ -1,1 +1,5 @@
-
+<div class="flex-container" *ngfor="let closestWeather of recommendedWeather$ | async ;">
+  <img [src]="weatherIconService.getWeatherIconSrc(closestWeather.weathercode)"
+              style="width: 50px;height: 25px;filter: contrast(0.0000000015); "
+              [alt]="weatherIconService.getWeatherName(closestWeather.weathercode)">
+</div>

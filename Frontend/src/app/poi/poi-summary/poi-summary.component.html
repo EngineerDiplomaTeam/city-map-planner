@@ -12,6 +12,9 @@
             <div class="weather-item" *ngFor="let time of getSumHours(transformDate(event.start),transformDate(event.end))">
               {{time | date: 'H:mm' }}<app-weather-icons [data]="time"  /></div>
           </div>
+          <div class="weather-container" >
+              <app-weather-api [recommendedWeather]="event.extendedProps.poi.preferredWmoCodes"  />
+          </div>
 
           <i>{{ event.extendedProps.poi.details.description }}</i>
 

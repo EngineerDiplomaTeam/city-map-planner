@@ -1,16 +1,19 @@
 <mat-toolbar>
   <mat-toolbar-row class="top-bar">
-    <a class="app-title" routerLink="/"><mat-icon color="primary">map</mat-icon>City map planner</a>
+    <a class="app-title" aria-label="List Points of Interest" routerLink="/poi-list"><mat-icon color="primary">list</mat-icon></a>
+    <a class="app-title" routerLink="/ "><mat-icon color="primary">map</mat-icon>City map planner</a>
+
 
     <span class="spacer"></span>
 
     @if (basketCount() > 0) {
-      <button mat-icon-button (click)="store.dispatch(poiActions.openBasked())">
+      <button mat-icon-button aria-label="Open backet" (click)="store.dispatch(poiActions.openBasked())">
         <mat-icon aria-hidden="false" [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
       </button>
     }
     <app-weather-icons />
-    <button mat-icon-button (click)="store.dispatch(authActions.openDialog())">
+
+    <button mat-icon-button aria-label="Open menu account" (click)="store.dispatch(authActions.openDialog())">
       <mat-icon>account_circle</mat-icon>
     </button>
   </mat-toolbar-row>

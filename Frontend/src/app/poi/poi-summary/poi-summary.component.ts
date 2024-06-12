@@ -27,6 +27,7 @@ import { fromLonLat } from 'ol/proj';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WeatherIconsService } from '../../weather-icons/weather-icons-service';
 import { WeatherIconsComponent } from '../../weather-icons/weather-icons.component';
+import {WeatherApiComponent} from "../../weather-api/weather-api.component";
 
 interface PathFindingIteration {
   complete: boolean;
@@ -47,6 +48,7 @@ interface PathFindingIteration {
     DatePipe,
     WeatherIconsComponent,
     NgForOf,
+    WeatherApiComponent,
   ],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
