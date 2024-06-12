@@ -60,7 +60,7 @@ Dodatkowo, użycie Nginx umożliwia łatwe wygenerowanie certyfikatu SSL za pomo
     \label{fig:figure}
 \end{figure}
 
-%\pagebreak
+\pagebreak
 \subsection{Konfiguracja Nginx}
 \label{subsec:konfiguracja-nginx}
 Przedstawiona poniżej konfiguracja serwera NGINX zawiera definicje kilku serwerów wirtualnych dla różnych domen i usług.
@@ -68,7 +68,7 @@ Zamieszczono w niej szczegółowe wyjaśnienie każdego elementu konfiguracji.
 
 \subsubsection{Główny serwer obsługujący \texttt{city-planner.budziszm.pl}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n1},float,floatplacement=H]
+\begin{lstlisting}[label={lst:n1}]
 server {
   server_name city-planner.budziszm.pl;
 
@@ -84,7 +84,7 @@ server {
 \end{itemize}
 
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n2},float,floatplacement=H]
+\begin{lstlisting}[label={lst:n2}]
   location = /favicon.ico { access_log off; log_not_found off; }
 \end{lstlisting}
 \end{minipage}
@@ -95,7 +95,7 @@ server {
 
 \subsubsection{Konfiguracja gzip}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n3},float,floatplacement=H]
+\begin{lstlisting}[label={lst:n3}]
   gzip on;
   gzip_static on;
   gzip_types
@@ -120,7 +120,7 @@ server {
 
 \subsubsection{Konfiguracja cache dla CSS i JS}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n4,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n4}]
   location ~*.(css|js)$ {
     add_header Cache-Control "public, immutable, max-age=31536000";
   }
@@ -133,7 +133,7 @@ server {
 
 \subsubsection{Przekierowania proxy dla \texttt{/Api} i \texttt{/confirmEmail}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n5,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n5}]
   location /Api {
     rewrite /Api/(.*) /$1 break;
     proxy_pass http://localhost:5000;
@@ -154,7 +154,7 @@ server {
 
 \subsubsection{Obsługa plików w \texttt{/thesis}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n6,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n6}]
   location ~* /thesis/(.*)$ {
     root /opt/city-planner-documentation;
     rewrite /thesis/(.*) /$1.pdf break;
@@ -176,7 +176,7 @@ server {
 
 \subsubsection{Główne ustawienia dla ścieżek i SSL}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n7,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n7}]
   location / {
     try_files $uri$args $uri$args/ /index.html;
   }
@@ -196,7 +196,7 @@ server {
 
 \subsubsection{Przekierowanie HTTP do HTTPS}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n8,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n8}]
 server {
     if ($host = city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -214,7 +214,7 @@ server {
 
 \subsubsection{Serwer obsługujący \texttt{logs.city-planner.budziszm.pl}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n9,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n9}]
 server {
   server_name logs.city-planner.budziszm.pl;
   auth_basic           "Administrator's Area";
@@ -245,7 +245,7 @@ server {
 
 \subsubsection{Przekierowanie HTTP do HTTPS dla \texttt{logs.city-planner.budziszm.pl}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n10,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n10}]
 server {
     if ($host = logs.city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -263,7 +263,7 @@ server {
 
 \subsubsection{Mapowanie nagłówka \texttt{Connection} w zależności od nagłówka \texttt{Upgrade}}
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[label={lst:n11,float,floatplacement=H}]
+\begin{lstlisting}[label={lst:n11}]
 map $http_upgrade $connection_upgrade {
   default upgrade;
   ''      close;
