@@ -25,29 +25,29 @@ import { PoiEffects } from './poi/poi.effects';
 import { MatBadgeModule } from '@angular/material/badge';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { WeatherApiComponent } from './weather-api/weather-api.component';
-import {WeatherIconsComponent} from "./weather-icons/weather-icons.component";
+import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatCardModule,
-        MatListModule,
-        MatButtonModule,
-        MatBadgeModule,
-        StoreModule.forRoot({
-            [AUTH_FEATURE_KEY]: authReducer,
-            [POI_FEATURE_KEY]: poiReducer,
-        }),
-        EffectsModule.forRoot([AuthEffects, PoiEffects]),
-        StoreDevtoolsModule.instrument(),
-        WeatherApiComponent,
-        WeatherIconsComponent,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    MatBadgeModule,
+    StoreModule.forRoot({
+      [AUTH_FEATURE_KEY]: authReducer,
+      [POI_FEATURE_KEY]: poiReducer,
+    }),
+    EffectsModule.forRoot([AuthEffects, PoiEffects]),
+    StoreDevtoolsModule.instrument(),
+    WeatherApiComponent,
+    WeatherIconsComponent,
+  ],
   providers: [
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
     provideNativeDateAdapter(),

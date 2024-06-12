@@ -10,7 +10,7 @@ import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
-import {DatePipe, NgForOf} from '@angular/common';
+import { DatePipe, NgForOf } from '@angular/common';
 import {
   OlLine,
   OlMapLineManager,
@@ -25,9 +25,8 @@ import { OL_MAP } from '../../open-layers-map/ol-token';
 import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { WeatherIconsService } from '../../weather-icons/weather-icons-service';
 import { WeatherIconsComponent } from '../../weather-icons/weather-icons.component';
-import {WeatherApiComponent} from "../../weather-api/weather-api.component";
+import { WeatherApiComponent } from '../../weather-api/weather-api.component';
 
 interface PathFindingIteration {
   complete: boolean;
