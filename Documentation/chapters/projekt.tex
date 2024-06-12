@@ -67,35 +67,30 @@ Przedstawiona poniżej konfiguracja serwera NGINX zawiera definicje kilku serwer
 Zamieszczono w niej szczegółowe wyjaśnienie każdego elementu konfiguracji.
 
 \subsubsection{Główny serwer obsługujący \texttt{city-planner.budziszm.pl}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n1}]
+\begin{lstlisting}[H, label={lst:n1}]
 server {
   server_name city-planner.budziszm.pl;
 
   root /var/www/city-planner.budziszm.pl/html;
 
   index index.html;
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{server\_name city-planner.budziszm.pl;}: Określa nazwę serwera, który obsługuje tę konfigurację.
-        \item \texttt{root /var/www/city-planner.budziszm.pl/html;}: Ustala katalog główny dla plików serwowanych przez ten serwer.
-        \item \texttt{index index.html;}: Ustawia domyślny plik indeksu.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{server\_name city-planner.budziszm.pl;}: Określa nazwę serwera, który obsługuje tę konfigurację.
+    \item \texttt{root /var/www/city-planner.budziszm.pl/html;}: Ustala katalog główny dla plików serwowanych przez ten serwer.
+    \item \texttt{index index.html;}: Ustawia domyślny plik indeksu.
+\end{itemize}
 
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n2}]
+\begin{lstlisting}[H, label={lst:n2}]
   location = /favicon.ico { access_log off; log_not_found off; }
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{location = /favicon.ico}: Reguła dla \texttt{favicon.ico}.
-        Wyłącza logowanie dostępu oraz błędów, jeśli plik nie zostanie znaleziony.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{location = /favicon.ico}: Reguła dla \texttt{favicon.ico}.
+    Wyłącza logowanie dostępu oraz błędów, jeśli plik nie zostanie znaleziony.
+\end{itemize}
 
 \subsubsection{Konfiguracja gzip}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n3}]
+\begin{lstlisting}[H, label={lst:n3}]
   gzip on;
   gzip_static on;
   gzip_types
@@ -110,30 +105,26 @@ server {
     application/rss+xml
     image/svg+xml;
   gzip_proxied no-cache no-store private expired auth;
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{gzip on;} i \texttt{gzip\_static on;}: Włącza kompresję gzip i kompresję statyczną.
-        \item \texttt{gzip\_types}: Określa typy MIME, które mają być kompresowane.
-        \item \texttt{gzip\_proxied}: Definiuje warunki, pod którymi odpowiedzi z proxy mogą być kompresowane.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{gzip on;} i \texttt{gzip\_static on;}: Włącza kompresję gzip i kompresję statyczną.
+    \item \texttt{gzip\_types}: Określa typy MIME, które mają być kompresowane.
+    \item \texttt{gzip\_proxied}: Definiuje warunki, pod którymi odpowiedzi z proxy mogą być kompresowane.
+\end{itemize}
 
 \subsubsection{Konfiguracja cache dla CSS i JS}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n4}]
+\begin{lstlisting}[H, label={lst:n4}]
   location ~*.(css|js)$ {
     add_header Cache-Control "public, immutable, max-age=31536000";
   }
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{location ~*.(css|js)\$}: Obsługuje wszystkie pliki CSS i JS@.
-        \item \texttt{add\_header Cache-Control "public, immutable, max-age=31536000";}: Dodaje nagłówek kontrolujący cache, który umożliwia przechowywanie plików w pamięci podręcznej przez rok.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{location ~*.(css|js)\$}: Obsługuje wszystkie pliki CSS i JS@.
+    \item \texttt{add\_header Cache-Control "public, immutable, max-age=31536000";}: Dodaje nagłówek kontrolujący cache, który umożliwia przechowywanie plików w pamięci podręcznej przez rok.
+\end{itemize}
 
 \subsubsection{Przekierowania proxy dla \texttt{/Api} i \texttt{/confirmEmail}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n5}]
+\begin{lstlisting}[H, label={lst:n5}]
   location /Api {
     rewrite /Api/(.*) /$1 break;
     proxy_pass http://localhost:5000;
@@ -146,15 +137,13 @@ server {
     proxy_redirect off;
     proxy_set_header Host $host;
   }
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{location /Api} i \texttt{location /confirmEmail}: Przekierowują żądania na odpowiednie endpointy do lokalnego serwera działającego na porcie 5000.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{location /Api} i \texttt{location /confirmEmail}: Przekierowują żądania na odpowiednie endpointy do lokalnego serwera działającego na porcie 5000.
+\end{itemize}
 
 \subsubsection{Obsługa plików w \texttt{/thesis}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n6}]
+\begin{lstlisting}[H, label={lst:n6}]
   location ~* /thesis/(.*)$ {
     root /opt/city-planner-documentation;
     rewrite /thesis/(.*) /$1.pdf break;
@@ -168,15 +157,13 @@ server {
     add_header Content-Disposition 'inline';
     try_files $uri =404;
   }
-    \end{lstlisting}
-    \begin{itemize}
-        \item Obsługuje dostęp do plików w katalogu \texttt{/opt/city-planner-documentation}, zmieniając ścieżki i dodając nagłówek \texttt{Content-Disposition} do wyświetlania plików PDF w przeglądarce.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item Obsługuje dostęp do plików w katalogu \texttt{/opt/city-planner-documentation}, zmieniając ścieżki i dodając nagłówek \texttt{Content-Disposition} do wyświetlania plików PDF w przeglądarce.
+\end{itemize}
 
 \subsubsection{Główne ustawienia dla ścieżek i SSL}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n7}]
+\begin{lstlisting}[H, label={lst:n7}]
   location / {
     try_files $uri$args $uri$args/ /index.html;
   }
@@ -186,17 +173,15 @@ server {
   ssl_certificate_key /etc/letsencrypt/live/city-planner.budziszm.pl/privkey.pem; # managed by Certbot
   include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-    \end{lstlisting}
-    \begin{itemize}
-        \item \texttt{location /}: Przekierowuje do pliku \texttt{index.html} jeśli plik lub katalog nie zostaną znalezione.
-        \item \texttt{listen 443 ssl;}: Konfiguruje serwer do nasłuchiwania na porcie 443 z SSL\@.
-        \item \texttt{ssl\_certificate}, \texttt{ssl\_certificate\_key}, \texttt{include}, \texttt{ssl\_dhparam}: Konfiguracja SSL przy użyciu certyfikatów Let's Encrypt.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{location /}: Przekierowuje do pliku \texttt{index.html} jeśli plik lub katalog nie zostaną znalezione.
+    \item \texttt{listen 443 ssl;}: Konfiguruje serwer do nasłuchiwania na porcie 443 z SSL\@.
+    \item \texttt{ssl\_certificate}, \texttt{ssl\_certificate\_key}, \texttt{include}, \texttt{ssl\_dhparam}: Konfiguracja SSL przy użyciu certyfikatów Let's Encrypt.
+\end{itemize}
 
 \subsubsection{Przekierowanie HTTP do HTTPS}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n8}]
+\begin{lstlisting}[H, label={lst:n8}]
 server {
     if ($host = city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -206,15 +191,13 @@ server {
     listen 80;
     return 404; # managed by Certbot
 }
-    \end{lstlisting}
-    \begin{itemize}
-        \item Przekierowuje ruch HTTP na HTTPS dla \texttt{city-planner.budziszm.pl}.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item Przekierowuje ruch HTTP na HTTPS dla \texttt{city-planner.budziszm.pl}.
+\end{itemize}
 
 \subsubsection{Serwer obsługujący \texttt{logs.city-planner.budziszm.pl}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n9}]
+\begin{lstlisting}[H, label={lst:n9}]
 server {
   server_name logs.city-planner.budziszm.pl;
   auth_basic           "Administrator's Area";
@@ -236,16 +219,14 @@ server {
   include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
-    \end{lstlisting}
-    \begin{itemize}
-        \item Obsługuje ruch na \texttt{logs.city-planner.budziszm.pl} z podstawową autoryzacją.
-        \item Przekierowuje ruch do lokalnego serwera na porcie 18888 z obsługą WebSocketów.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item Obsługuje ruch na \texttt{logs.city-planner.budziszm.pl} z podstawową autoryzacją.
+    \item Przekierowuje ruch do lokalnego serwera na porcie 18888 z obsługą WebSocketów.
+\end{itemize}
 
 \subsubsection{Przekierowanie HTTP do HTTPS dla \texttt{logs.city-planner.budziszm.pl}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n10}]
+\begin{lstlisting}[H, label={lst:n10}]
 server {
     if ($host = logs.city-planner.budziszm.pl) {
         return 301 https://$host$request_uri;
@@ -255,25 +236,22 @@ server {
     server_name logs.city-planner.budziszm.pl;
     return 404; # managed by Certbot
 }
-    \end{lstlisting}
-    \begin{itemize}
-        \item Przekierowuje ruch HTTP na HTTPS dla \texttt{logs.city-planner.budziszm.pl}.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item Przekierowuje ruch HTTP na HTTPS dla \texttt{logs.city-planner.budziszm.pl}.
+\end{itemize}
 
 \subsubsection{Mapowanie nagłówka \texttt{Connection} w zależności od nagłówka \texttt{Upgrade}}
-\begin{samepage}
-    \begin{lstlisting}[label={lst:n11}]
+\begin{lstlisting}[H, label={lst:n11}]
 map $http_upgrade $connection_upgrade {
   default upgrade;
   ''      close;
 }
-    \end{lstlisting}
-    \begin{itemize}
-        \item Ustawia wartość nagłówka \texttt{Connection} w zależności od obecności nagłówka \texttt{Upgrade}.
-        Umożliwia to poprawne działanie WebSocketów.
-    \end{itemize}
-\end{samepage}
+\end{lstlisting}
+\begin{itemize}
+    \item Ustawia wartość nagłówka \texttt{Connection} w zależności od obecności nagłówka \texttt{Upgrade}.
+    Umożliwia to poprawne działanie WebSocketów.
+\end{itemize}
 
 Ta konfiguracja zapewnia pełną obsługę zarówno dla serwowania statycznych stron, jak i przekierowania ruchu do usług backendowych, zapewniając jednocześnie bezpieczeństwo przez użycie SSL i kontrolę cache dla plików statycznych.
 
@@ -284,28 +262,23 @@ Poniżej znajduje się szczegółowy opis, co robi każda jego część:
 
 \subsubsection{Usuwanie wszystkich plików z /opt/city-planner-backend/publish}
 Ten krok usuwa wszystkie pliki z katalogu \texttt{/opt/city-planner-backend/publish}, aby przygotować miejsce na nowe pliki.
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db1}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db1}]
 +echo+ "Removing all files from /opt/city-planner-backend/publish"
 +rm -Rf+ /opt/city-planner-backend/publish/*
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Kopiowanie plików do /opt/city-planner-backend/publish/}
 Ten krok kopiuje opublikowane pliki z katalogu \texttt{WebApi/bin/production/net8.0/linux-arm64/publish/} do \texttt{/opt/city-planner-backend/publish/}.
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db2}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db2}]
 +echo+ "Copying publish files to /opt/city-planner-backend/publish/"
 +cp+ WebApi/bin/production/net8.0/linux-arm64/publish/* /opt/city-planner-backend/publish/
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Przygotowanie pliku usługi SystemD}
 Ten krok tworzy nowy plik usługi SystemD dla backendu aplikacji.
 Plik usługi zawiera konfigurację dla SystemD, w tym opis, zależności, ustawienia serwisu i polecenie uruchomienia.
 
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db3}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db3}]
 +echo+ "Preparing SystemD service file"
 +rm -f+ /etc/systemd/system/city-planner-backend.service
 +cat+ <<EOT >> /etc/systemd/system/city-planner-backend.service
@@ -326,38 +299,30 @@ ExecStart=/opt/city-planner-backend/publish/WebApi
 [Install]
 WantedBy=multi-user.target
 EOT
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Włączanie pliku usługi SystemD}
 Ten krok włącza nowo utworzony plik usługi SystemD, aby uruchamiał się automatycznie przy starcie systemu.
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db4}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db4}]
 +echo+ "Enabling SystemD service file"
 +systemctl enable+ city-planner-backend
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Restartowanie usługi SystemD}
 Ten krok restartuje usługę SystemD, aby zastosować nowe ustawienia i uruchomić backend aplikacji.
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db5}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db5}]
 +echo+ "Restarting SystemD service file"
 +systemctl restart+ city-planner-backend
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Zakończenie wdrożenia backendu}
 Ten krok wyświetla komunikat informujący o zakończeniu wdrożenia backendu.
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db6}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db6}]
 +echo+ "Backend deployment done"
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
 
 \subsubsection{Całość kodu}
-\begin{samepage}
-    \begin{lstlisting}[style=shell-colored,label={lst:db7}]
+\begin{lstlisting}[H, style=shell-colored,label={lst:db7}]
 #!/bin/bash
 
 +echo+ "Removing all files from /opt/city-planner-backend/publish"
@@ -392,5 +357,4 @@ EOT
 +systemctl restart+ city-planner-backend
 
 +echo+ "Backend deployment done"
-    \end{lstlisting}
-\end{samepage}
+\end{lstlisting}
