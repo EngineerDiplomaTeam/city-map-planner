@@ -12,6 +12,7 @@
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{titlesec}
 \usepackage{lscape}
 \usepackage{graphicx, multirow}
 \usepackage{ulem} % przekreślnie tekstów
@@ -39,6 +40,20 @@
 	stringstyle=\color{green},
 	morekeywords={echo, rm, cp, cat, systemctl},
 	moredelim=**[is][\color{orange}]{+}{+},
+	morestring=[b]"
+}
+
+% Define custom style for key:value coloring
+\lstdefinestyle{yaml-colored}{
+	basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{black},
+	columns=fullflexible,
+	keepspaces=true,
+	moredelim=**[is][\color{orange}]{@}{@},
+	moredelim=**[is][\color{orange}]{+}{+},
+	moredelim=**[is][\color{green}]{!}{!},
+	morestring=[b]',
 	morestring=[b]"
 }
 
@@ -113,6 +128,9 @@
 
 \definecolor{keywordcolor}{rgb}{0,0,1}
 \newcommand{\keyword}[1]{\textcolor{keywordcolor}{\texttt{#1}}}
+
+% Remove space after subparagraph
+\titlespacing*{\subparagraph}{0pt}{1em}{0pt}
 
 \geometry{} %definicja marginesów
 \glstoctrue
