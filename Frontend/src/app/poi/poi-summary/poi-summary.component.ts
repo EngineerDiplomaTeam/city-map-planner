@@ -10,12 +10,7 @@ import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
-import {
-  AsyncPipe,
-  DatePipe,
-  NgForOf,
-  NgIf
-} from '@angular/common';
+import { AsyncPipe, DatePipe, NgForOf, NgIf } from '@angular/common';
 import {
   OlLine,
   OlMapLineManager,
