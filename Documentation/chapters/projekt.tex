@@ -419,17 +419,38 @@ W trakcie prac do prezentacji dokumentacji endpointów użyto Swaggera i ReDoca.
 \end{figure}
 
 Poniżej przedstawiono specyfikację dostępnych punktów końcowych:
-\subsection{\texttt{POST /register}}
+
+\subsection{\lstinline[language=http]{POST /register}}
 Rejestracja nowego użytkownika. \\
 \textbf{Request body:}
 \begin{lstlisting}[language=json]
 {
-"email": "string",
-"password": "string"
+  "email": "string",
+  "password": "string"
 }
 \end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
-\item 200: Rejestracja powiodła się.
-\item 400: Błąd walidacji danych.
+    \item 200: Rejestracja powiodła się.
+    \item 400: Błąd walidacji danych.
+\begin{lstlisting}[language=json]
+{
+  "type": "string",
+  "title": "string",
+  "status": 0,
+  "detail": "string",
+  "instance": "string",
+  "errors": {
+    "additionalProp1": [
+      "string"
+    ],
+    "additionalProp2": [
+      "string"
+    ],
+    "additionalProp3": [
+      "string"
+    ]
+  }
+}
+\end{lstlisting}
 \end{itemize}
