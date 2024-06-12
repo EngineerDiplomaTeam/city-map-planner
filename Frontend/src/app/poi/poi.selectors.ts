@@ -15,7 +15,6 @@ export const selectAllPois = createSelector(
   (state) => state.pointsOfInterest,
 );
 
-
 export const selectOlMarkers = createSelector(selectAllPois, (s) =>
   s.map(
     ({ id, map: { iconSrc, label, lon, lat } }): OlMapMarker => ({
