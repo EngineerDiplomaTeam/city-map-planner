@@ -81,3 +81,10 @@
   year = {2010},
   author = {Nayan B. Ruparelia}
 }
+@book{bmc,
+  author = {Alexander Osterwalder and Yves Pigneur},
+  year = {2004},
+  title = {An ontology for e-Business models},
+  publisher = {Elsevier},
+  pages = {65–97}
+}
