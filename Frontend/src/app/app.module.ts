@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +24,10 @@ import { POI_FEATURE_KEY, poiReducer } from './poi/poi.reducer';
 import { PoiEffects } from './poi/poi.effects';
 import { MatBadgeModule } from '@angular/material/badge';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { WeatherApiComponent } from './weather-api/weather-api.component';
 import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent],
+  declarations: [AppComponent, WeatherComponent,WeatherIconsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,13 +44,12 @@ import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
     }),
     EffectsModule.forRoot([AuthEffects, PoiEffects]),
     StoreDevtoolsModule.instrument(),
-    WeatherApiComponent,
-    WeatherIconsComponent,
   ],
   providers: [
     provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
     provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

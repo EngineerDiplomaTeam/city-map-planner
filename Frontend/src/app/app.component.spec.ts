@@ -5,18 +5,23 @@ import { MockComponent, MockDirective } from 'ng-mocks';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { provideMockStore } from '@ngrx/store/testing';
+import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [
         AppComponent,
         MockComponent(MatToolbar),
         MockComponent(MatIcon),
         MockDirective(MatToolbarRow),
+        WeatherIconsComponent,
       ],
       providers: [provideMockStore()],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   );
 
