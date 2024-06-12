@@ -276,3 +276,121 @@ map $http_upgrade $connection_upgrade {
 \end{itemize}
 
 Ta konfiguracja zapewnia pełną obsługę zarówno dla serwowania statycznych stron, jak i przekierowania ruchu do usług backendowych, zapewniając jednocześnie bezpieczeństwo przez użycie SSL i kontrolę cache dla plików statycznych.
+
+\subsection{Deployment backendu}
+\label{subsec:deployment-backendu}
+Ten skrypt Bash wykonuje kilka kroków, aby wdrożyć backend aplikacji.
+Poniżej znajduje się szczegółowy opis, co robi każda jego część:
+
+\subsubsubsection{Usuwanie wszystkich plików z /opt/city-planner-backend/publish}
+Ten krok usuwa wszystkie pliki z katalogu \texttt{/opt/city-planner-backend/publish}, aby przygotować miejsce na nowe pliki.
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db1}]
++echo+ "Removing all files from /opt/city-planner-backend/publish"
++rm -Rf+ /opt/city-planner-backend/publish/*
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Kopiowanie plików do /opt/city-planner-backend/publish/}
+Ten krok kopiuje opublikowane pliki z katalogu \texttt{WebApi/bin/production/net8.0/linux-arm64/publish/} do \texttt{/opt/city-planner-backend/publish/}.
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db2}]
++echo+ "Copying publish files to /opt/city-planner-backend/publish/"
++cp+ WebApi/bin/production/net8.0/linux-arm64/publish/* /opt/city-planner-backend/publish/
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Przygotowanie pliku usługi SystemD}
+Ten krok tworzy nowy plik usługi SystemD dla backendu aplikacji.
+Plik usługi zawiera konfigurację dla SystemD, w tym opis, zależności, ustawienia serwisu i polecenie uruchomienia.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db3}]
++echo+ "Preparing SystemD service file"
++rm -f+ /etc/systemd/system/city-planner-backend.service
++cat+ <<EOT >> /etc/systemd/system/city-planner-backend.service
+[Unit]
+Description=City planner backend
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ubuntu
+EnvironmentFile=/opt/city-planner-backend/environment.conf
+WorkingDirectory=/opt/city-planner-backend/publish
+ExecStart=/opt/city-planner-backend/publish/WebApi
+
+[Install]
+WantedBy=multi-user.target
+EOT
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Włączanie pliku usługi SystemD}
+Ten krok włącza nowo utworzony plik usługi SystemD, aby uruchamiał się automatycznie przy starcie systemu.
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db4}]
++echo+ "Enabling SystemD service file"
++systemctl enable+ city-planner-backend
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Restartowanie usługi SystemD}
+Ten krok restartuje usługę SystemD, aby zastosować nowe ustawienia i uruchomić backend aplikacji.
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db5}]
++echo+ "Restarting SystemD service file"
++systemctl restart+ city-planner-backend
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Zakończenie wdrożenia backendu}
+Ten krok wyświetla komunikat informujący o zakończeniu wdrożenia backendu.
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db6}]
++echo+ "Backend deployment done"
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection{Całość kodu}
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=shell-colored,label={lst:db7}]
+#!/bin/bash
+
++echo+ "Removing all files from /opt/city-planner-backend/publish"
++rm -Rf+ /opt/city-planner-backend/publish/*
+
++echo+ "Copying publish files to /opt/city-planner-backend/publish/"
++cp+ WebApi/bin/production/net8.0/linux-arm64/publish/* /opt/city-planner-backend/publish/
++echo+ "Preparing SystemD service file"
++rm -f+ /etc/systemd/system/city-planner-backend.service
++cat+ <<EOT >> /etc/systemd/system/city-planner-backend.service
+[Unit]
+Description=City planner backend
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ubuntu
+EnvironmentFile=/opt/city-planner-backend/environment.conf
+WorkingDirectory=/opt/city-planner-backend/publish
+ExecStart=/opt/city-planner-backend/publish/WebApi
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
++echo+ "Enabling SystemD service file"
++systemctl enable+ city-planner-backend
++echo+ "Restarting SystemD service file"
++systemctl restart+ city-planner-backend
+
++echo+ "Backend deployment done"
+\end{lstlisting}
+\end{minipage}

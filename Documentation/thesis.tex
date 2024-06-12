@@ -19,6 +19,22 @@
 \definecolor{comment}{rgb}{0.0,0.5,0.0}
 \definecolor{keyword}{rgb}{0.0,0.0,1.0}
 \definecolor{string}{rgb}{0.58,0.0,0.82}
+\definecolor{codeblue}{RGB}{0, 0, 255}
+\definecolor{backgrey}{RGB}{245, 245, 245}
+\definecolor{orange}{RGB}{255, 165, 0}
+\definecolor{green}{RGB}{0, 128, 0}
+
+% Define custom style for shell script coloring
+\lstdefinestyle{shell-colored}{
+	basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{black},
+	keywordstyle=\color{blue},
+	stringstyle=\color{green},
+	morekeywords={echo, rm, cp, cat, systemctl},
+	moredelim=**[is][\color{orange}]{+}{+},
+	morestring=[b]"
+}
 
 \lstdefinelanguage{nginx}{
 	keywords={server, location, root, index, try_files, listen, ssl_certificate, ssl_certificate_key, include, ssl_dhparam, if, return, proxy_pass, proxy_redirect, proxy_set_header, auth_basic, auth_basic_user_file, error_log, gzip, gzip_static, gzip_types, gzip_proxied, add_header, rewrite},
