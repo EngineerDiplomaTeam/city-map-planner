@@ -27,7 +27,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent,WeatherIconsComponent],
+  declarations: [AppComponent, WeatherComponent, WeatherIconsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
