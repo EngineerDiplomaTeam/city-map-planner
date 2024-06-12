@@ -3,9 +3,9 @@
     <h3 matSubheader>Points of interest</h3>
     <div *ngFor="let manageablePoi of vm$ | async">
       <mat-list-item lines="3">
-        <img matListItemAvatar [src]="manageablePoi.details.bannerSrc" [alt]="manageablePoi.details.title + 'image' ">
+        <img matListItemAvatar [src]="manageablePoi.details.bannerSrc" [alt]="manageablePoi.details.title ">
       <span matListItemTitle>{{ manageablePoi.details.title }}</span>
-        <button matListItemMeta class="add-remove" mat-fab color="primary" (click)="toggleInBasket(manageablePoi.id)">
+        <button matListItemMeta aria-label="Add Poi to backet"class="add-remove" mat-fab color="primary" (click)="toggleInBasket(manageablePoi.id)">
           <mat-icon>
             @if (manageablePoi.isInBasket) {
               remove_shopping_cart
