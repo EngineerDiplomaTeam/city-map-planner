@@ -243,10 +243,10 @@ Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różn
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{attachments/backend-ci}
-    \caption{Screenshot potoku backendu}
+    \caption{Screenshot potoku Backendu}
 \end{figure}
 
-\subsubsection*{Uprawnienia}
+\subsubsection{Uprawnienia}
 \begin{itemize}
     \item \texttt{\textcolor{codeblue}{contents: read}} - pozwala na odczytanie zawartości repozytorium.
     \item \texttt{\textcolor{codeblue}{issues: read}} - pozwala na odczytanie zgłoszeń.
@@ -254,7 +254,7 @@ Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różn
     \item \texttt{\textcolor{codeblue}{pull-requests: write}} - pozwala na zapis pull requestów.
 \end{itemize}
 
-\subsubsection*{Wydarzenia Wyzwalające Przepływ Pracy}
+\subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
 \begin{itemize}
     \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
     \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Backend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
@@ -330,7 +330,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
 
 Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania projektu .NET za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
 
-\subsubsection*{Kod YAML}
+\subsubsection{Kod YAML}
 \begin{lstlisting}[style=yaml-colored]
 @name@: !'Backend'!
 @permissions@:
@@ -402,6 +402,200 @@ Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania proje
 
 \subsection{Potok Frontendu}
 \label{subsec:potok-frontendu}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{attachments/frontend-ci}
+    \caption{Screenshot potoku Frontendu}
+\end{figure}
+
+\subsubsection{Uprawnienia}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{contents: read}} - pozwala na odczytanie zawartości repozytorium.
+    \item \texttt{\textcolor{codeblue}{issues: read}} - pozwala na odczytanie zgłoszeń.
+    \item \texttt{\textcolor{codeblue}{checks: write}} - pozwala na zapis wyników kontroli.
+    \item \texttt{\textcolor{codeblue}{pull-requests: write}} - pozwala na zapis pull requestów.
+\end{itemize}
+
+\subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
+\begin{itemize}
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Frontend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+    \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Frontend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
+\end{itemize}
+
+\subsubsection{Zadania}
+Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
+\paragraph{Kroki:}
+\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Checkout repository'!
+      +uses+: !'actions/checkout@v3'!
+\end{lstlisting}
+
+\subparagraph{Setup pnpm}: Konfiguruje pnpm w wersji 9.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Setup pnpm'!
+      +uses+: !'pnpm/action-setup@v2'!
+      +with+:
+        +version+: !9!
+\end{lstlisting}
+
+\subparagraph{Use Node.js 20}: Ustawia Node.js w wersji 20.x, z buforowaniem pnpm.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Use Node.js 20'!
+      +uses+: !'actions/setup-node@v3'!
+      +with+:
+        +node-version+: !'20.x'!
+        +cache+: !'pnpm'!
+        +cache-dependency-path+: !'Frontend/pnpm-lock.yaml'!
+\end{lstlisting}
+
+\subparagraph{Restore packages}: Przywraca pakiety pnpm.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Restore packages'!
+      +run+: |
+        !corepack enable!
+        !pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm!
+        !pnpm i --frozen-lockfile!
+      +working-directory+: !'Frontend'!
+\end{lstlisting}
+
+\subparagraph{Lint files}: Sprawdza pliki za pomocą pnpm lint.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Lint files'!
+      +run+: !'pnpm ng lint'!
+      +working-directory+: !'Frontend'!
+\end{lstlisting}
+
+\subparagraph{Run unit tests}: Uruchamia testy jednostkowe z generowaniem raportu pokrycia kodu.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Run unit tests'!
+      +run+: !'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'!
+      +working-directory+: !'Frontend'!
+      +env+:
+        +CHROME_BIN+: !'/usr/bin/chromium-browser'!
+\end{lstlisting}
+
+\subparagraph{Setup Python}: Konfiguruje środowisko Pythona w wersji 3.8, potrzebne do publikowania wyników testów.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Setup Python'! # For publish test results
+      +uses+: !'deadsnakes/action@v3.1.0'!
+      +with+:
+        +python-version+: !3.8!
+\end{lstlisting}
+
+\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.xml}} z katalogu \texttt{\textcolor{codeblue}{Frontend}}.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Publish Test Results'!
+      +uses+: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
+      +if+: !always()!
+      +with+:
+        +files+: |
+          !Frontend/coverage/**/TESTS*.xml!
+\end{lstlisting}
+
+\subparagraph{Build Application}: Buduje aplikację.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Build Application'!
+      +run+: !'pnpm build'!
+      +working-directory+: !'Frontend'!
+\end{lstlisting}
+
+\subparagraph{Deploy Application}: Wdraża aplikację, uruchamiając skrypt \texttt{\textcolor{codeblue}{deploy.sh}} w katalogu \texttt{\textcolor{codeblue}{Frontend}}. Ten krok jest pomijany, jeśli wydarzenie jest pull requestem.
+\begin{lstlisting}[style=yaml-colored]
+    - +name+: !'Deploy Application'!
+      +run+: !'./deploy.sh'!
+      +working-directory+: !'Frontend'!
+      # Do not run deployment from PR
+      +if+: !github.event_name != 'pull_request'!
+\end{lstlisting}
+
+Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, budowania kodu i uruchamiania testów jednostkowych za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+
+\subsubsection{Kod YAML}
+\begin{lstlisting}[style=yaml-colored]
++name+: !'Frontend'!
++permissions+:
+  +contents+: !read!
+  +issues+: !read!
+  +checks+: !write!
+  +pull-requests+: !write!
+
++on+:
+  +workflow_dispatch+:
+    +inputs+:
+      +reason+:
+        +description+: !'Provide reason behind manual action run'!
+        +required+: !true!
+        +type+: !'string'!
+  +push+:
+    +paths+:
+    - !'Frontend/**'!
+    +branches+: [ !'main'! ]
+  +pull_request+:
+    +paths+:
+    - !'Frontend/**'!
+    +branches+: [ !'main'! ]
+
++jobs+:
+  +build+:
+    +runs-on+: !'self-hosted'!
+    +steps+:
+    - +name+: !'Checkout repository'!
+      +uses+: !'actions/checkout@v3'!
+
+    - +name+: !'Setup pnpm'!
+      +uses+: !'pnpm/action-setup@v2'!
+      +with+:
+        +version+: !9!
+
+    - +name+: !'Use Node.js 20'!
+      +uses+: !'actions/setup-node@v3'!
+      +with+:
+        +node-version+: !'20.x'!
+        +cache+: !'pnpm'!
+        +cache-dependency-path+: !'Frontend/pnpm-lock.yaml'!
+
+    - +name+: !'Restore packages'!
+      +run+: |
+        !corepack enable!
+        !pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm!
+        !pnpm i --frozen-lockfile!
+      +working-directory+: !'Frontend'!
+
+    - +name+: !'Lint files'!
+      +run+: !'pnpm ng lint'!
+      +working-directory+: !'Frontend'!
+
+    - +name+: !'Run unit tests'!
+      +run+: !'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'!
+      +working-directory+: !'Frontend'!
+      +env+:
+        +CHROME_BIN+: !'/usr/bin/chromium-browser'!
+
+    - +name+: !'Setup Python'! # For publish test results
+      +uses+: !'deadsnakes/action@v3.1.0'!
+      +with+:
+        +python-version+: !3.8!
+
+    - +name+: !'Publish Test Results'!
+      +uses+: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
+      +if+: !always()!
+      +with+:
+        +files+: |
+          !Frontend/coverage/**/TESTS*.xml!
+
+    - +name+: !'Build Application'!
+      +run+: !'pnpm build'!
+      +working-directory+: !'Frontend'!
+
+    - +name+: !'Deploy Application'!
+      +run+: !'./deploy.sh'!
+      +working-directory+: !'Frontend'!
+      # Do not run deployment from PR
+      +if+: !github.event_name != 'pull_request'!
+\end{lstlisting}
 
 \subsection{Potok Dokumentacji}
 \label{subsec:potok-dokumentacji}
