@@ -424,17 +424,17 @@ Poniżej przedstawiono specyfikację dostępnych punktów końcowych:
 \subsubsection{\lstinline[language=http]{POST /register}}
 Rejestracja nowego użytkownika. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string",
   "password": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200: Rejestracja powiodła się.
     \item 400: Błąd walidacji danych.
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -453,7 +453,7 @@ Rejestracja nowego użytkownika. \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{POST /login}}
@@ -464,46 +464,46 @@ Logowanie użytkownika. \\
     \item \texttt{useSessionCookies} (boolean, opcjonalny)
 \end{itemize}
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string",
   "password": "string",
   "twoFactorCode": "string",
   "twoFactorRecoveryCode": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "tokenType": "string",
   "accessToken": "string",
   "expiresIn": 0,
   "refreshToken": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{POST /refresh}}
 Odświeżenie tokenu autoryzacyjnego. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "refreshToken": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "tokenType": "string",
   "accessToken": "string",
   "expiresIn": 0,
   "refreshToken": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{GET /confirmEmail}}
@@ -522,11 +522,11 @@ Potwierdzenie adresu email. \\
 \subsubsection{\lstinline[language=http]{POST /resendConfirmationEmail}}
 Ponowne wysłanie emaila z potwierdzeniem. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200: Email z potwierdzeniem wysłany ponownie.
@@ -535,16 +535,16 @@ Ponowne wysłanie emaila z potwierdzeniem. \\
 \subsubsection{\lstinline[language=http]{POST /forgotPassword}}
 Przypomnienie hasła. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200: Email z instrukcjami wysłany.
     \item 400:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -563,24 +563,24 @@ Przypomnienie hasła. \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{POST /resetPassword}}
 Resetowanie hasła. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string",
   "resetCode": "string",
   "newPassword": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200: Hasło zresetowane.
     \item 400:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -599,13 +599,13 @@ Resetowanie hasła. \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{POST /manage/2fa}}
 Zarządzanie dwuskładnikowym uwierzytelnianiem (2FA). \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "enable": true,
   "twoFactorCode": "string",
@@ -613,11 +613,11 @@ Zarządzanie dwuskładnikowym uwierzytelnianiem (2FA). \\
   "resetRecoveryCodes": true,
   "forgetMachine": true
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "sharedKey": "string",
   "recoveryCodesLeft": 0,
@@ -627,9 +627,9 @@ Zarządzanie dwuskładnikowym uwierzytelnianiem (2FA). \\
   "isTwoFactorEnabled": true,
   "isMachineRemembered": true
 }
-\end{longlisting}
+\end{lstlisting}
     \item 400:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -648,7 +648,7 @@ Zarządzanie dwuskładnikowym uwierzytelnianiem (2FA). \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
     \item 404: Nie znaleziono zasobu.
 \end{itemize}
 
@@ -657,14 +657,14 @@ Pobranie informacji o koncie. \\
 \textbf{Responses:}
 \begin{itemize}
     \item 200:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string",
   "isEmailConfirmed": true
 }
-\end{longlisting}
+\end{lstlisting}
     \item 400:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -683,31 +683,31 @@ Pobranie informacji o koncie. \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
     \item 404: Nie znaleziono zasobu.
 \end{itemize}
 
 \subsubsection{\lstinline[language=http]{POST /manage/info}}
 Aktualizacja informacji o koncie. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "newEmail": "string",
   "newPassword": "string",
   "oldPassword": "string"
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
 \begin{itemize}
     \item 200:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "email": "string",
   "isEmailConfirmed": true
 }
-\end{longlisting}
+\end{lstlisting}
     \item 400:
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "type": "string",
   "title": "string",
@@ -726,7 +726,7 @@ Aktualizacja informacji o koncie. \\
     ]
   }
 }
-\end{longlisting}
+\end{lstlisting}
     \item 404: Nie znaleziono zasobu.
 \end{itemize}
 
@@ -768,11 +768,11 @@ Kolejkowanie zapytania Overpass. \\
 \subsubsection{\lstinline[language=http]{GET /OverpassIntegration/ListQueries}}
 Pobranie listy zapytań Overpass. \\
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 [
   "string"
 ]
-\end{longlisting}
+\end{lstlisting}
 \begin{itemize}
     \item 401: Nieautoryzowany dostęp.
 \end{itemize}
@@ -782,7 +782,7 @@ Pobranie listy zapytań Overpass. \\
 \subsubsection{\lstinline[language=http]{GET /PoiManage}}
 Pobranie listy punktów POI. \\
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 [
   {
     "id": 0,
@@ -827,12 +827,12 @@ Pobranie listy punktów POI. \\
     ]
   }
 ]
-\end{longlisting}
+\end{lstlisting}
 
 \subsubsection{\lstinline[language=http]{POST /PoiManage}}
 Dodanie lub aktualizacja punktu POI. \\
 \textbf{Request body:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "id": 0,
   "name": "string",
@@ -875,9 +875,9 @@ Dodanie lub aktualizacja punktu POI. \\
     }
   ]
 }
-\end{longlisting}
+\end{lstlisting}
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 {
   "id": 0,
   "name": "string",
@@ -920,7 +920,7 @@ Dodanie lub aktualizacja punktu POI. \\
     }
   ]
 }
-\end{longlisting}
+\end{lstlisting}
 
 \subsubsection{\lstinline[language=http]{DELETE /PoiManage/\{id\}}}
 Usunięcie punktu POI. \\
@@ -940,7 +940,7 @@ Pobranie informacji AI dla punktu POI. \\
     \item \texttt{id} (integer, wymagany)
 \end{itemize}
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 [
   {
     "effectiveFrom": "2023-01-01T00:00:00Z",
@@ -953,14 +953,14 @@ Pobranie informacji AI dla punktu POI. \\
     "state": 0
   }
 ]
-\end{longlisting}
+\end{lstlisting}
 
 \subsection{Mapowanie Punktów POI}
 
 \subsubsection{\lstinline[language=http]{GET /PoiMap/List}}
 Lista punktów POI na mapie. \\
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 [
   {
     "id": 0,
@@ -990,12 +990,12 @@ Lista punktów POI na mapie. \\
     ]
   }
 ]
-\end{longlisting}
+\end{lstlisting}
 
 \subsubsection{\lstinline[language=http]{GET /WeatherForecast}}
 Pobranie prognozy pogody. \\
 \textbf{Responses:}
-\begin{longlisting}[language=json]
+\begin{lstlisting}[language=json]
 [
   {
     "date": "2023-01-01",
@@ -1004,4 +1004,4 @@ Pobranie prognozy pogody. \\
     "summary": "string"
   }
 ]
-\end{longlisting}
+\end{lstlisting}
