@@ -2,7 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject, OnInit,
+  inject,
+  OnInit,
 } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import {

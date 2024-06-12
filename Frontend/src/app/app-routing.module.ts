@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PoiListComponent} from "./poi-list/poi-list.component";
 
 const routes: Routes = [
   {
@@ -39,9 +38,7 @@ const routes: Routes = [
   {
     path: 'poi-list',
     loadComponent: () =>
-      import('./poi-list/poi-list.component').then(
-        (m) => m.PoiListComponent,
-      ),
+      import('./poi-list/poi-list.component').then((m) => m.PoiListComponent),
   },
 ];
 

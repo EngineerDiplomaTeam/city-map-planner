@@ -8,10 +8,9 @@ describe('PoiListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoiListComponent]
-    })
-    .compileComponents();
-    
+      imports: [PoiListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PoiListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
