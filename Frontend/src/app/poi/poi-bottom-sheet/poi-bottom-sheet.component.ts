@@ -13,6 +13,8 @@ import {
 import { MatButton, MatFabButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { poiActions } from '../poi.actions';
+import { NgForOf } from '@angular/common';
+import { WeatherIconsService } from '../../weather-icons/weather-icons-service';
 
 export type BottomSheetData = {
   id: number;
@@ -21,14 +23,14 @@ export type BottomSheetData = {
 @Component({
   selector: 'app-poi-bottom-sheet',
   standalone: true,
-  imports: [MatButton, MatFabButton, MatIconModule],
+  imports: [MatButton, MatFabButton, MatIconModule, NgForOf],
   templateUrl: './poi-bottom-sheet.component.html',
   styleUrl: './poi-bottom-sheet.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PoiBottomSheetComponent {
   private readonly store = inject(Store);
-
+  protected readonly weatherIconService = inject(WeatherIconsService);
   protected readonly selectedPoi = this.store.selectSignal(
     selectPoiOpenedInBottomSheet,
   );

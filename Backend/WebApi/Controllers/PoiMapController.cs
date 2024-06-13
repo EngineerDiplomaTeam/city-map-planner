@@ -61,7 +61,8 @@ public class PoiMapController(IPoisManagerService poisManagerService, ILogger<Po
                     x.TimeFrom,
                     x.TimeTo,
                     (BusinessTimeStateDto) x.State
-                ))
+                )),
+                poi.PreferredWmoCodes
             );
         }
     }

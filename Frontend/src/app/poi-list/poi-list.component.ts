@@ -59,6 +59,7 @@ export class PoiListComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(poiActions.loadPois());
   }
+
   vm$ = this.store.select(selectAllPoisIsBacket);
 
   protected readonly poiActions = poiActions;

@@ -10,6 +10,7 @@
         <mat-icon aria-hidden="false" [matBadgeHidden]="basketCount() <= 0" [matBadge]="basketCount()" matBadgeSize="small">shopping_cart</mat-icon>
       </button>
     }
+    <app-weather-icons />
 
     <button mat-icon-button aria-label="Open menu account" (click)="store.dispatch(authActions.openDialog())">
       <mat-icon>account_circle</mat-icon>
