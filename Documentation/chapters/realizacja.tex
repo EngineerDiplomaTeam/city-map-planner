@@ -42,11 +42,33 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
     \subsection{Przyrost II - utworzenie widoku mapy, w tym integracja  Overpass}
     \label{sec:przyrost2}
 
-    W ramach tego przyrostu drugiego wykonano:
+    W ramach tego przyrostu drugiego wykonano elementy, pomiędzy każdym przedstawiono fragmenty wybranych implementacji:
     \begin{itemize}
-        \item OverpassAPICLIENT;
-        \item Entities dla Entity Framework Core;
-        \item LeaftModule;
+        \item integracja klienta Overpass API,
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/overpassclient}
+            \caption{Overpass klient}
+            \label{fig:figure}
+            \end{figure}
+        \item przygotowanie entities dla Entity Framework Core;
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/Entity}
+            \caption{Fragment klasy BusinessTimeEntity}
+            \label{fig:figure}
+            \end{figure}
+        \item wykonano kontrolery integrujące usługi
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/OverpassIntegrationController}
+            \caption{Fragment klasy OverpassIntegrationController}
+            \label{fig:figure}
+            \end{figure}
+        \item implementacja Domain
+        
+        \item implementacja Dto
+        \item integracja LeaftModule;
 
     \end{itemize}
 
@@ -60,7 +82,7 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
         \item widok logowania;
         \item widok rejestracji;
         \item widok zarządzania kontem;
-        \item zaimplementowano autoryzacje po stronie backend;
+        \item zaimplementowano autoryzacje logowania po stronie aplikacji oraz bazy danych;
     \end{itemize}
 
     https://github.com/EngineerDiplomaTeam/city-map-planner/tree/b85c21829a74f57ce20414a7fa3ab3a398ad9833/Backend/WebApi/Extensions
@@ -78,7 +100,7 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/88c32b690c76b113173d056ec0be1fa74c81709a#diff-ede64cf229dabd7c007a109c15db77bcacd008a0cf42e1eacca43c3e3da9af97
         \item dodanie indywidualnych zdjeć;
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/354caede1081fe73ca98350bd1aceff95c7df8c9
-        \item wykonano listę przygładowych atrakcji w Gdańsku
+        \item wykonano listę przykładowych atrakcji w Gdańsku
     \end{itemize}
 
 
@@ -87,12 +109,12 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
 
     W ramach tego przyrostu piątego wykonano:
     \begin{itemize}
-        \item integracja chatGPT;
+        \item integracja chatGPT do inportowania aktualnych o atrakcjach;
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/989c85a11ceb0f7f9951f04838e4464c0a47d070
         \item dodanie ekranu kalendarza podróży
         \item Widok podsumowania podróży
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/796bac2b6bc5db568a7aabc7dcdef299117c2da2
-        \item integracja backend oraz bazy danych z API pogodowym
+        \item integracja aplikacji oraz bazy danych z API pogodowym
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/1f899291a34701bfa61bfc0b39fd558b628bb966
         \item poprawienie widoku kalendarza
         https://github.com/EngineerDiplomaTeam/city-map-planner/commit/a3d894bcbf5c319bb2cd109a9b2c3e58db29ef56
@@ -103,7 +125,7 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
 
     W ramach tego przyrostu szóstego wykonano:
     \begin{itemize}
-        \item integracja pogody widoku frontend;
+        \item integracja pogody widoku na przeglądarce internetowej;
         \item widok listy wszystkich POI
     \end{itemize}
 
