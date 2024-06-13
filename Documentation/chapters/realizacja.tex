@@ -19,14 +19,14 @@ W ramach tego przyrostu pierwszego wykonano:
         \centering
         \includegraphics[width=1\textwidth]{attachments/1}
         \caption{Wykonane elementy w ramach pierwszego przyrostu}
-        \label{fig:figure}
+        \label{fig:figure1}
         \end{figure}
     \item frontend z ustaleniem wyglady aplikacji o oparcie Material design + api example;
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{attachments/2}
         \caption{Wykonane elementy w ramach pierwszego przyrostu}
-        \label{fig:figure}
+        \label{fig:figure2}
         \end{figure}
     \item Potok ciągłego wdrożenia opisane w rozdziale 6.6;
 \end{itemize}
@@ -36,7 +36,7 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
     \centering
     \includegraphics[width=1\textwidth]{attachments/RALLY1}
     \caption{Wykonane elementy w ramach pierwszego przyrostu}
-    \label{fig:figure}
+    \label{fig:figure3}
     \end{figure}
 
     \subsection{Przyrost II - utworzenie widoku mapy, w tym integracja  Overpass}
@@ -49,44 +49,78 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
             \centering
             \includegraphics[width=1\textwidth]{attachments/overpassclient}
             \caption{Overpass klient}
-            \label{fig:figure}
+            \label{fig:figure4}
             \end{figure}
         \item przygotowanie entities dla Entity Framework Core;
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\textwidth]{attachments/Entity}
             \caption{Fragment klasy BusinessTimeEntity}
-            \label{fig:figure}
+            \label{fig:figure5}
             \end{figure}
         \item wykonano kontrolery integrujące usługi
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\textwidth]{attachments/OverpassIntegrationController}
             \caption{Fragment klasy OverpassIntegrationController}
-            \label{fig:figure}
+            \label{fig:figure6}
             \end{figure}
         \item implementacja Domain
-        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/PoisDomain}
+            \caption{Fragment klasy Pois}
+            \label{fig:figure7}
+            \end{figure}
         \item implementacja Dto
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/PoiMapDto}
+            \caption{Fragment klasy PoiMapDto}
+            \label{fig:figure}
+            \end{figure}
+
         \item integracja LeaftModule;
-
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/leaflet1}
+            \caption{Fragment klasy color-scheme-based-tile-layer}
+            \label{fig:figure}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth]{attachments/leaflet2}
+                \caption{Fragment klasy PoiSelectorComponent}
+                \label{fig:figure}
+                \end{figure}
     \end{itemize}
-
-    https://github.com/EngineerDiplomaTeam/city-map-planner/blob/71d42c26f1de027d3ef6be6e1314b51d237d914b/Backend/WebApi.Data/Entities/BusinessTimeEntity.cs
 
     \subsection{Przyrost III - zarządzanie użytkownikiem}
     \label{sec:przyrost3}
-
+    Backend/WebApi/Services/EmailSender.cs
     W ramach tego przyrostu trzeciego wykonano:
     \begin{itemize}
         \item widok logowania;
-        \item widok rejestracji;
+        \item widok rejestracji z automatycznym potwierdzeniem,
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{attachments/emailsender}
+            \caption{Fragment klasy EmailSender z widocznym serwisem potwierdzania rejestracji}
+            \label{fig:figure}
+            \end{figure}
+
         \item widok zarządzania kontem;
-        \item zaimplementowano autoryzacje logowania po stronie aplikacji oraz bazy danych;
+        \item zaimplementowano autoryzacje logowania po stronie aplikacji oraz bazy danych,
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{attachments/userdb}
+        \caption{Fragment klasy UserDataDbContext}
+        \label{fig:figure}
+        \end{figure}
     \end{itemize}
 
-    https://github.com/EngineerDiplomaTeam/city-map-planner/tree/b85c21829a74f57ce20414a7fa3ab3a398ad9833/Backend/WebApi/Extensions
-    https://github.com/EngineerDiplomaTeam/city-map-planner/commit/bbdbb4fdca805acd2438365551f4f361532bc34d
+    %https://github.com/EngineerDiplomaTeam/city-map-planner/tree/b85c21829a74f57ce20414a7fa3ab3a398ad9833/Backend/WebApi/Extensions
+    %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/bbdbb4fdca805acd2438365551f4f361532bc34d
 
 
     \subsection{Przyrost IV - algorytm Trasy - \glslink{poidef}{POI}}
@@ -97,10 +131,10 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
         \item dodanie \glslink{poidef}{POI} na mapie uzwgledniając wszystkie podstawowe informacje;
         \item dodanie algorytmu przeszukania trasy pomiędzy \glslink{poidef}{POI};
         \item dodanie ekranu koszyka z \glslink{poidef}{POI};
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/88c32b690c76b113173d056ec0be1fa74c81709a#diff-ede64cf229dabd7c007a109c15db77bcacd008a0cf42e1eacca43c3e3da9af97
+        %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/88c32b690c76b113173d056ec0be1fa74c81709a#diff-ede64cf229dabd7c007a109c15db77bcacd008a0cf42e1eacca43c3e3da9af97
         \item dodanie indywidualnych zdjeć;
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/354caede1081fe73ca98350bd1aceff95c7df8c9
-        \item wykonano listę przykładowych atrakcji w Gdańsku
+        %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/354caede1081fe73ca98350bd1aceff95c7df8c9
+        \item wykonano liste przykładowych atrakcji w Gdańsku
     \end{itemize}
 
 
@@ -110,14 +144,14 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
     W ramach tego przyrostu piątego wykonano:
     \begin{itemize}
         \item integracja chatGPT do inportowania aktualnych o atrakcjach;
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/989c85a11ceb0f7f9951f04838e4464c0a47d070
+        % https://github.com/EngineerDiplomaTeam/city-map-planner/commit/989c85a11ceb0f7f9951f04838e4464c0a47d070
         \item dodanie ekranu kalendarza podróży
         \item Widok podsumowania podróży
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/796bac2b6bc5db568a7aabc7dcdef299117c2da2
+        %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/796bac2b6bc5db568a7aabc7dcdef299117c2da2
         \item integracja aplikacji oraz bazy danych z API pogodowym
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/1f899291a34701bfa61bfc0b39fd558b628bb966
+        %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/1f899291a34701bfa61bfc0b39fd558b628bb966
         \item poprawienie widoku kalendarza
-        https://github.com/EngineerDiplomaTeam/city-map-planner/commit/a3d894bcbf5c319bb2cd109a9b2c3e58db29ef56
+       % https://github.com/EngineerDiplomaTeam/city-map-planner/commit/a3d894bcbf5c319bb2cd109a9b2c3e58db29ef56
     \end{itemize}
 
     \subsection{Przyrost VI - widok wszystkich atrakcji integracja pogody}
