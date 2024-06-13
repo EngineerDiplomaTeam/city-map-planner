@@ -16,8 +16,8 @@ public static class QrCodeExtensions
             var qrCodeData = qrGenerator.CreateQrCode(
                 $"otpauth://totp/city-planner.budziszm.pl:{user}?secret={code}&issuer=City-planner",
                 QRCodeGenerator.ECCLevel.Q);
-            var qrCode = new PngByteQRCode(qrCodeData);
-            return Results.File(new MemoryStream(qrCode.GetGraphic(8)));
+            var qrCode = new Base64QRCode(qrCodeData);
+            return Results.Ok(qrCode.GetGraphic(8));
         }).RequireAuthorization();
     }
 }

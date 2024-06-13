@@ -14,6 +14,8 @@ import { Store } from '@ngrx/store';
 import { selectUserAccount } from './auth.selectors';
 import { UserAuthData } from './auth.reducer';
 import { authActions } from './auth.actions';
+import { OtpDialogComponent } from './auth-dialog/otp-dialog/otp-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export type AuthResult =
   | ({
@@ -57,6 +59,7 @@ export interface Enable2faResponse {
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly store = inject(Store);
+  private readonly otpDialog = inject(MatDialog);
   private readonly userAuthData = this.store.selectSignal(selectUserAccount);
   private get currentSeconds(): number {
     return Math.round(Date.now() / 1000);
@@ -135,7 +138,26 @@ export class AuthService {
                   type: 'lockedOut',
                 });
               } else if (body['detail'] === 'RequiresTwoFactor') {
-
+                const dialogRef = this.otpDialog.open(OtpDialogComponent);
+                return dialogRef.afterClosed().pipe(
+                  switchMap((otp) =>
+                    this.http
+                      .post('/Api/Login', {
+                        email,
+                        password,
+                        twoFactorCode: `${otp}`,
+                      })
+                      .pipe(
+                        map(
+                          (x) =>
+                            Object.assign({}, x, {
+                              type: 'successLogin',
+                              tokenTimestamp: this.currentSeconds,
+                            }) as AuthResult,
+                        ),
+                      ),
+                  ),
+                );
               } else {
                 return of({
                   type: 'badLogin',
