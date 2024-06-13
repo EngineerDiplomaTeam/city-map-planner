@@ -61,11 +61,8 @@ export class PoiListComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(poiActions.loadPois());
   }
-  constructor() {
-    this.pois$ = this.store.select(selectAllPois);
-  }
-  pois$: Observable<PointOfInterest[]>;
   vm$ = this.store.select(selectAllPoisIsBacket);
+
   protected readonly poiActions = poiActions;
 
   public toggleInBasket(poiIdx: number): void {
