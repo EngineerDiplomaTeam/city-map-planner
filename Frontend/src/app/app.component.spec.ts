@@ -7,12 +7,12 @@ import { MatIcon } from '@angular/material/icon';
 import { provideMockStore } from '@ngrx/store/testing';
 import { WeatherIconsComponent } from './weather-icons/weather-icons.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [
         AppComponent,
         MockComponent(MatToolbar),
