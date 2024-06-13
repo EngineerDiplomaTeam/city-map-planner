@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./weather/weather.module').then((m) => m.WeatherModule),
   },
+  {
+    path: 'poi-list',
+    loadComponent: () =>
+      import('./poi-list/poi-list.component').then((m) => m.PoiListComponent),
+  },
 ];
 
 @NgModule({

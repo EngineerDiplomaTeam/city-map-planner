@@ -13,10 +13,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { PoiBasketDialogComponent } from './poi-basket-dialog/poi-basket-dialog.component';
 import {
   selectBaskedDialogId,
+  selectPoiIdsInBasket,
   selectPoiInBasketCount,
   selectPoisInBasket,
 } from './poi.selectors';
 import { Router } from '@angular/router';
+import { concatLatestFrom } from '@ngrx/operators';
 
 @Injectable()
 export class PoiEffects {
@@ -53,6 +55,17 @@ export class PoiEffects {
       ofType(poiActions.loadPois),
       exhaustMap(() => this.poiService.listPois()),
       map((pois) => poiActions.poisLoaded({ pois })),
+    );
+  });
+  public readonly changebasket$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(poiActions.changeBasket),
+      concatLatestFrom(() => this.store.select(selectPoiIdsInBasket)),
+      map(([x, y]) =>
+        y.includes(x.poiId)
+          ? poiActions.removeFromBasket({ poiId: x.poiId })
+          : poiActions.addToBasket({ poiId: x.poiId }),
+      ),
     );
   });
 

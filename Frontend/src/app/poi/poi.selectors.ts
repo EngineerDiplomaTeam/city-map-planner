@@ -38,6 +38,16 @@ export const selectPoisInBasket = createSelector(
   (pois, ids) => pois.filter((x) => ids.includes(x.id)),
 );
 
+export const selectAllPoisIsBacket = createSelector(
+  selectAllPois,
+  selectPoiIdsInBasket,
+  (allPois, selectPoiIdsInBasket) => {
+    return allPois.map((x) => ({
+      ...x,
+      isInBasket: selectPoiIdsInBasket.includes(x.id),
+    }));
+  },
+);
 export const selectPoiInBasketCount = createSelector(
   selectPoiIdsInBasket,
   (ids) => ids.length,
