@@ -1,5 +1,5 @@
-%! Author = Mateusz Budzisz
-%! Date = 26/05/2024
+%! Author = Wiktor Rostkowski
+%! Date = 13/06/2024
 
 \chapter{Realizacja Projektu}
 \label{ch:realizacja}
@@ -12,112 +12,41 @@ Następnie przystąpiono do realizacji poszczególnych komponentów systemu.
 \subsection{Przyrost I - utworzenie szkieletu aplikacji oraz Potoki testów aplikacji}
 \label{sec:przyrost1}
 
-W ramach tego przyrostu pierwszego wykonano:
-\begin{itemize}
-    \item backend WebAPI z podstawowym testem działania funkcjonowania;
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{attachments/1}
-        \caption{Wykonane elementy w ramach pierwszego przyrostu}
-        \label{fig:figure1}
-        \end{figure}
-    \item frontend z ustaleniem wyglady aplikacji o oparcie Material design + api example;
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{attachments/2}
-        \caption{Wykonane elementy w ramach pierwszego przyrostu}
-        \label{fig:figure2}
-        \end{figure}
-    \item Potok ciągłego wdrożenia opisane w rozdziale 6.6;
-\end{itemize}
- 
-Opis w czasie wykonanych zadań przestawia wykres Gantt'a
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{attachments/RALLY1}
-    \caption{Wykonane elementy w ramach pierwszego przyrostu}
-    \label{fig:figure3}
-    \end{figure}
+W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obejmujące backend, frontend oraz ciągłe dostarczanie (CI/CD). \newline
+\indent Przygotowano Backend WebAPI umożliwiający rozbudowę pod RESTAPI. Wdrożono podstawowe testy funkcjonalne, aby upewnić się, że WebAPI działa poprawnie.\newline
+\indent Frontend został zaprojektowany zgodnie z zasadami Material Design i zintegrowany z backendem poprzez przykładowe zapytania do API, umożliwiając interakcję użytkownika z danymi na serwerze. \newline
+\indent Wdrożono potok CI/CD, automatyzujący budowanie, testowanie i wdrażanie aplikacji przy użyciu narzędzia GitHub Actions. Potok ten uruchamiał testy integracyjne, weryfikując poprawność działania wszystkich komponentów aplikacji, w tym dokumentacji książki pisanej w Latex. \newline
+\indent Wszystkie zadania przedstawiono na wykresie Gantta, monitorując postępy i identyfikując ewentualne opóźnienia. Stworzono solidny fundament aplikacji, umożliwiający dalszy rozwój funkcjonalności oraz zapewniający stabilną i skalowalną architekturę. \newline
 
-    \subsection{Przyrost II - utworzenie widoku mapy, w tym integracja  Overpass}
+\subsection{Przyrost II - utworzenie widoku mapy, w tym integracja  Overpass}
     \label{sec:przyrost2}
 
-    W ramach tego przyrostu drugiego wykonano elementy, pomiędzy każdym przedstawiono fragmenty wybranych implementacji:
-    \begin{itemize}
-        \item integracja klienta Overpass API,
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/overpassclient}
-            \caption{Overpass klient}
-            \label{fig:figure4}
-            \end{figure}
-        \item przygotowanie entities dla Entity Framework Core;
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/Entity}
-            \caption{Fragment klasy BusinessTimeEntity}
-            \label{fig:figure5}
-            \end{figure}
-        \item wykonano kontrolery integrujące usługi
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/OverpassIntegrationController}
-            \caption{Fragment klasy OverpassIntegrationController}
-            \label{fig:figure6}
-            \end{figure}
-        \item implementacja Domain
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/PoisDomain}
-            \caption{Fragment klasy Pois}
-            \label{fig:figure7}
-            \end{figure}
-        \item implementacja Dto
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/PoiMapDto}
-            \caption{Fragment klasy PoiMapDto}
-            \label{fig:figure}
-            \end{figure}
+    W ramach drugiego przyrostu projektu zrealizowano kluczowe zadania, które rozszerzyły funkcjonalność i integrację systemu. \newline
+    \indent Pierwszym krokiem była integracja klienta Overpass API, umożliwiająca pozyskiwanie danych z OpenStreetMap. Zbudowano klienta API do wysyłania zapytań i przetwarzania odpowiedzi, co pozwala na dynamiczne pobieranie i aktualizowanie danych mapowych.\newline
+    \indent Następnie przygotowano encje dla Entity Framework Core, definiując model danych odpowiadający strukturze bazy danych.
+    Wykonano kontrolery integrujące usługi, które obsługują żądania użytkowników i komunikację między frontendem a backendem. Kontrolery korzystają z usług i encji do realizacji funkcjonalności aplikacji.\newline
+    \indent Implementacja warstwy domeny obejmowała logikę biznesową, definiując zasady i operacje na danych. Warstwa domeny oddziela logikę biznesową od technicznych szczegółów, co poprawia modularność i utrzymanie kodu.\newline
+    \indent Przygotowano również Data Transfer Objects (Dto) do przenoszenia danych między warstwami aplikacji.    \newline
+    \indent Ostatnim etapem była integracja modułu Leaflet do tworzenia interaktywnych map.\newline
+    Te działania znacząco rozszerzyły funkcjonalność aplikacji, poprawiając jej elastyczność, skalowalność i użyteczność.\newline
 
-        \item integracja LeaftModule;
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/leaflet1}
-            \caption{Fragment klasy color-scheme-based-tile-layer}
-            \label{fig:figure}
-            \end{figure}
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=1\textwidth]{attachments/leaflet2}
-                \caption{Fragment klasy PoiSelectorComponent}
-                \label{fig:figure}
-                \end{figure}
-    \end{itemize}
 
     \subsection{Przyrost III - zarządzanie użytkownikiem}
     \label{sec:przyrost3}
-    Backend/WebApi/Services/EmailSender.cs
-    W ramach tego przyrostu trzeciego wykonano:
-    \begin{itemize}
-        \item widok logowania;
-        \item widok rejestracji z automatycznym potwierdzeniem,
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=1\textwidth]{attachments/emailsender}
-            \caption{Fragment klasy EmailSender z widocznym serwisem potwierdzania rejestracji}
-            \label{fig:figure}
-            \end{figure}
+    W ramach trzeciego przyrostu projektu zrealizowano funkcje związane z zarządzaniem kontem użytkownika, obejmujące logowanie, rejestrację, zarządzanie kontem oraz autoryzację i odzyskiwanie hasła. \newline
+    \indent Uniwersalny widok logowania i rejestracji: Stworzono jeden widok, który umożliwia zarówno logowanie, jak i rejestrację. Rejestracja wymaga potwierdzenia poprzez link wysłany na e-mail użytkownika. \newline
+    \indent Widok zarządzania kontem umożliwia zarządzaniem kontem poprzez edycję danych email, zmianę hasła jak i usuniecie konta. \newline 
+    \indent Dodano mechanizm umożliwiający użytkownikom odzyskiwanie hasła poprzez e-mail z linkiem do jego resetowania.
 
-        \item widok zarządzania kontem;
-        \item zaimplementowano autoryzacje logowania po stronie aplikacji oraz bazy danych,
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{attachments/userdb}
-        \caption{Fragment klasy UserDataDbContext}
-        \label{fig:figure}
-        \end{figure}
-    \end{itemize}
+    %W ramach tego przyrostu trzeciego wykonano:
+    %\begin{itemize}
+    %    \item widok logowania;
+    %    \item widok rejestracji z automatycznym potwierdzeniem,
+
+
+    %    \item widok zarządzania kontem;
+    %    \item zaimplementowano autoryzacje logowania po stronie aplikacji oraz bazy danych,
+    %\end{itemize}
 
     %https://github.com/EngineerDiplomaTeam/city-map-planner/tree/b85c21829a74f57ce20414a7fa3ab3a398ad9833/Backend/WebApi/Extensions
     %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/bbdbb4fdca805acd2438365551f4f361532bc34d
@@ -125,41 +54,65 @@ Opis w czasie wykonanych zadań przestawia wykres Gantt'a
 
     \subsection{Przyrost IV - algorytm Trasy - \glslink{poidef}{POI}}
     \label{sec:przyrost4}
+    W ramach czwartego przyrostu projektu zrealizowano kluczowe funkcje zwiększające interaktywność i użyteczność aplikacji. \newline
+    \indent Stworzono listę popularnych atrakcji turystycznych w Gdańsku, służącą jako inspiracja i pokaz możliwości aplikacji. \newline
+    \indent Wprowadzono do bazy danych \glslink{poidef}{POI} z podstawowymi informacjami, takimi jak nazwa, opis, lokalizacja i godziny otwarcia.
+    \indent Zaimplementowano algorytm wyznaczania optymalnych tras pomiędzy wybranymi \glslink{poidef}{POI}, uwzględniający odległość, czas podróży.
+    \indent Dodano ekran koszyka, gdzie użytkownicy mogą zbierać i zarządzać listą wybranych \glslink{poidef}{POI}, co ułatwia planowanie wycieczek.
+    \indent Wprowadzono wyświetlanie indywidualnych zdjęć dla każdego \glslink{poidef}{POI}, co wzbogaca wizualne doświadczenie użytkowników.
 
-    W ramach tego przyrostu czwartego wykonano:
-    \begin{itemize}
-        \item dodanie \glslink{poidef}{POI} na mapie uzwgledniając wszystkie podstawowe informacje;
-        \item dodanie algorytmu przeszukania trasy pomiędzy \glslink{poidef}{POI};
-        \item dodanie ekranu koszyka z \glslink{poidef}{POI};
+
+
+    %W ramach tego przyrostu czwartego wykonano:
+    %\begin{itemize}
+    %    \item dodanie \glslink{poidef}{POI} na mapie uzwgledniając wszystkie podstawowe informacje;
+    %    \item dodanie algorytmu przeszukania trasy pomiędzy \glslink{poidef}{POI};
+    %    \item dodanie ekranu koszyka z \glslink{poidef}{POI};
         %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/88c32b690c76b113173d056ec0be1fa74c81709a#diff-ede64cf229dabd7c007a109c15db77bcacd008a0cf42e1eacca43c3e3da9af97
-        \item dodanie indywidualnych zdjeć;
+    %    \item dodanie indywidualnych zdjeć;
         %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/354caede1081fe73ca98350bd1aceff95c7df8c9
-        \item wykonano liste przykładowych atrakcji w Gdańsku
-    \end{itemize}
+    %    \item wykonano liste przykładowych atrakcji w Gdańsku
+    %\end{itemize}
 
 
     \subsection{Przyrost V - zarządzanie POI i kalendarz podróży}
     \label{sec:przyrost5}
 
     W ramach tego przyrostu piątego wykonano:
-    \begin{itemize}
-        \item integracja chatGPT do inportowania aktualnych o atrakcjach;
+    Wprowadzono integrację z ChatGPT, umożliwiającą importowanie aktualnych informacji o godzinach otwarcia atrakcjach turystycznych. 
+    Dzięki temu użytkownicy mogą uzyskać najnowsze dane dotyczące miejsc, które planują odwiedzić.\newline
+    \indent Integracja z ChatGPT przyniosła jednak pewne trudności. Za każdym razem, gdy ChatGPT dostarczał informacje, robił to w innym schemacie, 
+    co wymagało dodatkowego przetwarzania danych. Było to wyzwaniem, ponieważ zmienność w strukturze danych utrudniała ich automatyczne parsowanie i integrację z naszą bazą danych. \newline 
+    \indent Aby rozwiązać ten problem, zaimplementowano dodatkowe warstwy weryfikacji i normalizacji danych, które standaryzowały informacje dostarczane przez ChatGPT.\newline
+    \indent Stworzono ekran kalendarza podróży, który pozwala użytkownikom na planowanie i organizowanie swoich wycieczek.
+    Kalendarz umożliwia łatwe dodawanie, edytowanie i przeglądanie zaplanowanych wizyt w różnych miejscach.
+    \indent Dodano widok podsumowania podróży, który prezentuje zorganizowane informacje o wszystkich zaplanowanych punktach zainteresowania. 
+    Użytkownicy mogą przeglądać swoje trasy, czasy wizyt oraz dodatkowe szczegóły dotyczące każdej atrakcji. \newline
+    \indent Aplikacja oraz baza danych zostały zintegrowane z API pogodowym, co umożliwia wyświetlanie aktualnych informacji o pogodzie dla zaplanowanych punktów zainteresowania. 
+    Dzięki temu użytkownicy mogą lepiej planować swoje wizyty, uwzględniając warunki atmosferyczne. \newline
+    Ulepszono widok kalendarza o dodatkowe kolory w celu lepszego wyróżnienia aplikacji. 
+
+
+    %\begin{itemize}
+    %    \item integracja chatGPT do inportowania aktualnych o atrakcjach;
         % https://github.com/EngineerDiplomaTeam/city-map-planner/commit/989c85a11ceb0f7f9951f04838e4464c0a47d070
-        \item dodanie ekranu kalendarza podróży
-        \item Widok podsumowania podróży
+    %    \item dodanie ekranu kalendarza podróży
+    %    \item Widok podsumowania podróży
         %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/796bac2b6bc5db568a7aabc7dcdef299117c2da2
-        \item integracja aplikacji oraz bazy danych z API pogodowym
+    %    \item integracja aplikacji oraz bazy danych z API pogodowym
         %https://github.com/EngineerDiplomaTeam/city-map-planner/commit/1f899291a34701bfa61bfc0b39fd558b628bb966
-        \item poprawienie widoku kalendarza
+    %    \item poprawienie widoku kalendarza
        % https://github.com/EngineerDiplomaTeam/city-map-planner/commit/a3d894bcbf5c319bb2cd109a9b2c3e58db29ef56
-    \end{itemize}
+    % \end{itemize}
 
     \subsection{Przyrost VI - widok wszystkich atrakcji integracja pogody}
-    \label{sec:przyrost5}
+    \label{sec:przyrost6}
 
-    W ramach tego przyrostu szóstego wykonano:
+    W ramach szóstego przyrostu projektu zrealizowano następujące zadania:
     \begin{itemize}
-        \item integracja pogody widoku na przeglądarce internetowej;
-        \item widok listy wszystkich POI
+        \item  Dodano funkcjonalność wyświetlania informacji o pogodzie w widoku przeglądarki internetowej. 
+        Użytkownicy mogą teraz na bieżąco sprawdzać warunki atmosferyczne dla wszystkich punktów zainteresowania bezpośrednio w aplikacji
+        \item Stworzono widok listy wszystkich punktów zainteresowania (POI), umożliwiający użytkownikom przeglądanie i wyszukiwanie interesujących miejsc. 
+        Lista zawiera szczegółowe informacje o każdej atrakcji, co ułatwia planowanie wizyt i organizowanie wycieczek.
     \end{itemize}
 
