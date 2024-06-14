@@ -140,7 +140,7 @@ mat-sidenav {
 }
 
 .fl-view-custom {
-  background-color: #ddd;
+  background-color: #fff;
 }
 
 $colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4, #f58231, #f032e6;
@@ -154,8 +154,13 @@ $colors: #e6194B, #ffe119, #42d4f4, #f58231, #f032e6, #e6194B, #ffe119, #42d4f4,
 
   .poi-color-#{$i} {
     background-color: nth($colors, $i);
-    border-left: nth($colors, $i) solid 4px;
+    border-left: nth($colors, $i) solid 6px;
   }
+}
+
+:root {
+  --fc-today-bg-color: transparent;
+  --fc-neutral-bg-color: transparent;
 }
 
 .fc-non-business {

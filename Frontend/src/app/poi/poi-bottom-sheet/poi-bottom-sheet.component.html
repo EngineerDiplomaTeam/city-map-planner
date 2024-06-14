@@ -10,3 +10,11 @@
 </button>
 <h2>{{ selectedPoi()?.details?.title }}</h2>
 <p>{{ selectedPoi()?.details?.description }}</p>
+<p>Recommended Weather</p>
+<div class="weather-container" >
+  <div class="weather-item" *ngFor="let number of selectedPoi()?.preferredWmoCodes">
+    <img [src]="weatherIconService.getWeatherIconSrc(number)"
+         style="width: 50px; height: 25px; filter: contrast(0.0000000015);"
+         [alt]="weatherIconService.getWeatherName(number)">
+  </div>
+</div>

@@ -20,6 +20,9 @@
     backdrop-filter: blur(5px);
     margin: 0;
     padding: 0.2em;
+    @media (prefers-color-scheme: light) {
+      color: white;
+    }
   }
 
   .controls {
@@ -31,6 +34,9 @@
       display: block;
       background-color: #00000050;
       backdrop-filter: blur(5px);
+      @media (prefers-color-scheme: light) {
+        color: white;
+      }
     }
 
     .remove {
@@ -40,6 +46,9 @@
       padding: 0;
       background-color: #00000050;
       backdrop-filter: blur(5px);
+      @media (prefers-color-scheme: light) {
+        color: white;
+      }
     }
   }
 }

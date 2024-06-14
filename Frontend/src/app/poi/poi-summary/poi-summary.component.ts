@@ -10,7 +10,7 @@ import { OlMapDirective } from '../../open-layers-map/ol-map.directive';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButton } from '@angular/material/button';
 import { PoiScheduleStore } from '../poi-schedule/poi-schedule.store';
-import { DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgForOf, NgIf } from '@angular/common';
 import {
   OlLine,
   OlMapLineManager,
@@ -25,6 +25,8 @@ import { OL_MAP } from '../../open-layers-map/ol-token';
 import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { WeatherIconsComponent } from '../../weather-icons/weather-icons.component';
+import { WeatherIconsService } from '../../weather-icons/weather-icons-service';
 
 interface PathFindingIteration {
   complete: boolean;
@@ -38,7 +40,16 @@ interface PathFindingIteration {
 @Component({
   selector: 'app-poi-summary',
   standalone: true,
-  imports: [OlMapDirective, MatStepperModule, MatButton, DatePipe],
+  imports: [
+    OlMapDirective,
+    MatStepperModule,
+    MatButton,
+    DatePipe,
+    WeatherIconsComponent,
+    NgForOf,
+    AsyncPipe,
+    NgIf,
+  ],
   templateUrl: './poi-summary.component.html',
   styleUrl: './poi-summary.component.scss',
   hostDirectives: [OlMapDirective],
@@ -50,6 +61,50 @@ export class PoiSummaryComponent implements OnInit {
   private readonly olMap = inject(OL_MAP);
   protected readonly poiScheduleStore = inject(PoiScheduleStore);
   protected readonly steeper = viewChild.required(MatStepper);
+  protected readonly weatherIconService = inject(WeatherIconsService);
+
+  public transformDate(
+    value: (Date & string) | string | (number[] & string),
+  ): Date {
+    let date: Date;
+
+    if (typeof value === 'string') {
+      date = new Date(value);
+    } else if (Array.isArray(value)) {
+      const [
+        year,
+        month,
+        day,
+        hours,
+        minutes,
+        seconds,
+        milliseconds,
+      ]: number[] & string = value;
+      date = new Date(
+        Date.UTC(year, month - 1, day, hours, minutes, seconds, milliseconds),
+      );
+    } else {
+      throw new Error('Invalid date input');
+    }
+
+    if (isNaN(date.getTime())) {
+      throw new Error('Invalid date input');
+    }
+
+    return new Date(date.toUTCString());
+  }
+
+  protected getSumHours(start: Date, end: Date): string[] {
+    const hours = [];
+    const current = new Date(start);
+
+    while (current <= end) {
+      hours.push(current.toISOString());
+      current.setMinutes(current.getMinutes() + 30);
+    }
+
+    return hours;
+  }
 
   private readonly setMarkersEffect = effect(() => {
     const pois = this.poiScheduleStore.scheduledEvents();

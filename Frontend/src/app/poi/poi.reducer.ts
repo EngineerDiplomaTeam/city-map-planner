@@ -14,6 +14,7 @@ export type PointOfInterest = {
     title: string;
     description: string;
   };
+  preferredWmoCodes: number[];
   preferredSightseeingTime: string;
   businessHours: {
     effectiveFrom: string;

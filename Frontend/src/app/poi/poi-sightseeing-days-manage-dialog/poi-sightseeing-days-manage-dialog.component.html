@@ -4,7 +4,7 @@
   <main class="time-spans">
     @for (formGroup of formArray.controls; track $index) {
       <article class="time-span">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" >
           <mat-label>Choose a date</mat-label>
           <input [min]="today" [formControl]="formGroup.controls.dateOnly" matInput [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
