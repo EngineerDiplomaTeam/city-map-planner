@@ -17,6 +17,7 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
 \indent Frontend został zaprojektowany zgodnie z zasadami Material Design i zintegrowany z backendem poprzez przykładowe zapytania do API, umożliwiając interakcję użytkownika z danymi na serwerze. \newline
 \indent Wdrożono potok CI/CD, automatyzujący budowanie, testowanie i wdrażanie aplikacji przy użyciu narzędzia GitHub Actions. Potok ten uruchamiał testy integracyjne, weryfikując poprawność działania wszystkich komponentów aplikacji, w tym dokumentacji książki pisanej w Latex. \newline
 \indent Wszystkie zadania przedstawiono na wykresie Gantta, monitorując postępy i identyfikując ewentualne opóźnienia. Stworzono solidny fundament aplikacji, umożliwiający dalszy rozwój funkcjonalności oraz zapewniający stabilną i skalowalną architekturę. \newline
+W wyniki czego wykorzystując rozważania podjętych decyzji przygotowano aplikacje, żeby realizowała zadania WO5,NF01, NF02, ŚD02
 
 \subsection{Przyrost II - utworzenie widoku mapy, w tym integracja  Overpass}
     \label{sec:przyrost2}
@@ -27,9 +28,10 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
     Wykonano kontrolery integrujące usługi, które obsługują żądania użytkowników i komunikację między frontendem a backendem. Kontrolery korzystają z usług i encji do realizacji funkcjonalności aplikacji.\newline
     \indent Implementacja warstwy domeny obejmowała logikę biznesową, definiując zasady i operacje na danych. Warstwa domeny oddziela logikę biznesową od technicznych szczegółów, co poprawia modularność i utrzymanie kodu.\newline
     \indent Przygotowano również Data Transfer Objects (Dto) do przenoszenia danych między warstwami aplikacji.    \newline
-    \indent Ostatnim etapem była integracja modułu Leaflet do tworzenia interaktywnych map.\newline
+    \indent Ostatnim etapem była integracja modułu \glslink{openlayers}{Open layers}  do tworzenia interaktywnych map.\newline
     Te działania znacząco rozszerzyły funkcjonalność aplikacji, poprawiając jej elastyczność, skalowalność i użyteczność.\newline
 
+    Podsumowując w ramach przyrostu wykonano wymagania  FO1, IO3, IO4.
 
     \subsection{Przyrost III - zarządzanie użytkownikiem}
     \label{sec:przyrost3}
@@ -37,7 +39,7 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
     \indent Uniwersalny widok logowania i rejestracji: Stworzono jeden widok, który umożliwia zarówno logowanie, jak i rejestrację. Rejestracja wymaga potwierdzenia poprzez link wysłany na e-mail użytkownika. \newline
     \indent Widok zarządzania kontem umożliwia zarządzaniem kontem poprzez edycję danych email, zmianę hasła jak i usuniecie konta. \newline 
     \indent Dodano mechanizm umożliwiający użytkownikom odzyskiwanie hasła poprzez e-mail z linkiem do jego resetowania.
-
+    W ramach przyrostu udało się spełnić wymagania WO1, WO6 oraz F24.
     %W ramach tego przyrostu trzeciego wykonano:
     %\begin{itemize}
     %    \item widok logowania;
@@ -56,11 +58,12 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
     \label{sec:przyrost4}
     W ramach czwartego przyrostu projektu zrealizowano kluczowe funkcje zwiększające interaktywność i użyteczność aplikacji. \newline
     \indent Stworzono listę popularnych atrakcji turystycznych w Gdańsku, służącą jako inspiracja i pokaz możliwości aplikacji. \newline
-    \indent Wprowadzono do bazy danych \glslink{poidef}{POI} z podstawowymi informacjami, takimi jak nazwa, opis, lokalizacja i godziny otwarcia.
-    \indent Zaimplementowano algorytm wyznaczania optymalnych tras pomiędzy wybranymi \glslink{poidef}{POI}, uwzględniający odległość, czas podróży.
-    \indent Dodano ekran koszyka, gdzie użytkownicy mogą zbierać i zarządzać listą wybranych \glslink{poidef}{POI}, co ułatwia planowanie wycieczek.
-    \indent Wprowadzono wyświetlanie indywidualnych zdjęć dla każdego \glslink{poidef}{POI}, co wzbogaca wizualne doświadczenie użytkowników.
-
+    \indent Wprowadzono do bazy danych \glslink{poidef}{POI} z podstawowymi informacjami, takimi jak nazwa, opis, lokalizacja i godziny otwarcia. \newline
+    \indent Zaimplementowano algorytm wyznaczania optymalnych tras pomiędzy wybranymi \glslink{poidef}{POI}, uwzględniający odległość, czas podróży. \newline
+    \indent Dodano ekran koszyka, gdzie użytkownicy mogą zbierać i zarządzać listą wybranych \glslink{poidef}{POI}, co ułatwia planowanie wycieczek. \newline
+    \indent Wprowadzono wyświetlanie indywidualnych zdjęć dla każdego \glslink{poidef}{POI}, co wzbogaca wizualne doświadczenie użytkowników.\newline
+    \indent Wykonano panel administarcjny do edytowania wszystkich parametrów POI.
+    Podsumowując, podczas przyrostu zrealizowano wymagania WO3,FO4, F05, F10 i F019.
 
 
     %W ramach tego przyrostu czwartego wykonano:
@@ -92,6 +95,7 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
     Dzięki temu użytkownicy mogą lepiej planować swoje wizyty, uwzględniając warunki atmosferyczne. \newline
     Ulepszono widok kalendarza o dodatkowe kolory w celu lepszego wyróżnienia aplikacji. 
 
+    W efekcie przyrostu wykonano wymagania IO7, FO13, FO14,
 
     %\begin{itemize}
     %    \item integracja chatGPT do inportowania aktualnych o atrakcjach;
@@ -110,8 +114,14 @@ W ramach pierwszego przyrostu utworzono szkielet aplikacji i potoki testów, obe
 
     W ramach szóstego przyrostu projektu zrealizowano następujące zadania:
   
-    \indent  Dodano funkcjonalność wyświetlania informacji o pogodzie w widoku przeglądarki internetowej. 
-        Użytkownicy mogą teraz na bieżąco sprawdzać warunki atmosferyczne dla wszystkich punktów zainteresowania bezpośrednio w aplikacji
-    \indent Stworzono widok listy wszystkich punktów zainteresowania (POI), umożliwiający użytkownikom przeglądanie i wyszukiwanie interesujących miejsc. 
-        Lista zawiera szczegółowe informacje o każdej atrakcji, co ułatwia planowanie wizyt i organizowanie wycieczek.
+    \indent Dodano funkcjonalność wyświetlania informacji o pogodzie w widoku 
+    przeglądarki internetowej, dzięki czemu użytkownicy mogą na bieżąco sprawdzać warunki atmosferyczne dla wszystkich punktów zainteresowania bezpośrednio w aplikacji. 
+    Dodatkowo, wprowadzono funkcję zalecanej pogody dla każdej aplikacji na widokach \glslink{poidef}{POI}, 
+    co umożliwia użytkownikom uzyskanie rekomendacji pogodowych dla poszczególnych miejsc. Dzięki tym zmianom zrealizowano wymagania FO27 oraz IO2.
+    \indent Stworzono widok listy wszystkich punktów zainteresowania \glslink{poidef}{POI}, umożliwiający użytkownikom 
+    przeglądanie i wyszukiwanie interesujących miejsc. Lista zawiera szczegółowe informacje 
+    o każdej atrakcji, co ułatwia korzystanie z urządzeń 
+    typu czytnik oraz przyspiesza wybieranie atrakcji spośród wszystkich dostępnych miejsc. 
+    
+    Podsumowując, w trakcie tego przyrostu osiągnięto realizację wymagań F27 oraz F03.
 
