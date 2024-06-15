@@ -335,3 +335,33 @@
     \par Oświadczamy ponadto, że niniejsza wersja pracy dyplomowej jest identyczna z załączoną wersją elektroniczną.
     \newpage
 }
+
+
+% Define the new environment for plan testing' information
+
+\newenvironment{testowanie}[1][]{%
+    \setkeys{pjatk}{#1}% 
+    \newcommand{\name}[1]{Nazwa: & ##1 \\ \hline}
+    \newcommand{\descr}[1]{Cel: & ##1 \\ \hline}
+    \newcommand{\type}[1]{Testowane wymaganie: & ##1 \\ \hline}
+    \newcommand{\test}[1]{Przypadek I - kroki: & Oczekiwane rezultaty\\ \hline}
+    \newcommand{\testz}[2]{##1 & ##2 \\ \hline} 
+    \newcommand{\testy}[2]{##1 & ##2 \\ \hline} 
+    \newcommand{\result}[1]{Przypadek I - wynik: & ##1 \\ \hline}
+    \newcommand{\testX}[1]{Przypadek II - kroki: & Oczekiwane rezultaty\\ \hline}
+    \newcommand{\testXz}[2]{##1 & ##2 \\ \hline} 
+    \newcommand{\testXy}[2]{##1 & ##2 \\ \hline} 
+    \newcommand{\resultX}[1]{Przypadek II - wynik: & ##1 \\ \hline}
+    \begin{table}[H] 
+    \centering
+    \begin{tabular}{|>{\columncolor{lightgray}}c|p{0.6\linewidth}|}
+        \hline
+        \rowcolor{lightgray}\multicolumn{2}{|c|}{\textbf{Scenariusz testowy}} \\
+        \hline
+        }{
+    \end{tabular}
+    \caption{\tabcaption}
+    \label{\tablabel}
+    \end{table} 
+}
+
