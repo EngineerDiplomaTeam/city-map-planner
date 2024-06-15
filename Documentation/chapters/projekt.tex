@@ -992,18 +992,31 @@ Lista punktów POI na mapie. \\
 ]
 \end{lstlisting}
 
-\subsubsection{\lstinline[language=http]{GET /WeatherForecast}}
-Pobranie prognozy pogody. \\
+\subsubsection{\lstinline[language=http]{GET /WeatherStatus/List}}
+Pobranie prognozy pogody z klienta pogodowego\\
 \textbf{Responses:}
 \begin{lstlisting}[language=json]
-[
-  {
-    "date": "2023-01-01",
-    "temperatureC": 0,
-    "temperatureF": 0,
-    "summary": "string"
-  }
-]
+  [
+    {
+      "time": "2024-06-15T11:42:38.897Z",
+      "weathercode": 0,
+      "temperature2M": 0
+    }
+  ]
+\end{lstlisting}
+
+\subsubsection{\lstinline[language=http]{GET /WeatherForecast}}
+Pobranie prognozy pogody dla testu działania aplikacji\\
+\textbf{Responses:}
+\begin{lstlisting}[language=json]
+  [
+    {
+      "date": "2024-06-15",
+      "temperatureC": 0,
+      "temperatureF": 0,
+      "summary": "string"
+    }
+  ]
 \end{lstlisting}
 
 \section{Baza danych}
@@ -1254,6 +1267,16 @@ Tabela przechowuje informacje o tagach przypisanych do dróg.
 Indeksy:
 \begin{itemize}
     \item \keyword{ix\_osm\_tag\_entity\_osm\_way\_entity\_tags\_name\_tags\_value} na kolumnach \keyword{tags\_name}, \keyword{tags\_value}
+\end{itemize}
+
+\subsubsection{Tabela \keyword{weather\_status}}
+Tabela przechowuje informacje pogodowe.
+\begin{itemize}
+    \item \keyword{id}: \keyword{bigint}, nie może być \keyword{NULL}, kaskadowe usuwanie
+    \item \keyword{time}: \keyword{timestamp with time zone}, nie może być \keyword{NULL}
+    \item \keyword{weather\_code}: \keyword{integer}, nie może być \keyword{NULL}
+    \item \keyword{temperature}: \keyword{double precision}, nie może być \keyword{NULL}
+    \item Klucz główny: (\keyword{id})
 \end{itemize}
 
 \subsection{Uprawnienia}
