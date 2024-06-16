@@ -8,30 +8,30 @@
 W projekcie wykorzystano następujące wzorce projektowe:
 \begin{itemize}
 
-    \item \textbf{MVVM (Model-View-ViewModel)}: Wzorzec architektoniczny, który oddziela logikę biznesową (Model) od interfejsu użytkownika (View) za pomocą warstwy pośredniej (ViewModel), która zarządza stanem i logiką prezentacji.
+    \item \textbf{MVVM (Model-View-ViewModel)}: Wzorzec architektoniczny, który oddziela logikę biznesową (Model) od interfejsu użytkownika (View) za pomocą warstwy pośredniej (ViewModel), która zarządza stanem i~logiką prezentacji.
 
-    \item \textbf{MVC (Model-View-Controller)}: Wzorzec projektowy, który dzieli aplikację na trzy główne komponenty: Model (logika danych), View (interfejs użytkownika) i Controller (logika aplikacji).
-    Pozwala to na lepsze zarządzanie kodem i jego modularność.
+    \item \textbf{MVC (Model-View-Controller)}: Wzorzec projektowy, który dzieli aplikację na trzy główne komponenty: Model (logika danych), View (interfejs użytkownika) i~Controller (logika aplikacji).
+    Pozwala to na lepsze zarządzanie kodem i~jego modularność.
 
     \item \textbf{REST API (Representational State Transfer Application Programming Interface)}: Styl architektoniczny dla systemów rozproszonych, oparty na protokole HTTP, który umożliwia komunikację między klientem a serwerem za pomocą standardowych metod (GET, POST, PUT, DELETE).
 
     \item \textbf{Repository}: Wzorzec projektowy, który zapewnia warstwę abstrakcji nad dostępem do danych.
-    Umożliwia oddzielenie logiki biznesowej od warstwy dostępu do danych, co ułatwia zarządzanie danymi i testowanie aplikacji.
+    Umożliwia oddzielenie logiki biznesowej od warstwy dostępu do danych, co ułatwia zarządzanie danymi i~testowanie aplikacji.
 
     \item \textbf{Dependency Injection}: Technika polegająca na wstrzykiwaniu zależności do komponentów, zamiast tworzenia ich wewnątrz komponentów.
-    Umożliwia to luźne powiązanie między komponentami i ułatwia testowanie oraz zarządzanie zależnościami.
+    Umożliwia to luźne powiązanie między komponentami i~ułatwia testowanie oraz zarządzanie zależnościami.
 
     \item \textbf{Redux}: Wzorzec do zarządzania stanem aplikacji, szczególnie popularny w aplikacjach React.
-    Opiera się na centralnym magazynie (store), który przechowuje cały stan aplikacji, oraz na akcjach i reduktorach, które modyfikują ten stan w kontrolowany sposób.
+    Opiera się na centralnym magazynie (store), który przechowuje cały stan aplikacji, oraz na akcjach i~reduktorach, które modyfikują ten stan w kontrolowany sposób.
 
     \item \textbf{Observer}: Wzorzec projektowy, w którym obiekt (obserwowany) powiadamia inne obiekty (obserwatorów) o zmianach swojego stanu.
-    Umożliwia to reaktywne programowanie i luźne powiązanie między obiektami.
+    Umożliwia to reaktywne programowanie i~luźne powiązanie między obiektami.
 
-    \item \textbf{Reverse Proxy}: Serwer pośredniczący, który przyjmuje żądania od klientów i przekazuje je do odpowiednich serwerów docelowych.
-    Używany do zwiększenia wydajności, równoważenia obciążenia i poprawy bezpieczeństwa.
+    \item \textbf{Reverse Proxy}: Serwer pośredniczący, który przyjmuje żądania od klientów i~przekazuje je do odpowiednich serwerów docelowych.
+    Używany do zwiększenia wydajności, równoważenia obciążenia i~poprawy bezpieczeństwa.
 
     \item \textbf{Bearer Token}: Metoda autoryzacji, w której token dostępu jest przesyłany w nagłówku HTTP\@.
-    Umożliwia to bezpieczne uwierzytelnianie użytkowników i autoryzację dostępu do zasobów.
+    Umożliwia to bezpieczne uwierzytelnianie użytkowników i~autoryzację dostępu do zasobów.
 
     \item \textbf{Service}: Pojęcie szerokie, odnoszące się do jednostki funkcjonalnej w aplikacji, która realizuje określoną usługę.
 
@@ -46,12 +46,12 @@ W skład systemu wchodzą:
 \end{itemize}
 
 \section{Architektura}\label{sec:architektura}
-System został zbudowany w architekturze monolitycznej, co oznacza, że wszystkie jego elementy i funkcjonalności są zintegrowane w jednym serwisie, zamiast być podzielone na niezależne moduły lub mikroserwisy.
+System został zbudowany w architekturze monolitycznej, co oznacza, że wszystkie jego elementy i~funkcjonalności są zintegrowane w jednym serwisie, zamiast być podzielone na niezależne moduły lub mikroserwisy.
 System został wdrożony w chmurze obliczeniowej Oracle Ampere.
 Aby uniknąć problemów z CORS (Cross-Origin Resource Sharing), wszystkie połączenia przychodzące z różnych źródeł są przekierowywane przez serwer Nginx.
 Nginx działa jako reverse proxy, który odpowiednio kieruje ruch do właściwych komponentów systemu znajdujących się na serwerze.
 Dzięki temu z perspektywy użytkownika wszystkie usługi systemu są dostępne pod tym samym adresem URL\@.
-Dodatkowo, użycie Nginx umożliwia łatwe wygenerowanie certyfikatu SSL za pomocą Let's Encrypt, co zapewnia bezpieczne połączenia HTTPS i chroni dane użytkowników przed potencjalnymi zagrożeniami.
+Dodatkowo, użycie Nginx umożliwia łatwe wygenerowanie certyfikatu SSL za pomocą Let's Encrypt, co zapewnia bezpieczne połączenia HTTPS i~chroni dane użytkowników przed potencjalnymi zagrożeniami.
 
 \begin{figure}[H]
     \centering
@@ -63,7 +63,7 @@ Dodatkowo, użycie Nginx umożliwia łatwe wygenerowanie certyfikatu SSL za pomo
 \pagebreak
 \subsection{Konfiguracja Nginx}
 \label{subsec:konfiguracja-nginx}
-Przedstawiona poniżej konfiguracja serwera NGINX zawiera definicje kilku serwerów wirtualnych dla różnych domen i usług.
+Przedstawiona poniżej konfiguracja serwera NGINX zawiera definicje kilku serwerów wirtualnych dla różnych domen i~usług.
 Zamieszczono w niej szczegółowe wyjaśnienie każdego elementu konfiguracji.
 
 \subsubsection{Główny serwer obsługujący \texttt{city-planner.budziszm.pl}}
@@ -76,7 +76,7 @@ server {
   index index.html;
 \end{longlisting}
 \begin{itemize}
-    \item \texttt{server\_name city-planner.budziszm.pl;}: Określa nazwę serwera, który obsługuje tę konfigurację.
+    \item \texttt{server\_name city-planner.budziszm.pl;}: Określa nazwę serwera, który obsługuje taką~konfigurację.
     \item \texttt{root /var/www/city-planner.budziszm.pl/html;}: Ustala katalog główny dla plików serwowanych przez ten serwer.
     \item \texttt{index index.html;}: Ustawia domyślny plik indeksu.
 \end{itemize}
@@ -107,23 +107,23 @@ server {
   gzip_proxied no-cache no-store private expired auth;
 \end{longlisting}
 \begin{itemize}
-    \item \texttt{gzip on;} i \texttt{gzip\_static on;}: Włącza kompresję gzip i kompresję statyczną.
+    \item \texttt{gzip on;} i~\texttt{gzip\_static on;}: Włącza kompresję gzip i~kompresję statyczną.
     \item \texttt{gzip\_types}: Określa typy MIME, które mają być kompresowane.
     \item \texttt{gzip\_proxied}: Definiuje warunki, pod którymi odpowiedzi z proxy mogą być kompresowane.
 \end{itemize}
 
-\subsubsection{Konfiguracja cache dla CSS i JS}
+\subsubsection{Konfiguracja cache dla CSS i~JS}
 \begin{longlisting}[language=nginx,label={lst:n4}]
   location ~*.(css|js)$ {
     add_header Cache-Control "public, immutable, max-age=31536000";
   }
 \end{longlisting}
 \begin{itemize}
-    \item \texttt{location ~*.(css|js)\$}: Obsługuje wszystkie pliki CSS i JS@.
+    \item \texttt{location ~*.(css|js)\$}: Obsługuje wszystkie pliki CSS i~JS@.
     \item \texttt{add\_header Cache-Control "public, immutable, max-age=31536000";}: Dodaje nagłówek kontrolujący cache, który umożliwia przechowywanie plików w pamięci podręcznej przez rok.
 \end{itemize}
 
-\subsubsection{Przekierowania proxy dla \texttt{/Api} i \texttt{/confirmEmail}}
+\subsubsection{Przekierowania proxy dla \texttt{/Api} i~\texttt{/confirmEmail}}
 \begin{longlisting}[language=nginx,label={lst:n5}]
   location /Api {
     rewrite /Api/(.*) /$1 break;
@@ -139,7 +139,7 @@ server {
   }
 \end{longlisting}
 \begin{itemize}
-    \item \texttt{location /Api} i \texttt{location /confirmEmail}: Przekierowują żądania na odpowiednie endpointy do lokalnego serwera działającego na porcie 5000.
+    \item \texttt{location /Api} i~\texttt{location /confirmEmail}: Przekierowują żądania na odpowiednie endpointy do lokalnego serwera działającego na porcie 5000.
 \end{itemize}
 
 \subsubsection{Obsługa plików w \texttt{/thesis}}
@@ -159,10 +159,10 @@ server {
   }
 \end{longlisting}
 \begin{itemize}
-    \item Obsługuje dostęp do plików w katalogu \texttt{/opt/city-planner-documentation}, zmieniając ścieżki i dodając nagłówek \texttt{Content-Disposition} do wyświetlania plików PDF w przeglądarce.
+    \item Obsługuje dostęp do plików w katalogu \texttt{/opt/city-planner-documentation}, zmieniając ścieżki i~dodając nagłówek \texttt{Content-Disposition} do wyświetlania plików PDF w przeglądarce.
 \end{itemize}
 
-\subsubsection{Główne ustawienia dla ścieżek i SSL}
+\subsubsection{Główne ustawienia dla ścieżek i~SSL}
 \begin{longlisting}[language=nginx,label={lst:n7}]
   location / {
     try_files $uri$args $uri$args/ /index.html;
@@ -253,7 +253,7 @@ map $http_upgrade $connection_upgrade {
     Umożliwia to poprawne działanie WebSocketów.
 \end{itemize}
 
-Ta konfiguracja zapewnia pełną obsługę zarówno dla serwowania statycznych stron, jak i przekierowania ruchu do usług backendowych, zapewniając jednocześnie bezpieczeństwo przez użycie SSL i kontrolę cache dla plików statycznych.
+Ta konfiguracja zapewnia pełną obsługę zarówno dla serwowania statycznych stron, jak i~przekierowania ruchu do usług backendowych, zapewniając jednocześnie bezpieczeństwo przez użycie SSL i~kontrolę cache dla plików statycznych.
 
 \subsection{Deployment backendu}
 \label{subsec:deployment-backendu}
@@ -276,7 +276,7 @@ Ten krok kopiuje opublikowane pliki z katalogu \texttt{WebApi/bin/production/net
 
 \subsubsection{Przygotowanie pliku usługi SystemD}
 Ten krok tworzy nowy plik usługi SystemD dla backendu aplikacji.
-Plik usługi zawiera konfigurację dla SystemD, w tym opis, zależności, ustawienia serwisu i polecenie uruchomienia.
+Plik usługi zawiera konfigurację dla SystemD, w tym opis, zależności, ustawienia serwisu i~polecenie uruchomienia.
 
 \begin{longlisting}[style=shell-colored,label={lst:db3}]
 +echo+ "Preparing SystemD service file"
@@ -309,7 +309,7 @@ Ten krok włącza nowo utworzony plik usługi SystemD, aby uruchamiał się auto
 \end{longlisting}
 
 \subsubsection{Restartowanie usługi SystemD}
-Ten krok restartuje usługę SystemD, aby zastosować nowe ustawienia i uruchomić backend aplikacji.
+Ten krok restartuje usługę SystemD, aby zastosować nowe ustawienia i~uruchomić backend aplikacji.
 \begin{longlisting}[style=shell-colored,label={lst:db5}]
 +echo+ "Restarting SystemD service file"
 +systemctl restart+ city-planner-backend
@@ -399,10 +399,10 @@ Ten krok wyświetla komunikat informujący o zakończeniu wdrożenia frontendu.
 \end{longlisting}
 
 \section{Specyfikacja API}
-Do implementacji API został użyty framework ASP.NET 8, który umożliwia tworzenie wydajnych i skalowalnych aplikacji webowych. Do zarządzania warstwą dostępu do danych i mapowania obiektowo-relacyjnego (ORM) zastosowano Entity Framework, w połączeniu z biblioteką Npgsql, która pozwala na efektywną współpracę z bazą danych PostgreSQL\@.
-Dzięki temu rozwiązaniu możliwe było stworzenie solidnej i wydajnej aplikacji z wykorzystaniem nowoczesnych technologii .NET, zapewniając jednocześnie łatwość w zarządzaniu danymi i wysoką kompatybilność z relacyjnymi bazami danych.
+Do implementacji API został użyty framework ASP.NET 8, który umożliwia tworzenie wydajnych i~skalowalnych aplikacji webowych. Do zarządzania warstwą dostępu do danych i~mapowania obiektowo-relacyjnego (ORM) zastosowano Entity Framework, w połączeniu z biblioteką Npgsql, która pozwala na efektywną współpracę z bazą danych PostgreSQL\@.
+Dzięki temu rozwiązaniu możliwe było stworzenie solidnej i~wydajnej aplikacji z wykorzystaniem nowoczesnych technologii .NET, zapewniając jednocześnie łatwość w zarządzaniu danymi i~wysoką kompatybilność z relacyjnymi bazami danych.
 
-W trakcie prac do prezentacji dokumentacji endpointów użyto Swaggera i ReDoca.
+W trakcie prac do prezentacji dokumentacji endpointów użyto Swaggera i~ReDoca.
 
 \begin{figure}[H]
 \centering
@@ -420,7 +420,7 @@ W trakcie prac do prezentacji dokumentacji endpointów użyto Swaggera i ReDoca.
 
 Poniżej przedstawiono specyfikację dostępnych punktów końcowych:
 
-\subsection{Autoryzacja i zarządzanie użytkownikami}
+\subsection{Autoryzacja i~zarządzanie użytkownikami}
 \subsubsection{\lstinline[language=http]{POST /register}}
 Rejestracja nowego użytkownika. \\
 \textbf{Request body:}
@@ -1022,9 +1022,9 @@ Pobranie prognozy pogody dla testu działania aplikacji\\
 \section{Baza danych}
 Baza danych została podzielona na dwa schematy: \texttt{data} oraz \texttt{user\_data}, aby lepiej zarządzać różnymi rodzajami informacji.
 Schemat \texttt{data} zawiera informacje o atrakcjach turystycznych oraz mapie miasta, które są dostępne publicznie.
-Dane te mogą obejmować opisy zabytków, godziny otwarcia, lokalizacje na mapie oraz inne informacje przydatne dla turystów.
+Dane te mogą obejmować opisy zabytków, godziny otwarcia, lokalizacje na mapie oraz inne informacje przydatne dla turystów.\newline
 Z kolei schemat \texttt{user\_data} przechowuje tylko dane logowania oraz uprawnienia użytkowników.
-Taki podział pozwala na lepsze zabezpieczenie danych użytkowników, usprawnienie zarządzania bazą danych oraz łatwiejsze stosowanie różnych poziomów dostępu i kontroli nad danymi.
+Taki podział pozwala na lepsze zabezpieczenie danych użytkowników, usprawnienie zarządzania bazą danych oraz łatwiejsze stosowanie różnych poziomów dostępu i~kontroli nad danymi.
 Tabele posiadają różnorodne klucze obce, które zapewniają integralność danych poprzez powiązania między tabelami oraz mechanizm kaskadowego usuwania.
 
 \subsection{Schemat \texttt{user\_data}}
@@ -1280,10 +1280,10 @@ Tabela przechowuje informacje pogodowe.
 \end{itemize}
 
 \subsection{Uprawnienia}
-Wszystkie tabele i sekwencje są przypisane do właściciela \keyword{city\_planner\_user}.
+Wszystkie tabele i~sekwencje są przypisane do właściciela \keyword{city\_planner\_user}.
 Użytkownik \keyword{city\_planner\_user} ma szerokie uprawnienia (\keyword{delete}, \keyword{insert}, \keyword{references}, \keyword{select}, \keyword{trigger}, \keyword{truncate}, \keyword{update}) na wszystkich tabelach oraz wybrane uprawnienia na sekwencjach (\keyword{select}, \keyword{update}, \keyword{usage}).
 
 \section{Frontend}
-Frontend został wykonany w technologii Angular 17, korzystając z języka TypeScript w wersji 5.4 oraz biblioteki RxJs w wersji 7.
-Aplikacja wykorzystuje różne wzorce projektowe, takie jak MVVM (Model-View-ViewModel), który oddziela logikę biznesową od interfejsu użytkownika, MVC (Model-View-Controller), który strukturalnie rozdziela dane aplikacji, logikę i interfejs użytkownika, oraz Dependency Injection, czyli wstrzykiwanie zależności, co pozwala na bardziej elastyczne zarządzanie zależnościami w aplikacji.
-Dodatkowo, za implementację stanu aplikacji odpowiada wzorzec Redux, który zapewnia centralne zarządzanie stanem aplikacji i ułatwia debugowanie oraz testowanie kodu.
+Frontend został wykonany w technologii Angular 17, korzystając z języka TypeScript w~wersji 5.4 oraz biblioteki RxJs w wersji 7.
+Aplikacja wykorzystuje różne wzorce projektowe, takie jak MVVM (Model-View-ViewModel), który oddziela logikę biznesową od interfejsu użytkownika, MVC (Model-View-Controller), który strukturalnie rozdziela dane aplikacji, logikę i~interfejs użytkownika, oraz Dependency Injection, czyli wstrzykiwanie zależności, co pozwala na bardziej elastyczne zarządzanie zależnościami w aplikacji.
+Dodatkowo, za implementację stanu aplikacji odpowiada wzorzec Redux, który zapewnia centralne zarządzanie stanem aplikacji i~ułatwia debugowanie oraz testowanie kodu.

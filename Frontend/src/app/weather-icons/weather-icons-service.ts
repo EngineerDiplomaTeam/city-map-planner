@@ -17,7 +17,7 @@ export class WeatherIconsService {
     55: ['assets/weather/cloud-rain-icon-53-.svg', 'Dense Drizzle'],
     56: ['assets/weather/cloud-rain-icon-53-.svg', 'Light Freezing Drizzle'],
     57: ['assets/weather/cloud-rain-icon-53-.svg', 'Dense Freezing Drizzle'],
-    61: ['assets/weather/cloud-small-rain-icon-61-', 'Slight Rain'],
+    61: ['assets/weather/cloud-small-rain-icon-61-.webp', 'Slight Rain'],
     63: ['assets/weather/cloud-rain-icon-53-.svg', 'Moderate Rain'],
     65: ['assets/weather/cloud-rain-icon-53-.svg', 'Heavy Rain'],
     66: ['assets/weather/cloud-snow-icon.svg', 'Light Freezing Rain'],
