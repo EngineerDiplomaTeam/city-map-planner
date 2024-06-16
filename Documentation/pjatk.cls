@@ -341,17 +341,18 @@
 
 \newenvironment{testowanie}[1][]{%
     \setkeys{pjatk}{#1}% 
-    \newcommand{\name}[1]{Nazwa: & ##1 \\ \hline}
-    \newcommand{\descr}[1]{Cel: & ##1 \\ \hline}
-    \newcommand{\type}[1]{Testowane wymaganie: & ##1 \\ \hline}
-    \newcommand{\test}[1]{Przypadek I - kroki: & Oczekiwane rezultaty\\ \hline}
-    \newcommand{\testz}[2]{##1 & ##2 \\ \hline} 
-    \newcommand{\testy}[2]{##1 & ##2 \\ \hline} 
-    \newcommand{\result}[1]{Przypadek I - wynik: & ##1 \\ \hline}
-    \newcommand{\testX}[1]{Przypadek II - kroki: & Oczekiwane rezultaty\\ \hline}
-    \newcommand{\testXz}[2]{##1 & ##2 \\ \hline} 
-    \newcommand{\testXy}[2]{##1 & ##2 \\ \hline} 
-    \newcommand{\resultX}[1]{Przypadek II - wynik: & ##1 \\ \hline}
+    \newcommand{\name}[1]{ \cellcolor[HTML]{ADD8E6} Nazwa: & ##1 \\ \hline}
+    \newcommand{\descr}[1]{ \cellcolor[HTML]{ADD8E6} Cel: & ##1 \\ \hline}
+    \newcommand{\type}[1]{ \cellcolor[HTML]{ADD8E6} Testowane wymaganie: & ##1 \\ \hline}
+    \newcommand{\env}[1]{ \cellcolor[HTML]{ADD8E6} Warunki początkowe: & ##1 \\ \hline}
+    \newcommand{\test}[1]{ \cellcolor[HTML]{ADD8E6}Przypadek I - przebieg: & \cellcolor[HTML]{ADD8E6} Oczekiwany rezultat\\ \hline}
+    \newcommand{\testz}[2]{ \parbox{0.50\linewidth}{\cellcolor[HTML]{FFFFFF}##1} & ##2 \\ \hline} 
+    \newcommand{\testy}[2]{ \parbox{0.50\linewidth}{\cellcolor[HTML]{FFFFFF}##1}& ##2 \\ \hline} 
+    \newcommand{\result}[1]{ \cellcolor[HTML]{ADD8E6} Przypadek I - wynik: & ##1 \\ \hline}
+    \newcommand{\testX}[1]{ \cellcolor[HTML]{ADD8E6} Przypadek II - przebieg: & \cellcolor[HTML]{ADD8E6} Oczekiwany rezultat\\ \hline}
+    \newcommand{\testXz}[2]{ \parbox{0.50\linewidth}{\cellcolor[HTML]{FFFFFF}##1} & ##2 \\ \hline} 
+    \newcommand{\testXy}[2]{ \parbox{0.50\linewidth}{\cellcolor[HTML]{FFFFFF}##1} & ##2 \\ \hline} 
+    \newcommand{\resultX}[1]{ \cellcolor[HTML]{ADD8E6}Przypadek II - wynik: & ##1 \\ \hline}
     \begin{table}[H] 
     \centering
     \begin{tabular}{|>{\columncolor{lightgray}}c|p{0.6\linewidth}|}
