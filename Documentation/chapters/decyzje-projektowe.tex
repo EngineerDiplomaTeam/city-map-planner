@@ -68,7 +68,7 @@ Zespół projektowy kierował się następującymi priorytetami podczas wyboru t
 ~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
 Dzięki temu rozwiązaniu możliwe jest stworzenie aplikacji internetowej, która działa~jak~natywna aplikacja mobilna~czy~desktopowa, a~jednocześnie~nie~wymaga dołączenia przeglądarki~do~paczki instalacyjnej,~jak~w~przypadku Electron.
 ~Aby~wykorzystać komercyjne doświadczenie zespołu, zdecydowaliśmy się zaimplementować aplikację w~frameworku Angular, zamiast korzystać z~React-a~poznanego~na~uczelni.
-Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z~\acrshort{pwa}.
+Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z~\acrshort{pwa}[PWA]. 
 
 Wybór technologii Progressive~Web~Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej~na~większości urządzeń codziennego użytku.
 Decyzja~ta~pozwoliła~na~efektywne wykorzystanie umiejętności zespołu, a~także~na~dostarczenie rozwiązania zgodnego z~priorytetami projektu, jakimi są wydajność i~znajomość technologii.
@@ -78,11 +78,11 @@ Decyzja~ta~pozwoliła~na~efektywne wykorzystanie umiejętności zespołu, a~tak�
 Nasz projekt zakłada stworzenie zaawansowanego algorytmu ustalania optymalnej trasy zwiedzania~na~podstawie danych czasu rzeczywistego.
 Ciągłe aktualizacje danych~po~stronie użytkowników spowodowałoby wysokie zużycie internetu oraz ogromne obciążenie~po~stronie dostawców danych.
 Dlatego postanowiliśmy stworzyć serwis, który będzie odpowiadać~za~aktualność danych oraz wyznaczanie trasy.
-Z~uwagi~na~\acrshort{pwa}, język, w~którym stworzymy~ten~serwis, musi mieć bardzo dobre wsparcie~dla~protokołu HTTP\@.~Na~uczelni poznaliśmy 2~technologie tworzenia takich serwisów.
+Z~uwagi~na~\acrshort{pwa}[PWA], język, w~którym stworzymy~ten~serwis, musi mieć bardzo dobre wsparcie~dla~protokołu HTTP\@.~Na~uczelni poznaliśmy 2~technologie tworzenia takich serwisów.
 
 \subsection{Java}\label{subsec:java}
 Java~to~język paradygmatu obiektowego, bardzo popularny w~systemach bankowych.
-W~trakcie zajęć~na~uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http} w~technologii Spring.
+W~trakcie zajęć~na~uczelni poznaliśmy sposób tworzenia serwisów \acrshort{http}[HTTP] w~technologii Spring.
 Części naszego zespołu~nie~podobają się konwencje narzucone przez tę technologię,~jak~i~sposób komunikacji z~bazą danych.
 Należy zaznaczyć, że nikt z~naszego zespołu~nie~posada komercyjnego doświadczenia z~tą technologią.
 
@@ -125,7 +125,7 @@ Nasze testy doprowadziły~nas~do decyzji,~aby~postawić~na~Ridera~od~JetBrains-�
 
 \subsection{Angular}\label{subsec:angular}
 Angular z~natury bycia technologią tworzenia stron internetowych~nie~posiada dedykowanego środowiska programistycznego stworzonego przez jedną firmę.
-Zespół tworzący~ten~framework stworzył własny program wspomagania deweloperów~na~podstawie protokółu \acrshort{lsp},~co~sprowadza się~do~tego, że każde środowisko programistyczne wspierające~ten~protokół zapewni~ten~sam poziom wsparcia~dla~Angular'a.
+Zespół tworzący~ten~framework stworzył własny program wspomagania deweloperów~na~podstawie protokółu \acrshort{lsp}[LSP],~co~sprowadza się~do~tego, że każde środowisko programistyczne wspierające~ten~protokół zapewni~ten~sam poziom wsparcia~dla~Angular'a.
 
 Warto~tu~wyróżnić Visual Studio Code, ponieważ jest~to~środowisko zalecane przez twórców Angular-a, a~nowe projekty tworzone w~tej technologii zawierają niezbędną konfigurację potrzebną~do~pełnego wsparcia~dla~Angulara.
 
@@ -179,11 +179,11 @@ W~przypadku modułu 4~możemy odroczyć oczekiwanie~na~odpowiedź modułu 3~i~po
 
 Istnieją techniki pozwalające~na~optymalizację tych rozwiązań,~aby~wyeliminować przytoczone problemy.
 Jednak opierają się~one~o~jeszcze większą fragmentację aplikacji,~na~którą~nie~możemy sobie pozwolić z~uwagi~na~liniowo rosnący czas potrzebny~na~konfigurację infrastruktury potrzebnej~do~skomunikowana wszystkich modułów w~\glslink{hermetyzacja}{hermetyczny} sposób.
-Infrastrukturę chmury internetowej w~każdym~ze~znanych~nam~dostawców~to~jest: \acrshort{aws}, \acrshort{gcp}, \acrshort{azure} możemy wyklikać w~przeglądarce internetowej.
+Infrastrukturę chmury internetowej w~każdym~ze~znanych~nam~dostawców~to~jest: \acrshort{aws}[AWS], \acrshort{gcp}[GCP], \acrshort{azure}[Azure] możemy wyklikać w~przeglądarce internetowej.
 Jednak usługi~te~znacząco się~od~siebie różnią.
 Możemy tę manualną pracę zautomatyzować przy pomocy podejścia \gls{infra-as-code},~na~przykład przy użyciu terraform.
-Pomimo iż dostawcy oferują podobne rozwiązania,~to~różnią się~one~w~sposobie konfiguracji,~na~przykład 1~usługa w~\acrshort{gcp}~to~3~usługi w~\acrshort{aws}\@.
-Terraform daje możliwość skorzystania z~dodatkowej warstwy abstrakcji pozwalającej~na~opisanie architektury~dla~\acrshort{aws},~jak~i~zarówno \acrshort{gcp}, jednakże~nie~jest~to~pełne wsparcie i~niektóre usługi~po~prostu~nie~pokrywają się pomiędzy dostawcami.
+Pomimo iż dostawcy oferują podobne rozwiązania,~to~różnią się~one~w~sposobie konfiguracji,~na~przykład 1~usługa w~\acrshort{gcp}[GCP]~to~3~usługi w~\acrshort{aws}[AWS]\@.
+Terraform daje możliwość skorzystania z~dodatkowej warstwy abstrakcji pozwalającej~na~opisanie architektury~dla~\acrshort{aws}[AWS],~jak~i~zarówno \acrshort{gcp}[GCP], jednakże~nie~jest~to~pełne wsparcie i~niektóre usługi~po~prostu~nie~pokrywają się pomiędzy dostawcami.
 Ponadto Terraform~nie~wspiera takiej funkcjonalności~dla~Azure.
 
 \subsection{Oprogramowanie on premise}\label{subsec:oprogramowanie-on-premise}
@@ -191,7 +191,7 @@ Oprogramowanie~on~premise możemy podzielić~na~bare metal i~virtual.
 
 Bare metal~to~takie, gdzie mamy fizyczny dostęp~do~maszyny i~płacimy~za~konkretne podzespoły, mamy pełną kontrolę~nad~maszyną.
 Virtual~to~oprogramowanie, w~którym~tak~jak w~przypadku bare-metal musimy sami zarządzać maszyną.
-Różni się jednak tym, że płacimy~za~parametry podzespołów,~nie~za konkretne podzespoły.~Nie~mamy też fizycznego dostępu~do~maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż fizyczna maszyna jest w~stanie zapewnić, przez~to~właściciele takich maszyn stosują \glslink{virt}{wirtualizację}.
+Różni się jednak tym, że płacimy~za~parametry podzespołów,~nie~za konkretne podzespoły.~Nie~mamy też fizycznego dostępu~do~maszyny, ponieważ parametry, jakich potrzebujemy, mogą być mniej wymagające, niż~fizyczna maszyna jest w~stanie zapewnić, przez~to~właściciele takich maszyn stosują \glslink{virt}{wirtualizację}.
 
 Bare metal~ma~taką zaletę, że jesteśmy pewni, że nikt poza nami~na~takiej maszynie~nie~będzie pracował.
 Minusem jest mała elastyczność podzespołów (musimy wiedzieć,~co~będzie działać, z~czym) oraz wysoki koszt początkowy.
@@ -230,11 +230,11 @@ Taki próg pozwoli~nie~tylko~na~wytworzenie oprogramowania, przeprowadzenie test
 W~trakcie zajęć~na~uczelni,~jak~i~pracy indywidualnej członków zespołu projektowego poznaliśmy 2~systemy kontroli wersji.
 Są~to~GIT oraz Mercurial.
 ~GIT~pod każdym względem jest lepszy~od~Mercurial,~sam~Mercurial jest uznany~za~projekt~bez~rozwoju.
-Zespół projektowy postanowił oprzeć swoją pracę~na~podstawie GIT, i trzymać repozytorium na GitHub.
+Zespół projektowy postanowił oprzeć swoją pracę~na~podstawie GIT,~i~trzymać repozytorium na GitHub.
 
 \section{Potok ciągłego wdrożenia}
 \label{sec:github-actions}
-Trzymanie repozytorium na GitHub zapewnia bezkompromisową integrację z GitHub Actions, co pozwala na automatyzację wielu procesów związanych z rozwojem oprogramowania.
+Trzymanie repozytorium na GitHub zapewnia bezkompromisową integrację~z~GitHub Actions, co pozwala na automatyzację wielu procesów związanych~z~rozwojem oprogramowania.
 Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różne potoki ciągłej integracji.
 
 \subsection{Potok Backendu}
@@ -256,7 +256,7 @@ Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różn
 
 \subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
 \begin{itemize}
-    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy~z~wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
     \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Backend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
     \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Backend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
 \end{itemize}
@@ -264,7 +264,7 @@ Zespół projektowy, aby zoptymalizować swoje działania, stworzył trzy różn
 \subsubsection{Zadanie: build}
 Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
 \paragraph{Kroki:}
-\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\subparagraph{Checkout repository}: Pobiera kod~z~repozytorium.
 \begin{lstlisting}[style=yaml-colored]
     - @name@: !'Checkout repository'!
       @uses@: !'actions/checkout@v3'!
@@ -292,7 +292,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       @working-directory@: !'Backend'!
 \end{lstlisting}
 
-\subparagraph{Test}: Uruchamia testy jednostkowe z loggerem \texttt{\textcolor{codeblue}{trx}}, bez ponownego budowania projektu w katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\subparagraph{Test}: Uruchamia testy jednostkowe~z~loggerem \texttt{\textcolor{codeblue}{trx}}, bez ponownego budowania projektu w katalogu \texttt{\textcolor{codeblue}{Backend}}.
 \begin{lstlisting}[style=yaml-colored]
     - @name@: !'Test'!
       @run@: !'dotnet test --logger trx --no-build --verbosity normal'!
@@ -307,7 +307,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
         @python-version@: !3.8!
 \end{lstlisting}
 
-\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.trx}} z katalogu \texttt{\textcolor{codeblue}{Backend}}.
+\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.trx}}~z~katalogu \texttt{\textcolor{codeblue}{Backend}}.
 \begin{lstlisting}[style=yaml-colored]
     - @name@: !'Publish Test Results'!
       @uses@: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
@@ -328,7 +328,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       @if@: !github.event_name != 'pull_request'!
 \end{lstlisting}
 
-Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania projektu .NET za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+Ten przepływ pracy automatyzuje proces budowania, testowania~i~wdrażania projektu .NET za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
 
 \subsubsection{Kod YAML}
 \begin{lstlisting}[style=yaml-colored]
@@ -419,7 +419,7 @@ Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania proje
 
 \subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
 \begin{itemize}
-    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy~z~wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
     \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Frontend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
     \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Frontend/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
 \end{itemize}
@@ -427,7 +427,7 @@ Ten przepływ pracy automatyzuje proces budowania, testowania i wdrażania proje
 \subsubsection{Zadania}
 Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
 \paragraph{Kroki:}
-\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\subparagraph{Checkout repository}: Pobiera kod~z~repozytorium.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Checkout repository'!
       +uses+: !'actions/checkout@v3'!
@@ -441,7 +441,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
         +version+: !9!
 \end{lstlisting}
 
-\subparagraph{Use Node.js 20}: Ustawia Node.js w wersji 20.x, z buforowaniem pnpm.
+\subparagraph{Use Node.js 20}: Ustawia Node.js w wersji 20.x,~z~buforowaniem pnpm.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Use Node.js 20'!
       +uses+: !'actions/setup-node@v3'!
@@ -457,7 +457,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +run+: |
         !corepack enable!
         !pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm!
-        !pnpm i --frozen-lockfile!
+        !pnpm~i~--frozen-lockfile!
       +working-directory+: !'Frontend'!
 \end{lstlisting}
 
@@ -468,7 +468,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +working-directory+: !'Frontend'!
 \end{lstlisting}
 
-\subparagraph{Run unit tests}: Uruchamia testy jednostkowe z generowaniem raportu pokrycia kodu.
+\subparagraph{Run unit tests}: Uruchamia testy jednostkowe~z~generowaniem raportu pokrycia kodu.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Run unit tests'!
       +run+: !'pnpm ng test --watch=false --code-coverage --reporters=junit,coverage'!
@@ -485,7 +485,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
         +python-version+: !3.8!
 \end{lstlisting}
 
-\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.xml}} z katalogu \texttt{\textcolor{codeblue}{Frontend}}.
+\subparagraph{Publish Test Results}: Publikuje wyniki testów jednostkowych, używając plików \texttt{\textcolor{codeblue}{.xml}}~z~katalogu \texttt{\textcolor{codeblue}{Frontend}}.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Publish Test Results'!
       +uses+: !'EnricoMi/publish-unit-test-result-action/composite@v2'!
@@ -511,7 +511,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +if+: !github.event_name != 'pull_request'!
 \end{lstlisting}
 
-Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, budowania kodu i uruchamiania testów jednostkowych za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, budowania kodu~i~uruchamiania testów jednostkowych za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są~wdrażane.
 
 \subsubsection{Kod YAML}
 \begin{lstlisting}[style=yaml-colored]
@@ -561,7 +561,7 @@ Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, bu
       +run+: |
         !corepack enable!
         !pnpm config set store-dir $RUNNER_TOOL_CACHE/.pnpm!
-        !pnpm i --frozen-lockfile!
+        !pnpm~i~--frozen-lockfile!
       +working-directory+: !'Frontend'!
 
     - +name+: !'Lint files'!
@@ -622,7 +622,7 @@ Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, bu
 
 \subsubsection{Wydarzenia Wyzwalające Przepływ Pracy}
 \begin{itemize}
-    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy z wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
+    \item \texttt{\textcolor{codeblue}{workflow\_dispatch}}: ręczne uruchomienie przepływu pracy~z~wymaganym polem \texttt{\textcolor{codeblue}{reason}}, które musi być dostarczone przez użytkownika.
     \item \texttt{\textcolor{codeblue}{push}}: wyzwalane przy wypychaniu zmian do ścieżki \texttt{\textcolor{codeblue}{Documentation/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
     \item \texttt{\textcolor{codeblue}{pull\_request}}: wyzwalane przy tworzeniu pull requestów, które dotyczą ścieżki \texttt{\textcolor{codeblue}{Documentation/**}} na gałęzi \texttt{\textcolor{codeblue}{main}}.
 \end{itemize}
@@ -630,13 +630,13 @@ Ten przepływ pracy automatyzuje proces instalacji zależności, buforowania, bu
 \subsubsection{Zadania}
 Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
 \paragraph{Kroki:}
-\subparagraph{Checkout repository}: Pobiera kod z repozytorium.
+\subparagraph{Checkout repository}: Pobiera kod~z~repozytorium.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Checkout repository'!
       +uses+: !'actions/checkout@v3'!
 \end{lstlisting}
 
-\subparagraph{Build}: Buduje dokumentację LaTeX, uruchamiając komendy `pdflatex`, `biber`, `makeglossaries` i ponownie `pdflatex` w katalogu \texttt{\textcolor{codeblue}{Documentation}}.
+\subparagraph{Build}: Buduje dokumentację LaTeX, uruchamiając komendy `pdflatex`, `biber`, `makeglossaries`~i~ponownie `pdflatex` w katalogu \texttt{\textcolor{codeblue}{Documentation}}.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Build'!
       # Glossaries https://tex.stackexchange.com/a/46732
@@ -678,7 +678,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +if+: !github.event_name == 'pull_request'!
 \end{lstlisting}
 
-Ten przepływ pracy automatyzuje proces budowania i wdrażania dokumentacji LaTeX za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+Ten przepływ pracy automatyzuje proces budowania~i~wdrażania dokumentacji LaTeX za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
 
 \subsubsection{Kod YAML}
 \begin{lstlisting}[style=yaml-colored]
