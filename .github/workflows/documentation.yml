@@ -41,6 +41,10 @@ jobs:
         makeglossaries thesis
         pdflatex thesis.tex
         pdflatex thesis.tex
+        pdflatex thesis.tex
+        biber thesis
+        makeglossaries thesis
+        pdflatex thesis.tex
       working-directory: 'Documentation'
 
     - uses: actions/upload-artifact@v3
