@@ -1,6 +1,5 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { inject, Injectable } from '@angular/core';
-import { AuthService } from '../../auth.service';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../auth.actions';
 
@@ -17,7 +16,6 @@ export interface ManageUserAccountState {
 @Injectable()
 export class ManageUserAccountStore extends ComponentStore<ManageUserAccountState> {
   private readonly store = inject(Store);
-  private readonly authService = inject(AuthService);
   public readonly view = this.selectSignal((state) => state.view);
   public readonly loading = this.selectSignal((state) => state.loading);
 
@@ -47,13 +45,8 @@ export class ManageUserAccountStore extends ComponentStore<ManageUserAccountStat
 
   public async onManage2fa(): Promise<void> {
     this.patchState(() => ({
-      loading: true,
       view: 'manage-2fa',
     }));
-
-    const data = await this.authService.get2faData();
-
-    console.log(data); // TODO: Implement 2fa support, leverage `Api/Manage/2fa` endpoint
   }
 
   public async onDeleteMe(): Promise<void> {

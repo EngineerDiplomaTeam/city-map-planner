@@ -14,6 +14,8 @@ import { Store } from '@ngrx/store';
 import { selectUserAccount } from './auth.selectors';
 import { UserAuthData } from './auth.reducer';
 import { authActions } from './auth.actions';
+import { OtpDialogComponent } from './auth-dialog/otp-dialog/otp-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export type AuthResult =
   | ({
@@ -43,12 +45,21 @@ export interface User2faData {
   isMachineRemembered: boolean;
 }
 
+export interface Enable2faResponse {
+  sharedKey: string;
+  recoveryCodesLeft: number;
+  recoveryCodes: string[];
+  isTwoFactorEnabled: boolean;
+  isMachineRemembered: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly store = inject(Store);
+  private readonly otpDialog = inject(MatDialog);
   private readonly userAuthData = this.store.selectSignal(selectUserAccount);
   private get currentSeconds(): number {
     return Math.round(Date.now() / 1000);
@@ -126,6 +137,27 @@ export class AuthService {
                 return of({
                   type: 'lockedOut',
                 });
+              } else if (body['detail'] === 'RequiresTwoFactor') {
+                const dialogRef = this.otpDialog.open(OtpDialogComponent);
+                return dialogRef.afterClosed().pipe(
+                  switchMap((otp) =>
+                    this.http
+                      .post('/Api/Login', {
+                        email,
+                        password,
+                        twoFactorCode: `${otp}`,
+                      })
+                      .pipe(
+                        map(
+                          (x) =>
+                            Object.assign({}, x, {
+                              type: 'successLogin',
+                              tokenTimestamp: this.currentSeconds,
+                            }) as AuthResult,
+                        ),
+                      ),
+                  ),
+                );
               } else {
                 return of({
                   type: 'badLogin',
@@ -189,7 +221,44 @@ export class AuthService {
     );
   }
 
+  public async getQrCode(code: string): Promise<string> {
+    return await firstValueFrom(
+      this.http.get<string>('/Api/generate-qr-code', {
+        params: {
+          code,
+        },
+      }),
+    );
+  }
+
   public async deleteMe(): Promise<void> {
     await firstValueFrom(this.http.post('/Api/DeleteMe', {}));
+  }
+
+  public async verify2fa(otp: string): Promise<Enable2faResponse> {
+    return await firstValueFrom(
+      this.http.post<Enable2faResponse>('/Api/Manage/2fa', {
+        enable: true,
+        twoFactorCode: otp,
+      }),
+    );
+  }
+
+  public async disable2fa() {
+    return await firstValueFrom(
+      this.http.post('/Api/Manage/2fa', {
+        resetSharedKey: true,
+      }),
+    );
+  }
+
+  public async resetRecoveryCodes(): Promise<string[]> {
+    return await firstValueFrom(
+      this.http
+        .post<{ recoveryCodes: string[] }>('/Api/Manage/2fa', {
+          resetRecoveryCodes: true,
+        })
+        .pipe(map((r) => r.recoveryCodes)),
+    );
   }
 }
