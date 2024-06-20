@@ -152,12 +152,12 @@
 
 % Definicja nowego stylu glosariusza
 \newglossarystyle{mystyle}{
-  \setglossarystyle{list}
-  \renewcommand*{\glossentry}{
-    \glossentryname
-    \glossentrydesc
-    (strony~\glsentrylistpages)
-  }%
+  \setglossarystyle{list}%
+  \renewenvironment{theglossary}%
+    {\begin{description}}%
+    {\end{description}}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \item[\glsentryitem{##1}\glstarget{##1}{##2}] ##3 ##5 (strony ##4)}%
 }
 \input{słownik-pojęć}
 
@@ -212,7 +212,7 @@
 
 	% Słownik pojęć i skrótów
 	\printglossary[type=\acronymtype]
-	\printglossary
+	\printglossary[style=mystyle]
 
 	\input{chapters/opis-problemu}
 	\input{chapters/kontekst-projektu}
