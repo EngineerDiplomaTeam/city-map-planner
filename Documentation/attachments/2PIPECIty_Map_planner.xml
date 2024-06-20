@@ -1,0 +1,3505 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+<net id="Net-One" type="P/T net">
+<token id="Default" enabled="true" red="0" green="0" blue="0"/>
+<place id="Aktywacja Konta">
+<graphics>
+<position x="1095.0" y="780.0"/>
+</graphics>
+<name>
+<value>Aktywacja Konta</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="API Overpass">
+<graphics>
+<position x="450.0" y="390.0"/>
+</graphics>
+<name>
+<value>API Overpass</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="API Pogodowe">
+<graphics>
+<position x="330.0" y="735.0"/>
+</graphics>
+<name>
+<value>API Pogodowe</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Atrakcja">
+<graphics>
+<position x="1395.0" y="405.0"/>
+</graphics>
+<name>
+<value>Atrakcja</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Atrakcja naniesiona na kalendarz">
+<graphics>
+<position x="1260.0" y="165.0"/>
+</graphics>
+<name>
+<value>Atrakcja naniesiona na kalendarz</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Baza Danych">
+<graphics>
+<position x="570.0" y="570.0"/>
+</graphics>
+<name>
+<value>Baza Danych</value>
+<graphics>
+<offset x="-11.111111111111105" y="19.999999999999993"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="B&#322;&#261;d Serwisu">
+<graphics>
+<position x="600.0" y="165.0"/>
+</graphics>
+<name>
+<value>B&#322;&#261;d Serwisu</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Bufor">
+<graphics>
+<position x="1335.0" y="330.0"/>
+</graphics>
+<name>
+<value>Bufor</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforB&#322;&#281;duSerwisu">
+<graphics>
+<position x="690.0" y="255.0"/>
+</graphics>
+<name>
+<value>BuforB&#322;&#281;duSerwisu</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforKoszyk">
+<graphics>
+<position x="885.0" y="360.0"/>
+</graphics>
+<name>
+<value>BuforKoszyk</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforlogAdmin">
+<graphics>
+<position x="705.0" y="795.0"/>
+</graphics>
+<name>
+<value>BuforlogAdmin</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforNawigacja">
+<graphics>
+<position x="750.0" y="315.0"/>
+</graphics>
+<name>
+<value>BuforNawigacja</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforOverpass">
+<graphics>
+<position x="375.0" y="405.0"/>
+</graphics>
+<name>
+<value>BuforOverpass</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforPogoda">
+<graphics>
+<position x="345.0" y="780.0"/>
+</graphics>
+<name>
+<value>BuforPogoda</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforUsuniecia">
+<graphics>
+<position x="1590.0" y="480.0"/>
+</graphics>
+<name>
+<value>BuforUsuniecia</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforZalogowany">
+<graphics>
+<position x="1095.0" y="540.0"/>
+</graphics>
+<name>
+<value>BuforZalogowany</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="BuforZarzadzania">
+<graphics>
+<position x="1335.0" y="735.0"/>
+</graphics>
+<name>
+<value>BuforZarzadzania</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="CHAT GPT">
+<graphics>
+<position x="285.0" y="975.0"/>
+</graphics>
+<name>
+<value>CHAT GPT</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Formularz edycji POI">
+<graphics>
+<position x="675.0" y="915.0"/>
+</graphics>
+<name>
+<value>Formularz edycji POI</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Kalendarz">
+<graphics>
+<position x="1095.0" y="225.0"/>
+</graphics>
+<name>
+<value>Kalendarz</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Komunikat dla u&#380;ytkownika">
+<graphics>
+<position x="600.0" y="1065.0"/>
+</graphics>
+<name>
+<value>Komunikat dla u&#380;ytkownika</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Koszyk z atrakcjami">
+<graphics>
+<position x="1005.0" y="330.0"/>
+</graphics>
+<name>
+<value>Koszyk z atrakcjami</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Logowanie">
+<graphics>
+<position x="990.0" y="735.0"/>
+</graphics>
+<name>
+<value>Logowanie</value>
+<graphics>
+<offset x="1.0" y="1.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="MAPA">
+<graphics>
+<position x="840.0" y="615.0"/>
+</graphics>
+<name>
+<value>MAPA</value>
+<graphics>
+<offset x="73.0" y="24.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Menad&#380;er POI">
+<graphics>
+<position x="690.0" y="690.0"/>
+</graphics>
+<name>
+<value>Menad&#380;er POI</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Menu U&#380;ytkownika u góry">
+<graphics>
+<position x="1140.0" y="390.0"/>
+</graphics>
+<name>
+<value>Menu U&#380;ytkownika u góry</value>
+<graphics>
+<offset x="185.5555555555556" y="18.888888888888886"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Nie zalogowany">
+<graphics>
+<position x="1065.0" y="630.0"/>
+</graphics>
+<name>
+<value>Nie zalogowany</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Podsumowanie Trasy">
+<graphics>
+<position x="1080.0" y="45.0"/>
+</graphics>
+<name>
+<value>Podsumowanie Trasy</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Poprawne dane POI">
+<graphics>
+<position x="540.0" y="780.0"/>
+</graphics>
+<name>
+<value>Poprawne dane POI</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Rejestracja">
+<graphics>
+<position x="1200.0" y="720.0"/>
+</graphics>
+<name>
+<value>Rejestracja</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Zalogowany">
+<graphics>
+<position x="885.0" y="960.0"/>
+</graphics>
+<name>
+<value>Zalogowany</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Zalogowany admin">
+<graphics>
+<position x="735.0" y="1065.0"/>
+</graphics>
+<name>
+<value>Zalogowany admin</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Zarz&#261;dzanie kontem">
+<graphics>
+<position x="1530.0" y="750.0"/>
+</graphics>
+<name>
+<value>Zarz&#261;dzanie kontem</value>
+<graphics>
+<offset x="-7.5" y="12.5"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Zmiana danych">
+<graphics>
+<position x="1215.0" y="975.0"/>
+</graphics>
+<name>
+<value>Zmiana danych</value>
+<graphics>
+<offset x="77.50000000000001" y="50.83333333333336"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<transition id="B&#322;&#261;d AI">
+<graphics>
+<position x="480.0" y="1080.0"/>
+</graphics>
+<name>
+<value>B&#322;&#261;d AI</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Dane o godzinach otwarcia">
+<graphics>
+<position x="390.0" y="915.0"/>
+</graphics>
+<name>
+<value>Dane o godzinach otwarcia</value>
+<graphics>
+<offset x="-8.0" y="16.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Dodanie do koszyka">
+<graphics>
+<position x="1485.0" y="315.0"/>
+</graphics>
+<name>
+<value>Dodanie do koszyka</value>
+<graphics>
+<offset x="48.55555555555556" y="55.33333333333333"/>
+</graphics>
+</name>
+<orientation>
+<value>315</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Interwa&#322;owa aktualizacja danych mapy">
+<graphics>
+<position x="390.0" y="465.0"/>
+</graphics>
+<name>
+<value>Interwa&#322;owa aktualizacja danych mapy</value>
+<graphics>
+<offset x="-5.0" y="36.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Interwa&#322;owa aktualizacja pogody">
+<graphics>
+<position x="285.0" y="765.0"/>
+</graphics>
+<name>
+<value>Interwa&#322;owa aktualizacja pogody</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>315</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Klikni&#281;cie w koszyk">
+<graphics>
+<position x="1005.0" y="390.0"/>
+</graphics>
+<name>
+<value>Klikni&#281;cie w koszyk</value>
+<graphics>
+<offset x="-12.0" y="16.0"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Naci&#347;niecie przycisku zarz&#261;dzanie kontem">
+<graphics>
+<position x="1200.0" y="570.0"/>
+</graphics>
+<name>
+<value>Naci&#347;niecie przycisku zarz&#261;dzanie kontem</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Naci&#347;niecie przycisku zmiany danych">
+<graphics>
+<position x="1290.0" y="900.0"/>
+</graphics>
+<name>
+<value>Naci&#347;niecie przycisku zmiany danych</value>
+<graphics>
+<offset x="235.00000000000017" y="18.333333333333343"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych">
+<graphics>
+<position x="1320.0" y="600.0"/>
+</graphics>
+<name>
+<value>Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych</value>
+<graphics>
+<offset x="243.33333333333337" y="12.500000000000012"/>
+</graphics>
+</name>
+<orientation>
+<value>45</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Naniesienie POI na kalanerz">
+<graphics>
+<position x="1170.0" y="195.0"/>
+</graphics>
+<name>
+<value>Naniesienie POI na kalanerz</value>
+<graphics>
+<offset x="140.75" y="49.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Nawigacja">
+<graphics>
+<position x="945.0" y="495.0"/>
+</graphics>
+<name>
+<value>Nawigacja</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Otwarcie Kalendarza">
+<graphics>
+<position x="1035.0" y="255.0"/>
+</graphics>
+<name>
+<value>Otwarcie Kalendarza</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Otwarcie menad&#380;era">
+<graphics>
+<position x="690.0" y="600.0"/>
+</graphics>
+<name>
+<value>Otwarcie menad&#380;era</value>
+<graphics>
+<offset x="74.23076923076921" y="-9.615384615384627"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Otwarcie POI">
+<graphics>
+<position x="675.0" y="750.0"/>
+</graphics>
+<name>
+<value>Otwarcie POI</value>
+<graphics>
+<offset x="-15.833333333333334" y="16.666666666666664"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Otworzenie karty atrakcji">
+<graphics>
+<position x="1290.0" y="450.0"/>
+</graphics>
+<name>
+<value>Otworzenie karty atrakcji</value>
+<graphics>
+<offset x="-20.0" y="11.0"/>
+</graphics>
+</name>
+<orientation>
+<value>315</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Podano poprawne dane">
+<graphics>
+<position x="585.0" y="825.0"/>
+</graphics>
+<name>
+<value>Podano poprawne dane</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>45</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Podano prawid&#322;owe dane logowania">
+<graphics>
+<position x="1035.0" y="675.0"/>
+</graphics>
+<name>
+<value>Podano prawid&#322;owe dane logowania</value>
+<graphics>
+<offset x="-9.166666666666666" y="10.0"/>
+</graphics>
+</name>
+<orientation>
+<value>315</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Potwierdzenie maila">
+<graphics>
+<position x="1155.0" y="765.0"/>
+</graphics>
+<name>
+<value>Potwierdzenie maila</value>
+<graphics>
+<offset x="142.0" y="30.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Usuniecieadmina">
+<graphics>
+<position x="1620.0" y="645.0"/>
+</graphics>
+<name>
+<value>Usuniecieadmina</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Usuniecie u&#380;ytkownika">
+<graphics>
+<position x="1845.0" y="615.0"/>
+</graphics>
+<name>
+<value>Usuniecie u&#380;ytkownika</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Usuniecie z koszyka">
+<graphics>
+<position x="1155.0" y="330.0"/>
+</graphics>
+<name>
+<value>Usuniecie z koszyka</value>
+<graphics>
+<offset x="-5.0" y="52.0"/>
+</graphics>
+</name>
+<orientation>
+<value>180</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Uzupe&#322;nienie godzin otwarcia przy u&#380;yciu AI">
+<graphics>
+<position x="600.0" y="975.0"/>
+</graphics>
+<name>
+<value>Uzupe&#322;nienie godzin otwarcia przy u&#380;yciu AI</value>
+<graphics>
+<offset x="-9.0" y="34.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wprowadz dane">
+<graphics>
+<position x="1185.0" y="630.0"/>
+</graphics>
+<name>
+<value>Wprowadz dane</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wyj&#347;cie z zarzadzania kontem">
+<graphics>
+<position x="1035.0" y="975.0"/>
+</graphics>
+<name>
+<value>Wyj&#347;cie z zarzadzania kontem</value>
+<graphics>
+<offset x="110.00000000000001" y="53.33333333333335"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wyloguj">
+<graphics>
+<position x="825.0" y="1125.0"/>
+</graphics>
+<name>
+<value>Wyloguj</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="wylogujuser">
+<graphics>
+<position x="915.0" y="1050.0"/>
+</graphics>
+<name>
+<value>wylogujuser</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wys&#322;anie informacji o b&#322;&#281;dzie do Aspire Dashboard">
+<graphics>
+<position x="630.0" y="75.0"/>
+</graphics>
+<name>
+<value>Wys&#322;anie informacji o b&#322;&#281;dzie do Aspire Dashboard</value>
+<graphics>
+<offset x="-18.333333333333332" y="21.66666666666667"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wyst&#261;pi&#322; b&#322;&#261;d serwisu">
+<graphics>
+<position x="540.0" y="285.0"/>
+</graphics>
+<name>
+<value>Wyst&#261;pi&#322; b&#322;&#261;d serwisu</value>
+<graphics>
+<offset x="-3.3333333333333344" y="4.999999999999994"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Wy&#347;wietlenie podsumowania">
+<graphics>
+<position x="1245.0" y="75.0"/>
+</graphics>
+<name>
+<value>Wy&#347;wietlenie podsumowania</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>45</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zalogowano">
+<graphics>
+<position x="960.0" y="810.0"/>
+</graphics>
+<name>
+<value>Zalogowano</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zalogowano po rejestracji">
+<graphics>
+<position x="990.0" y="825.0"/>
+</graphics>
+<name>
+<value>Zalogowano po rejestracji</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zaloguj Admin">
+<graphics>
+<position x="765.0" y="765.0"/>
+</graphics>
+<name>
+<value>Zaloguj Admin</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zamkniecie komunikatu">
+<graphics>
+<position x="660.0" y="1005.0"/>
+</graphics>
+<name>
+<value>Zamkniecie komunikatu</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zamkni&#281;cie karty atrakcji">
+<graphics>
+<position x="1425.0" y="480.0"/>
+</graphics>
+<name>
+<value>Zamkni&#281;cie karty atrakcji</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>270</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zamkni&#281;cie menad&#380;era">
+<graphics>
+<position x="765.0" y="660.0"/>
+</graphics>
+<name>
+<value>Zamkni&#281;cie menad&#380;era</value>
+<graphics>
+<offset x="-12.0" y="20.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zamkni&#281;cie podsumowania">
+<graphics>
+<position x="810.0" y="165.0"/>
+</graphics>
+<name>
+<value>Zamkni&#281;cie podsumowania</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>135</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zapis danych mapy">
+<graphics>
+<position x="570.0" y="450.0"/>
+</graphics>
+<name>
+<value>Zapis danych mapy</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>225</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zapis danych pogody">
+<graphics>
+<position x="435.0" y="660.0"/>
+</graphics>
+<name>
+<value>Zapis danych pogody</value>
+<graphics>
+<offset x="6.538461538461538" y="-4.230769230769243"/>
+</graphics>
+</name>
+<orientation>
+<value>315</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Zapis danych POI">
+<graphics>
+<position x="555.0" y="690.0"/>
+</graphics>
+<name>
+<value>Zapis danych POI</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="zarzadzaj kontem">
+<graphics>
+<position x="1260.0" y="645.0"/>
+</graphics>
+<name>
+<value>zarzadzaj kontem</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>45</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>true</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<arc id="Aktywacja Konta to Zalogowano po rejestracji" source="Aktywacja Konta" target="Zalogowano po rejestracji">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1091" y="796" curvePoint="false"/>
+<arcpath id="001" x="1003" y="831" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="API Overpass to Wyst&#261;pi&#322; b&#322;&#261;d serwisu" source="API Overpass" target="Wyst&#261;pi&#322; b&#322;&#261;d serwisu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="471" y="390" curvePoint="false"/>
+<arcpath id="001" x="550" y="302" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="API Overpass to Zapis danych mapy" source="API Overpass" target="Zapis danych mapy">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="473" y="406" curvePoint="false"/>
+<arcpath id="001" x="581" y="453" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="API Pogodowe to Zapis danych pogody" source="API Pogodowe" target="Zapis danych pogody">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="352" y="736" curvePoint="false"/>
+<arcpath id="001" x="438" y="671" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Atrakcja naniesiona na kalendarz to Wy&#347;wietlenie podsumowania" source="Atrakcja naniesiona na kalendarz" target="Wy&#347;wietlenie podsumowania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1268" y="161" curvePoint="false"/>
+<arcpath id="001" x="1258" y="88" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Atrakcja to Dodanie do koszyka" source="Atrakcja" target="Dodanie do koszyka">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1416" y="405" curvePoint="false"/>
+<arcpath id="001" x="1488" y="326" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Atrakcja to Zamkni&#281;cie karty atrakcji" source="Atrakcja" target="Zamkni&#281;cie karty atrakcji">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1412" y="428" curvePoint="false"/>
+<arcpath id="001" x="1441" y="486" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Baza Danych to Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" source="Baza Danych" target="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="593" y="572" curvePoint="false"/>
+<arcpath id="001" x="731" y="491" curvePoint="false"/>
+<arcpath id="002" x="1151" y="446" curvePoint="false"/>
+<arcpath id="003" x="1326" y="608" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Baza Danych to Otwarcie menad&#380;era" source="Baza Danych" target="Otwarcie menad&#380;era">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="595" y="585" curvePoint="false"/>
+<arcpath id="001" x="685" y="611" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Baza Danych to Zapis danych mapy" source="Baza Danych" target="Zapis danych mapy">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="581" y="566" curvePoint="false"/>
+<arcpath id="001" x="581" y="467" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Baza Danych to Zapis danych pogody" source="Baza Danych" target="Zapis danych pogody">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="567" y="588" curvePoint="false"/>
+<arcpath id="001" x="446" y="663" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Baza Danych to Zapis danych POI" source="Baza Danych" target="Zapis danych POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="578" y="595" curvePoint="false"/>
+<arcpath id="001" x="563" y="695" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="B&#322;&#261;d AI to B&#322;&#261;d Serwisu" source="B&#322;&#261;d AI" target="B&#322;&#261;d Serwisu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="485" y="1096" curvePoint="false"/>
+<arcpath id="001" x="71" y="1010" curvePoint="false"/>
+<arcpath id="002" x="71" y="166" curvePoint="false"/>
+<arcpath id="003" x="596" y="175" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="B&#322;&#261;d AI to Komunika dla u&#380;ytkownika" source="B&#322;&#261;d AI" target="Komunikat dla u&#380;ytkownika">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="495" y="1091" curvePoint="false"/>
+<arcpath id="001" x="596" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="B&#322;&#261;d Serwisu to Wy&#347;wietlenie komunikatu b&#322;&#281;du" source="B&#322;&#261;d Serwisu" target="Wys&#322;anie informacji o b&#322;&#281;dzie do Aspire Dashboard">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="615" y="161" curvePoint="false"/>
+<arcpath id="001" x="636" y="90" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforB&#322;&#281;duSerwisu to Wyst&#261;pi&#322; b&#322;&#261;d serwisu" source="BuforB&#322;&#281;duSerwisu" target="Wyst&#261;pi&#322; b&#322;&#261;d serwisu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="686" y="268" curvePoint="false"/>
+<arcpath id="001" x="557" y="295" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforKoszyk to Klikni&#281;cie w koszyk" source="BuforKoszyk" target="Klikni&#281;cie w koszyk">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="910" y="375" curvePoint="false"/>
+<arcpath id="001" x="1001" y="400" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforlogAdmin to Usuniecie u&#380;ytkownika" source="BuforlogAdmin" target="Usuniecie u&#380;ytkownika">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="727" y="815" curvePoint="false"/>
+<arcpath id="001" x="840" y="896" curvePoint="false"/>
+<arcpath id="002" x="1757" y="932" curvePoint="false"/>
+<arcpath id="003" x="1856" y="641" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforlogAdmin to wylogujuser" source="BuforlogAdmin" target="wylogujuser">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="725" y="817" curvePoint="false"/>
+<arcpath id="001" x="920" y="1061" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforlogAdmin to Zaloguj Admin" source="BuforlogAdmin" target="Zaloguj Admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="728" y="798" curvePoint="false"/>
+<arcpath id="001" x="770" y="776" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforNawigacja to Nawigacja" source="BuforNawigacja" target="Nawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="771" y="336" curvePoint="false"/>
+<arcpath id="001" x="945" y="495" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforNawigacja to Otwarcie menad&#380;era" source="BuforNawigacja" target="Otwarcie menad&#380;era">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="757" y="340" curvePoint="false"/>
+<arcpath id="001" x="700" y="605" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforNawigacja to Zaloguj Admin" source="BuforNawigacja" target="Zaloguj Admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="746" y="330" curvePoint="false"/>
+<arcpath id="001" x="632" y="371" curvePoint="false"/>
+<arcpath id="002" x="776" y="761" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforOverpass to Interwa&#322;owa aktualizacja danych mapy" source="BuforOverpass" target="Interwa&#322;owa aktualizacja danych mapy">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="390" y="430" curvePoint="false"/>
+<arcpath id="001" x="400" y="467" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforPogoda to Interwa&#322;owa aktualizacja pogody" source="BuforPogoda" target="Interwa&#322;owa aktualizacja pogody">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="341" y="788" curvePoint="false"/>
+<arcpath id="001" x="306" y="786" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Bufor to Otworzenie karty atrakcji" source="Bufor" target="Otworzenie karty atrakcji">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1340" y="355" curvePoint="false"/>
+<arcpath id="001" x="1301" y="453" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforUsuniecia to Usuniecieadmina" source="BuforUsuniecia" target="Usuniecieadmina">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1603" y="505" curvePoint="false"/>
+<arcpath id="001" x="1631" y="641" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforUsuniecia to Usuniecie u&#380;ytkownika" source="BuforUsuniecia" target="Usuniecie u&#380;ytkownika">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1613" y="497" curvePoint="false"/>
+<arcpath id="001" x="1851" y="617" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforZalogowany to Naci&#347;niecie przycisku zarz&#261;dzanie kontem" source="BuforZalogowany" target="Naci&#347;niecie przycisku zarz&#261;dzanie kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1120" y="555" curvePoint="false"/>
+<arcpath id="001" x="1195" y="581" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="BuforZarzadzania to zarzadzaj kontem" source="BuforZarzadzania" target="zarzadzaj kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1335" y="735" curvePoint="false"/>
+<arcpath id="001" x="1270" y="662" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="CHAT GPT to B&#322;&#261;d AI" source="CHAT GPT" target="B&#322;&#261;d AI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="308" y="992" curvePoint="false"/>
+<arcpath id="001" x="486" y="1086" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="CHAT GPT to Dane o godzinach otwarcia" source="CHAT GPT" target="Dane o godzinach otwarcia">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="308" y="977" curvePoint="false"/>
+<arcpath id="001" x="395" y="926" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Dane o godzinach otwarcia to Formularz edycji POI" source="Dane o godzinach otwarcia" target="Formularz edycji POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="405" y="926" curvePoint="false"/>
+<arcpath id="001" x="671" y="926" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Dodanie do koszyka to Atrakcja" source="Dodanie do koszyka" target="Atrakcja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1496" y="333" curvePoint="false"/>
+<arcpath id="001" x="1416" y="405" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Formularz edycji POI to Podano poprawne dane" source="Formularz edycji POI" target="Podano poprawne dane">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="675" y="915" curvePoint="false"/>
+<arcpath id="001" x="598" y="838" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Formularz edycji POI to Uzupe&#322;nienei godzin otwarcia przy u&#380;yciu AI" source="Formularz edycji POI" target="Uzupe&#322;nienie godzin otwarcia przy u&#380;yciu AI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="673" y="935" curvePoint="false"/>
+<arcpath id="001" x="615" y="986" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Interwa&#322;owa aktualizacja pogody to API Pogodowe" source="Interwa&#322;owa aktualizacja pogody" target="API Pogodowe">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="298" y="772" curvePoint="false"/>
+<arcpath id="001" x="327" y="753" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Interwa&#322;owa aktualizacja to API Overpass" source="Interwa&#322;owa aktualizacja danych mapy" target="API Overpass">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="407" y="475" curvePoint="false"/>
+<arcpath id="001" x="452" y="412" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Kalendarz to naniesienie na kalanerz" source="Kalendarz" target="Naniesienie POI na kalanerz">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1120" y="230" curvePoint="false"/>
+<arcpath id="001" x="1177" y="208" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Klikni&#281;cie w koszyk to Koszyk z atrakcjami" source="Klikni&#281;cie w koszyk" target="Koszyk z atrakcjami">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1016" y="396" curvePoint="false"/>
+<arcpath id="001" x="1016" y="355" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Komunika dla u&#380;ytkownika to Zamkniecie komunikatu" source="Komunikat dla u&#380;ytkownika" target="Zamkniecie komunikatu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="621" y="1065" curvePoint="false"/>
+<arcpath id="001" x="667" y="1018" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Koszyk z atrakcjami to Otwarcie Kalendarza" source="Koszyk z atrakcjami" target="Otwarcie Kalendarza">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1021" y="326" curvePoint="false"/>
+<arcpath id="001" x="1042" y="268" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Koszyk z atrakcjami to Usuniecie z koszyka" source="Koszyk z atrakcjami" target="Usuniecie z koszyka">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1030" y="340" curvePoint="false"/>
+<arcpath id="001" x="1161" y="335" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Logowanie to Zalogowano" source="Logowanie" target="Zalogowano">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="995" y="760" curvePoint="false"/>
+<arcpath id="001" x="973" y="816" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="MAPA to Otwarcie menad&#380;era" source="MAPA" target="Otwarcie menad&#380;era">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="836" y="623" curvePoint="false"/>
+<arcpath id="001" x="715" y="611" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="MAPA to Otwarcie Menu" source="MAPA" target="Nawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="860" y="613" curvePoint="false"/>
+<arcpath id="001" x="952" y="508" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="MAPA to Otworzenie karty atrakcji" source="MAPA" target="Otworzenie karty atrakcji">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="865" y="620" curvePoint="false"/>
+<arcpath id="001" x="1293" y="461" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="MAPA to Zalogowany admin" source="MAPA" target="Zalogowany admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="847" y="640" curvePoint="false"/>
+<arcpath id="001" x="748" y="1061" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Menad&#380;er POI to Otwarcie POI" source="Menad&#380;er POI" target="Otwarcie POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="696" y="715" curvePoint="false"/>
+<arcpath id="001" x="686" y="756" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Menad&#380;er POI to Zamkni&#281;cie menad&#380;era" source="Menad&#380;er POI" target="Zamkni&#281;cie menad&#380;era">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="715" y="695" curvePoint="false"/>
+<arcpath id="001" x="772" y="673" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Menu U&#380;ytkownika u góry to Klikni&#281;cie w koszyk" source="Menu U&#380;ytkownika u góry" target="Klikni&#281;cie w koszyk">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1136" y="400" curvePoint="false"/>
+<arcpath id="001" x="1031" y="400" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Menu U&#380;ytkownika u góry to Naci&#347;niecie przycisku zarz&#261;dzanie kontem" source="Menu U&#380;ytkownika u góry" target="Naci&#347;niecie przycisku zarz&#261;dzanie kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1155" y="415" curvePoint="false"/>
+<arcpath id="001" x="1210" y="575" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Menu U&#380;ytkownika u góry to zarzadzaj kontem" source="Menu U&#380;ytkownika u góry" target="zarzadzaj kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1157" y="413" curvePoint="false"/>
+<arcpath id="001" x="1266" y="652" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;niecie przycisku zarz&#261;dzanie kontem to Nie zalogowany" source="Naci&#347;niecie przycisku zarz&#261;dzanie kontem" target="Nie zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1195" y="581" curvePoint="false"/>
+<arcpath id="001" x="1088" y="633" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;niecie przycisku zmiany danych to Zmiana danych" source="Naci&#347;niecie przycisku zmiany danych" target="Zmiana danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1297" y="913" curvePoint="false"/>
+<arcpath id="001" x="1236" y="975" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych to Baza Danych" source="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" target="Baza Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1331" y="603" curvePoint="false"/>
+<arcpath id="001" x="1166" y="431" curvePoint="false"/>
+<arcpath id="002" x="716" y="476" curvePoint="false"/>
+<arcpath id="003" x="592" y="571" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych to BuforNawigacja" source="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1320" y="612" curvePoint="false"/>
+<arcpath id="001" x="1176" y="540" curvePoint="false"/>
+<arcpath id="002" x="773" y="332" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych to BuforUsuniecia" source="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" target="BuforUsuniecia">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1341" y="600" curvePoint="false"/>
+<arcpath id="001" x="1586" y="496" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych to BuforZarzadzania" source="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" target="BuforZarzadzania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1330" y="617" curvePoint="false"/>
+<arcpath id="001" x="1343" y="731" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Naniesienie POI na kalanerz to Atrakcja naniesiona na kalendarz" source="Naniesienie POI na kalanerz" target="Atrakcja naniesiona na kalendarz">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1183" y="201" curvePoint="false"/>
+<arcpath id="001" x="1256" y="180" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Nie zalogowany to Podaj dane - zaloguj" source="Nie zalogowany" target="Podano prawid&#322;owe dane logowania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1067" y="653" curvePoint="false"/>
+<arcpath id="001" x="1048" y="682" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Nie zalogowany to Wprowadz dane" source="Nie zalogowany" target="Wprowadz dane">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1090" y="641" curvePoint="false"/>
+<arcpath id="001" x="1190" y="641" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie Kalendarza to Kalendarz" source="Otwarcie Kalendarza" target="Kalendarz">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1048" y="261" curvePoint="false"/>
+<arcpath id="001" x="1092" y="241" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie menad&#380;era to Baza Danych" source="Otwarcie menad&#380;era" target="Baza Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="685" y="611" curvePoint="false"/>
+<arcpath id="001" x="595" y="585" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie menad&#380;era to Menad&#380;er POI" source="Otwarcie menad&#380;era" target="Menad&#380;er POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="700" y="615" curvePoint="false"/>
+<arcpath id="001" x="700" y="686" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie Menu to Menu U&#380;ytkownika u góry" source="Nawigacja" target="Menu U&#380;ytkownika u góry">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="958" y="501" curvePoint="false"/>
+<arcpath id="001" x="1137" y="407" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie POI to Formularz edycji POI" source="Otwarcie POI" target="Formularz edycji POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="680" y="765" curvePoint="false"/>
+<arcpath id="001" x="685" y="911" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otwarcie POI to Zalogowany admin" source="Otwarcie POI" target="Zalogowany admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="693" y="766" curvePoint="false"/>
+<arcpath id="001" x="743" y="1061" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Otworzenie karty atrakcji to MAPA" source="Otworzenie karty atrakcji" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1301" y="468" curvePoint="false"/>
+<arcpath id="001" x="865" y="621" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Podaj dane - zaloguj to Logowanie" source="Podano prawid&#322;owe dane logowania" target="Logowanie">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1042" y="690" curvePoint="false"/>
+<arcpath id="001" x="1010" y="733" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Podano poprawne dane to Sprawdzenie poprawno&#347;ci danych" source="Podano poprawne dane" target="Poprawne dane POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="591" y="832" curvePoint="false"/>
+<arcpath id="001" x="561" y="801" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Podsumowanie Trasy to Zamkni&#281;cie podsumowania" source="Podsumowanie Trasy" target="Zamkni&#281;cie podsumowania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1076" y="61" curvePoint="false"/>
+<arcpath id="001" x="823" y="171" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Potwierdzenie maila to Aktywacja Konta" source="Potwierdzenie maila" target="Aktywacja Konta">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1162" y="778" curvePoint="false"/>
+<arcpath id="001" x="1120" y="787" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Rejestracja to Potwierdzenie maila" source="Rejestracja" target="Potwierdzenie maila">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1200" y="741" curvePoint="false"/>
+<arcpath id="001" x="1168" y="771" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sprawdzenie poprawno&#347;ci danych to Zapis danych POI" source="Poprawne dane POI" target="Zapis danych POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="553" y="776" curvePoint="false"/>
+<arcpath id="001" x="565" y="705" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecieadmina to BuforlogAdmin" source="Usuniecieadmina" target="BuforlogAdmin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1631" y="671" curvePoint="false"/>
+<arcpath id="001" x="1551" y="1121" curvePoint="false"/>
+<arcpath id="002" x="857" y="1101" curvePoint="false"/>
+<arcpath id="003" x="722" y="818" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecieadmina to BuforZalogowany" source="Usuniecieadmina" target="BuforZalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1631" y="641" curvePoint="false"/>
+<arcpath id="001" x="1590" y="576" curvePoint="false"/>
+<arcpath id="002" x="1120" y="551" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecieadmina to MAPA" source="Usuniecieadmina" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1625" y="656" curvePoint="false"/>
+<arcpath id="001" x="865" y="626" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecie u&#380;ytkownika to BuforlogAdmin" source="Usuniecie u&#380;ytkownika" target="BuforlogAdmin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1856" y="641" curvePoint="false"/>
+<arcpath id="001" x="1815" y="971" curvePoint="false"/>
+<arcpath id="002" x="840" y="915" curvePoint="false"/>
+<arcpath id="003" x="727" y="815" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecie u&#380;ytkownika to BuforZalogowany" source="Usuniecie u&#380;ytkownika" target="BuforZalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1851" y="623" curvePoint="false"/>
+<arcpath id="001" x="1457" y="540" curvePoint="false"/>
+<arcpath id="002" x="1120" y="550" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecie u&#380;ytkownika to MAPA" source="Usuniecie u&#380;ytkownika" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1850" y="628" curvePoint="false"/>
+<arcpath id="001" x="1476" y="690" curvePoint="false"/>
+<arcpath id="002" x="865" y="627" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Usuniecie z koszyka to Koszyk z atrakcjami" source="Usuniecie z koszyka" target="Koszyk z atrakcjami">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1160" y="345" curvePoint="false"/>
+<arcpath id="001" x="1030" y="341" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Uzupe&#322;nienei godzin otwarcia przy u&#380;yciu AI to CHAT GPT" source="Uzupe&#322;nienie godzin otwarcia przy u&#380;yciu AI" target="CHAT GPT">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="605" y="986" curvePoint="false"/>
+<arcpath id="001" x="310" y="986" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wprowadz dane to Rejestracja" source="Wprowadz dane" target="Rejestracja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1196" y="656" curvePoint="false"/>
+<arcpath id="001" x="1207" y="716" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyj&#347;cie z zarzadzania kontem to BuforNawigacja" source="Wyj&#347;cie z zarzadzania kontem" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1041" y="981" curvePoint="false"/>
+<arcpath id="001" x="731" y="626" curvePoint="false"/>
+<arcpath id="002" x="758" y="340" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyj&#347;cie z zarzadzania kontem to BuforZarzadzania" source="Wyj&#347;cie z zarzadzania kontem" target="BuforZarzadzania">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1046" y="971" curvePoint="false"/>
+<arcpath id="001" x="971" y="761" curvePoint="false"/>
+<arcpath id="002" x="1046" y="611" curvePoint="false"/>
+<arcpath id="003" x="1332" y="740" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyj&#347;cie z zarzadzania kontem to MAPA" source="Wyj&#347;cie z zarzadzania kontem" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1040" y="991" curvePoint="false"/>
+<arcpath id="001" x="936" y="982" curvePoint="false"/>
+<arcpath id="002" x="853" y="640" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyloguj to BuforlogAdmin" source="Wyloguj" target="BuforlogAdmin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="830" y="1141" curvePoint="false"/>
+<arcpath id="001" x="726" y="1157" curvePoint="false"/>
+<arcpath id="002" x="716" y="820" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="wyloguj to BuforZalogowany" source="Wyloguj" target="BuforZalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="836" y="1121" curvePoint="false"/>
+<arcpath id="001" x="761" y="851" curvePoint="false"/>
+<arcpath id="002" x="1093" y="560" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyloguj to BuforZalogowany" source="Wyloguj" target="BuforZalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="836" y="1121" curvePoint="false"/>
+<arcpath id="001" x="776" y="911" curvePoint="false"/>
+<arcpath id="002" x="1095" y="561" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="wylogujuser to BuforZalogowany" source="wylogujuser" target="BuforZalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="930" y="1061" curvePoint="false"/>
+<arcpath id="001" x="1181" y="926" curvePoint="false"/>
+<arcpath id="002" x="1108" y="565" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wys&#322;anie informacji o b&#322;&#281;dzie do Aspire Dashboard to BuforB&#322;&#281;duSerwisu" source="Wys&#322;anie informacji o b&#322;&#281;dzie do Aspire Dashboard" target="BuforB&#322;&#281;duSerwisu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="646" y="91" curvePoint="false"/>
+<arcpath id="001" x="696" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyst&#261;pi&#322; b&#322;&#261;d serwisu to B&#322;&#261;d Serwisu" source="Wyst&#261;pi&#322; b&#322;&#261;d serwisu" target="B&#322;&#261;d Serwisu">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="550" y="287" curvePoint="false"/>
+<arcpath id="001" x="603" y="188" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wyst&#261;pi&#322; b&#322;&#261;d serwisu to BuforOverpass" source="Wyst&#261;pi&#322; b&#322;&#261;d serwisu" target="BuforOverpass">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="543" y="295" curvePoint="false"/>
+<arcpath id="001" x="397" y="406" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wy&#347;wietlenie karty atrakcji to Atrakcja" source="Otworzenie karty atrakcji" target="Atrakcja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1307" y="461" curvePoint="false"/>
+<arcpath id="001" x="1392" y="422" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Wy&#347;wietlenie podsumowania to Podsumowanie Trasy" source="Wy&#347;wietlenie podsumowania" target="Podsumowanie Trasy">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1251" y="82" curvePoint="false"/>
+<arcpath id="001" x="1105" y="57" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowano po rejestracji to Zalogowany" source="Zalogowano po rejestracji" target="Zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="997" y="838" curvePoint="false"/>
+<arcpath id="001" x="905" y="958" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowano to BuforNawigacja" source="Zalogowano" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="960" y="810" curvePoint="false"/>
+<arcpath id="001" x="766" y="340" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowano to MAPA" source="Zalogowano" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="963" y="820" curvePoint="false"/>
+<arcpath id="001" x="857" y="857" curvePoint="false"/>
+<arcpath id="002" x="851" y="640" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowano to Zalogowany" source="Zalogowano" target="Zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="970" y="827" curvePoint="false"/>
+<arcpath id="001" x="902" y="957" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany admin to MAPA" source="Zalogowany admin" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="748" y="1061" curvePoint="false"/>
+<arcpath id="001" x="847" y="640" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany admin to Otwarcie POI" source="Zalogowany admin" target="Otwarcie POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="742" y="1061" curvePoint="false"/>
+<arcpath id="001" x="687" y="766" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany admin to Usuniecieadmina" source="Zalogowany admin" target="Usuniecieadmina">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="760" y="1076" curvePoint="false"/>
+<arcpath id="001" x="1440" y="1101" curvePoint="false"/>
+<arcpath id="002" x="1631" y="671" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany admin to wyloguj" source="Zalogowany admin" target="Wyloguj">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="758" y="1083" curvePoint="false"/>
+<arcpath id="001" x="831" y="1131" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Usuniecieadmina" source="Zalogowany" target="Usuniecieadmina">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="908" y="978" curvePoint="false"/>
+<arcpath id="001" x="1046" y="1065" curvePoint="false"/>
+<arcpath id="002" x="1440" y="1082" curvePoint="false"/>
+<arcpath id="003" x="1631" y="671" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Usuniecie u&#380;ytkownika" source="Zalogowany" target="Usuniecie u&#380;ytkownika">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="910" y="973" curvePoint="false"/>
+<arcpath id="001" x="1307" y="1065" curvePoint="false"/>
+<arcpath id="002" x="1850" y="635" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to wyloguj" source="Zalogowany" target="Wyloguj">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="890" y="985" curvePoint="false"/>
+<arcpath id="001" x="836" y="1121" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Wyloguj" source="Zalogowany" target="Wyloguj">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="890" y="985" curvePoint="false"/>
+<arcpath id="001" x="836" y="1121" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to wylogujuser" source="Zalogowany" target="wylogujuser">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="901" y="985" curvePoint="false"/>
+<arcpath id="001" x="926" y="1046" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Zalogowany admin" source="Zalogowany" target="Zalogowany admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="883" y="978" curvePoint="false"/>
+<arcpath id="001" x="757" y="1067" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to Zaloguj Admin" source="Zalogowany" target="Zaloguj Admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="887" y="957" curvePoint="false"/>
+<arcpath id="001" x="780" y="781" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zalogowany to zarzadzaj kontem" source="Zalogowany" target="zarzadzaj kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="910" y="967" curvePoint="false"/>
+<arcpath id="001" x="1166" y="911" curvePoint="false"/>
+<arcpath id="002" x="1260" y="666" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zaloguj Admin to BuforNawigacja" source="Zaloguj Admin" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="776" y="761" curvePoint="false"/>
+<arcpath id="001" x="596" y="431" curvePoint="false"/>
+<arcpath id="002" x="596" y="341" curvePoint="false"/>
+<arcpath id="003" x="746" y="327" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zaloguj Admin to Zalogowany" source="Zaloguj Admin" target="Zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="781" y="771" curvePoint="false"/>
+<arcpath id="001" x="888" y="957" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zaloguj Admin to Zalogowany admin" source="Zaloguj Admin" target="Zalogowany admin">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="776" y="791" curvePoint="false"/>
+<arcpath id="001" x="747" y="1061" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkniecie komunikatu to Formularz edycji POI" source="Zamkniecie komunikatu" target="Formularz edycji POI">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="673" y="1011" curvePoint="false"/>
+<arcpath id="001" x="691" y="965" curvePoint="false"/>
+<arcpath id="002" x="687" y="940" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie karty atrakcji to Bufor" source="Zamkni&#281;cie karty atrakcji" target="Bufor">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1431" y="485" curvePoint="false"/>
+<arcpath id="001" x="1361" y="416" curvePoint="false"/>
+<arcpath id="002" x="1348" y="355" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie menad&#380;era to BuforNawigacja" source="Zamkni&#281;cie menad&#380;era" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="765" y="660" curvePoint="false"/>
+<arcpath id="001" x="641" y="341" curvePoint="false"/>
+<arcpath id="002" x="746" y="327" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie menad&#380;era to MAPA" source="Zamkni&#281;cie menad&#380;era" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="778" y="666" curvePoint="false"/>
+<arcpath id="001" x="837" y="632" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie podsumowania to BuforKoszyk" source="Zamkni&#281;cie podsumowania" target="BuforKoszyk">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="831" y="186" curvePoint="false"/>
+<arcpath id="001" x="891" y="356" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie podsumowania to BuforNawigacja" source="Zamkni&#281;cie podsumowania" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="813" y="175" curvePoint="false"/>
+<arcpath id="001" x="765" y="311" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zamkni&#281;cie podsumowania to MAPA" source="Zamkni&#281;cie podsumowania" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="820" y="182" curvePoint="false"/>
+<arcpath id="001" x="850" y="611" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych mapy to Baza Danych" source="Zapis danych mapy" target="Baza Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="588" y="460" curvePoint="false"/>
+<arcpath id="001" x="581" y="566" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych mapy to BuforOverpass" source="Zapis danych mapy" target="BuforOverpass">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="573" y="460" curvePoint="false"/>
+<arcpath id="001" x="400" y="418" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych pogody to Baza Danych" source="Zapis danych pogody" target="Baza Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="452" y="671" curvePoint="false"/>
+<arcpath id="001" x="568" y="588" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych pogody to BuforPogoda" source="Zapis danych pogody" target="BuforPogoda">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="446" y="678" curvePoint="false"/>
+<arcpath id="001" x="365" y="778" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych POI to Baza Danych" source="Zapis danych POI" target="Baza Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="571" y="696" curvePoint="false"/>
+<arcpath id="001" x="578" y="595" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych POI to BuforNawigacja" source="Zapis danych POI" target="BuforNawigacja">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="557" y="695" curvePoint="false"/>
+<arcpath id="001" x="551" y="326" curvePoint="false"/>
+<arcpath id="002" x="746" y="326" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zapis danych POI to MAPA" source="Zapis danych POI" target="MAPA">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="580" y="701" curvePoint="false"/>
+<arcpath id="001" x="836" y="630" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="zarzadzaj kontem to Zalogowany" source="zarzadzaj kontem" target="Zalogowany">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1260" y="666" curvePoint="false"/>
+<arcpath id="001" x="1181" y="926" curvePoint="false"/>
+<arcpath id="002" x="910" y="968" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="zarzadzaj kontem to Zarz&#261;dzanie kontem" source="zarzadzaj kontem" target="Zarz&#261;dzanie kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1277" y="656" curvePoint="false"/>
+<arcpath id="001" x="1526" y="755" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zarz&#261;dzanie kontem to Naci&#347;niecie przycisku zmiany danych" source="Zarz&#261;dzanie kontem" target="Naci&#347;niecie przycisku zmiany danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1527" y="768" curvePoint="false"/>
+<arcpath id="001" x="1303" y="906" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zarz&#261;dzanie kontem to Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych" source="Zarz&#261;dzanie kontem" target="Naci&#347;ni&#281;cie przycisku Usuni&#281;cia Danych">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1528" y="751" curvePoint="false"/>
+<arcpath id="001" x="1337" y="611" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Zmiana danych to Wyj&#347;cie z zarzadzania kontem" source="Zmiana danych" target="Wyj&#347;cie z zarzadzania kontem">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1211" y="986" curvePoint="false"/>
+<arcpath id="001" x="1050" y="986" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>
