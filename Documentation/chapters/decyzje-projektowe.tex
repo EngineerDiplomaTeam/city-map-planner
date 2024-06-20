@@ -68,7 +68,7 @@ Zespół projektowy kierował się następującymi priorytetami podczas wyboru t
 ~Na~podstawie powyższych czynników zdecydowaliśmy się~na~Progressive~Web~Apps.
 Dzięki temu rozwiązaniu możliwe jest stworzenie aplikacji internetowej, która działa~jak~natywna aplikacja mobilna~czy~desktopowa, a~jednocześnie~nie~wymaga dołączenia przeglądarki~do~paczki instalacyjnej,~jak~w~przypadku Electron.
 ~Aby~wykorzystać komercyjne doświadczenie zespołu, zdecydowaliśmy się zaimplementować aplikację w~frameworku Angular, zamiast korzystać z~React-a~poznanego~na~uczelni.
-Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z~\acrshort{pwa}[PWA]. 
+Angular oferuje solidne narzędzia~do~tworzenia wydajnych aplikacji internetowych oraz doskonałą integrację z~\acrshort{pwa}[PWA].
 
 Wybór technologii Progressive~Web~Apps umożliwił naszemu zespołowi stworzenie wydajnej, wieloplatformowej aplikacji dostępnej~na~większości urządzeń codziennego użytku.
 Decyzja~ta~pozwoliła~na~efektywne wykorzystanie umiejętności zespołu, a~także~na~dostarczenie rozwiązania zgodnego z~priorytetami projektu, jakimi są wydajność i~znajomość technologii.
@@ -117,7 +117,7 @@ Rozszerzenia mogą tworzyć wszyscy, jest~ich~całkiem sporo niestety wszystkie 
 Nawet~gdy~dane rozszerzenie wspiera jakąś zaawansowaną funkcjonalność,~to~przeważnie konfiguracja takiego rozszerzenia bardzo różni się pomiędzy systemami operacyjnymi co,~de~facto niweczy sens wieloplatformowości.
 
 W~2016 roku został ogłoszony JetBrains Rider niejako odpowiedź~na~VS~na~MacOS~od~Microsoftu.
-Rider bardzo dynamicznie się rozwijał, nadganiając, a~nawet prześcigając~VS~pod względem funkcjonalności,~do~momentu, w~wyniku czego duża część środowiska programistycznego zaczęła~go~używać jako głównego narzędzia~do~pracy.
+Rider bardzo dynamicznie się rozwijał, nadganiając, a~nawet prześcigając~VS~pod względem funkcjonalności,~w~wyniku czego duża część środowiska programistycznego zaczęła~go~używać jako głównego narzędzia~do~pracy.
 Programy firmy JetBrains są znane~ze~świetnej integracji wieloplatformowej oraz dbania o~szczegóły,~co~zapewnia dobre doświadczenie deweloperskie.
 
 Dzięki PJATK nasz zespół mógł przetestować, każdy z~tych programów w~ramach licencji edukacyjnej.
@@ -175,12 +175,12 @@ Ostatnim modułem byłaby aplikacja \gls{frontend}-owa implementująca UI, włą
 Takie podejście w~praktyce zmniejsza koszt utrzymania~do~kosztu utrzymywania bazy danych, ponieważ~gdy~zapotrzebowanie~na~pozostałe moduły drastycznie~by~zmalało,~to~nie będą~one~chodzić i~czekać~na~ruch użytkowników.
 Niestety uruchamianie programów~na~żądanie wiąże się~ze~znaczącym opóźnieniem wobec żądań użytkownika docelowego.~Gdy~użytkownik postanowi skorzystać z~naszej aplikacji, dostawca chmury obliczeniowej musi uruchomić~co~najmniej dwie maszyny,~dla~modułu 3~i~4,~co~czasami potrafi zająć kilka sekund.~Gdy~dostawca chmury uruchomi odpowiednie maszyny, jeszcze nasze oprogramowanie wymaga czasu~na~obsłużenie żądania.
 W~przypadku modułu 3~musimy nawiązać połączenie z~bazą danych, odczytać dane, zastosować~na~nich skomplikowany obliczeniowo algorytm i~wysłać odpowiedź, obawiamy się, że w~skrajnych przypadkach może~to~zająć~za~dużo czasu~aby~odpowiedź trafiła~do~użytkownika przed zamknięciem połączenia.
-W~przypadku modułu 4~możemy odroczyć oczekiwanie~na~odpowiedź modułu 3~i~poinformować użytkownika o~wydłużonym czasie oczekiwania, niemniej jednak,~aby~cokolwiek użytkownikowi pokazać i~tak jesteśmy zmuszeni~do~wykonania kodu odpowiedzialnego~za~stworzenie \gls{ui}, według doświadczeń zespołu czas potrzebny~na~\gls{rendering} \gls{hello-world} pozostawia niewiele czasu~do~przekroczenia średniego time span nowego użytkownika (TODO: source).
+W~przypadku modułu 4~możemy odroczyć oczekiwanie~na~odpowiedź modułu 3~i~poinformować użytkownika o~wydłużonym czasie oczekiwania, niemniej jednak,~aby~cokolwiek użytkownikowi pokazać i~tak jesteśmy zmuszeni~do~wykonania kodu odpowiedzialnego~za~stworzenie \gls{ui}, według doświadczeń zespołu czas potrzebny~na~\gls{rendering} \gls{hello-world} pozostawia niewiele czasu~do~przekroczenia średniego time span nowego użytkownika~\cite{timespan}.
 
 Istnieją techniki pozwalające~na~optymalizację tych rozwiązań,~aby~wyeliminować przytoczone problemy.
-Jednak opierają się~one~o~jeszcze większą fragmentację aplikacji,~na~którą~nie~możemy sobie pozwolić z~uwagi~na~liniowo rosnący czas potrzebny~na~konfigurację infrastruktury potrzebnej~do~skomunikowana wszystkich modułów w~\glslink{hermetyzacja}{hermetyczny} sposób.
-Infrastrukturę chmury internetowej w~każdym~ze~znanych~nam~dostawców~to~jest: \acrshort{aws}[AWS], \acrshort{gcp}[GCP], \acrshort{azure}[Azure] możemy wyklikać w~przeglądarce internetowej.
-Jednak usługi~te~znacząco się~od~siebie różnią.
+Jednak opierają się~one~o~jeszcze większą fragmentację aplikacji,~na~którą~nie~możemy sobie pozwolić z~uwagi na~liniowo rosnący czas potrzebny na~konfigurację infrastruktury potrzebnej do~skomunikowana wszystkich modułów w~\glslink{hermetyzacja}{hermetyczny} sposób.
+Infrastrukturę chmury internetowej w~każdym ze~znanych nam~dostawców to~jest: \acrshort{aws}[AWS], \acrshort{gcp}[GCP], \acrshort{azure}[Azure] możemy wyklikać w~przeglądarce internetowej.
+Jednak usługi te~znacząco się~od~siebie różnią.
 Możemy tę manualną pracę zautomatyzować przy pomocy podejścia \gls{infra-as-code},~na~przykład przy użyciu terraform.
 Pomimo iż dostawcy oferują podobne rozwiązania,~to~różnią się~one~w~sposobie konfiguracji,~na~przykład 1~usługa w~\acrshort{gcp}[GCP]~to~3~usługi w~\acrshort{aws}[AWS]\@.
 Terraform daje możliwość skorzystania z~dodatkowej warstwy abstrakcji pozwalającej~na~opisanie architektury~dla~\acrshort{aws}[AWS],~jak~i~zarówno \acrshort{gcp}[GCP], jednakże~nie~jest~to~pełne wsparcie i~niektóre usługi~po~prostu~nie~pokrywają się pomiędzy dostawcami.
@@ -647,6 +647,10 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
         !makeglossaries thesis!
         !pdflatex thesis.tex!
         !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
+        !pdflatex thesis.tex!
       +working-directory+: !'Documentation'!
 \end{lstlisting}
 
@@ -720,6 +724,10 @@ Ten przepływ pracy automatyzuje proces budowania~i~wdrażania dokumentacji LaTe
         !biber thesis!
         !makeglossaries thesis!
         !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
         !pdflatex thesis.tex!
       +working-directory+: !'Documentation'!
 

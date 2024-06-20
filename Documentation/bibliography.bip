@@ -29,7 +29,7 @@
   title = {Operating System Market Share Worldwide},
   url = {https://gs.statcounter.com/os-market-share#monthly-202304-202404-bar},
   year = {2024},
-  urldate = {2024-12-02}
+  urldate = {2024-04-03}
 }
 
 @book{flutter-quick-start,
@@ -44,7 +44,15 @@
   title = {My experience with Flutter Web (Performance, Advantages, Disadvantages)},
   url = {https://blog.nonstopio.com/my-experience-with-flutter-web-performance-advantages-disadvantages-part-2-556eaa5d6e4a},
   year = {2021},
-  urldate = {2024-12-02}
+  urldate = {2024-04-02}
+}
+
+@online{timespan,
+  author = {Alex Shellhammer and Juliette Neel},
+  title = {The need for mobile speed},
+  url = {https://blog.google/products/admanager/the-need-for-mobile-speed/},
+  year = {2016},
+  urldate = {2024-05-12}
 }
 
 @book{electron-in-action,
