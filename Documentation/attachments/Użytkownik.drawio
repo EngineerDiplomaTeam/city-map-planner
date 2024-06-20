@@ -1,0 +1,217 @@
+<mxfile host="app.diagrams.net" modified="2024-06-20T16:42:29.278Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="klCG8Qn1m7DzlcjUfiL8" version="24.5.5" type="device">
+  <diagram name="Strona-1" id="EH5tzHBID3ATC8VyfBqR">
+    <mxGraphModel dx="3416" dy="3123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-30" value="Użytkownik" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0050ef;fontColor=#000000;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-1200" y="-1910" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-32" value="&lt;font color=&quot;#000000&quot;&gt;Przeglądanie widoku mapy&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1030" y="-1680" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-33" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-59" target="oMjRJ9_8V9iE16dIWu51-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-220" y="-1690" as="sourcePoint" />
+            <mxPoint x="-190" y="-1650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-34" value="&lt;font color=&quot;#000000&quot;&gt;Zalogowanie w systemie&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1250" y="-2170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-35" value="&lt;font color=&quot;#000000&quot;&gt;Rejestracja w systemie&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1410" y="-2180" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-36" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-59" target="oMjRJ9_8V9iE16dIWu51-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-285.5" y="-1680" as="sourcePoint" />
+            <mxPoint x="-184.5" y="-1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-37" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-59" target="oMjRJ9_8V9iE16dIWu51-34">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-241" y="-1740" as="sourcePoint" />
+            <mxPoint x="-140" y="-1660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-38" value="&lt;font color=&quot;#000000&quot;&gt;Ocenienie atrakcji turystycznej&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1090" y="-1980" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-39" value="&lt;font color=&quot;#000000&quot;&gt;Wyświetlenie dostępnych atrakcji&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1040" y="-2250" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-40" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-59" target="oMjRJ9_8V9iE16dIWu51-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-210" y="-1720" as="sourcePoint" />
+            <mxPoint x="-109" y="-1641" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-41" value="&lt;font color=&quot;#000000&quot;&gt;Dodawanie opinii i/lub zdjęcia do wybranej atrakcji&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1090" y="-2110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-42" value="" style="endArrow=open;html=1;rounded=0;strokeColor=#000000;endFill=0;dashed=1;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-55" target="oMjRJ9_8V9iE16dIWu51-69">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-261.03255443267744" y="-1656.8849325272267" as="sourcePoint" />
+            <mxPoint x="-220" y="-1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-43" value="includes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-42">
+          <mxGeometry x="-0.0331" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-44" value="&lt;font color=&quot;#000000&quot;&gt;Generowanie widoku mapy&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-830" y="-1690" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-45" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;dashed=1;startArrow=open;startFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-44" target="oMjRJ9_8V9iE16dIWu51-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-17" y="-1350" as="sourcePoint" />
+            <mxPoint x="75" y="-1158" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-46" value="includes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-45">
+          <mxGeometry x="-0.1103" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-52" value="" style="endArrow=open;html=1;rounded=0;strokeColor=#000000;endFill=0;dashed=1;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-41" target="oMjRJ9_8V9iE16dIWu51-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-58" y="-1932" as="sourcePoint" />
+            <mxPoint x="-10" y="-1850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-53" value="extends" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-52">
+          <mxGeometry x="-0.1778" y="1" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-54" value="&lt;font color=&quot;#000000&quot;&gt;Wybieranie atrakcji&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-850" y="-2250" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-55" value="Zapisanie&amp;nbsp; planu zwiedzania" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-1090" y="-1880" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-56" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-30" target="oMjRJ9_8V9iE16dIWu51-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-223" y="-1849" as="sourcePoint" />
+            <mxPoint x="-247" y="-1921" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-57" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;endFill=1;dashed=1;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-54" target="oMjRJ9_8V9iE16dIWu51-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-240" y="-1890" as="sourcePoint" />
+            <mxPoint x="-320" y="-1820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-58" value="uses" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-57">
+          <mxGeometry x="0.116" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-59">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1300" y="-1859.842105263158" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-59" value="Gość" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0050ef;fontColor=#000000;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-1370" y="-1890" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-60" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-30" target="oMjRJ9_8V9iE16dIWu51-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-825" y="-1770" as="sourcePoint" />
+            <mxPoint x="-687" y="-1954" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-64" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#000000;endFill=1;startArrow=none;startFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-30" target="oMjRJ9_8V9iE16dIWu51-59">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-977" y="-1810" as="sourcePoint" />
+            <mxPoint x="-998" y="-2160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-66" value="Tworzenie planu zwiedzania" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-850" y="-2150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-67" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;endFill=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-54" target="oMjRJ9_8V9iE16dIWu51-66">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-620" y="-2007" as="sourcePoint" />
+            <mxPoint x="-295" y="-2310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-68" value="Ustalanie czasu zwiedzania" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-850" y="-2030" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-69" value="Generowanie Trasy" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-850" y="-1880" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-70" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-68" target="oMjRJ9_8V9iE16dIWu51-66">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-530" y="-1940" as="sourcePoint" />
+            <mxPoint x="-480" y="-1990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-71" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-69" target="oMjRJ9_8V9iE16dIWu51-68">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-658" y="-1830" as="sourcePoint" />
+            <mxPoint x="-670" y="-1930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-72" value="Dane Pogodowe" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-690" y="-1980" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-73" value="Dostępne godziny zwiedzania" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-700" y="-2100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-74" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-73" target="oMjRJ9_8V9iE16dIWu51-68">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-550" y="-1980" as="sourcePoint" />
+            <mxPoint x="-500" y="-2030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-75" value="&lt;div&gt;extend&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-74">
+          <mxGeometry x="0.0347" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-77" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-72">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-658" y="-1900" as="sourcePoint" />
+            <mxPoint x="-750" y="-1850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-78" value="&lt;div&gt;extend&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-77">
+          <mxGeometry x="0.0347" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-79" value="Algorytm szukania trasy" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-670" y="-1860" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-80" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-79" target="oMjRJ9_8V9iE16dIWu51-69">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-660" y="-1770" as="sourcePoint" />
+            <mxPoint x="-740" y="-1710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-81" value="&lt;div&gt;extend&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-80">
+          <mxGeometry x="0.0347" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-82" value="Dostępne środki transportu" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=default;strokeColor=#006EAF;labelBackgroundColor=none;labelBorderColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="-670" y="-1760" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-83" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="oMjRJ9_8V9iE16dIWu51-82" target="oMjRJ9_8V9iE16dIWu51-69">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-710" y="-1753" as="sourcePoint" />
+            <mxPoint x="-772" y="-1760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oMjRJ9_8V9iE16dIWu51-84" value="&lt;div&gt;extend&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oMjRJ9_8V9iE16dIWu51-83">
+          <mxGeometry x="0.0347" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

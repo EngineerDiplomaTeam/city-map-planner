@@ -725,7 +725,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \priority{M}
     \name{Przeglądarka internetowa}
     \descr{W dniu premiery musi być dostępny na urządzenia mobilne  }
-    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych i działać prawidłowo na urządzeniach z ekranem dotykowym jak i urządzeniach ze wskaźnikiem analogowym (myszka)
+    \acceptcrit{System będzie działał sprawnie na wszystkich przeglądarkach internetowych i działać prawidłowo na urządzeniach z ekranem dotykowym, jak i urządzeniach ze wskaźnikiem analogowym (myszka)
     }
     \sholder{UOB1, UOB2,UOB3}
     \reqrelated{}
@@ -737,3 +737,35 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
 
 \section{Aktorzy}
 \label{sec:aktorzy}
+
+W naszym narzędziu możemy wyszczególnić takich aktorów jak:
+    \begin{itemize}
+       \item gość-użytkownik niezalogowany;
+       \item użytkownik zalogowany do aplikacji;
+       \item administrator systemu;
+       \item StadiaMaps-oprogramowanie nakładające punkty na mapie;
+       \item Overpass Turbo-dostawca danych do interaktywnej mapy;
+       \item API MZK Gdańsk-dostawca danych komunikacji miejskiej;
+       \item OpenMeteo-dostawca danych pogodowych;
+       \item ChatGPT-sztuczna inteligencja przekazująca informacje o godzinach otwarcia;
+    \end{itemize}
+
+    \newpage
+\section{Przypadki użycia}
+\label{sec:przypadki-uzycia}
+Na rysunku 4.1 znajduje się diagram przedstawiający przypadki użycia dla projektu Planer Mapy Miejskiej.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{attachments/Przypadki_Uzycia-final}
+    \caption{Przypadki użycia cały projekt}
+    \label{fig:przypadki-uzycia}
+    \end{figure}
+
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{attachments/Użytkownik}
+        \caption{Przypadki użycia aplikacji dla gościa i użytkownika}
+        \label{fig:przypadki-uzycia}
+        \end{figure}
