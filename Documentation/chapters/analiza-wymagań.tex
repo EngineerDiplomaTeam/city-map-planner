@@ -19,8 +19,8 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
 \end{itemize}
 
 
-\section{Aktorzy}
-\label{sec:aktorzy}
+\section{Udziałowcy}
+\label{sec:udzialowcy}
 
 \begin{stakeholder}[label={tab:stakeholder:someholder1},caption={opis udzialowca}]
     \id{UOB1}
@@ -61,7 +61,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \id{WO1}
     \priority{M}
     \name{Obsługa użytkowników}
-    \descr{System powinien działać bez większych przestojów i przerw~w~funkcjonowaniu, nawet przy dużej liczbie użytkowników. }
+    \descr{System obsługuje użytkowników zalogowany, jak i niezalogowanych do systemu }
     \sholder{UOB2}
     \reqrelated{WO9, F24,}
 \end{requirementstab}
@@ -70,7 +70,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \priority{C}
     \name{Działanie~w~czasie rzeczywistym offline lub online }
     \descr{Aplikacja musi działać i synchronizować dane do 15 minut. 
-    Wersja offline wykorzystuje ostatnie zapisane informacje takie jak Umożliwia podgląd wcześniej zaplanowanych wycieczek}
+    Wersja offline wykorzystuje ostatnie zapisane informacje takie jak podgląd wcześniej zaplanowanych wycieczek}
     \sholder{UOB2}
 \end{requirementstab}
 \begin{requirementstab}[label={tab:requirements:general3},caption={Karta wymagania: Panel administracyjny}]
@@ -350,7 +350,7 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     }
     \acceptcrit{ Użytkownik może wybrać każdy element z proponowanej trasy i go zmienić}
     \inputdata{Wybrane atrakcje turystyczne – trasa np. Zapisana trasa lub stworzenie nowej trasy.  }
-    \preconditions{ Z edytowana nowa trasa. }
+    \preconditions{ Zedytowana nowa trasa. }
     \postconditions{ Prezentacja nowej trasy o nowe sugestie~w~podróży.  }
     \exceptions{  Brak przeładowania trasy przez brak internetu. }
     \implementation{ Poprzez przesuwanie punktów na osi czasu jest możliwość manipulowania trasą.}
@@ -367,8 +367,8 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     }
     \acceptcrit{ Możliwość dodania niestandardowego punktu startowego i końcowego.}
     \inputdata{ Zalogowany użytkownik}
-    \preconditions{  }
-    \postconditions{   }
+    \preconditions{ Brak }
+    \postconditions{ Baza punktów użytkownika posiada nowo zapisany punkt }
     \exceptions{  Brak punktów niestandardowych lub punkt nie mieści się~w~obrębie dostępnej mapy. }
     \implementation{ Na interaktywnej mapie powinien znajdować się przycisk do dodania własnych atrakcji, ale tylko, gdy użytkownik jest zalogowany.}
     \sholder{ UOB1, UOB2   }
@@ -435,13 +435,13 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
     \id{FO19}
     \priority{S}
     \name{Koszyk POI}
-    \descr{Widok koszyka atrakcji przedstawiający wszystkie dodane glslink{poidef}{POI} jakimi zainteresowany jest użytkownik do zwiedzenia.
+    \descr{Widok koszyka atrakcji przedstawiający wszystkie dodane \glslink{poidef}{POI} jakimi zainteresowany jest użytkownik do zwiedzenia.
     }
-    \acceptcrit{  }
+    \acceptcrit{ koszyk przechowuje dodane \glslink{poidef}{POI} }
     \inputdata{ Dodane atrakcje do koszyka}
-    \preconditions{  }
-    \postconditions{  }
-    \exceptions{ }
+    \preconditions{ Brak  }
+    \postconditions{ Brak }
+    \exceptions{ Usuniecie wszystkich POI z koszyka usuwa możliwość otwarcia koszyka z menu}
     \implementation{ Dodanie widoku dla użytkownika,~w~którym będzie mógł zobaczyć dodane atrakcję do koszyka. Z widoku koszyka można przejść do kalendarza.
     }
     \sholder{ UOB2 }
@@ -734,3 +734,6 @@ Na podstawie opracowanego dokumentu \glslink{sws}{SWS}, przygotowano wymagania d
 
 
 \restoregeometry % Przywrócenie poprzednich marginesów
+
+\section{Aktorzy}
+\label{sec:aktorzy}
