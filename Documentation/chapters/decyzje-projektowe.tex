@@ -647,6 +647,10 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
         !makeglossaries thesis!
         !pdflatex thesis.tex!
         !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
+        !pdflatex thesis.tex!
       +working-directory+: !'Documentation'!
 \end{lstlisting}
 
@@ -720,6 +724,10 @@ Ten przepływ pracy automatyzuje proces budowania~i~wdrażania dokumentacji LaTe
         !biber thesis!
         !makeglossaries thesis!
         !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !pdflatex thesis.tex!
+        !biber thesis!
+        !makeglossaries thesis!
         !pdflatex thesis.tex!
       +working-directory+: !'Documentation'!
 
