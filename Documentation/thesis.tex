@@ -18,6 +18,7 @@
 \usepackage{ulem} % przekreślnie tekstów
 \usepackage{microtype}
 \usepackage[polish]{babel}
+\usepackage[xindy]{glossaries-extra}
 \definecolor{background}{rgb}{0.95,0.95,0.95}
 \definecolor{comment}{rgb}{0.0,0.5,0.0}
 \definecolor{keyword}{rgb}{0.0,0.0,1.0}
@@ -149,16 +150,9 @@
 \parindent30pt
 \addbibresource{bibliography.bip}
 \makeglossaries
+\GlsXtrEnablePreLocationTag{(strona }{(strony }
+\renewcommand{\GlsXtrFormatLocationList}[1]{#1)}
 
-% Definicja nowego stylu glosariusza
-\newglossarystyle{mystyle}{
-  \setglossarystyle{list}%
-  \renewenvironment{theglossary}%
-    {\begin{description}}%
-    {\end{description}}%
-  \renewcommand*{\glossaryentryfield}[5]{%
-    \item[\glsentryitem{##1}\glstarget{##1}{##2}] ##3 ##5 (strony ##4)}%
-}
 \input{słownik-pojęć}
 
 \studfield{Informatyka}
@@ -212,7 +206,7 @@
 
 	% Słownik pojęć i skrótów
 	\printglossary[type=\acronymtype]
-	\printglossary[style=mystyle]
+	\printglossary
 
 	\input{chapters/opis-problemu}
 	\input{chapters/kontekst-projektu}
