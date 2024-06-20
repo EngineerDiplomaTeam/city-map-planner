@@ -149,7 +149,16 @@
 \parindent30pt
 \addbibresource{bibliography.bip}
 \makeglossaries
-\renewcommand*{\glspostdescription}{\glspostdescription (strony~\theglspage)}
+
+% Definicja nowego stylu glosariusza
+\newglossarystyle{mylist}{%
+  \setglossarystyle{list}
+  \renewcommand*{\glossentry}{
+    \glossentryname
+    \glossentrydesc
+    (strony~\glsentrylistpages)
+  }%
+}
 
 \input{słownik-pojęć}
 
@@ -204,7 +213,7 @@
 
 	% Słownik pojęć i skrótów
 	\printglossary[type=\acronymtype]
-	\printglossary
+	\printglossary[style=mylist]
 
 	\input{chapters/opis-problemu}
 	\input{chapters/kontekst-projektu}
