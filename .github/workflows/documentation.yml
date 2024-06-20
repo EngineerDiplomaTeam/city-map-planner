@@ -41,6 +41,8 @@ jobs:
         makeglossaries thesis
         pdflatex thesis.tex
         pdflatex thesis.tex
+        pdflatex thesis.tex
+        pdflatex thesis.tex
       working-directory: 'Documentation'
 
     - uses: actions/upload-artifact@v3
