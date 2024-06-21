@@ -636,7 +636,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +uses+: !'actions/checkout@v3'!
 \end{lstlisting}
 
-\subparagraph{Build}: Buduje dokumentację LaTeX, uruchamiając komendy `pdflatex`, `biber`, `makeglossaries`~i~ponownie `pdflatex` w katalogu \texttt{\textcolor{codeblue}{Documentation}}.
+\subparagraph{Build}: Buduje dokumentację \LaTeX , uruchamiając komendy `pdflatex`, `biber`, `makeglossaries`~i~ponownie `pdflatex` w katalogu \texttt{\textcolor{codeblue}{Documentation}}.
 \begin{lstlisting}[style=yaml-colored]
     - +name+: !'Build'!
       # Glossaries https://tex.stackexchange.com/a/46732
@@ -682,7 +682,7 @@ Uruchamiane na hoście \texttt{\textcolor{codeblue}{self-hosted}}.
       +if+: !github.event_name == 'pull_request'!
 \end{lstlisting}
 
-Ten przepływ pracy automatyzuje proces budowania~i~wdrażania dokumentacji LaTeX za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
+Ten przepływ pracy automatyzuje proces budowania~i~wdrażania dokumentacji \LaTeX\ za każdym razem, gdy zmiany są wypychane do głównej gałęzi lub gdy tworzone są pull requesty, zapewniając, że tylko zatwierdzone zmiany są wdrażane.
 
 \subsubsection{Kod YAML}
 \begin{lstlisting}[style=yaml-colored]
