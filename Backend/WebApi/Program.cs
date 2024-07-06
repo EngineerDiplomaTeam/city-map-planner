@@ -143,11 +143,13 @@ if (app.Environment.IsDevelopment())
 }
 
 // Do not add here HTTPS redirection, we use NGINX for SSL
+
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
 app.AddAdditionalIdentityEndpoints();
+app.AddQrCodeGenerationEndpoints();
 app.UseResponseCompression();
 
 app.Run();

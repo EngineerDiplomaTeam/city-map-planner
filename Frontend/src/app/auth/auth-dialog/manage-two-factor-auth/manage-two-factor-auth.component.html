@@ -1,0 +1,52 @@
+<article>
+  @switch (state()) {
+    @case ('2fa-setup') {
+      <section>
+        <p>Two factor authentication disabled!</p>
+        <button mat-raised-button
+                color="primary"
+                (click)="this.twoFactorAuthStore.onEnable2fa()" [disabled]="qrCodeLink()">Enable 2FA</button>
+      </section>
+
+      @if (qrCodeLink()) {
+        <section>
+          <!--suppress AngularNgOptimizedImage -->
+          <img class="qr-code" [src]="qrCodeLink()" alt="QR Code">
+          <form [formGroup]="otpForm" (submit)="verifyCode()">
+            <mat-form-field>
+              <input matInput placeholder="Enter otp" formControlName="otp">
+            </mat-form-field>
+            <button mat-raised-button
+                    color="primary"
+                    type="submit">Verify</button>
+          </form>
+        </section>
+      }
+    }
+
+    @case ('2fa-enabled') {
+      <p>2fa enabled!</p>
+      <button mat-raised-button
+              color="primary"
+              (click)="this.twoFactorAuthStore.onDisable2fa()">Disable 2FA</button>
+      <button mat-raised-button
+              color="primary"
+              (click)="this.twoFactorAuthStore.onRecoveryCodesReset()">Reset recovery codes</button>
+    }
+
+    @case ('2fa-save-recovery-codes') {
+      <p>2fa save recovery codes!</p>
+      <p>Make sure to save them!</p>
+      <ul>
+        @for (recoveryCode of recoveryCodes(); track recoveryCode) {
+          <li>{{ recoveryCode }}</li>
+        } @empty {
+          <li>Looks like you already have saved recovery codes!</li>
+        }
+      </ul>
+      <button mat-raised-button
+              color="primary"
+              (click)="this.twoFactorAuthStore.onManage2fa()">I saved the codes</button>
+    }
+  }
+</article>

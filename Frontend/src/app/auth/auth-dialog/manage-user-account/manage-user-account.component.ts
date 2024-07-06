@@ -23,6 +23,8 @@ import { MatInput } from '@angular/material/input';
 import { passwordValidators } from '../password-validators';
 import { Store } from '@ngrx/store';
 import { selectUserAccount } from '../../auth.selectors';
+import { ManageTwoFactorAuthComponent } from '../manage-two-factor-auth/manage-two-factor-auth.component';
+import { ManageTwoFactorAuthStore } from '../manage-two-factor-auth/manage-two-factor-auth.store';
 
 @Component({
   selector: 'app-manage-user-account',
@@ -45,8 +47,9 @@ import { selectUserAccount } from '../../auth.selectors';
     MatLabel,
     MatSuffix,
     ReactiveFormsModule,
+    ManageTwoFactorAuthComponent,
   ],
-  providers: [ManageUserAccountStore],
+  providers: [ManageUserAccountStore, ManageTwoFactorAuthStore],
   templateUrl: './manage-user-account.component.html',
   styleUrl: './manage-user-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

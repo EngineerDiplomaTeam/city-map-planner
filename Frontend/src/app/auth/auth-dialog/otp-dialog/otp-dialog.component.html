@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Please provide otp!</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Otp</mat-label>
+    <input matInput type="number" [formControl]="otpInput" required/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button>Cancel</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="otpInput.value">Login</button>
+</mat-dialog-actions>
